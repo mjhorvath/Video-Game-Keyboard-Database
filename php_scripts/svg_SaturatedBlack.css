@@ -1,0 +1,51 @@
+*	{}
+svg	{font-family:Verdana,Sans-Serif;font-size:14px;}
+#bkgrec	{stroke:none;fill:#000;}
+.key	{overflow:visible;}
+.legtxt	{font-size:14px;fill:#fff;}
+.caphgh,.caplow,.caprgt
+	{font-size:12px;font-weight:bold;}
+.caprgt	{text-anchor:end;}
+.caprec	{}
+.keyimg	{}
+.keynor	{font-size:12px;font-weight:normal;}
+.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+	{font-size:10px;text-anchor:end;font-weight:normal;}
+.keyshf	{fill:#008;}	/* CIE-L*ch ( 50, 47,270)	blue	*/
+.keyctl	{fill:#080;}	/* CIE-L*ch ( 50, 55,150)	green	*/
+.keyalt	{fill:#800;}	/* CIE-L*ch ( 50, 88, 30)	red	*/
+.keyagr	{fill:#808;}	/* CIE-L*ch ( 50, 97,330)	magenta	*/
+.keyxtr	{fill:#088;}	/* CIE-L*ch ( 50, 29,210)	cyan	*/
+.bakshf	{fill:none;}
+.bakctl	{fill:none;}
+.bakalt	{fill:none;}
+.bakagr	{fill:none;}
+.bakxtr	{fill:none;}
+.recred	{fill:#e22;}
+.recyel	{fill:#ee2;}
+.recgrn	{fill:#2e2;}
+.reccyn	{fill:#2ee;}
+.recblu	{fill:#22e;}
+.recmag	{fill:#e2e;}
+.recwht	{fill:#fff;}
+.recgry	{fill:#888;}
+.recblk	{fill:#000;}
+.recorg	{fill:#f80;}
+.recolv	{fill:#880;}
+.recbrn	{fill:#840;}
+.recnon	{fill:#000;}
+.recred,.recyel,.recgrn,.reccyn,.recblu,.recmag,.recwht,.recgry,.recblk,.recorg,.recolv,.recbrn,.recnon
+	{stroke:#fff;}
+.txtred	{fill:#fff;}
+.txtyel	{fill:#fff;}
+.txtgrn	{fill:#fff;}
+.txtcyn	{fill:#fff;}
+.txtblu	{fill:#fff;}
+.txtmag	{fill:#fff;}
+.txtwht	{fill:#000;}
+.txtgry	{fill:#fff;}
+.txtblk	{fill:#fff;}
+.txtorg	{fill:#fff;}
+.txtolv	{fill:#fff;}
+.txtbrn	{fill:#fff;}
+.txtnon	{fill:#fff;}

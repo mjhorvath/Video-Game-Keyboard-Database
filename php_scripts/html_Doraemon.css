@@ -1,0 +1,45 @@
+*	{font-family:Verdana,sans-serif;}
+body	{color:#000;font-size:11pt;}
+select	{color:#000;background:#fff;border:1px solid #000;}
+option	{color:#000;background:#fff;}
+footer	{font-size:smaller;}
+.bodiv	{position:relative;margin:1em;}
+.key	{position:absolute;overflow:hidden;font-size:smaller;box-shadow:4px 4px 4px #888;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;box-shadow: 0px 1px 1px #444;}
+.caphgh,.caplow,.caprgt,.keyopt,.keyopf
+	{position:absolute;overflow:hidden;padding:2px;white-space:pre;}
+.caphgh	{font-weight:  bold;left: 0px;top:   0px;}
+.caplow	{font-weight:  bold;left: 0px;bottom:0px;}
+.caprgt	{font-weight:  bold;right:0px;top:   0px;}
+.keyopt	{font-weight:normal;left: 0px;bottom:0em;}
+.keyopf	{font-weight:normal;left: 0px;bottom:1em;}
+.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;background:transparent;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
+.keyshf	{color:#00e;}
+.keyctl	{color:#080;}
+.keyalt	{color:#e00;}
+.keyagr	{color:#ee0;}
+.keyxtr	{color:#0ee;}
+.keyimg	{position:absolute;}
+.leggrp	{margin:4px;}
+.cssA	{background:#fcc;}
+.cssB	{background:#ffc;}
+.cssC	{background:#cfc;}
+.cssD	{background:#cff;}
+.cssE	{background:#ccf;}
+.cssF	{background:#fcf;}
+.cssG	{background:#fff;}
+.cssH	{background:#000;}
+.cssI	{background:#ccc;}
+.red	{}                                 
+.yel	{}
+.grn	{}
+.cyn	{}
+.blu	{}
+.mag	{}
+.wht	{}
+.gry	{}
+.blk	{}
+.org	{}
+.olv	{}
+.brn	{}
+.non	{}

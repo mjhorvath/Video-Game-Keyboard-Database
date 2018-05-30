@@ -1,0 +1,5 @@
+\N	202	1	Combat/Actions
+\N	202	1	Targeting
+\N	202	3	Movement
+\N	202	5	Camera
+\N	202	6	Game Menus

@@ -1,0 +1,35 @@
+*	{font-family:Verdana,sans-serif;}
+body	{color:#000;font-size:11pt;}
+select	{color:#000;background:#ffffff;border:1px solid #000;}
+option	{color:#000;background:#ffffff;}
+footer	{font-size:smaller;}
+.bodiv	{position:relative;margin:1em;}
+.cut	{position:absolute;border:1px dashed #000;}
+.key	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
+.caphgh	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;left: 0px;top:   0px;}
+.caplow	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;left: 0px;bottom:0px;}
+.caprgt	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;right:0px;top:   0px;}
+.keyopt	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:normal;left: 0px;bottom:0em;}
+.keyopf	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:normal;left: 0px;bottom:1em;}
+.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;background:transparent;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
+.keyshf	{color:#00c;}
+.keyctl	{color:#0c0;}
+.keyalt	{color:#c00;}
+.keyagr	{color:#cc0;}
+.keyxtr	{color:#0cc;}
+.keyimg	{position:absolute;}
+.leggrp	{margin:4px;}
+.red	{background:#ff6600;}
+.yel	{background:#ffcc00;}
+.grn	{background:#99cc00;}
+.cyn	{background:#00ffcc;}
+.blu	{background:#3366ff;}
+.mag	{background:#ff99cc;}
+.wht	{background:#ffffff;border:1px solid #ccc;}
+.gry	{background:#999999;}
+.blk	{background:#333333;color:#ffffff;}
+.org	{background:#cc9900;}
+.olv	{background:#999900;}
+.brn	{background:#996600;}
+.non	{background:#c0c0c0;}

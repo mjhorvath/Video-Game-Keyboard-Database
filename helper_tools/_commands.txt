@@ -1,0 +1,2 @@
+\N	47	3	XY	Turn up/down/left/right
+\N	47	3	But1	Fire weapon

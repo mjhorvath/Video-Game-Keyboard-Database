@@ -1,0 +1,93 @@
+1	Sample	6
+2	Alien vs. Predator	1
+3	American McGee\'s Alice	1
+4	DOOM & DOOM II: Hell on Earth	1
+5	FarCry	1
+6	Half-Life	1
+7	Half-Life 2	1
+8	Mount & Blade	1
+9	System Shock	1
+10	System Shock 2	1
+11	Thief: The Dark Project	1
+12	Thief 2: The Metal Age	1
+13	TRON 2.0	1
+14	Allegience	2
+15	AquaNox	2
+16	Battlecruiser Millenium	2
+17	Beta Blocker	2
+18	Elite 2	2
+19	Escape Velocity: Nova	2
+20	Flight Sim Toolkit	2
+21	FreeLancer	2
+22	FreeSpace	2
+23	FreeSpace 2	2
+24	Independence War	2
+25	Independence War 2: Edge of Chaos	2
+26	Jane\'s USAF	2
+27	Nexus: The Jupiter Incident	2
+28	Privateer	2
+29	Silent Hunter 2	2
+30	SimCity 2000 (Win95)	2
+31	SimCity 3000 Unlimited	2
+32	SimCity 4	2
+33	SimuTrans	2
+34	StarLancer	2
+35	StarShatter	2
+36	Star Wars: X-Wing	2
+37	Tachyon: The Fringe	2
+38	The Sims 2	2
+39	Vega Strike	2
+40	X-Tension	2
+41	X-Wing Alliance	2
+42	Battle for Wesnoth	3
+43	Brigade E5: New Jagged Union	3
+44	Freedom Force	3
+45	Galactic Civilizations	3
+46	Galactic Civilizations II: Dread Lords	3
+47	Homeworld & Homeworld: Cataclysm	3
+48	Homeworld 2	3
+49	Jagged Alliance	3
+50	Jagged Alliance 2	3
+51	Jagged Alliance 2 (1.13)	3
+52	Laser Squad: Nemesis	3
+53	Lords of Magic	3
+54	Myth: The Fallen Lords	3
+55	Project Earth: Starmageddon	3
+56	Railroad Tycoon II	3
+57	Rome: Total War	3
+58	Silent Storm	3
+59	Space Empires IV	3
+60	StarCraft (Common)	3
+61	Titans of Steel: Warring Suns	3
+62	Total Annihilation	3
+63	Total Annihilation: Kingdoms	3
+64	Tropico 2: Pirate Cove	3
+65	UFO: Alien Invasion (Stable)	3
+66	UFO: Alien Invasion (Development)	3
+67	X-COM: Apocalypse (Tactical)	3
+68	X-COM: Apocalypse (Cityscape)	3
+69	Xconq	3
+70	Baldur\'s Gate II: Shadows of Amn	4
+71	Divine Divinity	4
+72	Earth & Beyond (PSW)	4
+73	Earth & Beyond (FPS)	4
+74	Fallout & Fallout 2	4
+75	FATE & FATE: Undiscovered Realms	4
+76	GearHead	4
+77	Gothic	4
+78	Gothic 2	4
+79	Gothic 3	4
+80	NetHack	4
+81	Space Rangers 2 (Main)	4
+82	Space Rangers 2 (RTS)	4
+83	Star Wolves & Star Wolves 2	4
+84	Temple of Elemental Evil	4
+85	World of Warcraft	4
+86	LDView	5
+87	Microsoft Windows	5
+88	Winamp	5
+89	PC-AT Scan Codes	6
+90	Apple Virtual Key Codes	6
+91	ASCII/Unicode/HTML Codes	6
+92	ActionScript 3.0 Key Codes	6
+93	Typing Reference	6

@@ -1,0 +1,7 @@
+1	1	US 104 Key	Keyboard Chart	Mouse Controls	Joystick Controls	Keyboard/Joystick/Mouse Combinations	Additional Notes	Legend	Return to	Additional credits
+2	1	US 104 Key Dvorak	Keyboard Chart	Mouse Controls	Joystick Controls	Keyboard/Joystick/Mouse Combinations	Additional Notes	Legend	Return to	Additional credits
+3	1	DE 105 Key	Tastatur Diagramm	Maus Kontrolle	Joystick Kontrolle	Tastatur/Joystick/Maus Kombinationen	Zusätzliche Notizen	Zeichenerklä4rung 	Zurück zu	Zusätzliche Mitwirkinden
+4	1	FR 105 Key	Keyboard Chart	Mouse Controls	Joystick Controls	Keyboard/Joystick/Mouse Combinations	Additional Notes	Legend	Return to	Additional credits
+5	2	US 109 Key (old)	Keyboard Chart	Mouse Controls	Joystick Controls	Keyboard/Joystick/Mouse Combinations	Additional Notes	Legend	Return to	Additional credits
+6	2	US 109 Key (new)	Keyboard Chart	Mouse Controls	Joystick Controls	Keyboard/Joystick/Mouse Combinations	Additional Notes	Legend	Return to	Additional credits
+7	2	UK 110 Key (old)	Keyboard Chart	Mouse Controls	Joystick Controls	Keyboard/Joystick/Mouse Combinations	Additional Notes	Legend	Return to	Additional credits

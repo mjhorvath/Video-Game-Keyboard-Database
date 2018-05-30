@@ -1,0 +1,5 @@
+1	Invert Colors
+2	X-Ray
+3	Grayscale
+4	Drop-shadow
+5	Rotate 90\\u00b0

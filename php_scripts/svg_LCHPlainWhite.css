@@ -1,0 +1,56 @@
+*	{}
+svg	{font-family:DejaVu Sans Condensed,Sans-Serif;font-size:14px;}
+#bkgrec	{stroke:none;fill:#ffffff;}
+.key	{overflow:visible;}
+.legtxt	{font-size:14px;fill:#000000;}
+.caphgh,.caplow,.caprgt
+	{font-size:12px;font-weight:bold;}
+.caprgt	{text-anchor:end;}
+.caprec	{}
+.keynor	{font-size:12px;font-weight:normal;}
+.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+	{font-size:10px;text-anchor:end;font-weight:normal;}
+/* http://www.easyrgb.com/index.php?X=CALC */
+.keyshf	{fill:#077BC7;}	/* CIE-L*ch ( 50, 47,270)	blue	*/
+.keyctl	{fill:#028946;}	/* CIE-L*ch ( 50, 55,150)	green	*/
+.keyalt	{fill:#ED0631;}	/* CIE-L*ch ( 50, 88, 30)	red	*/
+.keyagr	{fill:#D403CB;}	/* CIE-L*ch ( 50, 97,330)	magenta	*/
+.keyxtr	{fill:#0B848F;}	/* CIE-L*ch ( 50, 29,210)	cyan	*/
+.bakshf	{fill:none;}
+.bakctl	{fill:none;}
+.bakalt	{fill:none;}
+.bakagr	{fill:none;}
+.bakxtr	{fill:none;}
+.keyimg	{}
+/* http://www.easyrgb.com/index.php?X=CALC */
+.recred	{fill:#FC9C93;}	/* CIE-L*ch ( 74, 40, 30) */
+.recyel	{fill:#CEB46C;}	/* CIE-L*ch ( 74, 40, 90) */
+.recgrn	{fill:#7CC690;}	/* CIE-L*ch ( 74, 40,150) */
+.reccyn	{fill:#0CC9D9;}	/* CIE-L*ch ( 74, 40,210) */
+.recblu	{fill:#80B9FF;}	/* CIE-L*ch ( 74, 40,270) */
+.recmag	{fill:#E4A0DB;}	/* CIE-L*ch ( 74, 40,330) */
+.recwht	{fill:#ffffff;stroke:#ccc;}	/* CIE-L*ch (100,  0,  0) */
+.recgry	{fill:#B6B6B6;}	/* CIE-L*ch ( 74,  0,  0) */
+.recblk	{fill:#000000;}	/* CIE-L*ch (  0,  0,  0) */
+.recorg	{fill:#ECA777;}	/* CIE-L*ch ( 74, 40, 60) */
+.recolv	{fill:#A8BF75;}	/* CIE-L*ch ( 74, 40,120) */
+.recbrn	{fill:#685510;}	/* CIE-L*ch ( 37, 40, 90) */
+.recnon	{fill:#c0c0c0;}
+.txtred	{fill:#000000;}	/* CIE-L*ch ( 74, 40, 30) */
+.txtyel	{fill:#000000;}	/* CIE-L*ch ( 74, 40, 90) */
+.txtgrn	{fill:#000000;}	/* CIE-L*ch ( 74, 40,150) */
+.txtcyn	{fill:#000000;}	/* CIE-L*ch ( 74, 40,210) */
+.txtblu	{fill:#000000;}	/* CIE-L*ch ( 74, 40,270) */
+.txtmag	{fill:#000000;}	/* CIE-L*ch ( 74, 40,330) */
+.txtwht	{fill:#000000;}	/* CIE-L*ch (100,  0,  0) */
+.txtgry	{fill:#000000;}	/* CIE-L*ch ( 74,  0,  0) */
+.txtblk	{fill:#ffffff;}	/* CIE-L*ch (  0,  0,  0) */
+.txtorg	{fill:#000000;}	/* CIE-L*ch ( 74, 40, 60) */
+.txtolv	{fill:#000000;}	/* CIE-L*ch ( 74, 40,120) */
+.txtbrn	{fill:#000000;}	/* CIE-L*ch ( 37, 40, 90) */
+.txtnon	{fill:#000000;}
+/*
+Not much support for these in browsers. Will need to recalculate everything if I use them.
+.ideo	{alignment-baseline:ideographic;}
+.hang	{alignment-baseline:hanging;}
+*/

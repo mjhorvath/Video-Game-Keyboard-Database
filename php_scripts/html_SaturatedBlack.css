@@ -1,0 +1,37 @@
+*	{font-family:Verdana,sans-serif;}
+body	{color:#fff;background:#000;font-size:11pt;}
+select	{color:#fff;background:#000;border:1px solid #fff;}
+option	{color:#fff;background:#000;}
+footer	{font-size:smaller;}
+.bodiv	{position:relative;margin:1em;}
+.key	{position:absolute;overflow:hidden;font-size:smaller;border:1px solid #fff;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;}
+.caphgh,.caplow,.caprgt,.keyopt,.keyopf
+	{position:absolute;overflow:hidden;padding:2px;white-space:pre;}
+.caphgh	{font-weight:  bold;left: 0px;top:   0px;}
+.caplow	{font-weight:  bold;left: 0px;bottom:0px;}
+.caprgt	{font-weight:  bold;right:0px;top:   0px;}
+.keyopt	{font-weight:normal;left: 0px;bottom:0em;}
+.keyopf	{font-weight:normal;left: 0px;bottom:1em;}
+.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
+.keyshf	{color:#008;}
+.keyctl	{color:#080;}
+.keyalt	{color:#800;}
+.keyagr	{color:#808;}
+.keyxtr	{color:#088;}
+.keyimg	{position:absolute;}
+.leggrp	{margin:4px;}
+.legcll	{border:1px solid #fff;}
+.red	{background:#e22;color:#000;}
+.yel	{background:#ee2;color:#000;}
+.grn	{background:#2e2;color:#000;}
+.cyn	{background:#2ee;color:#000;}
+.blu	{background:#22e;color:#000;}
+.mag	{background:#e2e;color:#000;}
+.wht	{background:#fff;color:#000;}
+.gry	{background:#888;color:#000;}
+.blk	{background:#000;color:#fff;}
+.org	{background:#f80;color:#000;}
+.olv	{background:#880;color:#000;}
+.brn	{background:#840;color:#000;}
+.non	{background:transparent;}

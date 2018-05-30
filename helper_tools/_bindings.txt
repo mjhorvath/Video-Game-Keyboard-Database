@@ -1,0 +1,23 @@
+\N	202	2	Select\\nPrimary\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	3	Select\\nSecondary\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	4	Select\\nDevice	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	5	Select\\nConsumable	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	15	Ingame Menu	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	16	Roll\\nLeft	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	17	Forward	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	18	Roll\\nRight	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	19	Use\\nDevice	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	20	Lock\\nTarget	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	24	Boost	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	25	System\\nMenu	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	30	Strafe\\nLeft	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	31	Backward	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	32	Strafe\\nRight	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	35	Hide /\\nShow\\nHUD	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	43	Boost	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	47	Use\\nConsumable	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	48	Switch\\nPerspective	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	56	Strafe\\nDown	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	57	Hold to\\nRotate\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	58	Strafe\\nUp	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	202	88	System\\nMenu	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N

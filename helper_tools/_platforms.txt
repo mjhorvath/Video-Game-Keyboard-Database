@@ -1,0 +1,2 @@
+1	PC/AT
+2	Macintosh

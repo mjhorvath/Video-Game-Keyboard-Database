@@ -1,0 +1,6 @@
+1	First-Person Shooters
+2	Simulation
+3	Strategy
+4	Role-Playing
+5	Software
+6	Technical

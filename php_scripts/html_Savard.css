@@ -1,0 +1,48 @@
+*	{font-family:Verdana,sans-serif;}
+body	{color:#000;font-size:11pt;}
+select	{color:#000;background:#fff;border:1px solid #000;}
+option	{color:#000;background:#fff;}
+footer	{font-size:smaller;}
+.bodiv	{position:relative;margin:1em;}
+.key	{position:absolute;overflow:hidden;border:1px solid #000;font-size:smaller;}
+.caphgh,.caplow,.caprgt,.keyopt,.keyopf
+	{position:absolute;overflow:hidden;padding:2px;white-space:pre;}
+.caphgh	{font-weight:  bold;left: 0px;top:   0px;}
+.caplow	{font-weight:  bold;left: 0px;bottom:0px;}
+.caprgt	{font-weight:  bold;right:0px;top:   0px;}
+.keyopt	{font-weight:normal;left: 0px;bottom:0em;}
+.keyopf	{font-weight:normal;left: 0px;bottom:1em;}
+.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;background:transparent;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
+.keyshf	{color:#00f;}
+.keyctl	{color:#0f0;}
+.keyalt	{color:#f00;}
+.keyagr	{color:#ff0;}
+.keyxtr	{color:#0ff;}
+.keyimg	{position:absolute;}
+.leggrp	{margin:4px;}
+.cssA	{background:#f00;color:#000;}
+.cssB	{background:#ff0;color:#000;}
+.cssC	{background:#090;color:#000;}
+.cssD	{background:#33c;color:#fff;}
+.cssE	{background:#ccc;color:#000;}
+.cssF	{background:#999;color:#fff;}
+.cssG	{background:#666;color:#fff;}
+.cssH	{background:#ffc;color:#000;}
+.cssI	{background:#660;color:#fff;}
+.cssJ	{background:#f90;color:#000;}
+.cssK	{background:#fff;color:#000;}
+.cssL	{background:#000;color:#fff;}
+.red	{}
+.yel	{}
+.grn	{}
+.cyn	{}
+.blu	{}
+.mag	{}
+.wht	{}
+.gry	{}
+.blk	{}
+.org	{}
+.olv	{}
+.brn	{}
+.non	{}

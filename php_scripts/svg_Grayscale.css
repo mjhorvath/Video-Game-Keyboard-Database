@@ -1,0 +1,58 @@
+*	{}
+svg	{font-family:Verdana,Sans-Serif;font-size:14px;}
+#bkgrec	{stroke:none;fill:#ffffff;}
+.key	{overflow:visible;}
+.legtxt	{font-size:14px;fill:#000000;}
+.caphgh,.caplow,.caprgt
+	{font-size:12px;font-weight:bold;}
+.caprgt	{text-anchor:end;}
+.caprec	{}
+.keynor	{font-size:12px;font-weight:normal;}
+.keyimg	{}
+.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+	{font-size:10px;text-anchor:end;}
+.keyshf	{fill:#fff;}
+.keyctl	{fill:#fff;}
+.keyalt	{fill:#fff;}
+.keyagr	{fill:#000;}
+.keyxtr	{fill:#fff;}
+.bakshf	{fill:#444;}
+.bakctl	{fill:#888;}
+.bakalt	{fill:#ccc;}
+.bakagr	{fill:#fff;}
+.bakxtr	{fill:#000;}
+/*
+.bakshf	{fill:url(#gry04)}
+.bakctl	{fill:url(#gry08)}
+.bakalt	{fill:url(#gry12)}
+.bakagr	{fill:url(#gry16)}
+.bakxtr	{fill:url(#gry00)}
+*/
+.recred	{fill:url(#pat01);}
+.recyel	{fill:url(#pat02);}
+.recgrn	{fill:url(#pat03);}
+.reccyn	{fill:url(#pat04);}
+.recblu	{fill:url(#pat09);}
+.recmag	{fill:url(#pat23);}
+.recwht	{fill:#ffffff;}
+.recgry	{fill:#808080;}
+.recblk	{fill:#000000;}
+.recorg	{fill:url(#pat07);}
+.recolv	{fill:url(#pat08);}
+.recbrn	{fill:url(#pat10);}
+.recnon	{fill:#ffffff;}
+.recred,.recyel,.recgrn,.reccyn,.recblu,.recmag,.recwht,.recgry,.recblk,.recorg,.recolv,.recbrn,.recnon
+	{stroke:#ccc;stroke-width:1px;}		/* filter:url(#filt_1);-webkit-filter:url(#filt_1); */
+.txtred	{fill:#000000;}
+.txtyel	{fill:#000000;}
+.txtgrn	{fill:#000000;}
+.txtcyn	{fill:#000000;}
+.txtblu	{fill:#000000;}
+.txtmag	{fill:#000000;}
+.txtwht	{fill:#000000;}
+.txtgry	{fill:#000000;}
+.txtblk	{fill:#ffffff;}
+.txtorg	{fill:#000000;}
+.txtolv	{fill:#000000;}
+.txtbrn	{fill:#000000;}
+.txtnon	{fill:#000000;}

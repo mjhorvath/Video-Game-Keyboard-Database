@@ -1,0 +1,56 @@
+*	{}
+svg	{font-family:Verdana,Sans-Serif;font-size:14px;}
+#bkgrec	{stroke:none;fill:#ffffff;}
+.key	{overflow:visible;}
+.legtxt	{font-size:14px;fill:#000;}
+.caphgh,.caplow,.caprgt
+	{font-size:12px;font-weight:bold;}
+.caprgt	{text-anchor:end;}
+.caprec	{}
+.keyimg	{}
+.keynor	{font-size:12px;font-weight:normal;}
+.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+	{font-size:10px;text-anchor:end;font-weight:normal;}
+.keyshf	{fill:#008;}	/* CIE-L*ch ( 50, 47,270)	blue	*/
+.keyctl	{fill:#080;}	/* CIE-L*ch ( 50, 55,150)	green	*/
+.keyalt	{fill:#800;}	/* CIE-L*ch ( 50, 88, 30)	red	*/
+.keyagr	{fill:#808;}	/* CIE-L*ch ( 50, 97,330)	magenta	*/
+.keyxtr	{fill:#088;}	/* CIE-L*ch ( 50, 29,210)	cyan	*/
+.bakshf	{fill:none;}
+.bakctl	{fill:none;}
+.bakalt	{fill:none;}
+.bakagr	{fill:none;}
+.bakxtr	{fill:none;}
+.recred	{fill:#e22;}
+.recyel	{fill:#ee2;}
+.recgrn	{fill:#2e2;}
+.reccyn	{fill:#2ee;}
+.recblu	{fill:#22e;}
+.recmag	{fill:#e2e;}
+.recwht	{fill:#fff;}
+.recgry	{fill:#888;}
+.recblk	{fill:#000;}
+.recorg	{fill:#f80;}
+.recolv	{fill:#880;}
+.recbrn	{fill:#840;}
+.recnon	{fill:#fff;}
+.recred,.recyel,.recgrn,.reccyn,.recblu,.recmag,.recwht,.recgry,.recblk,.recorg,.recolv,.recbrn,.recnon
+	{stroke:#000;}
+.txtred	{fill:#000;}
+.txtyel	{fill:#000;}
+.txtgrn	{fill:#000;}
+.txtcyn	{fill:#000;}
+.txtblu	{fill:#000;}
+.txtmag	{fill:#000;}
+.txtwht	{fill:#000;}
+.txtgry	{fill:#000;}
+.txtblk	{fill:#fff;}
+.txtorg	{fill:#000;}
+.txtolv	{fill:#000;}
+.txtbrn	{fill:#000;}
+.txtnon	{fill:#000;}
+/*
+Not much support for these in browsers. Will need to recalculate everything if I use them.
+.ideo	{alignment-baseline:ideographic;}
+.hang	{alignment-baseline:hanging;}
+*/

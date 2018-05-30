@@ -1,0 +1,50 @@
+/*font-family:Arial Narrow,sans-serif;*/
+@font-face
+	{font-family:pt-sans-narrow,Sans-Serif;src:url(pt-sans/PTN57F.ttf);}
+@font-face
+	{font-family:pt-sans-regular,Sans-Serif;src:url(pt-sans/PTS55F.ttf);}
+*	{font-family:pt-sans-regular,Sans-Serif;}
+body	{color:#fff;background:#444;font-size:11pt;}
+select	{color:#000;background:#fff;border:1px solid #000;}
+option	{color:#000;background:#fff;}
+footer	{font-size:smaller;}
+a:link,a:visited
+	{color:#ff0;text-decoration:none;}
+a:hover,a:active
+	{color:#ff0;text-decoration:underline;}
+.bodiv	{position:relative;margin:1em;}
+.key	{font-family:pt-sans-narrow,sans-serif;line-height:100%;font-size:smaller;position:absolute;overflow:hidden;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;box-shadow: 0px 1px 1px #444;}
+.caphgh,.caplow,.caprgt,.keyopt,.keyopf
+	{position:absolute;overflow:hidden;padding:2px;white-space:pre;text-shadow:0px 1px 1px #444;color:#fff;}
+.caphgh	{font-weight:  bold;left: 0px;top:   0px;}
+.caplow	{font-weight:  bold;left: 0px;bottom:0px;}
+.caprgt	{font-weight:  bold;right:0px;top:   0px;}
+.keyopt	{font-weight:normal;left: 0px;bottom:0em;}
+.keyopf	{font-weight:normal;left: 0px;bottom:1em;}
+.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;background:transparent;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
+/* http://www.easyrgb.com/index.php?X=CALC */
+.keyshf	{color:#077BC7;}	/* CIE-L*ch ( 50, 47,270)	blue	*/
+.keyctl	{color:#028946;}	/* CIE-L*ch ( 50, 55,150)	green	*/
+.keyalt	{color:#ED0631;}	/* CIE-L*ch ( 50, 88, 30)	red	*/
+.keyagr	{color:#D403CB;}	/* CIE-L*ch ( 50, 97,330)	magenta	*/
+.keyxtr	{color:#0B848F;}	/* CIE-L*ch ( 50, 29,210)	cyan	*/
+.keyimg	{position:absolute;}
+.leggrp	{margin:4px;}
+.legcll	{}
+/* http://www.easyrgb.com/index.php?X=CALC */
+.red	{background:#FC9C93;color:#000;}	/* CIE-L*ch ( 74, 40, 30) */
+.yel	{background:#CEB46C;color:#000;}	/* CIE-L*ch ( 74, 40, 90) */
+.grn	{background:#7CC690;color:#000;}	/* CIE-L*ch ( 74, 40,150) */
+.cyn	{background:#0CC9D9;color:#000;}	/* CIE-L*ch ( 74, 40,210) */
+.blu	{background:#80B9FF;color:#000;}	/* CIE-L*ch ( 74, 40,270) */
+.mag	{background:#E4A0DB;color:#000;}	/* CIE-L*ch ( 74, 40,330) */
+.wht	{background:#ffffff;color:#000;}	/* CIE-L*ch (100,  0,  0) */
+.gry	{background:#B6B6B6;color:#000;}	/* CIE-L*ch ( 74,  0,  0) */
+.blk	{background:#000000;color:#fff;}	/* CIE-L*ch (  0,  0,  0) */
+.org	{background:#ECA777;color:#000;}	/* CIE-L*ch ( 74, 40, 60) */
+.olv	{background:#A8BF75;color:#000;}	/* CIE-L*ch ( 74, 40,120) */
+.brn	{background:#685510;color:#000;}	/* CIE-L*ch ( 37, 40, 90) */
+.non	{background:#808080;color:#000;}
+.red,.yel,.grn,.cyn,.blu,.mag,.wht,.gry,.blk,.org,.olv,.brn,.non
+	{background-image:-webkit-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image:-moz-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image:linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);}

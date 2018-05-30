@@ -1,0 +1,14 @@
+1	1	SatWhite	Saturated on White
+2	1	SatBlack	Saturated on Black
+3	1	WarmWhite	Warm Colors on White
+4	1	WarmBlack	Warm Colors on Black
+5	1	PastelWhite	Pastel on White
+6	1	PastelBlack	Pastel on Black
+7	1	GradeWht	Gradient on White
+8	1	GradeBlk	Gradient on Black
+9	1	Printer	Printer-Friendly
+10	2	FunKey	FunKeyBoard
+11	2	Kitty	Hello Kitty
+12	2	Doraemon	Doraemon
+13	2	Kozierok	Kozierok
+14	2	Savard	Savard
