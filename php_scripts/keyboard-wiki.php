@@ -1,4 +1,5 @@
 <?php
+	header("Content-Type: text/html; charset=utf8");
 	$path_root = "../";
 	$page_title = "Video Game Keyboard Diagrams - MediaWiki Code";
 	$foot_array = ["copyright","license_kbd"];
@@ -6,7 +7,8 @@
 	$is_short	= true;
 	include($path_root . "ssi/normalpage.php");
 	echo $page_top;
-
+?>
+<?php
 	// Copyright (C) 2009  Michael Horvath
 
 	// This library is free software; you can redistribute it and/or
@@ -23,8 +25,6 @@
 	// License along with this library; if not, write to the Free Software
 	// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 
 	// 02110-1301  USA
-
-	header("Content-Type: text/html; charset=utf8");
 
 	include("./keyboard-connection.php");
 	include("./keyboard-common.php");

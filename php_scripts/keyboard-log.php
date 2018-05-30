@@ -11,6 +11,7 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
+	<li>2018/05/30: Created a <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for this project.</li>
 	<li>2018/05/29: Renamed the project from "Video Game Hotkey Maps" back to "Video Game Keyboard Diagrams".</li>
 	<li>2018/05/29: Updated the printing tips with new info on problems and workarounds.</li>
 	<li>2018/05/25: Tweaks to style sheets and meta tags in order to (somewhat) better support mobile browsers.</li>

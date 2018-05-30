@@ -1,6 +1,6 @@
 <?php
-	$con_website = "";
-	$con_username = "";
-	$con_password = "";
+	$con_website = "isometricland.net";
+	$con_username = "deleted";
+	$con_password = "deleted";
 	$con_database = "isometr1_keyboard";
 ?>

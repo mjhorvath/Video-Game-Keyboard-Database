@@ -1,4 +1,5 @@
 <?php
+	header("Content-Type: text/html; charset=utf8");
 	$path_root = "../";
 	$page_title = "Video Game Keyboard Diagrams - Master List";
 	$foot_array = ["copyright"];
@@ -9,7 +10,8 @@
 	$java_array	= [$path_root . "java/sort_table.js"];
 	include($path_root . "ssi/normalpage.php");
 	echo $page_top;
-
+?>
+<?php
 	// Copyright (C) 2009  Michael Horvath
 
 	// This library is free software; you can redistribute it and/or

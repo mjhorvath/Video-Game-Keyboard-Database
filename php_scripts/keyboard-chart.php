@@ -16,7 +16,7 @@
 	// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 
 	// 02110-1301  USA
 
-	$svg_bool		= filter_var($_GET["svg"], FILTER_VALIDATE_INT);
+	$svg_bool = array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : 0;
 
 	// validity checks
 	if ($svg_bool == 1)
