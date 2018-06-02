@@ -31,11 +31,13 @@
 
 	mysqli_query($con, "SET NAMES 'utf8'");
 
+	$path_root		= "../";
 	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : "";
 	$game_id		= array_key_exists("gam", $_GET) ? intval(ltrim($_GET["gam"], "0")) : null;
 	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : 15;
 	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : 1;
-	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : 0;
+	$format_id		= array_key_exists("frm", $_GET) ? intval(ltrim($_GET["frm"], "0")) : 0;
+	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
 	$fix_url		= false;
 	$php_url		= "";
 	$svg_url		= "";
@@ -84,6 +86,10 @@
 	else
 	{
 		$fix_url = true;
+	}
+	if ($svg_bool)
+	{
+		$format_id = $svg_bool;
 	}
 
 	function doThisStyle($in_result)
@@ -229,8 +235,8 @@
 		$fix_url = true;
 	}
 
-	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&svg=" . $svg_bool;
-	$svg_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&svg=" . $svg_bool;
+	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&frm=" . $format_id;
+	$svg_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&frm=" . $format_id;
 
 	// fix URL
 	if ($fix_url)
@@ -246,42 +252,15 @@
 <?php
 	echo
 "		<link rel=\"canonical\" href=\"" . $php_url . "\"/>\n" .
-"		<link rel=\"icon\" type=\"image/png\" href=\"../favicon.png\" />\n" .
-"		<link rel=\"stylesheet\" type=\"text/css\" href=\"normalize.css\"/>\n" .
+"		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\" />\n" .
+"		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_normalize.css\"/>\n" .
+"		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>\n" .
 "		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n" .
-"		<meta name=\"description\" content=\"" . $layout_description . $game_name . ".\"></meta>\n" .
-"		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference," . $layout_keywords . "," . $game_name . "\"></meta>\n";
-	include("../ssi/analyticstracking.php");
+"		<meta name=\"description\" content=\"" . $layout_description . $temp_game_name . ".\"></meta>\n" .
+"		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference," . $layout_keywords . "," . $temp_game_name . "\"></meta>\n";
+	include($path_root . "ssi/analyticstracking.php");
 ?>
-		<script>
-function reloadThisPage(gameID, layoutID, gameSeo)
-{
-	var targetForm = document.forms["VisualStyleSwitch"];
-	var targetDropDown = targetForm.elements["style"];
-	var targetRadioBox = targetForm.elements["tech"];
-	var styleID = targetDropDown.value;
-	var svgBool = getValueFromRadioButton("tech");
-	var locHref = "keyboard-diagram-" + gameSeo + ".php?sty=" + styleID + "&lay=" + layoutID + "&svg=" + svgBool;
-	window.location.href = locHref;
-}
-function getValueFromRadioButton(name)
-{
-	//Get all elements with the name
-	var buttons = document.getElementsByName(name);
-	for (var i = 0, n = buttons.length; i < n; i++)
-	{
-		//Check if button is checked
-		var button = buttons[i];
-		if (button.checked)
-		{
-			//Return value
-			return button.value;
-		}
-	}
-	//No radio button is selected
-	return null;
-}
-		</script>
+		<script src="keyboard-js.php"></script>
 		<style type="text/css">
 <?php include("./embed_" . $style_filename . ".css"); ?>
 		</style>
@@ -294,7 +273,7 @@ function getValueFromRadioButton(name)
 			<div class="bodiv" style="clear:both;position:relative;">
 				<img src="<?php echo $svg_url; ?>" width="1684" height="640"/>
 				<div style="position:absolute;left:600px;top:521.5px;width:728px;height:90px;padding:none;margin:none;z-index:10;">
-<?php /*include("../ssi/adsense_horz_large.php");*/ ?>
+<?php /*include($path_root . "ssi/adsense_horz_large.php");*/ ?>
 				</div>
 			</div>
 			<div class="bodiv" style="float:left;">
@@ -392,8 +371,8 @@ function getValueFromRadioButton(name)
 		</main>
 		<footer>
 			<div class="bodiv" style="clear:both;">
-				<p><a target="_blank" rel="license" href="http://creativecommons.org/licenses/LGPL/2.1/"><img alt="Creative Commons License" src="../../images/license_cc-lgpl_88x31.png" /></a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="../../images/license_cc-by-sa_88x31.png" /></a></p>
-				<p>"Video Game Keyboard Diagrams" software was created by Michael Horvath and is licensed under <a target="_blank" rel="license" href="https://creativecommons.org/licenses/LGPL/2.1/;/">CC LGPL 2.1</a>. Content is licensed under <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Please <a href="http://isometricland.net/email.php" target="_blank">email</a> me for the project's source code, or to submit additions or corrections.</p>
+				<p><a target="_blank" rel="license" href="http://creativecommons.org/licenses/LGPL/2.1/"><img alt="Creative Commons License" src="<?php echo $path_root; ?>images/license_cc-lgpl_88x31.png" /></a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="<?php echo $path_root; ?>images/license_cc-by-sa_88x31.png" /></a></p>
+				<p>"Video Game Keyboard Diagrams" software was created by Michael Horvath and is licensed under <a target="_blank" rel="license" href="https://creativecommons.org/licenses/LGPL/2.1/;/">CC LGPL 2.1</a>. Content is licensed under <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. You can find this project on <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub</a>.</p>
 				<p>
 <?php
 	if (($gamesrecord_author) && ($gamesrecord_author != "Michael Horvath"))
@@ -418,7 +397,7 @@ function getValueFromRadioButton(name)
 	echo
 "				<form name=\"VisualStyleSwitch\">
 					<label for=\"stylesel\">Visual style:</label>
-					&nbsp;&nbsp;<select id=\"stylesel\" name=\"style\">\n";
+					<select class=\"stylechange\" id=\"stylesel\" name=\"style\">\n";
 	for ($i = 0; $i < count($style_table); $i++)
 	{
 		$style_row = $style_table[$i];
@@ -440,9 +419,11 @@ function getValueFromRadioButton(name)
 	}
 	echo
 "					</select>
-					&nbsp;&nbsp;<input type=\"radio\" name=\"tech\" id=\"rad0\" value=\"0\" " . ($svg_bool ? "" : "checked") . " />&nbsp;<label for=\"rad0\">HTML</label>
-					&nbsp;&nbsp;<input type=\"radio\" name=\"tech\" id=\"rad1\" value=\"1\" " . ($svg_bool ? "checked" : "") . " />&nbsp;<label for=\"rad1\">SVG</label>
-					&nbsp;&nbsp;<input type=\"button\" value=\"Change\" onclick=\"reloadThisPage('" . $game_id . "', '" . $layout_id . "', '" . $game_seo . "')\" />
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad0\" value=\"0\" " . ($format_id == 0 ? "checked" : "") . " />&nbsp;<label for=\"rad0\">HTML</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad1\" value=\"1\" " . ($format_id == 1 ? "checked" : "") . " />&nbsp;<label for=\"rad1\">SVG</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad2\" value=\"2\" " . ($format_id == 2 ? "checked" : "") . " />&nbsp;<label for=\"rad2\">MediaWiki</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad3\" value=\"3\" disabled />&nbsp;<label for=\"rad3\"><s>PDF</s></label>
+					<input class=\"stylechange\" type=\"button\" value=\"Change\" onclick=\"reloadThisPage('" . $game_id . "', '" . $layout_id . "', '" . $game_seo . "')\" />
 				</form>\n";
 ?>
 				<p>Last modified: <?php echo date("F d Y H:i:s.", getlastmod()) ?></p>

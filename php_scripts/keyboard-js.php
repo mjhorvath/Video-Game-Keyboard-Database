@@ -178,96 +178,101 @@ function Toggle_Waiting(thisBool)
 
 function Set_Layout(thisindex, thiselement)
 {
-	if (thiselement.className != 'acc_dis')
+	if (thiselement.className == 'acc_dis')
 	{
-		var hasSelect = false
-		var SelectForm = document.forms['keyboard_select']
-		var layouttable = layout_table[thisindex]
-		for (var i = 0, n = layouttable.length; i < n; i++)
+		return
+	}
+	var hasSelect = false
+	var SelectForm = document.forms['keyboard_select']
+	var layouttable = layout_table[thisindex]
+	for (var i = 0, n = layouttable.length; i < n; i++)
+	{
+		var thisselect = document.getElementById('lay_' + i)
+		if (thisselect)
 		{
-			var thisselect = document.getElementById('lay_' + i)
-			if (thisselect)
+			if (layouttable[i] == 1)
 			{
-				if (layouttable[i] == 1)
+				if (thisselect == lastClicked['lay'])
 				{
-					if (thisselect == lastClicked['lay'])
-					{
-						thisselect.className = 'acc_sel'
-						Set_Style(i, thisselect)
-						hasSelect = true
-					}
-					else
-					{
-						thisselect.className = 'acc_nrm'
-					}
+					thisselect.className = 'acc_sel'
+					Set_Style(i, thisselect)
+					hasSelect = true
 				}
 				else
 				{
-					thisselect.className = 'acc_dis'
-					if (thisselect == lastClicked['lay'])
-					{
-						UnSet_Styles()
-						document.getElementById('lay_check').style.display = 'none'
-						document.getElementById('sty_check').style.display = 'none'
-						document.getElementById('box_check').style.display = 'none'
-						document.getElementById('lay_xmark').style.display = 'block'
-						document.getElementById('sty_xmark').style.display = 'block'
-						document.getElementById('box_xmark').style.display = 'block'
-						lastClicked['lay'] = null
-					}
+					thisselect.className = 'acc_nrm'
+				}
+			}
+			else
+			{
+				thisselect.className = 'acc_dis'
+				if (thisselect == lastClicked['lay'])
+				{
+					UnSet_Styles()
+					document.getElementById('lay_check').style.display = 'none'
+					document.getElementById('sty_check').style.display = 'none'
+					document.getElementById('frm_check').style.display = 'none'
+					document.getElementById('but_check').style.display = 'none'
+					document.getElementById('lay_xmark').style.display = 'block'
+					document.getElementById('sty_xmark').style.display = 'block'
+					document.getElementById('frm_xmark').style.display = 'block'
+					document.getElementById('but_xmark').style.display = 'block'
+
+					lastClicked['lay'] = null
 				}
 			}
 		}
-		SelectForm.seo.value = seourl_table[thisindex]
-		if (hasSelect == false)
-		{
-			SelectForm.lay.value = ''
-		}
+	}
+	SelectForm.seo.value = seourl_table[thisindex]
+	if (hasSelect == false)
+	{
+		SelectForm.lay.value = ''
 	}
 }
 
 function Set_Style(thisindex, thiselement)
 {
-	if (thiselement.className != 'acc_dis')
+	if (thiselement.className == 'acc_dis')
 	{
-		var hasSelect = false
-		var SelectForm = document.forms['keyboard_select']
-		var styletable = style_table[thisindex]
-		for (var i = 0, n = styletable.length; i < n; i++)
+		return
+	}
+	var hasSelect = false
+	var SelectForm = document.forms['keyboard_select']
+	var styletable = style_table[thisindex]
+	for (var i = 0, n = styletable.length; i < n; i++)
+	{
+		var thisselect = document.getElementById('sty_' + i)
+		if (thisselect)
 		{
-			var thisselect = document.getElementById('sty_' + i)
-			if (thisselect)
+			if (styletable[i] == 1)
 			{
-				if (styletable[i] == 1)
+				if (thisselect == lastClicked['sty'])
 				{
-					if (thisselect == lastClicked['sty'])
-					{
-						thisselect.className = 'acc_sel'
-						hasSelect = true
-					}
-					else
-					{
-						thisselect.className = 'acc_nrm'
-					}
+					thisselect.className = 'acc_sel'
+					hasSelect = true
 				}
 				else
 				{
-					thisselect.className = 'acc_dis'
-					if (thisselect == lastClicked['sty'])
-					{
-						document.getElementById('sty_check').style.display = 'none'
-						document.getElementById('box_check').style.display = 'none'
-						document.getElementById('sty_xmark').style.display = 'block'
-						document.getElementById('box_xmark').style.display = 'block'
-						lastClicked['sty'] = null
-					}
+					thisselect.className = 'acc_nrm'
+				}
+			}
+			else
+			{
+				thisselect.className = 'acc_dis'
+				if (thisselect == lastClicked['sty'])
+				{
+					document.getElementById('sty_check').style.display = 'none'
+					document.getElementById('but_check').style.display = 'none'
+					document.getElementById('sty_xmark').style.display = 'block'
+					document.getElementById('but_xmark').style.display = 'block'
+					lastClicked['sty'] = null
 				}
 			}
 		}
-		if (hasSelect == false)
-		{
-			SelectForm.sty.value = ''
-		}
+	}
+	if (hasSelect == false)
+	{
+		SelectForm.sty.value = ''
 	}
 }
 
@@ -290,22 +295,25 @@ function UnSet_Styles()
 
 function Set_Select_Value(thisElement)
 {
-	if (thisElement.className != 'acc_dis')
+	if (thisElement.className == 'acc_dis')
 	{
-		var SelectForm = document.forms['keyboard_select']
-		var thisInput = thisElement.getAttribute('menu')
-		var thisValue = thisElement.getAttribute('value')
-		SelectForm[thisInput].value = thisValue
-		if (thisInput == 'sty')
-		{
-			var WarnBox = document.getElementById('submit_warn_wrap')
-			WarnBox.className = 'warn_no'
-			document.getElementById('box_check').style.display = 'block'
-			document.getElementById('box_xmark').style.display = 'none'
-		}
-		document.getElementById(thisInput + '_check').style.display = 'block'
-		document.getElementById(thisInput + '_xmark').style.display = 'none'
+		return
 	}
+	var SelectForm = document.forms['keyboard_select']
+	var thisInput = thisElement.getAttribute('menu')
+	var thisValue = thisElement.getAttribute('value')
+	SelectForm[thisInput].value = thisValue
+	if (thisInput == 'sty')
+	{
+		var WarnBox = document.getElementById('submit_warn_wrap')
+		WarnBox.className = 'warn_no'
+		document.getElementById('frm_check').style.display = 'block'
+		document.getElementById('but_check').style.display = 'block'
+		document.getElementById('frm_xmark').style.display = 'none'
+		document.getElementById('but_xmark').style.display = 'none'
+	}
+	document.getElementById(thisInput + '_check').style.display = 'block'
+	document.getElementById(thisInput + '_xmark').style.display = 'none'
 }
 
 function Select_Init()
@@ -327,14 +335,44 @@ function Check_Values_and_Spawn()
 	var sty_value = SelectForm.sty.value == '' ? null : SelectForm.sty.value
 	var lay_value = SelectForm.lay.value == '' ? null : SelectForm.lay.value
 	var seo_value = SelectForm.seo.value == '' ? null : SelectForm.seo.value
+	var frm_value = getValueFromRadioButton('frmradio');
 	var WarnBox = document.getElementById('submit_warn_wrap')
 	if (gam_value && sty_value && lay_value && seo_value)
 	{
 		WarnBox.className = 'warn_no'
-		window.open('keyboard-diagram-' + seo_value + '.php?sty=' + sty_value + '&lay=' + lay_value + '&svg=0')
+		window.open('keyboard-diagram-' + seo_value + '.php?sty=' + sty_value + '&lay=' + lay_value + '&frm=' + frm_value)
 	}
 	else	
 	{
 		WarnBox.className = 'warn_yes'
 	}
+}
+
+function reloadThisPage(gameID, layoutID, gameSeo)
+{
+	var targetForm = document.forms["VisualStyleSwitch"];
+	var targetDropDown = targetForm.elements["style"];
+	var targetRadioBox = targetForm.elements["tech"];
+	var styleID = targetDropDown.value;
+	var formatID = getValueFromRadioButton("tech");
+	var locHref = "keyboard-diagram-" + gameSeo + ".php?sty=" + styleID + "&lay=" + layoutID + "&frm=" + formatID;
+	window.location.href = locHref;
+}
+
+function getValueFromRadioButton(name)
+{
+	//Get all elements with the name
+	var buttons = document.getElementsByName(name);
+	for (var i = 0, n = buttons.length; i < n; i++)
+	{
+		//Check if button is checked
+		var button = buttons[i];
+		if (button.checked)
+		{
+			//Return value
+			return button.value;
+		}
+	}
+	//No radio button is selected
+	return null;
 }

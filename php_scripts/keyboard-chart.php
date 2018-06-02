@@ -16,17 +16,34 @@
 	// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 
 	// 02110-1301  USA
 
-	$svg_bool = array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : 0;
+	$format_id	= array_key_exists("frm", $_GET) ? intval(ltrim($_GET["frm"], "0")) : 0;
+	$svg_bool	= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
 
 	// validity checks
-	if ($svg_bool == 1)
+	if ($svg_bool)
 	{
-//		header("Location: embed-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&svg=" . $svg_bool);
+		$format_id = $svg_bool;
+	}
+
+	if ($format_id == 0)
+	{
+		include("./keyboard-html.php");
+	}
+	elseif ($format_id == 1)
+	{
 		include("./keyboard-embed.php");
+	}
+	elseif ($format_id == 2)
+	{
+		include("./keyboard-wiki.php");
+	}
+	elseif ($format_id == 3)
+	{
+		// to do pdf
+		echo "PDF format not supported yet.\n";
 	}
 	else
 	{
-//		header("Location: html-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&svg=" . $svg_bool);
-		include("./keyboard-html.php");
+		echo "Unrecognized output format.\n";
 	}
 ?>

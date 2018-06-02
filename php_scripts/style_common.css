@@ -1,0 +1,16 @@
+.stylechange	{margin-left:0.5em;}
+
+@media print
+{
+/*	html	{zoom: 85%;}	*/
+/*	html	{transform: scale(0.85);transform-origin: 0 0;}	*/
+	@page
+	{
+		/* landscape */
+/*		size: 297mm 210mm;	*/
+		/* you can also specify margins here: */
+/*		margin: 25mm;	*/
+		/* for compatibility with both A4 and Letter */
+/*		margin-right: 45mm;	*/
+	}
+}

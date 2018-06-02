@@ -1,14 +1,4 @@
 <?php
-	header("Content-Type: text/html; charset=utf8");
-	$path_root = "../";
-	$page_title = "Video Game Keyboard Diagrams - MediaWiki Code";
-	$foot_array = ["copyright","license_kbd"];
-	$analytics	= true;
-	$is_short	= true;
-	include($path_root . "ssi/normalpage.php");
-	echo $page_top;
-?>
-<?php
 	// Copyright (C) 2009  Michael Horvath
 
 	// This library is free software; you can redistribute it and/or
@@ -26,6 +16,8 @@
 	// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 
 	// 02110-1301  USA
 
+	header("Content-Type: text/html; charset=utf8");
+
 	include("./keyboard-connection.php");
 	include("./keyboard-common.php");
 
@@ -39,11 +31,16 @@
 
 	mysqli_query($con, "SET NAMES 'utf8'");
 
+	$path_root		= "../";
 	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : "";
-	$game_id		= array_key_exists("gam", $_GET) ? intval(ltrim($_GET["gam"], "0")) : 1;
+	$game_id		= array_key_exists("gam", $_GET) ? intval(ltrim($_GET["gam"], "0")) : null;
 	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : 15;
 	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : 1;
-	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : 0;
+	$format_id		= array_key_exists("frm", $_GET) ? intval(ltrim($_GET["frm"], "0")) : 0;
+	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
+	$fix_url		= false;
+	$php_url		= "";
+	$svg_url		= "";
 	$keys_number		= 118;		// should really be calculated dynamically or stored in the database for each layout
 	$actions_number		= 10;
 	$legend_number		= 12;
@@ -57,6 +54,7 @@
 	$mouse_table		= [];
 	$note_table		= [];
 	$author_table		= [];
+	$style_table		= [];
 	$record_id		= 0;
 	$record_author		= "";
 	$combo_count		= 0;
@@ -81,6 +79,22 @@
 	$layout_keywords	= "";
 	$game_array		= [];
 
+	// validity checks
+	if (!$game_id)
+	{
+		callProcedure1Txt($con, "get_games_friendly_chart", "doGamesSEO", $game_seo);
+//		echo "game_seo = " . $game_seo . "\n";
+//		echo "game_id = " . $game_id . "\n";
+	}
+	else
+	{
+		$fix_url = true;
+	}
+	if ($svg_bool)
+	{
+		$format_id = $svg_bool;
+	}
+
 	function doThisStyle($in_result)
 	{
 		global $style_filename, $style_name, $style_author;
@@ -91,10 +105,11 @@
 	}
 	function doStyles($in_result)
 	{
-		global $styles_table;
+		global $style_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
-			$styles_table[] = $temp_row;
+			// style_id, style_name, style_whiteonblack
+			$style_table[] = $temp_row;
 		}
 	}
 	function doBindings($in_result)
@@ -210,19 +225,6 @@
 		}
 	}
 
-	if (!$game_id)
-	{
-		if ($game_seo)
-		{
-//			error_log("get_games_friendly_chart");
-			callProcedure1Txt($con, "get_games_friendly_chart", "doGamesSEO", $game_seo);
-		}
-		else
-		{
-			$game_id = 1;
-		}
-	}
-
 //	error_log("get_games_chart");
 	callProcedure1($con, "get_games_chart", "doGames", $game_id);
 //	error_log("get_authors_chart");
@@ -248,13 +250,52 @@
 //	error_log("get_commands_chart");
 	callProcedure1($con, "get_commands_chart", "doCommands", $record_id);
 
+	mysqli_close($con);
+
+	// validity checks
+	$game_seo		= $game_seo ? $game_seo : "unrecognized-game";
+	$temp_game_name		= $game_name ? $game_name : "Unrecognized Game";
+	$thispage_title_a	= $temp_game_name;
+	$thispage_title_b	= " - MediaWiki keyboard diagram code";
+
 	$thispage_title	= $game_name ? $game_name : "Unrecognized Game";
 
-	mysqli_close($con);
+	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&frm=" . $format_id;
+
+	// fix URL
+	if ($fix_url)
+	{
+		header("Location: " . $php_url);
+	}
 ?>
-<h2>Game Title: <?php echo $thispage_title; ?></h2>
-<p>I have created a template for MediaWiki that does basically the same thing as the charts on this site. You can find the template as well as instructions on how to use it on StrategyWiki and Wikia, <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">here</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">here</a>. You can generate the MediaWiki code for each game using this printout. Just remember to change the number after "?gam=" portion of the page URL to the correct game ID. (For now, you can look up the game ID in the <a href="keyboard-list.php">master list</a>.)</p>
-<textarea readonly="readonly" wrap="off" style="width:100%;height:30em;">
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<title><?php echo $thispage_title_a; ?><?php echo $thispage_title_b; ?></title>
+<?php
+	echo
+"		<link rel=\"canonical\" href=\"" . $php_url . "\"/>\n" .
+"		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>\n" .
+"		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_normalize.css\"/>\n" .
+"		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>\n" .
+"		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n" .
+"		<meta name=\"description\" content=\"" . $layout_description . $temp_game_name . ".\"></meta>\n" .
+"		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference,MediaWiki," . $temp_game_name . "\"></meta>\n";
+	include($path_root . "ssi/analyticstracking.php");
+?>
+		<script src="keyboard-js.php"></script>
+		<style type="text/css">
+<?php	include("./style_mediawiki.css"); ?>
+		</style>
+	</head>
+	<body style="margin:auto;width:80%;">
+		<header>
+			<h2><?php echo $thispage_title_a; ?><?php echo $thispage_title_b; ?></h2>
+		</header>
+		<main>
+			<p>I have created templates for MediaWiki that do basically the same thing as the other charts on this site. You can find the templates as well as instructions on how to use them on StrategyWiki and Wikia, <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">here</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">here</a>. Below is the code you would use to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the chart is wider than a typical browser window.</p>
+			<textarea readonly="readonly" wrap="off" style="width:100%;height:30em;">
 {{kbdchart
 <?php
 	// keys
@@ -298,5 +339,49 @@
 	}
 ?>
 }}
-</textarea>
-<?php echo $page_bot; ?>
+			</textarea>
+		</main>
+		<footer>
+			<div class="bodiv" style="clear:both;">
+				<p><a target="_blank" rel="license" href="http://creativecommons.org/licenses/LGPL/2.1/"><img alt="Creative Commons License" src="<?php echo $path_root; ?>images/license_cc-lgpl_88x31.png" /></a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="<?php echo $path_root; ?>images/license_cc-by-sa_88x31.png" /></a></p>
+				<p>"Video Game Keyboard Diagrams" software was created by Michael Horvath and is licensed under <a target="_blank" rel="license" href="https://creativecommons.org/licenses/LGPL/2.1/;/">CC LGPL 2.1</a>. Content is licensed under <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. You can find this project on <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub</a>.</p>
+				<p>Return to <a href="keyboard.php">Video Game Keyboard Diagrams</a>. View the <a href="keyboard-list.php">master list</a>.</p>
+<?php
+	echo
+"				<form name=\"VisualStyleSwitch\">
+					<label for=\"stylesel\">Visual style:</label>
+					<select class=\"stylechange\" id=\"stylesel\" name=\"style\">\n";
+	for ($i = 0; $i < count($style_table); $i++)
+	{
+		$style_row = $style_table[$i];
+		if ($style_row[0])
+		{
+			$style_idx = $style_row[0];
+			$style_nam = cleantextHTML($style_row[1]);
+			if ($style_id == $style_idx)
+			{
+				echo
+"						<option value=\"" . $style_idx . "\" selected>" . $style_nam . "</option>\n";
+			}
+			else
+			{
+				echo
+"						<option value=\"" . $style_idx . "\">" . $style_nam . "</option>\n";
+			}
+		}
+	}
+
+	echo
+"					</select>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad0\" value=\"0\" " . ($format_id == 0 ? "checked" : "") . " />&nbsp;<label for=\"rad0\">HTML</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad1\" value=\"1\" " . ($format_id == 1 ? "checked" : "") . " />&nbsp;<label for=\"rad1\">SVG</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad2\" value=\"2\" " . ($format_id == 2 ? "checked" : "") . " />&nbsp;<label for=\"rad2\">MediaWiki</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad3\" value=\"3\" disabled />&nbsp;<label for=\"rad3\"><s>PDF</s></label>
+					<input class=\"stylechange\" type=\"button\" value=\"Change\" onclick=\"reloadThisPage('" . $game_id . "', '" . $layout_id . "', '" . $game_seo . "')\" />
+				</form>\n";
+?>
+				<p>Last modified: <?php echo date("F d Y H:i:s.", getlastmod()) ?></p>
+			</div>
+		</footer>
+	</body>
+</html>

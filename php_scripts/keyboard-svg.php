@@ -38,7 +38,8 @@
 	$game_id		= array_key_exists("gam", $_GET) ? intval(ltrim($_GET["gam"], "0")) : null;
 	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : 15;
 	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : 1;
-	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : 0;
+	$format_id		= array_key_exists("frm", $_GET) ? intval(ltrim($_GET["frm"], "0")) : 0;
+	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
 	$fix_url		= false;
 	$final_url		= "";
 	$stylegroup_id		= 0;
@@ -79,6 +80,10 @@
 	else
 	{
 		$fix_url = true;
+	}
+	if ($svg_bool)
+	{
+		$format_id = $svg_bool;
 	}
 
 	function doThisStyle($in_result)
@@ -238,7 +243,7 @@
 		$fix_url = true;
 	}
 
-	$final_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&svg=" . $svg_bool;
+	$final_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&frm=" . $format_id;
 
 	// fix URL
 	if ($fix_url)
@@ -280,7 +285,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	viewBox="-20 -20 1683 612"
 	width="1683" height="612">
 	<title><?php echo $thispage_title_a . $thispage_title_b; ?></title>
-	<desc>Keyboard diagram for <?php echo $game_name; ?>.</desc>
+	<desc>Keyboard diagram for <?php echo $temp_game_name; ?>.</desc>
 	<metadata id="license"
 		xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 		xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -301,7 +306,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 			</cc:License>
 			<rdf:Description about=""
 				dc:title="<?php echo $thispage_title_a . $thispage_title_b; ?>"
-				dc:description="Keyboard diagram for <?php echo $game_name; ?>."
+				dc:description="Keyboard diagram for <?php echo $temp_game_name; ?>."
 				dc:publisher="Video Game Keyboard Diagrams"
 				dc:date="<?php echo date("Y-m-d H:i:s"); ?>"
 				dc:format="image/svg+xml"

@@ -7,7 +7,7 @@
 	$page_onload	= "Select_Init();";
 	$foot_array	= ["copyright","accordion","license_kbd"];
 	$java_array	= ["keyboard-js.php", $path_root . "java/jquery-1.4.2.min.js", $path_root . "java/jquery-accordionmenu.js"];
-	$stys_array	= [$path_root . "style_accordion.css"];
+	$stys_array	= [$path_root . "style_accordion.css",$path_root . "style_radio.css",$path_root . "style_keyboard.css"];
 	$analytics	= true;
 	$is_short	= false;
 	include($path_root . "ssi/normalpage.php");
@@ -281,11 +281,33 @@
 ?>
 			</ul>
 		</div>
-		<div class="war_div">
-			<div id="box_check" class="acc_check">&#x2714;</div>
-			<div id="box_xmark" class="acc_xmark">&#x2718;</div>
-			<h2>4. <input type="button" value="Create Diagram" onclick="Check_Values_and_Spawn()"/></h2>
-			<p id="submit_warn_wrap" class="warn_no">Please select a game, keyboard and theme and try creating the diagram again.</p>
+		<div class="acc_div">
+			<div id="frm_check" class="acc_check">&#x2714;</div>
+			<div id="frm_xmark" class="acc_xmark">&#x2718;</div>
+			<h2>4. Select a Format:</h2>
+			<label for="rad0" class="container">HTML
+				<input id="rad0" type="radio" name="frmradio" value="0" checked="checked"/>
+				<span class="checkmark"></span>
+			</label>
+			<label label for="rad1" class="container">SVG
+				<input id="rad1" type="radio" name="frmradio" value="1"/>
+				<span class="checkmark"></span>
+			</label>
+			<label label for="rad2" class="container">MediaWiki
+				<input id="rad2" type="radio" name="frmradio" value="2"/>
+				<span class="checkmark"></span>
+			</label>
+			<label label for="rad3" class="container"><s>PDF</s> [coming soon]
+				<input id="rad3" type="radio" name="frmradio" value="3" disabled="disabled"/>
+				<span class="checkmark"></span>
+			</label>
+		</div>
+		<div class="acc_div">
+			<div id="but_check" class="acc_check">&#x2714;</div>
+			<div id="but_xmark" class="acc_xmark">&#x2718;</div>
+			<h2>5. Create the Diagram:</h2>
+			<input id="letsgo" type="button" value="All Set, Let's Go!" onclick="Check_Values_and_Spawn()"/>
+			<p id="submit_warn_wrap" class="warn_no">Try selecting a game, keyboard, theme and format, and creating the diagram again!</p>
 		</div>
 	</div>
 </form>
@@ -297,14 +319,16 @@
 	<li>Select a game (key bindings).</li>
 	<li>Select a keyboard (key positions).</li>
 	<li>Select a theme (visual formatting).</li>
+	<li>Select a format (output file type).</li>
 	<li>Click on the 'Create Diagram' button. A new window with your selected diagram will appear.</li>
 	<li>View or print the page in the new window.</li>
 </ol>
 <h2>Licenses &amp; Submissions:</h2>
 <p>The source code for this project is licensed under the <a target="_blank" href="http://creativecommons.org/licenses/LGPL/2.1/">CC LGPL 2.1</a>. The content is licensed under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. To submit a new set of bindings, fill out <a href="binding_template_us104key.xlsx">this excel sheet</a> and <a href="http://isometricland.net/email.php">email</a> me the contents (copy and paste) when you are finished. Note that any content you submit falls under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart, as well as in the <a href="keyboard-log.php">change log</a>, which contains the project's update history and credits, as well as links to further reading.</p>
-<h2>MediaWiki &amp; SVG:</h2>
-<p>I have created a template for MediaWiki that does basically the same thing as the charts available on this site. You can find the template as well as instructions on StrategyWiki and Wikia, <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">here</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">here</a>. And, you can generate the MediaWiki code for each game using <a href="http://isometricland.net/keyboard/keyboard-wiki.php?gam=1">this printout</a>. Just remember to change the number after "?gam=" portion of the page URL to the correct game ID. (For now, you can look up the game ID in the <a href="keyboard-list.php">master list</a>.) You may also want to wrap the chart in a scrollable DIV element, since the chart is wider than a typical browser window.</p>
-<p>I have also created SVG versions of the charts. You can view them simply by checking the radio button at the bottom of each chart page and clicking on the "Change" button. I have not migrated over to using SVG images exclusively yet, because they are less compatible with older browsers, and I have not figured out how I want to implement the mouse and joystick controls listings, yet. (I have not yet figured out how to create containers that expand, wrap and scale automatically as the volume of text inside increases.)</p>
+<h2>MediaWiki, SVG &amp; PDF:</h2>
+<p>I have created templates for MediaWiki that do basically the same thing as the other charts available on this site. You can find the templates as well as instructions on how to use them at StrategyWiki and Wikia, <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">here</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">here</a>. By selecting the "MediaWiki" format type, you can generate the code you will need to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the chart is wider than a typical browser window.</p>
+<p>I have also created SVG versions of the charts, which you can also select in the "Formats" menu above. I have not migrated over to using SVG images exclusively yet, because they are less compatible with older browsers, and I have not figured out how I want to implement the mouse and joystick controls listings, yet. (I have not yet figured out how to create containers that expand, wrap and scale automatically as the volume of text inside increases.)</p>
+<p>PDF versions of the charts will be added at some point in the future.</p>
 <a name="print_tips"></a>
 <h2>Printing Tips:</h2>
 <ol>

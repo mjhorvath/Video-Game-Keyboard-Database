@@ -170,7 +170,7 @@
 					{
 						echo ", ";
 					}
-					echo "<a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout . "&svg=0\">" . getLayoutName($this_layout) . "</a>";
+					echo "<a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout . "&frm=0\">" . getLayoutName($this_layout) . "</a>";
 				}
 				echo "</span><br/>";
 			}
