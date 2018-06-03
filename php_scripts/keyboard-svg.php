@@ -41,7 +41,7 @@
 	$format_id		= array_key_exists("frm", $_GET) ? intval(ltrim($_GET["frm"], "0")) : 0;
 	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
 	$fix_url		= false;
-	$final_url		= "";
+	$svg_url		= "";
 	$stylegroup_id		= 0;
 	$legend_number		= 12;
 	$position_table		= [];
@@ -71,7 +71,7 @@
 	$layout_keygap		= 4;
 
 	// validity checks
-	if (!$game_id)
+	if ($game_id === null)
 	{
 		callProcedure1Txt($con, "get_games_friendly_chart", "doGamesSEO", $game_seo);
 //		echo "game_seo = " . $game_seo . "\n";
@@ -81,9 +81,10 @@
 	{
 		$fix_url = true;
 	}
-	if ($svg_bool)
+	if ($svg_bool !== null)
 	{
 		$format_id = $svg_bool;
+		$fix_url = true;
 	}
 
 	function doThisStyle($in_result)
@@ -243,12 +244,13 @@
 		$fix_url = true;
 	}
 
-	$final_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&frm=" . $format_id;
+	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&frm=" . $format_id;
+	$svg_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&frm=" . $format_id;
 
 	// fix URL
-	if ($fix_url)
+	if ($fix_url === true)
 	{
-		header("Location: " . $final_url);
+		header("Location: " . $svg_url);
 	}
 ?>
 <!--

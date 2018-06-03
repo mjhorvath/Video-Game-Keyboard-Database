@@ -307,7 +307,7 @@
 			<div id="but_xmark" class="acc_xmark">&#x2718;</div>
 			<h2>5. Create the Diagram:</h2>
 			<input id="letsgo" type="button" value="All Set, Let's Go!" onclick="Check_Values_and_Spawn()"/>
-			<p id="submit_warn_wrap" class="warn_no">Try selecting a game, keyboard, theme and format, and creating the diagram again!</p>
+			<p id="submit_warn_wrap" class="warn_no">Try selecting a game, keyboard, theme and format, and create the diagram again!</p>
 		</div>
 	</div>
 </form>
@@ -319,7 +319,7 @@
 	<li>Select a game (key bindings).</li>
 	<li>Select a keyboard (key positions).</li>
 	<li>Select a theme (visual formatting).</li>
-	<li>Select a format (output file type).</li>
+	<li>Select a format (output media type).</li>
 	<li>Click on the 'Create Diagram' button. A new window with your selected diagram will appear.</li>
 	<li>View or print the page in the new window.</li>
 </ol>

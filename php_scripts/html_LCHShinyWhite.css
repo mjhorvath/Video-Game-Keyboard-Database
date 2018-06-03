@@ -48,18 +48,3 @@ a:hover,a:active
 .non	{background:#808080;color:#000;}
 .red,.yel,.grn,.cyn,.blu,.mag,.wht,.gry,.blk,.org,.olv,.brn,.non
 	{background-image:-webkit-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image:-moz-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image:linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);}
-
-@media print
-{
-/*	html	{zoom: 85%;}	*/
-/*	html	{transform: scale(0.85);transform-origin: 0 0;}	*/
-	@page
-	{
-		/* landscape */
-/*		size: 297mm 210mm;	*/
-		/* you can also specify margins here: */
-/*		margin: 25mm;	*/
-		/* for compatibility with both A4 and Letter */
-/*		margin-right: 45mm;	*/
-	}
-}

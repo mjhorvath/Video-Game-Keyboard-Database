@@ -223,6 +223,7 @@
 	function checkLayout($in_layout_id)
 	{
 	}
+
 	$word_part1 = ["keyboard","video game","software","printable","graphical","visual"];
 	$word_part2 = ["shortcut","binding","control","hotkey","command"];
 	$word_part3 = ["diagram","chart","overlay","database","reference","guide","list","map"];

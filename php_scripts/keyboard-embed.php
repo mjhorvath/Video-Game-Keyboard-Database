@@ -77,7 +77,7 @@
 	$layout_keygap		= 4;
 
 	// validity checks
-	if (!$game_id)
+	if ($game_id === null)
 	{
 		callProcedure1Txt($con, "get_games_friendly_chart", "doGamesSEO", $game_seo);
 //		echo "game_seo = " . $game_seo . "\n";
@@ -87,9 +87,10 @@
 	{
 		$fix_url = true;
 	}
-	if ($svg_bool)
+	if ($svg_bool !== null)
 	{
 		$format_id = $svg_bool;
+		$fix_url = true;
 	}
 
 	function doThisStyle($in_result)
@@ -239,7 +240,7 @@
 	$svg_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&frm=" . $format_id;
 
 	// fix URL
-	if ($fix_url)
+	if ($fix_url === true)
 	{
 		header("Location: " . $php_url);
 	}
