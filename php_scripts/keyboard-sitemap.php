@@ -137,7 +137,7 @@
 				for ($k = 0; $k < count($this_platform); $k++)
 				{
 					$this_layout = $this_platform[$k];
-					echo "&lt;url&gt;&lt;loc&gt;http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo_gam . ".php?sty=15&amp;amp;lay=" . $this_layout . "&amp;amp;frm=0&lt;/loc&gt;&lt;lastmod&gt;2016-12-17&lt;/lastmod&gt;&lt;changefreq&gt;yearly&lt;/changefreq&gt;&lt;/url&gt;\n";
+					echo "&lt;url&gt;&lt;loc&gt;http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo_gam . ".php?sty=15&amp;amp;lay=" . $this_layout . "&amp;amp;fmt=0&lt;/loc&gt;&lt;lastmod&gt;2016-12-17&lt;/lastmod&gt;&lt;changefreq&gt;yearly&lt;/changefreq&gt;&lt;/url&gt;\n";
 				}
 			}
 		}

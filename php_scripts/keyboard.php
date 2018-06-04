@@ -282,23 +282,23 @@
 			</ul>
 		</div>
 		<div class="acc_div">
-			<div id="frm_check" class="acc_check">&#x2714;</div>
-			<div id="frm_xmark" class="acc_xmark">&#x2718;</div>
+			<div id="fmt_check" class="acc_check">&#x2714;</div>
+			<div id="fmt_xmark" class="acc_xmark">&#x2718;</div>
 			<h2>4. Select a Format:</h2>
 			<label for="rad0" class="container">HTML
-				<input id="rad0" type="radio" name="frmradio" value="0" checked="checked"/>
+				<input id="rad0" type="radio" name="fmtradio" value="0" checked="checked"/>
 				<span class="checkmark"></span>
 			</label>
 			<label label for="rad1" class="container">SVG
-				<input id="rad1" type="radio" name="frmradio" value="1"/>
+				<input id="rad1" type="radio" name="fmtradio" value="1"/>
 				<span class="checkmark"></span>
 			</label>
 			<label label for="rad2" class="container">MediaWiki
-				<input id="rad2" type="radio" name="frmradio" value="2"/>
+				<input id="rad2" type="radio" name="fmtradio" value="2"/>
 				<span class="checkmark"></span>
 			</label>
 			<label label for="rad3" class="container"><s>PDF</s> [coming soon]
-				<input id="rad3" type="radio" name="frmradio" value="3" disabled="disabled"/>
+				<input id="rad3" type="radio" name="fmtradio" value="3" disabled="disabled"/>
 				<span class="checkmark"></span>
 			</label>
 		</div>

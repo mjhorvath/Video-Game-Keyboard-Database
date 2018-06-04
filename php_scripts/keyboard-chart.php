@@ -16,7 +16,7 @@
 	// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 
 	// 02110-1301  USA
 
-	$format_id	= array_key_exists("frm", $_GET) ? intval(ltrim($_GET["frm"], "0")) : 0;
+	$format_id	= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0")) : 0;
 	$svg_bool	= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
 
 	// validity checks

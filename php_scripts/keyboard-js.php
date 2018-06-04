@@ -211,11 +211,11 @@ function Set_Layout(thisindex, thiselement)
 					UnSet_Styles()
 					document.getElementById('lay_check').style.display = 'none'
 					document.getElementById('sty_check').style.display = 'none'
-					document.getElementById('frm_check').style.display = 'none'
+					document.getElementById('fmt_check').style.display = 'none'
 					document.getElementById('but_check').style.display = 'none'
 					document.getElementById('lay_xmark').style.display = 'block'
 					document.getElementById('sty_xmark').style.display = 'block'
-					document.getElementById('frm_xmark').style.display = 'block'
+					document.getElementById('fmt_xmark').style.display = 'block'
 					document.getElementById('but_xmark').style.display = 'block'
 
 					lastClicked['lay'] = null
@@ -307,9 +307,9 @@ function Set_Select_Value(thisElement)
 	{
 		var WarnBox = document.getElementById('submit_warn_wrap')
 		WarnBox.className = 'warn_no'
-		document.getElementById('frm_check').style.display = 'block'
+		document.getElementById('fmt_check').style.display = 'block'
 		document.getElementById('but_check').style.display = 'block'
-		document.getElementById('frm_xmark').style.display = 'none'
+		document.getElementById('fmt_xmark').style.display = 'none'
 		document.getElementById('but_xmark').style.display = 'none'
 	}
 	document.getElementById(thisInput + '_check').style.display = 'block'
@@ -335,12 +335,12 @@ function Check_Values_and_Spawn()
 	var sty_value = SelectForm.sty.value == '' ? null : SelectForm.sty.value
 	var lay_value = SelectForm.lay.value == '' ? null : SelectForm.lay.value
 	var seo_value = SelectForm.seo.value == '' ? null : SelectForm.seo.value
-	var frm_value = getValueFromRadioButton('frmradio');
+	var fmt_value = getValueFromRadioButton('fmtradio');
 	var WarnBox = document.getElementById('submit_warn_wrap')
 	if (gam_value && sty_value && lay_value && seo_value)
 	{
 		WarnBox.className = 'warn_no'
-		window.open('keyboard-diagram-' + seo_value + '.php?sty=' + sty_value + '&lay=' + lay_value + '&frm=' + frm_value)
+		window.open('keyboard-diagram-' + seo_value + '.php?sty=' + sty_value + '&lay=' + lay_value + '&fmt=' + fmt_value)
 	}
 	else	
 	{
@@ -355,7 +355,7 @@ function reloadThisPage(gameID, layoutID, gameSeo)
 	var targetRadioBox = targetForm.elements["tech"];
 	var styleID = targetDropDown.value;
 	var formatID = getValueFromRadioButton("tech");
-	var locHref = "keyboard-diagram-" + gameSeo + ".php?sty=" + styleID + "&lay=" + layoutID + "&frm=" + formatID;
+	var locHref = "keyboard-diagram-" + gameSeo + ".php?sty=" + styleID + "&lay=" + layoutID + "&fmt=" + formatID;
 	window.location.href = locHref;
 }
 

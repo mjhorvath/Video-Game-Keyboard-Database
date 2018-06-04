@@ -11,6 +11,9 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
+	<li>2018/06/04: You can now select between the HTML, SVG and MediaWiki formats from the front page and charts. Hopefully, I can get PDF output working sometime soon.</li>
+	<li>2018/06/04: Renamed the "svg" URL query to "fmt".</li>
+	<li>2018/06/04: Fixed a bug in URL query detection.</li>
 	<li>2018/05/30: Created a <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for this project.</li>
 	<li>2018/05/29: Renamed the project from "Video Game Hotkey Maps" back to "Video Game Keyboard Diagrams".</li>
 	<li>2018/05/29: Updated the printing tips with new info on problems and workarounds.</li>
