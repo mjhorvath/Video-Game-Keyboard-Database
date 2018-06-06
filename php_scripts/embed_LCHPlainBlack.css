@@ -1,6 +1,9 @@
 *	{font-family:DejaVu Sans Condensed,Sans-Serif;}
-body	{color:#fff;background:#000;font-size:11pt;}
-select	{color:#fff;background:#000;border:1px solid #fff;}
-option	{color:#fff;background:#000;}
+body	{color:#fff;background:#444;font-size:11pt;}
+select	{color:#fff;background:#444;border:1px solid #fff;}
+option	{color:#fff;background:#444;}
 footer	{font-size:smaller;}
-.bodiv	{position:relative;margin:1em;margin-top:0em;}
+.bodiv	{position:relative;margin:1em;}
+.inbtop	{display:inline-block;vertical-align:top;}
+.inbmid	{display:inline-block;vertical-align:middle;}
+.combox	{width:22em;}

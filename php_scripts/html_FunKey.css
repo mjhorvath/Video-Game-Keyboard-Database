@@ -4,39 +4,45 @@ select	{color:#000;background:#ffffff;border:1px solid #000;}
 option	{color:#000;background:#ffffff;}
 footer	{font-size:smaller;}
 .bodiv	{position:relative;margin:1em;}
-.key	{position:absolute;overflow:hidden;border:1px solid #000;font-size:smaller;}
-.caphgh,.caplow,.caprgt,.keyopt,.keyopf
+.keyout	{position:absolute;overflow:hidden;border:1px solid #000;font-size:smaller;}
+.keyhgh,.keylow,.keyrgt,.capopt,.capopf
 	{position:absolute;overflow:hidden;padding:2px;white-space:pre;}
-.caphgh	{font-weight:  bold;left: 0px;top:   0px;}
-.caplow	{font-weight:  bold;left: 0px;bottom:0px;}
-.caprgt	{font-weight:  bold;right:0px;top:   0px;}
-.keyopt	{font-weight:normal;left: 0px;bottom:0em;}
-.keyopf	{font-weight:normal;left: 0px;bottom:1em;}
-.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+.keyhgh	{font-weight:  bold;left: 0px;top:   0px;}
+.keylow	{font-weight:  bold;left: 0px;bottom:0px;}
+.keyrgt	{font-weight:  bold;right:0px;top:   0px;}
+.keynon	{display:none;}
+.capopt	{font-weight:normal;left: 0px;bottom:0em;}
+.capopf	{font-weight:normal;left: 0px;bottom:1em;}
+.capshf,.capctl,.capalt,.capagr,.capxtr
 	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;background:transparent;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
-.keyshf	{color:#008;}
-.keyctl	{color:#080;}
-.keyalt	{color:#800;}
-.keyagr	{color:#880;}
-.keyxtr	{color:#008;}
-.keyimg	{position:absolute;}
-.leggrp	{margin:4px;}
+.capshf	{color:#008;}
+.capctl	{color:#080;}
+.capalt	{color:#800;}
+.capagr	{color:#880;}
+.capxtr	{color:#008;}
+.capimg	{position:absolute;}
+.leggrp	{}
+.legcll	{width:1.5em;height:1.5em;margin:1px;margin-right:0.5em;}
+.legtxt	{width:12em;}
+.inbtop	{display:inline-block;vertical-align:top;}
+.inbmid	{display:inline-block;vertical-align:middle;}
+.combox	{width:22em;}
 .cssA	{background:#c44;border:2px outset #f00;}
 .cssB	{background:#cc4;border:2px outset #ff0;}
 .cssC	{background:#4c4;border:2px outset #0f0;}
 .cssD	{background:#4cc;border:2px outset #0ff;}
 .cssE	{background:#44c;border:2px outset #00f;}
 .cssF	{background:#c4c;border:2px outset #f0f;}
-.red	{}
-.yel	{}
-.grn	{}
-.cyn	{}
-.blu	{}
-.mag	{}
-.wht	{}
-.gry	{}
-.blk	{}
-.org	{}
-.olv	{}
-.brn	{}
-.non	{}
+.capred,.legred	{}
+.capyel,.legyel	{}
+.capgrn,.leggrn	{}
+.capcyn,.legcyn	{}
+.capblu,.legblu	{}
+.capmag,.legmag	{}
+.capwht,.legwht	{}
+.capgry,.leggry	{}
+.capblk,.legblk	{}
+.caporg,.legorg	{}
+.capolv,.legolv	{}
+.capbrn,.legbrn	{}
+.capnon,.legnon	{}

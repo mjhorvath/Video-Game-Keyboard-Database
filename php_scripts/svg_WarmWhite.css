@@ -1,26 +1,26 @@
 *	{}
 svg	{font-family:Verdana,Sans-Serif;font-size:14px;}
 #bkgrec	{stroke:none;fill:#ffffff;}
-.key	{overflow:visible;}
+.keyout	{overflow:visible;}
 .legtxt	{font-size:14px;fill:#000;}
-.caphgh,.caplow,.caprgt
+.keyhgh,.keylow,.keyrgt
 	{font-size:12px;font-weight:bold;}
-.caprgt	{text-anchor:end;}
-.caprec	{}
-.keynor	{font-size:12px;font-weight:normal;}
-.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+.keyrgt	{text-anchor:end;}
+.keyrec	{}
+.capnor	{font-size:12px;font-weight:normal;}
+.capshf,.capctl,.capalt,.capagr,.capxtr
 	{font-size:10px;text-anchor:end;font-weight:normal;}
-.keyshf	{fill:#00c;}
-.keyctl	{fill:#0c0;}
-.keyalt	{fill:#c00;}
-.keyagr	{fill:#cc0;}
-.keyxtr	{fill:#0cc;}
+.capshf	{fill:#00c;}
+.capctl	{fill:#0c0;}
+.capalt	{fill:#c00;}
+.capagr	{fill:#cc0;}
+.capxtr	{fill:#0cc;}
 .bakshf	{fill:none;}
 .bakctl	{fill:none;}
 .bakalt	{fill:none;}
 .bakagr	{fill:none;}
 .bakxtr	{fill:none;}
-.keyimg	{}
+.capimg	{}
 .recred	{fill:#ff6600;}
 .recyel	{fill:#ffcc00;}
 .recgrn	{fill:#99cc00;}

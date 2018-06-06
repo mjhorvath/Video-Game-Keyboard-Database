@@ -64,17 +64,16 @@
 	$platform_name		= "";
 	$layout_platform	= 0;
 	$layout_name		= "";
-	$layout_title		= "";
-	$layout_mouse		= "";
-	$layout_joystick	= "";
-	$layout_combos		= "";
-	$layout_notes		= "";
-	$layout_legend		= "";		// heading was removed from the database
 	$layout_author		= "";
-	$layout_description	= "";
-	$layout_keywords	= "";
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
+	$layout_title		= cleantextHTML("Keyboard Diagram");
+	$layout_mouse		= cleantextHTML("Mouse Controls");
+	$layout_joystick	= cleantextHTML("Joystick Controls");
+	$layout_combos		= cleantextHTML("Keyboard Combinations");
+	$layout_notes		= cleantextHTML("Additional Notes");
+	$layout_description	= cleantextHTML("Keyboard hotkey & binding chart for ");
+	$layout_keywords	= cleantextHTML("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
 
 	// validity checks
 	if ($game_id === null)
@@ -174,18 +173,10 @@
 	}
 	function doLayouts($in_result)
 	{
-		global $layout_platform, $layout_name, $layout_title, $layout_mouse, $layout_joystick, $layout_combos, $layout_notes, $layout_legend, $layout_author, $layout_description, $layout_keywords, $layout_keysnum;
+		global $layout_platform, $layout_name, $layout_author, $layout_keysnum;
 		$layout_row		= mysqli_fetch_row($in_result);
 		$layout_platform	= $layout_row[0];
 		$layout_name		= cleantextHTML($layout_row[1]);
-		$layout_title		= cleantextHTML($layout_row[2]);
-		$layout_mouse		= cleantextHTML($layout_row[3]);
-		$layout_joystick	= cleantextHTML($layout_row[4]);
-		$layout_combos		= cleantextHTML($layout_row[5]);
-		$layout_notes		= cleantextHTML($layout_row[6]);
-		$layout_legend		= cleantextHTML($layout_row[7]);		// heading no longer exists in the database
-		$layout_description	= cleantextHTML($layout_row[8]);
-		$layout_keywords	= cleantextHTML($layout_row[9]);
 		$layout_author		= cleantextHTML(getAuthorName($layout_row[10]));
 		$layout_keysnum		= $layout_row[11];
 	}
@@ -248,7 +239,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<title><?php echo $thispage_title_a; ?><?php echo $thispage_title_b; ?></title>
 <?php
 	echo
@@ -257,8 +248,8 @@
 "		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_normalize.css\"/>\n" .
 "		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>\n" .
 "		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n" .
-"		<meta name=\"description\" content=\"" . $layout_description . $temp_game_name . ".\"></meta>\n" .
-"		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference," . $layout_keywords . "," . $temp_game_name . "\"></meta>\n";
+"		<meta name=\"description\" content=\"" . $layout_description . $temp_game_name . ". (" . $temp_style_name . ")\"/>\n" .
+"		<meta name=\"keywords\" content=\"" . $temp_game_name . "," . $temp_style_name . "," . "SVG" . "," . $layout_keywords . "\"/>\n";
 	include($path_root . "ssi/analyticstracking.php");
 ?>
 		<script src="keyboard-js.php"></script>
@@ -268,16 +259,20 @@
 	</head>
 	<body>
 		<header>
-			<div class="bodiv"><h2><?php echo $thispage_title_a; ?><small><?php echo $thispage_title_b; ?></small></h2></div>
+			<div class="bodiv">
+				<h2><?php echo $thispage_title_a; ?><small><?php echo $thispage_title_b; ?></small></h2>
+			</div>
 		</header>
 		<main>
-			<div class="bodiv" style="clear:both;position:relative;">
-				<img src="<?php echo $svg_url; ?>" width="1684" height="640"/>
-				<div style="position:absolute;left:600px;top:521.5px;width:728px;height:90px;padding:none;margin:none;z-index:10;">
+			<div class="bodiv" style="width:1684px;height:640px;">
+				<div id="keydiv" style="position:relative;width:1684px;height:640px;">
+					<img src="<?php echo $svg_url; ?>" width="1684" height="640"/>
+					<div style="position:absolute;left:600px;top:521.5px;width:728px;height:90px;padding:none;margin:none;z-index:10;">
 <?php /*include($path_root . "ssi/adsense_horz_large.php");*/ ?>
+					</div>
 				</div>
 			</div>
-			<div class="bodiv" style="float:left;">
+			<div class="bodiv inbtop combox">
 <?php
 	if ($combo_count > 0)
 	{
@@ -300,7 +295,7 @@
 	}
 ?>
 			</div>
-			<div class="bodiv" style="float:left;">
+			<div class="bodiv inbtop combox">
 <?php
 	if ($mouse_count > 0)
 	{
@@ -323,7 +318,7 @@
 	}
 ?>
 			</div>
-			<div class="bodiv" style="float:left;">
+			<div class="bodiv inbtop combox">
 <?php
 	if ($joystick_count > 0)
 	{
@@ -346,7 +341,7 @@
 	}
 ?>
 			</div>
-			<div class="bodiv" style="float:left;">
+			<div class="bodiv inbtop combox">
 <?php
 	if ($note_count > 0)
 	{
@@ -371,7 +366,7 @@
 			</div>
 		</main>
 		<footer>
-			<div class="bodiv" style="clear:both;">
+			<div class="bodiv">
 				<p><a target="_blank" rel="license" href="http://creativecommons.org/licenses/LGPL/2.1/"><img alt="Creative Commons License" src="<?php echo $path_root; ?>images/license_cc-lgpl_88x31.png" /></a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="<?php echo $path_root; ?>images/license_cc-by-sa_88x31.png" /></a></p>
 				<p>"Video Game Keyboard Diagrams" software was created by Michael Horvath and is licensed under <a target="_blank" rel="license" href="https://creativecommons.org/licenses/LGPL/2.1/;/">CC LGPL 2.1</a>. Content is licensed under <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. You can find this project on <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub</a>.</p>
 				<p>

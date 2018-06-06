@@ -1,27 +1,27 @@
 *	{}
 svg	{font-family:DejaVu Sans Condensed,Sans-Serif;font-size:14px;}
 #bkgrec	{stroke:none;fill:#ffffff;}
-.key	{overflow:visible;}
+.keyout	{overflow:visible;}
 .legtxt	{font-size:14px;fill:#000000;}
-.caphgh,.caplow,.caprgt
+.keyhgh,.keylow,.keyrgt
 	{font-size:12px;font-weight:bold;}
-.caprgt	{text-anchor:end;}
-.caprec	{stroke:#000000;stroke-width:1;}
-.keynor	{font-size:12px;font-weight:normal;}
-.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+.keyrgt	{text-anchor:end;}
+.keyrec	{stroke:#000000;stroke-width:1;}
+.capnor	{font-size:12px;font-weight:normal;}
+.capshf,.capctl,.capalt,.capagr,.capxtr
 	{font-size:10px;text-anchor:end;font-weight:normal;}
 /* http://www.easyrgb.com/index.php?X=CALC */
-.keyshf	{fill:#077BC7;}	/* CIE-L*ch ( 50, 47,270)	blue	*/
-.keyctl	{fill:#028946;}	/* CIE-L*ch ( 50, 55,150)	green	*/
-.keyalt	{fill:#ED0631;}	/* CIE-L*ch ( 50, 88, 30)	red	*/
-.keyagr	{fill:#D403CB;}	/* CIE-L*ch ( 50, 97,330)	magenta	*/
-.keyxtr	{fill:#0B848F;}	/* CIE-L*ch ( 50, 29,210)	cyan	*/
+.capshf	{fill:#077BC7;}	/* CIE-L*ch ( 50, 47,270)	blue	*/
+.capctl	{fill:#028946;}	/* CIE-L*ch ( 50, 55,150)	green	*/
+.capalt	{fill:#ED0631;}	/* CIE-L*ch ( 50, 88, 30)	red	*/
+.capagr	{fill:#D403CB;}	/* CIE-L*ch ( 50, 97,330)	magenta	*/
+.capxtr	{fill:#0B848F;}	/* CIE-L*ch ( 50, 29,210)	cyan	*/
 .bakshf	{fill:none;}
 .bakctl	{fill:none;}
 .bakalt	{fill:none;}
 .bakagr	{fill:none;}
 .bakxtr	{fill:none;}
-.keyimg	{}
+.capimg	{}
 /* http://www.easyrgb.com/index.php?X=CALC */
 .recred	{fill:#FC9C93;}	/* CIE-L*ch ( 74, 40, 30) */
 .recyel	{fill:#CEB46C;}	/* CIE-L*ch ( 74, 40, 90) */

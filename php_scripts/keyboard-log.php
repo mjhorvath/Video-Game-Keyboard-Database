@@ -11,6 +11,8 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
+	<li>2018/06/05: Started working on a GUI tool to submit bindings to this project. You can view it <a href="keyboard-submit.html">here</a>.</li>
+	<li>2018/06/05: Tweaked some HTML and CSS code. Added borders to the default style.</li>
 	<li>2018/06/04: You can now select between the HTML, SVG and MediaWiki formats from the front page and charts. Hopefully, I can get PDF output working sometime soon.</li>
 	<li>2018/06/04: Renamed the "svg" URL query to "fmt".</li>
 	<li>2018/06/04: Fixed a bug in URL query detection.</li>

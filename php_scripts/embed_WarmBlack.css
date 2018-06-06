@@ -4,3 +4,6 @@ select	{color:#fff;background:#000;border:1px solid #fff;}
 option	{color:#fff;background:#000;}
 footer	{font-size:smaller;}
 .bodiv	{position:relative;margin:1em;margin-top:0em;}
+.inbtop	{display:inline-block;vertical-align:top;}
+.inbmid	{display:inline-block;vertical-align:middle;}
+.combox	{width:22em;}

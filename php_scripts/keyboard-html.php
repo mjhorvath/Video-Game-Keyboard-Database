@@ -41,6 +41,8 @@
 	$fix_url		= false;
 	$php_url		= "";
 	$svg_url		= "";
+	$write_empty_boxes	= true;
+	$write_debug_events	= false;
 	$stylegroup_id		= 0;
 	$position_table		= [];
 	$keystyle_table		= [];
@@ -67,17 +69,17 @@
 	$platform_name		= "";
 	$layout_platform	= 0;
 	$layout_name		= "";
-	$layout_title		= "";
-	$layout_mouse		= "";
-	$layout_joystick	= "";
-	$layout_combos		= "";
-	$layout_notes		= "";
-	$layout_legend		= "";		// heading was removed from the database
 	$layout_author		= "";
-	$layout_description	= "";
-	$layout_keywords	= "";
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
+	$layout_title		= cleantextHTML("Keyboard Diagram");
+	$layout_mouse		= cleantextHTML("Mouse Controls");
+	$layout_joystick	= cleantextHTML("Joystick Controls");
+	$layout_combos		= cleantextHTML("Keyboard Combinations");
+	$layout_notes		= cleantextHTML("Additional Notes");
+	$layout_description	= cleantextHTML("Keyboard hotkey & binding chart for ");
+	$layout_keywords	= cleantextHTML("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
+
 
 	// validity checks
 	if ($game_id === null)
@@ -164,7 +166,7 @@
 		global $position_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
-			// position_left, position_top, position_width, position_height, symbol_low, symbol_cap, symbol_altgr, key_number, lowcap_optional
+			// position_left, position_top, position_width, position_height, symbol_low, symbol_cap, symbol_altgr, key_number, lowkey_optional
 			$position_table[$temp_row[7]-1] = $temp_row;
 		}
 	}
@@ -212,20 +214,13 @@
 		$stylesrecord_id = $stylesrecord_row[0];
 		$stylesrecord_author = cleantextHTML(getAuthorName($stylesrecord_row[1]));
 	}
+	// need to move most of this stuff to `doLanguages`
 	function doLayouts($in_result)
 	{
-		global $layout_platform, $layout_name, $layout_title, $layout_mouse, $layout_joystick, $layout_combos, $layout_notes, $layout_legend, $layout_author, $layout_description, $layout_keywords, $layout_keysnum;
+		global $layout_platform, $layout_name, $layout_author, $layout_keysnum;
 		$layout_row		= mysqli_fetch_row($in_result);
 		$layout_platform	= $layout_row[0];
 		$layout_name		= cleantextHTML($layout_row[1]);
-		$layout_title		= cleantextHTML($layout_row[2]);
-		$layout_mouse		= cleantextHTML($layout_row[3]);
-		$layout_joystick	= cleantextHTML($layout_row[4]);
-		$layout_combos		= cleantextHTML($layout_row[5]);
-		$layout_notes		= cleantextHTML($layout_row[6]);
-		$layout_legend		= cleantextHTML($layout_row[7]);		// heading no longer exists in the database
-		$layout_description	= cleantextHTML($layout_row[8]);
-		$layout_keywords	= cleantextHTML($layout_row[9]);
 		$layout_author		= cleantextHTML(getAuthorName($layout_row[10]));
 		$layout_keysnum		= $layout_row[11];
 	}
@@ -296,7 +291,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<title><?php echo $thispage_title_a; ?><?php echo $thispage_title_b; ?></title>
 <?php
 	echo
@@ -305,8 +300,8 @@
 "		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_normalize.css\"/>\n" .
 "		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>\n" .
 "		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n" .
-"		<meta name=\"description\" content=\"" . $layout_description . $temp_game_name . ".\"></meta>\n" .
-"		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference," . $layout_keywords . "," . $temp_game_name . "\"></meta>\n";
+"		<meta name=\"description\" content=\"" . $layout_description . $temp_game_name . ". (" . $temp_style_name . ")\"/>\n" .
+"		<meta name=\"keywords\" content=\"" . $temp_game_name . "," . $temp_style_name . "," . "HTML" . "," . $layout_keywords . "\"/>\n";
 	include($path_root . "ssi/analyticstracking.php");
 ?>
 		<script src="keyboard-js.php"></script>
@@ -316,22 +311,25 @@
 	</head>
 	<body>
 		<header>
-			<div class="bodiv"><h2><?php echo $thispage_title_a; ?><small><?php echo $thispage_title_b; ?></small></h2></div>
+			<div class="bodiv">
+				<h2><?php echo $thispage_title_a; ?><small><?php echo $thispage_title_b; ?></small></h2>
+			</div>
 		</header>
-		<main style="">
-			<div id="keybd" class="bodiv" style="width:1660px;height:480px;">
+		<main>
+			<div class="bodiv" style="width:1660px;height:480px;">
+				<div id="keydiv" style="position:relative;width:1660px;height:480px;">
 <?php
 	// validity checks
 	if (!$gamesrecord_id)
 	{
 		echo
-				"<h3>No bindings found for game \"" . $temp_game_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</h3>";
+"					<h3>No bindings found for game \"" . $temp_game_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</h3>";
 	}
 	// validity checks
 	if (!$stylesrecord_id)
 	{
 		echo
-				"<h3>No configurations found for style \"" . $temp_style_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</h3>";
+"					<h3>No configurations found for style \"" . $temp_style_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</h3>";
 	}
 	// keys
 	if ($gamesrecord_id && $stylesrecord_id)
@@ -340,17 +338,17 @@
 		{
 			if (array_key_exists($i, $position_table))
 			{
-				// position_left, position_top, position_width, position_height, symbol_low, symbol_cap, symbol_altgr, key_number, lowcap_optional
+				// position_left, position_top, position_width, position_height, symbol_low, symbol_cap, symbol_altgr, key_number, lowkey_optional
 				$key_sty	= array_key_exists($i, $keystyle_table) ? getkeyclass($keystyle_table[$i][0]) : "";
 				$position_row	= $position_table[$i];
 				$pos_lft	= $position_row[0] + $layout_keygap/2;
 				$pos_top	= $position_row[1] + $layout_keygap/2;
 				$pos_wid	= $position_row[2] - $layout_keygap;		// 4
 				$pos_hgh	= $position_row[3] - $layout_keygap;
-				$cap_low	= cleantextHTML($position_row[4]);
-				$cap_hgh	= cleantextHTML($position_row[5]);
-				$cap_rgt	= cleantextHTML($position_row[6]);
-				$cap_opt	= $position_row[8];
+				$key_low	= cleantextHTML($position_row[4]);
+				$key_hgh	= cleantextHTML($position_row[5]);
+				$key_rgt	= cleantextHTML($position_row[6]);
+				$key_opt	= $position_row[8];
 				$img_wid	= 48;
 				$img_hgh	= 48;
 				$img_pos_x	= $pos_wid/2 - $img_wid/2;
@@ -359,139 +357,169 @@
 				{
 					$binding_row	= $binding_table[$i];
 					$bkg_nor = getcolor($binding_row[0]);
-					$key_nor = cleantextHTML($binding_row[1]);
+					$cap_nor = cleantextHTML($binding_row[1]);
 					$bkg_shf = getcolor($binding_row[2]);
-					$key_shf = cleantextHTML($binding_row[3]);
+					$cap_shf = cleantextHTML($binding_row[3]);
 					$bkg_ctl = getcolor($binding_row[4]);
-					$key_ctl = cleantextHTML($binding_row[5]);
+					$cap_ctl = cleantextHTML($binding_row[5]);
 					$bkg_alt = getcolor($binding_row[6]);
-					$key_alt = cleantextHTML($binding_row[7]);
+					$cap_alt = cleantextHTML($binding_row[7]);
 					$bkg_agr = getcolor($binding_row[8]);
-					$key_agr = cleantextHTML($binding_row[9]);
+					$cap_agr = cleantextHTML($binding_row[9]);
 					$bkg_xtr = getcolor($binding_row[10]);
-					$key_xtr = cleantextHTML($binding_row[11]);
+					$cap_xtr = cleantextHTML($binding_row[11]);
 					$img_fil = $binding_row[12];
 					$img_uri = $binding_row[14];
 				}
 				else
 				{
 					$bkg_nor = "non";
-					$key_nor = "";
+					$cap_nor = "";
 					$bkg_shf = "non";
-					$key_shf = "";
+					$cap_shf = "";
 					$bkg_ctl = "non";
-					$key_ctl = "";
+					$cap_ctl = "";
 					$bkg_alt = "non";
-					$key_alt = "";
+					$cap_alt = "";
 					$bkg_agr = "non";
-					$key_agr = "";
+					$cap_agr = "";
 					$bkg_xtr = "non";
-					$key_xtr = "";
+					$cap_xtr = "";
 					$img_fil = "";
 					$img_uri = "";
 				}
 
-				echo
-"				<div class=\"key " . $bkg_nor . " " . $key_sty . "\" style=\"left:" . $pos_lft . "px;top:" . $pos_top . "px;width:" . $pos_wid . "px;height:" . $pos_hgh . "px;background-size:auto;\">\n";
+				if ($write_debug_events == true)
+				{
+					echo
+"					<div id=\"keyout_" . $i . "\" class=\"keyout cap" . $bkg_nor . " " . $key_sty . "\" style=\"left:" . $pos_lft . "px;top:" . $pos_top . "px;width:" . $pos_wid . "px;height:" . $pos_hgh . "px;background-size:auto;\">\n";
+				}
+				else
+				{
+					echo
+"					<div id=\"keyout_" . $i . "\" class=\"keyout cap" . $bkg_nor . " " . $key_sty . "\" style=\"left:" . $pos_lft . "px;top:" . $pos_top . "px;width:" . $pos_wid . "px;height:" . $pos_hgh . "px;background-size:auto;\">\n";
+				}
+				// icon images
 				if ($img_fil)
 				{
 					echo
-"					<img class=\"keyimg\" style=\"left:" . $img_pos_x . "px;top:" . $img_pos_y . "px;width:" . $img_wid . "px;height:" . $img_hgh . "px;\" src=\"" . $img_uri . "\"/>\n";
+"						<img id=\"capimg_" . $i . "\" class=\"capimg\" style=\"left:" . $img_pos_x . "px;top:" . $img_pos_y . "px;width:" . $img_wid . "px;height:" . $img_hgh . "px;\" src=\"" . $img_uri . "\"/>\n";
 				}
-				if ($cap_hgh != "")
+				// key characters
+				if (($key_hgh != "") || ($write_empty_boxes == true))
 				{
 					echo
-"					<div class=\"caphgh\">" . $cap_hgh . "</div>\n";
+"						<div id=\"keyhgh_" . $i . "\" class=\"keyhgh\">" . $key_hgh . "</div>\n";
 				}
-				if (($cap_low != "") && ($cap_opt == false))
+				if (($key_low != "") || ($write_empty_boxes == true))
 				{
-					echo
-"					<div class=\"caplow\">" . $cap_low . "</div>\n";
-				}
-				if ($cap_rgt != "")
-				{
-					echo
-"					<div class=\"caprgt\">" . $cap_rgt . "</div>\n";
-				}
-				if ($key_nor != "")
-				{
-					if ($cap_opt == false)
+					if ($key_opt == false)
 					{
 						echo
-"					<div class=\"keyopf\">" . $key_nor . "</div>\n";
+"						<div id=\"keylow_" . $i . "\" class=\"keylow\">" . $key_low . "</div>\n";
 					}
 					else
 					{
 						echo
-"					<div class=\"keyopt\">" . $key_nor . "</div>\n";
+"						<div id=\"keylow_" . $i . "\" class=\"keynon\">" . $key_low . "</div>\n";
 					}
 				}
-				if ($key_shf != "")
+				if (($key_rgt != "") || ($write_empty_boxes == true))
 				{
 					echo
-"					<div class=\"keyshf\">" . $key_shf . "</div>\n";
+"						<div id=\"keyrgt_" . $i . "\" class=\"keyrgt\">" . $key_rgt . "</div>\n";
 				}
-				if ($key_ctl != "")
+				// key captions
+				if (($cap_nor != "") || ($write_empty_boxes == true))
 				{
-					echo
-"					<div class=\"keyctl\">" . $key_ctl . "</div>\n";
+					if ($key_opt == false)
+					{
+						echo
+"						<div id=\"capnor_" . $i . "\" class=\"capopf\" color=\"" . $bkg_nor . "\">" . $cap_nor . "</div>\n";
+					}
+					else
+					{
+						echo
+"						<div id=\"capnor_" . $i . "\" class=\"capopt\" color=\"" . $bkg_nor . "\">" . $cap_nor . "</div>\n";
+					}
 				}
-				if ($key_alt != "")
+				if (($cap_shf != "") || ($write_empty_boxes == true))
 				{
 					echo
-"					<div class=\"keyalt\">" . $key_alt . "</div>\n";
+"						<div id=\"capshf_" . $i . "\" class=\"capshf\" color=\"" . $bkg_shf . "\">" . $cap_shf . "</div>\n";
 				}
-				if ($key_agr != "")
+				if (($cap_ctl != "") || ($write_empty_boxes == true))
 				{
 					echo
-"					<div class=\"keyagr\">" . $key_agr . "</div>\n";
+"						<div id=\"capctl_" . $i . "\" class=\"capctl\" color=\"" . $bkg_ctl . "\">" . $cap_ctl . "</div>\n";
 				}
-				if ($key_xtr != "")
+				if (($cap_alt != "") || ($write_empty_boxes == true))
 				{
 					echo
-"					<div class=\"keyxtr\">" . $key_xtr . "</div>\n";
+"						<div id=\"capalt_" . $i . "\" class=\"capalt\" color=\"" . $bkg_alt . "\">" . $cap_alt . "</div>\n";
+				}
+				if (($cap_agr != "") || ($write_empty_boxes == true))
+				{
+					echo
+"						<div id=\"capagr_" . $i . "\" class=\"capagr\" color=\"" . $bkg_agr . "\">" . $cap_agr . "</div>\n";
+				}
+				if (($cap_xtr != "") || ($write_empty_boxes == true))
+				{
+					echo
+"						<div id=\"capxtr_" . $i . "\" class=\"capxtr\" color=\"" . $bkg_xtr . "\">" . $cap_xtr . "</div>\n";
 				}
 				echo
-"				</div>\n";
+"					</div>\n";
 			}
 		}
 	}
 ?>
+				</div>
 			</div>
-			<div class="bodiv" style="clear:both;">
-				<div style="float:left;">
-					<div class="key non" style="position:relative;width:69px;height:69px;">
-						<div class="caphgh">Upkey</div>
-						<div class="caplow">Lowkey</div>
-						<div class="keyopf">Caption</div>
-						<div class="keyshf">Shift</div>
-						<div class="keyctl">Ctrl</div>
-						<div class="keyalt">Alt</div>
+			<div class="bodiv">
+				<div class="inbtop" style="margin-bottom:1em;">
+					<div class="keyout capnon" style="position:relative;left:2px;top:2px;width:68px;height:68px;">
+						<div class="keyhgh">Upkey</div>
+						<div class="keylow">Lowkey</div>
+						<div class="capopf">Caption</div>
+						<div class="capshf">Shift</div>
+						<div class="capctl">Ctrl</div>
+						<div class="capalt">Alt</div>
 					</div>
 				</div>
-				<div style="float:left;margin-left:1em;">
+				<div class="inbtop" style="margin-left:1em;">
 <?php	// legend
 	if ($stylegroup_id == 1)
 	{
 		for ($i = 0; $i < count($legend_table); $i++)
 		{
 			$legend_row = $legend_table[$i];
+			if ($i % 3 == 0)
+			{
+				echo
+"					<div class=\"leggrp inbtop\">\n";
+			}
 			if ($legend_row[0] != null)
 			{
 				$leg_grp = getcolor($legend_row[0]);
 				$leg_dsc = cleantextHTML($legend_row[1]);
 				echo
-"					<div class=\"leggrp\"><span class=\"legcll " . $leg_grp . "\">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;" . $leg_dsc . "</div>\n";
+"						<div><div class=\"legcll leg" . $leg_grp . " inbmid\"></div><div class=\"legtxt inbmid\">" . $leg_dsc . "</div></div>\n";
+			}
+			if ($i % 3 == 2)
+			{
+				echo
+"					</div>\n";
 			}
 		}
 	}
 ?>
 				</div>
-				<div style="float:left;margin-left:10em;margin-top:1em;">
+				<div class="inbtop" style="margin-left:1em;">
 <?php /*include($path_root . "ssi/adsense_horz_large.php");*/ ?>
 				</div>
 			</div>
-			<div class="bodiv" style="float:left;clear:left;">
+			<div class="bodiv inbtop combox">
 <?php	// combos
 	if ($combo_count > 0)
 	{
@@ -514,7 +542,7 @@
 	}
 ?>
 			</div>
-			<div class="bodiv" style="float:left;">
+			<div class="bodiv inbtop combox">
 <?php	// mice
 	if ($mouse_count > 0)
 	{
@@ -537,7 +565,7 @@
 	}
 ?>
 			</div>
-			<div class="bodiv" style="float:left;">
+			<div class="bodiv inbtop combox">
 <?php	// joysticks
 	if ($joystick_count > 0)
 	{
@@ -560,7 +588,7 @@
 	}
 ?>
 			</div>
-			<div class="bodiv" style="float:left;">
+			<div class="bodiv inbtop combox">
 <?php	// notes
 	if ($note_count > 0)
 	{
@@ -585,7 +613,7 @@
 			</div>
 		</main>
 		<footer>
-			<div class="bodiv" style="clear:both;">
+			<div class="bodiv">
 				<p><a target="_blank" rel="license" href="http://creativecommons.org/licenses/LGPL/2.1/"><img alt="Creative Commons License" src="<?php echo $path_root; ?>images/license_cc-lgpl_88x31.png" /></a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="<?php echo $path_root; ?>images/license_cc-by-sa_88x31.png" /></a></p>
 				<p>"Video Game Keyboard Diagrams" software was created by Michael Horvath and is licensed under <a target="_blank" rel="license" href="https://creativecommons.org/licenses/LGPL/2.1/;/">CC LGPL 2.1</a>. Content is licensed under <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. You can find this project on <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub</a>.</p>
 				<p>

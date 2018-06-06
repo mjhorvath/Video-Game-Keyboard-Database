@@ -162,13 +162,13 @@
 	}
 	function getcolor($group)
 	{
-		// hardcoded! fetch from database instead
+		// hardcoded! should fetch from database instead
 		$color_array = ["red","yel","grn","cyn","blu","mag","wht","gry","blk","org","olv","brn"];
 		return array_key_exists($group-1, $color_array) ? $color_array[$group-1] : "non";
 	}
 	function getkeyclass($group)
 	{
-		// hardcoded! fetch from database instead
+		// hardcoded! should fetch from database instead
 		$class_array = ["cssA","cssB","cssC","cssD","cssE","cssF","cssG","cssH","cssI","cssJ","cssK","cssL"];
 		return array_key_exists($group-1, $class_array) ? $class_array[$group-1] : "";
 

@@ -1,21 +1,21 @@
 *	{}
 svg	{font-family:Verdana,Sans-Serif;font-size:14px;}
 #bkgrec	{stroke:none;fill:#ffffff;}
-.key	{overflow:visible;}
+.keyout	{overflow:visible;}
 .legtxt	{font-size:14px;fill:#000000;}
-.caphgh,.caplow,.caprgt
+.keyhgh,.keylow,.keyrgt
 	{font-size:12px;font-weight:bold;}
-.caprgt	{text-anchor:end;}
-.caprec	{}
-.keynor	{font-size:12px;font-weight:normal;}
-.keyimg	{}
-.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+.keyrgt	{text-anchor:end;}
+.keyrec	{}
+.capnor	{font-size:12px;font-weight:normal;}
+.capimg	{}
+.capshf,.capctl,.capalt,.capagr,.capxtr
 	{font-size:10px;text-anchor:end;}
-.keyshf	{fill:#fff;}
-.keyctl	{fill:#fff;}
-.keyalt	{fill:#fff;}
-.keyagr	{fill:#000;}
-.keyxtr	{fill:#fff;}
+.capshf	{fill:#fff;}
+.capctl	{fill:#fff;}
+.capalt	{fill:#fff;}
+.capagr	{fill:#000;}
+.capxtr	{fill:#fff;}
 .bakshf	{fill:#444;}
 .bakctl	{fill:#888;}
 .bakalt	{fill:#ccc;}

@@ -4,23 +4,29 @@ select	{color:#000;background:#fff;border:1px solid #000;}
 option	{color:#000;background:#fff;}
 footer	{font-size:smaller;}
 .bodiv	{position:relative;margin:1em;}
-.key	{position:absolute;overflow:hidden;font-size:smaller;box-shadow:4px 4px 4px #888;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;box-shadow: 0px 1px 1px #444;}
-.caphgh,.caplow,.caprgt,.keyopt,.keyopf
+.keyout	{position:absolute;overflow:hidden;font-size:smaller;box-shadow:4px 4px 4px #888;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;box-shadow: 0px 1px 1px #444;}
+.keyhgh,.keylow,.keyrgt,.capopt,.capopf
 	{position:absolute;overflow:hidden;padding:2px;white-space:pre;}
-.caphgh	{font-weight:  bold;left: 0px;top:   0px;}
-.caplow	{font-weight:  bold;left: 0px;bottom:0px;}
-.caprgt	{font-weight:  bold;right:0px;top:   0px;}
-.keyopt	{font-weight:normal;left: 0px;bottom:0em;}
-.keyopf	{font-weight:normal;left: 0px;bottom:1em;}
-.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+.keyhgh	{font-weight:  bold;left: 0px;top:   0px;}
+.keylow	{font-weight:  bold;left: 0px;bottom:0px;}
+.keyrgt	{font-weight:  bold;right:0px;top:   0px;}
+.keynon	{display:none;}
+.capopt	{font-weight:normal;left: 0px;bottom:0em;}
+.capopf	{font-weight:normal;left: 0px;bottom:1em;}
+.capshf,.capctl,.capalt,.capagr,.capxtr
 	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;background:transparent;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
-.keyshf	{color:#00e;}
-.keyctl	{color:#080;}
-.keyalt	{color:#e00;}
-.keyagr	{color:#ee0;}
-.keyxtr	{color:#0ee;}
-.keyimg	{position:absolute;}
-.leggrp	{margin:4px;}
+.capshf	{color:#00e;}
+.capctl	{color:#080;}
+.capalt	{color:#e00;}
+.capagr	{color:#ee0;}
+.capxtr	{color:#0ee;}
+.capimg	{position:absolute;}
+.leggrp	{}
+.legcll	{width:1.5em;height:1.5em;margin:1px;margin-right:0.5em;}
+.legtxt	{width:12em;}
+.inbtop	{display:inline-block;vertical-align:top;}
+.inbmid	{display:inline-block;vertical-align:middle;}
+.combox	{width:22em;}
 .cssA	{background:#fcc;}
 .cssB	{background:#ffc;}
 .cssC	{background:#cfc;}
@@ -30,16 +36,16 @@ footer	{font-size:smaller;}
 .cssG	{background:#fff;}
 .cssH	{background:#000;}
 .cssI	{background:#ccc;}
-.red	{}                                 
-.yel	{}
-.grn	{}
-.cyn	{}
-.blu	{}
-.mag	{}
-.wht	{}
-.gry	{}
-.blk	{}
-.org	{}
-.olv	{}
-.brn	{}
-.non	{}
+.capred,.legred	{}                                 
+.capyel,.legyel	{}
+.capgrn,.leggrn	{}
+.capcyn,.legcyn	{}
+.capblu,.legblu	{}
+.capmag,.legmag	{}
+.capwht,.legwht	{}
+.capgry,.leggry	{}
+.capblk,.legblk	{}
+.caporg,.legorg	{}
+.capolv,.legolv	{}
+.capbrn,.legbrn	{}
+.capnon,.legnon	{}

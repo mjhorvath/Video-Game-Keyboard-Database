@@ -13,38 +13,44 @@ a:link,a:visited
 a:hover,a:active
 	{color:#ff0;text-decoration:underline;}
 .bodiv	{position:relative;margin:1em;}
-.key	{font-family:pt-sans-narrow,sans-serif;line-height:100%;font-size:smaller;position:absolute;overflow:hidden;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;box-shadow: 0px 1px 1px #444;}
-.caphgh,.caplow,.caprgt,.keyopt,.keyopf
-	{position:absolute;overflow:hidden;padding:2px;white-space:pre;text-shadow:0px 1px 1px #444;color:#fff;}
-.caphgh	{font-weight:  bold;left: 0px;top:   0px;}
-.caplow	{font-weight:  bold;left: 0px;bottom:0px;}
-.caprgt	{font-weight:  bold;right:0px;top:   0px;}
-.keyopt	{font-weight:normal;left: 0px;bottom:0em;}
-.keyopf	{font-weight:normal;left: 0px;bottom:1em;}
-.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+.keyout	{font-family:pt-sans-narrow,sans-serif;line-height:100%;font-size:smaller;position:absolute;overflow:hidden;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;box-shadow: 0px 1px 1px #444;}
+.keyhgh,.keylow,.keyrgt,.capopt,.capopf
+	{position:absolute;overflow:hidden;padding:2px;white-space:pre;text-shadow:0px 1px 1px #444;color:#000;}
+.keyhgh	{font-weight:  bold;left: 0px;top:   0px;}
+.keylow	{font-weight:  bold;left: 0px;bottom:0px;}
+.keyrgt	{font-weight:  bold;right:0px;top:   0px;}
+.keynon	{display:none;}
+.capopt	{font-weight:normal;left: 0px;bottom:0em;}
+.capopf	{font-weight:normal;left: 0px;bottom:1em;}
+.capshf,.capctl,.capalt,.capagr,.capxtr
 	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;background:transparent;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
 /* http://www.easyrgb.com/index.php?X=CALC */
-.keyshf	{color:#077BC7;}	/* CIE-L*ch ( 50, 47,270)	blue	*/
-.keyctl	{color:#028946;}	/* CIE-L*ch ( 50, 55,150)	green	*/
-.keyalt	{color:#ED0631;}	/* CIE-L*ch ( 50, 88, 30)	red	*/
-.keyagr	{color:#D403CB;}	/* CIE-L*ch ( 50, 97,330)	magenta	*/
-.keyxtr	{color:#0B848F;}	/* CIE-L*ch ( 50, 29,210)	cyan	*/
-.keyimg	{position:absolute;}
-.leggrp	{margin:4px;}
-.legcll	{}
+.capshf	{color:#077BC7;}	/* CIE-L*ch ( 50, 47,270)	blue	*/
+.capctl	{color:#028946;}	/* CIE-L*ch ( 50, 55,150)	green	*/
+.capalt	{color:#ED0631;}	/* CIE-L*ch ( 50, 88, 30)	red	*/
+.capagr	{color:#D403CB;}	/* CIE-L*ch ( 50, 97,330)	magenta	*/
+.capxtr	{color:#0B848F;}	/* CIE-L*ch ( 50, 29,210)	cyan	*/
+.capimg	{position:absolute;}
+.leggrp	{}
+.legcll	{width:1.5em;height:1.5em;margin:1px;margin-right:0.5em;}
+.legtxt	{width:12em;}
+.inbtop	{display:inline-block;vertical-align:top;}
+.inbmid	{display:inline-block;vertical-align:middle;}
+.combox	{width:22em;}
 /* http://www.easyrgb.com/index.php?X=CALC */
-.red	{background:#FC9C93;color:#000;}	/* CIE-L*ch ( 74, 40, 30) */
-.yel	{background:#CEB46C;color:#000;}	/* CIE-L*ch ( 74, 40, 90) */
-.grn	{background:#7CC690;color:#000;}	/* CIE-L*ch ( 74, 40,150) */
-.cyn	{background:#0CC9D9;color:#000;}	/* CIE-L*ch ( 74, 40,210) */
-.blu	{background:#80B9FF;color:#000;}	/* CIE-L*ch ( 74, 40,270) */
-.mag	{background:#E4A0DB;color:#000;}	/* CIE-L*ch ( 74, 40,330) */
-.wht	{background:#ffffff;color:#000;}	/* CIE-L*ch (100,  0,  0) */
-.gry	{background:#B6B6B6;color:#000;}	/* CIE-L*ch ( 74,  0,  0) */
-.blk	{background:#000000;color:#fff;}	/* CIE-L*ch (  0,  0,  0) */
-.org	{background:#ECA777;color:#000;}	/* CIE-L*ch ( 74, 40, 60) */
-.olv	{background:#A8BF75;color:#000;}	/* CIE-L*ch ( 74, 40,120) */
-.brn	{background:#685510;color:#000;}	/* CIE-L*ch ( 37, 40, 90) */
-.non	{background:#808080;color:#000;}
-.red,.yel,.grn,.cyn,.blu,.mag,.wht,.gry,.blk,.org,.olv,.brn,.non
+.capred,.legred	{background:#FC9C93;color:#fff;}	/* CIE-L*ch ( 74, 40, 30) */
+.capyel,.legyel	{background:#CEB46C;color:#fff;}	/* CIE-L*ch ( 74, 40, 90) */
+.capgrn,.leggrn	{background:#7CC690;color:#fff;}	/* CIE-L*ch ( 74, 40,150) */
+.capcyn,.legcyn	{background:#0CC9D9;color:#fff;}	/* CIE-L*ch ( 74, 40,210) */
+.capblu,.legblu	{background:#80B9FF;color:#fff;}	/* CIE-L*ch ( 74, 40,270) */
+.capmag,.legmag	{background:#E4A0DB;color:#fff;}	/* CIE-L*ch ( 74, 40,330) */
+.capwht,.legwht	{background:#ffffff;color:#000;}
+.capgry,.leggry	{background:#c0c0c0;color:#000;}
+.capblk,.legblk	{background:#404040;color:#fff;}
+.caporg,.legorg	{background:#ECA777;color:#fff;}	/* CIE-L*ch ( 74, 40, 60) */
+.capolv,.legolv	{background:#A8BF75;color:#fff;}	/* CIE-L*ch ( 74, 40,120) */
+.capbrn,.legbrn	{background:#685510;color:#fff;}	/* CIE-L*ch ( 37, 40, 90) */
+.capnon,.legnon	{background:#808080;color:#fff;}
+.capred,.capyel,.capgrn,.capcyn,.capblu,.capmag,.capwht,.capgry,.capblk,.caporg,.capolv,.capbrn,.capnon,
+.legred,.legyel,.leggrn,.legcyn,.legblu,.legmag,.legwht,.leggry,.legblk,.legorg,.legolv,.legbrn,.legnon
 	{background-image:-webkit-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image:-moz-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image:linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);}

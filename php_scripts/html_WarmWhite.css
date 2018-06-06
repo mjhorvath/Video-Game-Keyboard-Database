@@ -5,31 +5,37 @@ option	{color:#000;background:#ffffff;}
 footer	{font-size:smaller;}
 .bodiv	{position:relative;margin:1em;}
 .cut	{position:absolute;border:1px dashed #000;}
-.key	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
-.caphgh	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;left: 0px;top:   0px;}
-.caplow	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;left: 0px;bottom:0px;}
-.caprgt	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;right:0px;top:   0px;}
-.keyopt	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:normal;left: 0px;bottom:0em;}
-.keyopf	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:normal;left: 0px;bottom:1em;}
-.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+.keyout	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
+.keyhgh	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;left: 0px;top:   0px;}
+.keylow	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;left: 0px;bottom:0px;}
+.keyrgt	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;right:0px;top:   0px;}
+.keynon	{display:none;}
+.capopt	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:normal;left: 0px;bottom:0em;}
+.capopf	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:normal;left: 0px;bottom:1em;}
+.capshf,.capctl,.capalt,.capagr,.capxtr
 	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;background:transparent;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
-.keyshf	{color:#00c;}
-.keyctl	{color:#0c0;}
-.keyalt	{color:#c00;}
-.keyagr	{color:#cc0;}
-.keyxtr	{color:#0cc;}
-.keyimg	{position:absolute;}
-.leggrp	{margin:4px;}
-.red	{background:#ff6600;}
-.yel	{background:#ffcc00;}
-.grn	{background:#99cc00;}
-.cyn	{background:#00ffcc;}
-.blu	{background:#3366ff;}
-.mag	{background:#ff99cc;}
-.wht	{background:#ffffff;border:1px solid #ccc;}
-.gry	{background:#999999;}
-.blk	{background:#333333;color:#ffffff;}
-.org	{background:#cc9900;}
-.olv	{background:#999900;}
-.brn	{background:#996600;}
-.non	{background:#c0c0c0;}
+.capshf	{color:#00c;}
+.capctl	{color:#0c0;}
+.capalt	{color:#c00;}
+.capagr	{color:#cc0;}
+.capxtr	{color:#0cc;}
+.capimg	{position:absolute;}
+.leggrp	{}
+.legcll	{width:1.5em;height:1.5em;margin:1px;margin-right:0.5em;}
+.legtxt	{width:12em;}
+.inbtop	{display:inline-block;vertical-align:top;}
+.inbmid	{display:inline-block;vertical-align:middle;}
+.combox	{width:22em;}
+.capred,.legred	{background:#ff6600;border:1px solid #fff;}
+.capyel,.legyel	{background:#ffcc00;border:1px solid #fff;}
+.capgrn,.leggrn	{background:#99cc00;border:1px solid #fff;}
+.capcyn,.legcyn	{background:#00ffcc;border:1px solid #fff;}
+.capblu,.legblu	{background:#3366ff;border:1px solid #fff;}
+.capmag,.legmag	{background:#ff99cc;border:1px solid #fff;}
+.capwht,.legwht	{background:#ffffff;border:1px solid #ccc;}
+.capgry,.leggry	{background:#999999;border:1px solid #fff;}
+.capblk,.legblk	{background:#333333;border:1px solid #fff;color:#fff;}
+.caporg,.legorg	{background:#cc9900;border:1px solid #fff;}
+.capolv,.legolv	{background:#999900;border:1px solid #fff;}
+.capbrn,.legbrn	{background:#996600;border:1px solid #fff;}
+.capnon,.legnon	{background:#c0c0c0;border:1px solid #fff;}

@@ -4,34 +4,39 @@ select	{color:#fff;background:#000;border:1px solid #fff;}
 option	{color:#fff;background:#000;}
 footer	{font-size:smaller;}
 .bodiv	{position:relative;margin:1em;}
-.key	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
-.caphgh,.caplow,.caprgt,.keyopt,.keyopf
+.keyout	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
+.keyhgh,.keylow,.keyrgt,.capopt,.capopf
 	{position:absolute;overflow:hidden;padding:2px;white-space:pre;}
-.caphgh	{font-weight:  bold;left: 0px;top:   0px;}
-.caplow	{font-weight:  bold;left: 0px;bottom:0px;}
-.caprgt	{font-weight:  bold;right:0px;top:   0px;}
-.keyopt	{font-weight:normal;left: 0px;bottom:0em;}
-.keyopf	{font-weight:normal;left: 0px;bottom:1em;}
-.keyshf,.keyctl,.keyalt,.keyagr,.keyxtr
+.keyhgh	{font-weight:  bold;left: 0px;top:   0px;}
+.keylow	{font-weight:  bold;left: 0px;bottom:0px;}
+.keyrgt	{font-weight:  bold;right:0px;top:   0px;}
+.keynon	{display:none;}
+.capopt	{font-weight:normal;left: 0px;bottom:0em;}
+.capopf	{font-weight:normal;left: 0px;bottom:1em;}
+.capshf,.capctl,.capalt,.capagr,.capxtr
 	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;background:transparent;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
-.keyshf	{color:#00c;}
-.keyctl	{color:#0c0;}
-.keyalt	{color:#c00;}
-.keyagr	{color:#cc0;}
-.keyxtr	{color:#0cc;}
-.keyimg	{position:absolute;}
-.leggrp	{margin:4px;}
-.legcll	{border:1px solid #fff;}
-.red	{background:#ff6600;color:#000;}
-.yel	{background:#ffcc00;color:#000;}
-.grn	{background:#99cc00;color:#000;}
-.cyn	{background:#00ffcc;color:#000;}
-.blu	{background:#3366ff;color:#000;}
-.mag	{background:#ff99cc;color:#000;}
-.wht	{background:#ffffff;color:#000;}
-.gry	{background:#999999;color:#000;}
-.blk	{background:#333333;color:#fff;}
-.org	{background:#cc9900;color:#000;}
-.olv	{background:#999900;color:#000;}
-.brn	{background:#996600;color:#000;}
-.non	{background:#c0c0c0;color:#000;}
+.capshf	{color:#00c;}
+.capctl	{color:#0c0;}
+.capalt	{color:#c00;}
+.capagr	{color:#cc0;}
+.capxtr	{color:#0cc;}
+.capimg	{position:absolute;}
+.leggrp	{}
+.legcll	{width:1.5em;height:1.5em;margin:1px;margin-right:0.5em;}
+.legtxt	{width:12em;}
+.inbtop	{display:inline-block;vertical-align:top;}
+.inbmid	{display:inline-block;vertical-align:middle;}
+.combox	{width:22em;}
+.capred,.legred	{background:#ff6600;color:#000;}
+.capyel,.legyel	{background:#ffcc00;color:#000;}
+.capgrn,.leggrn	{background:#99cc00;color:#000;}
+.capcyn,.legcyn	{background:#00ffcc;color:#000;}
+.capblu,.legblu	{background:#3366ff;color:#000;}
+.capmag,.legmag	{background:#ff99cc;color:#000;}
+.capwht,.legwht	{background:#ffffff;color:#000;}
+.capgry,.leggry	{background:#999999;color:#000;}
+.capblk,.legblk	{background:#333333;color:#fff;}
+.caporg,.legorg	{background:#cc9900;color:#000;}
+.capolv,.legolv	{background:#999900;color:#000;}
+.capbrn,.legbrn	{background:#996600;color:#000;}
+.capnon,.legnon	{background:#c0c0c0;color:#000;}
