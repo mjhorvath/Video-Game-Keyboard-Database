@@ -67,7 +67,7 @@
 	$layout_author		= "";
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
-	$layout_title		= cleantextHTML("Keyboard Diagram");
+	$layout_title		= cleantextHTML("Video Game Keyboard Diagrams");
 	$layout_mouse		= cleantextHTML("Mouse Controls");
 	$layout_joystick	= cleantextHTML("Joystick Controls");
 	$layout_combos		= cleantextHTML("Keyboard Combinations");
@@ -374,17 +374,17 @@
 	if (($gamesrecord_author) && ($gamesrecord_author != "Michael Horvath"))
 	{
 		echo
-"Binding scheme by: " . $gamesrecord_author . ". ";
+"Binding scheme created by: " . $gamesrecord_author . ". ";
 	}
 	if (($layout_author) && ($layout_author != "Michael Horvath"))
 	{
 		echo
-"Keyboard layout by: " . $layout_author . ". ";
+"Keyboard layout created by: " . $layout_author . ". ";
 	}
 	if (($stylesrecord_author) && ($stylesrecord_author != "Michael Horvath"))
 	{
 		echo
-"Style design by: " . $stylesrecord_author . ". ";
+"Style design created by: " . $stylesrecord_author . ". ";
 	}
 ?>
 				</p>

@@ -1,4 +1,4 @@
-// Copyright (C) 2009  Michael Horvath
+// Copyright (C) 2018  Michael Horvath
 
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
@@ -14,6 +14,16 @@
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 
 // 02110-1301  USA
+
+// To do:
+// * Mouse, joystick, notes, etc. form elements do not work yet.
+// * Need to implement captcha.
+// * Need some way to actually submit the changes to the server or to me. Maybe 
+//   using the same method I use for the email form on my website.
+// * The 'Set Key' and 'Revert' buttons should be disabled until the key data 
+//   have been changed from their initial values.
+// * Need to set up the 'Image' parameter to accept image URIs.
+
 
 function init_submissions()
 {
@@ -52,73 +62,45 @@ function removeListener(element, eventName, handler) {
 }
 
 var current_id = null;
-var last_border_color = null;
-var last_bg_color = null;
 var current_values = {};
-function select_chart_key(event)
+var last_class = null;
+
+function click_on_chart_key(event)
 {
 	if (have_input_key_values_changed() == true)
 	{
-		alert("Stuff has changed. Set the key or reverse the change.");
+		alert("Stuff has changed. Set the key or revert the changes.");
 		return;
 	}
 
 	var last_id = current_id;
 	current_id = event.target.id.slice(7);
 
-	// store values
-	current_values.inp_keynum = current_id;
-	current_values.inp_keyhgh = document.getElementById('keyhgh_' + current_id).innerText;
-	current_values.inp_keylow = document.getElementById('keylow_' + current_id).innerText;
-	current_values.inp_keyrgt = document.getElementById('keyrgt_' + current_id).innerText;
-	current_values.inp_capnor = document.getElementById('capnor_' + current_id).innerText;
-	current_values.inp_capshf = document.getElementById('capshf_' + current_id).innerText;
-	current_values.inp_capctl = document.getElementById('capctl_' + current_id).innerText;
-	current_values.inp_capalt = document.getElementById('capalt_' + current_id).innerText;
-	current_values.inp_capagr = document.getElementById('capagr_' + current_id).innerText;
-	current_values.inp_capxtr = document.getElementById('capxtr_' + current_id).innerText;
-	current_values.sel_capnor = document.getElementById('capnor_' + current_id).getAttribute('color');
-	current_values.sel_capshf = document.getElementById('capshf_' + current_id).getAttribute('color');
-	current_values.sel_capctl = document.getElementById('capctl_' + current_id).getAttribute('color');
-	current_values.sel_capalt = document.getElementById('capalt_' + current_id).getAttribute('color');
-	current_values.sel_capagr = document.getElementById('capagr_' + current_id).getAttribute('color');
-	current_values.sel_capxtr = document.getElementById('capxtr_' + current_id).getAttribute('color');
-
-	// form inputs
-	document.getElementById('inp_keynum').value = current_values.inp_keynum;
-	document.getElementById('inp_keyhgh').value = current_values.inp_keyhgh;
-	document.getElementById('inp_keylow').value = current_values.inp_keylow;
-	document.getElementById('inp_keyrgt').value = current_values.inp_keyrgt;
-	document.getElementById('inp_capnor').value = current_values.inp_capnor;
-	document.getElementById('inp_capshf').value = current_values.inp_capshf;
-	document.getElementById('inp_capctl').value = current_values.inp_capctl;
-	document.getElementById('inp_capalt').value = current_values.inp_capalt;
-	document.getElementById('inp_capagr').value = current_values.inp_capagr;
-	document.getElementById('inp_capxtr').value = current_values.inp_capxtr;
-	get_caption_color('sel_capnor', current_values.sel_capnor);
-	get_caption_color('sel_capshf', current_values.sel_capshf);
-	get_caption_color('sel_capctl', current_values.sel_capctl);
-	get_caption_color('sel_capalt', current_values.sel_capalt);
-	get_caption_color('sel_capagr', current_values.sel_capagr);
-	get_caption_color('sel_capxtr', current_values.sel_capxtr);
+	capture_chart_values_into_cache();
+	set_form_values_from_cache();
 
 	// styling (could be bundled into a class and moved into a stylesheet)
 	if (last_id != null)
 	{
-		document.getElementById('keyout_' + last_id).style.borderColor = last_border_color;
-		document.getElementById('keyout_' + last_id).style.backgroundColor = last_bg_color;
-		document.getElementById('keyout_' + last_id).style.zIndex = 'initial';
-		document.getElementById('keyout_' + last_id).style.filter = 'none';
+		document.getElementById('keyout_' + last_id).className = last_class;
 	}
-	last_border_color = document.getElementById('keyout_' + current_id).style.borderColor;
-	last_bg_color = document.getElementById('keyout_' + current_id).style.backgroundColor;
-	document.getElementById('keyout_' + current_id).style.borderColor = '#eee';
-	document.getElementById('keyout_' + current_id).style.backgroundColor = '#eee';
-	document.getElementById('keyout_' + current_id).style.zIndex = '2';
-	document.getElementById('keyout_' + current_id).style.filter = 'drop-shadow(0px 0px 10px #eee)';
+	last_class = document.getElementById('keyout_' + current_id).className;
+	document.getElementById('keyout_' + current_id).className = 'keyout keysel';
 }
 
-function get_caption_color(select_id, target_value)
+function set_key()
+{
+	capture_form_values_into_cache();
+	set_chart_values_from_cache();
+}
+
+function revert_changes()
+{
+	capture_chart_values_into_cache();
+	set_form_values_from_cache();
+}
+
+function set_form_color(select_id, target_value)
 {
 	var this_select = document.getElementById(select_id);
 	var this_options = this_select.options;
@@ -132,7 +114,7 @@ function get_caption_color(select_id, target_value)
 	}
 }
 
-function check_caption_color(select_id)
+function get_form_color(select_id)
 {
 	var this_select = document.getElementById(select_id);
 	var this_options = this_select.options;
@@ -143,74 +125,136 @@ function check_caption_color(select_id)
 			return opt.value;
 		}
 	}
+	return null;
 }
 
-function set_input_key_values()
+function capture_chart_values_into_cache()
 {
-}
-function unset_input_key_values()
-{
-	if (current_id != null)
-	{
-		// text inputs
-		document.getElementById('inp_keyhgh').value = current_values.inp_keyhgh;
-		document.getElementById('inp_keylow').value = current_values.inp_keylow;
-		document.getElementById('inp_keyrgt').value = current_values.inp_keyrgt;
-		document.getElementById('inp_capnor').value = current_values.inp_capnor;
-		document.getElementById('inp_capshf').value = current_values.inp_capshf;
-		document.getElementById('inp_capctl').value = current_values.inp_capctl;
-		document.getElementById('inp_capalt').value = current_values.inp_capalt;
-		document.getElementById('inp_capagr').value = current_values.inp_capagr;
-		document.getElementById('inp_capxtr').value = current_values.inp_capxtr;
+	if (current_id == null)
+		return null;
 
-		// select inputs
-		get_caption_color('sel_capnor', current_values.sel_capnor);
-		get_caption_color('sel_capshf', current_values.sel_capshf);
-		get_caption_color('sel_capctl', current_values.sel_capctl);
-		get_caption_color('sel_capalt', current_values.sel_capalt);
-		get_caption_color('sel_capagr', current_values.sel_capagr);
-		get_caption_color('sel_capxtr', current_values.sel_capxtr);
-	}
+	current_values.val_keynum = current_id;
+	current_values.val_keyhgh = document.getElementById('keyhgh_' + current_id).getAttribute('value');
+	current_values.val_keylow = document.getElementById('keylow_' + current_id).getAttribute('value');
+	current_values.val_keyrgt = document.getElementById('keyrgt_' + current_id).getAttribute('value');
+	current_values.val_capnor = document.getElementById('capnor_' + current_id).getAttribute('value');
+	current_values.val_capshf = document.getElementById('capshf_' + current_id).getAttribute('value');
+	current_values.val_capctl = document.getElementById('capctl_' + current_id).getAttribute('value');
+	current_values.val_capalt = document.getElementById('capalt_' + current_id).getAttribute('value');
+	current_values.val_capagr = document.getElementById('capagr_' + current_id).getAttribute('value');
+	current_values.val_capxtr = document.getElementById('capxtr_' + current_id).getAttribute('value');
+	current_values.col_capnor = document.getElementById('capnor_' + current_id).getAttribute('color');
+	current_values.col_capshf = document.getElementById('capshf_' + current_id).getAttribute('color');
+	current_values.col_capctl = document.getElementById('capctl_' + current_id).getAttribute('color');
+	current_values.col_capalt = document.getElementById('capalt_' + current_id).getAttribute('color');
+	current_values.col_capagr = document.getElementById('capagr_' + current_id).getAttribute('color');
+	current_values.col_capxtr = document.getElementById('capxtr_' + current_id).getAttribute('color');
+}
+
+function capture_form_values_into_cache()
+{
+	if (current_id == null)
+		return null;
+
+	current_values.val_keynum = current_id;
+	current_values.val_keyhgh = document.getElementById('inp_keyhgh').value;
+	current_values.val_keylow = document.getElementById('inp_keylow').value;
+	current_values.val_keyrgt = document.getElementById('inp_keyrgt').value;
+	current_values.val_capnor = document.getElementById('inp_capnor').value;
+	current_values.val_capshf = document.getElementById('inp_capshf').value;
+	current_values.val_capctl = document.getElementById('inp_capctl').value;
+	current_values.val_capalt = document.getElementById('inp_capalt').value;
+	current_values.val_capagr = document.getElementById('inp_capagr').value;
+	current_values.val_capxtr = document.getElementById('inp_capxtr').value;
+	current_values.col_capnor = get_form_color('sel_capnor');
+	current_values.col_capshf = get_form_color('sel_capshf');
+	current_values.col_capctl = get_form_color('sel_capctl');
+	current_values.col_capalt = get_form_color('sel_capalt');
+	current_values.col_capagr = get_form_color('sel_capagr');
+	current_values.col_capxtr = get_form_color('sel_capxtr');
+}
+
+function set_chart_values_from_cache()
+{
+	if (current_id == null)
+		return null;
+
+	document.getElementById('keyhgh_' + current_id).innerHTML = cleantextHTML(current_values.val_keyhgh);
+	document.getElementById('keylow_' + current_id).innerHTML = cleantextHTML(current_values.val_keylow);
+	document.getElementById('keyrgt_' + current_id).innerHTML = cleantextHTML(current_values.val_keyrgt);
+	document.getElementById('capnor_' + current_id).innerHTML = cleantextHTML(current_values.val_capnor);
+	document.getElementById('capshf_' + current_id).innerHTML = cleantextHTML(current_values.val_capshf);
+	document.getElementById('capctl_' + current_id).innerHTML = cleantextHTML(current_values.val_capctl);
+	document.getElementById('capalt_' + current_id).innerHTML = cleantextHTML(current_values.val_capalt);
+	document.getElementById('capagr_' + current_id).innerHTML = cleantextHTML(current_values.val_capagr);
+	document.getElementById('capxtr_' + current_id).innerHTML = cleantextHTML(current_values.val_capxtr);
+	document.getElementById('keyhgh_' + current_id).setAttribute('value', current_values.val_keyhgh);
+	document.getElementById('keylow_' + current_id).setAttribute('value', current_values.val_keylow);
+	document.getElementById('keyrgt_' + current_id).setAttribute('value', current_values.val_keyrgt);
+	document.getElementById('capnor_' + current_id).setAttribute('value', current_values.val_capnor);
+	document.getElementById('capshf_' + current_id).setAttribute('value', current_values.val_capshf);
+	document.getElementById('capctl_' + current_id).setAttribute('value', current_values.val_capctl);
+	document.getElementById('capalt_' + current_id).setAttribute('value', current_values.val_capalt);
+	document.getElementById('capagr_' + current_id).setAttribute('value', current_values.val_capagr);
+	document.getElementById('capxtr_' + current_id).setAttribute('value', current_values.val_capxtr);
+	document.getElementById('capnor_' + current_id).setAttribute('color', current_values.col_capnor);
+	document.getElementById('capshf_' + current_id).setAttribute('color', current_values.col_capshf);
+	document.getElementById('capctl_' + current_id).setAttribute('color', current_values.col_capctl);
+	document.getElementById('capalt_' + current_id).setAttribute('color', current_values.col_capalt);
+	document.getElementById('capagr_' + current_id).setAttribute('color', current_values.col_capagr);
+	document.getElementById('capxtr_' + current_id).setAttribute('color', current_values.col_capxtr);
+
+	last_class = 'keyout cap' + current_values.col_capnor;
+}
+
+function set_form_values_from_cache()
+{
+	if (current_id == null)
+		return null;
+
+	document.getElementById('inp_keynum').value = current_values.val_keynum;
+	document.getElementById('inp_keyhgh').value = current_values.val_keyhgh;
+	document.getElementById('inp_keylow').value = current_values.val_keylow;
+	document.getElementById('inp_keyrgt').value = current_values.val_keyrgt;
+	document.getElementById('inp_capnor').value = current_values.val_capnor;
+	document.getElementById('inp_capshf').value = current_values.val_capshf;
+	document.getElementById('inp_capctl').value = current_values.val_capctl;
+	document.getElementById('inp_capalt').value = current_values.val_capalt;
+	document.getElementById('inp_capagr').value = current_values.val_capagr;
+	document.getElementById('inp_capxtr').value = current_values.val_capxtr;
+	set_form_color('sel_capnor', current_values.col_capnor);
+	set_form_color('sel_capshf', current_values.col_capshf);
+	set_form_color('sel_capctl', current_values.col_capctl);
+	set_form_color('sel_capalt', current_values.col_capalt);
+	set_form_color('sel_capagr', current_values.col_capagr);
+	set_form_color('sel_capxtr', current_values.col_capxtr);
 }
 
 function have_input_key_values_changed()
 {
-	if (current_id != null)
-	{
-		// text inputs
-		if (current_values.inp_keyhgh != document.getElementById('inp_keyhgh').value)
-			return true;
-		if (current_values.inp_keylow != document.getElementById('inp_keylow').value)
-			return true;
-		if (current_values.inp_keyrgt != document.getElementById('inp_keyrgt').value)
-			return true;
-		if (current_values.inp_capnor != document.getElementById('inp_capnor').value)
-			return true;
-		if (current_values.inp_capshf != document.getElementById('inp_capshf').value)
-			return true;
-		if (current_values.inp_capctl != document.getElementById('inp_capctl').value)
-			return true;
-		if (current_values.inp_capalt != document.getElementById('inp_capalt').value)
-			return true;
-		if (current_values.inp_capagr != document.getElementById('inp_capagr').value)
-			return true;
-		if (current_values.inp_capxtr != document.getElementById('inp_capxtr').value)
-			return true;
+	if (current_id == null)
+		return null;
 
-		// select inputs
-		if (current_values.sel_capnor != check_caption_color('sel_capnor'))
-			return true;
-		if (current_values.sel_capshf != check_caption_color('sel_capshf'))
-			return true;
-		if (current_values.sel_capctl != check_caption_color('sel_capctl'))
-			return true;
-		if (current_values.sel_capalt != check_caption_color('sel_capalt'))
-			return true;
-		if (current_values.sel_capagr != check_caption_color('sel_capagr'))
-			return true;
-		if (current_values.sel_capxtr != check_caption_color('sel_capxtr'))
-			return true;
-	}
+	if
+	(
+		(current_values.val_keyhgh != document.getElementById('inp_keyhgh').value) ||
+		(current_values.val_keylow != document.getElementById('inp_keylow').value) ||
+		(current_values.val_keyrgt != document.getElementById('inp_keyrgt').value) ||
+		(current_values.val_capnor != document.getElementById('inp_capnor').value) ||
+		(current_values.val_capshf != document.getElementById('inp_capshf').value) ||
+		(current_values.val_capctl != document.getElementById('inp_capctl').value) ||
+		(current_values.val_capalt != document.getElementById('inp_capalt').value) ||
+		(current_values.val_capagr != document.getElementById('inp_capagr').value) ||
+		(current_values.val_capxtr != document.getElementById('inp_capxtr').value) ||
+		(current_values.col_capnor != get_form_color('sel_capnor')) ||
+		(current_values.col_capshf != get_form_color('sel_capshf')) ||
+		(current_values.col_capctl != get_form_color('sel_capctl')) ||
+		(current_values.col_capalt != get_form_color('sel_capalt')) ||
+		(current_values.col_capagr != get_form_color('sel_capagr')) ||
+		(current_values.col_capxtr != get_form_color('sel_capxtr'))
+	)
+		return true;
+
 	return false;
 }
 
@@ -222,7 +266,7 @@ function add_chart_key_events()
 		var target_element = document.getElementById('keyout_' + i);
 		if (target_element != null)
 		{
-			addListener(target_element, 'click', select_chart_key);
+			addListener(target_element, 'click', click_on_chart_key);
 		}
 	}
 }
@@ -239,6 +283,7 @@ function toggle_side_pane()
 		document.getElementById('side_min').style.display = 'none';
 		document.getElementById('side_max').style.left = '0em';
 		document.getElementById('side_min').style.left = '0em';
+		document.getElementById('side_hlp').style.left = '0em';
 		document.getElementsByTagName('body')[0].style.marginLeft = '0em';
 		side_pane_expanded = false;
 	}
@@ -251,9 +296,22 @@ function toggle_side_pane()
 		document.getElementById('side_min').style.display = 'block';
 		document.getElementById('side_max').style.left = '20em';
 		document.getElementById('side_min').style.left = '20em';
+		document.getElementById('side_hlp').style.left = '20em';
 		document.getElementsByTagName('body')[0].style.marginLeft = '20em';
 		side_pane_expanded = true;
 	}
+}
+
+// add new escape entities as needed
+function cleantextHTML(in_string)
+{
+	return in_string.replace(/\&/g,"&amp;").replace(/\>/g,"&gt;").replace(/\</g,"&lt;").replace(/\\\\n/g,"<br>");
+}
+
+// needs work
+function cleantextJS(in_string)
+{
+	return in_string.replace("<br>","\\\\n").replace("&lt;","<").replace("&gt;",">").replace("&amp;","&");
 }
 
 function does_not_work_yet()

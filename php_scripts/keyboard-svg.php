@@ -62,7 +62,7 @@
 	$layout_author		= "";
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
-	$layout_title		= cleantextSVG("Keyboard Diagram");
+	$layout_title		= cleantextSVG("Video Game Keyboard Diagrams");
 	$layout_mouse		= cleantextSVG("Mouse Controls");
 	$layout_joystick	= cleantextSVG("Joystick Controls");
 	$layout_combos		= cleantextSVG("Keyboard Combinations");

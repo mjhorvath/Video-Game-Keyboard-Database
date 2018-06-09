@@ -144,6 +144,28 @@
 			}
 		}
 	}
+	function print_key_html($in_id, $in_class, $in_color, $in_value, $in_clean_value)
+	{
+		global $write_maximal_keys;
+		if ($write_maximal_keys == true)
+		{
+			if ($in_color == null)
+			{
+				echo
+"						<div id=\"" . $in_id . "\" class=\"" . $in_class . "\" value=\"" . $in_value . "\">" . $in_clean_value . "</div>\n";
+			}
+			else
+			{
+				echo
+"						<div id=\"" . $in_id . "\" class=\"" . $in_class . "\" color=\"" . $in_color . "\" value=\"" . $in_value . "\">" . $in_clean_value . "</div>\n";
+			}
+		}
+		else
+		{
+			echo
+"						<div id=\"" . $in_id . "\" class=\"" . $in_class . "\">" . $in_clean_value . "</div>\n";
+		}
+	}
 	function cleantextHTML($instring)
 	{
 		return str_replace("\\t","\t",str_replace("\\r","",str_replace("\\n","<br/>",str_replace("\r","",str_replace("\n","",str_replace("<","&lt;",str_replace(">","&gt;",str_replace("&","&amp;",$instring))))))));

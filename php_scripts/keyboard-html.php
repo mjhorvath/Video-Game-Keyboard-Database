@@ -41,8 +41,7 @@
 	$fix_url		= false;
 	$php_url		= "";
 	$svg_url		= "";
-	$write_empty_boxes	= true;
-	$write_debug_events	= false;
+	$write_maximal_keys	= true;
 	$stylegroup_id		= 0;
 	$position_table		= [];
 	$keystyle_table		= [];
@@ -72,7 +71,7 @@
 	$layout_author		= "";
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
-	$layout_title		= cleantextHTML("Keyboard Diagram");
+	$layout_title		= cleantextHTML("Video Game Keyboard Diagrams");
 	$layout_mouse		= cleantextHTML("Mouse Controls");
 	$layout_joystick	= cleantextHTML("Joystick Controls");
 	$layout_combos		= cleantextHTML("Keyboard Combinations");
@@ -345,9 +344,9 @@
 				$pos_top	= $position_row[1] + $layout_keygap/2;
 				$pos_wid	= $position_row[2] - $layout_keygap;		// 4
 				$pos_hgh	= $position_row[3] - $layout_keygap;
-				$key_low	= cleantextHTML($position_row[4]);
-				$key_hgh	= cleantextHTML($position_row[5]);
-				$key_rgt	= cleantextHTML($position_row[6]);
+				$key_low	= $position_row[4];
+				$key_hgh	= $position_row[5];
+				$key_rgt	= $position_row[6];
 				$key_opt	= $position_row[8];
 				$img_wid	= 48;
 				$img_hgh	= 48;
@@ -357,17 +356,17 @@
 				{
 					$binding_row	= $binding_table[$i];
 					$bkg_nor = getcolor($binding_row[0]);
-					$cap_nor = cleantextHTML($binding_row[1]);
+					$cap_nor = $binding_row[1];
 					$bkg_shf = getcolor($binding_row[2]);
-					$cap_shf = cleantextHTML($binding_row[3]);
+					$cap_shf = $binding_row[3];
 					$bkg_ctl = getcolor($binding_row[4]);
-					$cap_ctl = cleantextHTML($binding_row[5]);
+					$cap_ctl = $binding_row[5];
 					$bkg_alt = getcolor($binding_row[6]);
-					$cap_alt = cleantextHTML($binding_row[7]);
+					$cap_alt = $binding_row[7];
 					$bkg_agr = getcolor($binding_row[8]);
-					$cap_agr = cleantextHTML($binding_row[9]);
+					$cap_agr = $binding_row[9];
 					$bkg_xtr = getcolor($binding_row[10]);
-					$cap_xtr = cleantextHTML($binding_row[11]);
+					$cap_xtr = $binding_row[11];
 					$img_fil = $binding_row[12];
 					$img_uri = $binding_row[14];
 				}
@@ -388,17 +387,9 @@
 					$img_fil = "";
 					$img_uri = "";
 				}
-
-				if ($write_debug_events == true)
-				{
-					echo
+				// key outer container
+				echo
 "					<div id=\"keyout_" . $i . "\" class=\"keyout cap" . $bkg_nor . " " . $key_sty . "\" style=\"left:" . $pos_lft . "px;top:" . $pos_top . "px;width:" . $pos_wid . "px;height:" . $pos_hgh . "px;background-size:auto;\">\n";
-				}
-				else
-				{
-					echo
-"					<div id=\"keyout_" . $i . "\" class=\"keyout cap" . $bkg_nor . " " . $key_sty . "\" style=\"left:" . $pos_lft . "px;top:" . $pos_top . "px;width:" . $pos_wid . "px;height:" . $pos_hgh . "px;background-size:auto;\">\n";
-				}
 				// icon images
 				if ($img_fil)
 				{
@@ -406,67 +397,56 @@
 "						<img id=\"capimg_" . $i . "\" class=\"capimg\" style=\"left:" . $img_pos_x . "px;top:" . $img_pos_y . "px;width:" . $img_wid . "px;height:" . $img_hgh . "px;\" src=\"" . $img_uri . "\"/>\n";
 				}
 				// key characters
-				if (($key_hgh != "") || ($write_empty_boxes == true))
+				if (($key_hgh != "") || ($write_maximal_keys == true))
 				{
-					echo
-"						<div id=\"keyhgh_" . $i . "\" class=\"keyhgh\">" . $key_hgh . "</div>\n";
+					print_key_html("keyhgh_" . $i, "keyhgh", null, $key_hgh, cleantextHTML($key_hgh));
 				}
-				if (($key_low != "") || ($write_empty_boxes == true))
+				if (($key_low != "") || ($write_maximal_keys == true))
 				{
 					if ($key_opt == false)
 					{
-						echo
-"						<div id=\"keylow_" . $i . "\" class=\"keylow\">" . $key_low . "</div>\n";
+						print_key_html("keylow_" . $i, "keylow", null, $key_low, cleantextHTML($key_low));
 					}
 					else
 					{
-						echo
-"						<div id=\"keylow_" . $i . "\" class=\"keynon\">" . $key_low . "</div>\n";
+						print_key_html("keylow_" . $i, "keynon", null, $key_low, cleantextHTML($key_low));
 					}
 				}
-				if (($key_rgt != "") || ($write_empty_boxes == true))
+				if (($key_rgt != "") || ($write_maximal_keys == true))
 				{
-					echo
-"						<div id=\"keyrgt_" . $i . "\" class=\"keyrgt\">" . $key_rgt . "</div>\n";
+					print_key_html("keyrgt_" . $i, "keyrgt", null, $key_rgt, cleantextHTML($key_rgt));
 				}
 				// key captions
-				if (($cap_nor != "") || ($write_empty_boxes == true))
+				if (($cap_nor != "") || ($write_maximal_keys == true))
 				{
 					if ($key_opt == false)
 					{
-						echo
-"						<div id=\"capnor_" . $i . "\" class=\"capopf\" color=\"" . $bkg_nor . "\">" . $cap_nor . "</div>\n";
+						print_key_html("capnor_" . $i, "capopf", $bkg_nor, $cap_nor, cleantextHTML($cap_nor));
 					}
 					else
 					{
-						echo
-"						<div id=\"capnor_" . $i . "\" class=\"capopt\" color=\"" . $bkg_nor . "\">" . $cap_nor . "</div>\n";
+						print_key_html("capnor_" . $i, "capopt", $bkg_nor, $cap_nor, cleantextHTML($cap_nor));
 					}
 				}
-				if (($cap_shf != "") || ($write_empty_boxes == true))
+				if (($cap_shf != "") || ($write_maximal_keys == true))
 				{
-					echo
-"						<div id=\"capshf_" . $i . "\" class=\"capshf\" color=\"" . $bkg_shf . "\">" . $cap_shf . "</div>\n";
+					print_key_html("capshf_" . $i, "capshf", $bkg_shf, $cap_shf, cleantextHTML($cap_shf));
 				}
-				if (($cap_ctl != "") || ($write_empty_boxes == true))
+				if (($cap_ctl != "") || ($write_maximal_keys == true))
 				{
-					echo
-"						<div id=\"capctl_" . $i . "\" class=\"capctl\" color=\"" . $bkg_ctl . "\">" . $cap_ctl . "</div>\n";
+					print_key_html("capctl_" . $i, "capctl", $bkg_ctl, $cap_ctl, cleantextHTML($cap_ctl));
 				}
-				if (($cap_alt != "") || ($write_empty_boxes == true))
+				if (($cap_alt != "") || ($write_maximal_keys == true))
 				{
-					echo
-"						<div id=\"capalt_" . $i . "\" class=\"capalt\" color=\"" . $bkg_alt . "\">" . $cap_alt . "</div>\n";
+					print_key_html("capalt_" . $i, "capalt", $bkg_alt, $cap_alt, cleantextHTML($cap_alt));
 				}
-				if (($cap_agr != "") || ($write_empty_boxes == true))
+				if (($cap_agr != "") || ($write_maximal_keys == true))
 				{
-					echo
-"						<div id=\"capagr_" . $i . "\" class=\"capagr\" color=\"" . $bkg_agr . "\">" . $cap_agr . "</div>\n";
+					print_key_html("capagr_" . $i, "capagr", $bkg_agr, $cap_agr, cleantextHTML($cap_agr));
 				}
-				if (($cap_xtr != "") || ($write_empty_boxes == true))
+				if (($cap_xtr != "") || ($write_maximal_keys == true))
 				{
-					echo
-"						<div id=\"capxtr_" . $i . "\" class=\"capxtr\" color=\"" . $bkg_xtr . "\">" . $cap_xtr . "</div>\n";
+					print_key_html("capxtr_" . $i, "capxtr", $bkg_xtr, $cap_xtr, cleantextHTML($cap_xtr));
 				}
 				echo
 "					</div>\n";
@@ -621,17 +601,17 @@
 	if (($gamesrecord_author) && ($gamesrecord_author != "Michael Horvath"))
 	{
 		echo
-"Binding scheme by: " . $gamesrecord_author . ". ";
+"Binding scheme created by: " . $gamesrecord_author . ". ";
 	}
 	if (($layout_author) && ($layout_author != "Michael Horvath"))
 	{
 		echo
-"Keyboard layout by: " . $layout_author . ". ";
+"Keyboard layout created by: " . $layout_author . ". ";
 	}
 	if (($stylesrecord_author) && ($stylesrecord_author != "Michael Horvath"))
 	{
 		echo
-"Style design by: " . $stylesrecord_author . ". ";
+"Style design created by: " . $stylesrecord_author . ". ";
 	}
 ?>
 				</p>
