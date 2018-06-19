@@ -20,22 +20,25 @@ footer	{font-size:smaller;}
 .capagr	{color:#cc0;}
 .capxtr	{color:#0cc;}
 .capimg	{position:absolute;}
-.leggrp	{}
-.legcll	{width:1.5em;height:1.5em;margin:1px;margin-right:0.5em;}
+.legtbl	{display:table;border-collapse:separate;border-spacing:2px;}
+.legrow	{display:table-row;}
+.legcll	{display:table-cell;padding:1px;vertical-align:middle;}
 .legtxt	{width:12em;}
 .inbtop	{display:inline-block;vertical-align:top;}
 .inbmid	{display:inline-block;vertical-align:middle;}
 .combox	{width:22em;}
-.capred,.legred	{background:#ff6600;border:1px solid #fff;}
-.capyel,.legyel	{background:#ffcc00;border:1px solid #fff;}
-.capgrn,.leggrn	{background:#99cc00;border:1px solid #fff;}
-.capcyn,.legcyn	{background:#00ffcc;border:1px solid #fff;}
-.capblu,.legblu	{background:#3366ff;border:1px solid #fff;}
-.capmag,.legmag	{background:#ff99cc;border:1px solid #fff;}
-.capwht,.legwht	{background:#ffffff;border:1px solid #ccc;}
-.capgry,.leggry	{background:#999999;border:1px solid #fff;}
-.capblk,.legblk	{background:#333333;border:1px solid #fff;color:#fff;}
-.caporg,.legorg	{background:#cc9900;border:1px solid #fff;}
-.capolv,.legolv	{background:#999900;border:1px solid #fff;}
-.capbrn,.legbrn	{background:#996600;border:1px solid #fff;}
-.capnon,.legnon	{background:#c0c0c0;border:1px solid #fff;}
+.capred,.legred,.selred	{background:#ff6600;border:1px solid #fff;}
+.capyel,.legyel,.selyel	{background:#ffcc00;border:1px solid #fff;}
+.capgrn,.leggrn,.selgrn	{background:#99cc00;border:1px solid #fff;}
+.capcyn,.legcyn,.selcyn	{background:#00ffcc;border:1px solid #fff;}
+.capblu,.legblu,.selblu	{background:#3366ff;border:1px solid #fff;}
+.capmag,.legmag,.selmag	{background:#ff99cc;border:1px solid #fff;}
+.capwht,.legwht,.selwht	{background:#ffffff;border:1px solid #ccc;}
+.capgry,.leggry,.selgry	{background:#999999;border:1px solid #fff;}
+.capblk,.legblk,.selblk	{background:#333333;border:1px solid #fff;color:#fff;}
+.caporg,.legorg,.selorg	{background:#cc9900;border:1px solid #fff;}
+.capolv,.legolv,.selolv	{background:#999900;border:1px solid #fff;}
+.capbrn,.legbrn,.selbrn	{background:#996600;border:1px solid #fff;}
+.capnon,.legnon,.selnon	{background:#c0c0c0;border:1px solid #fff;}
+.legred,.legyel,.leggrn,.legcyn,.legblu,.legmag,.legwht,.leggry,.legblk,.legorg,.legolv,.legbrn,.legnon
+	{text-align:center;width:1.25em;height:1.25em;}

@@ -1,5 +1,5 @@
 <?php
-	// Copyright (C) 2009  Michael Horvath
+	// Copyright (C) 2018  Michael Horvath
 
 	// This library is free software; you can redistribute it and/or
 	// modify it under the terms of the GNU Lesser General Public
@@ -18,95 +18,107 @@
 
 	function callProcedure0(&$connection, $procname, $dofunction)
 	{
-		mysqli_multi_query($connection, "CALL " . $procname . "();");
+		$query_string = "CALL " . $procname . "();";
 		$first_result = 1;
-		do
+		if (mysqli_multi_query($connection, $query_string))
 		{
-			$query_result = mysqli_store_result($connection);
-			if ($query_result)
+			do
 			{
-				if ($first_result)
+				$query_result = mysqli_store_result($connection);
+				if ($query_result)
 				{
-					call_user_func($dofunction, $query_result);
-					$first_result = 0;
+					if ($first_result)
+					{
+						call_user_func($dofunction, $query_result);
+						$first_result = 0;
+					}
+					mysqli_free_result($query_result);
 				}
-				mysqli_free_result($query_result);
-			}
-//			else
-//			{
-//			    printf("Error: %s<br/>", mysqli_error($connection));
-//			}
-			$query_result = NULL;
-		} while(mysqli_next_result($connection));
+//				else
+//				{
+//				    printf("Error: %s<br/>", mysqli_error($connection));
+//				}
+				$query_result = null;
+			} while(mysqli_more_results($connection) && mysqli_next_result($connection));
+		}
 	}
 	function callProcedure1($connection, $procname, $dofunction, $in_param1)
 	{
-		mysqli_multi_query($connection, "CALL " . $procname . "(" . $in_param1 . ");");
+		$query_string = "CALL " . $procname . "(" . $in_param1 . ");";
 		$first_result = 1;
-		do
+		if (mysqli_multi_query($connection, $query_string))
 		{
-			$query_result = mysqli_store_result($connection);
-			if ($query_result)
+			do
 			{
-				if ($first_result)
+				$query_result = mysqli_store_result($connection);
+				if ($query_result)
 				{
-					call_user_func($dofunction, $query_result);
-					$first_result = 0;
+					if ($first_result)
+					{
+						call_user_func($dofunction, $query_result);
+						$first_result = 0;
+					}
+					mysqli_free_result($query_result);
 				}
-				mysqli_free_result($query_result);
-			}
-//			else
-//			{
-//			    printf("Error: %s<br/>", mysqli_error($connection));
-//			}
-			$query_result = NULL;
-		} while(mysqli_next_result($connection));
+//				else
+//				{
+//				    printf("Error: %s<br/>", mysqli_error($connection));
+//				}
+				$query_result = null;
+			} while(mysqli_more_results($connection) && mysqli_next_result($connection));
+		}
 	}
 	function callProcedure2($connection, $procname, $dofunction, $in_param1, $in_param2)
 	{
-		mysqli_multi_query($connection, "CALL " . $procname . "(" . $in_param1 . "," . $in_param2 . ");");
+		$query_string = "CALL " . $procname . "(" . $in_param1 . "," . $in_param2 . ");";
 		$first_result = 1;
-		do
+		if (mysqli_multi_query($connection, $query_string))
 		{
-			$query_result = mysqli_store_result($connection);
-			if ($query_result)
+			do
 			{
-				if ($first_result)
+				$query_result = mysqli_store_result($connection);
+				if ($query_result)
 				{
-					call_user_func($dofunction, $query_result);
-					$first_result = 0;
+					if ($first_result)
+					{
+						call_user_func($dofunction, $query_result);
+						$first_result = 0;
+					}
+					mysqli_free_result($query_result);
 				}
-				mysqli_free_result($query_result);
-			}
-//			else
-//			{
-//			    printf("Error: %s<br/>", mysqli_error($connection));
-//			}
-			$query_result = NULL;
-		} while(mysqli_next_result($connection));
+//				else
+//				{
+//				    printf("Error: %s<br/>", mysqli_error($connection));
+//				}
+				$query_result = null;
+			} while(mysqli_more_results($connection) && mysqli_next_result($connection));
+		}
 	}
 	function callProcedure1Txt($connection, $procname, $dofunction, $in_param1)
 	{
-		mysqli_multi_query($connection, "CALL " . $procname . "('" . $in_param1 . "');");
+		$query_string = "CALL " . $procname . "('" . $in_param1 . "');";
 		$first_result = 1;
-		do
+		if (mysqli_multi_query($connection, $query_string))
 		{
-			$query_result = mysqli_store_result($connection);
-			if ($query_result)
+			do
 			{
-				if ($first_result)
+				$query_result = mysqli_store_result($connection);
+				if ($query_result)
 				{
-					call_user_func($dofunction, $query_result);
-					$first_result = 0;
+					if ($first_result)
+					{
+						call_user_func($dofunction, $query_result);
+						$first_result = 0;
+					}
+					mysqli_free_result($query_result);
 				}
-				mysqli_free_result($query_result);
-			}
-//			else
-//			{
-//			    printf("Error: %s<br/>", mysqli_error($connection));
-//			}
-			$query_result = NULL;
-		} while(mysqli_next_result($connection));
+//				else
+//				{
+//				    printf("Error: %s<br/>", mysqli_error($connection));
+//				}
+				$query_result = null;
+			} while(mysqli_more_results($connection) && mysqli_next_result($connection));
+		}
 	}
 	// legacy code - do not delete
 	function seo_url($input)
@@ -144,37 +156,24 @@
 			}
 		}
 	}
-	function print_key_html($in_id, $in_class, $in_color, $in_value, $in_clean_value)
+	function print_key_html($in_id, $in_class, $in_color, $in_value)
 	{
-		global $write_maximal_keys;
-		if ($write_maximal_keys == true)
-		{
-			if ($in_color == null)
-			{
-				echo
-"						<div id=\"" . $in_id . "\" class=\"" . $in_class . "\" value=\"" . $in_value . "\">" . $in_clean_value . "</div>\n";
-			}
-			else
-			{
-				echo
-"						<div id=\"" . $in_id . "\" class=\"" . $in_class . "\" color=\"" . $in_color . "\" value=\"" . $in_value . "\">" . $in_clean_value . "</div>\n";
-			}
-		}
-		else
-		{
-			echo
-"						<div id=\"" . $in_id . "\" class=\"" . $in_class . "\">" . $in_clean_value . "</div>\n";
-		}
+		echo
+"						<div id=\"" . $in_id . "\" class=\"" . $in_class . "\">" . cleantextHTML($in_value) . "</div>\n";
 	}
 	function cleantextHTML($instring)
 	{
-		return str_replace("\\t","\t",str_replace("\\r","",str_replace("\\n","<br/>",str_replace("\r","",str_replace("\n","",str_replace("<","&lt;",str_replace(">","&gt;",str_replace("&","&amp;",$instring))))))));
+		return str_replace("\\t","\t",str_replace("\\r","",str_replace("\\n","<br/>",str_replace("\r","",str_replace("\n","",str_replace("<","&lt;",str_replace(">","&gt;",str_replace("\"","&quot;",str_replace("'","&#39;",str_replace("&","&amp;",$instring))))))))));
 	}
 	function cleantextSVG($instring)
 	{
-		return str_replace("\\t","\t",str_replace("\\r","",str_replace("\\n","\n",str_replace("\r","",str_replace("\n","",str_replace("<","&lt;",str_replace(">","&gt;",str_replace("&","&amp;",$instring))))))));
+		return str_replace("\\t","\t",str_replace("\\r","",str_replace("\\n","\n",str_replace("\r","",str_replace("\n","",str_replace("<","&lt;",str_replace(">","&gt;",str_replace("\"","&quot;",str_replace("'","&#39;",str_replace("&","&amp;",$instring))))))))));
 	}
-	function cleantextcode($instring)
+	function cleantextJS($instring)
+	{
+		return str_replace("\"","\\\"",str_replace("\\","\\\\",$instring));
+	}
+	function cleantextWiki($instring)
 	{
 		return str_replace("\\t","\t",str_replace("\\n","&lt;br/&gt;",str_replace("&","&amp;",$instring)));
 	}
@@ -244,6 +243,15 @@
 	}
 	function checkLayout($in_layout_id)
 	{
+	}
+
+	// outputs e.g.  somefile.txt was last modified: December 29 2002 22:16:23.
+	function getFileTime($in_file)
+	{
+		if (file_exists($in_file))
+		{
+			echo "Last modified: " . date ("F d Y H:i:s.", filemtime($in_file));
+		}
 	}
 
 	$word_part1 = ["keyboard","video game","software","printable","graphical","visual"];

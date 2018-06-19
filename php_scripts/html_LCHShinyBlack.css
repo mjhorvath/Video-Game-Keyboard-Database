@@ -31,26 +31,29 @@ a:hover,a:active
 .capagr	{color:#D403CB;}	/* CIE-L*ch ( 50, 97,330)	magenta	*/
 .capxtr	{color:#0B848F;}	/* CIE-L*ch ( 50, 29,210)	cyan	*/
 .capimg	{position:absolute;}
-.leggrp	{}
-.legcll	{width:1.5em;height:1.5em;margin:1px;margin-right:0.5em;}
+.legtbl	{display:table;border-collapse:separate;border-spacing:2px;}
+.legrow	{display:table-row;}
+.legcll	{display:table-cell;padding:1px;vertical-align:middle;}
 .legtxt	{width:12em;}
 .inbtop	{display:inline-block;vertical-align:top;}
 .inbmid	{display:inline-block;vertical-align:middle;}
 .combox	{width:22em;}
 /* http://www.easyrgb.com/index.php?X=CALC */
-.capred,.legred	{background:#FC9C93;color:#000;}	/* CIE-L*ch ( 74, 40, 30) */
-.capyel,.legyel	{background:#CEB46C;color:#000;}	/* CIE-L*ch ( 74, 40, 90) */
-.capgrn,.leggrn	{background:#7CC690;color:#000;}	/* CIE-L*ch ( 74, 40,150) */
-.capcyn,.legcyn	{background:#0CC9D9;color:#000;}	/* CIE-L*ch ( 74, 40,210) */
-.capblu,.legblu	{background:#80B9FF;color:#000;}	/* CIE-L*ch ( 74, 40,270) */
-.capmag,.legmag	{background:#E4A0DB;color:#000;}	/* CIE-L*ch ( 74, 40,330) */
-.capwht,.legwht	{background:#ffffff;color:#000;}
-.capgry,.leggry	{background:#c0c0c0;color:#000;}
-.capblk,.legblk	{background:#404040;color:#fff;}
-.caporg,.legorg	{background:#ECA777;color:#000;}	/* CIE-L*ch ( 74, 40, 60) */
-.capolv,.legolv	{background:#A8BF75;color:#000;}	/* CIE-L*ch ( 74, 40,120) */
-.capbrn,.legbrn	{background:#685510;color:#000;}	/* CIE-L*ch ( 37, 40, 90) */
-.capnon,.legnon	{background:#808080;color:#000;}
+.capred,.legred,.selred	{background:#FC9C93;color:#000;}	/* CIE-L*ch ( 74, 40, 30) */
+.capyel,.legyel,.selyel	{background:#CEB46C;color:#000;}	/* CIE-L*ch ( 74, 40, 90) */
+.capgrn,.leggrn,.selgrn	{background:#7CC690;color:#000;}	/* CIE-L*ch ( 74, 40,150) */
+.capcyn,.legcyn,.selcyn	{background:#0CC9D9;color:#000;}	/* CIE-L*ch ( 74, 40,210) */
+.capblu,.legblu,.selblu	{background:#80B9FF;color:#000;}	/* CIE-L*ch ( 74, 40,270) */
+.capmag,.legmag,.selmag	{background:#E4A0DB;color:#000;}	/* CIE-L*ch ( 74, 40,330) */
+.capwht,.legwht,.selwht	{background:#ffffff;color:#000;}
+.capgry,.leggry,.selgry	{background:#c0c0c0;color:#000;}
+.capblk,.legblk,.selblk	{background:#404040;color:#fff;}
+.caporg,.legorg,.selorg	{background:#ECA777;color:#000;}	/* CIE-L*ch ( 74, 40, 60) */
+.capolv,.legolv,.selolv	{background:#A8BF75;color:#000;}	/* CIE-L*ch ( 74, 40,120) */
+.capbrn,.legbrn,.selbrn	{background:#685510;color:#000;}	/* CIE-L*ch ( 37, 40, 90) */
+.capnon,.legnon,.selnon	{background:#808080;color:#000;}
 .capred,.capyel,.capgrn,.capcyn,.capblu,.capmag,.capwht,.capgry,.capblk,.caporg,.capolv,.capbrn,.capnon,
 .legred,.legyel,.leggrn,.legcyn,.legblu,.legmag,.legwht,.leggry,.legblk,.legorg,.legolv,.legbrn,.legnon
 	{background-image:-webkit-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image:-moz-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image:linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);}
+.legred,.legyel,.leggrn,.legcyn,.legblu,.legmag,.legwht,.leggry,.legblk,.legorg,.legolv,.legbrn,.legnon
+		{text-align:center;width:1.25em;height:1.25em;}

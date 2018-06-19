@@ -1,19 +1,19 @@
 --VOLATILE!!!
 
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Website\\Keyboard\\data\\_bindings.txt' INTO TABLE isometr1_keyboard.bindings
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Website\\Keyboard\\sqltools\\_bindings.txt' INTO TABLE isometr1_keyboard.bindings
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n';
 
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Website\\Keyboard\\data\\_commands.txt' INTO TABLE isometr1_keyboard.commands
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Website\\Keyboard\\sqltools\\_commands.txt' INTO TABLE isometr1_keyboard.commands
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n';
 
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Website\\Keyboard\\data\\_legends.txt' INTO TABLE isometr1_keyboard.legends
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Website\\Keyboard\\sqltools\\_legends.txt' INTO TABLE isometr1_keyboard.legends
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n';

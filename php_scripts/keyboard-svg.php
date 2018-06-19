@@ -1,5 +1,5 @@
 <?php
-	// Copyright (C) 2009  Michael Horvath
+	// Copyright (C) 2018  Michael Horvath
 
 	// This library is free software; you can redistribute it and/or
 	// modify it under the terms of the GNU Lesser General Public
@@ -34,16 +34,16 @@
 
 	mysqli_query($con, "SET NAMES 'utf8'");
 
-	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : "";
+	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : null;
 	$game_id		= array_key_exists("gam", $_GET) ? intval(ltrim($_GET["gam"], "0")) : null;
-	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : 15;
-	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : 1;
-	$format_id		= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0")) : 0;
+	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : null;
+	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : null;
+	$format_id		= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0")) : null;
 	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
 	$fix_url		= false;
 	$svg_url		= "";
 	$stylegroup_id		= 0;
-	$legend_number		= 12;
+	$legend_count		= 12;
 	$position_table		= [];
 	$keystyle_table		= [];
 	$binding_table		= [];
@@ -63,27 +63,52 @@
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
 	$layout_title		= cleantextSVG("Video Game Keyboard Diagrams");
+	$layout_combo		= cleantextSVG("Keyboard Combinations");
 	$layout_mouse		= cleantextSVG("Mouse Controls");
 	$layout_joystick	= cleantextSVG("Joystick Controls");
-	$layout_combos		= cleantextSVG("Keyboard Combinations");
-	$layout_notes		= cleantextSVG("Additional Notes");
+	$layout_note		= cleantextSVG("Additional Notes");
+	$layout_cheat		= cleantextSVG("Cheat Codes");
+	$layout_console		= cleantextSVG("Console Commands");
+	$layout_emote		= cleantextSVG("Chat Commands/Emotes");
 	$layout_description	= cleantextSVG("Keyboard hotkey & binding chart for ");
 	$layout_keywords	= cleantextSVG("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
 
 	// validity checks
 	if ($game_id === null)
 	{
-		callProcedure1Txt($con, "get_games_friendly_chart", "doGamesSEO", $game_seo);
-//		echo "game_seo = " . $game_seo . "\n";
-//		echo "game_id = " . $game_id . "\n";
+		if ($game_seo !== null)
+		{
+			callProcedure1Txt($con, "get_games_friendly_chart", "doGamesSEO", $game_seo);
+		}
+		else
+		{
+			$game_id = 1;
+		}
 	}
-	else
+	if ($game_seo === null)
 	{
 		$fix_url = true;
 	}
-	if ($svg_bool !== null)
+	if ($style_id === null)
 	{
-		$format_id = $svg_bool;
+		$style_id = 15;
+		$fix_url = true;
+	}
+	if ($layout_id === null)
+	{
+		$layout_id = 1;
+		$fix_url = true;
+	}
+	if ($format_id === null)
+	{
+		if ($svg_bool !== null)
+		{
+			$format_id = $svg_bool;
+		}
+		else
+		{
+			$format_id = 1;
+		}
 		$fix_url = true;
 	}
 
@@ -117,6 +142,7 @@
 		global $legend_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
+			// legend_group, legend_description
 			$legend_table[] = $temp_row;
 		}
 	}
@@ -616,8 +642,8 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		<rect class="bakalt" x="1.0" y="27" width="67" height="12" rx="1" ry="1"></rect>
 		<text class="capalt hang" x="65.5" y="37">Alt</text>
 		<text class="capnor txtnon ideo" x="2.5" y="50.5">Caption</text>
-		<text class="keylow txtnon" x="2.5" y="64.5">Lowkey</text>
-		<text class="keyhgh txtnon" x="2.5" y="13.5">Upkey</text>
+		<text class="keylow txtnon" x="2.5" y="64.5">Lowcase</text>
+		<text class="keyhgh txtnon" x="2.5" y="13.5">Upcase</text>
 	</svg>
 	<svg class="leg" x="101.5" y="501.5" width="1000" height="300">
 <?php	// legend

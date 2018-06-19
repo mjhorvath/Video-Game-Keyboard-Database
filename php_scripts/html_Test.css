@@ -36,24 +36,27 @@ footer	{font-size:smaller;}
 .capagr	{color:#ffa0ff;}
 .capxtr	{color:#a0ffff;}
 .capimg	{position:absolute;top:12px;left:12px;width:48px;height:48px;}
-.leggrp	{}
-.legcll	{width:1.5em;height:1.5em;margin:1px;margin-right:0.5em;}
+.legtbl	{display:table;border-collapse:separate;border-spacing:2px;}
+.legrow	{display:table-row;}
+.legcll	{display:table-cell;padding:1px;vertical-align:middle;}
 .legtxt	{width:12em;}
 .inbtop	{display:inline-block;vertical-align:top;}
 .inbmid	{display:inline-block;vertical-align:middle;}
 .combox	{width:22em;}
-.capred,.legred	{background:#e02020;}
-.capyel,.legyel	{background:#e0e020;}
-.capgrn,.leggrn	{background:#20e020;}
-.capcyn,.legcyn	{background:#20e0e0;}
-.capblu,.legblu	{background:#2020e0;}
-.capmag,.legmag	{background:#e020e0;}
-.capwht,.legwht	{background:#ffffff;}
-.capgry,.leggry	{background:#808080;}
-.capblk,.legblk	{background:#000;color:#ffffff;}
-.caporg,.legorg	{background:#ff8000;}
-.capolv,.legolv	{background:#808000;}
-.capnon,.legnon	{background:transparent;}
-.capred,.capyel,.capgrn,.capcyn,.capblu,.capmag,.capwht,.capgry,.capblk,.caporg,.capolv,.capbrn,.capnon,
+.capred,.legred,.selred	{background:#e02020;}
+.capyel,.legyel,.selyel	{background:#e0e020;}
+.capgrn,.leggrn,.selgrn	{background:#20e020;}
+.capcyn,.legcyn,.selcyn	{background:#20e0e0;}
+.capblu,.legblu,.selblu	{background:#2020e0;}
+.capmag,.legmag,.selmag	{background:#e020e0;}
+.capwht,.legwht,.selwht	{background:#ffffff;}
+.capgry,.leggry,.selgry	{background:#808080;}
+.capblk,.legblk,.selblk	{background:#000;color:#ffffff;}
+.caporg,.legorg,.selorg	{background:#ff8000;}
+.capolv,.legolv,.selolv	{background:#808000;}
+.capnon,.legnon,.selbrn	{background:transparent;}
+.capred,.capyel,.selnon,.capgrn,.capcyn,.capblu,.capmag,.capwht,.capgry,.capblk,.caporg,.capolv,.capbrn,.capnon,
 .legred,.legyel,.leggrn,.legcyn,.legblu,.legmag,.legwht,.leggry,.legblk,.legorg,.legolv,.legbrn,.legnon
 	{background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image: linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-size: 72px 72px;}
+.legred,.legyel,.leggrn,.legcyn,.legblu,.legmag,.legwht,.leggry,.legblk,.legorg,.legolv,.legbrn,.legnon
+	{text-align:center;width:1.25em;height:1.25em;}

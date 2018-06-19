@@ -12,8 +12,8 @@
 <h2>News &amp; updates:</h2>
 <ul>
 	<li>2018/06/06: Taz sent me updated bindings for <i>The Lord of the Rings Online</i>. Thanks Taz!</li>
-	<li>2018/06/05: Started working on a GUI tool to submit bindings to this project. It is incomplete, but you can view my progress so far <a href="keyboard-submit.html">here</a>.</li>
-	<li>2018/06/05: Tweaked some HTML and CSS code. Added borders to the default style.</li>
+	<li>2018/06/05: Started working on a GUI tool to submit bindings to this project. It is incomplete, but you can <a href="keyboard-submit.html">view my progress so far</a>.</li>
+	<li>2018/06/05: Tweaked some HTML and CSS code. Added box borders to the default style.</li>
 	<li>2018/06/04: You can now select between the HTML, SVG and MediaWiki formats from the front page and charts. Hopefully, I can get PDF output working sometime soon.</li>
 	<li>2018/06/04: Renamed the "svg" URL query to "fmt".</li>
 	<li>2018/06/04: Fixed a bug in URL query detection.</li>
@@ -82,6 +82,19 @@
 	<li>Doraemon style: <i>Doraemon Keyboard</i> by DreamKitty.com (<a target="_blank" href="http://www.dreamkitty.com/Merchant5/merchant.mvc?Screen=PROD&Store_Code=DK2000&Product_Code=O-FB761011&Category_Code=">link</a>)</li>
 	<li>FunKeyBoard style: <i>FunKeyBoard</i> by Chester Creek Technologies (<a target="_blank" href="http://www.venturaes.com/index_new.asp?http://www.venturaes.com/chestercreek/index.html">link</a>)</li>
 	<li>German <i>Vega Strike</i> bindings provided by Agnes Beste.</li>
+	<li>English <i>The Lord of the Rings: Online</i> bindings provided by Taz.</li>
+	<li>"Simple JQuery Accordion Menu" by Marco van Hylckama Vlieg. (<a target="_blank" href="http://www.i-marco.nl/weblog/">link</a>)</li>
+	<li>"Ajax loader metal 512.gif" by Krishprakash24gmail. (<a target="_blank" href="https://commons.wikimedia.org/wiki/File:Ajax_loader_metal_512.gif">link</a>)</li>
+	<li>Several icons from the Noun Project. (<a target="_blank" href="https://thenounproject.com/">link</a>)
+		<ul>
+			<li>Spreadsheet by Arthur Shlain</li>
+			<li>Keyboard by Alexey Ivanov</li>
+			<li>Information by AnsteyDesign</li>
+			<li>Edit by Garrett Knoll</li>
+			<li>Plus by P.J. Onori</li>
+			<li>Delete by P.J. Onori</li>
+		</ul>
+	</li>
 </ul>
 <h2>Links to further reading:</h2>
 <ul>

@@ -14,7 +14,7 @@
 	print($page_top);
 ?>
 <?php
-	// Copyright (C) 2009  Michael Horvath
+	// Copyright (C) 2018  Michael Horvath
 
 	// This library is free software; you can redistribute it and/or
 	// modify it under the terms of the GNU Lesser General Public
@@ -159,10 +159,7 @@
 
 	mysqli_close($con);
 ?>
-<div id="waiting" style="position:fixed;display:block;z-index:10;left:50%;top:50%;width:220px;margin:-50px;color:red;text-align:center;background:#444;border:solid 2px #000000;-moz-border-radius:5px;-webkit-border-radius:5px;">
-	<img src="../images/loading15.gif" alt="sandglass"/>
-	<div style="width:220px;position:absolute;top:0px;left:0px;z-index:11;font-weight:bold;font-size:larger;text-align:center;">Please wait...</div>
-</div>
+<img id="waiting" src="../images/loader_metal.gif" alt="loading" style="position:fixed;display:block;z-index:10;width:240px;height:240px;left:50%;top:50%;transform:translate(-50% -50%);"/>
 <form name="keyboard_select">
 	<input type="hidden" name="gam" value=""/>
 	<input type="hidden" name="lay" value=""/>
@@ -297,8 +294,12 @@
 				<input id="rad2" type="radio" name="fmtradio" value="2"/>
 				<span class="checkmark"></span>
 			</label>
-			<label label for="rad3" class="container"><s>PDF</s> [coming soon]
-				<input id="rad3" type="radio" name="fmtradio" value="3" disabled="disabled"/>
+			<label label for="rad3" class="container">Editor
+				<input id="rad3" type="radio" name="fmtradio" value="3"/>
+				<span class="checkmark"></span>
+			</label>
+			<label label for="rad4" class="container"><s>PDF</s> [TBD]
+				<input id="rad4" type="radio" name="fmtradio" value="4" disabled="disabled"/>
 				<span class="checkmark"></span>
 			</label>
 		</div>
@@ -324,11 +325,14 @@
 	<li>View or print the page in the new window.</li>
 </ol>
 <h2>Licenses &amp; Submissions:</h2>
-<p>The source code for this project is licensed under the <a target="_blank" href="http://creativecommons.org/licenses/LGPL/2.1/">CC LGPL 2.1</a>. The content is licensed under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. To submit a new set of bindings, fill out <a href="../files/binding_template_us104key.xlsx">this excel sheet</a> and <a href="http://isometricland.net/email.php">email</a> me the contents (copy and paste) when you are finished. Note that any content you submit falls under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart, as well as in the <a href="keyboard-log.php">change log</a>, which contains the project's update history and credits, as well as links to further reading. FYI, I recently started developing a <a href="keyboard-submit.html">GUI-based submission form</a> to replace the current spreadsheet, but it is not finished yet.</p>
+<p>The source code for this project is licensed under the <a target="_blank" href="http://creativecommons.org/licenses/LGPL/2.1/">CC LGPL 2.1</a>. The content is licensed under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading.</p>
+<p>To submit a new set of bindings, you can fill out <a href="../files/binding_template_us104key.xlsx">this spreadsheet</a> and <a href="http://isometricland.net/email.php">email</a> me the contents (copy and paste) when you are done. Note that any content you submit falls under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart, as well as in the change log.</p>
+<p>I have also recently started developing a form-based submission page. You can use it to submit changes to existing bindings by selecting the "Editor" option in Step 4, above. Or, you can get started making a brand new set of bindings with a <a href="keyboard-diagram-blank-sample.php?sty=15&lay=1&fmt=3">blank sample</a>. In either case, make sure to tell me which game you are intending the keyboard bindings for.</p>
+<p></p>
 <h2>MediaWiki, SVG &amp; PDF:</h2>
 <p>I have created templates for MediaWiki that do basically the same thing as the other charts available on this site. You can find the templates as well as instructions on how to use them at StrategyWiki and Wikia, <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">here</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">here</a>. By selecting the "MediaWiki" format type, you can generate the code you will need to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the chart is wider than a typical browser window.</p>
 <p>I have also created SVG versions of the charts, which you can also select in the "Formats" menu above. I have not migrated over to using SVG images exclusively yet, because they are less compatible with older browsers, and I have not figured out how I want to implement the mouse and joystick controls listings, yet. (I have not yet figured out how to create containers that expand, wrap and scale automatically as the volume of text inside increases.)</p>
-<p>PDF versions of the charts will be added at some point in the future.</p>
+<p>PDF versions of the charts will hopefully be added at some point in the future.</p>
 <a name="print_tips"></a>
 <h2>Printing Tips:</h2>
 <ol>

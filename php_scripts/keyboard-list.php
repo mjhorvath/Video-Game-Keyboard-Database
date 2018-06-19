@@ -8,11 +8,12 @@
 	$is_short	= true;
 	$foot_array	= array("copyright","license_kbd");
 	$java_array	= [$path_root . "java/sort_table.js"];
+	$stys_array	= [$path_root . "style_keyboard.css"];
 	include($path_root . "ssi/normalpage.php");
 	echo $page_top;
 ?>
 <?php
-	// Copyright (C) 2009  Michael Horvath
+	// Copyright (C) 2018  Michael Horvath
 
 	// This library is free software; you can redistribute it and/or
 	// modify it under the terms of the GNU Lesser General Public

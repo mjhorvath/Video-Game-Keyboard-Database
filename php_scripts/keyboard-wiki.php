@@ -1,5 +1,5 @@
 <?php
-	// Copyright (C) 2009  Michael Horvath
+	// Copyright (C) 2018  Michael Horvath
 
 	// This library is free software; you can redistribute it and/or
 	// modify it under the terms of the GNU Lesser General Public
@@ -32,11 +32,11 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	$path_root		= "../";
-	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : "";
+	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : null;
 	$game_id		= array_key_exists("gam", $_GET) ? intval(ltrim($_GET["gam"], "0")) : null;
-	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : 15;
-	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : 1;
-	$format_id		= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0")) : 0;
+	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : null;
+	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : null;
+	$format_id		= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0")) : null;
 	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
 	$fix_url		= false;
 	$php_url		= "";
@@ -80,19 +80,42 @@
 	$game_array		= [];
 
 	// validity checks
-	if (!$game_id)
+	if ($game_id === null)
 	{
-		callProcedure1Txt($con, "get_games_friendly_chart", "doGamesSEO", $game_seo);
-//		echo "game_seo = " . $game_seo . "\n";
-//		echo "game_id = " . $game_id . "\n";
+		if ($game_seo !== null)
+		{
+			callProcedure1Txt($con, "get_games_friendly_chart", "doGamesSEO", $game_seo);
+		}
+		else
+		{
+			$game_id = 1;
+		}
 	}
-	else
+	if ($game_seo === null)
 	{
 		$fix_url = true;
 	}
-	if ($svg_bool)
+	if ($style_id === null)
 	{
-		$format_id = $svg_bool;
+		$style_id = 15;
+		$fix_url = true;
+	}
+	if ($layout_id === null)
+	{
+		$layout_id = 1;
+		$fix_url = true;
+	}
+	if ($format_id === null)
+	{
+		if ($svg_bool !== null)
+		{
+			$format_id = $svg_bool;
+		}
+		else
+		{
+			$format_id == 2;
+		}
+		$fix_url = true;
 	}
 
 	function doThisStyle($in_result)
@@ -271,23 +294,21 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-		<title><?php echo $thispage_title_a; ?><?php echo $thispage_title_b; ?></title>
 <?php
 	echo
+"		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>\n" .
+"		<title>" . $thispage_title_a . $thispage_title_b . "</title>\n" .
 "		<link rel=\"canonical\" href=\"" . $php_url . "\"/>\n" .
 "		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>\n" .
 "		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_normalize.css\"/>\n" .
 "		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>\n" .
+"		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_mediawiki.css\"/>\n" .
 "		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n" .
 "		<meta name=\"description\" content=\"" . $layout_description . $temp_game_name . ".\"></meta>\n" .
-"		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference,MediaWiki," . $temp_game_name . "\"></meta>\n";
+"		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference,MediaWiki," . $temp_game_name . "\"></meta>\n" .
+"		<script src=\"keyboard-chart-js.php\"></script>\n";
 	include($path_root . "ssi/analyticstracking.php");
 ?>
-		<script src="keyboard-js.php"></script>
-		<style type="text/css">
-<?php	include("./style_mediawiki.css"); ?>
-		</style>
 	</head>
 	<body style="margin:auto;width:80%;">
 		<header>
@@ -304,17 +325,17 @@
 		$leadZ		= leadingZeros3($i);
 		$binding_row	= $binding_table[$i];
 		$bkg_nor	= getcolor($binding_row[0]);
-		$key_nor	= cleantextcode($binding_row[1]);
+		$key_nor	= cleantextWiki($binding_row[1]);
 		$bkg_shf	= getcolor($binding_row[2]);
-		$key_shf	= cleantextcode($binding_row[3]);
+		$key_shf	= cleantextWiki($binding_row[3]);
 		$bkg_ctl	= getcolor($binding_row[4]);
-		$key_ctl	= cleantextcode($binding_row[5]);
+		$key_ctl	= cleantextWiki($binding_row[5]);
 		$bkg_alt	= getcolor($binding_row[6]);
-		$key_alt	= cleantextcode($binding_row[7]);
+		$key_alt	= cleantextWiki($binding_row[7]);
 		$bkg_agr	= getcolor($binding_row[8]);
-		$key_agr	= cleantextcode($binding_row[9]);
+		$key_agr	= cleantextWiki($binding_row[9]);
 		$bkg_xtr	= getcolor($binding_row[10]);
-		$key_xtr	= cleantextcode($binding_row[11]);
+		$key_xtr	= cleantextWiki($binding_row[11]);
 		$img_fil	= $binding_row[12];
 		echo
 "|" . $leadZ . "b=" . $bkg_nor . "|". $leadZ . "t=" . $key_nor . "|" . $leadZ . "s=" . $key_shf . "|" . $leadZ . "c=" . $key_ctl . "|" . $leadZ . "a=" . $key_alt . "\n";
@@ -332,7 +353,7 @@
 		if ($legend_row[0] != null)
 		{
 			$leg_grp = getcolor($legend_row[0]);
-			$leg_dsc = cleantextcode($legend_row[1]);
+			$leg_dsc = cleantextWiki($legend_row[1]);
 			echo
 "|" . $leadZ. "lgb=" . $leg_grp . "|" . $leadZ . "lgt=" . $leg_dsc . "\n";
 		}
@@ -345,7 +366,26 @@
 			<div class="bodiv" style="clear:both;">
 				<p><a target="_blank" rel="license" href="http://creativecommons.org/licenses/LGPL/2.1/"><img alt="Creative Commons License" src="<?php echo $path_root; ?>images/license_cc-lgpl_88x31.png" /></a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="<?php echo $path_root; ?>images/license_cc-by-sa_88x31.png" /></a></p>
 				<p>"Video Game Keyboard Diagrams" software was created by Michael Horvath and is licensed under <a target="_blank" rel="license" href="https://creativecommons.org/licenses/LGPL/2.1/;/">CC LGPL 2.1</a>. Content is licensed under <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. You can find this project on <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub</a>.</p>
-				<p>Return to <a href="keyboard.php">Video Game Keyboard Diagrams</a>. View the <a href="keyboard-list.php">master list</a>.</p>
+				<p>
+<?php
+	if (($gamesrecord_author) && ($gamesrecord_author != "Michael Horvath"))
+	{
+		echo
+"Binding scheme created by: " . $gamesrecord_author . ". ";
+	}
+	if (($layout_author) && ($layout_author != "Michael Horvath"))
+	{
+		echo
+"Keyboard layout created by: " . $layout_author . ". ";
+	}
+	if (($stylesrecord_author) && ($stylesrecord_author != "Michael Horvath"))
+	{
+		echo
+"Style design created by: " . $stylesrecord_author . ". ";
+	}
+?>
+				</p>
+				<p>Return to <a href="keyboard.php">Video Game Keyboard Diagrams</a>. View the <a href="keyboard-list.php">master list</a>. Having trouble printing? Take a look at <a href="keyboard.php#print_tips">these printing tips</a>.</p>
 <?php
 	echo
 "				<form name=\"VisualStyleSwitch\">
@@ -370,13 +410,13 @@
 			}
 		}
 	}
-
 	echo
 "					</select>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad0\" value=\"0\" " . ($format_id == 0 ? "checked" : "") . " />&nbsp;<label for=\"rad0\">HTML</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad1\" value=\"1\" " . ($format_id == 1 ? "checked" : "") . " />&nbsp;<label for=\"rad1\">SVG</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad2\" value=\"2\" " . ($format_id == 2 ? "checked" : "") . " />&nbsp;<label for=\"rad2\">MediaWiki</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad3\" value=\"3\" disabled />&nbsp;<label for=\"rad3\"><s>PDF</s></label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad0\" value=\"0\"" . ($format_id == 0 ? " checked " : "") . "/>&nbsp;<label for=\"rad0\">HTML</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad1\" value=\"1\"" . ($format_id == 1 ? " checked " : "") . "/>&nbsp;<label for=\"rad1\">SVG</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad2\" value=\"2\"" . ($format_id == 2 ? " checked " : "") . "/>&nbsp;<label for=\"rad2\">MediaWiki</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad3\" value=\"3\"" . ($format_id == 3 ? " checked " : "") . "/>&nbsp;<label for=\"rad3\">Editor</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad4\" value=\"4\" disabled />&nbsp;<label for=\"rad4\"><s>PDF</s></label>
 					<input class=\"stylechange\" type=\"button\" value=\"Change\" onclick=\"reloadThisPage('" . $game_id . "', '" . $layout_id . "', '" . $game_seo . "')\" />
 				</form>\n";
 ?>

@@ -1,5 +1,5 @@
 <?php
-	// Copyright (C) 2009  Michael Horvath
+	// Copyright (C) 2018  Michael Horvath
 
 	// This library is free software; you can redistribute it and/or
 	// modify it under the terms of the GNU Lesser General Public
@@ -32,11 +32,11 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	$path_root		= "../";
-	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : "";
+	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : null;
 	$game_id		= array_key_exists("gam", $_GET) ? intval(ltrim($_GET["gam"], "0")) : null;
-	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : 15;
-	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : 1;
-	$format_id		= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0")) : 0;
+	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : null;
+	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : null;
+	$format_id		= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0")) : null;
 	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
 	$fix_url		= false;
 	$php_url		= "";
@@ -44,9 +44,12 @@
 	$stylegroup_id		= 0;
 	$command_table		= [];
 	$combo_table		= [];
-	$joystick_table		= [];
 	$mouse_table		= [];
+	$joystick_table		= [];
 	$note_table		= [];
+	$cheat_table		= [];
+	$console_table		= [];
+	$emote_table		= [];
 	$author_table		= [];
 	$style_table		= [];
 	$gamesrecord_id		= 0;
@@ -54,9 +57,12 @@
 	$stylesrecord_id	= 0;
 	$stylesrecord_author	= "";
 	$combo_count		= 0;
-	$joystick_count		= 0;
 	$mouse_count		= 0;
+	$joystick_count		= 0;
 	$note_count		= 0;
+	$cheat_count		= 0;
+	$console_count		= 0;
+	$emote_count		= 0;
 	$style_filename		= "";
 	$style_name		= "";
 	$style_author		= "";
@@ -68,27 +74,52 @@
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
 	$layout_title		= cleantextHTML("Video Game Keyboard Diagrams");
+	$layout_combo		= cleantextHTML("Keyboard Combinations");
 	$layout_mouse		= cleantextHTML("Mouse Controls");
 	$layout_joystick	= cleantextHTML("Joystick Controls");
-	$layout_combos		= cleantextHTML("Keyboard Combinations");
-	$layout_notes		= cleantextHTML("Additional Notes");
+	$layout_note		= cleantextHTML("Additional Notes");
+	$layout_cheat		= cleantextHTML("Cheat Codes");
+	$layout_console		= cleantextHTML("Console Commands");
+	$layout_emote		= cleantextHTML("Chat Commands/Emotes");
 	$layout_description	= cleantextHTML("Keyboard hotkey & binding chart for ");
 	$layout_keywords	= cleantextHTML("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
 
 	// validity checks
 	if ($game_id === null)
 	{
-		callProcedure1Txt($con, "get_games_friendly_chart", "doGamesSEO", $game_seo);
-//		echo "game_seo = " . $game_seo . "\n";
-//		echo "game_id = " . $game_id . "\n";
+		if ($game_seo !== null)
+		{
+			callProcedure1Txt($con, "get_games_friendly_chart", "doGamesSEO", $game_seo);
+		}
+		else
+		{
+			$game_id = 1;
+		}
 	}
-	else
+	if ($game_seo === null)
 	{
 		$fix_url = true;
 	}
-	if ($svg_bool !== null)
+	if ($style_id === null)
 	{
-		$format_id = $svg_bool;
+		$style_id = 15;
+		$fix_url = true;
+	}
+	if ($layout_id === null)
+	{
+		$layout_id = 1;
+		$fix_url = true;
+	}
+	if ($format_id === null)
+	{
+		if ($svg_bool !== null)
+		{
+			$format_id = $svg_bool;
+		}
+		else
+		{
+			$format_id = 1;
+		}
 		$fix_url = true;
 	}
 
@@ -111,9 +142,10 @@
 	}
 	function doCommands($in_result)
 	{
-		global $combo_table, $mouse_table, $joystick_table, $note_table, $combo_count, $mouse_count, $joystick_count, $note_count;
+		global $combo_table, $mouse_table, $joystick_table, $note_table, $cheat_table, $console_table, $emote_table, $combo_count, $mouse_count, $joystick_count, $note_count, $cheat_count, $console_count, $emote_count;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
+			// commandtype_id, command_text, command_description
 			$temp_array = [$temp_row[1], $temp_row[2]];
 			switch ($temp_row[0])
 			{
@@ -132,6 +164,18 @@
 				case (4):
 					$note_table[] = $temp_array;
 					$note_count += 1;
+				break;
+				case (5):
+					$cheat_table[] = $temp_array;
+					$cheat_count += 1;
+				break;
+				case (6):
+					$console_table[] = $temp_array;
+					$console_count += 1;
+				break;
+				case (7):
+					$emote_table[] = $temp_array;
+					$emote_count += 1;
 				break;
 			}
 		}
@@ -234,28 +278,31 @@
 	if ($fix_url === true)
 	{
 		header("Location: " . $php_url);
+		die();
 	}
 ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<title><?php echo $thispage_title_a; ?><?php echo $thispage_title_b; ?></title>
 <?php
 	echo
-"		<link rel=\"canonical\" href=\"" . $php_url . "\"/>\n" .
-"		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\" />\n" .
-"		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_normalize.css\"/>\n" .
-"		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>\n" .
-"		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n" .
-"		<meta name=\"description\" content=\"" . $layout_description . $temp_game_name . ". (" . $temp_style_name . ")\"/>\n" .
-"		<meta name=\"keywords\" content=\"" . $temp_game_name . "," . $temp_style_name . "," . "SVG" . "," . $layout_keywords . "\"/>\n";
+"		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
+		<title>" . $thispage_title_a . $thispage_title_b . "</title>
+		<link rel=\"canonical\" href=\"" . $php_url . "\"/>
+		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>
+		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
+		<meta name=\"description\" content=\"" . $layout_description . $temp_game_name . ". (" . $temp_style_name . ")\"/>
+		<meta name=\"keywords\" content=\"" . $temp_game_name . "," . $temp_style_name . "," . "SVG" . "," . $layout_keywords . "\"/>\n";
 	include($path_root . "ssi/analyticstracking.php");
+	echo
+"		<script src=\"keyboard-chart-js.php\"></script>
+		<style type=\"text/css\">\n";
+	include("./embed_" . $style_filename . ".css");
+	echo
+"		</style>\n";
 ?>
-		<script src="keyboard-js.php"></script>
-		<style type="text/css">
-<?php include("./embed_" . $style_filename . ".css"); ?>
-		</style>
 	</head>
 	<body>
 		<header>
@@ -272,12 +319,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="bodiv inbtop combox">
 <?php
+	// combo
 	if ($combo_count > 0)
 	{
 		echo
-"				<h3>" . $layout_combos . "</h3>
+"			<div class=\"bodiv inbtop combox\">
+				<h3>" . $layout_combo . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $combo_count; $i++)
 		{
@@ -291,16 +339,16 @@
 			}
 		}
 		echo
-"				</p>\n";
+"				</p>
+			</div>\n";
 	}
-?>
-			</div>
-			<div class="bodiv inbtop combox">
-<?php
+
+	// mouse
 	if ($mouse_count > 0)
 	{
 		echo
-"				<h3>" . $layout_mouse . "</h3>
+"			<div class=\"bodiv inbtop combox\">
+				<h3>" . $layout_mouse . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $mouse_count; $i++)
 		{
@@ -314,16 +362,16 @@
 			}
 		}
 		echo
-"				</p>\n";
+"				</p>
+			</div>\n";
 	}
-?>
-			</div>
-			<div class="bodiv inbtop combox">
-<?php
+
+	// joystick
 	if ($joystick_count > 0)
 	{
 		echo
-"				<h3>" . $layout_joystick . "</h3>
+"			<div class=\"bodiv inbtop combox\">
+				<h3>" . $layout_joystick . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $joystick_count; $i++)
 		{
@@ -337,16 +385,16 @@
 			}
 		}
 		echo
-"				</p>\n";
+"				</p>
+			</div>\n";
 	}
-?>
-			</div>
-			<div class="bodiv inbtop combox">
-<?php
+
+	// note
 	if ($note_count > 0)
 	{
 		echo
-"				<h3>" . $layout_notes . "</h3>
+"			<div class=\"bodiv inbtop combox\">
+				<h3>" . $layout_note . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $note_count; $i++)
 		{
@@ -360,10 +408,79 @@
 			}
 		}
 		echo
-"				</p>\n";
+"				</p>
+			</div>\n";
+	}
+
+	// cheat
+	if ($cheat_count > 0)
+	{
+		echo
+"			<div class=\"bodiv inbtop combox\">
+				<h3>" . $layout_cheat . "</h3>
+				<p>\n";
+		for ($i = 0; $i < $cheat_count; $i++)
+		{
+			$cheat_row = $cheat_table[$i];
+			if ($cheat_row[0] || $cheat_row[1])
+			{
+				$cheat_com = cleantextHTML($cheat_row[0]);
+				$cheat_des = cleantextHTML($cheat_row[1]);
+				echo
+"					" . $cheat_com . " = " . $cheat_des . "<br/>\n";
+			}
+		}
+		echo
+"				</p>
+			</div>\n";
+	}
+
+	// console
+	if ($console_count > 0)
+	{
+		echo
+"			<div class=\"bodiv inbtop combox\">
+				<h3>" . $layout_console . "</h3>
+				<p>\n";
+		for ($i = 0; $i < $console_count; $i++)
+		{
+			$console_row = $console_table[$i];
+			if ($console_row[0] || $console_row[1])
+			{
+				$console_com = cleantextHTML($console_row[0]);
+				$console_des = cleantextHTML($console_row[1]);
+				echo
+"					" . $console_com . " = " . $console_des . "<br/>\n";
+			}
+		}
+		echo
+"				</p>
+			</div>\n";
+	}
+
+	// emote
+	if ($emote_count > 0)
+	{
+		echo
+"			<div class=\"bodiv inbtop combox\">
+				<h3>" . $layout_emote . "</h3>
+				<p>\n";
+		for ($i = 0; $i < $emote_count; $i++)
+		{
+			$emote_row = $emote_table[$i];
+			if ($emote_row[0] || $emote_row[1])
+			{
+				$emote_com = cleantextHTML($emote_row[0]);
+				$emote_des = cleantextHTML($emote_row[1]);
+				echo
+"					" . $emote_com . " = " . $emote_des . "<br/>\n";
+			}
+		}
+		echo
+"				</p>
+			</div>\n";
 	}
 ?>
-			</div>
 		</main>
 		<footer>
 			<div class="bodiv">
@@ -390,6 +507,7 @@
 				</p>
 				<p>Return to <a href="keyboard.php">Video Game Keyboard Diagrams</a>. View the <a href="keyboard-list.php">master list</a>. Having trouble printing? Take a look at <a href="keyboard.php#print_tips">these printing tips</a>.</p>
 <?php
+	// style switcher
 	echo
 "				<form name=\"VisualStyleSwitch\">
 					<label for=\"stylesel\">Visual style:</label>
@@ -415,14 +533,15 @@
 	}
 	echo
 "					</select>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad0\" value=\"0\" " . ($format_id == 0 ? "checked" : "") . " />&nbsp;<label for=\"rad0\">HTML</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad1\" value=\"1\" " . ($format_id == 1 ? "checked" : "") . " />&nbsp;<label for=\"rad1\">SVG</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad2\" value=\"2\" " . ($format_id == 2 ? "checked" : "") . " />&nbsp;<label for=\"rad2\">MediaWiki</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad3\" value=\"3\" disabled />&nbsp;<label for=\"rad3\"><s>PDF</s></label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad0\" value=\"0\"" . ($format_id == 0 ? " checked " : "") . "/>&nbsp;<label for=\"rad0\">HTML</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad1\" value=\"1\"" . ($format_id == 1 ? " checked " : "") . "/>&nbsp;<label for=\"rad1\">SVG</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad2\" value=\"2\"" . ($format_id == 2 ? " checked " : "") . "/>&nbsp;<label for=\"rad2\">MediaWiki</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad3\" value=\"3\"" . ($format_id == 3 ? " checked " : "") . "/>&nbsp;<label for=\"rad3\">Editor</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad4\" value=\"4\" disabled />&nbsp;<label for=\"rad4\"><s>PDF</s></label>
 					<input class=\"stylechange\" type=\"button\" value=\"Change\" onclick=\"reloadThisPage('" . $game_id . "', '" . $layout_id . "', '" . $game_seo . "')\" />
 				</form>\n";
 ?>
-				<p>Last modified: <?php echo date("F d Y H:i:s.", getlastmod()) ?></p>
+				<p><?php getFileTime("keyboard-embed.php"); ?></p>
 			</div>
 		</footer>
 	</body>

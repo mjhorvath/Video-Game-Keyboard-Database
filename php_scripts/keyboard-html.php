@@ -1,5 +1,5 @@
 <?php
-	// Copyright (C) 2009  Michael Horvath
+	// Copyright (C) 2018  Michael Horvath
 
 	// This library is free software; you can redistribute it and/or
 	// modify it under the terms of the GNU Lesser General Public
@@ -32,16 +32,17 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	$path_root		= "../";
-	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : "";
+	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : null;
 	$game_id		= array_key_exists("gam", $_GET) ? intval(ltrim($_GET["gam"], "0")) : null;
-	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : 15;
-	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : 1;
-	$format_id		= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0")) : 0;
+	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : null;
+	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : null;
+	$format_id		= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0")) : null;
 	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
 	$fix_url		= false;
 	$php_url		= "";
 	$svg_url		= "";
-	$write_maximal_keys	= true;
+	$write_maximal_keys	= false;
+	$show_advertisements	= false;
 	$stylegroup_id		= 0;
 	$position_table		= [];
 	$keystyle_table		= [];
@@ -49,19 +50,26 @@
 	$legend_table		= [];
 	$command_table		= [];
 	$combo_table		= [];
-	$joystick_table		= [];
 	$mouse_table		= [];
+	$joystick_table		= [];
 	$note_table		= [];
+	$cheat_table		= [];
+	$console_table		= [];
+	$emote_table		= [];
 	$author_table		= [];
 	$style_table		= [];
 	$gamesrecord_id		= 0;
 	$gamesrecord_author	= "";
 	$stylesrecord_id	= 0;
 	$stylesrecord_author	= "";
+	$legend_count		= 12;
 	$combo_count		= 0;
-	$joystick_count		= 0;
 	$mouse_count		= 0;
+	$joystick_count		= 0;
 	$note_count		= 0;
+	$cheat_count		= 0;
+	$console_count		= 0;
+	$emote_count		= 0;
 	$style_filename		= "";
 	$style_name		= "";
 	$game_name		= "";
@@ -72,10 +80,13 @@
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
 	$layout_title		= cleantextHTML("Video Game Keyboard Diagrams");
+	$layout_combo		= cleantextHTML("Keyboard Combinations");
 	$layout_mouse		= cleantextHTML("Mouse Controls");
 	$layout_joystick	= cleantextHTML("Joystick Controls");
-	$layout_combos		= cleantextHTML("Keyboard Combinations");
-	$layout_notes		= cleantextHTML("Additional Notes");
+	$layout_note		= cleantextHTML("Additional Notes");
+	$layout_cheat		= cleantextHTML("Cheat Codes");
+	$layout_console		= cleantextHTML("Console Commands");
+	$layout_emote		= cleantextHTML("Chat Commands/Emotes");
 	$layout_description	= cleantextHTML("Keyboard hotkey & binding chart for ");
 	$layout_keywords	= cleantextHTML("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
 
@@ -83,17 +94,39 @@
 	// validity checks
 	if ($game_id === null)
 	{
-		callProcedure1Txt($con, "get_games_friendly_chart", "doGamesSEO", $game_seo);
-//		echo "game_seo = " . $game_seo . "\n";
-//		echo "game_id = " . $game_id . "\n";
+		if ($game_seo !== null)
+		{
+			callProcedure1Txt($con, "get_games_friendly_chart", "doGamesSEO", $game_seo);
+		}
+		else
+		{
+			$game_id = 1;
+		}
 	}
-	else
+	if ($game_seo === null)
 	{
 		$fix_url = true;
 	}
-	if ($svg_bool !== null)
+	if ($style_id === null)
 	{
-		$format_id = $svg_bool;
+		$style_id = 15;
+		$fix_url = true;
+	}
+	if ($layout_id === null)
+	{
+		$layout_id = 1;
+		$fix_url = true;
+	}
+	if ($format_id === null)
+	{
+		if ($svg_bool !== null)
+		{
+			$format_id = $svg_bool;
+		}
+		else
+		{
+			$format_id = 0;
+		}
 		$fix_url = true;
 	}
 
@@ -125,19 +158,18 @@
 	function doLegends($in_result)
 	{
 		global $legend_table;
-//		$legend_table = mysqli_fetch_array($in_result);
-//		print_r($legend_table);
-//		error_log("woot " . count($legend_table));
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
+			// legend_group, legend_description
 			$legend_table[] = $temp_row;
 		}
 	}
 	function doCommands($in_result)
 	{
-		global $combo_table, $mouse_table, $joystick_table, $note_table, $combo_count, $mouse_count, $joystick_count, $note_count;
+		global $combo_table, $mouse_table, $joystick_table, $note_table, $cheat_table, $console_table, $emote_table, $combo_count, $mouse_count, $joystick_count, $note_count, $cheat_count, $console_count, $emote_count;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
+			// commandtype_id, command_text, command_description
 			$temp_array = [$temp_row[1], $temp_row[2]];
 			switch ($temp_row[0])
 			{
@@ -156,6 +188,18 @@
 				case (4):
 					$note_table[] = $temp_array;
 					$note_count += 1;
+				break;
+				case (5):
+					$cheat_table[] = $temp_array;
+					$cheat_count += 1;
+				break;
+				case (6):
+					$console_table[] = $temp_array;
+					$console_count += 1;
+				break;
+				case (7):
+					$emote_table[] = $temp_array;
+					$emote_count += 1;
 				break;
 			}
 		}
@@ -285,28 +329,31 @@
 	if ($fix_url === true)
 	{
 		header("Location: " . $php_url);
+		die();
 	}
 ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<title><?php echo $thispage_title_a; ?><?php echo $thispage_title_b; ?></title>
 <?php
 	echo
-"		<link rel=\"canonical\" href=\"" . $php_url . "\"/>\n" .
-"		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>\n" .
-"		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_normalize.css\"/>\n" .
-"		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>\n" .
-"		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n" .
-"		<meta name=\"description\" content=\"" . $layout_description . $temp_game_name . ". (" . $temp_style_name . ")\"/>\n" .
-"		<meta name=\"keywords\" content=\"" . $temp_game_name . "," . $temp_style_name . "," . "HTML" . "," . $layout_keywords . "\"/>\n";
+"		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
+		<title>" . $thispage_title_a . $thispage_title_b . "</title>
+		<link rel=\"canonical\" href=\"" . $php_url . "\"/>
+		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>
+		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
+		<meta name=\"description\" content=\"" . $layout_description . $temp_game_name . ". (" . $temp_style_name . ")\"/>
+		<meta name=\"keywords\" content=\"" . $temp_game_name . "," . $temp_style_name . "," . "HTML" . "," . $layout_keywords . "\"/>\n";
 	include($path_root . "ssi/analyticstracking.php");
+	echo
+"		<script src=\"keyboard-chart-js.php\"></script>
+		<style type=\"text/css\">\n";
+	include("./html_" . $style_filename . ".css");
+	echo
+"		</style>\n";
 ?>
-		<script src="keyboard-js.php"></script>
-		<style type="text/css">
-<?php	include("./html_" . $style_filename . ".css"); ?>
-		</style>
 	</head>
 	<body>
 		<header>
@@ -391,62 +438,70 @@
 				echo
 "					<div id=\"keyout_" . $i . "\" class=\"keyout cap" . $bkg_nor . " " . $key_sty . "\" style=\"left:" . $pos_lft . "px;top:" . $pos_top . "px;width:" . $pos_wid . "px;height:" . $pos_hgh . "px;background-size:auto;\">\n";
 				// icon images
-				if ($img_fil)
+				if (($img_uri != "") || ($write_maximal_keys == true))
 				{
+					if ($img_uri == "")
+					{
+						$display = "none";
+					}
+					else
+					{
+						$display = "block";
+					}
 					echo
-"						<img id=\"capimg_" . $i . "\" class=\"capimg\" style=\"left:" . $img_pos_x . "px;top:" . $img_pos_y . "px;width:" . $img_wid . "px;height:" . $img_hgh . "px;\" src=\"" . $img_uri . "\"/>\n";
+"						<img id=\"capimg_" . $i . "\" class=\"capimg\" style=\"left:" . $img_pos_x . "px;top:" . $img_pos_y . "px;width:" . $img_wid . "px;height:" . $img_hgh . "px;display:" . $display . ";\" src=\"" . $img_uri . "\"/>\n";
 				}
 				// key characters
 				if (($key_hgh != "") || ($write_maximal_keys == true))
 				{
-					print_key_html("keyhgh_" . $i, "keyhgh", null, $key_hgh, cleantextHTML($key_hgh));
+					print_key_html("keyhgh_" . $i, "keyhgh", null, $key_hgh);
 				}
 				if (($key_low != "") || ($write_maximal_keys == true))
 				{
 					if ($key_opt == false)
 					{
-						print_key_html("keylow_" . $i, "keylow", null, $key_low, cleantextHTML($key_low));
+						print_key_html("keylow_" . $i, "keylow", null, $key_low);
 					}
 					else
 					{
-						print_key_html("keylow_" . $i, "keynon", null, $key_low, cleantextHTML($key_low));
+						print_key_html("keylow_" . $i, "keynon", null, $key_low);
 					}
 				}
 				if (($key_rgt != "") || ($write_maximal_keys == true))
 				{
-					print_key_html("keyrgt_" . $i, "keyrgt", null, $key_rgt, cleantextHTML($key_rgt));
+					print_key_html("keyrgt_" . $i, "keyrgt", null, $key_rgt);
 				}
 				// key captions
 				if (($cap_nor != "") || ($write_maximal_keys == true))
 				{
 					if ($key_opt == false)
 					{
-						print_key_html("capnor_" . $i, "capopf", $bkg_nor, $cap_nor, cleantextHTML($cap_nor));
+						print_key_html("capnor_" . $i, "capopf", $bkg_nor, $cap_nor);
 					}
 					else
 					{
-						print_key_html("capnor_" . $i, "capopt", $bkg_nor, $cap_nor, cleantextHTML($cap_nor));
+						print_key_html("capnor_" . $i, "capopt", $bkg_nor, $cap_nor);
 					}
 				}
 				if (($cap_shf != "") || ($write_maximal_keys == true))
 				{
-					print_key_html("capshf_" . $i, "capshf", $bkg_shf, $cap_shf, cleantextHTML($cap_shf));
+					print_key_html("capshf_" . $i, "capshf", $bkg_shf, $cap_shf);
 				}
 				if (($cap_ctl != "") || ($write_maximal_keys == true))
 				{
-					print_key_html("capctl_" . $i, "capctl", $bkg_ctl, $cap_ctl, cleantextHTML($cap_ctl));
+					print_key_html("capctl_" . $i, "capctl", $bkg_ctl, $cap_ctl);
 				}
 				if (($cap_alt != "") || ($write_maximal_keys == true))
 				{
-					print_key_html("capalt_" . $i, "capalt", $bkg_alt, $cap_alt, cleantextHTML($cap_alt));
+					print_key_html("capalt_" . $i, "capalt", $bkg_alt, $cap_alt);
 				}
 				if (($cap_agr != "") || ($write_maximal_keys == true))
 				{
-					print_key_html("capagr_" . $i, "capagr", $bkg_agr, $cap_agr, cleantextHTML($cap_agr));
+					print_key_html("capagr_" . $i, "capagr", $bkg_agr, $cap_agr);
 				}
 				if (($cap_xtr != "") || ($write_maximal_keys == true))
 				{
-					print_key_html("capxtr_" . $i, "capxtr", $bkg_xtr, $cap_xtr, cleantextHTML($cap_xtr));
+					print_key_html("capxtr_" . $i, "capxtr", $bkg_xtr, $cap_xtr);
 				}
 				echo
 "					</div>\n";
@@ -459,32 +514,39 @@
 			<div class="bodiv">
 				<div class="inbtop" style="margin-bottom:1em;">
 					<div class="keyout capnon" style="position:relative;left:2px;top:2px;width:68px;height:68px;">
-						<div class="keyhgh">Upkey</div>
-						<div class="keylow">Lowkey</div>
+						<div class="keyhgh">Upcase</div>
+						<div class="keylow">Lowcase</div>
 						<div class="capopf">Caption</div>
 						<div class="capshf">Shift</div>
 						<div class="capctl">Ctrl</div>
 						<div class="capalt">Alt</div>
 					</div>
 				</div>
-				<div class="inbtop" style="margin-left:1em;">
-<?php	// legend
+<?php
+	// legend
 	if ($stylegroup_id == 1)
 	{
-		for ($i = 0; $i < count($legend_table); $i++)
+		echo
+"				<div class=\"inbtop\" style=\"margin-left:1em;\">\n";
+		// $legend_count is hardcoded as 12!
+		for ($i = 0; $i < $legend_count; $i++)
 		{
-			$legend_row = $legend_table[$i];
 			if ($i % 3 == 0)
 			{
 				echo
-"					<div class=\"leggrp inbtop\">\n";
+"					<div class=\"legtbl inbtop\">\n";
 			}
-			if ($legend_row[0] != null)
+			if ($legend_table[$i] !== null)
 			{
-				$leg_grp = getcolor($legend_row[0]);
-				$leg_dsc = cleantextHTML($legend_row[1]);
+				$leg_color = getcolor($legend_table[$i][0]);
+				$leg_value = cleantextHTML($legend_table[$i][1]);
 				echo
-"						<div><div class=\"legcll leg" . $leg_grp . " inbmid\"></div><div class=\"legtxt inbmid\">" . $leg_dsc . "</div></div>\n";
+"						<div class=\"legrow\"><div class=\"legcll leg" . $leg_color . "\"></div><div class=\"legcll legtxt\">" . $leg_value . "</div></div>\n";
+			}
+			else
+			{
+				echo
+"						<div class=\"legrow\"><div class=\"legcll\"></div><div class=\"legcll\"></div></div>\n";
 			}
 			if ($i % 3 == 2)
 			{
@@ -492,19 +554,26 @@
 "					</div>\n";
 			}
 		}
+		echo
+"				</div>\n";
+	}
+	if ($show_advertisements === true)
+	{
+		echo
+"				<div class=\"inbtop\" style=\"margin-left:1em;\">";
+		include($path_root . "ssi/adsense_horz_large.php");
+		echo
+"				</div>\n";
 	}
 ?>
-				</div>
-				<div class="inbtop" style="margin-left:1em;">
-<?php /*include($path_root . "ssi/adsense_horz_large.php");*/ ?>
-				</div>
 			</div>
-			<div class="bodiv inbtop combox">
-<?php	// combos
+<?php
+	// combo
 	if ($combo_count > 0)
 	{
 		echo
-"				<h3>" . $layout_combos . "</h3>
+"			<div class=\"bodiv inbtop combox\">
+				<h3>" . $layout_combo . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $combo_count; $i++)
 		{
@@ -518,16 +587,16 @@
 			}
 		}
 		echo
-"				</p>\n";
+"				</p>
+			</div>\n";
 	}
-?>
-			</div>
-			<div class="bodiv inbtop combox">
-<?php	// mice
+
+	// mouse
 	if ($mouse_count > 0)
 	{
 		echo
-"				<h3>" . $layout_mouse . "</h3>
+"			<div class=\"bodiv inbtop combox\">
+				<h3>" . $layout_mouse . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $mouse_count; $i++)
 		{
@@ -541,16 +610,16 @@
 			}
 		}
 		echo
-"				</p>\n";
+"				</p>
+			</div>\n";
 	}
-?>
-			</div>
-			<div class="bodiv inbtop combox">
-<?php	// joysticks
+
+	// joystick
 	if ($joystick_count > 0)
 	{
 		echo
-"				<h3>" . $layout_joystick . "</h3>
+"			<div class=\"bodiv inbtop combox\">
+				<h3>" . $layout_joystick . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $joystick_count; $i++)
 		{
@@ -564,16 +633,16 @@
 			}
 		}
 		echo
-"				</p>\n";
+"				</p>
+			</div>\n";
 	}
-?>
-			</div>
-			<div class="bodiv inbtop combox">
-<?php	// notes
+
+	// note
 	if ($note_count > 0)
 	{
 		echo
-"				<h3>" . $layout_notes . "</h3>
+"			<div class=\"bodiv inbtop combox\">
+				<h3>" . $layout_note . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $note_count; $i++)
 		{
@@ -587,10 +656,79 @@
 			}
 		}
 		echo
-"				</p>\n";
+"				</p>
+			</div>\n";
+	}
+
+	// cheat
+	if ($cheat_count > 0)
+	{
+		echo
+"			<div class=\"bodiv inbtop combox\">
+				<h3>" . $layout_cheat . "</h3>
+				<p>\n";
+		for ($i = 0; $i < $cheat_count; $i++)
+		{
+			$cheat_row = $cheat_table[$i];
+			if ($cheat_row[0] || $cheat_row[1])
+			{
+				$cheat_com = cleantextHTML($cheat_row[0]);
+				$cheat_des = cleantextHTML($cheat_row[1]);
+				echo
+"					" . $cheat_com . " = " . $cheat_des . "<br/>\n";
+			}
+		}
+		echo
+"				</p>
+			</div>\n";
+	}
+
+	// console
+	if ($console_count > 0)
+	{
+		echo
+"			<div class=\"bodiv inbtop combox\">
+				<h3>" . $layout_console . "</h3>
+				<p>\n";
+		for ($i = 0; $i < $console_count; $i++)
+		{
+			$console_row = $console_table[$i];
+			if ($console_row[0] || $console_row[1])
+			{
+				$console_com = cleantextHTML($console_row[0]);
+				$console_des = cleantextHTML($console_row[1]);
+				echo
+"					" . $console_com . " = " . $console_des . "<br/>\n";
+			}
+		}
+		echo
+"				</p>
+			</div>\n";
+	}
+
+	// emote
+	if ($emote_count > 0)
+	{
+		echo
+"			<div class=\"bodiv inbtop combox\">
+				<h3>" . $layout_emote . "</h3>
+				<p>\n";
+		for ($i = 0; $i < $emote_count; $i++)
+		{
+			$emote_row = $emote_table[$i];
+			if ($emote_row[0] || $emote_row[1])
+			{
+				$emote_com = cleantextHTML($emote_row[0]);
+				$emote_des = cleantextHTML($emote_row[1]);
+				echo
+"					" . $emote_com . " = " . $emote_des . "<br/>\n";
+			}
+		}
+		echo
+"				</p>
+			</div>\n";
 	}
 ?>
-			</div>
 		</main>
 		<footer>
 			<div class="bodiv">
@@ -617,6 +755,7 @@
 				</p>
 				<p>Return to <a href="keyboard.php">Video Game Keyboard Diagrams</a>. View the <a href="keyboard-list.php">master list</a>. Having trouble printing? Take a look at <a href="keyboard.php#print_tips">these printing tips</a>.</p>
 <?php
+	// style switcher
 	echo
 "				<form name=\"VisualStyleSwitch\">
 					<label for=\"stylesel\">Visual style:</label>
@@ -643,14 +782,15 @@
 
 	echo
 "					</select>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad0\" value=\"0\" " . ($format_id == 0 ? "checked" : "") . " />&nbsp;<label for=\"rad0\">HTML</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad1\" value=\"1\" " . ($format_id == 1 ? "checked" : "") . " />&nbsp;<label for=\"rad1\">SVG</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad2\" value=\"2\" " . ($format_id == 2 ? "checked" : "") . " />&nbsp;<label for=\"rad2\">MediaWiki</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad3\" value=\"3\" disabled />&nbsp;<label for=\"rad3\"><s>PDF</s></label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad0\" value=\"0\"" . ($format_id == 0 ? " checked " : "") . "/>&nbsp;<label for=\"rad0\">HTML</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad1\" value=\"1\"" . ($format_id == 1 ? " checked " : "") . "/>&nbsp;<label for=\"rad1\">SVG</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad2\" value=\"2\"" . ($format_id == 2 ? " checked " : "") . "/>&nbsp;<label for=\"rad2\">MediaWiki</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad3\" value=\"3\"" . ($format_id == 3 ? " checked " : "") . "/>&nbsp;<label for=\"rad3\">Editor</label>
+					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad4\" value=\"4\" disabled />&nbsp;<label for=\"rad4\"><s>PDF</s></label>
 					<input class=\"stylechange\" type=\"button\" value=\"Change\" onclick=\"reloadThisPage('" . $game_id . "', '" . $layout_id . "', '" . $game_seo . "')\" />
 				</form>\n";
 ?>
-				<p>Last modified: <?php echo date("F d Y H:i:s.", getlastmod()) ?></p>
+				<p><?php getFileTime("keyboard-html.php"); ?></p>
 			</div>
 		</footer>
 	</body>

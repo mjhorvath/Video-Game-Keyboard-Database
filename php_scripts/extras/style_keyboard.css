@@ -1,9 +1,0 @@
-/* KEYBOARD ACCORDION MENU PAGE */
-p.warn_yes
-	{background-color:#f44336;color:white;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;padding:0.5em;visibility:visible;}
-p.warn_no
-	{background-color:#f44336;color:white;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;padding:0.5em;visibility:hidden;}
-input#letsgo
-	{text-transform:uppercase;padding:1em;width:100%;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px;}
-input#letsgo:hover
-	{background-color:white;cursor:pointer;}
