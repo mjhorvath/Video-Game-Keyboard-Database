@@ -1,0 +1,10 @@
+I am no longer able to create new stored procedures or edit old ones due to a 
+change in my web host's security policies. For some reason I am also unable to 
+export them.
+
+The file "isometr1_keyboard_missing_routines.sql" contains some of these stored 
+procedures, from back when I was still able to export them. It does not include 
+all of the stored procedures, however. Some are missing.
+
+At some point in time I will either need to change web hosts, or convert the 
+stored procedures to PHP code.
