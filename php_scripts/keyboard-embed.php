@@ -76,7 +76,7 @@
 	$layout_title		= cleantextHTML("Video Game Keyboard Diagrams");
 	$layout_combo		= cleantextHTML("Keyboard Combinations");
 	$layout_mouse		= cleantextHTML("Mouse Controls");
-	$layout_joystick	= cleantextHTML("Joystick Controls");
+	$layout_joystick	= cleantextHTML("Joystick/Gamepad Controls");
 	$layout_note		= cleantextHTML("Additional Notes");
 	$layout_cheat		= cleantextHTML("Cheat Codes");
 	$layout_console		= cleantextHTML("Console Commands");
@@ -262,7 +262,7 @@
 	$temp_style_name	= $style_name ? $style_name : "Unrecognized Style";
 	$temp_platform_name	= $platform_name ? $platform_name : "Unrecognized Platform";
 	$thispage_title_a	= $temp_game_name;
-	$thispage_title_b	= " - " . $layout_title . " - " . $temp_platform_name . " " . $temp_layout_name . " - " . $temp_style_name;
+	$thispage_title_b	= " - " . $layout_title . " - " . $temp_platform_name . " " . $temp_layout_name . " - " . $temp_style_name . " - ID:" . $gamesrecord_id;
 
 	// validity checks (should check the layout here too... but)
 	if (!checkStyle($style_id))

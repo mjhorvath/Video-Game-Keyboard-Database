@@ -81,7 +81,7 @@
 	$layout_title		= cleantextHTML("Video Game Keyboard Diagrams");
 	$layout_combo		= cleantextHTML("Keyboard Combinations");
 	$layout_mouse		= cleantextHTML("Mouse Controls");
-	$layout_joystick	= cleantextHTML("Joystick Controls");
+	$layout_joystick	= cleantextHTML("Joystick/Gamepad Controls");
 	$layout_note		= cleantextHTML("Additional Notes");
 	$layout_cheat		= cleantextHTML("Cheat Codes");
 	$layout_console		= cleantextHTML("Console Commands");
@@ -491,11 +491,11 @@ var binding_table =
 					<table id="email_table" style="margin:auto;">
 						<tr>
 							<td>Name:</td>
-							<td><input class="email_input" type="text" name="email_1" id="email_1" placeholder="First and last name" required="required" autocomplete="on"/></td>
+							<td><input class="email_input" type="text" name="email_1" id="email_1" placeholder="First and last name" required="required" autocomplete="on" data-lpignore="true"/></td>
 						</tr>
 						<tr>
 							<td>Email:</td>
-							<td><input class="email_input" type="email" name="email_2" id="email_2" placeholder="Return email address" required="required" autocomplete="on"/></td>
+							<td><input class="email_input" type="email" name="email_2" id="email_2" placeholder="Return email address" required="required" autocomplete="on" data-lpignore="true"/></td>
 						</tr>
 						<tr>
 							<td>Message:</td>
@@ -506,7 +506,7 @@ var binding_table =
 							<td>
 								<div><img src="<?php echo $path_root; ?>ssi/CaptchaSecurityImages.php" style="border:1px solid #000;"/></div>
 								<p>For verification purposes, please type the characters shown in the above image into the following field:</p>
-								<div><input class="email_input" type="text" name="security_code" id="captchaForm" placeholder="Security code" required="required" autocomplete="off"/></div>
+								<div><input class="email_input" type="text" name="security_code" id="captchaForm" placeholder="Security code" required="required" autocomplete="off" data-lpignore="true"/></div>
 							</td>
 						</tr>
 					</table>

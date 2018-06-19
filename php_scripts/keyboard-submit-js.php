@@ -17,7 +17,8 @@
 
 var keycount = 106;
 var colors = ['non','red','yel','grn','cyn','blu','mag','wht','gry','blk','org','olv','brn'];
-var is_dirty = false;
+var is_key_dirty = false;
+var is_doc_dirty = false;
 var last_id = null;
 var last_class = null;
 var current_id = null;
@@ -79,7 +80,7 @@ function click_document_body(event)
 			else if
 			(
 				(have_input_key_values_changed() == true) &&
-				does_ancestor_have_id(elm, 'pane_rgt') &&
+				(does_ancestor_have_id(elm, 'pane_rgt') == true) &&
 				(
 					(elm.tagName.toUpperCase() == 'INPUT') ||
 					(elm.tagName.toUpperCase() == 'BUTTON') ||
@@ -96,25 +97,25 @@ function click_document_body(event)
 			else if (elm.matches('.butsub'))
 			{
 				remove_input_table_row(elm);
-				flag_as_dirty();
+				flag_doc_dirty();
 				return;
 			}
 			else if (elm.matches('.butadd'))
 			{
 				add_input_table_row(elm);
-				flag_as_dirty();
+				flag_doc_dirty();
 				return;
 			}
 			else if (elm.matches('.txtsub'))
 			{
 				remove_textarea_table_row(elm);
-				flag_as_dirty();
+				flag_doc_dirty();
 				return;
 			}
 			else if (elm.matches('.txtadd'))
 			{
 				add_textarea_table_row(elm);
-				flag_as_dirty();
+				flag_doc_dirty();
 				return;
 			}
 			elm = elm.parentNode;	// use parentElement instead?
@@ -192,11 +193,16 @@ function click_off_chart_key(elm)
 
 function key_save_changes()
 {
+	if (is_embedded_image_okay() == false)
+	{
+		image_file_warning();
+		return;
+	}
 	push_values_from_form_into_cache();
 	push_values_from_cache_into_array();
 	document.getElementById('set_key_button').disabled = true;
 	document.getElementById('unset_key_button').disabled = true;
-	flag_as_dirty();
+	flag_doc_dirty();
 }
 
 function key_revert_changes()
@@ -205,6 +211,21 @@ function key_revert_changes()
 	push_values_from_cache_into_form();
 	document.getElementById('set_key_button').disabled = true;
 	document.getElementById('unset_key_button').disabled = true;
+}
+
+function is_embedded_image_okay()
+{
+	var img_filename = document.getElementById('inp_imgfil').value;
+	var img_datauri = document.getElementById('inp_imguri').value;
+	if
+	(
+		((img_filename == '') && (img_datauri != '')) ||
+		((img_filename != '') && (img_datauri == ''))
+	)
+	{
+		return false;
+	}
+	return true;
 }
 
 function set_form_color(this_select, target_value)
@@ -475,7 +496,7 @@ function create_input_table_row()
 	new_inp_1.setAttribute('maxlength','100');
 	new_inp_1.setAttribute('placeholder','blah');
 	new_inp_1.setAttribute('autocomplete','off');
-	new_inp_1.onchange = flag_as_dirty;
+	new_inp_1.onchange = flag_doc_dirty;
 	new_cll_1.appendChild(new_inp_1);
 	new_row.appendChild(new_cll_1);
 	var new_cll_2 = document.createElement('div');
@@ -490,7 +511,7 @@ function create_input_table_row()
 	new_inp_3.setAttribute('maxlength','100');
 	new_inp_3.setAttribute('placeholder','blah');
 	new_inp_3.setAttribute('autocomplete','off');
-	new_inp_3.onchange = flag_as_dirty;
+	new_inp_3.onchange = flag_doc_dirty;
 	new_cll_3.appendChild(new_inp_3);
 	new_row.appendChild(new_cll_3);
 	var new_cll_4 = document.createElement('div');
@@ -530,7 +551,7 @@ function create_textarea_table_row()
 	new_cll_1.className = 'notcll txtone';
 	var new_txt_1 = document.createElement('textarea');
 	new_txt_1.setAttribute('placeholder','blah');
-	new_txt_1.onchange = flag_as_dirty;
+	new_txt_1.onchange = flag_doc_dirty;
 	new_cll_1.appendChild(new_txt_1);
 	new_row.appendChild(new_cll_1);
 	var new_cll_2 = document.createElement('div');
@@ -692,11 +713,22 @@ function key_change_warning(elm, letter)
 
 function document_change_warning(letter)
 {
-	return confirm('Pressing this button will reset the submission form to its orignal state, discarding any changes. Do you wish to continue? (' + letter + ')');
+	return confirm('Pressing this button will reset the submission form to its orignal state, discarding any changes you made. Do you wish to continue? (' + letter + ')');
 }
 
-function document_save_changes()
+function image_file_warning()
 {
+	alert('An image file name and data URI need to both be provided together.');	
+}
+
+function document_save_changes(event)
+{
+	if (have_input_key_values_changed() == true)
+	{
+		var elm = document.getElementById('set_doc_button');
+		key_change_warning(elm, 'D');
+		return;
+	}
 	collect_nonkey_data();
 	document.getElementById('email_4').value = document.getElementById('game_tit').value;
 	document.getElementById('email_5').value = process_legend_data();
@@ -743,10 +775,10 @@ function convert_title_to_seo(event)
 	document.getElementById('game_url').value = right_value;
 }
 
-function flag_as_dirty()
+function flag_doc_dirty()
 {
 //	enable_doc_controls();
-	is_dirty = true;
+	is_doc_dirty = true;
 }
 
 function enable_doc_controls()
