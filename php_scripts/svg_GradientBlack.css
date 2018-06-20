@@ -29,9 +29,9 @@ svg	{font-family:DejaVu Sans Condensed,Sans-Serif;font-size:14px;}
 .reccyn	{fill:#0CC9D9;}	/* CIE-L*ch ( 74, 40,210) */
 .recblu	{fill:#80B9FF;}	/* CIE-L*ch ( 74, 40,270) */
 .recmag	{fill:#E4A0DB;}	/* CIE-L*ch ( 74, 40,330) */
-.recwht	{fill:#ffffff;}	/* CIE-L*ch (100,  0,  0) */
-.recgry	{fill:#B6B6B6;}	/* CIE-L*ch ( 74,  0,  0) */
-.recblk	{fill:#000000;}	/* CIE-L*ch (  0,  0,  0) */
+.recwht	{fill:#ffffff;}
+.recgry	{fill:#808080;}
+.recblk	{fill:#000000;}
 .recorg	{fill:#ECA777;}	/* CIE-L*ch ( 74, 40, 60) */
 .recolv	{fill:#A8BF75;}	/* CIE-L*ch ( 74, 40,120) */
 .recbrn	{fill:#685510;}	/* CIE-L*ch ( 37, 40, 90) */

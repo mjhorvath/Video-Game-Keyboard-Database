@@ -534,7 +534,7 @@
 				echo
 "					<div class=\"legtbl inbtop\">\n";
 			}
-			if ($legend_table[$i] !== null)
+			if (isset($legend_table[$i]))
 			{
 				$leg_color = getcolor($legend_table[$i][0]);
 				$leg_value = cleantextHTML($legend_table[$i][1]);

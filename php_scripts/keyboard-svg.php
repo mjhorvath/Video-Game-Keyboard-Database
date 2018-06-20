@@ -372,18 +372,28 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 				<feMergeNode in="SourceGraphic"/> 
 			</feMerge>
 		</filter>
-		<linearGradient id="grad_1" x1="0" x2="0" y1="0" y2="1">
+<?php
+	if (($style_id == 5) || ($style_id == 6))	// Dark Gradient & Light Gradient
+	{
+		echo
+'		<linearGradient id="grad_1" x1="0" x2="0" y1="0" y2="1">
 			<stop offset="0.0" stop-color="white" stop-opacity="0.0" />
 			<stop offset="1.0" stop-color="white" stop-opacity="1.0" />
 		</linearGradient>
-		<linearGradient id="grad_2" x1="0" x2="0" y1="0" y2="1">
+';
+	}
+	if (($style_id == 16) || ($style_id == 18))	// CIELCh Shiny
+	{
+		echo
+'		<linearGradient id="grad_2" x1="0" x2="0" y1="0" y2="1">
 			<stop offset="0.0" stop-color="white" stop-opacity="0.2" />
 			<stop offset="0.5" stop-color="white" stop-opacity="0.2" />
 			<stop offset="0.5" stop-color="white" stop-opacity="0.0" />
 			<stop offset="1.0" stop-color="white" stop-opacity="0.0" />
 		</linearGradient>
-<?php
-	if ($style_id == 9)
+';
+	}
+	if ($style_id == 9)	// Patterned Grayscale
 	{
 		echo
 '		<pattern id="pat01" patternUnits="userSpaceOnUse" width="8px" height="8px"><image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAE0lEQVQImWP4vx8CGaD0fwayRADXsTfBHa7CGAAAAABJRU5ErkJggg==" x="0" y="0" width="8px" height="8px" /></pattern>

@@ -108,42 +108,48 @@
 
 	for ($i = 0; $i < $games_max; $i++)
 	{
-		$seourl_string .= "'" . $seourl_table[$i] . "'";
-		$layout_string .= "[";
-		for ($j = 0; $j < $layouts_max; $j++)
+		if (isset($seourl_table[$i]))
 		{
-			$layout_string .= $layout_table[$i][$j] ? 1 : 0;
-			if ($j != $layouts_max - 1)
+			$seourl_string .= "'" . $seourl_table[$i] . "'";
+			$layout_string .= "[";
+			for ($j = 0; $j < $layouts_max; $j++)
+			{
+				$layout_string .= isset($layout_table[$i][$j]) ? 1 : 0;
+				if ($j != $layouts_max - 1)
+				{
+					$layout_string .= ",";
+				}
+			}
+			$layout_string .= "]";
+			if ($i != $games_max - 1)
 			{
 				$layout_string .= ",";
+				$seourl_string .= ",";
 			}
+			$layout_string .= "//" . ($i+1) . "\n";
+			$seourl_string .= "//" . ($i+1) . "\n";
 		}
-		$layout_string .= "]";
-		if ($i != $games_max - 1)
-		{
-			$layout_string .= ",";
-			$seourl_string .= ",";
-		}
-		$layout_string .= "//" . ($i+1) . "\n";
-		$seourl_string .= "//" . ($i+1) . "\n";
 	}
 	for ($i = 0; $i < $layouts_max; $i++)
 	{
-		$style_string .= "[";
-		for ($j = 0; $j < $styles_max; $j++)
+		if (isset($style_table[$i]))
 		{
-			$style_string .= $style_table[$i][$j] ? 1 : 0;
-			if ($j != $styles_max - 1)
+			$style_string .= "[";
+			for ($j = 0; $j < $styles_max; $j++)
+			{
+				$style_string .= isset($style_table[$i][$j]) ? 1 : 0;
+				if ($j != $styles_max - 1)
+				{
+					$style_string .= ",";
+				}
+			}
+			$style_string .= "]";
+			if ($i != $layouts_max - 1)
 			{
 				$style_string .= ",";
 			}
+			$style_string .= "//" . ($i+1) . "\n";
 		}
-		$style_string .= "]";
-		if ($i != $layouts_max - 1)
-		{
-			$style_string .= ",";
-		}
-		$style_string .= "//" . ($i+1) . "\n";
 	}
 
 	mysqli_close($con);
