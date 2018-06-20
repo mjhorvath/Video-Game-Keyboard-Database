@@ -15,21 +15,17 @@
 ?>
 <?php
 	// Copyright (C) 2018  Michael Horvath
-
-	// This library is free software; you can redistribute it and/or
-	// modify it under the terms of the GNU Lesser General Public
-	// License as published by the Free Software Foundation; either
-	// version 2.1 of the License, or (at your option) any later version.
-
-	// This library is distributed in the hope that it will be useful,
-	// but WITHOUT ANY WARRANTY; without even the implied warranty of
-	// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-	// Lesser General Public License for more details.
-
-	// You should have received a copy of the GNU Lesser General Public
-	// License along with this library; if not, write to the Free Software
-	// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 
-	// 02110-1301  USA
+	//
+	// This program is free software; you can redistribute it and/or 
+	// modify it under the terms of the GNU General Public License 
+	// as published by the Free Software Foundation; either version 2 
+	// of the License, or (at your option) any later version.
+	// 
+	// This program is distributed in the hope that it will be useful, 
+	// but WITHOUT ANY WARRANTY; without even the implied warranty of 
+	// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+	// GNU General Public License for more details: 
+	// http://www.gnu.org/licenses/gpl.html
 
 	include("./keyboard-connection.php");
 	include("./keyboard-common.php");
@@ -325,7 +321,7 @@
 	<li>View or print the page in the new window.</li>
 </ol>
 <h2>Licenses &amp; Submissions:</h2>
-<p>The source code for this project is licensed under the <a target="_blank" href="http://creativecommons.org/licenses/LGPL/2.1/">CC LGPL 2.1</a>. The content is licensed under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading.</p>
+<p>The source code for this project is licensed under the <a target="_blank" href="GNU General Public License">GPLv3</a>. The content is licensed under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading.</p>
 <p>To submit a new set of bindings, you can fill out <a href="../files/binding_template_us104key.xlsx">this spreadsheet</a> and <a href="http://isometricland.net/email.php">email</a> me the contents (copy and paste) when you are done. Note that any content you submit falls under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart, as well as in the change log.</p>
 <p>I have also recently started developing a form-based submission page. You can use it to submit changes to existing bindings by selecting the "Editor" option in Step 4, above. Or, you can get started making a brand new set of bindings with this <a href="keyboard-diagram-blank-sample.php?sty=15&lay=1&fmt=3">blank sample</a>.</p>
 <p></p>

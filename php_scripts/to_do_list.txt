@@ -1,6 +1,11 @@
-SUBMISSION FORM TO DO
+SUBMISSION FORM TO DO LIST
 
 * Selecting a colored OPTION element should change the color of the 
   corresponding SELECT element as well.
 * An ONUNLOAD warning should be thrown if someone attempts to leave the page 
   and there is any unsaved data.
+* Make sure all buttons have a TITLE attribute set.
+* The Creative Commons icons need to have ALT attributes configured.
+* The CAPTCHA dialog should check for a correct security code *before* sending 
+  the user on to the next page. At the very least, it should warn users that 
+  they will not be able to return to the submission page later.

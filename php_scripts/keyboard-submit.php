@@ -1,20 +1,16 @@
 <?php
 	// Copyright (C) 2018  Michael Horvath
-
-	// This library is free software; you can redistribute it and/or
-	// modify it under the terms of the GNU Lesser General Public
-	// License as published by the Free Software Foundation; either
-	// version 2.1 of the License, or (at your option) any later version.
-
-	// This library is distributed in the hope that it will be useful,
-	// but WITHOUT ANY WARRANTY; without even the implied warranty of
-	// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-	// Lesser General Public License for more details.
-
-	// You should have received a copy of the GNU Lesser General Public
-	// License along with this library; if not, write to the Free Software
-	// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 
-	// 02110-1301  USA
+	//
+	// This program is free software; you can redistribute it and/or 
+	// modify it under the terms of the GNU General Public License 
+	// as published by the Free Software Foundation; either version 2 
+	// of the License, or (at your option) any later version.
+	// 
+	// This program is distributed in the hope that it will be useful, 
+	// but WITHOUT ANY WARRANTY; without even the implied warranty of 
+	// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+	// GNU General Public License for more details: 
+	// http://www.gnu.org/licenses/gpl.html
 
 	header("Content-Type: text/html; charset=utf8");
 
@@ -517,7 +513,7 @@ var binding_table =
 				</form>
 				<hr/>
 				<div>
-					<button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();">Submit Diagram</button><button id="unset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();">Reset Page</button>
+					<button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();">Submit Diagram</button><button id="unset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();">Reset</button>
 				</div>
 			</div>
 			<div id="pane_hlp" style="display:none;">
@@ -526,6 +522,7 @@ var binding_table =
 				<p>You can use an online service such as <a target="_blank" href="https://websemantics.uk/tools/image-to-data-uri-converter/">Data-URI base64 converter</a> to convert PNG images to data-URIs.</p>
 				<p>Image data-URIs must be less than 256KiB in size.</p>
 				<p>Images must be 48x48px and 32 bits.</p>
+				<p>Image file names must be paired along with image data-URIs.</p>
 				<p>"<a href="./keyboard.php">Video Game Keyboard Diagrams</a>" software was created by Michael Horvath and is licensed under <a target="_blank" rel="license" href="https://creativecommons.org/licenses/LGPL/2.1/;/">CC LGPL 2.1</a>. Content is licensed under <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. You can find this project on <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub</a>.</p>
 			</div>
 		</div>
@@ -940,8 +937,8 @@ var binding_table =
 					</div>
 				</div>
 				<div class="bodiv" style="font-size:smaller;">
-					<p><a target="_blank" rel="license" href="http://creativecommons.org/licenses/LGPL/2.1/"><img alt="Creative Commons License" src="<?php echo $path_root; ?>images/license_cc-lgpl_88x31.png" /></a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="<?php echo $path_root; ?>images/license_cc-by-sa_88x31.png" /></a></p>
-					<p>"Video Game Keyboard Diagrams" software was created by Michael Horvath and is licensed under <a target="_blank" rel="license" href="https://creativecommons.org/licenses/LGPL/2.1/;/">CC LGPL 2.1</a>. Content is licensed under <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. You can find this project on <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub</a>.</p>
+					<p><a target="_blank" rel="license" href="http://creativecommons.org/licenses/LGPL/2.1/"><img alt="GPLv3 icon" src="<?php echo $path_root; ?>images/license_gpl-88x31.png" /></a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="CC BY-SA 3.0 icon" style="border-width:0" src="<?php echo $path_root; ?>images/license_cc-by-sa_88x31.png" /></a></p>
+					<p>"Video Game Keyboard Diagrams" software was created by Michael Horvath and is licensed under <a target="_blank" rel="license" href="https://www.gnu.org/licenses/gpl.html">GPLv3</a> or later. Content is licensed under <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. You can find this project on <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub</a>.</p>
 					<p>
 <?php
 	if (($gamesrecord_author) && ($gamesrecord_author != "Michael Horvath"))
