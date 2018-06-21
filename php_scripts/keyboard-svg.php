@@ -445,7 +445,6 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		echo
 "	<text y=\"0\">No bindings found for game \"" . $temp_game_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</text>";
 	}
-	// validity checks
 	if ($stylesrecord_id == 0)
 	{
 		echo
@@ -658,7 +657,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		for ($i = 0; $i < count($legend_table); $i++)
 		{
 			$legend_row = $legend_table[$i];
-			if ($legend_row[0] != null)
+			if (isset($legend_row[0]))
 			{
 				$leg_grp = getcolor($legend_row[0]);
 				$leg_dsc = cleantextSVG($legend_row[1]);

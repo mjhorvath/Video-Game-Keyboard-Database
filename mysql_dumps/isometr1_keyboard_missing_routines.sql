@@ -15,7 +15,7 @@
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_bindings_chart`(IN in_layout_id TINYINT(3), IN in_game_id SMALLINT(5))
+CREATE PROCEDURE `get_bindings_chart`(IN in_layout_id TINYINT(3), IN in_game_id SMALLINT(5))
 BEGIN
 	SELECT	b.normal_group, b.normal_action, b.shift_group, b.shift_action, b.ctrl_group, b.ctrl_action, b.alt_group, b.alt_action, b.altgr_group, b.altgr_action, b.extra_group, b.extra_action, b.image_file, b.key_number
 	FROM	bindings as b
@@ -37,7 +37,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_bindings_js`()
+CREATE PROCEDURE `get_bindings_js`()
 BEGIN
 	SELECT	b.game_id, b.layout_id
 	FROM	bindings as b;
@@ -57,7 +57,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_commands_chart`(IN in_layout_id TINYINT(3), IN in_game_id SMALLINT(5))
+CREATE PROCEDURE `get_commands_chart`(IN in_layout_id TINYINT(3), IN in_game_id SMALLINT(5))
 BEGIN
 	SELECT	c.commandtype_id, c.command_text, c.command_description
 	FROM	commands as c
@@ -79,7 +79,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_games_chart`(IN in_game_id SMALLINT(5))
+CREATE PROCEDURE `get_games_chart`(IN in_game_id SMALLINT(5))
 BEGIN
 	SELECT	g.game_name
 	FROM	games as g
@@ -100,7 +100,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_games_front`()
+CREATE PROCEDURE `get_games_front`()
 BEGIN
 	SELECT	g.genre_id, g.game_id, g.game_name
 	FROM	games as g;
@@ -120,7 +120,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_games_js`()
+CREATE PROCEDURE `get_games_js`()
 BEGIN
 	SELECT	g.game_id
 	FROM	games as g;
@@ -140,7 +140,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_genres_front`()
+CREATE PROCEDURE `get_genres_front`()
 BEGIN
 	SELECT	g.genre_name, g.genre_displayorder
 	FROM	genres as g;
@@ -160,7 +160,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_keystyles_chart`(IN in_style_id TINYINT(3))
+CREATE PROCEDURE `get_keystyles_chart`(IN in_style_id TINYINT(3))
 BEGIN
 	SELECT	k.keystyle_group, k.key_number
 	FROM	keystyles as k
@@ -181,7 +181,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_layouts_chart`(IN in_layout_id TINYINT(3))
+CREATE PROCEDURE `get_layouts_chart`(IN in_layout_id TINYINT(3))
 BEGIN
 	SELECT	l.platform_id, l.layout_name, l.layout_title, l.layout_mouse, l.layout_joystick, l.layout_combos, l.layout_notes, l.layout_legend, l.layout_description, l.layout_keywords
 	FROM	layouts as l
@@ -202,7 +202,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_layouts_front`()
+CREATE PROCEDURE `get_layouts_front`()
 BEGIN
 		SELECT	l.platform_id, l.layout_id, l.layout_name
 		FROM	layouts as l;
@@ -222,7 +222,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_layouts_js`()
+CREATE PROCEDURE `get_layouts_js`()
 BEGIN
 	SELECT	l.platform_id
 	FROM	layouts as l;
@@ -242,7 +242,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_layouts_submit`()
+CREATE PROCEDURE `get_layouts_submit`()
 BEGIN
 	SELECT	l.layout_name
 	FROM	layouts as l;
@@ -262,7 +262,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_legends_chart`(IN in_layout_id TINYINT(3), IN in_game_id SMALLINT(5))
+CREATE PROCEDURE `get_legends_chart`(IN in_layout_id TINYINT(3), IN in_game_id SMALLINT(5))
 BEGIN
 	SELECT	l.legend_group, l.legend_description
 	FROM	legends as l
@@ -284,7 +284,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_platforms_chart`(IN in_layout_platform TINYINT(3))
+CREATE PROCEDURE `get_platforms_chart`(IN in_layout_platform TINYINT(3))
 BEGIN
 	SELECT	p.platform_name
 	FROM	platforms as p
@@ -305,7 +305,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_platforms_front`()
+CREATE PROCEDURE `get_platforms_front`()
 BEGIN
 		SELECT	p.platform_id, p.platform_name
 		FROM	platforms as p;
@@ -325,7 +325,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_positions_chart`(IN in_layout_id TINYINT(3))
+CREATE PROCEDURE `get_positions_chart`(IN in_layout_id TINYINT(3))
 BEGIN
 	SELECT	p.position_left, p.position_top, p.position_width, p.position_height, p.symbol_low, p.symbol_cap, p.symbol_altgr, p.key_number
 	FROM	positions as p
@@ -346,7 +346,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_positions_js`(IN in_layout_id TINYINT(3))
+CREATE PROCEDURE `get_positions_js`(IN in_layout_id TINYINT(3))
 BEGIN
 	SELECT	p.symbol_low, p.symbol_cap
 	FROM	positions as p
@@ -367,7 +367,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_stylegroups_front`()
+CREATE PROCEDURE `get_stylegroups_front`()
 BEGIN
 		SELECT	s.stylegroup_id, s.stylegroup_name
 		FROM	stylegroups as s;
@@ -387,7 +387,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_styles_chart`(IN in_style_id TINYINT(3))
+CREATE PROCEDURE `get_styles_chart`(IN in_style_id TINYINT(3))
 BEGIN
 	SELECT	s.style_filename, s.style_name
 	FROM	styles as s
@@ -408,7 +408,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_styles_front`()
+CREATE PROCEDURE `get_styles_front`()
 BEGIN
 		SELECT	s.stylegroup_id, s.style_id, s.style_name
 		FROM	styles as s;
@@ -428,7 +428,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`isometr1_mikedev`@`71.46.106.%` PROCEDURE `get_styles_submit`()
+CREATE PROCEDURE `get_styles_submit`()
 BEGIN
 	SELECT	s.style_name
 	FROM	styles as s;

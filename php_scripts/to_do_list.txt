@@ -1,11 +1,14 @@
-SUBMISSION FORM TO DO LIST
+TO DO LIST
 
-* Selecting a colored OPTION element should change the color of the 
-  corresponding SELECT element as well.
-* An ONUNLOAD warning should be thrown if someone attempts to leave the page 
-  and there is any unsaved data.
-* Make sure all buttons have a TITLE attribute set.
-* The Creative Commons icons need to have ALT attributes configured.
-* The CAPTCHA dialog should check for a correct security code *before* sending 
-  the user on to the next page. At the very least, it should warn users that 
-  they will not be able to return to the submission page later.
+- In the submission form, selecting a colored OPTION element should maybe 
+  change the color of the corresponding parent SELECT element as well.
+- An warning should be thrown ONUNLOAD if someone attempts to leave the 
+  submission form and there is any unsaved or unsubmitted data.
+- Make sure all buttons in the submission form have the TITLE attribute set.
+- The Creative Commons icons need to have their ALT attributes set.
+- The CAPTCHA dialog should check for a correct security code *before* sending 
+  the user on to the next page. At the very least, it should warn the user that 
+  he or she will not be able to return to the submission page after making a 
+  submission.
+- I would like to maybe store the SVG patterns, filters and gradients in 
+  separate files if possible, rather than cluttering up the main SVG file.

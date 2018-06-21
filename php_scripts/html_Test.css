@@ -51,11 +51,12 @@ footer	{font-size:smaller;}
 .capmag,.legmag,.selmag	{background:#e020e0;}
 .capwht,.legwht,.selwht	{background:#ffffff;}
 .capgry,.leggry,.selgry	{background:#808080;}
-.capblk,.legblk,.selblk	{background:#000;color:#ffffff;}
+.capblk,.legblk,.selblk	{background:#000000;color:#ffffff;}
 .caporg,.legorg,.selorg	{background:#ff8000;}
 .capolv,.legolv,.selolv	{background:#808000;}
-.capnon,.legnon,.selbrn	{background:transparent;}
-.capred,.capyel,.selnon,.capgrn,.capcyn,.capblu,.capmag,.capwht,.capgry,.capblk,.caporg,.capolv,.capbrn,.capnon,
+.capbrn,.capbrn,.selbrn	{background:#804000;}
+.capnon,.legnon,.selnon	{background:transparent;}
+.capred,.capyel,.capgrn,.capcyn,.capblu,.capmag,.capwht,.capgry,.capblk,.caporg,.capolv,.capbrn,.capnon,
 .legred,.legyel,.leggrn,.legcyn,.legblu,.legmag,.legwht,.leggry,.legblk,.legorg,.legolv,.legbrn,.legnon
 	{background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image: linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-size: 72px 72px;}
 .legred,.legyel,.leggrn,.legcyn,.legblu,.legmag,.legwht,.leggry,.legblk,.legorg,.legolv,.legbrn,.legnon

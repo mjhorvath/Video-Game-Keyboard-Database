@@ -123,11 +123,11 @@
 			$layout_string .= "]";
 			if ($i != $games_max - 1)
 			{
-				$layout_string .= ",";
 				$seourl_string .= ",";
+				$layout_string .= ",";
 			}
-			$layout_string .= "//" . ($i+1) . "\n";
 			$seourl_string .= "//" . ($i+1) . "\n";
+			$layout_string .= "//" . ($i+1) . "\n";
 		}
 	}
 	for ($i = 0; $i < $layouts_max; $i++)

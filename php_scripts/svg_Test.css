@@ -1,0 +1,54 @@
+*	{}
+svg	{font-family:DejaVu Sans Condensed,Sans-Serif;font-size:14px;}
+#bkgrec	{stroke:none;fill:#fff;}
+.keyout	{overflow:visible;}
+.legtxt	{font-size:14px;fill:#000;}
+.keyhgh,.keylow,.keyrgt
+	{font-size:12px;font-weight:bold;}
+.keyrgt	{text-anchor:end;}
+.keyrec	{}
+.capnor	{font-size:12px;font-weight:normal;}
+.capshf,.capctl,.capalt,.capagr,.capxtr
+	{font-size:10px;text-anchor:end;font-weight:normal;}
+.capshf	{fill:#a0a0ff;}
+.capctl	{fill:#a0ffa0;}
+.capalt	{fill:#ffa0a0;}
+.capagr	{fill:#ffa0ff;}
+.capxtr	{fill:#a0ffff;}
+.bakshf	{fill:none;}
+.bakctl	{fill:none;}
+.bakalt	{fill:none;}
+.bakagr	{fill:none;}
+.bakxtr	{fill:none;}
+.capimg	{}
+.recred	{fill:#e02020;}
+.recyel	{fill:#e0e020;}
+.recgrn	{fill:#20e020;}
+.reccyn	{fill:#20e0e0;}
+.recblu	{fill:#2020e0;}
+.recmag	{fill:#e020e0;}
+.recwht	{fill:#ffffff;stroke:#c0c0c0;}
+.recgry	{fill:#808080;}
+.recblk	{fill:#000000;}
+.recorg	{fill:#ff8000;}
+.recolv	{fill:#808000;}
+.recbrn	{fill:#804000;}
+.recnon	{fill:#c0c0c0;}
+.txtred	{fill:#000000;}
+.txtyel	{fill:#000000;}
+.txtgrn	{fill:#000000;}
+.txtcyn	{fill:#000000;}
+.txtblu	{fill:#000000;}
+.txtmag	{fill:#000000;}
+.txtwht	{fill:#000000;}
+.txtgry	{fill:#000000;}
+.txtblk	{fill:#ffffff;}
+.txtorg	{fill:#000000;}
+.txtolv	{fill:#000000;}
+.txtbrn	{fill:#000000;}
+.txtnon	{fill:#000000;}
+/*
+Not much support for these in browsers. Will need to recalculate everything if I use them.
+.ideo	{alignment-baseline:ideographic;}
+.hang	{alignment-baseline:hanging;}
+*/

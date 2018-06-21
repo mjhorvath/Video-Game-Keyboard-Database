@@ -10,3 +10,4 @@ In order for VGKD to work properly, it requires these following things:
   by some of the themes.
 * "CaptchaSecurityImages.php"
   http://www.white-hat-web-design.co.uk/articles/php-captcha.php
+  (Dead link. Use the Wayback Machine.)
