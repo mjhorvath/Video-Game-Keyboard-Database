@@ -14,9 +14,11 @@
 	// You should have received a copy of the GNU General Public License
 	// along with this program. If not, see <https://www.gnu.org/licenses/>.
 
+	$path_root		= "../";
+
 	header("Content-type: image/svg+xml");
 
-	include("./keyboard-connection.php");
+	include($path_root. "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
 
 	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);

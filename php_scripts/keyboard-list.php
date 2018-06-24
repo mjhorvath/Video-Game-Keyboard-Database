@@ -28,7 +28,7 @@
 	// You should have received a copy of the GNU General Public License
 	// along with this program. If not, see <https://www.gnu.org/licenses/>.
 
-	include("./keyboard-connection.php");
+	include($path_root. "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
 
 	function doGenres($in_result)

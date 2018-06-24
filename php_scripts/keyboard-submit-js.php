@@ -43,7 +43,7 @@ current_values.col_capxtr = 0;
 function init_submissions()
 {
 	disable_input_elements();
-	enable_doc_controls();
+//	enable_doc_controls();
 	add_input_typing_events();
 	addListener(document.body, 'click', click_document_body);
 	addListener(document.getElementById('game_tit'), 'input', convert_title_to_seo);
@@ -59,7 +59,20 @@ function click_document_body(event)
 		{
 			if
 			(
-				elm.matches('#pane_lft') ||
+				elm.matches('#set_doc_button') ||
+				elm.matches('#unset_doc_button') ||
+				elm.matches('#email_form') ||
+				elm.matches('#email_recaptcha') ||
+				(true === false)
+			)
+			{
+				click_off_chart_key(elm);
+				return;
+			}
+			else if
+			(
+				elm.matches('#table_inp') ||
+				elm.matches('#button_inp') ||
 				elm.matches('#tbar_lft') ||
 				elm.matches('#tbar_rgt') ||
 				elm.matches('.side_butt') ||
@@ -124,6 +137,7 @@ function click_document_body(event)
 		}
 	}
 	click_off_chart_key(elm);
+	return;
 }
 
 function click_on_chart_key(elm)
@@ -711,12 +725,18 @@ function key_change_warning(elm, letter)
 
 function document_change_warning(letter)
 {
-	return confirm('Pressing this button will reset the submission form to its orignal state, discarding any changes you made. Do you wish to continue? (' + letter + ')');
+	return confirm('Pressing this button will reset the submission form to its orignal state, discarding any changes you made. Do you wish to proceed? (' + letter + ')');
 }
 
 function image_file_warning()
 {
 	alert('An image file name and data URI need to both be provided together.');	
+}
+
+function document_save_warning(letter)
+{
+//	return confirm('Pressing this button will post the keyboard bindings data to the site admin. You will not be able to return later and continue where you left off. Do you wish to proceed? (' + letter + ')');
+	return confirm('Pressing this button will post the keyboard bindings data to the site admin. Do you wish to proceed? (' + letter + ')');
 }
 
 function document_save_changes(event)
@@ -727,12 +747,94 @@ function document_save_changes(event)
 		key_change_warning(elm, 'D');
 		return;
 	}
+	if (document_save_warning('A') == false)
+	{
+		return;
+	}
 	collect_nonkey_data();
 	document.getElementById('email_4').value = document.getElementById('game_tit').value;
 	document.getElementById('email_5').value = process_legend_data();
 	document.getElementById('email_6').value = process_command_data();
 	document.getElementById('email_7').value = process_binding_data();
-	document.getElementById('email_form').submit();
+//	document.getElementById('email_form').submit();
+
+	do_recaptcha();
+}
+
+function do_recaptcha()
+{
+	console.log('RECAPTCHA: clicked submit'); // --> works
+
+	var valid	= true;
+	var errors	= "";
+	var name	= $("#email_1").val();
+	var email	= $("#email_2").val();
+	var message	= $("#email_3").val();
+	var title	= $("#email_4").val();
+	var legend	= $("#email_5").val();
+	var command	= $("#email_6").val();
+	var binding	= $("#email_7").val();
+
+	if (name == '' || email == '' || message == '')
+	{
+		valid = false;
+		errors = "ERROR: The name, email and message fields are required.";
+	}
+
+	console.log('RECAPTCHA: captcha response\n' + grecaptcha.getResponse()); // --> captcha response: 
+
+	if (valid)
+	{
+		// hide the errors
+	//	$errors.slideUp();
+		// ajax to the php file to send the mail
+		$.ajax
+		({
+			type: "POST",
+			url: "keyboard-recaptcha.php",
+			data:
+			{
+				name:		name,
+				email:		email,
+				message:	message,
+				title:		title,
+				legend:		legend,
+				command:	command,
+				binding:	binding,
+				//THIS WILL TELL THE FORM IF THE USER IS CAPTCHA VERIFIED.
+				captcha:	grecaptcha.getResponse()
+			}
+		}).done(function(status)
+		{
+			if (status == "ok")
+			{
+				alert('Thanks! Your message has been sent, and I will contact you soon.');
+				// clear the form fields
+//				$('#email_1').val('');
+//				$('#email_2').val('');
+//				$('#email_3').val('');
+//				$('#email_4').val('');
+//				$('#email_5').val('');
+//				$('#email_6').val('');
+//				$('#email_7').val('');
+				if (is_doc_dirty == true)
+				{
+					flag_doc_clean();
+				}
+				console.log('RECAPTCHA: mail was sent');
+			}
+			else
+			{
+				alert('There were problems with reCAPTCHA. Try again.');
+				console.log('RECAPTCHA: mail was not sent');
+			}
+		});
+	}
+	else
+	{
+		alert(errors);
+		console.log('RECAPTCHA: other issues');
+	}
 }
 
 function document_revert_changes()
@@ -775,14 +877,26 @@ function convert_title_to_seo(event)
 
 function flag_doc_dirty()
 {
-//	enable_doc_controls();
+	enable_doc_controls();
 	is_doc_dirty = true;
+}
+
+function flag_doc_clean()
+{
+	disable_doc_controls();
+	is_doc_dirty = false;
 }
 
 function enable_doc_controls()
 {
 	document.getElementById('set_doc_button').disabled = false;
 	document.getElementById('unset_doc_button').disabled = false;
+}
+
+function disable_doc_controls()
+{
+	document.getElementById('set_doc_button').disabled = true;
+	document.getElementById('unset_doc_button').disabled = true;
 }
 
 function collect_nonkey_data()

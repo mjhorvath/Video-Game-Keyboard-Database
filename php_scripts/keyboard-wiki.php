@@ -14,9 +14,11 @@
 	// You should have received a copy of the GNU General Public License
 	// along with this program. If not, see <https://www.gnu.org/licenses/>.
 
+	$path_root		= "../";
+
 	header("Content-Type: text/html; charset=utf8");
 
-	include("./keyboard-connection.php");
+	include($path_root. "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
 
 	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
@@ -362,8 +364,8 @@
 		</main>
 		<footer>
 			<div class="bodiv" style="clear:both;">
-				<p><a target="_blank" rel="license" href="http://creativecommons.org/licenses/LGPL/2.1/"><img alt="Creative Commons License" src="<?php echo $path_root; ?>images/license_cc-lgpl_88x31.png" /></a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="<?php echo $path_root; ?>images/license_cc-by-sa_88x31.png" /></a></p>
-				<p>"Video Game Keyboard Diagrams" software was created by Michael Horvath and is licensed under <a target="_blank" rel="license" href="https://creativecommons.org/licenses/LGPL/2.1/;/">CC LGPL 2.1</a>. Content is licensed under <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. You can find this project on <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub</a>.</p>
+					<p><a target="_blank" rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img alt="GPLv3 icon" src="<?php echo $path_root; ?>images/license_gpl-88x31.png" /></a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="CC BY-SA 3.0 icon" style="border-width:0" src="<?php echo $path_root; ?>images/license_cc-by-sa_88x31.png" /></a></p>
+					<p>"Video Game Keyboard Diagrams" software was created by Michael Horvath and is licensed under <a target="_blank" rel="license" href="https://www.gnu.org/licenses/gpl.html">GNU GPLv3</a> or later license. Content is licensed under <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> or later license. You can find this project on <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub</a>.</p>
 				<p>
 <?php
 	if (($gamesrecord_author) && ($gamesrecord_author != "Michael Horvath"))

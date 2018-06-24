@@ -4,11 +4,15 @@ TO DO LIST
   change the color of the corresponding parent SELECT element as well.
 - An warning should be thrown ONUNLOAD if someone attempts to leave the 
   submission form and there is any unsaved or unsubmitted data.
-- Make sure all buttons in the submission form have the TITLE attribute set.
+- Make sure all buttons in the submission form have their TITLE attributes set.
 - The Creative Commons icons need to have their ALT attributes set.
 - The CAPTCHA dialog should check for a correct security code *before* sending 
   the user on to the next page. At the very least, it should warn the user that 
-  he or she will not be able to return to the submission page after making a 
+  he or she will not be able to return to the form page after making a 
   submission.
 - I would like to maybe store the SVG patterns, filters and gradients in 
-  separate files if possible, rather than cluttering up the main SVG file.
+  separate files, rather than cluttering up the main SVG file. Since there are 
+  only a dozen or so styles, however, it's not currently a big deal.
+- Continue developing the "Spreadsheet View", and permit users to set or update 
+  the keyboard data from there.
+- Convert email TABLE to DIVs.
