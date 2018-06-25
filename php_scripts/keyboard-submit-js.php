@@ -45,8 +45,15 @@ function init_submissions()
 	disable_input_elements();
 //	enable_doc_controls();
 	add_input_typing_events();
+	add_window_exit_event();
 	addListener(document.body, 'click', click_document_body);
 	addListener(document.getElementById('game_tit'), 'input', convert_title_to_seo);
+	hide_loading_image();
+}
+
+function hide_loading_image()
+{
+	document.getElementById('waiting').style.display = 'none';
 }
 
 function click_document_body(event)
@@ -59,18 +66,23 @@ function click_document_body(event)
 		{
 			if
 			(
-				elm.matches('#set_doc_button') ||
-				elm.matches('#unset_doc_button') ||
-				elm.matches('#email_form') ||
-				elm.matches('#email_recaptcha') ||
-				(true === false)
+				(is_key_dirty == true) &&
+				(
+					elm.matches('#set_doc_button') ||
+					elm.matches('#unset_doc_button') ||
+					elm.matches('.email_input') ||
+					elm.matches('.email_textarea') ||
+					elm.matches('#email_recaptcha') ||
+					(true === false)
+				)
 			)
 			{
-				click_off_chart_key(elm);
+				key_change_warning(elm, 'E');
 				return;
 			}
 			else if
 			(
+				elm.matches('#pane_lft') ||
 				elm.matches('#table_inp') ||
 				elm.matches('#button_inp') ||
 				elm.matches('#tbar_lft') ||
@@ -80,6 +92,7 @@ function click_document_body(event)
 				(true === false)
 			)
 			{
+				// do nothing
 				return;
 			}
 			else if (elm.matches('.keyout'))
@@ -90,7 +103,7 @@ function click_document_body(event)
 			// could be optimized a little
 			else if
 			(
-				(have_input_key_values_changed() == true) &&
+				(is_key_dirty == true) &&
 				(does_ancestor_have_id(elm, 'pane_rgt') == true) &&
 				(
 					(elm.tagName.toUpperCase() == 'INPUT') ||
@@ -142,7 +155,7 @@ function click_document_body(event)
 
 function click_on_chart_key(elm)
 {
-	if (have_input_key_values_changed() == true)
+	if (is_key_dirty == true)
 	{
 		key_change_warning(elm, 'C');
 		return;
@@ -165,7 +178,7 @@ function click_on_chart_key(elm)
 
 function click_off_chart_key(elm)
 {
-	if (have_input_key_values_changed() == true)
+	if (is_key_dirty == true)
 	{
 		key_change_warning(elm, 'B');
 		return;
@@ -214,6 +227,7 @@ function key_save_changes()
 	push_values_from_cache_into_array();
 	document.getElementById('set_key_button').disabled = true;
 	document.getElementById('unset_key_button').disabled = true;
+	flag_key_clean();
 	flag_doc_dirty();
 }
 
@@ -223,6 +237,7 @@ function key_revert_changes()
 	push_values_from_cache_into_form();
 	document.getElementById('set_key_button').disabled = true;
 	document.getElementById('unset_key_button').disabled = true;
+	flag_key_clean();
 }
 
 function is_embedded_image_okay()
@@ -243,6 +258,7 @@ function is_embedded_image_okay()
 function set_form_color(this_select, target_value)
 {
 	this_select.selectedIndex = target_value;
+	this_select.className = 'sel' + colors[target_value];
 }
 
 function get_form_color(this_select)
@@ -403,18 +419,32 @@ function have_input_key_values_changed()
 	return false;
 }
 
-function toggle_set_and_revert_buttons()
+// need to rename this function since its purpose has changed slightly
+function toggle_set_and_revert_buttons(event)
 {
 	if (have_input_key_values_changed() == true)
 	{
 		document.getElementById('set_key_button').disabled = false;
 		document.getElementById('unset_key_button').disabled = false;
+		flag_key_dirty();
 	}
 	else
 	{
 		document.getElementById('set_key_button').disabled = true;
 		document.getElementById('unset_key_button').disabled = true;
+		flag_key_clean();
 	}
+	var elm = event.target;
+	if (elm.tagName.toUpperCase() == 'SELECT')
+	{
+		var this_index = elm.selectedIndex;
+		elm.className = 'sel' + colors[this_index];
+	}
+}
+
+function add_window_exit_event()
+{
+	addListener(window, 'beforeunload', window_leave_warning);
 }
 
 function add_input_typing_events()
@@ -719,18 +749,18 @@ function removeListener(element, eventName, handler) {
 function key_change_warning(elm, letter)
 {
 	elm.blur();
-//	document.body.focus();
+	document.body.focus();
 	alert('A key has been altered. Please save or revert any changes to this key before proceeding. (' + letter + ')');
 }
 
 function document_change_warning(letter)
 {
-	return confirm('Pressing this button will reset the submission form to its orignal state, discarding any changes you made. Do you wish to proceed? (' + letter + ')');
+	return confirm('Pressing this button will reset the submission form to its orignal state, discarding any changes you may have made. Do you wish to proceed? (' + letter + ')');
 }
 
 function image_file_warning()
 {
-	alert('An image file name and data URI need to both be provided together.');	
+	alert('An image file name and data URI need to both be provided.');	
 }
 
 function document_save_warning(letter)
@@ -739,9 +769,19 @@ function document_save_warning(letter)
 	return confirm('Pressing this button will post the keyboard bindings data to the site admin. Do you wish to proceed? (' + letter + ')');
 }
 
-function document_save_changes(event)
+function window_leave_warning(event)
 {
-	if (have_input_key_values_changed() == true)
+	if (is_doc_dirty == true)
+	{
+		var confirmationMessage = 'You are about to leave the page, but have unsaved data. Do you wish to proceed?';
+		event.returnValue = confirmationMessage;	// Gecko, Trident, Chrome >34
+		return confirmationMessage;			// Gecko, WebKit, Chrome <34
+	}
+}
+
+function document_save_changes()
+{
+	if (is_key_dirty == true)
 	{
 		var elm = document.getElementById('set_doc_button');
 		key_change_warning(elm, 'D');
@@ -873,6 +913,16 @@ function convert_title_to_seo(event)
 	var left_value = elm.value;
 	var right_value = seo_url(left_value);
 	document.getElementById('game_url').value = right_value;
+}
+
+function flag_key_dirty()
+{
+	is_key_dirty = true;
+}
+
+function flag_key_clean()
+{
+	is_key_dirty = false;
 }
 
 function flag_doc_dirty()

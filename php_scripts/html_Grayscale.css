@@ -26,36 +26,35 @@ footer	{font-size:smaller;}
 .legrow	{display:table-row;}
 .legcll	{display:table-cell;padding:1px;vertical-align:middle;}
 .legtxt	{width:12em;}
+.legbox	{text-align:center;width:1.25em;height:1.25em;}
 .inbtop	{display:inline-block;vertical-align:top;}
 .inbmid	{display:inline-block;vertical-align:middle;}
 .combox	{width:22em;}
-.capred,.legred,.selred	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAE0lEQVQImWP4vx8CGaD0fwayRADXsTfBHa7CGAAAAABJRU5ErkJggg==');}					/* 1*/
-.capyel,.legyel,.selyel	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAIElEQVQImWP4/////f///99ngNL/GaD0fwYo/Z+BCDUAr8A9wZ1do0gAAAAASUVORK5CYII=');}			/* 2*/
-.capgrn,.leggrn,.selgrn	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAKElEQVQImUXLwREAIBCDwGjjxsrX1418gRRoFCqUsiQ3J9kZRv149gc33Svfk/J4xAAAAABJRU5ErkJggg==');}	/* 3*/
-.capcyn,.legcyn,.selcyn	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAJUlEQVQImTXGsQEAMAjDMPf/o9LPzEDQJOLCXDrssMNuY3wCwB+U5TfJB20x8gAAAABJRU5ErkJggg==');}		/* 4*/
-.capblu,.legblu,.selblu	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAALUlEQVQImWNo+P+/oeH//wYmhkaGeoZGhnqmeiiL8T+Uwczo4HDwoIPDQTxqAJCDFk4qwQYgAAAAAElFTkSuQmCC');}	/* 9*/
-.capmag,.legmag,.selmag	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAKElEQVQImXWKsQ0AMAyDbOVxf+bTyJClS8UEYlLXdQUEiMKhc3jK91mRSzFflGM2CwAAAABJRU5ErkJggg==');}	/*23*/
-.capwht,.legwht,.selwht	{background:#ffffff;}
-.capgry,.leggry,.selgry	{background:#c0c0c0;}
-.capblk,.legblk,.selblk	{background:#000000;color:#ffffff;}
-.caporg,.legorg,.selorg	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAGElEQVQImWNsYIAAJijNwPgfXYSlkbAaAH1lAw9WJMEiAAAAAElFTkSuQmCC');}				/* 7*/
-.capolv,.legolv,.selolv	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAFklEQVQImWP8z9DIUM/QyMDEAAXkMQCuBAKQ/EVNLQAAAABJRU5ErkJggg==');}				/* 8*/
-.capbrn,.legbrn,.selbrn	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAKElEQVQImWP+z+iwv4HRYT8zI0M9QyNDPQMTlG5k/A+hGZigdD0eNQCYExGRPdzmZgAAAABJRU5ErkJggg==');}	/*10*/
-.capnon,.legnon,.selnon	{background:none;}
+.capred,.legred,.selred,.optred	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAE0lEQVQImWP4vx8CGaD0fwayRADXsTfBHa7CGAAAAABJRU5ErkJggg==');}					/* 1*/
+.capyel,.legyel,.selyel,.optyel	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAIElEQVQImWP4/////f///99ngNL/GaD0fwYo/Z+BCDUAr8A9wZ1do0gAAAAASUVORK5CYII=');}			/* 2*/
+.capgrn,.leggrn,.selgrn,.optgrn	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAKElEQVQImUXLwREAIBCDwGjjxsrX1418gRRoFCqUsiQ3J9kZRv149gc33Svfk/J4xAAAAABJRU5ErkJggg==');}	/* 3*/
+.capcyn,.legcyn,.selcyn,.optcyn	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAJUlEQVQImTXGsQEAMAjDMPf/o9LPzEDQJOLCXDrssMNuY3wCwB+U5TfJB20x8gAAAABJRU5ErkJggg==');}		/* 4*/
+.capblu,.legblu,.selblu,.optblu	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAALUlEQVQImWNo+P+/oeH//wYmhkaGeoZGhnqmeiiL8T+Uwczo4HDwoIPDQTxqAJCDFk4qwQYgAAAAAElFTkSuQmCC');}	/* 9*/
+.capmag,.legmag,.selmag,.optmag	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAKElEQVQImXWKsQ0AMAyDbOVxf+bTyJClS8UEYlLXdQUEiMKhc3jK91mRSzFflGM2CwAAAABJRU5ErkJggg==');}	/*23*/
+.capwht,.legwht,.selwht,.optwht	{background:#ffffff;}
+.capgry,.leggry,.selgry,.optgry	{background:#c0c0c0;}
+.capblk,.legblk,.selblk,.optblk	{background:#000000;color:#ffffff;}
+.caporg,.legorg,.selorg,.optorg	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAGElEQVQImWNsYIAAJijNwPgfXYSlkbAaAH1lAw9WJMEiAAAAAElFTkSuQmCC');}				/* 7*/
+.capolv,.legolv,.selolv,.optolv	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAFklEQVQImWP8z9DIUM/QyMDEAAXkMQCuBAKQ/EVNLQAAAABJRU5ErkJggg==');}				/* 8*/
+.capbrn,.legbrn,.selbrn,.optbrn	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAKElEQVQImWP+z+iwv4HRYT8zI0M9QyNDPQMTlG5k/A+hGZigdD0eNQCYExGRPdzmZgAAAABJRU5ErkJggg==');}	/*10*/
+.capnon,.legnon,.selnon,.optnon	{background:none;}
 /*
-.keyred .keyhgh, .keyred .keylow, .keyred .keyrgt, .keyred .capopt, .keyred .capopf	{background:#ffffff;}
-.keyyel .keyhgh, .keyyel .keylow, .keyyel .keyrgt, .keyyel .capopt, .keyyel .capopf	{background:#f0f0f0;}
-.keygrn .keyhgh, .keygrn .keylow, .keygrn .keyrgt, .keygrn .capopt, .keygrn .capopf	{background:#ffffff;}
-.keycyn .keyhgh, .keycyn .keylow, .keycyn .keyrgt, .keycyn .capopt, .keycyn .capopf	{background:#d0d0d0;}
-.keyblu .keyhgh, .keyblu .keylow, .keyblu .keyrgt, .keyblu .capopt, .keyblu .capopf	{background:#d0d0d0;}
-.keymag .keyhgh, .keymag .keylow, .keymag .keyrgt, .keymag .capopt, .keymag .capopf	{background:#d0d0d0;}
-.keywht .keyhgh, .keywht .keylow, .keywht .keyrgt, .keywht .capopt, .keywht .capopf	{background:#ffffff;}
-.keygry .keyhgh, .keygry .keylow, .keygry .keyrgt, .keygry .capopt, .keygry .capopf	{background:#d0d0d0;}
+.keyred .keyhgh, .keyred .keylow, .keyred .keyrgt, .keyred .capopt, .keyred .capopf	{background:#ffffff;color:#000000;}
+.keyyel .keyhgh, .keyyel .keylow, .keyyel .keyrgt, .keyyel .capopt, .keyyel .capopf	{background:#f0f0f0;color:#000000;}
+.keygrn .keyhgh, .keygrn .keylow, .keygrn .keyrgt, .keygrn .capopt, .keygrn .capopf	{background:#ffffff;color:#000000;}
+.keycyn .keyhgh, .keycyn .keylow, .keycyn .keyrgt, .keycyn .capopt, .keycyn .capopf	{background:#d0d0d0;color:#000000;}
+.keyblu .keyhgh, .keyblu .keylow, .keyblu .keyrgt, .keyblu .capopt, .keyblu .capopf	{background:#d0d0d0;color:#000000;}
+.keymag .keyhgh, .keymag .keylow, .keymag .keyrgt, .keymag .capopt, .keymag .capopf	{background:#d0d0d0;color:#000000;}
+.keywht .keyhgh, .keywht .keylow, .keywht .keyrgt, .keywht .capopt, .keywht .capopf	{background:#ffffff;color:#000000;}
+.keygry .keyhgh, .keygry .keylow, .keygry .keyrgt, .keygry .capopt, .keygry .capopf	{background:#d0d0d0;color:#000000;}
 .keyblk .keyhgh, .keyblk .keylow, .keyblk .keyrgt, .keyblk .capopt, .keyblk .capopf	{background:#000000;color:#ffffff;}
-.keyorg .keyhgh, .keyorg .keylow, .keyorg .keyrgt, .keyorg .capopt, .keyorg .capopf	{background:#ffffff;}
-.keyolv .keyhgh, .keyolv .keylow, .keyolv .keyrgt, .keyolv .capopt, .keyolv .capopf	{background:#ffffff;}
+.keyorg .keyhgh, .keyorg .keylow, .keyorg .keyrgt, .keyorg .capopt, .keyorg .capopf	{background:#ffffff;color:#000000;}
+.keyolv .keyhgh, .keyolv .keylow, .keyolv .keyrgt, .keyolv .capopt, .keyolv .capopf	{background:#ffffff;color:#000000;}
 .keybrn .keyhgh, .keybrn .keylow, .keybrn .keyrgt, .keybrn .capopt, .keybrn .capopf	{background:#000000;color:#ffffff;}
-.keynon .keyhgh, .keynon .keylow, .keynon .keyrgt, .keynon .capopt, .keynon .capopf	{background:none;}
+.keynon .keyhgh, .keynon .keylow, .keynon .keyrgt, .keynon .capopt, .keynon .capopf	{background:none;color:#000000;}
 */
-.legred,.legyel,.leggrn,.legcyn,.legblu,.legmag,.legwht,.leggry,.legblk,.legorg,.legolv,.legbrn,.legnon
-	{text-align:center;width:1.25em;height:1.25em;}

@@ -11,10 +11,14 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
+	<li>2018/06/24: Added a loading icon since it takes a while for all the AJAX stuff (e.g. reCAPTCHA) to download completely.</li>
+	<li>2018/06/24: A warning message is now thrown ONBEFOREUNLOAD if someone attempts to leave the submission form and there is any unsaved or unsubmitted data.</li>
+	<li>2018/06/24: In the submission form, selecting a colored OPTION element now changes the color of the corresponding parent SELECT element as well.</li>
+	<li>2018/06/23: Switched to Google's reCAPTCHA for the submission form.</li>
 	<li>2018/06/21: Stared making a "to do" list. You can view it <a href="to_do_list.txt">here</a>.</li>
 	<li>2018/06/20: Fixed some PHP loop code that was spawning warnings in the error log.</li>
 	<li>2018/06/20: Changed the license for the PHP and JavaScript code to GPLv3. (The database contents and chart designs remain licensed under the CC BY-SA 3.0 license.)</li>
-	<li>2018/06/19: Finished the graphical submission form I started working on. See a <a href="keyboard-diagram-blank-sample.php?sty=15&lay=1&fmt=3">blank sample</a>.</li>
+	<li>2018/06/19: Finished the graphical submission form I started working on. Start with a <a href="keyboard-diagram-blank-sample.php?sty=15&lay=1&fmt=3">blank sample</a>.</li>
 	<li>2018/06/06: Taz sent me updated bindings for <i>The Lord of the Rings Online</i>. Thanks Taz!</li>
 	<li>2018/06/05: Started working on a GUI tool to submit bindings to this project. It is incomplete, but you can <s><a href="keyboard-submit.html">view my progress so far</a></s>.</li>
 	<li>2018/06/05: Tweaked some HTML and CSS code. Added box borders to the default style.</li>
@@ -99,7 +103,7 @@
 	<li>German <i>Vega Strike</i> bindings provided by Agnes Beste.</li>
 	<li>English <i>The Lord of the Rings: Online</i> bindings provided by Taz.</li>
 	<li>"Simple JQuery Accordion Menu" by Marco van Hylckama Vlieg. (<a target="_blank" href="http://www.i-marco.nl/weblog/">link</a>)</li>
-	<li>"Ajax loader metal 512.gif" by Krishprakash24gmail. (<a target="_blank" href="https://commons.wikimedia.org/wiki/File:Ajax_loader_metal_512.gif">link</a>)</li>
+	<li>"Pedro luis romani ruiz.gif" by PEDRO ROMANI RUIZ. (<a target="_blank" href="https://commons.wikimedia.org/wiki/File:Pedro_luis_romani_ruiz.gif">link</a>)</li>
 	<li>Several icons from the Noun Project. (<a target="_blank" href="https://thenounproject.com/">link</a>)
 		<ul>
 			<li>Spreadsheet by Arthur Shlain</li>

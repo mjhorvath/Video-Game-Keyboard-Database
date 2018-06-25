@@ -540,7 +540,7 @@
 				$leg_color = getcolor($legend_table[$i][0]);
 				$leg_value = cleantextHTML($legend_table[$i][1]);
 				echo
-"						<div class=\"legrow\"><div class=\"legcll leg" . $leg_color . "\"></div><div class=\"legcll legtxt\">" . $leg_value . "</div></div>\n";
+"						<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\"></div><div class=\"legcll legtxt\">" . $leg_value . "</div></div>\n";
 			}
 			else
 			{

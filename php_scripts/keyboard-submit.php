@@ -461,7 +461,7 @@ var binding_table =
 ?>
 	</head>
 	<body onload="init_submissions();">
-		<!-- need to figure out how to trim whitespace around inner DIVs, then put images as DIV backgrounds -->
+		<img id="waiting" src="loading.gif" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
 		<div id="butt_min" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(0);"><img src="./icon_min.png"/></div>
 		<div id="butt_max" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(1);"><img src="./icon_max.png"/></div>
 		<div id="pane_lft">
@@ -470,41 +470,41 @@ var binding_table =
 				<div id="butt_hlp" class="tabs_butt" title="Toggle Info Panel"  onclick="switch_left_pane(1);"><img src="./icon_hlp.png"/></div>
 			</div>
 			<div id="pane_inp" style="display:block;">
-				<table id="table_inp" style="margin:auto;">
-					<tr><th>Param</th><th>Value</th><th>Col</th></tr>
-					<tr><td><label for="inp_keynum" title="Key ID#"		>keynum:</label></td><td><input id="inp_keynum" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Key ID"		disabled="disabled"/></td><td>n/a</td></tr>
-					<tr><td><label for="inp_keylow" title="Lower case"	>keylow:</label></td><td><input id="inp_keylow" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Lower case"	disabled="disabled"/></td><td>n/a</td></tr>
-					<tr><td><label for="inp_keyhgh" title="Upper case"	>keyhgh:</label></td><td><input id="inp_keyhgh" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Upper case"	disabled="disabled"/></td><td>n/a</td></tr>
-					<tr><td><label for="inp_keyrgt" title="AltGr case"	>keyrgt:</label></td><td><input id="inp_keyrgt" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="AltGr case"	disabled="disabled"/></td><td>n/a</td></tr>
-					<tr><td><label for="inp_capnor" title="Normal"		>capnor:</label></td><td><input id="inp_capnor" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Normal"		/></td><td><select id="sel_capnor" class="sellft" size="1" autocomplete="off"><option>non</option><option class="selred">red</option><option class="selyel">yel</option><option class="selgrn">grn</option><option class="selcyn">cyn</option><option class="selblu">blu</option><option class="selmag">mag</option><option class="selwht">wht</option><option class="selgry">gry</option><option class="selblk">blk</option><option class="selorg">org</option><option class="selolv">olv</option><option class="selbrn">brn</option></select></td></tr>
-					<tr><td><label for="inp_capshf" title="Shift"		>capshf:</label></td><td><input id="inp_capshf" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Shift"		/></td><td><select id="sel_capshf" class="sellft" size="1" autocomplete="off"><option>non</option><option class="selred">red</option><option class="selyel">yel</option><option class="selgrn">grn</option><option class="selcyn">cyn</option><option class="selblu">blu</option><option class="selmag">mag</option><option class="selwht">wht</option><option class="selgry">gry</option><option class="selblk">blk</option><option class="selorg">org</option><option class="selolv">olv</option><option class="selbrn">brn</option></select></td></tr>
-					<tr><td><label for="inp_capctl" title="Control"		>capctl:</label></td><td><input id="inp_capctl" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Control"		/></td><td><select id="sel_capctl" class="sellft" size="1" autocomplete="off"><option>non</option><option class="selred">red</option><option class="selyel">yel</option><option class="selgrn">grn</option><option class="selcyn">cyn</option><option class="selblu">blu</option><option class="selmag">mag</option><option class="selwht">wht</option><option class="selgry">gry</option><option class="selblk">blk</option><option class="selorg">org</option><option class="selolv">olv</option><option class="selbrn">brn</option></select></td></tr>
-					<tr><td><label for="inp_capalt" title="Alt"		>capalt:</label></td><td><input id="inp_capalt" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Alt"		/></td><td><select id="sel_capalt" class="sellft" size="1" autocomplete="off"><option>non</option><option class="selred">red</option><option class="selyel">yel</option><option class="selgrn">grn</option><option class="selcyn">cyn</option><option class="selblu">blu</option><option class="selmag">mag</option><option class="selwht">wht</option><option class="selgry">gry</option><option class="selblk">blk</option><option class="selorg">org</option><option class="selolv">olv</option><option class="selbrn">brn</option></select></td></tr>
-					<tr><td><label for="inp_capagr" title="AltGr"		>capagr:</label></td><td><input id="inp_capagr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="AltGr"		/></td><td><select id="sel_capagr" class="sellft" size="1" autocomplete="off"><option>non</option><option class="selred">red</option><option class="selyel">yel</option><option class="selgrn">grn</option><option class="selcyn">cyn</option><option class="selblu">blu</option><option class="selmag">mag</option><option class="selwht">wht</option><option class="selgry">gry</option><option class="selblk">blk</option><option class="selorg">org</option><option class="selolv">olv</option><option class="selbrn">brn</option></select></td></tr>
-					<tr><td><label for="inp_capxtr" title="Extra"		>capxtr:</label></td><td><input id="inp_capxtr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Extra"		/></td><td><select id="sel_capxtr" class="sellft" size="1" autocomplete="off"><option>non</option><option class="selred">red</option><option class="selyel">yel</option><option class="selgrn">grn</option><option class="selcyn">cyn</option><option class="selblu">blu</option><option class="selmag">mag</option><option class="selwht">wht</option><option class="selgry">gry</option><option class="selblk">blk</option><option class="selorg">org</option><option class="selolv">olv</option><option class="selbrn">brn</option></select></td></tr>
-					<tr><td><label for="inp_imgfil" title="Image Filename"	>imgfil:</label></td><td><input id="inp_imgfil" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Image Filename"	/></td><td>n/a</td></tr>
-					<tr><td><label for="inp_imguri" title="Image Data-URI"	>imguri:</label></td><td><input id="inp_imguri" class="inplft" type="text" size="11"                 autocomplete="off" title="Image Data-URI"	/></td><td>n/a</td></tr>
-				</table>
+				<div id="table_inp" class="inptbl" style="margin:auto;">
+					<div class="inprow"><div class="inphed">Param</div><div class="inphed">Value</div><div class="inphed">Col</div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_keynum" title="Key ID#"		>keynum:</label></div><div class="inpcll"><input id="inp_keynum" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Key ID"		disabled="disabled"/></div><div class="inpcll">n/a</div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_keylow" title="Lower case"	>keylow:</label></div><div class="inpcll"><input id="inp_keylow" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Lower case"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_keyhgh" title="Upper case"	>keyhgh:</label></div><div class="inpcll"><input id="inp_keyhgh" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Upper case"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_keyrgt" title="AltGr case"	>keyrgt:</label></div><div class="inpcll"><input id="inp_keyrgt" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="AltGr case"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capnor" title="Normal"		>capnor:</label></div><div class="inpcll"><input id="inp_capnor" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Normal"		/></div><div class="inpcll"><select id="sel_capnor" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capshf" title="Shift"		>capshf:</label></div><div class="inpcll"><input id="inp_capshf" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Shift"		/></div><div class="inpcll"><select id="sel_capshf" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capctl" title="Control"		>capctl:</label></div><div class="inpcll"><input id="inp_capctl" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Control"	/></div><div class="inpcll"><select id="sel_capctl" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capalt" title="Alt"		>capalt:</label></div><div class="inpcll"><input id="inp_capalt" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Alt"		/></div><div class="inpcll"><select id="sel_capalt" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capagr" title="AltGr"		>capagr:</label></div><div class="inpcll"><input id="inp_capagr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="AltGr"		/></div><div class="inpcll"><select id="sel_capagr" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capxtr" title="Extra"		>capxtr:</label></div><div class="inpcll"><input id="inp_capxtr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Extra"		/></div><div class="inpcll"><select id="sel_capxtr" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_imgfil" title="Image Filename"	>imgfil:</label></div><div class="inpcll"><input id="inp_imgfil" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Image Filename"	/></div><div class="inpcll">n/a</div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_imguri" title="Image Data-URI"	>imguri:</label></div><div class="inpcll"><input id="inp_imguri" class="inplft" type="text" size="11"                 autocomplete="off" title="Image Data-URI"	/></div><div class="inpcll">n/a</div></div>
+				</div>
 				<div id="button_inp" style="margin:1em;">
 					<button id="set_key_button" type="button" style="padding:0.3em 1em;" autocomplete="off" disabled="disabled" onclick="key_save_changes();" title="Save changes to key">Set Key</button><button id="unset_key_button" type="button" style="padding:0.3em 1em;" autocomplete="off" disabled="disabled" onclick="key_revert_changes();" title="Revert changes to key">Revert</button>
 				</div>
 				<p>Enter new lines by typing <code>\n</code>.</p>
 				<hr/>
 				<form id="email_form" method="post" enctype="multipart/form-data" action="">
-					<table id="email_table" style="margin:auto;">
-						<tr>
-							<td>Name:</td>
-							<td><input class="email_input" type="text" name="email_1" id="email_1" placeholder="First and last name" required autocomplete="on" data-lpignore="true"/></td>
-						</tr>
-						<tr>
-							<td>Email:</td>
-							<td><input class="email_input" type="email" name="email_2" id="email_2" placeholder="Return email address" required autocomplete="on" data-lpignore="true"/></td>
-						</tr>
-						<tr>
-							<td>Messg:</td>
-							<td><textarea class="email_textarea" name="email_3" id="email_3" placeholder="Message to admin" required autocomplete="off"></textarea></td>
-						</tr>
-					</table>
+					<div id="email_table" class="emltbl inbtop" style="margin:auto;">
+						<div class="emlrow">
+							<div class="emlcll">Name:</div>
+							<div class="emlcll"><input class="email_input" type="text" name="email_1" id="email_1" placeholder="First and last name" required autocomplete="on" data-lpignore="true"/></div>
+						</div>
+						<div class="emlrow">
+							<div class="emlcll">Email:</div>
+							<div class="emlcll"><input class="email_input" type="email" name="email_2" id="email_2" placeholder="Return email address" required autocomplete="on" data-lpignore="true"/></div>
+						</div>
+						<div class="emlrow">
+							<div class="emlcll">Messg:</div>
+							<div class="emlcll"><textarea class="email_textarea" name="email_3" id="email_3" placeholder="Message to admin" required autocomplete="off"></textarea></div>
+						</div>
+					</div>
 					<div id="email_recaptcha" class="g-recaptcha" data-sitekey="<?php echo writeRecaptchaKey(); ?>"></div>
 					<p style="text-align:left;">For human verification purposes, please click the checkbox labeled "I'm not a robot".</p>
 					<input name="email_4" id="email_4" type="hidden" value=""/>
@@ -710,14 +710,14 @@ var binding_table =
 			$leg_color = getcolor($legend_table[$i][0]);
 			$leg_value = cleantextHTML($legend_table[$i][1]);
 			echo
-"							<div class=\"legrow\"><div class=\"legcll leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
+"							<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
 		}
 		else
 		{
 			$leg_color = getcolor($i+1);
 			$leg_value = "";
 			echo
-"							<div class=\"legrow\"><div class=\"legcll leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
+"							<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
 		}
 		if ($i % 3 == 2)
 		{
@@ -937,7 +937,7 @@ var binding_table =
 					</div>
 				</div>
 				<div class="bodiv" style="font-size:smaller;">
-					<p><a target="_blank" rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img alt="GPLv3 icon" src="<?php echo $path_root; ?>images/license_gpl-88x31.png" /></a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="CC BY-SA 3.0 icon" style="border-width:0" src="<?php echo $path_root; ?>images/license_cc-by-sa_88x31.png" /></a></p>
+					<p><a target="_blank" rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" title="GPLv3 icon"><img alt="GPLv3 icon" src="<?php echo $path_root; ?>images/license_gpl-88x31.png" /></a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/" title="CC BY-SA 3.0 icon"><img alt="CC BY-SA 3.0 icon" style="border-width:0" src="<?php echo $path_root; ?>images/license_cc-by-sa_88x31.png" /></a></p>
 					<p>"Video Game Keyboard Diagrams" software was created by Michael Horvath and is licensed under <a target="_blank" rel="license" href="https://www.gnu.org/licenses/gpl.html">GNU GPLv3</a> or later license. Content is licensed under <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> or later license. You can find this project on <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub</a>.</p>
 					<p>
 <?php

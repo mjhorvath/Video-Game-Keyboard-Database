@@ -40,24 +40,23 @@ footer	{font-size:smaller;}
 .legrow	{display:table-row;}
 .legcll	{display:table-cell;padding:1px;vertical-align:middle;}
 .legtxt	{width:12em;}
+.legbox	{text-align:center;width:1.25em;height:1.25em;}
 .inbtop	{display:inline-block;vertical-align:top;}
 .inbmid	{display:inline-block;vertical-align:middle;}
 .combox	{width:22em;}
-.capred,.legred,.selred	{background:#e02020;}
-.capyel,.legyel,.selyel	{background:#e0e020;}
-.capgrn,.leggrn,.selgrn	{background:#20e020;}
-.capcyn,.legcyn,.selcyn	{background:#20e0e0;}
-.capblu,.legblu,.selblu	{background:#2020e0;}
-.capmag,.legmag,.selmag	{background:#e020e0;}
-.capwht,.legwht,.selwht	{background:#ffffff;}
-.capgry,.leggry,.selgry	{background:#808080;}
-.capblk,.legblk,.selblk	{background:#000000;color:#ffffff;}
-.caporg,.legorg,.selorg	{background:#ff8000;}
-.capolv,.legolv,.selolv	{background:#808000;}
-.capbrn,.capbrn,.selbrn	{background:#804000;}
-.capnon,.legnon,.selnon	{background:transparent;}
+.capred,.legred,.selred,.optred	{background:#e02020;color:#000000;}
+.capyel,.legyel,.selyel,.optyel	{background:#e0e020;color:#000000;}
+.capgrn,.leggrn,.selgrn,.optgrn	{background:#20e020;color:#000000;}
+.capcyn,.legcyn,.selcyn,.optcyn	{background:#20e0e0;color:#000000;}
+.capblu,.legblu,.selblu,.optblu	{background:#2020e0;color:#000000;}
+.capmag,.legmag,.selmag,.optmag	{background:#e020e0;color:#000000;}
+.capwht,.legwht,.selwht,.optwht	{background:#ffffff;color:#000000;}
+.capgry,.leggry,.selgry,.optgry	{background:#808080;color:#000000;}
+.capblk,.legblk,.selblk,.optblk	{background:#000000;color:#ffffff;}
+.caporg,.legorg,.selorg,.optorg	{background:#ff8000;color:#000000;}
+.capolv,.legolv,.selolv,.optolv	{background:#808000;color:#000000;}
+.capbrn,.capbrn,.selbrn,.optbrn	{background:#804000;color:#000000;}
+.capnon,.legnon,.selnon,.optnon	{background:none;   color:#000000;}
 .capred,.capyel,.capgrn,.capcyn,.capblu,.capmag,.capwht,.capgry,.capblk,.caporg,.capolv,.capbrn,.capnon,
 .legred,.legyel,.leggrn,.legcyn,.legblu,.legmag,.legwht,.leggry,.legblk,.legorg,.legolv,.legbrn,.legnon
 	{background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image: linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-size: 72px 72px;}
-.legred,.legyel,.leggrn,.legcyn,.legblu,.legmag,.legwht,.leggry,.legblk,.legorg,.legolv,.legbrn,.legnon
-	{text-align:center;width:1.25em;height:1.25em;}

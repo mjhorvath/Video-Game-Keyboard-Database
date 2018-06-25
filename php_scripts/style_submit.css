@@ -6,9 +6,14 @@ div#butt_min:hover,div#butt_max:hover,div#butt_inp:hover,div#butt_hlp:hover,div#
 		{background-color:#fff !important;}
 div.keysel	{background-color:#eee;color:#000;border:1px solid #eee;z-index:1;filter:drop-shadow(0px 0px 10px #eee);}
 div.combox	{width:25em;}
-div.nottbl	{display:table;border-collapse:separate;border-spacing:2px;}
-div.notrow	{display:table-row;}
-div.notcll	{display:table-cell;padding:1px;text-align:center;vertical-align:middle;box-sizing:border-box;}
+div.nottbl,div.inptbl,div.emltbl
+		{display:table;border-collapse:separate;border-spacing:2px;}
+div.notrow,div.inprow,div.emlrow
+		{display:table-row;}
+div.notcll,div.inpcll,div.inphed
+		{display:table-cell;padding:1px;text-align:center;vertical-align:middle;box-sizing:border-box;}
+div.inphed	{font-weight:bold;}
+div.emlcll	{display:table-cell;padding:1px;text-align:left;vertical-align:top;box-sizing:border-box;}
 div.notcll input	{width:100%;box-sizing:border-box;}
 div.notcll button	{width:100%;box-sizing:border-box;}
 div.notcll textarea	{width:100%;box-sizing:border-box;}
@@ -18,20 +23,19 @@ div.cllthr	{width:12em;}
 div.cllfor	{width:2em;}
 div.txtone	{width:21em;}
 div.txttwo	{width:2em;vertical-align:top;}
-table#email_table td
-		{text-align:left;vertical-align:top;}
+input#email_1,input#email_2
+		{width:12em;box-sizing:border-box;}
 textarea#email_3
 		{width:12em;height:5em;overflow-y:scroll;box-sizing:border-box;}
 div#email_recaptcha
 		{transform:scale(0.80);-webkit-transform:scale(0.80);transform-origin:0 50%;-webkit-transform-origin:0 50%;margin:auto;}
-input.email_input
-		{width:12em;box-sizing:border-box;}
-input.inplft	{width:8em;}
-select.sellft	{width:4em;}
-code		{font-family:monospace;background-color:#fff;}
+div#table_inp select,div#table_inp option
+		{width:4em;}
+div#table_inp input
+		{width:8em;}
+code		{font-family:monospace;}
 hr		{margin:1em 0.1em;}
-div.legred,div.legyel,div.leggrn,div.legcyn,div.legblu,div.legmag,div.legwht,div.leggry,div.legblk,div.legorg,div.legolv,div.legbrn,div.legnon
-		{text-align:center;width:2.25em;height:1.25em;}
+div.legbox	{text-align:center;width:2.25em;height:1.25em;}
 div#pane_lft	{position:absolute;width:             20em;height:100%;left: 0px;top: 0em;margin:0em;padding:0em;z-index:0;overflow:  hidden;box-sizing:border-box;}
 div#pane_rgt	{position:absolute;width:calc(100% - 20em);height:100%;left:20em;top: 0em;margin:0em;padding:0em;z-index:0;overflow:  hidden;box-sizing:border-box;}
 div#pane_inp	{position:absolute;width:100%;height:calc(100% - 24px);left: 0px;top:24px;margin:0em;padding:1em;z-index:0;overflow-y:scroll;box-sizing:border-box;text-align:center;}

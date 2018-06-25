@@ -25,6 +25,7 @@ footer	{font-size:smaller;}
 .legrow	{display:table-row;}
 .legcll	{display:table-cell;padding:1px;vertical-align:middle;}
 .legtxt	{width:12em;}
+.legbox	{text-align:center;width:1.25em;height:1.25em;}
 .inbtop	{display:inline-block;vertical-align:top;}
 .inbmid	{display:inline-block;vertical-align:middle;}
 .combox	{width:22em;}
@@ -34,16 +35,16 @@ footer	{font-size:smaller;}
 .cssD	{background:#4cc;border:2px outset #0ff;}
 .cssE	{background:#44c;border:2px outset #00f;}
 .cssF	{background:#c4c;border:2px outset #f0f;}
-.capred,.legred,.selred	{}
-.capyel,.legyel,.selyel	{}
-.capgrn,.leggrn,.selgrn	{}
-.capcyn,.legcyn,.selcyn	{}
-.capblu,.legblu,.selblu	{}
-.capmag,.legmag,.selmag	{}
-.capwht,.legwht,.selwht	{}
-.capgry,.leggry,.selgry	{}
-.capblk,.legblk,.selblk	{}
-.caporg,.legorg,.selorg	{}
-.capolv,.legolv,.selolv	{}
-.capbrn,.legbrn,.selbrn	{}
-.capnon,.legnon,.selnon	{}
+.capred,.legred,.selred,.optred	{}
+.capyel,.legyel,.selyel,.optyel	{}
+.capgrn,.leggrn,.selgrn,.optgrn	{}
+.capcyn,.legcyn,.selcyn,.optcyn	{}
+.capblu,.legblu,.selblu,.optblu	{}
+.capmag,.legmag,.selmag,.optmag	{}
+.capwht,.legwht,.selwht,.optwht	{}
+.capgry,.leggry,.selgry,.optgry	{}
+.capblk,.legblk,.selblk,.optblk	{}
+.caporg,.legorg,.selorg,.optorg	{}
+.capolv,.legolv,.selolv,.optolv	{}
+.capbrn,.legbrn,.selbrn,.optbrn	{}
+.capnon,.legnon,.selnon,.optnon	{}
