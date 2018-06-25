@@ -502,7 +502,7 @@ var binding_table =
 						</div>
 						<div class="emlrow">
 							<div class="emlcll">Messg:</div>
-							<div class="emlcll"><textarea class="email_textarea" name="email_3" id="email_3" placeholder="Message to admin" required autocomplete="off"></textarea></div>
+							<div class="emlcll"><textarea class="email_textarea" name="email_3" id="email_3" placeholder="Message to admin" required autocomplete="on"></textarea></div>
 						</div>
 					</div>
 					<div id="email_recaptcha" class="g-recaptcha" data-sitekey="<?php echo writeRecaptchaKey(); ?>"></div>
