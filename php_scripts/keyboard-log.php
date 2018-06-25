@@ -11,9 +11,7 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
-	<li>2018/06/24: Added a loading icon since it takes a while for all the AJAX stuff (e.g. reCAPTCHA) to download completely.</li>
-	<li>2018/06/24: A warning message is now thrown ONBEFOREUNLOAD if someone attempts to leave the submission form and there is any unsaved or unsubmitted data.</li>
-	<li>2018/06/24: In the submission form, selecting a colored OPTION element now changes the color of the corresponding parent SELECT element as well.</li>
+	<li>2018/06/24: Made several JavaScript-related fixes to the submission form.</li>
 	<li>2018/06/23: Switched to Google's reCAPTCHA for the submission form.</li>
 	<li>2018/06/21: Stared making a "to do" list. You can view it <a href="to_do_list.txt">here</a>.</li>
 	<li>2018/06/20: Fixed some PHP loop code that was spawning warnings in the error log.</li>

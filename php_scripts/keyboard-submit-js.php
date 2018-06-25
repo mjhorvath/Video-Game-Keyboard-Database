@@ -56,6 +56,11 @@ function hide_loading_image()
 	document.getElementById('waiting').style.display = 'none';
 }
 
+function show_loading_image()
+{
+	document.getElementById('waiting').style.display = 'block';
+}
+
 function click_document_body(event)
 {
 	var elm = event.target;
@@ -796,37 +801,39 @@ function document_save_changes()
 	document.getElementById('email_5').value = process_legend_data();
 	document.getElementById('email_6').value = process_command_data();
 	document.getElementById('email_7').value = process_binding_data();
-//	document.getElementById('email_form').submit();
-
 	do_recaptcha();
 }
 
+// https://stackoverflow.com/questions/30006081/recaptcha-2-0-with-ajax
+// May need a polyfill for all the validity stuff so they work in as many browsers as possible.
 function do_recaptcha()
 {
+	show_loading_image();
+
 	console.log('RECAPTCHA: clicked submit'); // --> works
 
 	var valid	= true;
-	var errors	= "";
-	var name	= $("#email_1").val();
-	var email	= $("#email_2").val();
-	var message	= $("#email_3").val();
-	var title	= $("#email_4").val();
-	var legend	= $("#email_5").val();
-	var command	= $("#email_6").val();
-	var binding	= $("#email_7").val();
+	var errors	= '';
+	var issues	= '';
+	var name	= $('#email_1');
+	var email	= $('#email_2');
+	var message	= $('#email_3');
+	var title	= $('#email_4');
+	var legend	= $('#email_5');
+	var command	= $('#email_6');
+	var binding	= $('#email_7');
 
-	if (name == '' || email == '' || message == '')
+	if (!name.get(0).validity.valid || !email.get(0).validity.valid || !message.get(0).validity.valid)
 	{
 		valid = false;
-		errors = "ERROR: The name, email and message fields are required.";
+		errors = 'ERROR: The name, email and message fields need to be filled in properly before you may proceed. Please go back and try again.';
+		issues = 'RECAPTCHA: malformed input data';
 	}
 
 	console.log('RECAPTCHA: captcha response\n' + grecaptcha.getResponse()); // --> captcha response: 
 
 	if (valid)
 	{
-		// hide the errors
-	//	$errors.slideUp();
 		// ajax to the php file to send the mail
 		$.ajax
 		({
@@ -834,13 +841,13 @@ function do_recaptcha()
 			url: "keyboard-recaptcha.php",
 			data:
 			{
-				name:		name,
-				email:		email,
-				message:	message,
-				title:		title,
-				legend:		legend,
-				command:	command,
-				binding:	binding,
+				name:		name.val(),
+				email:		email.val(),
+				message:	message.val(),
+				title:		title.val(),
+				legend:		legend.val(),
+				command:	command.val(),
+				binding:	binding.val(),
 				//THIS WILL TELL THE FORM IF THE USER IS CAPTCHA VERIFIED.
 				captcha:	grecaptcha.getResponse()
 			}
@@ -848,7 +855,8 @@ function do_recaptcha()
 		{
 			if (status == "ok")
 			{
-				alert('Thanks! Your message has been sent, and I will contact you soon.');
+				hide_loading_image();
+				alert('Thanks! Your message has been sent, and an admin will contact you shortly.');
 				// clear the form fields
 //				$('#email_1').val('');
 //				$('#email_2').val('');
@@ -867,13 +875,17 @@ function do_recaptcha()
 			{
 				alert('There were problems with reCAPTCHA. Try again.');
 				console.log('RECAPTCHA: mail was not sent');
+				hide_loading_image();
 			}
 		});
+		return;
 	}
 	else
 	{
 		alert(errors);
-		console.log('RECAPTCHA: other issues');
+		console.log(issues);
+		hide_loading_image();
+		return;
 	}
 }
 

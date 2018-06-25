@@ -24,9 +24,9 @@ div.cllfor	{width:2em;}
 div.txtone	{width:21em;}
 div.txttwo	{width:2em;vertical-align:top;}
 input#email_1,input#email_2
-		{width:12em;box-sizing:border-box;}
+		{width:13em;box-sizing:border-box;}
 textarea#email_3
-		{width:12em;height:5em;overflow-y:scroll;box-sizing:border-box;}
+		{width:13em;height:7em;overflow-y:scroll;box-sizing:border-box;}
 div#email_recaptcha
 		{transform:scale(0.80);-webkit-transform:scale(0.80);transform-origin:0 50%;-webkit-transform-origin:0 50%;margin:auto;}
 div#table_inp select,div#table_inp option

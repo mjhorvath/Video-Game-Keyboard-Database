@@ -21,3 +21,6 @@ TO DO LIST
 + Need a loading icon since it takes a while for all the AJAX stuff (e.g. 
   reCAPTCHA) to download completely.
 - I should change all the various alerts boxes to something prettier.
+- The "required" attribute of the email INPUT elements should cause the 
+  submission form to not post if those INPUTs are not filled properly. This 
+  includes the email address field, which requires special syntax.
