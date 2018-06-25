@@ -477,7 +477,7 @@ function cleantextHTML(in_string)
 
 function cleantextTSV(in_string)
 {
-	in_string = in_string.replace('\\','\\\\');
+	in_string = in_string.replace(/\\/g,'\\\\');
 	if (in_string == '')
 	{
 		in_string = '\\N';

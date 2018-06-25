@@ -17,13 +17,13 @@
 		return;
 	}
 
-	$name		= stripslashes($_POST["name"]);
-	$email		= stripslashes($_POST["email"]);
-	$message	= stripslashes($_POST["message"]);
-	$title		= stripslashes($_POST["title"]);
-	$legend		= stripslashes($_POST["legend"]);
-	$command	= stripslashes($_POST["command"]);
-	$binding	= stripslashes($_POST["binding"]);
+	$name		= $_POST["name"];
+	$email		= $_POST["email"];
+	$message	= $_POST["message"];
+	$title		= $_POST["title"];
+	$legend		= $_POST["legend"];
+	$command	= $_POST["command"];
+	$binding	= $_POST["binding"];
 
 	// handling the captcha and checking if it's ok
 	$secret = writeRecaptchaSecret();
