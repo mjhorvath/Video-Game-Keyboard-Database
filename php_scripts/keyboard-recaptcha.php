@@ -20,7 +20,8 @@
 	$name		= $_POST["name"];
 	$email		= $_POST["email"];
 	$message	= $_POST["message"];
-	$title		= $_POST["title"];
+	$titletxt	= $_POST["titletxt"];
+	$titleurl	= $_POST["titleurl"];
 	$legend		= $_POST["legend"];
 	$command	= $_POST["command"];
 	$binding	= $_POST["binding"];
@@ -40,7 +41,8 @@
 			"NAME:\n"	. $name		. "\n\n" .
 			"EMAIL:\n"	. $email	. "\n\n" .
 			"MESSAGE:\n"	. $message	. "\n\n" .
-			"GAME TITLE:\n"	. $title	. "\n\n" .
+			"GAME TITLE:\n"	. $titletxt	. "\n\n" .
+			"GAME URL:\n"	. $titleurl	. "\n\n" .
 			"LEGENDS:\n"	. $legend	. "\n\n" .
 			"COMMANDS:\n"	. $command	. "\n\n" .
 			"BINDINGS:\n"	. $binding	. "\n\n"

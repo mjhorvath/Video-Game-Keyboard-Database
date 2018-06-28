@@ -798,9 +798,10 @@ function document_save_changes()
 	}
 	collect_nonkey_data();
 	document.getElementById('email_4').value = document.getElementById('game_tit').value;
-	document.getElementById('email_5').value = process_legend_data();
-	document.getElementById('email_6').value = process_command_data();
-	document.getElementById('email_7').value = process_binding_data();
+	document.getElementById('email_5').value = document.getElementById('game_url').value;
+	document.getElementById('email_6').value = process_legend_data();
+	document.getElementById('email_7').value = process_command_data();
+	document.getElementById('email_8').value = process_binding_data();
 	do_recaptcha();
 }
 
@@ -818,10 +819,11 @@ function do_recaptcha()
 	var name	= $('#email_1');
 	var email	= $('#email_2');
 	var message	= $('#email_3');
-	var title	= $('#email_4');
-	var legend	= $('#email_5');
-	var command	= $('#email_6');
-	var binding	= $('#email_7');
+	var titletxt	= $('#email_4');
+	var titleurl	= $('#email_5');
+	var legend	= $('#email_6');
+	var command	= $('#email_7');
+	var binding	= $('#email_8');
 
 	if (!name.get(0).validity.valid || !email.get(0).validity.valid || !message.get(0).validity.valid)
 	{
@@ -844,7 +846,8 @@ function do_recaptcha()
 				name:		name.val(),
 				email:		email.val(),
 				message:	message.val(),
-				title:		title.val(),
+				titletxt:	titletxt.val(),
+				titleurl:	titleurl.val(),
 				legend:		legend.val(),
 				command:	command.val(),
 				binding:	binding.val(),
@@ -865,6 +868,7 @@ function do_recaptcha()
 //				$('#email_5').val('');
 //				$('#email_6').val('');
 //				$('#email_7').val('');
+//				$('#email_8').val('');
 				if (is_doc_dirty == true)
 				{
 					flag_doc_clean();

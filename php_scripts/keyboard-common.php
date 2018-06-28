@@ -40,7 +40,8 @@
 			} while(mysqli_more_results($connection) && mysqli_next_result($connection));
 		}
 	}
-	// legacy code - do not delete
+	// there is an analogous function written in JavaScript in "keyboard-submit-js.php"
+	// need to keep the two functions synced
 	function seo_url($input)
 	{
 		$input = mb_convert_case($input, MB_CASE_LOWER, "UTF-8");	//convert to lowercase
@@ -176,6 +177,12 @@
 		{
 			return "Last modified: File does not exist.";
 		}
+	}
+
+	function sortGames()
+	{
+		global $genre_order_array, $genre_array, $game_array;
+		array_multisort($genre_order_array, $genre_array, $game_array);
 	}
 
 	$word_part1 = ["keyboard","video game","software","printable","graphical","visual"];

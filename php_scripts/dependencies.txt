@@ -8,6 +8,11 @@ In order for VGKD to work properly, it requires these following things:
   * https://commons.wikimedia.org/wiki/File:License_icon-gpl-88x31-2.svg
 * I have refrained from including several open source fonts that may be needed 
   by some of the themes.
-* "CaptchaSecurityImages.php"
-  http://www.white-hat-web-design.co.uk/articles/php-captcha.php
-  (Dead link. Use the Wayback Machine.)
+* Several icons from the Noun Project.
+  * https://thenounproject.com/
+  * Spreadsheet by Arthur Shlain
+  * Keyboard by Alexey Ivanov
+  * Information by AnsteyDesign
+  * Edit by Garrett Knoll
+  * Plus by P.J. Onori
+  * Delete by P.J. Onori

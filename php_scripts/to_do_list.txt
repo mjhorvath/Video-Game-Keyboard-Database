@@ -11,21 +11,21 @@ TO DO LIST
   he or she will not be able to return to the form page after making a 
   submission.
 - Should maybe store the SVG patterns, filters and gradients in separate files, 
-  rather than cluttering up the main SVG file. Since there are only a dozen or 
-  so styles, however, it's not currently a big deal.
-- Continue developing the "Spreadsheet View", and permit users to alter and 
-  update the keyboard data from there.
+  rather than cluttering up the main SVG file. But since there are only a dozen 
+  or so styles at this time, it's not currently a big deal.
+- Continue developing the "Spreadsheet View" and permit users to alter and 
+  update the keyboard data from there if they want to.
 + Convert email input TABLEs to DIVs.
-- Sub-pages maybe don't need to repeat the parent project's title since it 
-  already appears in the site's horizontal breadcrumbs. Not sure.
+- Sub-pages maybe should not repeat the parent project's title since it the 
+  title already appears in the site's horizontal breadcrumbs. Not sure.
 + Need a loading icon since it takes a while for all the AJAX stuff (e.g. 
   reCAPTCHA) to download completely.
 - I should change all the various alerts boxes to something prettier.
-- The "required" attribute of the email INPUT elements should cause the 
++ The "required" attribute of the email INPUT elements should cause the 
   submission form to not post if those INPUTs are not filled properly. This 
   includes the email address field, which requires special syntax.
 - The keycap legend should also be configurable.
 - Finish implementing the "languages" table.
 + The footer is the same for many of the views. It could be placed in a 
-  separate file and simply transcluded.
+  separate file and simply included.
 - Add timestamps to the various tables to reflect the dates of creation.

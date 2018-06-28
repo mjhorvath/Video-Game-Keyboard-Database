@@ -352,17 +352,18 @@ var binding_table =
 					<input name="email_5" id="email_5" type="hidden" value=""/>
 					<input name="email_6" id="email_6" type="hidden" value=""/>
 					<input name="email_7" id="email_7" type="hidden" value=""/>
+					<input name="email_8" id="email_8" type="hidden" value=""/>
 					<div><button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit changes to data">Submit Data</button><button id="unset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state">Reset</button></div>
 				</form>
 			</div>
 			<div id="pane_hlp" style="display:none;">
 				<h2>Help</h2>
 				<p>Enter new lines by typing <code>\n</code>.</p>
-				<p>You can use an online service such as <a target="_blank" href="https://websemantics.uk/tools/image-to-data-uri-converter/">Data-URI base64 converter</a> to convert PNG images to data-URIs.</p>
-				<p>Image data-URIs must be less than 256KiB in size.</p>
+				<p>Images must be PNG.</p>
 				<p>Images must be 48x48px and 32 bits.</p>
-				<p>Image file names must be paired along with image data-URIs.</p>
-				<p>"<a href="./keyboard.php">Video Game Keyboard Diagrams</a>" software was created by Michael Horvath and is licensed under <a target="_blank" rel="license" href="https://creativecommons.org/licenses/LGPL/2.1/;/">CC LGPL 2.1</a>. Content is licensed under <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. You can find this project on <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub</a>.</p>
+				<p>Images must have both a file name and a data-URI.</p>
+				<p>Image data-URIs must be less than 256KiB in size.</p>
+				<p>You can use an online service such as <a target="_blank" href="https://websemantics.uk/tools/image-to-data-uri-converter/">Data-URI base64 converter</a> to convert PNG images to data-URIs.</p>
 			</div>
 		</div>
 		<div id="pane_rgt">
