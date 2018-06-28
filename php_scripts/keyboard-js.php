@@ -41,25 +41,25 @@
 	$layouts_max		= 0;
 	$styles_max		= 0;
 
-	function doGamesAutoinc($in_result)
+	function doGamesAutoincJS($in_result)
 	{
 		global $games_max;
 		$game_row = mysqli_fetch_row($in_result);
 		$games_max = $game_row[0] - 1;
 	}
-	function doLayoutsAutoinc($in_result)
+	function doLayoutsAutoincJS($in_result)
 	{
 		global $layouts_max;
 		$layout_row = mysqli_fetch_row($in_result);
 		$layouts_max = $layout_row[0] - 1;
 	}
-	function doStylesAutoinc($in_result)
+	function doStylesAutoincJS($in_result)
 	{
 		global $styles_max;
 		$style_row = mysqli_fetch_row($in_result);
 		$styles_max = $style_row[0] - 1;
 	}
-	function doGames($in_result)
+	function doGamesJS($in_result)
 	{
 		global $seourl_table;
 		while ($game_row = mysqli_fetch_row($in_result))
@@ -70,7 +70,7 @@
 			$seourl_table[$game_id-1] = $game_seo;
 		}
 	}
-	function doGameRecords($in_result)
+	function doGameRecordsJS($in_result)
 	{
 		global $layout_table;
 		while ($gamesrecord_row = mysqli_fetch_row($in_result))
@@ -82,7 +82,7 @@
 			$layout_table[$game_id-1][$layout_id-1] = true;
 		}
 	}
-	function doStyleRecords($in_result)
+	function doStyleRecordsJS($in_result)
 	{
 		global $style_table;
 		while ($stylesrecord_row = mysqli_fetch_row($in_result))
@@ -95,18 +95,25 @@
 		}
 	}
 
-//	error_log("get_games_autoinc");
-	callProcedure0($con, "get_games_autoinc", "doGamesAutoinc");
-//	error_log("get_layouts_autoinc");
-	callProcedure0($con, "get_layouts_autoinc", "doLayoutsAutoinc");
-//	error_log("get_styles_autoinc");
-	callProcedure0($con, "get_styles_autoinc", "doStylesAutoinc");
-//	error_log("get_games_js");
-	callProcedure0($con, "get_games_js", "doGames");
-//	error_log("get_records_games_js");
-	callProcedure0($con, "get_records_games_js", "doGameRecords");
-//	error_log("get_records_styles_front");
-	callProcedure0($con, "get_records_styles_js", "doStyleRecords");
+
+	$selectString = "SELECT MAX(g.game_id) FROM games AS g;";
+	selectQuery($con, $selectString, "doGamesAutoincJS");
+
+	$selectString = "SELECT MAX(l.layout_id) FROM layouts AS l;";
+	selectQuery($con, $selectString, "doLayoutsAutoincJS");
+
+	$selectString = "SELECT MAX(s.style_id) FROM styles AS s;";
+	selectQuery($con, $selectString, "doStylesAutoincJS");
+
+	$selectString = "SELECT g.game_id, g.game_friendlyurl FROM games AS g;";
+	selectQuery($con, $selectString, "doGamesJS");
+
+	$selectString = "SELECT r.record_id, r.game_id, r.layout_id FROM records_games AS r;";
+	selectQuery($con, $selectString, "doGameRecordsJS");
+
+	$selectString = "SELECT r.record_id, r.style_id, r.layout_id FROM records_styles AS r;";
+	selectQuery($con, $selectString, "doStyleRecordsJS");
+
 
 	for ($i = 0; $i < $games_max; $i++)
 	{

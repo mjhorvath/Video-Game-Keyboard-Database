@@ -24,3 +24,8 @@ TO DO LIST
 - The "required" attribute of the email INPUT elements should cause the 
   submission form to not post if those INPUTs are not filled properly. This 
   includes the email address field, which requires special syntax.
+- The keycap legend should also be configurable.
+- Finish implementing the "languages" table.
++ The footer is the same for many of the views. It could be placed in a 
+  separate file and simply transcluded.
+- Add timestamps to the various tables to reflect the dates of creation.

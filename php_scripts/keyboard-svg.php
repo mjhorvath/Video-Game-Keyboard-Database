@@ -15,6 +15,7 @@
 	// along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 	$path_root		= "../";
+	$path_file		= "./keyboard-svg.php";
 
 	header("Content-type: image/svg+xml");
 
@@ -59,23 +60,25 @@
 	$layout_author		= "";
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
-	$layout_title		= cleantextSVG("Video Game Keyboard Diagrams");
-	$layout_combo		= cleantextSVG("Keyboard Combinations");
-	$layout_mouse		= cleantextSVG("Mouse Controls");
-	$layout_joystick	= cleantextSVG("Joystick Controls");
-	$layout_note		= cleantextSVG("Additional Notes");
-	$layout_cheat		= cleantextSVG("Cheat Codes");
-	$layout_console		= cleantextSVG("Console Commands");
-	$layout_emote		= cleantextSVG("Chat Commands/Emotes");
-	$layout_description	= cleantextSVG("Keyboard hotkey & binding chart for ");
-	$layout_keywords	= cleantextSVG("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
+	$string_title		= cleantextSVG("Video Game Keyboard Diagrams");
+	$string_combo		= cleantextSVG("Keyboard Combinations");
+	$string_mouse		= cleantextSVG("Mouse Controls");
+	$string_joystick	= cleantextSVG("Joystick Controls");
+	$string_note		= cleantextSVG("Additional Notes");
+	$string_cheat		= cleantextSVG("Cheat Codes");
+	$string_console		= cleantextSVG("Console Commands");
+	$string_emote		= cleantextSVG("Chat Commands/Emotes");
+	$string_description	= cleantextSVG("Keyboard hotkey & binding chart for ");
+	$string_keywords	= cleantextSVG("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
+
 
 	// validity checks
 	if ($game_id === null)
 	{
 		if ($game_seo !== null)
 		{
-			callProcedure1Txt($con, "get_games_friendly_chart", "doGamesSEO", $game_seo);
+			$selectString = "SELECT g.game_name, g.game_id FROM games AS g WHERE g.game_friendlyurl = \"" . $game_seo . "\";";
+			selectQuery($con, $selectString, "doGamesSEOSVG");
 		}
 		else
 		{
@@ -109,137 +112,20 @@
 		$fix_url = true;
 	}
 
-	function doThisStyle($in_result)
-	{
-		global $style_filename, $style_name, $stylegroup_id;
-		$style_row = mysqli_fetch_row($in_result);
-		$style_filename = $style_row[0];
-		$style_name = cleantextSVG($style_row[1]);
-		$stylegroup_id = $style_row[2];
-	}
-	function doStyles($in_result)
-	{
-		global $style_table;
-		while ($temp_row = mysqli_fetch_row($in_result))
-		{
-			// style_id, style_name, style_whiteonblack, stylegroup_id
-			$style_table[] = $temp_row;
-		}
-	}
-	function doBindings($in_result)
-	{
-		global $binding_table;
-		while ($temp_row = mysqli_fetch_row($in_result))
-		{
-			$binding_table[$temp_row[13]-1] = $temp_row;
-		}
-	}
-	function doLegends($in_result)
-	{
-		global $legend_table;
-		while ($temp_row = mysqli_fetch_row($in_result))
-		{
-			// legend_group, legend_description
-			$legend_table[] = $temp_row;
-		}
-	}
-	function doPositions($in_result)
-	{
-		global $position_table;
-		while ($temp_row = mysqli_fetch_row($in_result))
-		{
-			// position_left, position_top, position_width, position_height, symbol_low, symbol_cap, symbol_altgr, key_number, lowkey_optional
-			$position_table[$temp_row[7]-1] = $temp_row;
-		}
-	}
-	function doKeystyles($in_result)
-	{
-		global $keystyle_table;
-		while ($temp_row = mysqli_fetch_row($in_result))
-		{
-			// keystyle_group, key_number
-			$keystyle_table[$temp_row[1]-1] = $temp_row;
-		}
-	}
-	function doGames($in_result)
-	{
-		global $game_name, $game_seo;
-		$game_row = mysqli_fetch_row($in_result);
-		$game_name = cleantextSVG($game_row[0]);
-		$game_seo = $game_row[1];
-	}
-	function doGamesSEO($in_result)
-	{
-		global $game_name, $game_id;
-		$game_row = mysqli_fetch_row($in_result);
-		$game_name = cleantextSVG($game_row[0]);
-		$game_id = intval($game_row[1]);
-	}
-	function doPlatforms($in_result)
-	{
-		global $platform_name;
-		$platform_row = mysqli_fetch_row($in_result);
-		$platform_name = cleantextSVG($platform_row[0]);
-	}
-	function doGamesRecords($in_result)
-	{
-		// record_id, author_id
-		global $gamesrecord_id, $gamesrecord_author;
-		$gamesrecord_row = mysqli_fetch_row($in_result);
-		$gamesrecord_id = $gamesrecord_row[0];
-		$gamesrecord_author = cleantextSVG(getAuthorName($gamesrecord_row[1]));
-	}
-	function doStylesRecords($in_result)
-	{
-		// record_id, author_id
-		global $stylesrecord_id, $stylesrecord_author;
-		$stylesrecord_row = mysqli_fetch_row($in_result);
-		$stylesrecord_id = $stylesrecord_row[0];
-		$stylesrecord_author = cleantextSVG(getAuthorName($stylesrecord_row[1]));
-	}
-	function doLayouts($in_result)
-	{
-		global $layout_platform, $layout_name, $layout_author, $layout_keysnum;
-		$layout_row		= mysqli_fetch_row($in_result);
-		$layout_platform	= $layout_row[0];
-		$layout_name		= cleantextSVG($layout_row[1]);
-		$layout_author		= cleantextSVG(getAuthorName($layout_row[10]));
-		$layout_keysnum		= $layout_row[11];
-	}
-	function doAuthors($in_result)
-	{
-		global $author_table;
-		while ($temp_row = mysqli_fetch_row($in_result))
-		{
-			// author_id, author_name
-			$author_table[] = $temp_row;
-		}
-	}
 
-//	error_log("get_games_chart");
-	callProcedure1($con, "get_games_chart", "doGames", $game_id);
-//	error_log("get_authors_chart");
-	callProcedure0($con, "get_authors_chart", "doAuthors");
-//	error_log("get_styles_dropdown");
-	callProcedure0($con, "get_styles_dropdown", "doStyles");
-//	error_log("get_styles_chart");
-	callProcedure1($con, "get_styles_chart", "doThisStyle", $style_id);
-//	error_log("get_positions_chart");
-	callProcedure1($con, "get_positions_chart", "doPositions", $layout_id);
-//	error_log("get_layouts_chart");
-	callProcedure1($con, "get_layouts_chart", "doLayouts", $layout_id);
-//	error_log("get_platforms_chart");
-	callProcedure1($con, "get_platforms_chart", "doPlatforms", $layout_platform);
-//	error_log("get_records_games_chart");
-	callProcedure2($con, "get_records_games_chart", "doGamesRecords", $layout_id, $game_id);
-//	error_log("get_records_styles_chart");
-	callProcedure2($con, "get_records_styles_chart", "doStylesRecords", $layout_id, $style_id);
-//	error_log("get_keystyles_chart");
-	callProcedure1($con, "get_keystyles_chart", "doKeystyles", $stylesrecord_id);
-//	error_log("get_bindings_chart");
-	callProcedure1($con, "get_bindings_chart", "doBindings", $gamesrecord_id);
-//	error_log("get_legends_chart");
-	callProcedure1($con, "get_legends_chart", "doLegends", $gamesrecord_id);
+	selGamesSVG();
+	selAuthorsSVG();
+	selStylesSVG();
+	selThisStyleSVG();
+	selPositionsSVG();
+	selLayoutsSVG();
+	selPlatformsSVG();
+	selGamesRecordsSVG();
+	selStylesRecordsSVG();
+	selKeystylesSVG();
+	selBindingsSVG();
+	selLegendsSVG();
+
 
 	mysqli_close($con);
 
@@ -250,7 +136,7 @@
 	$temp_style_name	= $style_name ? $style_name : "Unrecognized Style";
 	$temp_platform_name	= $platform_name ? $platform_name : "Unrecognized Platform";
 	$thispage_title_a	= $temp_game_name;
-	$thispage_title_b	= " - " . $layout_title . " - " . $temp_platform_name . " " . $temp_layout_name . " - " . $temp_style_name;
+	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " " . $temp_layout_name . " - " . $temp_style_name;
 
 	// validity checks (should check the layout here too... but)
 	if (!checkStyle($style_id))
@@ -323,7 +209,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 			</cc:License>
 			<rdf:Description about=""
 				dc:title="<?php echo $thispage_title_a . $thispage_title_b; ?>"
-				dc:description="<?php echo $layout_description . $temp_game_name . ". (" . $temp_style_name . ")"; ?>"
+				dc:description="<?php echo $string_description . $temp_game_name . ". (" . $temp_style_name . ")"; ?>"
 				dc:publisher="Video Game Keyboard Diagrams"
 				dc:date="<?php echo date("Y-m-d H:i:s"); ?>"
 				dc:format="image/svg+xml"

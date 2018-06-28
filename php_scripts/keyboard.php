@@ -52,7 +52,7 @@
 	$platform_array		= [];
 	$platform_order_array	= [];
 /*
-	function doGenres($in_result)
+	function doGenresFront($in_result)
 	{
 		global $genre_array, $genre_order_array, $game_array;
 		$genre_count = 1;
@@ -66,7 +66,7 @@
 		}
 	}
 */
-	function doGenres($in_result)
+	function doGenresFront($in_result)
 	{
 		global $genre_array, $genre_order_array, $game_array;
 		while ($genre_row = mysqli_fetch_row($in_result))
@@ -77,12 +77,12 @@
 			$game_array[] = [[],[]];
 		}
 	}
-	function sortGames()
+	function sortGamesFront()
 	{
 		global $genre_order_array, $genre_array, $game_array;
 		array_multisort($genre_order_array, $genre_array, $game_array);
 	}
-	function doGames($in_result)
+	function doGamesFront($in_result)
 	{
 		global $game_array;
 		while ($game_row = mysqli_fetch_row($in_result))
@@ -94,7 +94,7 @@
 			$game_array[$genre_id-1][2][] = $game_row[3];
 		}
 	}
-	function doStylegroups($in_result)
+	function doStylegroupsFront($in_result)
 	{
 		global $stylegroup_array, $style_array;
 		while ($stylegroup_row = mysqli_fetch_row($in_result))
@@ -104,7 +104,7 @@
 			$style_array[$stylegroup_row[0]-1] = [[],[]];
 		}
 	}
-	function doStyles($in_result)
+	function doStylesFront($in_result)
 	{
 		global $style_array;
 		while ($style_row = mysqli_fetch_row($in_result))
@@ -114,7 +114,7 @@
 			$style_array[$style_row[0]-1][1][] = $style_row[2];
 		}
 	}
-	function doPlatforms($in_result)
+	function doPlatformsFront($in_result)
 	{
 		global $platform_array, $layout_array;
 		$platform_table = [];
@@ -130,7 +130,7 @@
 		}
 		array_multisort($platform_order_array, $platform_array, $layout_array);
 	}
-	function doLayouts($in_result)
+	function doLayoutsFront($in_result)
 	{
 		global $layout_array;
 		while ($layout_row = mysqli_fetch_row($in_result))
@@ -141,19 +141,26 @@
 		}
 	}
 
-//	error_log("get_genres_front");
-	callProcedure0($con, "get_genres_front", "doGenres");
-//	error_log("get_games_front");
-	callProcedure0($con, "get_games_front", "doGames");
+
+	$selectString = "SELECT g.genre_name, g.genre_displayorder FROM genres as g;";
+	selectQuery($con, $selectString, "doGenresFront");
+
+	$selectString = "SELECT g.genre_id, g.game_id, g.game_name, g.game_friendlyurl FROM games as g;";
+	selectQuery($con, $selectString, "doGamesFront");
 	sortGames();
-//	error_log("get_stylegroups_front");
-	callProcedure0($con, "get_stylegroups_front", "doStylegroups");
-//	error_log("get_styles_front");
-	callProcedure0($con, "get_styles_front", "doStyles");
-//	error_log("get_platforms_front");
-	callProcedure0($con, "get_platforms_front", "doPlatforms");
-//	error_log("get_layouts_front");
-	callProcedure0($con, "get_layouts_front", "doLayouts");
+
+	$selectString = "SELECT s.stylegroup_id, s.stylegroup_name FROM stylegroups as s;";
+	selectQuery($con, $selectString, "doStylegroupsFront");
+
+	$selectString = "SELECT s.stylegroup_id, s.style_id, s.style_name FROM styles as s;";
+	selectQuery($con, $selectString, "doStylesFront");
+
+	$selectString = "SELECT p.platform_id, p.platform_name, p.platform_displayorder FROM platforms as p;";
+	selectQuery($con, $selectString, "doPlatformsFront");
+
+	$selectString = "SELECT l.platform_id, l.layout_id, l.layout_name FROM layouts as l;";
+	selectQuery($con, $selectString, "doLayoutsFront");
+
 
 	mysqli_close($con);
 ?>

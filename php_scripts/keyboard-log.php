@@ -11,6 +11,7 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
+	<li>2018/06/28: Had to replace all stored procedures with regular SELECT calls since my Web host disabled the creation (actually the storage) of new routines.</li>
 	<li>2018/06/24: Made several JavaScript-related fixes to the submission form.</li>
 	<li>2018/06/23: Switched to Google's reCAPTCHA for the submission form.</li>
 	<li>2018/06/21: Stared making a "to do" list. You can view it <a href="to_do_list.txt">here</a>.</li>

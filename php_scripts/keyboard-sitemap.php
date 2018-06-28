@@ -37,46 +37,6 @@
 
 	mysqli_query($con, "SET NAMES 'utf8'");
 
-	function doGames($in_result)
-	{
-		global $game_name_array, $game_index_array, $game_seourl_array;
-		while ($game_row = mysqli_fetch_row($in_result))
-		{
-			// genre_id, game_id, game_name, game_friendlyurl
-			$game_index_array[] = $game_row[1];
-			$game_name_array[] = $game_row[2];
-			$game_seourl_array[] = $game_row[3];
-		}
-//		array_multisort($game_name_array, $game_index_array, $game_seourl_array);
-	}
-	function doLayouts($in_result)
-	{
-		global $layout_array;
-		while ($layout_row = mysqli_fetch_row($in_result))
-		{
-			// layout_id, layout_name, platform_id
-			$layout_array[] = $layout_row;
-		}
-	}
-	function doRecords($in_result)
-	{
-		global $record_array;
-		while ($record_row = mysqli_fetch_row($in_result))
-		{
-			// game_id, layout_id
-			$record_array[] = $record_row;
-		}
-	}
-	function doPlatforms($in_result)
-	{
-		global $platform_array;
-		while ($platform_row = mysqli_fetch_row($in_result))
-		{
-			// platform_id, platform_name, platform_abbv
-			$platform_array[] = $platform_row;
-		}
-	}
-
 	$layout_array		= [];
 	$record_array		= [];
 	$platform_array		= [];
@@ -84,14 +44,12 @@
 	$game_index_array	= [];
 	$game_seourl_array	= [];
 
-//	error_log("get_games_front");
-	callProcedure0($con, "get_games_front", "doGames");
-//	error_log("get_layouts_list");
-	callProcedure0($con, "get_layouts_list", "doLayouts");
-//	error_log("get_records_games_list");
-	callProcedure0($con, "get_records_games_list", "doRecords");
-//	error_log("get_platforms_list");
-	callProcedure0($con, "get_platforms_list", "doPlatforms");
+
+	selGamesList();
+	selLayoutsList();
+	selGamesRecordsList();
+	selPlatformsList();
+
 
 	mysqli_close($con);
 
