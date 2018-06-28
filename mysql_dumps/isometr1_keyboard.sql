@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Jun 19, 2018 at 02:15 PM
+-- Generation Time: Jun 28, 2018 at 10:14 AM
 -- Server version: 5.5.52-cll
 -- PHP Version: 5.4.31
 
@@ -19,72 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `isometr1_keyboard`
 --
-
-DELIMITER $$
---
--- Procedures
---
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -11352,10 +11286,10 @@ INSERT INTO `commands` (`command_id`, `record_id`, `commandtype_id`, `command_te
 (1491, 154, 1, 'CTRL + SHIFT + O', 'Automatic Sensors'),
 (1492, 154, 1, 'CTRL + SHIFT + F', 'Automatic Fungus Removal'),
 (1493, 154, 1, 'CTRL + SHIFT + A', 'Autoimprove Home Base'),
-(1494, 127, 6, '/pm <message> - private message', 'private message'),
-(1495, 127, 6, '/reply <message> or /r <message> - reply for last private messag', 'reply for last private message (sent/received)'),
-(1496, 127, 6, '/players - amount of players online', 'amount of players online'),
-(1497, 127, 6, '/report - reporting player, who is doing illegal stuff', 'reporting player, who is doing illegal stuff'),
+(1494, 127, 6, '/pm <message>', 'private message'),
+(1495, 127, 6, '/reply <message> or /r <message>', 'reply for last private message (sent/received)'),
+(1496, 127, 6, '/players', 'amount of players online'),
+(1497, 127, 6, '/report', 'reporting player, who is doing illegal stuff'),
 (1498, 157, 2, 'LMB', 'Use Item/Weapon'),
 (1499, 157, 2, 'RMB', 'Menu Mode'),
 (1500, 158, 2, 'X Axis, Y Axis', 'Look/Turn'),
@@ -11567,10 +11501,10 @@ INSERT INTO `commands` (`command_id`, `record_id`, `commandtype_id`, `command_te
 (1871, 184, 1, 'D then C', 'Drop all objects known to be cursed.'),
 (1872, 184, 1, 'D then X', 'Drop all objects of unknown B/U/C status.'),
 (1873, 184, 1, 'D then a', 'Drop all objects without asking for confirmation.'),
-(1874, 184, 1, 'D then i', 'Examine your inventory before dropping anything.');
-INSERT INTO `commands` (`command_id`, `record_id`, `commandtype_id`, `command_text`, `command_description`) VALUES
+(1874, 184, 1, 'D then i', 'Examine your inventory before dropping anything.'),
 (1875, 184, 1, 'D then u', 'Drop only unpaid objects (when in a shop).'),
-(1876, 184, 1, 'D then m', 'Use a menu to pick which object(s) to drop.'),
+(1876, 184, 1, 'D then m', 'Use a menu to pick which object(s) to drop.');
+INSERT INTO `commands` (`command_id`, `record_id`, `commandtype_id`, `command_text`, `command_description`) VALUES
 (1877, 184, 1, 'D then % then u', 'Drop only unpaid food.'),
 (1878, 184, 1, 'Alt + Shift + a', 'Specify one line of text to associate with the current dungeon level.'),
 (1879, 184, 1, 'Alt + Shift + c', 'List voluntary challenges you have maintained.'),

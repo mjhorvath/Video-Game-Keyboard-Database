@@ -256,7 +256,7 @@
 		$stylesrecord_id = $stylesrecord_row[0];
 		$stylesrecord_author = cleantextHTML(getAuthorName($stylesrecord_row[1]));
 	}
-	// need to move most of this stuff to `doLanguages`
+	// need to move most of the stuff that was here to `doLanguages`
 	function doLayouts($in_result)
 	{
 		global $layout_platform, $layout_name, $layout_author, $layout_keysnum;
