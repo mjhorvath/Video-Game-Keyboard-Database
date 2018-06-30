@@ -25,6 +25,7 @@
 	$legend		= $_POST["legend"];
 	$command	= $_POST["command"];
 	$binding	= $_POST["binding"];
+	$layout		= $_POST["layout"];
 
 	// handling the captcha and checking if it's ok
 	$secret = writeRecaptchaSecret();
@@ -38,11 +39,12 @@
 		(
 			"mikh2161@gmail.com",
 			"VGKD Bindings Submission",
-			"NAME:\n"	. $name		. "\n\n" .
-			"EMAIL:\n"	. $email	. "\n\n" .
-			"MESSAGE:\n"	. $message	. "\n\n" .
-			"GAME TITLE:\n"	. $titletxt	. "\n\n" .
-			"GAME URL:\n"	. $titleurl	. "\n\n" .
+			"NAME:\t\t"	. $name		. "\n" .
+			"EMAIL:\t\t"	. $email	. "\n" .
+			"MESSAGE:\t"	. $message	. "\n" .
+			"GAME TITLE:\t"	. $titletxt	. "\n" .
+			"GAME URL:\t"	. $titleurl	. "\n" .
+			"LAYOUT:\t\t"	. $layout	. "\n\n" .
 			"LEGENDS:\n"	. $legend	. "\n\n" .
 			"COMMANDS:\n"	. $command	. "\n\n" .
 			"BINDINGS:\n"	. $binding	. "\n\n"

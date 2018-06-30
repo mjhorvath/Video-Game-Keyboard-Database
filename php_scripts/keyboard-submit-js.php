@@ -15,6 +15,7 @@
 
 var keycount = 106;
 var colors = ['non','red','yel','grn','cyn','blu','mag','wht','gry','blk','org','olv','brn'];
+var layout_id = 1;
 var is_key_dirty = false;
 var is_doc_dirty = false;
 var last_id = null;
@@ -42,6 +43,7 @@ current_values.col_capxtr = 0;
 
 function init_submissions()
 {
+	layout_id = getParameterByName('lay');
 	disable_input_elements();
 //	enable_doc_controls();
 	add_input_typing_events();
@@ -802,11 +804,12 @@ function document_save_changes()
 	document.getElementById('email_6').value = process_legend_data();
 	document.getElementById('email_7').value = process_command_data();
 	document.getElementById('email_8').value = process_binding_data();
+	document.getElementById('email_9').value = layout_id;
 	do_recaptcha();
 }
 
 // https://stackoverflow.com/questions/30006081/recaptcha-2-0-with-ajax
-// May need a polyfill for all the validity stuff so they work in as many browsers as possible.
+// May need a polyfill for all the validity check stuff so they work in as many browsers as possible.
 function do_recaptcha()
 {
 	show_loading_image();
@@ -824,6 +827,8 @@ function do_recaptcha()
 	var legend	= $('#email_6');
 	var command	= $('#email_7');
 	var binding	= $('#email_8');
+	var layout	= $('#email_9');
+	var captcha	= grecaptcha.getResponse();		// THIS WILL TELL THE FORM IF THE USER IS CAPTCHA VERIFIED.
 
 	if (!name.get(0).validity.valid || !email.get(0).validity.valid || !message.get(0).validity.valid)
 	{
@@ -832,7 +837,7 @@ function do_recaptcha()
 		issues = 'RECAPTCHA: malformed input data';
 	}
 
-	console.log('RECAPTCHA: captcha response\n' + grecaptcha.getResponse()); // --> captcha response: 
+//	console.log('RECAPTCHA: captcha response\n' + captcha);
 
 	if (valid)
 	{
@@ -851,8 +856,8 @@ function do_recaptcha()
 				legend:		legend.val(),
 				command:	command.val(),
 				binding:	binding.val(),
-				//THIS WILL TELL THE FORM IF THE USER IS CAPTCHA VERIFIED.
-				captcha:	grecaptcha.getResponse()
+				layout:		layout.val(),
+				captcha:	captcha
 			}
 		}).done(function(status)
 		{
@@ -869,6 +874,7 @@ function do_recaptcha()
 //				$('#email_6').val('');
 //				$('#email_7').val('');
 //				$('#email_8').val('');
+//				$('#email_9').val('');
 				if (is_doc_dirty == true)
 				{
 					flag_doc_clean();
@@ -1190,4 +1196,16 @@ function text_select_and_copy(in_id)
 {
 	document.getElementById(in_id).select();
 	document.execCommand('copy');
+}
+
+//https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+function getParameterByName(name, url)
+{
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }

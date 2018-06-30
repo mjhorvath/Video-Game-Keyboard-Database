@@ -45,19 +45,19 @@
 	{
 		global $games_max;
 		$game_row = mysqli_fetch_row($in_result);
-		$games_max = $game_row[0] - 1;
+		$games_max = $game_row[0];
 	}
 	function doLayoutsAutoincJS($in_result)
 	{
 		global $layouts_max;
 		$layout_row = mysqli_fetch_row($in_result);
-		$layouts_max = $layout_row[0] - 1;
+		$layouts_max = $layout_row[0];
 	}
 	function doStylesAutoincJS($in_result)
 	{
 		global $styles_max;
 		$style_row = mysqli_fetch_row($in_result);
-		$styles_max = $style_row[0] - 1;
+		$styles_max = $style_row[0];
 	}
 	function doGamesJS($in_result)
 	{
@@ -114,7 +114,6 @@
 	$selectString = "SELECT r.record_id, r.style_id, r.layout_id FROM records_styles AS r;";
 	selectQuery($con, $selectString, "doStyleRecordsJS");
 
-
 	for ($i = 0; $i < $games_max; $i++)
 	{
 		if (isset($seourl_table[$i]))
@@ -130,14 +129,19 @@
 				}
 			}
 			$layout_string .= "]";
-			if ($i != $games_max - 1)
-			{
-				$seourl_string .= ",";
-				$layout_string .= ",";
-			}
-			$seourl_string .= "//" . ($i+1) . "\n";
-			$layout_string .= "//" . ($i+1) . "\n";
 		}
+		else
+		{
+			$seourl_string .= "null";
+			$layout_string .= "null";
+		}
+		if ($i != $games_max - 1)
+		{
+			$seourl_string .= ",";
+			$layout_string .= ",";
+		}
+		$seourl_string .= "//" . ($i+1) . "\n";
+		$layout_string .= "//" . ($i+1) . "\n";
 	}
 	for ($i = 0; $i < $layouts_max; $i++)
 	{
@@ -153,12 +157,16 @@
 				}
 			}
 			$style_string .= "]";
-			if ($i != $layouts_max - 1)
-			{
-				$style_string .= ",";
-			}
-			$style_string .= "//" . ($i+1) . "\n";
 		}
+		else
+		{
+			$style_string .= "null";
+		}
+		if ($i != $layouts_max - 1)
+		{
+			$style_string .= ",";
+		}
+		$style_string .= "//" . ($i+1) . "\n";
 	}
 
 	mysqli_close($con);

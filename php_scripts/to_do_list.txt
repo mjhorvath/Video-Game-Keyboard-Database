@@ -16,7 +16,7 @@ TO DO LIST
 - Continue developing the "Spreadsheet View" and permit users to alter and 
   update the keyboard data from there if they want to.
 + Convert email input TABLEs to DIVs.
-- Sub-pages maybe should not repeat the parent project's title since it the 
+- Sub-pages should maybe not repeat the parent project's title since it the 
   title already appears in the site's horizontal breadcrumbs. Not sure.
 + Need a loading icon since it takes a while for all the AJAX stuff (e.g. 
   reCAPTCHA) to download completely.
@@ -24,8 +24,10 @@ TO DO LIST
 + The "required" attribute of the email INPUT elements should cause the 
   submission form to not post if those INPUTs are not filled properly. This 
   includes the email address field, which requires special syntax.
-- The keycap legend should also be configurable.
+- The key caption legend should also be configurable.
 - Finish implementing the "languages" table.
 + The footer is the same for many of the views. It could be placed in a 
   separate file and simply included.
 - Add timestamps to the various tables to reflect the dates of creation.
+- I would also like to create charts/diagrams for gamepads, mice and joysticks, 
+  but the sheer number of different devices makes this very unlikely to happen.

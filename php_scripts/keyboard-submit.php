@@ -353,6 +353,7 @@ var binding_table =
 					<input name="email_6" id="email_6" type="hidden" value=""/>
 					<input name="email_7" id="email_7" type="hidden" value=""/>
 					<input name="email_8" id="email_8" type="hidden" value=""/>
+					<input name="email_9" id="email_9" type="hidden" value=""/>
 					<div><button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit changes to data">Submit Data</button><button id="unset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state">Reset</button></div>
 				</form>
 			</div>
@@ -364,6 +365,15 @@ var binding_table =
 				<p>Images must have both a file name and a data-URI.</p>
 				<p>Image data-URIs must be less than 256KiB in size.</p>
 				<p>You can use an online service such as <a target="_blank" href="https://websemantics.uk/tools/image-to-data-uri-converter/">Data-URI base64 converter</a> to convert PNG images to data-URIs.</p>
+				<p>Here is a set of conventions with regard to group coloring that has worked out pretty well for me so far:</p>
+				<div class="legtbl inbtop">
+					<div class="legrow"><div class="legcll legbox legred">red</div><div class="legcll legtxt">Combat/Actions</div></div>
+					<div class="legrow"><div class="legcll legbox legyel">yel</div><div class="legcll legtxt">Targeting/Unit selection/Inventory</div></div>
+					<div class="legrow"><div class="legcll legbox leggrn">grn</div><div class="legcll legtxt">Movement/Navigation</div></div>
+					<div class="legrow"><div class="legcll legbox legcyn">cyn</div><div class="legcll legtxt">Communication/Chat/Orders</div></div>
+					<div class="legrow"><div class="legcll legbox legblu">blu</div><div class="legcll legtxt">Camera/Point of view</div></div>
+					<div class="legrow"><div class="legcll legbox legmag">mag</div><div class="legcll legtxt">Game Interface/Controls/Menus</div></div>
+				</div>
 			</div>
 		</div>
 		<div id="pane_rgt">
@@ -538,7 +548,7 @@ var binding_table =
 					</div>
 					<div id="table_legend" class="inbtop">
 <?php
-	// legend - $legend_count is hardcoded as 12!
+	// legend - $legend_count is hardcoded at 12!
 	for ($i = 0; $i < $legend_count; $i++)
 	{
 		if ($i % 3 == 0)
@@ -548,18 +558,15 @@ var binding_table =
 		}
 		if (isset($legend_table[$i]))
 		{
-			$leg_color = getcolor($legend_table[$i][0]);
 			$leg_value = cleantextHTML($legend_table[$i][1]);
-			echo
-"							<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
 		}
 		else
 		{
-			$leg_color = getcolor($i+1);
 			$leg_value = "";
-			echo
-"							<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
 		}
+		$leg_color = getcolor($i+1);
+		echo
+"							<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
 		if ($i % 3 == 2)
 		{
 			echo
