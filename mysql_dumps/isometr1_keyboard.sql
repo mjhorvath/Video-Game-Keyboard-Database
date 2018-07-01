@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Jun 28, 2018 at 10:14 AM
+-- Generation Time: Jul 01, 2018 at 06:50 PM
 -- Server version: 5.5.52-cll
 -- PHP Version: 5.4.31
 
@@ -10632,7 +10632,8 @@ CREATE TABLE IF NOT EXISTS `commands` (
   `command_description` varchar(1024) NOT NULL,
   PRIMARY KEY (`command_id`),
   UNIQUE KEY `command_id_UNIQUE` (`command_id`),
-  KEY `fk_commands_copy_record_id_idx` (`record_id`)
+  KEY `fk_commands_copy_record_id_idx` (`record_id`),
+  KEY `fk_commands_commandtype_id_idx` (`commandtype_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2081 ;
 
 --
@@ -11713,7 +11714,7 @@ INSERT INTO `games` (`game_id`, `genre_id`, `game_name`, `game_friendlyurl`) VAL
 (11, 1, 'Thief: The Dark Project', 'thief-the-dark-project'),
 (12, 1, 'Thief 2: The Metal Age', 'thief-2-the-metal-age'),
 (13, 1, 'TRON 2.0', 'tron-2-0'),
-(14, 2, 'Allegience', 'allegience'),
+(14, 2, 'Allegiance', 'allegiance'),
 (15, 2, 'AquaNox', 'aquanox'),
 (16, 2, 'Battlecruiser Millenium', 'battlecruiser-millenium'),
 (17, 2, 'Beta Blocker', 'beta-blocker'),
@@ -11893,7 +11894,7 @@ INSERT INTO `games` (`game_id`, `genre_id`, `game_name`, `game_friendlyurl`) VAL
 CREATE TABLE IF NOT EXISTS `genres` (
   `genre_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `genre_name` varchar(45) NOT NULL,
-  `genre_displayorder` tinyint(3) NOT NULL,
+  `genre_displayorder` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`genre_id`),
   UNIQUE KEY `genre_name_UNIQUE` (`genre_name`),
   UNIQUE KEY `genre_id_UNIQUE` (`genre_id`),
@@ -11961,7 +11962,7 @@ CREATE TABLE IF NOT EXISTS `keygroups_static` (
   PRIMARY KEY (`keygroup_id`),
   UNIQUE KEY `keygroup_id_UNIQUE` (`keygroup_id`),
   UNIQUE KEY `keygroup_class_UNIQUE` (`keygroup_class`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `keygroups_static`
@@ -11989,12 +11990,13 @@ INSERT INTO `keygroups_static` (`keygroup_id`, `keygroup_class`) VALUES
 
 CREATE TABLE IF NOT EXISTS `keystyles` (
   `keystyle_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `record_id` tinyint(3) unsigned NOT NULL,
+  `record_id` smallint(5) unsigned NOT NULL,
   `key_number` tinyint(3) unsigned NOT NULL,
   `keystyle_group` tinyint(2) unsigned NOT NULL,
   PRIMARY KEY (`keystyle_id`),
-  UNIQUE KEY `keystyle_id_UNIQUE` (`keystyle_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1771 ;
+  UNIQUE KEY `keystyle_id_UNIQUE` (`keystyle_id`),
+  KEY `fk_keystyles_record_id_idx` (`record_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1771 ;
 
 --
 -- Dumping data for table `keystyles`
@@ -13779,7 +13781,8 @@ INSERT INTO `keystyles` (`keystyle_id`, `record_id`, `key_number`, `keystyle_gro
 --
 
 CREATE TABLE IF NOT EXISTS `languages` (
-  `language_id` int(11) NOT NULL AUTO_INCREMENT,
+  `language_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `author_id` tinyint(3) unsigned NOT NULL,
   `language_english_name` varchar(32) NOT NULL,
   `language_native_name` varchar(32) NOT NULL,
   `language_keyboard` varchar(64) NOT NULL,
@@ -13795,17 +13798,17 @@ CREATE TABLE IF NOT EXISTS `languages` (
   `language_title` varchar(64) NOT NULL,
   PRIMARY KEY (`language_id`),
   UNIQUE KEY `language_id_UNIQUE` (`language_id`),
-  UNIQUE KEY `language_name_UNIQUE` (`language_english_name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='			' AUTO_INCREMENT=4 ;
+  UNIQUE KEY `language_name_UNIQUE` (`language_english_name`),
+  KEY `fk_authors_author_id_idx` (`author_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='			' AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `languages`
 --
 
-INSERT INTO `languages` (`language_id`, `language_english_name`, `language_native_name`, `language_keyboard`, `language_mouse`, `language_joystick`, `language_addnotes`, `language_codes`, `language_consoles`, `language_emotes`, `language_legend`, `language_description`, `language_keywords`, `language_title`) VALUES
-(1, 'English', 'English', 'Keyboard Combinations', 'Mouse Controls', 'Joystick Controls', 'Additional Notes', 'Cheat Codes', 'Console Commands', 'Emotes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 'Keyboard Diagram'),
-(2, 'German', 'Deutsch', 'Tastatur Kombinationen', 'Maus Kontrolle', 'Joystick Kontrolle', 'Zusätzliche Notizen', 'Cheat Codes', 'Console Commands', 'Emotes', 'Zeichenerklä4rung ', 'Keyboard hotkey & binding chart for ', 'German,Deutsch,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 'Tastatur Diagramm'),
-(3, 'French', 'French', 'Keyboard Combinations', 'Mouse Controls', 'Joystick Controls', 'Additional Notes', 'Cheat Codes', 'Console Commands', 'Emotes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 'Keyboard Diagram');
+INSERT INTO `languages` (`language_id`, `author_id`, `language_english_name`, `language_native_name`, `language_keyboard`, `language_mouse`, `language_joystick`, `language_addnotes`, `language_codes`, `language_consoles`, `language_emotes`, `language_legend`, `language_description`, `language_keywords`, `language_title`) VALUES
+(1, 1, 'English', 'English', 'Keyboard Combinations', 'Mouse Controls', 'Joystick Controls', 'Additional Notes', 'Cheat Codes', 'Console Commands', 'Emotes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 'Keyboard Diagram'),
+(2, 1, 'German', 'Deutsch', 'Tastatur Kombinationen', 'Maus Kontrolle', 'Joystick Kontrolle', 'Zusätzliche Notizen', 'Cheat Codes', 'Konsolenbefehl', 'Emotes', 'Zeichenerklä4rung ', 'Tastatur Referenz für ', 'Deutsch,Tastatur,Tastaturtasten,Diagramm,Tabelle,overlay,shortcut,Bindung,mapping,Karte,Plan,Kontrolle,hotkeys,Datenbank,Druck,Videospiel,software,visuell,Leitfaden,Referenz', 'Tastatur Diagramm');
 
 -- --------------------------------------------------------
 
@@ -14989,7 +14992,7 @@ INSERT INTO `positions` (`position_id`, `layout_id`, `key_number`, `position_lef
 (291, 3, 84, 1500, 396, 72, 72, ',', 'Entf', NULL, b'0'),
 (292, 3, 85, 1572, 108, 72, 72, NULL, '-', NULL, b'0'),
 (293, 3, 86, 1572, 180, 72, 144, NULL, '+', NULL, b'0'),
-(294, 3, 87, 1572, 324, 72, 144, 'Ein-\\ngeben', NULL, NULL, b'0'),
+(294, 3, 87, 1572, 324, 72, 144, NULL, 'Ein-\\ngeben', NULL, b'0'),
 (295, 3, 88, 0, 0, 72, 72, NULL, 'Esc', NULL, b'0'),
 (296, 3, 89, 156, 0, 72, 72, NULL, 'F1', NULL, b'0'),
 (297, 3, 90, 228, 0, 72, 72, NULL, 'F2', NULL, b'0'),
@@ -15679,13 +15682,16 @@ INSERT INTO `records_games` (`record_id`, `game_id`, `layout_id`, `author_id`) V
 --
 
 CREATE TABLE IF NOT EXISTS `records_styles` (
-  `record_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `record_id` smallint(5) unsigned NOT NULL,
   `style_id` tinyint(3) unsigned NOT NULL,
   `layout_id` tinyint(3) unsigned NOT NULL,
   `author_id` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`record_id`),
-  UNIQUE KEY `record_id_UNIQUE` (`record_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=88 ;
+  UNIQUE KEY `record_id_UNIQUE` (`record_id`),
+  KEY `fk_records_styles_style_id_idx` (`style_id`),
+  KEY `fk_records_styles_layout_id_idx` (`layout_id`),
+  KEY `fk_records_styles_author_id_idx` (`author_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `records_styles`
@@ -15856,13 +15862,26 @@ ALTER TABLE `bindings`
 -- Constraints for table `commands`
 --
 ALTER TABLE `commands`
-  ADD CONSTRAINT `fk_commands_copy_record_id` FOREIGN KEY (`record_id`) REFERENCES `records_games` (`record_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_commands_commandtype_id` FOREIGN KEY (`commandtype_id`) REFERENCES `commandtypes` (`commandtype_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_commands_record_id` FOREIGN KEY (`record_id`) REFERENCES `records_games` (`record_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `games`
 --
 ALTER TABLE `games`
   ADD CONSTRAINT `fk_games_genre_id` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`genre_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `keystyles`
+--
+ALTER TABLE `keystyles`
+  ADD CONSTRAINT `fk_keystyles_record_id` FOREIGN KEY (`record_id`) REFERENCES `records_styles` (`record_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `languages`
+--
+ALTER TABLE `languages`
+  ADD CONSTRAINT `fk_authors_author_id` FOREIGN KEY (`author_id`) REFERENCES `authors` (`author_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `layouts`
@@ -15890,6 +15909,14 @@ ALTER TABLE `records_games`
   ADD CONSTRAINT `fk_records_author_id` FOREIGN KEY (`author_id`) REFERENCES `authors` (`author_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_records_game_id` FOREIGN KEY (`game_id`) REFERENCES `games` (`game_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_records_layouts` FOREIGN KEY (`layout_id`) REFERENCES `layouts` (`layout_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `records_styles`
+--
+ALTER TABLE `records_styles`
+  ADD CONSTRAINT `fk_records_styles_author_id` FOREIGN KEY (`author_id`) REFERENCES `authors` (`author_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_records_styles_layout_id` FOREIGN KEY (`layout_id`) REFERENCES `layouts` (`layout_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_records_styles_style_id` FOREIGN KEY (`style_id`) REFERENCES `styles` (`style_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `styles`

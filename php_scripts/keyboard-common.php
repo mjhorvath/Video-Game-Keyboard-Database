@@ -564,7 +564,7 @@
 	function selKeystylesHTML()
 	{
 		global $con, $stylesrecord_id;
-		$selectString = "SELECT k.keystyle_group, k.key_number FROM keystyles AS k WHERE k.keystyle_id = " . $stylesrecord_id . ";";
+		$selectString = "SELECT k.keystyle_group, k.key_number FROM keystyles AS k WHERE k.record_id = " . $stylesrecord_id . ";";
 		selectQuery($con, $selectString, "doKeystylesHTML");
 	}
 	function selBindingsHTML()
@@ -642,7 +642,7 @@
 	function selKeystylesSVG()
 	{
 		global $con, $stylesrecord_id;
-		$selectString = "SELECT k.keystyle_group, k.key_number FROM keystyles AS k WHERE k.keystyle_id = " . $stylesrecord_id . ";";
+		$selectString = "SELECT k.keystyle_group, k.key_number FROM keystyles AS k WHERE k.record_id = " . $stylesrecord_id . ";";
 		selectQuery($con, $selectString, "doKeystylesSVG");
 	}
 	function selBindingsSVG()

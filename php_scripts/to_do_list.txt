@@ -1,5 +1,8 @@
 TO DO LIST
 
+Completed tasks are marked with a plus '+' and incomplete tasks are marked with 
+a minus '-'.
+
 + In the submission form, selecting a colored OPTION element should change the 
   color of the corresponding parent SELECT element as well.
 + An warning should be thrown ONBEFOREUNLOAD if someone attempts to leave the 
@@ -8,14 +11,14 @@ TO DO LIST
 + The Creative Commons and GNU icons need to have their ALT attributes set.
 + The CAPTCHA dialog should check for a correct security code *before* sending 
   the user on to the next page. At the very least, it should warn the user that 
-  he or she will not be able to return to the form page after making a 
-  submission.
+  he or she will not be able to return to the form page after clicking the 
+  submit button.
 - Should maybe store the SVG patterns, filters and gradients in separate files, 
   rather than cluttering up the main SVG file. But since there are only a dozen 
   or so styles at this time, it's not currently a big deal.
-- Continue developing the "Spreadsheet View" and permit users to alter and 
-  update the keyboard data from there if they want to.
-+ Convert email input TABLEs to DIVs.
+- Continue developing the "Spreadsheet View" of the submission form, and permit 
+  users to alter or update the keyboard data from there if they want to.
++ Convert input TABLEs to DIVs.
 - Sub-pages should maybe not repeat the parent project's title since it the 
   title already appears in the site's horizontal breadcrumbs. Not sure.
 + Need a loading icon since it takes a while for all the AJAX stuff (e.g. 
@@ -28,6 +31,7 @@ TO DO LIST
 - Finish implementing the "languages" table.
 + The footer is the same for many of the views. It could be placed in a 
   separate file and simply included.
-- Add timestamps to the various tables to reflect the dates of creation.
+- Add timestamps to the various tables to reflect the dates when items were 
+  added.
 - I would also like to create charts/diagrams for gamepads, mice and joysticks, 
-  but the sheer number of different devices makes this very unlikely to happen.
+  but the sheer number of different devices will make this task very difficult.
