@@ -19,7 +19,8 @@
 
 	header("Content-Type: text/html; charset=utf8");
 
-	include($path_root. "ssi/keyboard-connection.php");
+	include($path_root . 'ssi/analyticstracking.php');
+	include($path_root . "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
 
 	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
@@ -192,7 +193,7 @@
 		<meta name=\"description\" content=\"" . $string_description . $temp_game_name . ". (" . $temp_style_name . ")\"/>
 		<meta name=\"keywords\" content=\"" . $temp_game_name . "," . $temp_style_name . "," . "HTML" . "," . $string_keywords . "\"/>
 ";
-	include($path_root . "ssi/analyticstracking.php");
+	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";
 	include("./html_" . $style_filename . ".css");

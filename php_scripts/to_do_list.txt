@@ -35,3 +35,9 @@ a minus '-'.
   added.
 - I would also like to create charts/diagrams for gamepads, mice and joysticks, 
   but the sheer number of different devices will make this task very difficult.
+- It may be better to reverse the order of the selections on the frontend page. 
+  E.g. select the Keyboard first, then the Style, and then the Game. Otherwise, 
+  finding bindings for the German or French keyboards will be like searching 
+  for a needle in a haystack.
+- Not sure whether the sitemap should list each game once for every platform or 
+  layout. Does it confuse the search engines to have multiples of each game?

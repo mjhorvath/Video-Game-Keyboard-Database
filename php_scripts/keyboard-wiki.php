@@ -19,7 +19,8 @@
 
 	header("Content-Type: text/html; charset=utf8");
 
-	include($path_root. "ssi/keyboard-connection.php");
+	include($path_root . 'ssi/analyticstracking.php');
+	include($path_root . "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
 
 	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
@@ -171,7 +172,7 @@
 "		<meta name=\"description\" content=\"" . $string_description . $temp_game_name . ".\"></meta>\n" .
 "		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference,MediaWiki," . $temp_game_name . "\"></meta>\n" .
 "		<script src=\"keyboard-chart-js.php\"></script>\n";
-	include($path_root . "ssi/analyticstracking.php");
+	echo writeAnalyticsTracking();
 ?>
 	</head>
 	<body style="margin:auto;width:80%;">

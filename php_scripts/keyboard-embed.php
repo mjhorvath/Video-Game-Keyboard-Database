@@ -19,7 +19,8 @@
 
 	header("Content-Type: text/html; charset=utf8");
 
-	include($path_root. "ssi/keyboard-connection.php");
+	include($path_root . 'ssi/analyticstracking.php');
+	include($path_root . "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
 
 	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
@@ -178,11 +179,11 @@
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"" . $string_description . $temp_game_name . ". (" . $temp_style_name . ")\"/>
-		<meta name=\"keywords\" content=\"" . $temp_game_name . "," . $temp_style_name . "," . "SVG" . "," . $string_keywords . "\"/>\n";
-	include($path_root . "ssi/analyticstracking.php");
+		<meta name=\"keywords\" content=\"" . $temp_game_name . "," . $temp_style_name . "," . "SVG" . "," . $string_keywords . "\"/>
+		<script src=\"keyboard-chart-js.php\"></script>\n";
+	echo writeAnalyticsTracking();
 	echo
-"		<script src=\"keyboard-chart-js.php\"></script>
-		<style type=\"text/css\">\n";
+"		<style type=\"text/css\">\n";
 	include("./embed_" . $style_filename . ".css");
 	echo
 "		</style>\n";

@@ -14,7 +14,7 @@
 	<li>2018/06/28: Had to replace all stored procedures with regular SELECT calls since my Web host disabled the creation (and storage) of new routines.</li>
 	<li>2018/06/24: Made several JavaScript-related fixes to the submission form.</li>
 	<li>2018/06/23: Switched to Google's reCAPTCHA for the submission form.</li>
-	<li>2018/06/21: Stared making a "to do" list. You can view it <a href="to_do_list.txt">here</a>.</li>
+	<li>2018/06/21: Started making a "to do" list. You can view it <a href="to_do_list.txt">here</a>.</li>
 	<li>2018/06/20: Fixed some PHP loop code that was spawning warnings in the error log.</li>
 	<li>2018/06/20: Changed the license for the PHP and JavaScript code to GPLv3. (The database contents and chart designs remain licensed under the CC BY-SA 3.0 license.)</li>
 	<li>2018/06/19: Finished the graphical submission form I started working on. Start with a <a href="keyboard-diagram-blank-sample.php?sty=15&lay=1&fmt=3">blank sample</a>.</li>
