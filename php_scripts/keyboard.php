@@ -14,20 +14,24 @@
 	print($page_top);
 ?>
 <?php
+	// Video Game Keyboard Diagrams
 	// Copyright (C) 2018  Michael Horvath
-	//
+        // 
+	// This file is part of Foobar.
+        // 
 	// This program is free software: you can redistribute it and/or modify
-	// it under the terms of the GNU General Public License as published by
-	// the Free Software Foundation, either version 3 of the License, or
-	// any later version.
-	// 
-	// This program is distributed in the hope that it will be useful,
-	// but WITHOUT ANY WARRANTY; without even the implied warranty of
-	// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	// GNU General Public License for more details.
-	// 
-	// You should have received a copy of the GNU General Public License
-	// along with this program. If not, see <https://www.gnu.org/licenses/>.
+	// it under the terms of the GNU Lesser General Public License as 
+	// published by the Free Software Foundation, either version 3 of the 
+	// License, or (at your option) any later version.
+        // 
+	// This program is distributed in the hope that it will be useful, but 
+	// WITHOUT ANY WARRANTY; without even the implied warranty of 
+	// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU 
+	// Lesser General Public License for more details.
+        // 
+	// You should have received a copy of the GNU Lesser General Public 
+	// License along with this program.  If not, see 
+	// <https://www.gnu.org/licenses/>.
 
 	include($path_root. "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
@@ -43,44 +47,28 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	$genre_array		= [];
-	$genre_order_array	= [];
 	$game_array		= [];
 	$stylegroup_array	= [];
 	$style_array		= [];
-	$stylerecord_array	= [];
 	$layout_array		= [];
 	$platform_array		= [];
 	$platform_order_array	= [];
-/*
-	function doGenresFront($in_result)
-	{
-		global $genre_array, $genre_order_array, $game_array;
-		$genre_count = 1;
-		while ($genre_row = mysqli_fetch_row($in_result))
-		{
-			// genre_name, genre_displayorder
-			$genre_array[] = $genre_row[0];
-			$genre_order_array[$genre_row[1]-1] = $genre_count;	// not sure this is working correctly, need to test it
-			$game_array[] = [[],[]];
-			$genre_count += 1;
-		}
-	}
-*/
+
 	function doGenresFront($in_result)
 	{
 		global $genre_array, $genre_order_array, $game_array;
 		while ($genre_row = mysqli_fetch_row($in_result))
 		{
-			// genre_name, genre_displayorder
-			$genre_array[] = $genre_row[0];
-			$genre_order_array[] = $genre_row[1];	// not sure this is working correctly, need to test it
-			$game_array[] = [[],[]];
+			// genre_id, genre_name
+			$genre_id = $genre_row[0];
+			$genre_array[$genre_id-1] = $genre_row[1];
+			$game_array[$genre_id-1] = [[],[]];
 		}
 	}
 	function sortGamesFront()
 	{
-		global $genre_order_array, $genre_array, $game_array;
-		array_multisort($genre_order_array, $genre_array, $game_array);
+		global $genre_array, $game_array;
+		array_multisort($genre_array, $game_array);
 	}
 	function doGamesFront($in_result)
 	{
@@ -100,8 +88,9 @@
 		while ($stylegroup_row = mysqli_fetch_row($in_result))
 		{
 			// stylegroup_id, stylegroup_name
-			$stylegroup_array[$stylegroup_row[0]-1] = $stylegroup_row[1];
-			$style_array[$stylegroup_row[0]-1] = [[],[]];
+			$stylegroup_id = $stylegroup_row[0];
+			$stylegroup_array[$stylegroup_id-1] = $stylegroup_row[1];
+			$style_array[$stylegroup_id-1] = [[],[]];
 		}
 	}
 	function doStylesFront($in_result)
@@ -110,8 +99,9 @@
 		while ($style_row = mysqli_fetch_row($in_result))
 		{
 			// stylegroup_id, style_id, style_name
-			$style_array[$style_row[0]-1][0][] = $style_row[1];
-			$style_array[$style_row[0]-1][1][] = $style_row[2];
+			$stylegroup_id = $style_row[0];
+			$style_array[$stylegroup_id-1][0][] = $style_row[1];
+			$style_array[$stylegroup_id-1][1][] = $style_row[2];
 		}
 	}
 	function doPlatformsFront($in_result)
@@ -136,18 +126,18 @@
 		while ($layout_row = mysqli_fetch_row($in_result))
 		{
 			// platform_id, layout_id, layout_name
-			$layout_array[$layout_row[0]-1][0][] = $layout_row[1];
-			$layout_array[$layout_row[0]-1][1][] = $layout_row[2];
+			$platform_id = $layout_row[0];
+			$layout_array[$platform_id-1][0][] = $layout_row[1];
+			$layout_array[$platform_id-1][1][] = $layout_row[2];
 		}
 	}
 
 
-	$selectString = "SELECT g.genre_name, g.genre_displayorder FROM genres as g;";
+	$selectString = "SELECT g.genre_id, g.genre_name FROM genres as g;";
 	selectQuery($con, $selectString, "doGenresFront");
 
 	$selectString = "SELECT g.genre_id, g.game_id, g.game_name, g.game_friendlyurl FROM games as g;";
 	selectQuery($con, $selectString, "doGamesFront");
-	sortGames();
 
 	$selectString = "SELECT s.stylegroup_id, s.stylegroup_name FROM stylegroups as s;";
 	selectQuery($con, $selectString, "doStylegroupsFront");
@@ -160,6 +150,8 @@
 
 	$selectString = "SELECT l.platform_id, l.layout_id, l.layout_name FROM layouts as l;";
 	selectQuery($con, $selectString, "doLayoutsFront");
+
+	sortGamesFront();
 
 
 	mysqli_close($con);
@@ -330,7 +322,7 @@
 	<li>View or print the page in the new window.</li>
 </ol>
 <h2>Licenses &amp; Submissions:</h2>
-<p>The source code for this project is licensed under the <a target="_blank" href="GNU General Public License">GPLv3</a>. The content is licensed under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading. The <a href="to_do_list.txt">"to do" list</a> outlines some of the tasks I've planned for the future. (Completed tasks are marked with a plus '+' and incomplete tasks are marked with a minus '-'.)</p>
+<p>The source code for this project is licensed under the <a rel="license" target="_blank" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">GNU LGPLv3</a>. The content is licensed under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading. The <a href="to_do_list.txt">"to do" list</a> outlines some of the tasks I've planned for the future. (Completed tasks are marked with a plus '+' and incomplete tasks are marked with a minus '-'.)</p>
 <p>To submit a new set of bindings, you can fill out <a href="<?php echo $path_root; ?>files/vgkd_binding_template_20180629.xlsx">this spreadsheet</a> and <a href="http://isometricland.net/email.php">email</a> me the contents (copy and paste) when you are done. Note that any content you submit falls under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart, as well as in the change log.</p>
 <p>I have also recently started developing a form-based submission page. You can use it to submit changes to existing bindings by selecting the "Editor" option in Step 4, above. Or, you can get started making a brand new set of bindings with the "Blank Sample" in the "Reference" category (there are blank samples for every keyboard and theme). I personally still prefer using the spreadsheet for this purpose, however.</p>
 <h2>MediaWiki, SVG &amp; PDF:</h2>
