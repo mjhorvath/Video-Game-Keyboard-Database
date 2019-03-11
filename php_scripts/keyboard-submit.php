@@ -2,7 +2,7 @@
 	// Video Game Keyboard Diagrams
 	// Copyright (C) 2018  Michael Horvath
         // 
-	// This file is part of Foobar.
+	// This file is part of Video Game Keyboard Diagrams.
         // 
 	// This program is free software: you can redistribute it and/or modify
 	// it under the terms of the GNU Lesser General Public License as 
@@ -307,7 +307,7 @@ var binding_table =
 ?>
 	</head>
 	<body onload="init_submissions();">
-		<img id="waiting" src="loading.gif" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
+		<img id="waiting" src="./loading.gif" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
 		<div id="butt_min" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(0);"><img src="./icon_min.png"/></div>
 		<div id="butt_max" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(1);"><img src="./icon_max.png"/></div>
 		<div id="pane_lft">
@@ -336,22 +336,22 @@ var binding_table =
 				</div>
 				<p>Enter new lines by typing <code>\n</code>.</p>
 				<hr/>
-				<form id="email_form" method="post" enctype="multipart/form-data" action="">
+				<form id="email_form" method="post" enctype="multipart/form-data" accept-charset="UTF-8" action="">
 					<div id="email_table" class="emltbl inbtop" style="margin:auto;">
 						<div class="emlrow">
 							<div class="emlcll">Name:</div>
-							<div class="emlcll"><input class="email_input" type="text" name="email_1" id="email_1" placeholder="First and last name" required autocomplete="on" data-lpignore="true"/></div>
+							<div class="emlcll"><input class="email_input" type="text" name="email_1" id="email_1" onchange="flag_eml_clean();" placeholder="First and last name" required autocomplete="off" data-lpignore="true"/></div>
 						</div>
 						<div class="emlrow">
 							<div class="emlcll">Email:</div>
-							<div class="emlcll"><input class="email_input" type="email" name="email_2" id="email_2" placeholder="Return email address" required autocomplete="on" data-lpignore="true"/></div>
+							<div class="emlcll"><input class="email_input" type="email" name="email_2" id="email_2" onchange="flag_eml_clean();" placeholder="Return email address" required autocomplete="off" data-lpignore="true"/></div>
 						</div>
 						<div class="emlrow">
 							<div class="emlcll">Messg:</div>
-							<div class="emlcll"><textarea class="email_textarea" name="email_3" id="email_3" placeholder="Message to admin" required autocomplete="on"></textarea></div>
+							<div class="emlcll"><textarea class="email_textarea" name="email_3" id="email_3" onchange="flag_eml_clean();" placeholder="Message to admin" required autocomplete="off"></textarea></div>
 						</div>
 					</div>
-					<div id="email_recaptcha" class="g-recaptcha" data-sitekey="<?php echo writeRecaptchaKey(); ?>"></div>
+					<div id="email_recaptcha" class="g-recaptcha" data-callback="flag_cap_dirty" data-sitekey="<?php echo writeRecaptchaKey(); ?>"></div>
 					<p style="text-align:left;">For human verification purposes, please click the checkbox labeled "I'm not a robot".</p>
 					<input name="email_4" id="email_4" type="hidden" value=""/>
 					<input name="email_5" id="email_5" type="hidden" value=""/>
@@ -359,7 +359,7 @@ var binding_table =
 					<input name="email_7" id="email_7" type="hidden" value=""/>
 					<input name="email_8" id="email_8" type="hidden" value=""/>
 					<input name="email_9" id="email_9" type="hidden" value=""/>
-					<div><button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit changes to data">Submit Data</button><button id="unset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state">Reset</button></div>
+					<div><button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit changes to data" data-callback="recaptchaCallback">Submit Data</button><button id="unset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state" data-callback="recaptchaCallback">Reset</button></div>
 				</form>
 			</div>
 			<div id="pane_hlp" style="display:none;">
@@ -388,22 +388,23 @@ var binding_table =
 			</div>
 			<div id="pane_kbd" style="display:block;">
 				<div class="bodiv">
-					<input id="game_tit" type="text" size="25" maxlength="100" placeholder="Game Title" title="Game Title" style="font-size:x-large;" autocomplete="off" onchange="flag_as_dirty();" value="<?php echo $thispage_title_a; ?>"/>
-					<input id="game_url" type="text" size="25" maxlength="100" placeholder="URL String" title="URL String" style="font-size:x-large;" autocomplete="off" onchange="flag_as_dirty();" value="<?php echo $game_seo; ?>" disabled="disabled"/>
+					<input id="game_tit" type="text" size="25" maxlength="100" placeholder="Game Title" title="Game Title" style="font-size:x-large;" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $thispage_title_a; ?>"/>
+					<input id="game_url" type="text" size="25" maxlength="100" placeholder="URL String" title="URL String" style="font-size:x-large;" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $game_seo; ?>" disabled="disabled"/>
 				</div>
 				<div class="bodiv" style="position:relative;width:1660px;height:480px;">
-					<div id="keydiv" style="position:relative;width:1660px;height:480px;">
+					<form enctype="multipart/form-data" accept-charset="UTF-8">
+						<div id="keydiv" style="position:relative;width:1660px;height:480px;">
 <?php
 	// validity checks
 	if (!$gamesrecord_id)
 	{
 		echo
-"					<h3>No bindings found for game \"" . $temp_game_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</h3>";
+"							<h3>No bindings found for game \"" . $temp_game_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</h3>";
 	}
 	if (!$stylesrecord_id)
 	{
 		echo
-"					<h3>No configurations found for style \"" . $temp_style_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</h3>";
+"							<h3>No configurations found for style \"" . $temp_style_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</h3>";
 	}
 	// keys
 	if ($gamesrecord_id && $stylesrecord_id)
@@ -465,7 +466,7 @@ var binding_table =
 				}
 				// key outer container
 				echo
-"					<div id=\"keyout_" . $i . "\" class=\"keyout cap" . $bkg_nor . " " . $key_sty . "\" style=\"left:" . $pos_lft . "px;top:" . $pos_top . "px;width:" . $pos_wid . "px;height:" . $pos_hgh . "px;background-size:auto;\">\n";
+"							<div id=\"keyout_" . $i . "\" class=\"keyout cap" . $bkg_nor . " " . $key_sty . "\" style=\"left:" . $pos_lft . "px;top:" . $pos_top . "px;width:" . $pos_wid . "px;height:" . $pos_hgh . "px;background-size:auto;\">\n";
 				// icon images
 				if (($img_uri != "") || ($write_maximal_keys == true))
 				{
@@ -478,7 +479,7 @@ var binding_table =
 						$display = "block";
 					}
 					echo
-"						<img id=\"capimg_" . $i . "\" class=\"capimg\" style=\"left:" . $img_pos_x . "px;top:" . $img_pos_y . "px;width:" . $img_wid . "px;height:" . $img_hgh . "px;display:" . $display . ";\" src=\"" . $img_uri . "\"/>\n";
+"								<img id=\"capimg_" . $i . "\" class=\"capimg\" style=\"left:" . $img_pos_x . "px;top:" . $img_pos_y . "px;width:" . $img_wid . "px;height:" . $img_hgh . "px;display:" . $display . ";\" src=\"" . $img_uri . "\"/>\n";
 				}
 				// key characters
 				if (($key_hgh != "") || ($write_maximal_keys == true))
@@ -533,12 +534,13 @@ var binding_table =
 					print_key_html("capxtr_" . $i, "capxtr", $bkg_xtr, $cap_xtr);
 				}
 				echo
-"					</div>\n";
+"							</div>\n";
 			}
 		}
 	}
 ?>
-					</div>
+						</div>
+					</form>
 				</div>
 				<div class="bodiv">
 					<div class="inbtop" style="margin-right:1em;margin-bottom:1em;">
@@ -571,7 +573,7 @@ var binding_table =
 		}
 		$leg_color = getcolor($i+1);
 		echo
-"							<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
+"							<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
 		if ($i % 3 == 2)
 		{
 			echo
@@ -596,9 +598,9 @@ var binding_table =
 				$combo_des = cleantextHTML($combo_row[1]);
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $combo_com . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $combo_com . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $combo_des . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $combo_des . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
@@ -626,9 +628,9 @@ var binding_table =
 				$mouse_des = cleantextHTML($mouse_row[1]);
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $mouse_com . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $mouse_com . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $mouse_des . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $mouse_des . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
@@ -656,9 +658,9 @@ var binding_table =
 				$joystick_des = cleantextHTML($joystick_row[1]);
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $joystick_com . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $joystick_com . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $joystick_des . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $joystick_des . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
@@ -686,7 +688,7 @@ var binding_table =
 				$note_des = cleantextHTML($note_row[1]);
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll txtone\"><textarea placeholder=\"blah\" onchange=\"flag_as_dirty();\">" . $note_des . "</textarea></div>
+								<div class=\"notcll txtone\"><textarea placeholder=\"blah\" onchange=\"flag_doc_dirty();\">" . $note_des . "</textarea></div>
 								<div class=\"notcll txttwo\"><button class=\"txtsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
@@ -712,9 +714,9 @@ var binding_table =
 				$cheat_des = cleantextHTML($cheat_row[1]);
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $cheat_com . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $cheat_com . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $cheat_des . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $cheat_des . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
@@ -742,9 +744,9 @@ var binding_table =
 				$console_des = cleantextHTML($console_row[1]);
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $console_com . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $console_com . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $console_des . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $console_des . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
@@ -772,9 +774,9 @@ var binding_table =
 				$emote_des = cleantextHTML($emote_row[1]);
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $emote_com . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $emote_com . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_as_dirty();\" value=\"" . $emote_des . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $emote_des . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}

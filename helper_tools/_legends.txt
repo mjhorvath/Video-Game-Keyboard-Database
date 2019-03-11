@@ -1,3 +1,1 @@
-\N	213	4	Time Controls
-\N	213	5	Camera
-\N	213	6	Game Interface/Menus
+\N	214	6	Game Menus

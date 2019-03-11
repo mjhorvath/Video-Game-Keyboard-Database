@@ -1,7 +1,7 @@
 // Video Game Keyboard Diagrams
 // Copyright (C) 2018  Michael Horvath
 // 
-// This file is part of Foobar.
+// This file is part of Video Game Keyboard Diagrams.
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as 
@@ -17,11 +17,15 @@
 // License along with this program.  If not, see 
 // <https://www.gnu.org/licenses/>.
 
+new Image().src = './loading.gif';
+
 var keycount = 106;
 var colors = ['non','red','yel','grn','cyn','blu','mag','wht','gry','blk','org','olv','brn'];
 var layout_id = 1;
 var is_key_dirty = false;
 var is_doc_dirty = false;
+var is_eml_dirty = true;
+var is_cap_dirty = false;
 var last_id = null;
 var last_class = null;
 var current_id = null;
@@ -838,12 +842,12 @@ function do_recaptcha()
 	{
 		valid = false;
 		errors = 'ERROR: The name, email and message fields need to be filled in properly before you may proceed. Please go back and try again.';
-		issues = 'RECAPTCHA: malformed input data';
+		issues = 'RECAPTCHA: malformed email input data';
 	}
 
 //	console.log('RECAPTCHA: captcha response\n' + captcha);
 
-	if (valid)
+	if (valid == true)
 	{
 		// ajax to the php file to send the mail
 		$.ajax
@@ -867,7 +871,6 @@ function do_recaptcha()
 		{
 			if (status == "ok")
 			{
-				hide_loading_image();
 				alert('Thanks! Your message has been sent, and an admin will contact you shortly.');
 				// clear the form fields
 //				$('#email_1').val('');
@@ -884,6 +887,7 @@ function do_recaptcha()
 					flag_doc_clean();
 				}
 				console.log('RECAPTCHA: mail was sent');
+				hide_loading_image();
 			}
 			else
 			{
@@ -953,14 +957,69 @@ function flag_key_clean()
 
 function flag_doc_dirty()
 {
-	enable_doc_controls();
 	is_doc_dirty = true;
+	check_all_dirty();
 }
 
 function flag_doc_clean()
 {
-	disable_doc_controls();
 	is_doc_dirty = false;
+	check_all_dirty();
+}
+
+function flag_cap_dirty()
+{
+	is_cap_dirty = true;
+	check_all_dirty();
+}
+
+function flag_cap_clean()
+{
+	is_cap_dirty = false;
+	check_all_dirty();
+}
+
+function flag_eml_clean()
+{
+	var name	= $('#email_1');
+	var email	= $('#email_2');
+	var message	= $('#email_3');
+	if
+	(
+		name.val() == ''	||
+		email.val() == ''	||
+		message.val() == ''	||
+		!name.get(0).validity.valid	||
+		!email.get(0).validity.valid	||
+		!message.get(0).validity.valid	||
+		(true === false)
+	)
+	{
+		is_eml_dirty = true;
+	}
+	else
+	{
+		is_eml_dirty = false;
+	}
+	check_all_dirty();
+}
+
+function check_all_dirty()
+{
+	if
+	(
+		(is_doc_dirty == true)  &&
+		(is_cap_dirty == true)  &&
+		(is_eml_dirty == false) &&
+		(true === true)
+	)
+	{
+		enable_doc_controls();
+	}
+	else
+	{
+		disable_doc_controls();
+	}
 }
 
 function enable_doc_controls()

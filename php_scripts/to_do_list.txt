@@ -41,3 +41,14 @@ a minus '-'.
   for a needle in a haystack.
 - Not sure whether the sitemap should list each game once for every platform or 
   layout. Does it confuse the search engines to have multiples of each game?
++ Game genres should be listed alphabetically instead of by the 
+  "genre_displayorder" column (which happens to be alphabetical, too, and is 
+  thus redundant).
+- Should the stylegroups table have a "stylegroup_displayorder" field?
+- Should mouse, joystick, etc. commands be lined up neatly with left and right 
+  parts separated by an equal '=' sign? Or should I use a definition list?
+- Instead of one genre per game, I could create tag clouds so that a game could 
+  be placed into multiple genres. What type of GUI do I need to facilitate this 
+  and allow  visitors to select more than one genre?
+- How granular should I get WRT video game genres? Should I list sub-genres? 
+  How many? Which ones?

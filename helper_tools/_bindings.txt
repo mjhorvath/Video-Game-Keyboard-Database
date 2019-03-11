@@ -1,27 +1,41 @@
-\N	213	2	Reset\\nGame\\nSpeed	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	3	Decrease\\nGame\\nSpeed	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	4	Increase\\nGame\\nSpeed	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	16	Rotate\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	17	Pan\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	18	Pan\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	20	Technology\\nTree	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	24	Temperature\\nOverlay	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	30	Pan\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	31	Pan\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	32	Pan\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	35	Tutorial\\nSummary	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	38	Book of\\nLaws	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	47	Center\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	48	Economy\\nPanel	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	49	Construction\\nPanel	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	57	Efficiency\\nTrackers	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	58	Pause Game	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	62	Pan\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	63	Pan\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	64	World\\nMap	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	65	Pan\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	66	Pan\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	67	Pan\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	68	Zoom\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	69	Zoom\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	213	70	Pan\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	2	Select\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	3	Select\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	4	Select\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	5	Select\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	6	Select\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	7	Select\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	8	Select\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	9	Select\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	10	Select\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	11	Select\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	15	Toggle Compass/\\nMini-map	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	16	Climb/\\nStart\\nEngine	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	17	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	18	Use/\\nActivate	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	22	Upgrade	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	23	Inventory	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	24	Missions	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	25	Profile	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	30	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	31	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	32	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	33	Dark\\nMenu	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	34	Throw\\nGrenade	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	35	Rate of\\nFire	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	36	Drop\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	38	Notebook	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	42	Use/Activate	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	43	Run	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	45	Drop/\\nStop\\nEngine	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	47	Crouch	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	48	Select\\nAmmo	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	49	Binoculars	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	51	Main\\nMap	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	56	Walk	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	58	Jump/Vehicle Hand Brake	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	68	Stand Up	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	69	Prone	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	71	Pause\\nGame	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	88	Exit to\\nMenu	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	97	Quick\\nSave	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	214	100	Quick\\nLoad	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N

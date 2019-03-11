@@ -1,2 +1,3 @@
-\N	212	3	LMB	Context Menu
-\N	212	3	RMB	Look At
+\N	214	3	LMB	Take/Fire Weapon
+\N	214	3	RMB	Aim/Talk/Pick Up/Separate
+\N	214	3	Wheel	Select Weapon

@@ -11,6 +11,11 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
+	<li>2019/03/11: You now need to fill the message form completely and correctly before data is sent to my mailbox.</li>
+	<li>2019/03/11: Loading image should load a little faster.</li>
+	<li>2019/03/11: The submission form now sends the data to me using UTF-8 encoding. (Sorry!)</li>
+	<li>2019/03/11: The script now checks first if the reCaptcha box has been checked before enabling the Submit Data button.</li>
+	<li>2019/03/11: There was a bug preventing the code from signaling that the legend had been altered.</li>
 	<li>2018/06/28: Had to replace all stored procedures with regular SELECT calls since my Web host disabled the creation (and storage) of new routines.</li>
 	<li>2018/06/24: Made several JavaScript-related fixes to the submission form.</li>
 	<li>2018/06/23: Switched to Google's reCAPTCHA for the submission form.</li>
