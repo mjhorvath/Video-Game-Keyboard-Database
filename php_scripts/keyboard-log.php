@@ -11,6 +11,8 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
+	<li>2019/03/18: Genre names were missing from the alphabetical list.</li>
+	<li>2019/03/18: You now select the keyboard before the game in the main page.</li>
 	<li>2019/03/11: You now need to fill the message form completely and correctly before data is sent to my mailbox.</li>
 	<li>2019/03/11: Loading image should load a little faster.</li>
 	<li>2019/03/11: The submission form now sends the data to me using UTF-8 encoding. (Sorry!)</li>

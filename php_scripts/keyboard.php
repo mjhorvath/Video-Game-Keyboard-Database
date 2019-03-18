@@ -314,8 +314,8 @@
 <p>This PHP form generates a keyboard control diagram in a new window. You can select from among hotkeys and bindings for various video games and other software.</p>
 <h2>Instructions:</h2>
 <ol>
-	<li>Select a game (key bindings).</li>
 	<li>Select a keyboard (key positions).</li>
+	<li>Select a game (key bindings).</li>
 	<li>Select a theme (visual formatting).</li>
 	<li>Select a format (output media type).</li>
 	<li>Click on the 'Create Diagram' button. A new window with your selected diagram will appear.</li>
