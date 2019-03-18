@@ -2,7 +2,7 @@
 	// Video Game Keyboard Diagrams
 	// Copyright (C) 2018  Michael Horvath
         // 
-	// This file is part of Foobar.
+	// This file is part of Video Game Keyboard Diagrams.
         // 
 	// This program is free software: you can redistribute it and/or modify
 	// it under the terms of the GNU Lesser General Public License as 
@@ -664,7 +664,7 @@
 	function selGenresList()
 	{
 		global $con;
-		$selectString = "SELECT g.genre_name, g.genre_displayorder FROM genres as g;";
+		$selectString = "SELECT g.genre_name FROM genres as g;";
 		selectQuery($con, $selectString, "doGenresList");
 	}
 	function selGamesList()
