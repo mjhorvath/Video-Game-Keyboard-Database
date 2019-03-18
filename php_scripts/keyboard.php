@@ -17,7 +17,7 @@
 	// Video Game Keyboard Diagrams
 	// Copyright (C) 2018  Michael Horvath
         // 
-	// This file is part of Foobar.
+	// This file is part of Video Game Keyboard Diagrams.
         // 
 	// This program is free software: you can redistribute it and/or modify
 	// it under the terms of the GNU Lesser General Public License as 
@@ -158,15 +158,52 @@
 ?>
 <img id="waiting" src="loading.gif" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
 <form name="keyboard_select">
-	<input type="hidden" name="gam" value=""/>
 	<input type="hidden" name="lay" value=""/>
+	<input type="hidden" name="gam" value=""/>
 	<input type="hidden" name="sty" value=""/>
 	<input type="hidden" name="seo" value=""/>
 	<div style="margin:auto;text-align:center;">
 		<div class="acc_div">
+			<div id="lay_check" class="acc_check">&#x2714;</div>
+			<div id="lay_xmark" class="acc_xmark">&#x2718;</div>
+			<h2>1. Select a Keyboard:</h2>
+			<ul id="lay_menu" class="acc_mnu">
+<?php
+	foreach ($platform_array as $i => $platform_value)
+	{
+		echo
+"				<li>\n";
+		if ($i == 0)
+		{
+			echo
+"					<a menu=\"lay\"><span class=\"arrw_a\" style=\"display:none;\">&#9658;</span><span class=\"arrw_b\" style=\"display:inline;\">&#9660;</span> " . $platform_value . "</a>
+					<ul style=\"height:21.6em;display:block;\">\n";
+		}
+		else
+		{
+			echo
+"					<a menu=\"lay\"><span class=\"arrw_a\" style=\"display:inline;\">&#9658;</span><span class=\"arrw_b\" style=\"display:none;\">&#9660;</span> " . $platform_value . "</a>
+					<ul style=\"height:21.6em;display:none;\">\n";
+		}
+		$id_array	= $layout_array[$i][0];
+		$name_array	= $layout_array[$i][1];
+//		array_multisort($name_array, $id_array);
+		for ($j = 0; $j < count($id_array); $j++)
+		{
+			echo
+"						<li><a id=\"lay_" . ($id_array[$j] - 1) . "\" menu=\"lay\" value=\"" . $id_array[$j] . "\" class=\"acc_nrm\" onclick=\"Set_Select_Value(this);Set_Game(" . ($id_array[$j]-1) . ",this);Set_Style(" . ($id_array[$j]-1) . ",this);\">" . $name_array[$j] . "</a></li>\n";
+		}
+		echo
+"					</ul>
+				</li>\n";
+	}
+?>
+			</ul>
+		</div>
+		<div class="acc_div">
 			<div id="gam_check" class="acc_check">&#x2714;</div>
 			<div id="gam_xmark" class="acc_xmark">&#x2718;</div>
-			<h2>1. Select a Game:</h2>
+			<h2>2. Select a Game:</h2>
 			<ul id="gam_menu" class="acc_mnu">
 <?php
 	foreach ($genre_array as $i => $genre_value)
@@ -192,44 +229,7 @@
 		for ($j = 0; $j < count($id_array); $j++)
 		{
 			echo
-"						<li><a id=\"gam_" . ($id_array[$j] - 1) . "\" menu=\"gam\" value=\"" . $id_array[$j] . "\" class=\"acc_nrm\" onclick=\"Set_Select_Value(this);Set_Layout(" . ($id_array[$j]-1) . ",this);\">" . $name_array[$j] . "</a></li>\n";
-		}
-		echo
-"					</ul>
-				</li>\n";
-	}
-?>
-			</ul>
-		</div>
-		<div class="acc_div">
-			<div id="lay_check" class="acc_check">&#x2714;</div>
-			<div id="lay_xmark" class="acc_xmark">&#x2718;</div>
-			<h2>2. Select a Keyboard:</h2>
-			<ul id="lay_menu" class="acc_mnu">
-<?php
-	foreach ($platform_array as $i => $platform_value)
-	{
-		echo
-"				<li>\n";
-		if ($i == 0)
-		{
-			echo
-"					<a menu=\"lay\"><span class=\"arrw_a\" style=\"display:none;\">&#9658;</span><span class=\"arrw_b\" style=\"display:inline;\">&#9660;</span> " . $platform_value . "</a>
-					<ul style=\"height:21.6em;display:block;\">\n";
-		}
-		else
-		{
-			echo
-"					<a menu=\"lay\"><span class=\"arrw_a\" style=\"display:inline;\">&#9658;</span><span class=\"arrw_b\" style=\"display:none;\">&#9660;</span> " . $platform_value . "</a>
-					<ul style=\"height:21.6em;display:none;\">\n";
-		}
-		$id_array	= $layout_array[$i][0];
-		$name_array	= $layout_array[$i][1];
-//		array_multisort($name_array, $id_array);
-		for ($j = 0; $j < count($id_array); $j++)
-		{
-			echo
-"						<li><a id=\"lay_" . ($id_array[$j] - 1) . "\" menu=\"lay\" value=\"" . $id_array[$j] . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);Set_Style(" . ($id_array[$j]-1) . ",this);\">" . $name_array[$j] . "</a></li>\n";
+"						<li><a id=\"gam_" . ($id_array[$j] - 1) . "\" menu=\"gam\" value=\"" . $id_array[$j] . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);\">" . $name_array[$j] . "</a></li>\n";
 		}
 		echo
 "					</ul>
@@ -266,7 +266,7 @@
 		for ($j = 0; $j < count($id_array); $j++)
 		{
 			echo
-"						<li><a id=\"sty_" . ($id_array[$j] - 1) . "\" menu=\"sty\" value=\"" . $id_array[$j] . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this)\">" . $name_array[$j] . "</a></li>\n";
+"						<li><a id=\"sty_" . ($id_array[$j] - 1) . "\" menu=\"sty\" value=\"" . $id_array[$j] . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);\">" . $name_array[$j] . "</a></li>\n";
 		}
 		echo
 "					</ul>

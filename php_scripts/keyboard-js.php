@@ -2,7 +2,7 @@
 	// Video Game Keyboard Diagrams
 	// Copyright (C) 2018  Michael Horvath
         // 
-	// This file is part of Foobar.
+	// This file is part of Video Game Keyboard Diagrams.
         // 
 	// This program is free software: you can redistribute it and/or modify
 	// it under the terms of the GNU Lesser General Public License as 
@@ -35,8 +35,8 @@
 
 	mysqli_query($con, "SET NAMES 'utf8'");
 
-	$layout_table		= [];
-	$layout_string		= "";
+	$game_table		= [];
+	$game_string		= "";
 	$seourl_table		= [];
 	$seourl_string		= "";
 	$style_table		= [];
@@ -63,7 +63,7 @@
 		$style_row = mysqli_fetch_row($in_result);
 		$styles_max = $style_row[0];
 	}
-	function doGamesJS($in_result)
+	function doSeourlJS($in_result)
 	{
 		global $seourl_table;
 		while ($game_row = mysqli_fetch_row($in_result))
@@ -76,14 +76,14 @@
 	}
 	function doGameRecordsJS($in_result)
 	{
-		global $layout_table;
+		global $game_table;
 		while ($gamesrecord_row = mysqli_fetch_row($in_result))
 		{
 			// record_id, game_id, layout_id
-			$gamesrecord_id = $gamesrecord_row[0];
+//			$gamesrecord_id = $gamesrecord_row[0];
 			$game_id = $gamesrecord_row[1];
 			$layout_id = $gamesrecord_row[2];
-			$layout_table[$game_id-1][$layout_id-1] = true;
+			$game_table[$layout_id-1][$game_id-1] = true;
 		}
 	}
 	function doStyleRecordsJS($in_result)
@@ -92,7 +92,7 @@
 		while ($stylesrecord_row = mysqli_fetch_row($in_result))
 		{
 			// record_id, style_id, layout_id
-			$stylesrecord_id = $stylesrecord_row[0];
+//			$stylesrecord_id = $stylesrecord_row[0];
 			$style_id = $stylesrecord_row[1];
 			$layout_id = $stylesrecord_row[2];
 			$style_table[$layout_id-1][$style_id-1] = true;
@@ -110,7 +110,7 @@
 	selectQuery($con, $selectString, "doStylesAutoincJS");
 
 	$selectString = "SELECT g.game_id, g.game_friendlyurl FROM games AS g;";
-	selectQuery($con, $selectString, "doGamesJS");
+	selectQuery($con, $selectString, "doSeourlJS");
 
 	$selectString = "SELECT r.record_id, r.game_id, r.layout_id FROM records_games AS r;";
 	selectQuery($con, $selectString, "doGameRecordsJS");
@@ -122,36 +122,23 @@
 	{
 		if (isset($seourl_table[$i]))
 		{
-			$seourl_string .= "'" . $seourl_table[$i] . "'";
-			$layout_string .= "[";
-			for ($j = 0; $j < $layouts_max; $j++)
-			{
-				$layout_string .= isset($layout_table[$i][$j]) ? 1 : 0;
-				if ($j != $layouts_max - 1)
-				{
-					$layout_string .= ",";
-				}
-			}
-			$layout_string .= "]";
+			$seourl_string .= "\t'" . $seourl_table[$i] . "'";
 		}
 		else
 		{
-			$seourl_string .= "null";
-			$layout_string .= "null";
+			$seourl_string .= "\tnull";
 		}
 		if ($i != $games_max - 1)
 		{
 			$seourl_string .= ",";
-			$layout_string .= ",";
 		}
 		$seourl_string .= "//" . ($i+1) . "\n";
-		$layout_string .= "//" . ($i+1) . "\n";
 	}
 	for ($i = 0; $i < $layouts_max; $i++)
 	{
 		if (isset($style_table[$i]))
 		{
-			$style_string .= "[";
+			$style_string .= "\t[";
 			for ($j = 0; $j < $styles_max; $j++)
 			{
 				$style_string .= isset($style_table[$i][$j]) ? 1 : 0;
@@ -164,23 +151,48 @@
 		}
 		else
 		{
-			$style_string .= "null";
+			$style_string .= "\tnull";
+		}
+		if (isset($game_table[$i]))
+		{
+			$game_string .= "\t[";
+			for ($j = 0; $j < $games_max; $j++)
+			{
+				$game_string .= isset($game_table[$i][$j]) ? 1 : 0;
+				if ($j != $games_max - 1)
+				{
+					$game_string .= ",";
+				}
+			}
+			$game_string .= "]";
+		}
+		else
+		{
+			$game_string .= "\tnull";
 		}
 		if ($i != $layouts_max - 1)
 		{
 			$style_string .= ",";
+			$game_string .= ",";
 		}
 		$style_string .= "//" . ($i+1) . "\n";
+		$game_string .= "//" . ($i+1) . "\n";
 	}
 
 	mysqli_close($con);
 ?>
 
+
 //-------------------------------------Main page form controls
 
-var layout_table =
+var game_table =
 [
-<?php echo $layout_string; ?>
+<?php echo $game_string; ?>
+]
+
+var style_table =
+[
+<?php echo $style_string; ?>
 ]
 
 var seourl_table =
@@ -188,10 +200,6 @@ var seourl_table =
 <?php echo $seourl_string; ?>
 ]
 
-var style_table =
-[
-<?php echo $style_string; ?>
-]
 
 var selectList = ['gam','sty','lay']
 var lastClicked = {}
@@ -201,26 +209,24 @@ function Toggle_Waiting(thisBool)
 	document.getElementById('waiting').style.display = thisBool ? 'block' : 'none'
 }
 
-function Set_Layout(thisindex, thiselement)
+function Set_Game(thisindex, thiselement)
 {
 	if (thiselement.className == 'acc_dis')
 	{
 		return
 	}
 	var hasSelect = false
-	var SelectForm = document.forms['keyboard_select']
-	var layouttable = layout_table[thisindex]
-	for (var i = 0, n = layouttable.length; i < n; i++)
+	var gametable = game_table[thisindex]
+	for (var i = 0, n = gametable.length; i < n; i++)
 	{
-		var thisselect = document.getElementById('lay_' + i)
+		var thisselect = document.getElementById('gam_' + i)
 		if (thisselect)
 		{
-			if (layouttable[i] == 1)
+			if (gametable[i] == 1)
 			{
-				if (thisselect == lastClicked['lay'])
+				if (thisselect == lastClicked['gam'])
 				{
 					thisselect.className = 'acc_sel'
-					Set_Style(i, thisselect)
 					hasSelect = true
 				}
 				else
@@ -231,27 +237,21 @@ function Set_Layout(thisindex, thiselement)
 			else
 			{
 				thisselect.className = 'acc_dis'
-				if (thisselect == lastClicked['lay'])
+				if (thisselect == lastClicked['gam'])
 				{
-					UnSet_Styles()
-					document.getElementById('lay_check').style.display = 'none'
-					document.getElementById('sty_check').style.display = 'none'
-					document.getElementById('fmt_check').style.display = 'none'
+					document.getElementById('gam_check').style.display = 'none'
 					document.getElementById('but_check').style.display = 'none'
-					document.getElementById('lay_xmark').style.display = 'block'
-					document.getElementById('sty_xmark').style.display = 'block'
-					document.getElementById('fmt_xmark').style.display = 'block'
+					document.getElementById('gam_xmark').style.display = 'block'
 					document.getElementById('but_xmark').style.display = 'block'
-
-					lastClicked['lay'] = null
+					document.getElementById('submit_warn_wrap').className = 'warn_yes'
+					lastClicked['gam'] = null
 				}
 			}
 		}
 	}
-	SelectForm.seo.value = seourl_table[thisindex]
 	if (hasSelect == false)
 	{
-		SelectForm.lay.value = ''
+		document.forms['keyboard_select'].gam.value = ''
 	}
 }
 
@@ -262,7 +262,6 @@ function Set_Style(thisindex, thiselement)
 		return
 	}
 	var hasSelect = false
-	var SelectForm = document.forms['keyboard_select']
 	var styletable = style_table[thisindex]
 	for (var i = 0, n = styletable.length; i < n; i++)
 	{
@@ -290,6 +289,7 @@ function Set_Style(thisindex, thiselement)
 					document.getElementById('but_check').style.display = 'none'
 					document.getElementById('sty_xmark').style.display = 'block'
 					document.getElementById('but_xmark').style.display = 'block'
+					document.getElementById('submit_warn_wrap').className = 'warn_yes'
 					lastClicked['sty'] = null
 				}
 			}
@@ -297,24 +297,7 @@ function Set_Style(thisindex, thiselement)
 	}
 	if (hasSelect == false)
 	{
-		SelectForm.sty.value = ''
-	}
-}
-
-function UnSet_Styles()
-{
-	var styletable = style_table[0]
-	for (var i = 0, n = styletable.length; i < n; i++)
-	{
-		var thisselect = document.getElementById('sty_' + i)
-		if (thisselect)
-		{
-			thisselect.className = 'acc_dis'
-			if (thisselect == lastClicked['sty'])
-			{
-				lastClicked['sty'] = null
-			}
-		}
+		document.forms['keyboard_select'].sty.value = ''
 	}
 }
 
@@ -328,10 +311,15 @@ function Set_Select_Value(thisElement)
 	var thisInput = thisElement.getAttribute('menu')
 	var thisValue = thisElement.getAttribute('value')
 	SelectForm[thisInput].value = thisValue
-	if (thisInput == 'sty')
+	if ((SelectForm.sty.value == '') || (SelectForm.gam.value == ''))
 	{
-		var WarnBox = document.getElementById('submit_warn_wrap')
-		WarnBox.className = 'warn_no'
+		document.getElementById('submit_warn_wrap').className = 'warn_yes'
+		document.getElementById('but_check').style.display = 'none'
+		document.getElementById('but_xmark').style.display = 'block'
+	}
+	else
+	{
+		document.getElementById('submit_warn_wrap').className = 'warn_no'
 		document.getElementById('fmt_check').style.display = 'block'
 		document.getElementById('but_check').style.display = 'block'
 		document.getElementById('fmt_xmark').style.display = 'none'
@@ -356,15 +344,15 @@ function Select_Init()
 function Check_Values_and_Spawn()
 {
 	var SelectForm = document.forms['keyboard_select']
-	var gam_value = SelectForm.gam.value == '' ? null : SelectForm.gam.value
-	var sty_value = SelectForm.sty.value == '' ? null : SelectForm.sty.value
-	var lay_value = SelectForm.lay.value == '' ? null : SelectForm.lay.value
-	var seo_value = SelectForm.seo.value == '' ? null : SelectForm.seo.value
+	var lay_value = SelectForm.lay.value == '' ? null : parseInt(SelectForm.lay.value)
+	var gam_value = SelectForm.gam.value == '' ? null : parseInt(SelectForm.gam.value)
+	var sty_value = SelectForm.sty.value == '' ? null : parseInt(SelectForm.sty.value)
 	var fmt_value = getValueFromRadioButton('fmtradio');
 	var WarnBox = document.getElementById('submit_warn_wrap')
-	if (gam_value && sty_value && lay_value && seo_value)
+	if (lay_value && gam_value && sty_value)
 	{
 		WarnBox.className = 'warn_no'
+		var seo_value = seourl_table[gam_value-1]
 		window.open('keyboard-diagram-' + seo_value + '.php?sty=' + sty_value + '&lay=' + lay_value + '&fmt=' + fmt_value)
 	}
 	else	
