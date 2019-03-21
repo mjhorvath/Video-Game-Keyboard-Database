@@ -558,20 +558,22 @@ var binding_table =
 	// legend - $legend_count is hardcoded at 12!
 	for ($i = 0; $i < $legend_count; $i++)
 	{
+		$leg_value = "";
+		$leg_color = getcolor($i+1);
+		for ($j = 0; $j < count($legend_table); $j++)
+		{
+			$leg_group = $legend_table[$j][0];
+			if (($leg_group-1) == $i)
+			{
+				$leg_value = cleantextHTML($legend_table[$j][1]);
+				break;
+			}
+		}
 		if ($i % 3 == 0)
 		{
 			echo
 "						<div class=\"legtbl inbtop\">\n";
 		}
-		if (isset($legend_table[$i]))
-		{
-			$leg_value = cleantextHTML($legend_table[$i][1]);
-		}
-		else
-		{
-			$leg_value = "";
-		}
-		$leg_color = getcolor($i+1);
 		echo
 "							<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
 		if ($i % 3 == 2)

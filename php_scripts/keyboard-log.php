@@ -11,7 +11,12 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
-	<li>2019/03/18: Genre names were missing from the alphabetical list.</li>
+	<li>2019/03/21: Tweaked LCH styles.</li>
+	<li>2019/03/21: Fixed missing leading zero in "Keyboard Scan Codes" scheme.</li>
+	<li>2019/03/21: Fixed legend order bug in submission form.</li>
+	<li>2019/03/19: Renamed the "Blank Sample" scheme to "Blank Starter".</li>
+	<li>2019/03/19: Revert the bottom row of keys to better match standard ANSI/ISO layouts.</li>
+	<li>2019/03/18: Genre names were missing from the alphabetical list. Updated script to reflect that there is no longer a display order column in the genres table.</li>
 	<li>2019/03/18: You now select the keyboard before the game in the main page.</li>
 	<li>2019/03/11: You now need to fill the message form completely and correctly before data is sent to my mailbox.</li>
 	<li>2019/03/11: Loading image should load a little faster.</li>

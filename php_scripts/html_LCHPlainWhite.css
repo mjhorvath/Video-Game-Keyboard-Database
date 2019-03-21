@@ -1,8 +1,12 @@
 *		{font-family:DejaVu Sans Condensed,Sans-Serif;}
-body		{color:#000;font-size:11pt;}
-select		{color:#000;background:#fff;}
-option		{color:#000;background:#fff;}
+body		{background:#fff;color:#000;font-size:11pt;}
+select		{background:#fff;color:#000;}
+option		{background:#fff;color:#000;}
 footer		{font-size:smaller;}
+a:link,a:visited
+	{color:#00f;text-decoration:none;}
+a:hover,a:active
+	{color:#00f;text-decoration:underline;}
 div.bodiv	{position:relative;margin:0.5em;padding:0.5em;border:solid 1px #ccc;}
 div.keyout	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
 div.keyhgh,div.keylow,div.keyrgt,div.capopt,div.capopf
@@ -40,12 +44,12 @@ div.capcyn,div.legcyn,select.selcyn,option.optcyn	{background:#0DC9D9;color:#000
 div.capblu,div.legblu,select.selblu,option.optblu	{background:#80B9FF;color:#000000;}	/* ( 74, 40,270) */
 div.capmag,div.legmag,select.selmag,option.optmag	{background:#E4A0DB;color:#000000;}	/* ( 74, 40,330) */
 div.capwht,div.legwht,select.selwht,option.optwht	{background:#ffffff;color:#000000;}
-div.capgry,div.leggry,select.selgry,option.optgry	{background:#c0c0c0;color:#000000;}
+div.capgry,div.leggry,select.selgry,option.optgry	{background:#808080;color:#ffffff;}
 div.capblk,div.legblk,select.selblk,option.optblk	{background:#404040;color:#ffffff;}
 div.caporg,div.legorg,select.selorg,option.optorg	{background:#ECA777;color:#000000;}	/* ( 74, 40, 60) */
 div.capolv,div.legolv,select.selolv,option.optolv	{background:#A8BF75;color:#000000;}	/* ( 74, 40,120) */
 div.capbrn,div.legbrn,select.selbrn,option.optbrn	{background:#685510;color:#000000;}	/* ( 37, 40, 90) */
-div.capnon,div.legnon,select.selnon,option.optnon	{background:#c0c0c0;color:#000000;}
+div.capnon,div.legnon,select.selnon,option.optnon	{background:#B6B6B6;color:#000000;}	/* ( 74,  0,  0) */
 div.capred,div.legred	{border:1px solid #ffffff;}
 div.capyel,div.legyel	{border:1px solid #ffffff;}
 div.capgrn,div.leggrn	{border:1px solid #ffffff;}

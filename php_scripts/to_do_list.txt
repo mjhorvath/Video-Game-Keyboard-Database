@@ -15,12 +15,12 @@ a minus '-'.
   submit button.
 - Should maybe store the SVG patterns, filters and gradients in separate files, 
   rather than cluttering up the main SVG file. But since there are only a dozen 
-  or so styles at this time, it's not currently a big deal.
+  or so styles at this time, it may not currently be a big deal.
 - Continue developing the "Spreadsheet View" of the submission form, and permit 
-  users to alter or update the keyboard data from there if they want to.
+  users to alter or update the keyboard data using it if they want to.
 + Convert input TABLEs to DIVs.
-- Sub-pages should maybe not repeat the parent project's title since it the 
-  title already appears in the site's horizontal breadcrumbs. Not sure.
+- Sub-pages should maybe not repeat the parent project's title since the title 
+  already appears in the site's horizontal breadcrumbs. Not sure.
 + Need a loading icon since it takes a while for all the AJAX stuff (e.g. 
   reCAPTCHA) to download completely.
 - I should change all the various alerts boxes to something prettier.

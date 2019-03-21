@@ -1045,6 +1045,7 @@ function collect_nonkey_data()
 	console_table = [];
 	emote_table = [];
 
+	// legend
 	for (var i = 0; i < 12; i++)
 	{
 		var this_color = colors[i+1];

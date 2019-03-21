@@ -456,10 +456,10 @@
 	function doAuthorsSVG($in_result)
 	{
 		global $author_table;
-		while ($temp_row = mysqli_fetch_row($in_result))
+		while ($author_row = mysqli_fetch_row($in_result))
 		{
 			// author_id, author_name
-			$author_table[] = $temp_row;
+			$author_table[] = $author_row;
 		}
 	}
 	function doGenresList($in_result)
@@ -467,8 +467,8 @@
 		global $genre_array;
 		while ($genre_row = mysqli_fetch_row($in_result))
 		{
-			// genre_name, genre_displayorder
-			$genre_array[] = $genre_row[0];
+			// genre_id, genre_name, genre_displayorder
+			$genre_array[] = $genre_row[1];
 		}
 	}
 	function doGamesList($in_result)
@@ -664,7 +664,7 @@
 	function selGenresList()
 	{
 		global $con;
-		$selectString = "SELECT g.genre_name FROM genres as g;";
+		$selectString = "SELECT g.genre_id, g.genre_name FROM genres as g ORDER BY g.genre_id;";
 		selectQuery($con, $selectString, "doGenresList");
 	}
 	function selGamesList()

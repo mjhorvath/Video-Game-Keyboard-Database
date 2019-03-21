@@ -314,7 +314,9 @@ function Set_Select_Value(thisElement)
 	if ((SelectForm.sty.value == '') || (SelectForm.gam.value == ''))
 	{
 		document.getElementById('submit_warn_wrap').className = 'warn_yes'
+//		document.getElementById('fmt_check').style.display = 'none'
 		document.getElementById('but_check').style.display = 'none'
+//		document.getElementById('fmt_xmark').style.display = 'block'
 		document.getElementById('but_xmark').style.display = 'block'
 	}
 	else
