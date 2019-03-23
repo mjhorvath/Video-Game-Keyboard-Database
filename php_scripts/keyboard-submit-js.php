@@ -1220,7 +1220,7 @@ function process_binding_data()
 			{
 				binding_string +=	'\\N' + '\t' +
 							record_id + '\t' +
-							i + '\t' +
+							(i+1) + '\t' +
 							cleantextTSV(binding_item[ 3]) + '\t' +
 							 cleannumTSV(binding_item[11]) + '\t' +
 							cleantextTSV(binding_item[ 4]) + '\t' +
