@@ -11,10 +11,13 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
-	<li>2019/03/24: Added the "UK 105 Key (ISO)" keyboard. It only has the "Blank Starter" bindings so far, though.</li>
+	<li>2019/03/24: Added the "UK 105 Key (ISO)" and "ES 105 Key (ISO)" keyboards. They only have the "Blank Starter" bindings so far, though.</li>
 	<li>2019/03/24: Fixed one of the columns in the "positions" table was not set to auto-increment.</li>
 	<li>2019/03/24: Discovered and documented an issue related to the bit(1) datatype and importing of CSV files.</li>
 	<li>2019/03/24: Added bindings for <i>Kenshi</i>.</li>
+	<li>2019/03/24: Reversed the order of the "Game" and "Theme" selection dialogs.</li>
+	<li>2019/03/24: Made changes to the "Spawn New Diagram" button in the frontend.</li>
+	<li>2019/03/24: Moved several stylesheets from the website's main directory to the local keyboard directory.</li>
 	<li>2019/03/23: Added OBS Production Profile bindings by Josiah Stearns.</li>
 	<li>2019/03/22: Fixed key ID less by 1 when making a submission.</li>
 	<li>2019/03/21: Tweaked LCH styles.</li>

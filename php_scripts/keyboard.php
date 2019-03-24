@@ -7,7 +7,7 @@
 	$page_onload	= "Select_Init();";
 	$foot_array	= ["copyright","accordion","license_kbd"];
 	$java_array	= ["keyboard-js.php", $path_root . "java/jquery-1.4.2.min.js", $path_root . "java/jquery-accordionmenu.js"];
-	$stys_array	= [$path_root . "style_accordion.css",$path_root . "style_radio.css",$path_root . "style_keyboard.css"];
+	$stys_array	= ["style_accordion.css","style_radio.css","style_frontend.css"];
 	$analytics	= true;
 	$is_short	= false;
 	include($path_root . "ssi/normalpage.php");
@@ -201,9 +201,46 @@
 			</ul>
 		</div>
 		<div class="acc_div">
+			<div id="sty_check" class="acc_check">&#x2714;</div>
+			<div id="sty_xmark" class="acc_xmark">&#x2718;</div>
+			<h2>2. Select a Theme:</h2>
+			<ul id="sty_menu" class="acc_mnu">
+<?php
+	foreach ($stylegroup_array as $i => $stylegroup_value)
+	{
+		echo
+"				<li>\n";
+		if ($i == 0)
+		{
+			echo
+"					<a menu=\"sty\"><span class=\"arrw_a\" style=\"display:none;\">&#9658;</span><span class=\"arrw_b\" style=\"display:inline;\">&#9660;</span> " . $stylegroup_value . "</a>
+					<ul style=\"height:21.6em;display:block;\">\n";
+		}
+		else
+		{
+			echo
+"					<a menu=\"sty\"><span class=\"arrw_a\" style=\"display:inline;\">&#9658;</span><span class=\"arrw_b\" style=\"display:none;\">&#9660;</span> " . $stylegroup_value . "</a>
+					<ul style=\"height:21.6em;display:none;\">\n";
+		}
+		$id_array	= $style_array[$i][0];
+		$name_array	= $style_array[$i][1];
+//		array_multisort($name_array, $id_array);
+		for ($j = 0; $j < count($id_array); $j++)
+		{
+			echo
+"						<li><a id=\"sty_" . ($id_array[$j] - 1) . "\" menu=\"sty\" value=\"" . $id_array[$j] . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);\">" . $name_array[$j] . "</a></li>\n";
+		}
+		echo
+"					</ul>
+				</li>\n";
+	}
+?>
+			</ul>
+		</div>
+		<div class="acc_div">
 			<div id="gam_check" class="acc_check">&#x2714;</div>
 			<div id="gam_xmark" class="acc_xmark">&#x2718;</div>
-			<h2>2. Select a Game:</h2>
+			<h2>3. Select a Game:</h2>
 			<ul id="gam_menu" class="acc_mnu">
 <?php
 	foreach ($genre_array as $i => $genre_value)
@@ -230,43 +267,6 @@
 		{
 			echo
 "						<li><a id=\"gam_" . ($id_array[$j] - 1) . "\" menu=\"gam\" value=\"" . $id_array[$j] . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);\">" . $name_array[$j] . "</a></li>\n";
-		}
-		echo
-"					</ul>
-				</li>\n";
-	}
-?>
-			</ul>
-		</div>
-		<div class="acc_div">
-			<div id="sty_check" class="acc_check">&#x2714;</div>
-			<div id="sty_xmark" class="acc_xmark">&#x2718;</div>
-			<h2>3. Select a Theme:</h2>
-			<ul id="sty_menu" class="acc_mnu">
-<?php
-	foreach ($stylegroup_array as $i => $stylegroup_value)
-	{
-		echo
-"				<li>\n";
-		if ($i == 0)
-		{
-			echo
-"					<a menu=\"sty\"><span class=\"arrw_a\" style=\"display:none;\">&#9658;</span><span class=\"arrw_b\" style=\"display:inline;\">&#9660;</span> " . $stylegroup_value . "</a>
-					<ul style=\"height:21.6em;display:block;\">\n";
-		}
-		else
-		{
-			echo
-"					<a menu=\"sty\"><span class=\"arrw_a\" style=\"display:inline;\">&#9658;</span><span class=\"arrw_b\" style=\"display:none;\">&#9660;</span> " . $stylegroup_value . "</a>
-					<ul style=\"height:21.6em;display:none;\">\n";
-		}
-		$id_array	= $style_array[$i][0];
-		$name_array	= $style_array[$i][1];
-//		array_multisort($name_array, $id_array);
-		for ($j = 0; $j < count($id_array); $j++)
-		{
-			echo
-"						<li><a id=\"sty_" . ($id_array[$j] - 1) . "\" menu=\"sty\" value=\"" . $id_array[$j] . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);\">" . $name_array[$j] . "</a></li>\n";
 		}
 		echo
 "					</ul>
@@ -304,8 +304,9 @@
 			<div id="but_check" class="acc_check">&#x2714;</div>
 			<div id="but_xmark" class="acc_xmark">&#x2718;</div>
 			<h2>5. Create the Diagram:</h2>
-			<input id="letsgo" type="button" value="All Set, Let's Go!" onclick="Check_Values_and_Spawn()"/>
-			<p id="submit_warn_wrap" class="warn_no">Try selecting a game, keyboard, theme and format, and create the diagram again!</p>
+			<input id="butspawn" type="button" value="Spawn New Diagram" onclick="Check_Values_and_Spawn()"/>
+			<p id="butready">All set! Click the Spawn New Diagram button and let's go!</p>
+			<p id="buterror">Try selecting a keyboard, theme, game and format, and create the diagram again!</p>
 		</div>
 	</div>
 </form>
@@ -315,16 +316,17 @@
 <h2>Instructions:</h2>
 <ol>
 	<li>Select a keyboard (key positions).</li>
-	<li>Select a game (key bindings).</li>
 	<li>Select a theme (visual formatting).</li>
+	<li>Select a game (key bindings).</li>
 	<li>Select a format (output media type).</li>
 	<li>Click on the 'Create Diagram' button. A new window with your selected diagram will appear.</li>
 	<li>View or print the page in the new window.</li>
 </ol>
+<p>Unfortunately, 99% of the bindings are for the <i>US 104 Key (ANSI)</i> keyboard at this time. If you would like to see more bindings for the other keyboards, you are welcome to contribute! (More on that, below.)</p>
 <h2>Licenses &amp; Submissions:</h2>
 <p>The source code for this project is licensed under the <a rel="license" target="_blank" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">GNU LGPLv3</a>. The content is licensed under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading. The <a href="to_do_list.txt">"to do" list</a> outlines some of the tasks I've planned for the future. (Completed tasks are marked with a plus '+' and incomplete tasks are marked with a minus '-'.)</p>
-<p>To submit a new set of bindings, you can fill out <a href="<?php echo $path_root; ?>files/vgkd_binding_template_20180629.xlsx">this spreadsheet</a> and <a href="http://isometricland.net/email.php">email</a> me the contents (copy and paste) when you are done. Note that any content you submit falls under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart, as well as in the change log.</p>
-<p>I have also recently started developing a form-based submission page. You can use it to submit changes to existing bindings by selecting the "Editor" option in Step 4, above. Or, you can get started making a brand new set of bindings with the "Blank Starter" in the "Reference" category (there exist "blank starters" for every keyboard). I personally still prefer using the spreadsheet for this purpose, however.</p>
+<p>To submit a new set of bindings, you can fill out <a href="<?php echo $path_root; ?>files/vgkd_binding_template_20180629.xlsx">this spreadsheet</a> and <a href="http://isometricland.net/email.php">email</a> me the contents (copy and paste) when you are done. Note that any content you submit falls under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart.</p>
+<p>I have also recently started developing a form-based submission page. You can use it to submit changes to existing bindings by selecting the "Editor" option in Step 4, above. Or, you can get started making a brand new set of bindings with the "Blank Starter" game in the "Reference" category. There exist "Blank Starters" for every keyboard, though I personally still prefer using the spreadsheet for this purpose.</p>
 <h2>MediaWiki, SVG &amp; PDF:</h2>
 <p>I have created templates for MediaWiki that do basically the same thing as the other charts available on this site. You can find the templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Wikia</a>. By selecting the "MediaWiki" format type, you can generate the code you will need to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the chart is wider than a typical browser window.</p>
 <p>I have also created SVG versions of the charts, which you can also select in the "Formats" menu above. I have not migrated over to using SVG images exclusively yet, because they are less compatible with older browsers, and I have not figured out how I want to implement the mouse and joystick controls listings, yet. (I have not yet figured out how to create containers that expand, wrap and scale automatically as the volume of text inside increases.)</p>

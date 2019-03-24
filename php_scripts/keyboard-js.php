@@ -243,7 +243,8 @@ function Set_Game(thisindex, thiselement)
 					document.getElementById('but_check').style.display = 'none'
 					document.getElementById('gam_xmark').style.display = 'block'
 					document.getElementById('but_xmark').style.display = 'block'
-					document.getElementById('submit_warn_wrap').className = 'warn_yes'
+					document.getElementById('butready').style.display = 'none'
+					document.getElementById('buterror').style.display = 'block'
 					lastClicked['gam'] = null
 				}
 			}
@@ -289,7 +290,8 @@ function Set_Style(thisindex, thiselement)
 					document.getElementById('but_check').style.display = 'none'
 					document.getElementById('sty_xmark').style.display = 'block'
 					document.getElementById('but_xmark').style.display = 'block'
-					document.getElementById('submit_warn_wrap').className = 'warn_yes'
+					document.getElementById('butready').style.display = 'none'
+					document.getElementById('buterror').style.display = 'block'
 					lastClicked['sty'] = null
 				}
 			}
@@ -313,7 +315,8 @@ function Set_Select_Value(thisElement)
 	SelectForm[thisInput].value = thisValue
 	if ((SelectForm.sty.value == '') || (SelectForm.gam.value == ''))
 	{
-		document.getElementById('submit_warn_wrap').className = 'warn_yes'
+		document.getElementById('butready').style.display = 'none'
+		document.getElementById('buterror').style.display = 'block'
 //		document.getElementById('fmt_check').style.display = 'none'
 		document.getElementById('but_check').style.display = 'none'
 //		document.getElementById('fmt_xmark').style.display = 'block'
@@ -321,7 +324,8 @@ function Set_Select_Value(thisElement)
 	}
 	else
 	{
-		document.getElementById('submit_warn_wrap').className = 'warn_no'
+		document.getElementById('butready').style.display = 'block'
+		document.getElementById('buterror').style.display = 'none'
 		document.getElementById('fmt_check').style.display = 'block'
 		document.getElementById('but_check').style.display = 'block'
 		document.getElementById('fmt_xmark').style.display = 'none'
@@ -350,16 +354,19 @@ function Check_Values_and_Spawn()
 	var gam_value = SelectForm.gam.value == '' ? null : parseInt(SelectForm.gam.value)
 	var sty_value = SelectForm.sty.value == '' ? null : parseInt(SelectForm.sty.value)
 	var fmt_value = getValueFromRadioButton('fmtradio');
-	var WarnBox = document.getElementById('submit_warn_wrap')
+	var WarnBoxReady = document.getElementById('butready')
+	var WarnBoxError = document.getElementById('buterror')
 	if (lay_value && gam_value && sty_value)
 	{
-		WarnBox.className = 'warn_no'
+		WarnBoxReady.style.display = 'block'
+		WarnBoxError.style.display = 'none'
 		var seo_value = seourl_table[gam_value-1]
 		window.open('keyboard-diagram-' + seo_value + '.php?sty=' + sty_value + '&lay=' + lay_value + '&fmt=' + fmt_value)
 	}
 	else	
 	{
-		WarnBox.className = 'warn_yes'
+		WarnBoxReady.style.display = 'none'
+		WarnBoxError.style.display = 'block'
 	}
 }
 

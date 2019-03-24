@@ -1,7 +1,9 @@
 TO DO LIST
 
-Completed tasks are marked with a plus '+' and incomplete tasks are marked with 
-a minus '-'.
+Completed tasks are marked with a plus '+'.
+Partially completed or problematic tasks are marked with a tilde '~'.
+Canceled, broken or non-implementable tasks are marked with an 'x'.
+Incomplete tasks are marked with a minus '-'.
 
 + In the submission form, selecting a colored OPTION element should change the 
   color of the corresponding parent SELECT element as well.
@@ -28,27 +30,32 @@ a minus '-'.
   submission form to not post if those INPUTs are not filled properly. This 
   includes the email address field, which requires special syntax.
 - The key caption legend should also be configurable.
-- Finish implementing the "languages" table.
+x Finish implementing the "languages" table.
 + The footer is the same for many of the views. It could be placed in a 
   separate file and simply included.
-- Add timestamps to the various tables to reflect the dates when items were 
-  added.
+- Add timestamp columns to the various SQL tables to record the dates and times 
+  when rows were added or last modified.
 - I would also like to create charts/diagrams for gamepads, mice and joysticks, 
   but the sheer number of different devices will make this task very difficult.
-- It may be better to reverse the order of the selections on the frontend page. 
-  E.g. select the Keyboard first, then the Style, and then the Game. Otherwise, 
-  finding bindings for the German or French keyboards will be like searching 
-  for a needle in a haystack.
++ It may be better to reverse the order of the selection dialogs on the front 
+  page. E.g. select the Keyboard first, then the Style, and then the Game. 
+  Otherwise, finding bindings for the German or French keyboards will be like 
+  searching for a needle in a haystack.
 - Not sure whether the sitemap should list each game once for every platform or 
   layout. Does it confuse the search engines to have multiples of each game?
 + Game genres should be listed alphabetically instead of by the 
   "genre_displayorder" column (which happens to be alphabetical, too, and is 
   thus redundant).
-- Should the stylegroups table have a "stylegroup_displayorder" field?
+- Should the accordion menus be sorted alphabetically, or should I add a 
+  "displayorder" column to the SQL tables?
 - Should mouse, joystick, etc. commands be lined up neatly with left and right 
-  parts separated by an equal '=' sign? Or should I use a definition list?
-- Instead of one genre per game, I could create tag clouds so that a game could 
+  parts separated by an equal '=' sign, for instance using a table? Or should I 
+  instead use a definition list?
+- Instead of one genre per game, I could create a tag cloud so that a game can  
   be placed into multiple genres. What type of GUI do I need to facilitate this 
   and allow  visitors to select more than one genre?
-- How granular should I get WRT video game genres? Should I list sub-genres? 
-  How many? Which ones?
+- How granular should I get WRT video game genres? Should I list sub- and sub-
+  sub-genres? How many? Which ones?
+- Rename "Win" key to "Super" or "Meta"?
+- Remake the loading icon in animated WebP format? Does this format work in 
+  other browsers besides Google Chrome?

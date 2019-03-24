@@ -18,7 +18,7 @@ CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n';
 
--- note that the "lowcap_optional" column is of the bit data type and requires special handling
+-- note that the "lowcap_optional" column has a bit data type and requires special handling
 -- see: https://stackoverflow.com/questions/15683809/load-data-from-csv-inside-bit-field-in-mysql
 SET FOREIGN_KEY_CHECKS = 0;
 LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\VGKD_Git\\helper_tools\\_positions.txt' INTO TABLE isometr1_keyboard.positions
