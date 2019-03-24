@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Mar 21, 2019 at 10:54 AM
+-- Generation Time: Mar 24, 2019 at 03:52 AM
 -- Server version: 5.5.52-cll
 -- PHP Version: 5.4.31
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `authors` (
   `author_name` varchar(45) NOT NULL,
   PRIMARY KEY (`author_id`),
   UNIQUE KEY `author_id_UNIQUE` (`author_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `authors`
@@ -44,7 +44,8 @@ INSERT INTO `authors` (`author_id`, `author_name`) VALUES
 (4, 'DreamKitty.com'),
 (5, 'Chester Creek Technologies'),
 (6, 'Agnes Beste'),
-(7, 'Taz');
+(7, 'Taz'),
+(8, 'Josiah Stearns');
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `bindings` (
   PRIMARY KEY (`binding_id`),
   UNIQUE KEY `binding_id_UNIQUE` (`binding_id`),
   KEY `fk_bindings_record_id_idx` (`record_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19747 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19960 ;
 
 --
 -- Dumping data for table `bindings`
@@ -10816,7 +10817,152 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (19721, 214, 71, 'Pause\\nGame', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19722, 214, 88, 'Exit to\\nMenu', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19723, 214, 97, 'Quick\\nSave', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(19724, 214, 100, 'Quick\\nLoad', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(19724, 214, 100, 'Quick\\nLoad', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19747, 215, 1, 'Record\\nToggle', 8, 'Start Stream', NULL, 'End Stream', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19748, 215, 2, 'Effect 1', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bank A', NULL, NULL, NULL),
+(19749, 215, 3, 'Effect 2', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bank A', NULL, NULL, NULL),
+(19750, 215, 4, 'Effect 3', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bank A', NULL, NULL, NULL),
+(19751, 215, 5, 'Effect 4', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bank A', NULL, NULL, NULL),
+(19752, 215, 6, 'Effect 5', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bank B', NULL, NULL, NULL),
+(19753, 215, 7, 'Effect 6', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bank B', NULL, NULL, NULL),
+(19754, 215, 8, 'Effect 7', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bank B', NULL, NULL, NULL),
+(19755, 215, 9, 'Effect 8', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bank B', NULL, NULL, NULL),
+(19756, 215, 10, 'Effect 9', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bank C', NULL, NULL, NULL),
+(19757, 215, 11, 'Effect 10', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bank C', NULL, NULL, NULL),
+(19758, 215, 12, 'Effect 11', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bank C', NULL, NULL, NULL),
+(19759, 215, 13, 'Effect 12', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bank C', NULL, NULL, NULL),
+(19760, 215, 14, 'Clear Effects', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19761, 215, 16, 'CG 1.1', 4, 'Overlay 1\\nObject 1', NULL, 'Bank A\\nDefault', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19762, 215, 17, 'CG 1.2', 4, 'Overlay 1\\nObject 2', NULL, 'Bank A\\nRed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19763, 215, 18, 'CG 1.3', 4, 'Overlay 1\\nObject 3', NULL, 'Bank A\\nYellow', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19764, 215, 19, 'CG 1.4', 4, 'Overlay 1\\nObject 4', NULL, 'Bank A\\nGreen', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19765, 215, 20, 'CG 1.5', 4, 'Overlay 1\\nObject 5', NULL, 'Bank A\\nBlue', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19766, 215, 21, 'CG 4.1', 4, 'Overlay 1\\nObject 6', NULL, 'Bank A\\nOrange', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19767, 215, 22, 'CG 4.2', 4, 'Overlay 1\\nObject 7', NULL, 'Bank A\\nGrey', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19768, 215, 23, 'CG 4.3', 4, 'Overlay 1\\nObject 8', NULL, 'Bank A\\nMagenta', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19769, 215, 24, 'CG 4.4', 4, 'Overlay 1\\nObject 9', NULL, 'Bank A\\nOlive', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19770, 215, 25, 'CG 4.5', 4, 'Overlay 1\\nObject 10', NULL, 'Bank A\\nBrown', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19771, 215, 26, 'Mute', 9, NULL, NULL, 'Mute\\nMonitor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19772, 215, 27, 'Unmute', 9, NULL, NULL, 'Unmute\\nMonitor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19773, 215, 28, 'Sensitive\\nContent', 9, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19774, 215, 30, 'CG 2.1', 5, 'Overlay 2\\nObject 1', NULL, 'Bank B\\nDefault', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19775, 215, 31, 'CG 2.2', 5, 'Overlay 2\\nObject 2', NULL, 'Bank B\\nRed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19776, 215, 32, 'CG 2.3', 5, 'Overlay 2\\nObject 3', NULL, 'Bank B\\nYellow', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19777, 215, 33, 'CG 2.4', 5, 'Overlay 2\\nObject 4', NULL, 'Bank B\\nGreen', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19778, 215, 34, 'CG 1.1', 5, 'Overlay 2\\nObject 5', NULL, 'Bank B\\nBlue', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19779, 215, 35, 'CG 1.2', 5, 'Overlay 2\\nObject 6', NULL, 'Bank B\\nOrange', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19780, 215, 36, 'CG 1.3', 5, 'Overlay 2\\nObject 7', NULL, 'Bank B\\nGrey', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19781, 215, 37, 'CG 1.4', 5, 'Overlay 2\\nObject 8', NULL, 'Bank B\\nMagenta', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19782, 215, 38, 'CG 1.5', 5, 'Overlay 2\\nObject 9', NULL, 'Bank B\\nOlive', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19783, 215, 39, 'Animation\\nEffect 1', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19784, 215, 40, 'Animation\\nEffect 2', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19785, 215, 43, 'Output 1\\nSource Select', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19786, 215, 45, 'CG 3.1', 6, 'Overlay 3\\nObject 1', NULL, 'Bank C\\nDefault', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19787, 215, 46, 'CG 3.2', 6, 'Overlay 3\\nObject 2', NULL, 'Bank C\\nRed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19788, 215, 47, 'CG 3.3', 6, 'Overlay 3\\nObject 3', NULL, 'Bank C\\nYellow', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19789, 215, 48, 'CG 2.1', 6, 'Overlay 3\\nObject 4', NULL, 'Bank C\\nGreen', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19790, 215, 49, 'CG 2.2', 6, 'Overlay 3\\nObject 5', NULL, 'Bank C\\nBlue', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19791, 215, 50, 'CG 2.3', 6, 'Overlay 3\\nObject 6', NULL, 'Bank C\\nOrange', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19792, 215, 51, 'CG 2.4', 6, 'Overlay 3\\nObject 7', NULL, 'Bank C\\nGrey', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19793, 215, 52, 'Animation\\nThird Out', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19794, 215, 53, 'Animation\\nThird In', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19795, 215, 54, 'Toggle\\nLabels', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19796, 215, 55, 'Output 1\\nSource Select', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19797, 215, 56, 'Output 2\\nSource Select', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19798, 215, 57, 'Output 3\\nSource Select', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19799, 215, 58, 'Cut', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19800, 215, 59, 'Output 3\\nSource Select', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19801, 215, 60, 'Output 2\\nSource Select', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19802, 215, 61, 'Cut', 1, NULL, NULL, 'Transition 1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19803, 215, 62, 'Fade\\n1000ms', 1, NULL, NULL, 'Transition 4', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19804, 215, 63, NULL, 2, 'Zoom 1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19805, 215, 64, 'Fade\\n300ms', 1, NULL, NULL, 'Transition 2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19806, 215, 65, 'Fade\\n2000ms', 1, NULL, NULL, 'Transition 5', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19807, 215, 66, NULL, 2, 'Clear\\nZoom', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19808, 215, 67, NULL, 2, 'Zoom 2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19809, 215, 68, 'Fade\\n500ms', 1, NULL, NULL, 'Transition 3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19810, 215, 69, 'Fade\\n4000ms', 1, NULL, NULL, 'Transition 6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19811, 215, 70, NULL, 2, 'Zoom 3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19812, 215, 71, NULL, NULL, 'ResetOverlay', NULL, 'ResetEffect', NULL, 'ResetOutput', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19813, 215, 72, 'CG Bus A', 10, NULL, NULL, 'Send to\\nComposite', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19814, 215, 73, 'Cam 4', 2, 'CG View 1', NULL, 'CG View 2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19815, 215, 74, 'Cam 1', 2, 'CG View 1', NULL, 'CG View 2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19816, 215, 75, 'Overlay 1', 11, 'Output 1', NULL, 'Output 2', NULL, 'Output 3', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19817, 215, 76, 'CG Bus B', 10, NULL, NULL, 'Send to\\nComposite', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19818, 215, 77, 'Cam 5', 2, 'CG View 1', NULL, 'CG View 2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19819, 215, 78, 'Cam 2', 2, 'CG View 1', NULL, 'CG View 2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19820, 215, 79, 'Cut', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19821, 215, 80, 'Overlay 2', 11, 'Output 1', NULL, 'Output 2', NULL, 'Output 3', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19822, 215, 81, 'CG Bus C', 10, NULL, NULL, 'Send to\\nComposite', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19823, 215, 82, 'Cam 6', 2, 'CG View 1', NULL, 'CG View 2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19824, 215, 83, 'Cam 3', 2, 'CG View 1', NULL, 'CG View 2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19825, 215, 84, 'Black', 9, NULL, NULL, 'White', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19826, 215, 85, 'Overlay 3', 11, 'Output 1', NULL, 'Output 2', NULL, 'Output 3', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19827, 215, 86, 'Clear\\nOverlays', 11, 'Output 1', NULL, 'Output 2', NULL, 'Output 3', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19828, 215, 87, 'Transition', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19829, 215, 88, 'Exit\\nMultiview', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19830, 215, 89, 'CG\\nCue 1', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19831, 215, 90, 'CG\\nCue 2', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19832, 215, 91, 'CG\\nCue 3', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19833, 215, 92, 'CG\\n Cue 4', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19834, 215, 93, 'Status\\nLayout 1', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19835, 215, 94, 'Status\\nLayout 2', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19836, 215, 95, 'Status\\nLayout 3', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19837, 215, 96, 'Status\\nLayout 4', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19838, 215, 97, 'Media 1', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19839, 215, 98, 'Media 2', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19840, 215, 99, 'Media 3', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19841, 215, 100, 'Media 4', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19842, 215, 101, 'Channel 1\\nPTT', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19843, 215, 102, 'Channel 2\\nPTT', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19844, 215, 103, 'Channel 3\\nPTT', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19874, 217, 1, 'Select\\nEntire\\nSquad', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19875, 217, 2, 'Select\\nCharacter', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19876, 217, 3, 'Select\\nCharacter', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19877, 217, 4, 'Select\\nCharacter', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19878, 217, 5, 'Select\\nCharacter', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19879, 217, 6, 'Select\\nCharacter', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19880, 217, 7, 'Select\\nCharacter', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19881, 217, 8, 'Select\\nCharacter', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19882, 217, 9, 'Select\\nCharacter', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19883, 217, 10, 'Select\\nCharacter', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19884, 217, 11, 'Select\\nCharacter', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19885, 217, 15, 'Cycle\\nSquads', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19886, 217, 16, 'Rotate\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19887, 217, 17, 'Move\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19888, 217, 18, 'Rotate\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19890, 217, 20, 'Research\\nScreen', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19891, 217, 23, 'Inventory\\nScreen', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19892, 217, 30, 'Move\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19893, 217, 31, 'Move\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19894, 217, 32, 'Move\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19896, 217, 47, 'Character\\nScreen', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19897, 217, 51, 'Map\\nScreen', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19898, 217, 56, 'Rotate\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19899, 217, 58, 'Pause Game', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19900, 217, 63, 'Move\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19901, 217, 66, 'Move\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19902, 217, 67, 'Move\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19903, 217, 70, 'Move\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19904, 217, 93, 'Quick\\nSave', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19905, 217, 95, 'Hide\\nGUI', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19906, 217, 97, 'Quick\\nLoad', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19937, 217, 43, 'Select Multiple\\nCharacters', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19938, 0, 21, 'Crafting\\nMenu', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19939, 0, 49, 'Build\\nMenu', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19940, 0, 52, 'Tilt\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19941, 0, 53, 'Tilt\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19942, 0, 57, 'Show\\nLabels', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19943, 0, 64, 'Zoom\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19944, 217, 65, 'Zoom\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19945, 217, 68, 'Go Up\\nOne Floor', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19946, 217, 69, 'Go Down\\nOne Floor', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19953, 217, 21, 'Crafting\\nScreen', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19954, 217, 49, 'Building\\nScreen', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19955, 217, 52, 'Tilt\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19956, 217, 53, 'Tilt\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19957, 217, 57, 'Show\\nObject\\nLabels', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19958, 217, 64, 'Zoom\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -10834,7 +10980,7 @@ CREATE TABLE IF NOT EXISTS `commands` (
   UNIQUE KEY `command_id_UNIQUE` (`command_id`),
   KEY `fk_commands_copy_record_id_idx` (`record_id`),
   KEY `fk_commands_commandtype_id_idx` (`commandtype_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2101 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2116 ;
 
 --
 -- Dumping data for table `commands`
@@ -11865,7 +12011,15 @@ INSERT INTO `commands` (`command_id`, `record_id`, `commandtype_id`, `command_te
 (2096, 212, 3, 'RMB', 'Look At'),
 (2098, 214, 2, 'LMB', 'Take/Fire Weapon'),
 (2099, 214, 2, 'RMB', 'Aim/Talk/Pick Up/Separate'),
-(2100, 214, 2, 'Wheel', 'Select Weapon');
+(2100, 214, 2, 'Wheel', 'Select Weapon'),
+(2101, 217, 2, 'LMB on Character or Icon', 'Select Character'),
+(2102, 217, 2, 'LMB + Shift on Character or Icon', 'Select Multiple Characters'),
+(2103, 217, 2, 'Double LMB on Character Icon', 'Focus Camera on Character'),
+(2104, 217, 2, 'Drag LMB', 'Band-box Select'),
+(2105, 217, 2, 'MMB', 'Rotate Camera'),
+(2106, 217, 2, 'RMB on Ground', 'Move Character'),
+(2107, 217, 2, 'RMB on Object', 'Context Menu'),
+(2108, 217, 2, 'Wheel', 'Zoom Camera');
 
 -- --------------------------------------------------------
 
@@ -11908,7 +12062,7 @@ CREATE TABLE IF NOT EXISTS `games` (
   UNIQUE KEY `game_id_UNIQUE` (`game_id`),
   UNIQUE KEY `game_friendlyurl_UNIQUE` (`game_friendlyurl`),
   KEY `idx_games_genre_id_idx` (`genre_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=191 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=193 ;
 
 --
 -- Dumping data for table `games`
@@ -12103,7 +12257,9 @@ INSERT INTO `games` (`game_id`, `genre_id`, `game_name`, `game_friendlyurl`) VAL
 (187, 1, 'Conan Exiles', 'conan-exiles'),
 (188, 4, 'Dwarf Run, The', 'dwarf-run-the'),
 (189, 2, 'Frostpunk', 'frostpunk'),
-(190, 1, 'Precursors, The (Ground)', 'precursors-the-ground');
+(190, 1, 'Precursors, The (Ground)', 'precursors-the-ground'),
+(191, 6, 'OBS Production Profile', 'obs-production-profile'),
+(192, 4, 'Kenshi', 'kenshi');
 
 -- --------------------------------------------------------
 
@@ -14050,7 +14206,7 @@ CREATE TABLE IF NOT EXISTS `layouts` (
   UNIQUE KEY `layout_id_UNIQUE` (`layout_id`),
   KEY `idx_layouts_platform_id` (`platform_id`),
   KEY `idx_layouts_author_id` (`author_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `layouts`
@@ -14062,7 +14218,8 @@ INSERT INTO `layouts` (`layout_id`, `platform_id`, `author_id`, `layout_name`, `
 (4, 1, 1, 'FR 105 Key (ISO)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 106, 'blah'),
 (5, 2, 1, 'US 109 Key (A1048)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 118, 'blah'),
 (6, 2, 1, 'US 109 Key (A1243)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 118, 'blah'),
-(7, 2, 1, 'UK 110 Key (A1048)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 118, 'blah');
+(7, 2, 1, 'UK 110 Key (A1048)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 118, 'blah'),
+(8, 1, 1, 'UK 105 Key (ISO)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 106, 'blah');
 
 -- --------------------------------------------------------
 
@@ -14078,7 +14235,7 @@ CREATE TABLE IF NOT EXISTS `legends` (
   PRIMARY KEY (`legend_id`),
   UNIQUE KEY `legend_id_UNIQUE` (`legend_id`),
   KEY `fk_legends_record_id_idx` (`record_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1084 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1102 ;
 
 --
 -- Dumping data for table `legends`
@@ -14987,7 +15144,22 @@ INSERT INTO `legends` (`legend_id`, `record_id`, `legend_group`, `legend_descrip
 (1080, 214, 1, 'Combat/Actions'),
 (1081, 214, 3, 'Movement'),
 (1082, 214, 5, 'Camera'),
-(1083, 214, 6, 'Game Menus');
+(1083, 214, 6, 'Game Menus'),
+(1084, 215, 1, 'Transition'),
+(1085, 215, 2, 'Cam Select'),
+(1086, 215, 3, 'Media Playback'),
+(1087, 215, 4, 'CG Bus A'),
+(1088, 215, 5, 'CG Bus B'),
+(1089, 215, 6, 'CG Bus C'),
+(1090, 215, 7, 'Unused'),
+(1091, 215, 8, 'Software Controls'),
+(1092, 215, 9, 'Custom Source'),
+(1093, 215, 10, 'CG Bus Select'),
+(1094, 215, 11, 'Overlay Select'),
+(1095, 215, 12, 'Effect'),
+(1099, 217, 2, 'Character Selection'),
+(1100, 217, 5, 'Camera Movement'),
+(1101, 217, 6, 'Game Controls');
 
 -- --------------------------------------------------------
 
@@ -15036,7 +15208,7 @@ CREATE TABLE IF NOT EXISTS `positions` (
   PRIMARY KEY (`position_id`),
   UNIQUE KEY `position_id_UNIQUE` (`position_id`),
   KEY `idx_positions_layout_id` (`layout_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=747 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1255 ;
 
 --
 -- Dumping data for table `positions`
@@ -15684,7 +15856,112 @@ INSERT INTO `positions` (`position_id`, `layout_id`, `key_number`, `position_lef
 (743, 7, 115, 1350, 0, 72, 72, NULL, 'Vol -', NULL, b'0'),
 (744, 7, 116, 1422, 0, 72, 72, NULL, 'Vol +', NULL, b'0'),
 (745, 7, 117, 1494, 0, 72, 72, NULL, 'Mute', NULL, b'0'),
-(746, 7, 118, 1566, 0, 72, 72, NULL, 'Eject', NULL, b'0');
+(746, 7, 118, 1566, 0, 72, 72, NULL, 'Eject', NULL, b'0'),
+(1128, 8, 1, 0, 108, 72, 72, '¬', '`', '¦', b'0'),
+(1129, 8, 2, 72, 108, 72, 72, '!', '1', NULL, b'0'),
+(1130, 8, 3, 144, 108, 72, 72, '"', '2', NULL, b'0'),
+(1131, 8, 4, 216, 108, 72, 72, '£', '3', NULL, b'0'),
+(1132, 8, 5, 288, 108, 72, 72, '$', '4', '€', b'0'),
+(1133, 8, 6, 360, 108, 72, 72, '%', '5', NULL, b'0'),
+(1134, 8, 7, 432, 108, 72, 72, '^', '6', NULL, b'0'),
+(1135, 8, 8, 504, 108, 72, 72, '&', '7', NULL, b'0'),
+(1136, 8, 9, 576, 108, 72, 72, '*', '8', NULL, b'0'),
+(1137, 8, 10, 648, 108, 72, 72, '(', '9', NULL, b'0'),
+(1138, 8, 11, 720, 108, 72, 72, ')', '0', NULL, b'0'),
+(1139, 8, 12, 792, 108, 72, 72, '_', '-', NULL, b'0'),
+(1140, 8, 13, 864, 108, 72, 72, '+', '=', NULL, b'0'),
+(1141, 8, 14, 936, 108, 144, 72, NULL, 'Backspace', NULL, b'0'),
+(1142, 8, 15, 0, 180, 108, 72, NULL, 'Tab', NULL, b'0'),
+(1143, 8, 16, 108, 180, 72, 72, 'Q', 'q', NULL, b'1'),
+(1144, 8, 17, 180, 180, 72, 72, 'W', 'w', NULL, b'1'),
+(1145, 8, 18, 252, 180, 72, 72, 'E', 'e', 'É', b'1'),
+(1146, 8, 19, 324, 180, 72, 72, 'R', 'r', NULL, b'1'),
+(1147, 8, 20, 396, 180, 72, 72, 'T', 't', NULL, b'1'),
+(1148, 8, 21, 468, 180, 72, 72, 'Y', 'y', NULL, b'1'),
+(1149, 8, 22, 540, 180, 72, 72, 'U', 'u', 'Ú', b'1'),
+(1150, 8, 23, 612, 180, 72, 72, 'I', 'i', 'Í', b'1'),
+(1151, 8, 24, 684, 180, 72, 72, 'O', 'o', 'Ó', b'1'),
+(1152, 8, 25, 756, 180, 72, 72, 'P', 'p', NULL, b'1'),
+(1153, 8, 26, 828, 180, 72, 72, '{', '[', NULL, b'0'),
+(1154, 8, 27, 900, 180, 72, 72, '}', ']', NULL, b'0'),
+(1155, 8, 29, 0, 252, 126, 72, NULL, 'Caps Lock', NULL, b'0'),
+(1156, 8, 30, 126, 252, 72, 72, 'A', 'a', 'Á', b'1'),
+(1157, 8, 31, 198, 252, 72, 72, 'S', 's', NULL, b'1'),
+(1158, 8, 32, 270, 252, 72, 72, 'D', 'd', NULL, b'1'),
+(1159, 8, 33, 342, 252, 72, 72, 'F', 'f', NULL, b'1'),
+(1160, 8, 34, 414, 252, 72, 72, 'G', 'g', NULL, b'1'),
+(1161, 8, 35, 486, 252, 72, 72, 'H', 'h', NULL, b'1'),
+(1162, 8, 36, 558, 252, 72, 72, 'J', 'j', NULL, b'1'),
+(1163, 8, 37, 630, 252, 72, 72, 'K', 'k', NULL, b'1'),
+(1164, 8, 38, 702, 252, 72, 72, 'L', 'l', NULL, b'1'),
+(1165, 8, 39, 774, 252, 72, 72, ':', ';', NULL, b'0'),
+(1166, 8, 40, 846, 252, 72, 72, '@', '''', NULL, b'0'),
+(1167, 8, 41, 918, 252, 72, 72, '~', '#', NULL, b'0'),
+(1168, 8, 42, 990, 180, 90, 144, NULL, 'Enter', NULL, b'0'),
+(1169, 8, 43, 0, 324, 162, 72, NULL, 'LShift', NULL, b'0'),
+(1170, 8, 44, 90, 324, 72, 72, '|', '\\', NULL, b'0'),
+(1171, 8, 45, 162, 324, 72, 72, 'Z', 'z', NULL, b'1'),
+(1172, 8, 46, 234, 324, 72, 72, 'X', 'x', NULL, b'1'),
+(1173, 8, 47, 306, 324, 72, 72, 'C', 'c', NULL, b'1'),
+(1174, 8, 48, 378, 324, 72, 72, 'V', 'v', NULL, b'1'),
+(1175, 8, 49, 450, 324, 72, 72, 'B', 'b', NULL, b'1'),
+(1176, 8, 50, 522, 324, 72, 72, 'N', 'n', NULL, b'1'),
+(1177, 8, 51, 594, 324, 72, 72, 'M', 'm', NULL, b'1'),
+(1178, 8, 52, 666, 324, 72, 72, '<', ',', NULL, b'0'),
+(1179, 8, 53, 738, 324, 72, 72, '>', '.', NULL, b'0'),
+(1180, 8, 54, 810, 324, 72, 72, '?', '/', NULL, b'0'),
+(1181, 8, 55, 882, 324, 198, 72, NULL, 'RShift', NULL, b'0'),
+(1182, 8, 56, 0, 396, 90, 72, NULL, 'LCtrl', NULL, b'0'),
+(1183, 8, 57, 180, 396, 90, 72, NULL, 'LAlt', NULL, b'0'),
+(1184, 8, 58, 270, 396, 450, 72, NULL, 'Space', NULL, b'0'),
+(1185, 8, 59, 720, 396, 90, 72, NULL, 'AltGr', NULL, b'0'),
+(1186, 8, 60, 990, 396, 90, 72, NULL, 'RCtrl', NULL, b'0'),
+(1187, 8, 61, 1110, 108, 72, 72, NULL, 'Insert', NULL, b'0'),
+(1188, 8, 62, 1110, 180, 72, 72, NULL, 'Delete', NULL, b'0'),
+(1189, 8, 63, 1110, 396, 72, 72, NULL, 'Left', NULL, b'0'),
+(1190, 8, 64, 1182, 108, 72, 72, NULL, 'Home', NULL, b'0'),
+(1191, 8, 65, 1182, 180, 72, 72, NULL, 'End', NULL, b'0'),
+(1192, 8, 66, 1182, 324, 72, 72, NULL, 'Up', NULL, b'0'),
+(1193, 8, 67, 1182, 396, 72, 72, NULL, 'Down', NULL, b'0'),
+(1194, 8, 68, 1254, 108, 72, 72, NULL, 'Page Up', NULL, b'0'),
+(1195, 8, 69, 1254, 180, 72, 72, NULL, 'Page Dn', NULL, b'0'),
+(1196, 8, 70, 1254, 396, 72, 72, NULL, 'Right', NULL, b'0'),
+(1197, 8, 71, 1356, 108, 72, 72, NULL, 'NumLk', NULL, b'0'),
+(1198, 8, 72, 1356, 180, 72, 72, '7', 'Home', NULL, b'0'),
+(1199, 8, 73, 1356, 252, 72, 72, '4', 'Left', NULL, b'0'),
+(1200, 8, 74, 1356, 324, 72, 72, '1', 'End', NULL, b'0'),
+(1201, 8, 75, 1428, 108, 72, 72, NULL, '/', NULL, b'0'),
+(1202, 8, 76, 1428, 180, 72, 72, '8', 'Up', NULL, b'0'),
+(1203, 8, 77, 1428, 252, 72, 72, '5', '', NULL, b'0'),
+(1204, 8, 78, 1428, 324, 72, 72, '2', 'Down', NULL, b'0'),
+(1205, 8, 79, 1356, 396, 144, 72, '0', 'Ins', NULL, b'0'),
+(1206, 8, 80, 1500, 108, 72, 72, NULL, '*', NULL, b'0'),
+(1207, 8, 81, 1500, 180, 72, 72, '9', 'PgUp', NULL, b'0'),
+(1208, 8, 82, 1500, 252, 72, 72, '6', 'Right', NULL, b'0'),
+(1209, 8, 83, 1500, 324, 72, 72, '3', 'PgDn', NULL, b'0'),
+(1210, 8, 84, 1500, 396, 72, 72, '.', 'Del', NULL, b'0'),
+(1211, 8, 85, 1572, 108, 72, 72, NULL, '-', NULL, b'0'),
+(1212, 8, 86, 1572, 180, 72, 144, NULL, '+', NULL, b'0'),
+(1213, 8, 87, 1572, 324, 72, 144, NULL, 'Enter', NULL, b'0'),
+(1214, 8, 88, 0, 0, 72, 72, NULL, 'Esc', NULL, b'0'),
+(1215, 8, 89, 156, 0, 72, 72, NULL, 'F1', NULL, b'0'),
+(1216, 8, 90, 228, 0, 72, 72, NULL, 'F2', NULL, b'0'),
+(1217, 8, 91, 300, 0, 72, 72, NULL, 'F3', NULL, b'0'),
+(1218, 8, 92, 372, 0, 72, 72, NULL, 'F4', NULL, b'0'),
+(1219, 8, 93, 474, 0, 72, 72, NULL, 'F5', NULL, b'0'),
+(1220, 8, 94, 546, 0, 72, 72, NULL, 'F6', NULL, b'0'),
+(1221, 8, 95, 618, 0, 72, 72, NULL, 'F7', NULL, b'0'),
+(1222, 8, 96, 690, 0, 72, 72, NULL, 'F8', NULL, b'0'),
+(1223, 8, 97, 792, 0, 72, 72, NULL, 'F9', NULL, b'0'),
+(1224, 8, 98, 864, 0, 72, 72, NULL, 'F10', NULL, b'0'),
+(1225, 8, 99, 936, 0, 72, 72, NULL, 'F11', NULL, b'0'),
+(1226, 8, 100, 1008, 0, 72, 72, NULL, 'F12', NULL, b'0'),
+(1227, 8, 101, 1110, 0, 72, 72, 'SysRq', 'PrtScr', NULL, b'0'),
+(1228, 8, 102, 1182, 0, 72, 72, NULL, 'ScrLk', NULL, b'0'),
+(1229, 8, 103, 1254, 0, 72, 72, 'Break', 'Pause', NULL, b'0'),
+(1230, 8, 104, 90, 396, 90, 72, NULL, 'LWin', NULL, b'0'),
+(1231, 8, 105, 810, 396, 90, 72, NULL, 'RWin', NULL, b'0'),
+(1232, 8, 106, 900, 396, 90, 72, NULL, 'Menu', NULL, b'0');
 
 -- --------------------------------------------------------
 
@@ -15702,7 +15979,7 @@ CREATE TABLE IF NOT EXISTS `records_games` (
   KEY `fk_records_game_id_idx` (`game_id`),
   KEY `fk_records_layouts_idx` (`layout_id`),
   KEY `fk_records_author_id_idx` (`author_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=215 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=218 ;
 
 --
 -- Dumping data for table `records_games`
@@ -15919,7 +16196,10 @@ INSERT INTO `records_games` (`record_id`, `game_id`, `layout_id`, `author_id`) V
 (211, 187, 1, 1),
 (212, 188, 1, 1),
 (213, 189, 1, 1),
-(214, 190, 1, 1);
+(214, 190, 1, 1),
+(215, 191, 1, 8),
+(216, 184, 8, 1),
+(217, 192, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -15928,7 +16208,7 @@ INSERT INTO `records_games` (`record_id`, `game_id`, `layout_id`, `author_id`) V
 --
 
 CREATE TABLE IF NOT EXISTS `records_styles` (
-  `record_id` smallint(5) unsigned NOT NULL,
+  `record_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `style_id` tinyint(3) unsigned NOT NULL,
   `layout_id` tinyint(3) unsigned NOT NULL,
   `author_id` tinyint(3) unsigned NOT NULL,
@@ -15937,7 +16217,7 @@ CREATE TABLE IF NOT EXISTS `records_styles` (
   KEY `fk_records_styles_style_id_idx` (`style_id`),
   KEY `fk_records_styles_layout_id_idx` (`layout_id`),
   KEY `fk_records_styles_author_id_idx` (`author_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=120 ;
 
 --
 -- Dumping data for table `records_styles`
@@ -16030,7 +16310,24 @@ INSERT INTO `records_styles` (`record_id`, `style_id`, `layout_id`, `author_id`)
 (84, 18, 4, 1),
 (85, 18, 5, 1),
 (86, 18, 6, 1),
-(87, 18, 7, 1);
+(87, 18, 7, 1),
+(89, 1, 8, 1),
+(90, 3, 8, 1),
+(91, 5, 8, 1),
+(92, 9, 8, 1),
+(93, 10, 8, 5),
+(94, 11, 8, 4),
+(95, 12, 8, 4),
+(96, 13, 8, 2),
+(97, 14, 8, 3),
+(98, 15, 8, 1),
+(99, 16, 8, 1),
+(100, 19, 8, 1),
+(101, 2, 8, 1),
+(102, 4, 8, 1),
+(103, 6, 8, 1),
+(104, 17, 8, 1),
+(105, 18, 8, 1);
 
 -- --------------------------------------------------------
 

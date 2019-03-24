@@ -11,12 +11,19 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
+	<li>2019/03/24: Added the "UK 105 Key (ISO)" keyboard. It only has the "Blank Starter" bindings so far, though.</li>
+	<li>2019/03/24: Fixed one of the columns in the "positions" table was not set to auto-increment.</li>
+	<li>2019/03/24: Discovered and documented an issue related to the bit(1) datatype and importing of CSV files.</li>
+	<li>2019/03/24: Added bindings for <i>Kenshi</i>.</li>
+	<li>2019/03/23: Added OBS Production Profile bindings by Josiah Stearns.</li>
+	<li>2019/03/22: Fixed key ID less by 1 when making a submission.</li>
 	<li>2019/03/21: Tweaked LCH styles.</li>
-	<li>2019/03/21: Fixed missing leading zero in "Keyboard Scan Codes" scheme.</li>
+	<li>2019/03/21: Fixed missing leading zeros in "Keyboard Scan Codes" scheme.</li>
 	<li>2019/03/21: Fixed legend order bug in submission form.</li>
 	<li>2019/03/19: Renamed the "Blank Sample" scheme to "Blank Starter".</li>
 	<li>2019/03/19: Revert the bottom row of keys to better match standard ANSI/ISO layouts.</li>
-	<li>2019/03/18: Genre names were missing from the alphabetical list. Updated script to reflect that there is no longer a display order column in the genres table.</li>
+	<li>2019/03/18: Genre names were missing from the alphabetical master list.</li>
+	<li>2019/03/18: Updated scripts to reflect that there is no longer a display order column in the genres table.</li>
 	<li>2019/03/18: You now select the keyboard before the game in the main page.</li>
 	<li>2019/03/11: You now need to fill the message form completely and correctly before data is sent to my mailbox.</li>
 	<li>2019/03/11: Loading image should load a little faster.</li>
@@ -111,8 +118,6 @@
 	<li>Hello Kitty style: <i>Hello Kitty Keyboard</i> by DreamKitty.com (<a target="_blank" href="http://www.dreamkitty.com/Merchant2/merchant.mv?Screen=PROD&Store_Code=DK2000&Product_Code=K-FB109141&Category_Code=HK">link</a>)</li>
 	<li>Doraemon style: <i>Doraemon Keyboard</i> by DreamKitty.com (<a target="_blank" href="http://www.dreamkitty.com/Merchant5/merchant.mvc?Screen=PROD&Store_Code=DK2000&Product_Code=O-FB761011&Category_Code=">link</a>)</li>
 	<li>FunKeyBoard style: <i>FunKeyBoard</i> by Chester Creek Technologies (<a target="_blank" href="http://www.venturaes.com/index_new.asp?http://www.venturaes.com/chestercreek/index.html">link</a>)</li>
-	<li>German <i>Vega Strike</i> bindings provided by Agnes Beste.</li>
-	<li>English <i>The Lord of the Rings: Online</i> bindings provided by Taz.</li>
 	<li>"Simple JQuery Accordion Menu" by Marco van Hylckama Vlieg. (<a target="_blank" href="http://www.i-marco.nl/weblog/">link</a>)</li>
 	<li>"Pedro luis romani ruiz.gif" by PEDRO ROMANI RUIZ. (<a target="_blank" href="https://commons.wikimedia.org/wiki/File:Pedro_luis_romani_ruiz.gif">link</a>)</li>
 	<li>Several icons from the Noun Project. (<a target="_blank" href="https://thenounproject.com/">link</a>)

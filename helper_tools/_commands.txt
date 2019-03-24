@@ -1,3 +1,8 @@
-\N	214	3	LMB	Take/Fire Weapon
-\N	214	3	RMB	Aim/Talk/Pick Up/Separate
-\N	214	3	Wheel	Select Weapon
+\N	217	2	LMB on Character or Icon	Select Character
+\N	217	2	LMB + Shift	Select Multiple Characters
+\N	217	2	Double LMB on Character Icon	Focus Camera on Character
+\N	217	2	Drag LMB	Band-box Select
+\N	217	2	MMB	Rotate Camera
+\N	217	2	RMB	Move Character
+\N	217	2	RMB on Object	Context Menu
+\N	217	2	Wheel	Zoom Camera
