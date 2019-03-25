@@ -11,6 +11,7 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
+	<li>2019/03/25: Replaced loading icon with one I created myself.</li>
 	<li>2019/03/24: Added the "UK 105 Key (ISO)" and "ES 105 Key (ISO)" keyboards. They only have the "Blank Starter" bindings so far, though.</li>
 	<li>2019/03/24: Fixed one of the columns in the "positions" table was not set to auto-increment.</li>
 	<li>2019/03/24: Discovered and documented an issue related to the bit(1) datatype and importing of CSV files.</li>
@@ -122,7 +123,6 @@
 	<li>Doraemon style: <i>Doraemon Keyboard</i> by DreamKitty.com (<a target="_blank" href="http://www.dreamkitty.com/Merchant5/merchant.mvc?Screen=PROD&Store_Code=DK2000&Product_Code=O-FB761011&Category_Code=">link</a>)</li>
 	<li>FunKeyBoard style: <i>FunKeyBoard</i> by Chester Creek Technologies (<a target="_blank" href="http://www.venturaes.com/index_new.asp?http://www.venturaes.com/chestercreek/index.html">link</a>)</li>
 	<li>"Simple JQuery Accordion Menu" by Marco van Hylckama Vlieg. (<a target="_blank" href="http://www.i-marco.nl/weblog/">link</a>)</li>
-	<li>"Pedro luis romani ruiz.gif" by PEDRO ROMANI RUIZ. (<a target="_blank" href="https://commons.wikimedia.org/wiki/File:Pedro_luis_romani_ruiz.gif">link</a>)</li>
 	<li>Several icons from the Noun Project. (<a target="_blank" href="https://thenounproject.com/">link</a>)
 		<ul>
 			<li>Spreadsheet by Arthur Shlain</li>

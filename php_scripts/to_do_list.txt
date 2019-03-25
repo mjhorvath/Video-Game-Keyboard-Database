@@ -57,5 +57,6 @@ x Finish implementing the "languages" table.
 - How granular should I get WRT video game genres? Should I list sub- and sub-
   sub-genres? How many? Which ones?
 - Rename "Win" key to "Super" or "Meta"?
-- Remake the loading icon in animated WebP format? Does this format work in 
-  other browsers besides Google Chrome?
+~ Remake the loading icon in animated WebP format. Does this graphics format 
+  work properly in other browsers besides Google Chrome?
+- Find out if the Git Powershell tool can accept multi-line change notes.
