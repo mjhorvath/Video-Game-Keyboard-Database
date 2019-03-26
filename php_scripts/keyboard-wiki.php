@@ -61,6 +61,7 @@
 	$note_table		= [];
 	$author_table		= [];
 	$style_table		= [];
+	$style_group_table	= [];
 	$record_id		= 0;
 	$record_author		= "";
 	$combo_count		= 0;
@@ -129,6 +130,7 @@
 
 	selGamesHTML();
 	selAuthorsHTML();
+	selStyleGroupsHTML();
 	selStylesHTML();
 	selThisStyleHTML();
 	selPositionsHTML();

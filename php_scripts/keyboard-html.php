@@ -63,6 +63,7 @@
 	$emote_table		= [];
 	$author_table		= [];
 	$style_table		= [];
+	$style_group_table	= [];
 	$gamesrecord_id		= 0;
 	$gamesrecord_author	= "";
 	$stylesrecord_id	= 0;
@@ -139,6 +140,7 @@
 
 	selGamesHTML();
 	selAuthorsHTML();
+	selStyleGroupsHTML();
 	selStylesHTML();
 	selThisStyleHTML();
 	selPositionsHTML();

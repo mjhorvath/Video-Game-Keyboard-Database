@@ -120,6 +120,7 @@
 
 	selGamesSVG();
 	selAuthorsSVG();
+	selStyleGroupsSVG();
 	selStylesSVG();
 	selThisStyleSVG();
 	selPositionsSVG();

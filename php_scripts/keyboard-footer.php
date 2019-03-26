@@ -30,22 +30,31 @@
 					<select class=\"stylechange\" id=\"stylesel\" name=\"style\">\n";
 	for ($i = 0; $i < count($style_table); $i++)
 	{
-		$style_row = $style_table[$i];
-		if ($style_row[0])
+		$stylegroup_box = $style_table[$i];
+		$stylegroup_nam = cleantextHTML($style_group_table[$i][1]);
+		echo
+"						<optgroup label=\"" . $stylegroup_nam . "\">\n";
+		for ($j = 0; $j < count($stylegroup_box); $j++)
 		{
-			$style_idx = $style_row[0];
-			$style_nam = cleantextHTML($style_row[1]);
-			if ($style_id == $style_idx)
+			$style_row = $stylegroup_box[$j];
+			if ($style_row[0])		// is this condition necessary?
 			{
-				echo
-"						<option value=\"" . $style_idx . "\" selected>" . $style_nam . "</option>\n";
-			}
-			else
-			{
-				echo
-"						<option value=\"" . $style_idx . "\">" . $style_nam . "</option>\n";
+				$style_idx = $style_row[0];
+				$style_nam = cleantextHTML($style_row[1]);
+				if ($style_id == $style_idx)
+				{
+					echo
+"							<option value=\"" . $style_idx . "\" selected>" . $style_nam . "</option>\n";
+				}
+				else
+				{
+					echo
+"							<option value=\"" . $style_idx . "\">" . $style_nam . "</option>\n";
+				}
 			}
 		}
+		echo
+"						</optgroup>\n";
 	}
 	echo
 "					</select>

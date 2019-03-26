@@ -159,9 +159,13 @@
 		global $style_table;
 		for ($i = 0; $i < count($style_table); $i++)
 		{
-			if ($style_table[$i][0] == $in_style_id)
+			$style_box = $style_table[$i];
+			for ($j = 0; $j < count($style_box); $j++)
 			{
-				return true;
+				if ($style_box[$j][0] == $in_style_id)
+				{
+					return true;
+				}
 			}
 		}
 		return false;
@@ -196,6 +200,34 @@
 
 	// REPLACEMENTS FOR STORED PROCEDURES
 
+	function doStyleGroupsHTML($in_result)
+	{
+		global $style_table, $style_group_table;
+		while ($temp_row = mysqli_fetch_row($in_result))
+		{
+			$style_table[] = [];
+			// stylegroup_id, stylegroup_name
+			$style_group_table[] = $temp_row;
+		}
+	}
+	function doStylesHTML($in_result)
+	{
+		global $style_table, $style_group_table;
+		while ($temp_row = mysqli_fetch_row($in_result))
+		{
+			// style_id, style_name, style_whiteonblack, stylegroup_id
+			$style_group_1 = $temp_row[3];
+			for ($i = 0; $i < count($style_group_table); $i++)
+			{
+				$style_group_2 = $style_group_table[$i][0];
+				if ($style_group_1 == $style_group_2)
+				{
+					$style_table[$i][] = $temp_row;
+					break;
+				}
+			}
+		}
+	}
 	function doThisStyleHTML($in_result)
 	{
 		global $style_filename, $style_name, $stylegroup_id;
@@ -204,15 +236,6 @@
 		$style_filename = $style_row[0];
 		$style_name = cleantextHTML($style_row[1]);
 		$stylegroup_id = $style_row[2];
-	}
-	function doStylesHTML($in_result)
-	{
-		global $style_table;
-		while ($temp_row = mysqli_fetch_row($in_result))
-		{
-			// style_id, style_name, style_whiteonblack
-			$style_table[] = $temp_row;
-		}
 	}
 	function doBindingsHTML($in_result)
 	{
@@ -349,6 +372,34 @@
 			$author_table[] = $temp_row;
 		}
 	}
+	function doStyleGroupsSVG($in_result)
+	{
+		global $style_table, $style_group_table;
+		while ($temp_row = mysqli_fetch_row($in_result))
+		{
+			$style_table[] = [];
+			// stylegroup_id, stylegroup_name
+			$style_group_table[] = $temp_row;
+		}
+	}
+	function doStylesSVG($in_result)
+	{
+		global $style_table, $style_group_table;
+		while ($temp_row = mysqli_fetch_row($in_result))
+		{
+			// style_id, style_name, style_whiteonblack, stylegroup_id
+			$style_group_1 = $temp_row[3];
+			for ($i = 0; $i < count($style_group_table); $i++)
+			{
+				$style_group_2 = $style_group_table[$i][0];
+				if ($style_group_1 == $style_group_2)
+				{
+					$style_table[$i][] = $temp_row;
+					break;
+				}
+			}
+		}
+	}
 	function doThisStyleSVG($in_result)
 	{
 		global $style_filename, $style_name, $stylegroup_id;
@@ -357,15 +408,6 @@
 		$style_filename = $style_row[0];
 		$style_name = cleantextSVG($style_row[1]);
 		$stylegroup_id = $style_row[2];
-	}
-	function doStylesSVG($in_result)
-	{
-		global $style_table;
-		while ($temp_row = mysqli_fetch_row($in_result))
-		{
-			// style_id, style_name, style_whiteonblack
-			$style_table[] = $temp_row;
-		}
 	}
 	function doBindingsSVG($in_result)
 	{
@@ -523,16 +565,22 @@
 		$selectString = "SELECT a.author_id, a.author_name FROM authors AS a;";
 		selectQuery($con, $selectString, "doAuthorsHTML");
 	}
+	function selStyleGroupsHTML()
+	{
+		global $con;
+		$selectString = "SELECT s.stylegroup_id, s.stylegroup_name FROM stylegroups AS s;";
+		selectQuery($con, $selectString, "doStyleGroupsHTML");
+	}
 	function selStylesHTML()
 	{
 		global $con;
-		$selectString = "SELECT s.style_id, s.style_name, s.style_whiteonblack FROM styles AS s;";
+		$selectString = "SELECT s.style_id, s.style_name, s.style_whiteonblack, s.stylegroup_id FROM styles AS s ORDER BY s.stylegroup_id, s.style_name;";
 		selectQuery($con, $selectString, "doStylesHTML");
 	}
 	function selThisStyleHTML()
 	{
 		global $con, $style_id;
-		$selectString = "SELECT s.style_filename, s.style_name, s.stylegroup_id FROM styles AS s WHERE s.style_id = " . $style_id . ";";
+		$selectString = "SELECT s.style_filename, s.style_name, s.stylegroup_id FROM styles AS s WHERE s.style_id = " . $style_id . " ORDER BY s.stylegroup_id, s.style_name;";
 		selectQuery($con, $selectString, "doThisStyleHTML");
 	}
 	function selPositionsHTML()
@@ -601,16 +649,22 @@
 		$selectString = "SELECT a.author_id, a.author_name FROM authors AS a;";
 		selectQuery($con, $selectString, "doAuthorsSVG");
 	}
+	function selStyleGroupsSVG()
+	{
+		global $con;
+		$selectString = "SELECT s.stylegroup_id, s.stylegroup_name FROM stylegroups AS s;";
+		selectQuery($con, $selectString, "doStyleGroupsSVG");
+	}
 	function selStylesSVG()
 	{
 		global $con;
-		$selectString = "SELECT s.style_id, s.style_name, s.style_whiteonblack FROM styles AS s;";
+		$selectString = "SELECT s.style_id, s.style_name, s.style_whiteonblack, s.stylegroup_id FROM styles AS s ORDER BY s.stylegroup_id, s.style_name;";
 		selectQuery($con, $selectString, "doStylesSVG");
 	}
 	function selThisStyleSVG()
 	{
 		global $con, $style_id;
-		$selectString = "SELECT s.style_filename, s.style_name, s.stylegroup_id FROM styles AS s WHERE s.style_id = " . $style_id . ";";
+		$selectString = "SELECT s.style_filename, s.style_name, s.stylegroup_id FROM styles AS s WHERE s.style_id = " . $style_id . " ORDER BY s.stylegroup_id, s.style_name;";
 		selectQuery($con, $selectString, "doThisStyleSVG");
 	}
 	function selPositionsSVG()

@@ -142,13 +142,13 @@
 	$selectString = "SELECT s.stylegroup_id, s.stylegroup_name FROM stylegroups as s;";
 	selectQuery($con, $selectString, "doStylegroupsFront");
 
-	$selectString = "SELECT s.stylegroup_id, s.style_id, s.style_name FROM styles as s;";
+	$selectString = "SELECT s.stylegroup_id, s.style_id, s.style_name FROM styles as s ORDER BY s.style_name;";
 	selectQuery($con, $selectString, "doStylesFront");
 
 	$selectString = "SELECT p.platform_id, p.platform_name, p.platform_displayorder FROM platforms as p;";
 	selectQuery($con, $selectString, "doPlatformsFront");
 
-	$selectString = "SELECT l.platform_id, l.layout_id, l.layout_name FROM layouts as l;";
+	$selectString = "SELECT l.platform_id, l.layout_id, l.layout_name FROM layouts as l ORDER BY l.layout_name DESC;";
 	selectQuery($con, $selectString, "doLayoutsFront");
 
 	sortGamesFront();
@@ -156,7 +156,7 @@
 
 	mysqli_close($con);
 ?>
-<img id="waiting" src="loading.gif" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
+<img id="waiting" src="animated_loading_icon.gif" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
 <form name="keyboard_select">
 	<input type="hidden" name="lay" value=""/>
 	<input type="hidden" name="gam" value=""/>

@@ -63,6 +63,7 @@
 	$emote_table		= [];
 	$author_table		= [];
 	$style_table		= [];
+	$style_group_table	= [];
 	$gamesrecord_id		= 0;
 	$gamesrecord_author	= "";
 	$stylesrecord_id	= 0;
@@ -141,6 +142,7 @@
 
 	selGamesHTML();
 	selAuthorsHTML();
+	selStyleGroupsHTML();
 	selStylesHTML();
 	selThisStyleHTML();
 	selPositionsHTML();
@@ -307,7 +309,7 @@ var binding_table =
 ?>
 	</head>
 	<body onload="init_submissions();">
-		<img id="waiting" src="./loading.gif" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
+		<img id="waiting" src="animated_loading_icon.webp" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
 		<div id="butt_min" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(0);"><img src="./icon_min.png"/></div>
 		<div id="butt_max" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(1);"><img src="./icon_max.png"/></div>
 		<div id="pane_lft">
