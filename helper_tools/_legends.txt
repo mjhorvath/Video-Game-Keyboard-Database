@@ -1,3 +1,5 @@
-\N	217	2	Character Selection
-\N	217	5	Camera Movement
-\N	217	6	Game Controls
+\N	219	1	Combat/Actions
+\N	219	3	Movement
+\N	219	4	Communications
+\N	219	5	Camera
+\N	219	6	Game Controls

@@ -577,7 +577,7 @@ var binding_table =
 "						<div class=\"legtbl inbtop\">\n";
 		}
 		echo
-"							<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
+"							<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
 		if ($i % 3 == 2)
 		{
 			echo
@@ -602,9 +602,9 @@ var binding_table =
 				$combo_des = cleantextHTML($combo_row[1]);
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $combo_com . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $combo_com . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $combo_des . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $combo_des . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
@@ -632,9 +632,9 @@ var binding_table =
 				$mouse_des = cleantextHTML($mouse_row[1]);
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $mouse_com . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $mouse_com . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $mouse_des . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $mouse_des . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
@@ -662,9 +662,9 @@ var binding_table =
 				$joystick_des = cleantextHTML($joystick_row[1]);
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $joystick_com . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $joystick_com . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $joystick_des . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $joystick_des . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
@@ -692,7 +692,7 @@ var binding_table =
 				$note_des = cleantextHTML($note_row[1]);
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll txtone\"><textarea placeholder=\"blah\" onchange=\"flag_doc_dirty();\">" . $note_des . "</textarea></div>
+								<div class=\"notcll txtone\"><textarea onchange=\"flag_doc_dirty();\">" . $note_des . "</textarea></div>
 								<div class=\"notcll txttwo\"><button class=\"txtsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
@@ -718,9 +718,9 @@ var binding_table =
 				$cheat_des = cleantextHTML($cheat_row[1]);
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $cheat_com . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $cheat_com . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $cheat_des . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $cheat_des . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
@@ -748,9 +748,9 @@ var binding_table =
 				$console_des = cleantextHTML($console_row[1]);
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $console_com . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $console_com . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $console_des . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $console_des . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
@@ -778,9 +778,9 @@ var binding_table =
 				$emote_des = cleantextHTML($emote_row[1]);
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $emote_com . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $emote_com . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" placeholder=\"blah\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $emote_des . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $emote_des . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
@@ -805,13 +805,13 @@ var binding_table =
 				<p>The string <code>\N</code> (with an upper-case "n" and one backslash) indicates a value of null, and may represent an auto-increment field in SQL. The string <code>\\n</code> (with a lower-case "n" and two backslashes) indicates a newline character.</p>
 				<p><button style="padding:0.3em 1em;" onclick="fill_spreadsheet();">Fetch Data</button><button style="padding:0.3em 1em;" onclick="clear_spreadsheet();">Clear Data</button></p>
 				<h4>Legend</h4>
-				<textarea id="legend_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" readonly="readonly" autocomplete="off" placeholder="blah"></textarea>
+				<textarea id="legend_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" readonly="readonly" autocomplete="off"></textarea>
 				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('legend_tsv');">Select &amp; Copy</button></p>
 				<h4>Commands</h4>
-				<textarea id="command_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" readonly="readonly" autocomplete="off" placeholder="blah"></textarea>
+				<textarea id="command_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" readonly="readonly" autocomplete="off"></textarea>
 				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('command_tsv');">Select &amp; Copy</button></p>
 				<h4>Bindings</h4>
-				<textarea id="binding_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" readonly="readonly" autocomplete="off" placeholder="blah"></textarea>
+				<textarea id="binding_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" readonly="readonly" autocomplete="off"></textarea>
 				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('binding_tsv');">Select &amp; Copy</button></p>
 			</div>
 		</div>

@@ -1,6 +1,45 @@
-\N	217	21	Crafting\\nMenu	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	217	49	Build\\nMenu	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	217	52	Tilt\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	217	53	Tilt\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	217	57	Show\\nLabels	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	217	64	Zoom\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	2	Shell\\nType\\n1	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	3	Shell\\nType\\n2	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	4	Shell\\nType\\n3	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	5	Consumable\\n1	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	6	Consumable\\n2	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	7	Consumable\\n3	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	12	Zoom\\nMinimap	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	13	Zoom\\nMinimap	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	15	Switch\\nMessage\\nRecipients	4	\N	\N	Team\\nLists	4	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	16	Enable\\nVoice\\nChat	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	17	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	18	Disable\\nAuto\\nAim	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	19	Cruise\\nControl\\nOn	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	20	Share\\nTarget	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	30	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	31	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	32	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	33	Cruise\\nControl\\nOff	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	42	Chat Mode/\\nSend Message	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	43	Toggle\\nSniper Mode	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	45	Radial\\nMenu	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	46	Lock\\nHull	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	47	Reload\\nShell\\nContainer	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	48	Toggle\\nBattle\\nInterface	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	51	Toggle\\nMinimap	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	56	Enable\\nCursor (hold)	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	57	Switch\\nMarker\\nModes	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	58	Stop and Fire	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	59	Switch\\nMarker\\nModes	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	60	Enable\\nCursor (hold)	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	61	Switch\\nKeyboard\\nModes	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	63	Rotate\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	66	Rotate\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	67	Rotate\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	68	Zoom\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	69	Zoom\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	70	Rotate\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	88	Game\\nMenu	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	89	Help	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	92	Defend\\nthe Base!	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	93	Affirmitive!	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	94	Negative!	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	95	Help!	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	96	Reloading!	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	219	101	\N	\N	\N	\N	Capture\\nScreen\\nImage	6	\N	\N	\N	\N	\N	\N	\N	\N

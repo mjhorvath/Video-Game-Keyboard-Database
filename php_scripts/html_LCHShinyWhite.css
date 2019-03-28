@@ -15,7 +15,7 @@ a:hover,a:active
 .bodiv	{position:relative;margin:1em;}
 .keyout	{font-family:pt-sans-narrow,sans-serif;line-height:100%;font-size:smaller;position:absolute;overflow:hidden;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;box-shadow: 0px 1px 1px #444;}
 .keyhgh,.keylow,.keyrgt,.capopt,.capopf
-	{position:absolute;overflow:hidden;padding:2px;white-space:pre;text-shadow:0px 1px 1px #444;color:#000;}
+	{position:absolute;overflow:hidden;padding:2px;white-space:pre;text-shadow:0px 1px 1px #444;color:#fff;}
 .keyhgh	{font-weight:  bold;left: 0px;top:   0px;}
 .keylow	{font-weight:  bold;left: 0px;bottom:0px;}
 .keyrgt	{font-weight:  bold;right:0px;top:   0px;}
@@ -25,6 +25,7 @@ a:hover,a:active
 .capshf,.capctl,.capalt,.capagr,.capxtr
 	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;background:transparent;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
 /* http://www.easyrgb.com/index.php?X=CALC */
+/* CIE-L*Ch(ab) D65/2° */
 .capshf	{color:#077BC7;}	/* CIE-L*ch ( 50, 47,270)	blue	*/
 .capctl	{color:#028946;}	/* CIE-L*ch ( 50, 55,150)	green	*/
 .capalt	{color:#ED0631;}	/* CIE-L*ch ( 50, 88, 30)	red	*/
@@ -40,6 +41,7 @@ a:hover,a:active
 .inbmid	{display:inline-block;vertical-align:middle;}
 .combox	{width:22em;}
 /* http://www.easyrgb.com/index.php?X=CALC */
+/* CIE-L*Ch(ab) D65/2° */
 .capred,.legred,.selred,.optred	{background:#FC9C93;color:#000000;}	/* CIE-L*ch ( 74, 40, 30) */
 .capyel,.legyel,.selyel,.optyel	{background:#CEB46C;color:#000000;}	/* CIE-L*ch ( 74, 40, 90) */
 .capgrn,.leggrn,.selgrn,.optgrn	{background:#7CC690;color:#000000;}	/* CIE-L*ch ( 74, 40,150) */
@@ -55,4 +57,8 @@ a:hover,a:active
 .capnon,.legnon,.selnon,.optnon	{background:#B6B6B6;color:#000000;}	/* CIE-L*ch ( 74,  0,  0) */
 .capred,.capyel,.capgrn,.capcyn,.capblu,.capmag,.capwht,.capgry,.capblk,.caporg,.capolv,.capbrn,.capnon,
 .legred,.legyel,.leggrn,.legcyn,.legblu,.legmag,.legwht,.leggry,.legblk,.legorg,.legolv,.legbrn,.legnon
-	{background-image:-webkit-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image:-moz-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image:linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);}
+{
+	background-image:-webkit-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);
+	background-image:   -moz-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);
+	background-image:        linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);
+}

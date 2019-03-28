@@ -11,6 +11,11 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
+	<li>2019/03/28: Added the <i>US 104 Key (ANSI, Dvorak)</i> layout.</li>
+	<li>2019/03/28: Added bindings for <i>World of Tanks</i>.</li>
+	<li>2019/03/27: The diagram legends are now sorted by legend group.</li>
+	<li>2019/03/27: Updated <i>Elite Dangerous</i> keyboard and mouse controls.</li>
+	<li>2019/03/26: Style selection dialog in page footers is now alphabetized and organized into groups.</li>
 	<li>2019/03/25: Replaced loading icon with one I created myself.</li>
 	<li>2019/03/24: Added the "UK 105 Key (ISO)" and "ES 105 Key (ISO)" keyboards. They only have the "Blank Starter" bindings so far, though.</li>
 	<li>2019/03/24: Fixed one of the columns in the "positions" table was not set to auto-increment.</li>
@@ -113,7 +118,7 @@
 	<li>2009/05/21: Fixed the measurements for most of the other layouts which were off by some fractions of an inch.</li>
 	<li>2009/05/16: Added over a dozen new bindings as well as French and German PC keyboard layouts. The new layouts are not compatible with most games, however, until someone contacts me with a list of corresponding French and German bindings.</li>
 	<li>2009/05/11: After several years of neglect, I've done a major overhaul of the project's scripts. Please forgive (and report) any errors! Also, feel free to submit new bindings, layouts or styles.</li>
-	<li>This project was initially started circa 2004 when my site was hosted on GeoCities. Back then it was mostly pure JavaScript and HTML. (Free GeoCities accounts were not permitted to use CGI or PHP.) It has come a long way since then. ;)</li>
+	<li>This project was initially started circa 2004 when my site was hosted on GeoCities. Back then it was mostly pure JavaScript and HTML. (Free GeoCities accounts were not permitted to use PHP or MySQL.) It has come a long way since then. ;)</li>
 </ul>
 <h2>Credits:</h2>
 <ul>

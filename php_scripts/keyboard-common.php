@@ -628,7 +628,7 @@
 	function selLegendsHTML()
 	{
 		global $con, $gamesrecord_id;
-		$selectString = "SELECT l.legend_group, l.legend_description FROM legends AS l WHERE l.record_id = " . $gamesrecord_id . ";";
+		$selectString = "SELECT l.legend_group, l.legend_description FROM legends AS l WHERE l.record_id = " . $gamesrecord_id . " ORDER BY l.legend_group;";
 		selectQuery($con, $selectString, "doLegendsHTML");
 	}
 	function selCommandsHTML()
@@ -712,7 +712,7 @@
 	function selLegendsSVG()
 	{
 		global $con, $gamesrecord_id;
-		$selectString = "SELECT l.legend_group, l.legend_description FROM legends AS l WHERE l.record_id = " . $gamesrecord_id . ";";
+		$selectString = "SELECT l.legend_group, l.legend_description FROM legends AS l WHERE l.record_id = " . $gamesrecord_id . " ORDER BY l.legend_group;";
 		selectQuery($con, $selectString, "doLegendsSVG");
 	}
 	function selGenresList()

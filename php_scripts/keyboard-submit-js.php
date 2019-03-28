@@ -17,7 +17,7 @@
 // License along with this program.  If not, see 
 // <https://www.gnu.org/licenses/>.
 
-new Image().src = './loading.gif';
+new Image().src = 'animated_loading_icon.webp';
 
 var keycount = 106;
 var colors = ['non','red','yel','grn','cyn','blu','mag','wht','gry','blk','org','olv','brn'];

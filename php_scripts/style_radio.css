@@ -50,7 +50,7 @@
 /* When the radio button is disabled, add a gray background */
 .container input:disabled ~ .checkmark
 {
-	background-image:url(images/icon_x_disabled.png);
+	background-image:url(icon_x_disabled.png);
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
