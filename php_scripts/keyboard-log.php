@@ -11,8 +11,10 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
-	<li>2019/03/28: Added the <i>US 104 Key (ANSI, Dvorak)</i> layout.</li>
-	<li>2019/03/28: Added bindings for <i>World of Tanks</i>.</li>
+	<li>2019/03/30: Fixed some minor issues with the alphabetical list.</li>
+	<li>2019/03/28: Moved all font files to a different folder.</li>
+	<li>2019/03/28: Added the <i>US 104 Key (Dvorak)</i> layout.</li>
+	<li>2019/03/28: Added bindings for <i>World of Tanks</i> and <i>Counter-Strike: Global Offensive</i>.</li>
 	<li>2019/03/27: The diagram legends are now sorted by legend group.</li>
 	<li>2019/03/27: Updated <i>Elite Dangerous</i> keyboard and mouse controls.</li>
 	<li>2019/03/26: Style selection dialog in page footers is now alphabetized and organized into groups.</li>

@@ -1,8 +1,4 @@
-\N	219	2	Move XY	Rotate turret and/or camera
-\N	219	2	LMB	Fire weapon
-\N	219	2	LMB + Ctrl (on minimap)	Send an attention message to the team by highlighting a square on the minimap
-\N	219	2	RMB (hold)	Prevent turret from following reticle
-\N	219	2	RMB (with reticle on target)	Enable Auto-aim
-\N	219	2	RMB (with no target in reticle)	Disable Auto-aim
-\N	219	2	RMB + Ctrl (on minimap)	Disable Aim artillery at a square on the minimap by selecting it
-\N	219	2	Wheel	Zoom camera in/out
+\N	221	2	Move XY	Rotate camera
+\N	221	2	LMB	Fire weapon
+\N	221	2	RMB	Weapon special function
+\N	221	2	Wheel	Cycle weapons

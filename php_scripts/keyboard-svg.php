@@ -141,8 +141,8 @@
 	$temp_layout_name	= $layout_name ? $layout_name : "Unrecognized Layout";
 	$temp_style_name	= $style_name ? $style_name : "Unrecognized Style";
 	$temp_platform_name	= $platform_name ? $platform_name : "Unrecognized Platform";
-	$thispage_title_a	= $temp_game_name;
-	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " " . $temp_layout_name . " - " . $temp_style_name;
+//	$thispage_title	= $temp_game_name. " - " . $string_title . " - " . $temp_platform_name . " " . $temp_layout_name . " - " . $temp_style_name;
+	$thispage_title	= $temp_game_name. " - " . $temp_platform_name . " " . $temp_layout_name . " - " . $temp_style_name;
 
 	// validity checks (should check the layout here too... but)
 	if (!checkStyle($style_id))
@@ -193,7 +193,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	xmlns:ev="http://www.w3.org/2001/xml-events"
 	viewBox="-20 -20 1683 612"
 	width="1683" height="612">
-	<title><?php echo $thispage_title_a . $thispage_title_b; ?></title>
+	<title><?php echo $thispage_title; ?></title>
 	<desc>Keyboard diagram for <?php echo $temp_game_name; ?>.</desc>
 	<metadata id="license"
 		xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -214,7 +214,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 				<cc:requires rdf:resource="http://creativecommons.org/ns#ShareAlike" />
 			</cc:License>
 			<rdf:Description about=""
-				dc:title="<?php echo $thispage_title_a . $thispage_title_b; ?>"
+				dc:title="<?php echo $thispage_title; ?>"
 				dc:description="<?php echo $string_description . $temp_game_name . ". (" . $temp_style_name . ")"; ?>"
 				dc:publisher="Video Game Keyboard Diagrams"
 				dc:date="<?php echo date("Y-m-d H:i:s"); ?>"

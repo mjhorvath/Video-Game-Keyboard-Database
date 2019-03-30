@@ -524,7 +524,7 @@
 			$game_name_array[] = $game_row[2];
 			$game_seourl_array[] = $game_row[3];
 		}
-		array_multisort($game_name_array, $game_genre_array, $game_index_array, $game_seourl_array);
+		array_multisort($game_name_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $game_genre_array, $game_index_array, $game_seourl_array);
 	}
 	function doLayoutsList($in_result)
 	{

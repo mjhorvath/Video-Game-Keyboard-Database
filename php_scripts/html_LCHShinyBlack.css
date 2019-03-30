@@ -1,8 +1,8 @@
 /*font-family:Arial Narrow,sans-serif;*/
 @font-face
-	{font-family:pt-sans-narrow,Sans-Serif;src:url(pt-sans/PTN57F.ttf);}
+	{font-family:pt-sans-narrow,Sans-Serif;src:url(../fonts/pt-sans/PTN57F.ttf);}
 @font-face
-	{font-family:pt-sans-regular,Sans-Serif;src:url(pt-sans/PTS55F.ttf);}
+	{font-family:pt-sans-regular,Sans-Serif;src:url(../fonts/pt-sans/PTS55F.ttf);}
 *	{font-family:pt-sans-regular,Sans-Serif;}
 body	{background:#444;color:#fff;font-size:11pt;}
 select	{background:#fff;color:#000;border:1px solid #000;}

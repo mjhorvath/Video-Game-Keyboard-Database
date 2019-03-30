@@ -1,5 +1,6 @@
-\N	219	1	Combat/Actions
-\N	219	3	Movement
-\N	219	4	Communications
-\N	219	5	Camera
-\N	219	6	Game Controls
+\N	221	1	Combat/Actions
+\N	221	2	Shopping
+\N	221	3	Movement
+\N	221	4	Communications
+\N	221	5	Camera
+\N	221	6	Game Controls

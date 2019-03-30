@@ -1,45 +1,24 @@
-\N	219	2	Shell\\nType\\n1	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	3	Shell\\nType\\n2	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	4	Shell\\nType\\n3	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	5	Consumable\\n1	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	6	Consumable\\n2	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	7	Consumable\\n3	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	12	Zoom\\nMinimap	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	13	Zoom\\nMinimap	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	15	Switch\\nMessage\\nRecipients	4	\N	\N	Team\\nLists	4	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	16	Enable\\nVoice\\nChat	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	17	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	18	Disable\\nAuto\\nAim	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	19	Cruise\\nControl\\nOn	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	20	Share\\nTarget	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	30	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	31	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	32	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	33	Cruise\\nControl\\nOff	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	42	Chat Mode/\\nSend Message	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	43	Toggle\\nSniper Mode	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	45	Radial\\nMenu	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	46	Lock\\nHull	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	47	Reload\\nShell\\nContainer	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	48	Toggle\\nBattle\\nInterface	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	51	Toggle\\nMinimap	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	56	Enable\\nCursor (hold)	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	57	Switch\\nMarker\\nModes	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	58	Stop and Fire	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	59	Switch\\nMarker\\nModes	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	60	Enable\\nCursor (hold)	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	61	Switch\\nKeyboard\\nModes	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	63	Rotate\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	66	Rotate\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	67	Rotate\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	68	Zoom\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	69	Zoom\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	70	Rotate\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	88	Game\\nMenu	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	89	Help	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	92	Defend\\nthe Base!	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	93	Affirmitive!	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	94	Negative!	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	95	Help!	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	96	Reloading!	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	219	101	\N	\N	\N	\N	Capture\\nScreen\\nImage	6	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	15	Show\\nScores	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	17	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	18	Use\\nItem	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	19	Reload	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	21	Chat\\nMessage	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	22	Team\\nMessage	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	30	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	31	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	32	Move	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	33	Inspect\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	34	Drop\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	37	Voice\\nComms	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	43	Walk	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	45	Standard\\nRadio	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	46	Group\\nRadio	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	47	Report\\nRadio	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	49	Buy\\nMenu	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	50	Night\\nVision	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	51	Select\\nTeam	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	56	Duck	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	58	Jump	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	89	Auto-\\nBuy	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	90	Re-\\nBuy	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	221	92	Report\\nBug	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N

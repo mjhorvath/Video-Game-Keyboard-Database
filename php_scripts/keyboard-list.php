@@ -2,13 +2,12 @@
 	header("Content-Type: text/html; charset=utf8");
 	$path_root = "../";
 	$page_title = "Video Game Keyboard Diagrams - Master List";
-	$foot_array = ["copyright"];
-	$page_onload	= "sortTableInit();";
+	$page_onload	= "sortTableInit();Toggle_Waiting(false);";
 	$analytics	= true;
 	$is_short	= true;
 	$foot_array	= array("copyright","license_kbd");
-	$java_array	= [$path_root . "java/sort_table.js"];
-	$stys_array	= [$path_root . "style_keyboard.css"];
+	$java_array	= ["keyboard-list-js.php",$path_root . "java/sort_table.js"];
+	$stys_array	= ["style_alphalist.css"];
 	include($path_root . "ssi/normalpage.php");
 	echo $page_top;
 ?>
@@ -65,12 +64,13 @@
 	mysqli_close($con);
 
 	echo
-"<table id=\"tableToSort\" cellspacing=\"0\" cellpadding=\"0\" class=\"kbd_tab\">
+"<img id=\"waiting\" src=\"animated_loading_icon.webp\" alt=\"loading\" style=\"position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;\"/>
+<table id=\"tableToSort\" cellspacing=\"0\" cellpadding=\"0\" class=\"kbd_tab\">
 	<tr>
-		<th onclick=\"sortTable(0)\">Name				<span id=\"arrw_u0\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d0\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n0\" class=\"arrw_n\">&#9674;</span></th>
-		<th onclick=\"sortTable(1)\" style=\"width:6em;\">Genre		<span id=\"arrw_u1\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d1\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n1\" class=\"arrw_n\">&#9674;</span></th>
-		<th onclick=\"sortTable(2)\" style=\"width:4em;\">#ID		<span id=\"arrw_u2\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d2\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n2\" class=\"arrw_n\">&#9674;</span></th>
-		<th onclick=\"sortTable(3)\">Record(s)				<span id=\"arrw_u3\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d3\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n3\" class=\"arrw_n\">&#9674;</span></th>
+		<th onclick=\"Wait_and_Sort(0);\">Name					<span id=\"arrw_u0\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d0\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n0\" class=\"arrw_n\">&#9674;</span></th>
+		<th onclick=\"Wait_and_Sort(1);;\" style=\"width:6em;\">Genre		<span id=\"arrw_u1\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d1\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n1\" class=\"arrw_n\">&#9674;</span></th>
+		<th onclick=\"Wait_and_Sort(2);\" style=\"width:4em;\">#ID		<span id=\"arrw_u2\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d2\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n2\" class=\"arrw_n\">&#9674;</span></th>
+		<th onclick=\"Wait_and_Sort(3);\">Record(s)				<span id=\"arrw_u3\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d3\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n3\" class=\"arrw_n\">&#9674;</span></th>
 	</tr>\n";
 
 	// using 'count()' here may be a bad idea in case there ever appear gaps in the table indexes due to deletions
@@ -109,8 +109,13 @@
 			$platform_id_pla = $platform_array[$j][0];
 			$platform_abbv_pla = $platform_array[$j][2];
 			$this_platform = $platform_layout_array[$platform_id_pla];
+			$platform_iterate = 0;
 			if (count($this_platform) > 0)
 			{
+				if ($platform_iterate > 0)
+				{
+					echo "<br/>";
+				}
 				echo $platform_abbv_pla . ": <span style=\"font-size:smaller;\">";
 
 				for ($k = 0; $k < count($this_platform); $k++)
@@ -122,12 +127,13 @@
 					}
 					echo "<a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout . "&fmt=0\">" . getLayoutName($this_layout) . "</a>";
 				}
-				echo "</span><br/>";
+
+				echo "</span>";
+				$platform_iterate ++;
 			}
 		}
 
-		echo
-"	</td></tr>\n";
+		echo "</td></tr>\n";
 	}
 
 	echo

@@ -1,9 +1,0 @@
-*	{font-family:DejaVu Sans Condensed,Sans-Serif;}
-body	{color:#000;background:#fff;font-size:11pt;}
-select	{color:#000;background:#fff;border:1px solid #000;}
-option	{color:#000;background:#fff;}
-footer	{font-size:smaller;}
-.bodiv	{position:relative;margin:1em;margin-top:0em;}
-.inbtop	{display:inline-block;vertical-align:top;}
-.inbmid	{display:inline-block;vertical-align:middle;}
-.combox	{width:22em;}

@@ -148,7 +148,7 @@
 	$selectString = "SELECT p.platform_id, p.platform_name, p.platform_displayorder FROM platforms as p;";
 	selectQuery($con, $selectString, "doPlatformsFront");
 
-	$selectString = "SELECT l.platform_id, l.layout_id, l.layout_name FROM layouts as l ORDER BY l.layout_name DESC;";
+	$selectString = "SELECT l.platform_id, l.layout_id, l.layout_name FROM layouts as l ORDER BY l.layout_name;";
 	selectQuery($con, $selectString, "doLayoutsFront");
 
 	sortGamesFront();

@@ -1,0 +1,6 @@
+table.kbd_tab		{border:solid 1px #000;}
+table.kbd_tab th	{border:solid 1px #000;padding:0.25em;color:#ccc;background:#000;}
+table.kbd_tab td	{border:solid 1px #000;padding:0.25em;color:#000;background:transparent;}
+span.arrw_u	{float:right;cursor:pointer;display:none;}
+span.arrw_d	{float:right;cursor:pointer;display:none;}
+span.arrw_n	{float:right;cursor:pointer;display:none;}
