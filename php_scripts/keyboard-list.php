@@ -104,18 +104,19 @@
 			}
 		}
 
+		$platform_iterate = 0;
 		for ($j = 0; $j < count($platform_array); $j++)
 		{
 			$platform_id_pla = $platform_array[$j][0];
 			$platform_abbv_pla = $platform_array[$j][2];
 			$this_platform = $platform_layout_array[$platform_id_pla];
-			$platform_iterate = 0;
 			if (count($this_platform) > 0)
 			{
 				if ($platform_iterate > 0)
 				{
 					echo "<br/>";
 				}
+
 				echo $platform_abbv_pla . ": <span style=\"font-size:smaller;\">";
 
 				for ($k = 0; $k < count($this_platform); $k++)
@@ -129,7 +130,8 @@
 				}
 
 				echo "</span>";
-				$platform_iterate ++;
+
+				$platform_iterate++;
 			}
 		}
 
