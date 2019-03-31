@@ -11,6 +11,7 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
+	<li>2019/03/30: Fixed sort order for acronyms in front page.</li>
 	<li>2019/03/30: Fixed some minor issues with the alphabetical list.</li>
 	<li>2019/03/28: Moved all font files to a different folder.</li>
 	<li>2019/03/28: Added the <i>US 104 Key (Dvorak)</i> layout.</li>

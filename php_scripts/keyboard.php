@@ -68,7 +68,7 @@
 	function sortGamesFront()
 	{
 		global $genre_array, $game_array;
-		array_multisort($genre_array, $game_array);
+		array_multisort($genre_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $game_array);
 	}
 	function doGamesFront($in_result)
 	{
@@ -118,7 +118,7 @@
 			$layout_array[$platform_id-1] = [[],[]];
 			$platform_order_array[$platform_id-1] = $platform_displayorder;
 		}
-		array_multisort($platform_order_array, $platform_array, $layout_array);
+		array_multisort($platform_order_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $platform_array, $layout_array);
 	}
 	function doLayoutsFront($in_result)
 	{
@@ -187,7 +187,7 @@
 		}
 		$id_array	= $layout_array[$i][0];
 		$name_array	= $layout_array[$i][1];
-//		array_multisort($name_array, $id_array);
+//		array_multisort($name_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $id_array);
 		for ($j = 0; $j < count($id_array); $j++)
 		{
 			echo
@@ -224,7 +224,7 @@
 		}
 		$id_array	= $style_array[$i][0];
 		$name_array	= $style_array[$i][1];
-//		array_multisort($name_array, $id_array);
+//		array_multisort($name_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $id_array);
 		for ($j = 0; $j < count($id_array); $j++)
 		{
 			echo
@@ -262,7 +262,7 @@
 		$id_array	= $game_array[$i][0];
 		$name_array	= $game_array[$i][1];
 		$seourl_array	= $game_array[$i][2];
-		array_multisort($name_array, $id_array, $seourl_array);
+		array_multisort($name_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $id_array, $seourl_array);
 		for ($j = 0; $j < count($id_array); $j++)
 		{
 			echo
