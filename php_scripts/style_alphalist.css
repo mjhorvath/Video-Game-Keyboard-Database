@@ -4,3 +4,12 @@ table.kbd_tab td	{border:solid 1px #000;padding:0.25em;color:#000;background:tra
 span.arrw_u	{float:right;cursor:pointer;display:none;}
 span.arrw_d	{float:right;cursor:pointer;display:none;}
 span.arrw_n	{float:right;cursor:pointer;display:none;}
+/*
+dl,dt,dd		{margin:none;padding:none;}
+dd			{font-size:smaller;}
+*/
+
+dl		{padding:0em;margin:0em;}
+dt		{float:left;clear:left;width:2.5em;text-align:right;}
+dt::after	{content:":";}
+dd		{margin-left:3em;padding:0em;}

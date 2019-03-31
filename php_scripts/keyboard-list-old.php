@@ -90,7 +90,7 @@
 		}
 
 		echo
-"	<tr><td>" . $game_name_gam . "</td><td>" . $game_genre_gam . "</td><td>" . $game_id_gam . "</td><td><dl>";
+"	<tr><td>" . $game_name_gam . "</td><td>" . $game_genre_gam . "</td><td>" . $game_id_gam . "</td><td>";
 
 		for ($j = 0; $j < count($record_array); $j++)
 		{
@@ -104,6 +104,7 @@
 			}
 		}
 
+		$platform_iterate = 0;
 		for ($j = 0; $j < count($platform_array); $j++)
 		{
 			$platform_id_pla = $platform_array[$j][0];
@@ -111,17 +112,30 @@
 			$this_platform = $platform_layout_array[$platform_id_pla];
 			if (count($this_platform) > 0)
 			{
-				echo "<dt>" . $platform_abbv_pla . "</dt>";
+				if ($platform_iterate > 0)
+				{
+					echo "<br/>";
+				}
+
+				echo $platform_abbv_pla . ": <span style=\"font-size:smaller;\">";
 
 				for ($k = 0; $k < count($this_platform); $k++)
 				{
 					$this_layout = $this_platform[$k];
-					echo "<dd><a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout . "&fmt=0\">" . getLayoutName($this_layout) . "</a></dd>";
+					if ($k > 0)
+					{
+						echo ", ";
+					}
+					echo "<a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout . "&fmt=0\">" . getLayoutName($this_layout) . "</a>";
 				}
+
+				echo "</span>";
+
+				$platform_iterate++;
 			}
 		}
 
-		echo "</dl></td></tr>\n";
+		echo "</td></tr>\n";
 	}
 
 	echo
