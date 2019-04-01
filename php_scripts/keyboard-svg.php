@@ -191,8 +191,8 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:ev="http://www.w3.org/2001/xml-events"
-	viewBox="-20 -20 1683 612"
-	width="1683" height="612">
+	viewBox="-18 -18 1692 612"
+	width="1692" height="612">
 	<title><?php echo $thispage_title; ?></title>
 	<desc>Keyboard diagram for <?php echo $temp_game_name; ?>.</desc>
 	<metadata id="license"
@@ -287,7 +287,8 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		</linearGradient>
 ';
 	}
-	if ($style_id == 9)	// Patterned Grayscale
+	// Patterned Grayscale
+	if ($style_id == 9)
 	{
 		echo
 '		<pattern id="pat01" patternUnits="userSpaceOnUse" width="8px" height="8px"><image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAE0lEQVQImWP4vx8CGaD0fwayRADXsTfBHa7CGAAAAABJRU5ErkJggg==" x="0" y="0" width="8px" height="8px" /></pattern>
@@ -332,13 +333,14 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	</defs>
 <?php
 	echo
-"	<rect id=\"bkgrec\" x=\"-20\" y=\"-20\" width=\"1683\" height=\"611\" fill=\"none\" stroke=\"none\"/>\n";
-	// validity checks
+"	<rect id=\"bkgrec\" x=\"-18\" y=\"-18\" width=\"1692\" height=\"612\" fill=\"none\" stroke=\"none\"/>\n";
+	// validity check 1
 	if ($gamesrecord_id == 0)
 	{
 		echo
 "	<text y=\"0\">No bindings found for game \"" . $temp_game_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</text>";
 	}
+	// validity check 2
 	if ($stylesrecord_id == 0)
 	{
 		echo
@@ -531,7 +533,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		}
 	}
 ?>
-	<svg class="keyout legkey" x="1.5" y="501.5" width="69" height="69">
+	<svg class="keyout legkey" x="1.5" y="505.5" width="69" height="69">
 		<rect class="keyrec recnon" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
 		<rect class="bakshf" x="1.0" y="3" width="67" height="12" rx="1" ry="1"></rect>
 		<text class="capshf hang" x="65.5" y="13">Shift</text>
@@ -543,8 +545,9 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		<text class="keylow txtnon" x="2.5" y="64.5">Lowcase</text>
 		<text class="keyhgh txtnon" x="2.5" y="13.5">Upcase</text>
 	</svg>
-	<svg class="leg" x="101.5" y="501.5" width="1000" height="300">
-<?php	// legend
+	<svg class="leg" x="109.5" y="505.5" width="1000" height="300">
+<?php
+	// legend
 	if ($stylegroup_id == 1)
 	{
 		$row_count = 0;

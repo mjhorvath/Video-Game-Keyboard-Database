@@ -212,8 +212,8 @@
 			</div>
 		</header>
 		<main>
-			<div class="bodiv" style="width:1660px;height:480px;">
-				<div id="keydiv" style="position:relative;width:1660px;height:480px;">
+			<div class="bodiv" style="width:1656px;height:468px;">
+				<div id="keydiv" style="position:relative;width:1656px;height:468px;">
 <?php
 	// validity checks
 	if (!$gamesrecord_id)
@@ -362,7 +362,7 @@
 				</div>
 			</div>
 			<div class="bodiv">
-				<div class="inbtop" style="margin-bottom:1em;">
+				<div class="inbtop">
 					<div class="keyout capnon" style="position:relative;left:2px;top:2px;width:68px;height:68px;">
 						<div class="keyhgh">Upcase</div>
 						<div class="keylow">Lowcase</div>
@@ -377,7 +377,7 @@
 	if ($stylegroup_id == 1)
 	{
 		echo
-"				<div class=\"inbtop\" style=\"margin-left:1em;\">\n";
+"				<div class=\"inbtop\" style=\"margin-left:36px;\">\n";
 		// $legend_count is hardcoded as 12!
 		for ($i = 0; $i < $legend_count; $i++)
 		{
