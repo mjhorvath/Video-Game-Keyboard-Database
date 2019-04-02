@@ -1,4 +1,14 @@
-\N	223	2	Move XY	Rotate camera
-\N	223	2	LMB	Shoot
-\N	223	2	RMB	Aim
-\N	223	2	MMB	Special ability
+\N	229	1	blah	blah
+\N	229	1	blah	blah
+\N	229	2	blah	blah
+\N	229	2	blah	blah
+\N	229	3	blah	blah
+\N	229	3	blah	blah
+\N	229	4		blah
+\N	229	4		blah
+\N	229	5	blah	blah
+\N	229	5	blah	blah
+\N	229	6	blah	blah
+\N	229	6	blah	blah
+\N	229	7	blah	blah
+\N	229	7	blah	blah

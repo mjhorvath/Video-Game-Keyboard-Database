@@ -11,6 +11,7 @@
 ?>
 <h2>News &amp; updates:</h2>
 <ul>
+	<li>2019/04/02: I merged the HTML and SVG formats into one format. The diagrams are no longer rendered using pure HTML code, and the SVG file is now once again embedded within an HTML wrapper. (This is how the old "embed" format worked.) Not sure what effect this will have on search engines, however.</li>
 	<li>2019/04/01: Tweaked diagram dimensions.</li>
 	<li>2019/03/30: Fixed alphabetical sort order of acronyms on front page.</li>
 	<li>2019/03/30: Fixed some minor issues with the alphabetical list.</li>

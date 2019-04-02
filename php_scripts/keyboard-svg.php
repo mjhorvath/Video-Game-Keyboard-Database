@@ -140,7 +140,7 @@
 	$temp_game_name		= $game_name ? $game_name : "Unrecognized Game";
 	$temp_layout_name	= $layout_name ? $layout_name : "Unrecognized Layout";
 	$temp_style_name	= $style_name ? $style_name : "Unrecognized Style";
-	$temp_platform_name	= $platform_name ? $platform_name : "Unrecognized Platform";
+	$temp_platform_name	= $platform_name ? $platform_name : "Unrecognized Platform,";	// note the comma at the end
 //	$thispage_title	= $temp_game_name. " - " . $string_title . " - " . $temp_platform_name . " " . $temp_layout_name . " - " . $temp_style_name;
 	$thispage_title	= $temp_game_name. " - " . $temp_platform_name . " " . $temp_layout_name . " - " . $temp_style_name;
 

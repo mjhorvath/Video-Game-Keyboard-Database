@@ -18,6 +18,9 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
+	// Script adapted from:
+	// https://stackoverflow.com/questions/14267781/sorting-html-table-with-javascript
+
 	$path_root		= "../";
 
 	header("Content-Type: text/javascript; charset=utf8");
@@ -48,7 +51,8 @@
 	selGenresList();
 	selGamesList();
 	selLayoutsList();
-	selGamesRecordsList();selPlatformsList();
+	selGamesRecordsList();
+	selPlatformsList();
 
 
 	mysqli_close($con);

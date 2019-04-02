@@ -18,10 +18,10 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
-	header("Content-Type: text/html; charset=utf8");
-
 	$path_root		= "../";
 	$path_file		= "./keyboard-html.php";
+
+	header("Content-Type: text/html; charset=utf8");
 
 	include($path_root . 'ssi/analyticstracking.php');
 	include($path_root . "ssi/keyboard-connection.php");
@@ -37,46 +37,52 @@
 
 	mysqli_query($con, "SET NAMES 'utf8'");
 
-	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : "";
+	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : null;
 	$game_id		= array_key_exists("gam", $_GET) ? intval(ltrim($_GET["gam"], "0")) : null;
-	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : 15;
-	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : 1;
-	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : 0;
+	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : null;
+	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : null;
+	$format_id		= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0")) : null;
+	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
 	$fix_url		= false;
 	$php_url		= "";
 	$svg_url		= "";
+	$write_maximal_keys	= false;
+	$show_advertisements	= false;
 	$stylegroup_id		= 0;
+	$position_table		= [];
+	$keystyle_table		= [];
+	$binding_table		= [];
+	$legend_table		= [];
 	$command_table		= [];
 	$combo_table		= [];
-	$joystick_table		= [];
 	$mouse_table		= [];
+	$joystick_table		= [];
 	$note_table		= [];
+	$cheat_table		= [];
+	$console_table		= [];
+	$emote_table		= [];
 	$author_table		= [];
 	$style_table		= [];
+	$style_group_table	= [];
 	$gamesrecord_id		= 0;
 	$gamesrecord_author	= "";
 	$stylesrecord_id	= 0;
 	$stylesrecord_author	= "";
+	$legend_count		= 12;
 	$combo_count		= 0;
-	$joystick_count		= 0;
 	$mouse_count		= 0;
+	$joystick_count		= 0;
 	$note_count		= 0;
+	$cheat_count		= 0;
+	$console_count		= 0;
+	$emote_count		= 0;
 	$style_filename		= "";
 	$style_name		= "";
-	$style_author		= "";
 	$game_name		= "";
 	$platform_name		= "";
 	$layout_platform	= 0;
 	$layout_name		= "";
-	$layout_title		= "";
-	$layout_mouse		= "";
-	$layout_joystick	= "";
-	$layout_combos		= "";
-	$layout_notes		= "";
-	$layout_legend		= "";		// heading was removed from the database
 	$layout_author		= "";
-	$layout_description	= "";
-	$layout_keywords	= "";
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
 	$string_title		= cleantextHTML("Video Game Keyboard Diagrams");
@@ -89,6 +95,7 @@
 	$string_emote		= cleantextHTML("Chat Commands/Emotes");
 	$string_description	= cleantextHTML("Keyboard hotkey & binding chart for ");
 	$string_keywords	= cleantextHTML("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
+
 
 	// validity checks
 	if ($game_id === null)
@@ -130,20 +137,22 @@
 		$fix_url = true;
 	}
 
+
 	selGamesHTML();
 	selAuthorsHTML();
 	selStyleGroupsHTML();
 	selStylesHTML();
 	selThisStyleHTML();
-//	selPositionsHTML();
+	selPositionsHTML();
 	selLayoutsHTML();
 	selPlatformsHTML();
 	selGamesRecordsHTML();
 	selStylesRecordsHTML();
-//	selKeystylesHTML();
-//	selBindingsHTML();
+	selKeystylesHTML();
+	selBindingsHTML();
 	selLegendsHTML();
 	selCommandsHTML();
+
 
 	mysqli_close($con);
 
@@ -178,39 +187,234 @@
 	<head>
 <?php
 	echo
-"		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></meta>\n" .
-"		<title>" . $thispage_title_a . $thispage_title_b . "</title>\n" .
-"		<link rel=\"canonical\" href=\"" . $php_url . "\"/>\n" .
-"		<link rel=\"icon\" type=\"image/png\" href=\"../favicon.png\" />\n" .
-"		<link rel=\"stylesheet\" type=\"text/css\" href=\"normalize.css\"/>\n" .
-"		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n" .
-"		<meta name=\"description\" content=\"" . $layout_description . $game_name . ".\"></meta>\n" .
-"		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference," . $layout_keywords . "," . $game_name . "\"></meta>\n";
+"		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
+		<title>" . $thispage_title_a . $thispage_title_b . "</title>
+		<link rel=\"canonical\" href=\"" . $php_url . "\"/>
+		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>
+		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
+		<meta name=\"description\" content=\"" . $string_description . $temp_game_name . ". (" . $temp_style_name . ")\"/>
+		<meta name=\"keywords\" content=\"" . $temp_game_name . "," . $temp_style_name . "," . "HTML" . "," . $string_keywords . "\"/>
+		<script src=\"keyboard-chart-js.php\"></script>\n";
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";
-	include("embed_" . $style_filename . ".css");
+	include("./html_" . $style_filename . ".css");
 	echo
 "		</style>\n";
 ?>
 	</head>
 	<body>
 		<header>
-			<div class="bodiv"><h2><?php echo $thispage_title_a; ?><small><?php echo $thispage_title_b; ?></small></h2></div>
+			<div class="bodiv">
+				<h2><?php echo $thispage_title_a; ?><small><?php echo $thispage_title_b; ?></small></h2>
+			</div>
 		</header>
 		<main>
-			<div class="svgdiv" style="position:relative;width:1692px;height:612px;">
-				<iframe src="<?php echo $svg_url; ?>" width="1692" height="612" sandbox style="border:none;margin:0;padding:0;">
-				<!--    <img src="triangle.png" alt="Triangle with three unequal sides" />-->
-				</iframe>
+			<div class="bodiv" style="width:1656px;height:468px;">
+				<div id="keydiv" style="position:relative;width:1656px;height:468px;">
 <?php
-/*
-	echo
-"				<div style=\"position:absolute;left:600px;top:521.5px;width:728px;height:90px;padding:0;margin:0;z-index:10;\">\n";
-	include($path_root . "ssi/adsense_horz_large.php");
-	echo
+	// validity checks
+	if (!$gamesrecord_id)
+	{
+		echo
+"					<h3>No bindings found for game \"" . $temp_game_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</h3>";
+	}
+	// validity checks
+	if (!$stylesrecord_id)
+	{
+		echo
+"					<h3>No configurations found for style \"" . $temp_style_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</h3>";
+	}
+	// keys
+	if ($gamesrecord_id && $stylesrecord_id)
+	{
+		for ($i = 0; $i < $layout_keysnum; $i++)
+		{
+			if (array_key_exists($i, $position_table))
+			{
+				// position_left, position_top, position_width, position_height, symbol_low, symbol_cap, symbol_altgr, key_number, lowcap_optional
+				$key_sty	= array_key_exists($i, $keystyle_table) ? getkeyclass($keystyle_table[$i][0]) : "";
+				$position_row	= $position_table[$i];
+				$pos_lft	= $position_row[0] + $layout_keygap/2;
+				$pos_top	= $position_row[1] + $layout_keygap/2;
+				$pos_wid	= $position_row[2] - $layout_keygap;		// 4
+				$pos_hgh	= $position_row[3] - $layout_keygap;
+				$key_low	= $position_row[4];
+				$key_hgh	= $position_row[5];
+				$key_rgt	= $position_row[6];
+				$key_opt	= $position_row[8];
+				$img_wid	= 48;
+				$img_hgh	= 48;
+				$img_pos_x	= $pos_wid/2 - $img_wid/2;
+				$img_pos_y	= $pos_hgh/2 - $img_hgh/2;
+				if (array_key_exists($i, $binding_table))
+				{
+					$binding_row	= $binding_table[$i];
+					$bkg_nor = getcolor($binding_row[0]);
+					$cap_nor = $binding_row[1];
+					$bkg_shf = getcolor($binding_row[2]);
+					$cap_shf = $binding_row[3];
+					$bkg_ctl = getcolor($binding_row[4]);
+					$cap_ctl = $binding_row[5];
+					$bkg_alt = getcolor($binding_row[6]);
+					$cap_alt = $binding_row[7];
+					$bkg_agr = getcolor($binding_row[8]);
+					$cap_agr = $binding_row[9];
+					$bkg_xtr = getcolor($binding_row[10]);
+					$cap_xtr = $binding_row[11];
+					$img_fil = $binding_row[12];
+					$img_uri = $binding_row[13];
+				}
+				else
+				{
+					$bkg_nor = "non";
+					$cap_nor = "";
+					$bkg_shf = "non";
+					$cap_shf = "";
+					$bkg_ctl = "non";
+					$cap_ctl = "";
+					$bkg_alt = "non";
+					$cap_alt = "";
+					$bkg_agr = "non";
+					$cap_agr = "";
+					$bkg_xtr = "non";
+					$cap_xtr = "";
+					$img_fil = "";
+					$img_uri = "";
+				}
+				// key outer container
+				echo
+"					<div id=\"keyout_" . $i . "\" class=\"keyout cap" . $bkg_nor . " " . $key_sty . "\" style=\"left:" . $pos_lft . "px;top:" . $pos_top . "px;width:" . $pos_wid . "px;height:" . $pos_hgh . "px;background-size:auto;\">\n";
+				// icon images
+				if (($img_uri != "") || ($write_maximal_keys == true))
+				{
+					if ($img_uri == "")
+					{
+						$display = "none";
+					}
+					else
+					{
+						$display = "block";
+					}
+					echo
+"						<img id=\"capimg_" . $i . "\" class=\"capimg\" style=\"left:" . $img_pos_x . "px;top:" . $img_pos_y . "px;width:" . $img_wid . "px;height:" . $img_hgh . "px;display:" . $display . ";\" src=\"" . $img_uri . "\"/>\n";
+				}
+				// key characters
+				if (($key_hgh != "") || ($write_maximal_keys == true))
+				{
+					print_key_html("keyhgh_" . $i, "keyhgh", null, $key_hgh);
+				}
+				if (($key_low != "") || ($write_maximal_keys == true))
+				{
+					if ($key_opt == false)
+					{
+						print_key_html("keylow_" . $i, "keylow", null, $key_low);
+					}
+					else
+					{
+						print_key_html("keylow_" . $i, "keynon", null, $key_low);
+					}
+				}
+				if (($key_rgt != "") || ($write_maximal_keys == true))
+				{
+					print_key_html("keyrgt_" . $i, "keyrgt", null, $key_rgt);
+				}
+				// key captions
+				if (($cap_nor != "") || ($write_maximal_keys == true))
+				{
+					if ($key_opt == false)
+					{
+						print_key_html("capnor_" . $i, "capopf", $bkg_nor, $cap_nor);
+					}
+					else
+					{
+						print_key_html("capnor_" . $i, "capopt", $bkg_nor, $cap_nor);
+					}
+				}
+				if (($cap_shf != "") || ($write_maximal_keys == true))
+				{
+					print_key_html("capshf_" . $i, "capshf", $bkg_shf, $cap_shf);
+				}
+				if (($cap_ctl != "") || ($write_maximal_keys == true))
+				{
+					print_key_html("capctl_" . $i, "capctl", $bkg_ctl, $cap_ctl);
+				}
+				if (($cap_alt != "") || ($write_maximal_keys == true))
+				{
+					print_key_html("capalt_" . $i, "capalt", $bkg_alt, $cap_alt);
+				}
+				if (($cap_agr != "") || ($write_maximal_keys == true))
+				{
+					print_key_html("capagr_" . $i, "capagr", $bkg_agr, $cap_agr);
+				}
+				if (($cap_xtr != "") || ($write_maximal_keys == true))
+				{
+					print_key_html("capxtr_" . $i, "capxtr", $bkg_xtr, $cap_xtr);
+				}
+				echo
+"					</div>\n";
+			}
+		}
+	}
+?>
+				</div>
+			</div>
+			<div class="bodiv">
+				<div class="inbtop">
+					<div class="keyout capnon" style="position:relative;left:2px;top:2px;width:68px;height:68px;">
+						<div class="keyhgh">Upcase</div>
+						<div class="keylow">Lowcase</div>
+						<div class="capopf">Caption</div>
+						<div class="capshf">Shift</div>
+						<div class="capctl">Ctrl</div>
+						<div class="capalt">Alt</div>
+					</div>
+				</div>
+<?php
+	// legend
+	if ($stylegroup_id == 1)
+	{
+		echo
+"				<div class=\"inbtop\" style=\"margin-left:36px;\">\n";
+		// $legend_count is hardcoded as 12!
+		for ($i = 0; $i < $legend_count; $i++)
+		{
+			if ($i % 3 == 0)
+			{
+				echo
+"					<div class=\"legtbl inbtop\">\n";
+			}
+			if (isset($legend_table[$i]))
+			{
+				$leg_color = getcolor($legend_table[$i][0]);
+				$leg_value = cleantextHTML($legend_table[$i][1]);
+				echo
+"						<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\"></div><div class=\"legcll legtxt\">" . $leg_value . "</div></div>\n";
+			}
+			else
+			{
+				echo
+"						<div class=\"legrow\"><div class=\"legcll\"></div><div class=\"legcll\"></div></div>\n";
+			}
+			if ($i % 3 == 2)
+			{
+				echo
+"					</div>\n";
+			}
+		}
+		echo
 "				</div>\n";
-*/
+	}
+	if ($show_advertisements === true)
+	{
+		echo
+"				<div class=\"inbtop\" style=\"margin-left:1em;\">";
+		include($path_root . "ssi/adsense_horz_large.php");
+		echo
+"				</div>\n";
+	}
 ?>
 			</div>
 <?php
@@ -377,7 +581,7 @@
 ?>
 		</main>
 		<footer>
-<?php include("keyboard-footer.php"); ?>
+<?php include("./keyboard-footer.php"); ?>
 		</footer>
 	</body>
 </html>

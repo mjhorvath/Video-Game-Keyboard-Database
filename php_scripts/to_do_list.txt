@@ -60,3 +60,7 @@ x Finish implementing the "languages" table.
 ~ Remake the loading icon in animated WebP format. Does this graphics format 
   work properly in other browsers besides Google Chrome?
 - Find out if the Git Powershell tool can accept multi-line change notes.
+- I merged the HTML and SVG formats into one format. The diagrams are no longer 
+  rendered using pure HTML code, and the SVG file is now once again embedded 
+  within an HTML wrapper. (This is how the old "embed" format worked.) Not sure 
+  what effect this will have on search engines, however.
