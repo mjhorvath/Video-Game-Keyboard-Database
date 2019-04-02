@@ -200,7 +200,7 @@
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";
-	include("./html_" . $style_filename . ".css");
+	include("html_" . $style_filename . ".css");
 	echo
 "		</style>\n";
 ?>

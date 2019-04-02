@@ -178,14 +178,15 @@
 	<head>
 <?php
 	echo
-"		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></meta>\n" .
-"		<title>" . $thispage_title_a . $thispage_title_b . "</title>\n" .
-"		<link rel=\"canonical\" href=\"" . $php_url . "\"/>\n" .
-"		<link rel=\"icon\" type=\"image/png\" href=\"../favicon.png\" />\n" .
-"		<link rel=\"stylesheet\" type=\"text/css\" href=\"normalize.css\"/>\n" .
-"		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n" .
-"		<meta name=\"description\" content=\"" . $layout_description . $game_name . ".\"></meta>\n" .
-"		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference," . $layout_keywords . "," . $game_name . "\"></meta>\n";
+"		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></meta>
+		<title>" . $thispage_title_a . $thispage_title_b . "</title>
+		<link rel=\"canonical\" href=\"" . $php_url . "\"/>
+		<link rel=\"icon\" type=\"image/png\" href=\"../favicon.png\" />
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"normalize.css\"/>
+		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
+		<meta name=\"description\" content=\"" . $layout_description . $game_name . ".\"></meta>
+		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference," . $layout_keywords . "," . $game_name . "\"></meta>
+		<script src=\"keyboard-chart-js.php\"></script>\n";
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";
