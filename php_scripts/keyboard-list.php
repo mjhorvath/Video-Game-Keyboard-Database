@@ -67,10 +67,10 @@
 "<img id=\"waiting\" src=\"animated_loading_icon.webp\" alt=\"loading\" style=\"position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;\"/>
 <table id=\"tableToSort\" cellspacing=\"0\" cellpadding=\"0\" class=\"kbd_tab\">
 	<tr>
-		<th onclick=\"Wait_and_Sort(0);\">Name					<span id=\"arrw_u0\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d0\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n0\" class=\"arrw_n\">&#9674;</span></th>
-		<th onclick=\"Wait_and_Sort(1);;\" style=\"width:6em;\">Genre		<span id=\"arrw_u1\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d1\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n1\" class=\"arrw_n\">&#9674;</span></th>
-		<th onclick=\"Wait_and_Sort(2);\" style=\"width:4em;\">#ID		<span id=\"arrw_u2\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d2\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n2\" class=\"arrw_n\">&#9674;</span></th>
-		<th onclick=\"Wait_and_Sort(3);\">Record(s)				<span id=\"arrw_u3\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d3\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n3\" class=\"arrw_n\">&#9674;</span></th>
+		<th onclick=\"Wait_and_Sort(0);\">Name		<span id=\"arrw_u0\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d0\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n0\" class=\"arrw_n\">&#9674;</span></th>
+		<th onclick=\"Wait_and_Sort(1);\">Genre		<span id=\"arrw_u1\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d1\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n1\" class=\"arrw_n\">&#9674;</span></th>
+		<th onclick=\"Wait_and_Sort(2);\">#ID		<span id=\"arrw_u2\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d2\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n2\" class=\"arrw_n\">&#9674;</span></th>
+		<th onclick=\"Wait_and_Sort(3);\">Record(s)	<span id=\"arrw_u3\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d3\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n3\" class=\"arrw_n\">&#9674;</span></th>
 	</tr>\n";
 
 	// using 'count()' here may be a bad idea in case there ever appear gaps in the table indexes due to deletions
@@ -86,7 +86,7 @@
 		for ($j = 0; $j < count($platform_array); $j++)
 		{
 			$platform_id_pla = $platform_array[$j][0];
-			$platform_layout_array[$platform_id_pla] = [];
+			$platform_layout_array[$platform_id_pla] = [[],[]];
 		}
 
 		echo
@@ -96,11 +96,13 @@
 		{
 			$game_id_rec = $record_array[$j][0];
 			$layout_id_rec = $record_array[$j][1];
+			$layout_name = getLayoutName($layout_id_rec);
 			$platform_id_rec = getPlatformID($layout_id_rec);
 
 			if ($game_id_rec == $game_id_gam)
 			{
-				$platform_layout_array[$platform_id_rec][] = $layout_id_rec;
+				$platform_layout_array[$platform_id_rec][0][] = $layout_id_rec;
+				$platform_layout_array[$platform_id_rec][1][] = $layout_name;
 			}
 		}
 
@@ -108,15 +110,18 @@
 		{
 			$platform_id_pla = $platform_array[$j][0];
 			$platform_abbv_pla = $platform_array[$j][2];
-			$this_platform = $platform_layout_array[$platform_id_pla];
-			if (count($this_platform) > 0)
+			$these_layout_ids = $platform_layout_array[$platform_id_pla][0];
+			$these_layout_names = $platform_layout_array[$platform_id_pla][1];
+			array_multisort($these_layout_names, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $these_layout_ids);
+			if (count($these_layout_ids) > 0)
 			{
 				echo "<dt>" . $platform_abbv_pla . "</dt>";
 
-				for ($k = 0; $k < count($this_platform); $k++)
+				for ($k = 0; $k < count($these_layout_ids); $k++)
 				{
-					$this_layout = $this_platform[$k];
-					echo "<dd><a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout . "&fmt=0\">" . getLayoutName($this_layout) . "</a></dd>";
+					$this_layout_id = $these_layout_ids[$k];
+					$this_layout_name = $these_layout_names[$k];
+					echo "<dd><a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout_id . "&fmt=0\">" . $this_layout_name . "</a></dd>";
 				}
 			}
 		}

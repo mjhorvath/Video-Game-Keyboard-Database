@@ -724,13 +724,13 @@
 	function selGamesList()
 	{
 		global $con;
-		$selectString = "SELECT g.genre_id, g.game_id, g.game_name, g.game_friendlyurl FROM games as g;";
+		$selectString = "SELECT g.genre_id, g.game_id, g.game_name, g.game_friendlyurl FROM games as g ORDER BY g.game_name;";
 		selectQuery($con, $selectString, "doGamesList");
 	}
 	function selLayoutsList()
 	{
 		global $con;
-		$selectString = "SELECT l.layout_id, l.layout_name, l.platform_id FROM layouts as l;";
+		$selectString = "SELECT l.layout_id, l.layout_name, l.platform_id FROM layouts as l ORDER BY l.layout_name;";
 		selectQuery($con, $selectString, "doLayoutsList");
 	}
 	function selGamesRecordsList()
@@ -742,7 +742,7 @@
 	function selPlatformsList()
 	{
 		global $con;
-		$selectString = "SELECT p.platform_id, p.platform_name, p.platform_abbv FROM platforms as p;";
+		$selectString = "SELECT p.platform_id, p.platform_name, p.platform_abbv FROM platforms as p ORDER BY p.platform_name;";
 		selectQuery($con, $selectString, "doPlatformsList");
 	}
 ?>
