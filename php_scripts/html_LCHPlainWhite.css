@@ -1,13 +1,13 @@
 *		{font-family:DejaVu Sans Condensed,Sans-Serif;}
-body		{background:#fff;color:#000;font-size:11pt;}
-select		{background:#fff;color:#000;}
-option		{background:#fff;color:#000;}
+body		{background:#ffffff;color:#000000;font-size:11pt;}
+select		{background:#ffffff;color:#000000;}
+option		{background:#ffffff;color:#000000;}
 footer		{font-size:smaller;}
 a:link,a:visited
 	{color:#00f;text-decoration:none;}
 a:hover,a:active
 	{color:#00f;text-decoration:underline;}
-div.bodiv	{position:relative;margin:0.5em;padding:18px;border:solid 1px #ccc;}
+div.bodiv	{position:relative;margin:0.5em;padding:18px;border:solid 1px #c0c0c0;}
 div.keyout	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
 div.keyhgh,div.keylow,div.keyrgt,div.capopt,div.capopf
 		{position:absolute;overflow:hidden;padding:2px;white-space:pre;}

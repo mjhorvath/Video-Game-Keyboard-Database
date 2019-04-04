@@ -2,7 +2,7 @@
 svg	{font-family:Verdana,Sans-Serif;font-size:14px;}
 #bkgrec	{stroke:none;fill:#ffffff;}
 .keyout	{overflow:visible;}
-.legtxt	{font-size:14px;fill:#000;}
+.legtxt	{font-size:14px;fill:#000000;}
 .keyhgh,.keylow,.keyrgt
 	{font-size:12px;font-weight:bold;}
 .keyrgt	{text-anchor:end;}
@@ -11,28 +11,28 @@ svg	{font-family:Verdana,Sans-Serif;font-size:14px;}
 .capnor	{font-size:12px;font-weight:normal;}
 .capshf,.capctl,.capalt,.capagr,.capxtr
 	{font-size:10px;text-anchor:end;font-weight:normal;}
-.capshf	{fill:#008;}	/* CIE-L*ch ( 50, 47,270)	blue	*/
-.capctl	{fill:#080;}	/* CIE-L*ch ( 50, 55,150)	green	*/
-.capalt	{fill:#800;}	/* CIE-L*ch ( 50, 88, 30)	red	*/
-.capagr	{fill:#808;}	/* CIE-L*ch ( 50, 97,330)	magenta	*/
-.capxtr	{fill:#088;}	/* CIE-L*ch ( 50, 29,210)	cyan	*/
+.capshf	{fill:#009;}
+.capctl	{fill:#090;}
+.capalt	{fill:#900;}
+.capagr	{fill:#909;}
+.capxtr	{fill:#099;}
 .bakshf	{fill:none;}
 .bakctl	{fill:none;}
 .bakalt	{fill:none;}
 .bakagr	{fill:none;}
 .bakxtr	{fill:none;}
-.recred	{fill:#e22;}
-.recyel	{fill:#ee2;}
-.recgrn	{fill:#2e2;}
-.reccyn	{fill:#2ee;}
-.recblu	{fill:#22e;}
-.recmag	{fill:#e2e;}
+.recred	{fill:#f00;}
+.recyel	{fill:#ff0;}
+.recgrn	{fill:#0f0;}
+.reccyn	{fill:#0ff;}
+.recblu	{fill:#00f;}
+.recmag	{fill:#f0f;}
 .recwht	{fill:#fff;}
-.recgry	{fill:#888;}
+.recgry	{fill:#999;}
 .recblk	{fill:#000;}
-.recorg	{fill:#f80;}
-.recolv	{fill:#880;}
-.recbrn	{fill:#840;}
+.recorg	{fill:#f90;}
+.recolv	{fill:#990;}
+.recbrn	{fill:#930;}
 .recnon	{fill:#fff;}
 .recred,.recyel,.recgrn,.reccyn,.recblu,.recmag,.recwht,.recgry,.recblk,.recorg,.recolv,.recbrn,.recnon
 	{stroke:#000;}

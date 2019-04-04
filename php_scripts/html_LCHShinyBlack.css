@@ -4,18 +4,18 @@
 @font-face
 	{font-family:pt-sans-regular,Sans-Serif;src:url(../fonts/pt-sans/PTS55F.ttf);}
 *	{font-family:pt-sans-regular,Sans-Serif;}
-body	{background:#444;color:#fff;font-size:11pt;}
-select	{background:#fff;color:#000;border:1px solid #000;}
-option	{background:#fff;color:#000;}
+body	{background:#404040;color:#ffffff;font-size:11pt;}
+select	{background:#ffffff;color:#000000;border:1px solid #000000;}
+option	{background:#ffffff;color:#000000;}
 footer	{font-size:smaller;}
 a:link,a:visited
-	{color:#ff0;text-decoration:none;}
+	{color:#ffff00;text-decoration:none;}
 a:hover,a:active
-	{color:#ff0;text-decoration:underline;}
+	{color:#ffff00;text-decoration:underline;}
 .bodiv	{position:relative;margin:1em;}
-.keyout	{font-family:pt-sans-narrow,sans-serif;line-height:100%;font-size:smaller;position:absolute;overflow:hidden;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;box-shadow:0px 1px 1px #444;}
+.keyout	{font-family:pt-sans-narrow,sans-serif;line-height:100%;font-size:smaller;position:absolute;overflow:hidden;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;box-shadow:0px 1px 1px #404040;}
 .keyhgh,.keylow,.keyrgt,.capopt,.capopf
-	{position:absolute;overflow:hidden;padding:2px;white-space:pre;text-shadow:0px 1px 1px #444;color:#fff;}
+	{position:absolute;overflow:hidden;padding:2px;white-space:pre;text-shadow:0px 1px 1px #404040;color:#ffffff;}
 .keyhgh	{font-weight:  bold;left: 0px;top:   0px;}
 .keylow	{font-weight:  bold;left: 0px;bottom:0px;}
 .keyrgt	{font-weight:  bold;right:0px;top:   0px;}

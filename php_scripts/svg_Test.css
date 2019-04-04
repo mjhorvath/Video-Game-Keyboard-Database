@@ -1,8 +1,8 @@
 *	{}
 svg	{font-family:DejaVu Sans Condensed,Sans-Serif;font-size:14px;}
-#bkgrec	{stroke:none;fill:#fff;}
+#bkgrec	{stroke:none;fill:#ffffff;}
 .keyout	{overflow:visible;}
-.legtxt	{font-size:14px;fill:#000;}
+.legtxt	{font-size:14px;fill:#000000;}
 .keyhgh,.keylow,.keyrgt
 	{font-size:12px;font-weight:bold;}
 .keyrgt	{text-anchor:end;}

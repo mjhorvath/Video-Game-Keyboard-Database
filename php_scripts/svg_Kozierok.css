@@ -2,38 +2,38 @@
 svg	{font-family:Verdana,sans-serif;font-size:14px;}
 #bkgrec	{stroke:none;fill:#ffffff;}
 .keyout	{overflow:visible;}
-.legtxt	{font-size:14px;fill:#000;}
-.legkey	{fill:#fff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
+.legtxt	{font-size:14px;fill:#000000;}
+.legkey	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
 .keyhgh,.keylow,.keyrgt
-	{font-size:12px;font-weight:bold;fill:#000;}
+	{font-size:12px;font-weight:bold;fill:#000000;}
 .keyrgt	{text-anchor:end;}
 .keyrec	{}
-.capnor	{font-size:12px;font-weight:normal;fill:#000;}
+.capnor	{font-size:12px;font-weight:normal;fill:#000000;}
 .capshf,.capctl,.capalt,.capagr,.capxtr
 	{font-size:10px;text-anchor:end;font-weight:normal;}
-.capshf	{fill:#00e;}
-.capctl	{fill:#080;}	/* darker	*/
-.capalt	{fill:#e00;}
-.capagr	{fill:#ee0;}
-.capxtr	{fill:#0ee;}
+.capshf	{fill:#0000e0;}
+.capctl	{fill:#008000;}	/* darker	*/
+.capalt	{fill:#e00000;}
+.capagr	{fill:#e0e000;}
+.capxtr	{fill:#00e0e0;}
 .bakshf	{fill:none;}
 .bakctl	{fill:none;}
 .bakalt	{fill:none;}
 .bakagr	{fill:none;}
 .bakxtr	{fill:none;}
 .capimg	{}
-.reccssA	{fill:#c44;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssB	{fill:#cc4;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssC	{fill:#4c4;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssD	{fill:#4cc;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssE	{fill:#44c;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssF	{fill:#c4c;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.txtcssA	{fill:#000;}
-.txtcssB	{fill:#000;}
-.txtcssC	{fill:#000;}
-.txtcssD	{fill:#000;}
-.txtcssE	{fill:#000;}
-.txtcssF	{fill:#000;}
+.reccssA	{fill:#c04040;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
+.reccssB	{fill:#c0c040;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
+.reccssC	{fill:#40c040;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
+.reccssD	{fill:#40c0c0;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
+.reccssE	{fill:#4040c0;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
+.reccssF	{fill:#c040c0;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
+.txtcssA	{fill:#000000;}
+.txtcssB	{fill:#000000;}
+.txtcssC	{fill:#000000;}
+.txtcssD	{fill:#000000;}
+.txtcssE	{fill:#000000;}
+.txtcssF	{fill:#000000;}
 .recred	{}
 .recyel	{}
 .recgrn	{}

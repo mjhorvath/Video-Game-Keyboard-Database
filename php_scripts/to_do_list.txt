@@ -17,7 +17,7 @@ Incomplete tasks are marked with a minus '-'.
   submit button.
 - Should maybe store the SVG patterns, filters and gradients in separate files, 
   rather than cluttering up the main SVG file. But since there are only a dozen 
-  or so styles at this time, it may not currently be a big deal.
+  or so styles at this time, it may not currently be important.
 - Continue developing the "Spreadsheet View" of the submission form, and permit 
   users to alter or update the keyboard data using it if they want to.
 + Convert input TABLEs to DIVs.
@@ -25,16 +25,18 @@ Incomplete tasks are marked with a minus '-'.
   already appears in the site's horizontal breadcrumbs. Not sure.
 + Need a loading icon since it takes a while for all the AJAX stuff (e.g. 
   reCAPTCHA) to download completely.
-- I should change all the various alerts boxes to something prettier.
+- I should change all the various JavaScript alert boxes to something prettier.
 + The "required" attribute of the email INPUT elements should cause the 
   submission form to not post if those INPUTs are not filled properly. This 
   includes the email address field, which requires special syntax.
 - The key caption legend should also be configurable.
-x Finish implementing the "languages" table.
+x Implement a "languages" table. [Ed. It may be sufficient to simply tie the 
+  languages the bindings texts are written in to the languages of the 
+  keyboards.]
 + The footer is the same for many of the views. It could be placed in a 
   separate file and simply included.
 - Add timestamp columns to the various SQL tables to record the dates and times 
-  when rows were added or last modified.
+  when records are added or modified.
 - I would also like to create charts/diagrams for gamepads, mice and joysticks, 
   but the sheer number of different devices will make this task very difficult.
 + It may be better to reverse the order of the selection dialogs on the front 
@@ -43,11 +45,9 @@ x Finish implementing the "languages" table.
   searching for a needle in a haystack.
 - Not sure whether the sitemap should list each game once for every platform or 
   layout. Does it confuse the search engines to have multiples of each game?
-+ Game genres should be listed alphabetically instead of by the 
-  "genre_displayorder" column (which happens to be alphabetical, too, and is 
-  thus redundant).
 - Should the accordion menus be sorted alphabetically, or should I add a 
-  "displayorder" column to the SQL tables?
+  "displayorder" column to each SQL table? If I can come up with an easy way to 
+  update the "displayorder" columns using SQL commands, then I may add them.
 - Should mouse, joystick, etc. commands be lined up neatly with left and right 
   parts separated by an equal '=' sign, for instance using a table? Or should I 
   instead use a definition list?
@@ -55,12 +55,23 @@ x Finish implementing the "languages" table.
   be placed into multiple genres. What type of GUI do I need to facilitate this 
   and allow  visitors to select more than one genre?
 - How granular should I get WRT video game genres? Should I list sub- and sub-
-  sub-genres? How many? Which ones?
+  sub-genres? How many? Which ones? How about a tag cloud?
 - Rename "Win" key to "Super" or "Meta"?
-~ Remake the loading icon in animated WebP format. Does this graphics format 
++ Remake the loading icon in animated WebP format. Does this graphics format 
   work properly in other browsers besides Google Chrome?
 - Find out if the Git Powershell tool can accept multi-line change notes.
 - I merged the HTML and SVG formats into one format. The diagrams are no longer 
   rendered using pure HTML code, and the SVG file is now once again embedded 
   within an HTML wrapper. (This is how the old "embed" format worked.) Not sure 
   what effect this will have on search engines, however.
+- Now that I have ditched the HTML format for the principal viewing, I should 
+  update the editor to use SVG as well. This will require some cross-frame 
+  JavaScript.
+- Experiment with flexbox in the "CSS3 Testing" theme. The "Command" DIVs could 
+  make use of it to automatically wrap or resize themselves based on the amount 
+  of space available to them.
+- Users should maybe be able to enter text directly onto the keyboard on the 
+  submissions form. Have to think this through.
+- Users should maybe be able to press the ALT modifier key and see the bindings 
+  that make use of it. IIRC there is another project on the Internet that works 
+  in this manner.

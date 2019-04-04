@@ -9,20 +9,26 @@
 	include($path_root . 'ssi/normalpage.php');
 	print($page_top);
 ?>
-<h2>News &amp; updates:</h2>
+<h2>News &amp; Updates</h2>
 <ul>
+	<li>2019/04/04: Added bindings for <i>Secret World Legends</i>. This brings the total number of games up to 200!</li>
+	<li>2019/04/03: Added bindings for <i>Rebel Galaxy</i>.</li>
+	<li>2019/04/03: Fixed many minor errors in CSS color definitions.</li>
+	<li>2019/04/02: Created bindings for the "Test Sample" and "Database Key Numbers" reference materials for the "US 104 Key (Dvorak)", "UK 105 Key (ISO)" and "ES 105 Key (ISO)" keyboards.</li>
+	<li>2019/04/02: Added bindings for <i>X Rebirth</i> and <i>X4: Foundations</i>.</li>
 	<li>2019/04/02: I merged the HTML and SVG formats into one format. The diagrams are no longer rendered using pure HTML code, and the SVG file is now once again embedded within an HTML wrapper. (This is how the old "embed" format worked.) Not sure what effect this will have on search engines, however.</li>
-	<li>2019/04/01: Tweaked diagram dimensions.</li>
+	<li>2019/04/01: Tweaked diagram dimensions. The gaps between the different sections of keys are now 1/2 unit in width. The borders around the edges are now 1/4 unit wide.</li>
+	<li>2019/04/01: Added bindings for <i>Apex Legends</i> and <i>Tom Clancy's Rainbow Six Siege</i>.</li>
 	<li>2019/03/30: Fixed alphabetical sort order of acronyms on front page.</li>
 	<li>2019/03/30: Fixed some minor issues with the alphabetical list.</li>
 	<li>2019/03/28: Moved all font files to a different folder.</li>
-	<li>2019/03/28: Added the <i>US 104 Key (Dvorak)</i> layout.</li>
+	<li>2019/03/28: Added the "US 104 Key (Dvorak)" layout.</li>
 	<li>2019/03/28: Added bindings for <i>World of Tanks</i> and <i>Counter-Strike: Global Offensive</i>.</li>
 	<li>2019/03/27: The diagram legends are now sorted by legend group.</li>
-	<li>2019/03/27: Updated <i>Elite Dangerous</i> keyboard and mouse controls.</li>
+	<li>2019/03/27: Updated the <i>Elite Dangerous</i> keyboard and mouse controls.</li>
 	<li>2019/03/26: Style selection dialog in page footers is now alphabetized and organized into groups.</li>
 	<li>2019/03/25: Replaced loading icon with one I created myself.</li>
-	<li>2019/03/24: Added the "UK 105 Key (ISO)" and "ES 105 Key (ISO)" keyboards. They only have the "Blank Starter" bindings so far, though.</li>
+	<li>2019/03/24: Added the "UK 105 Key (ISO)" and "ES 105 Key (ISO)" keyboards. They only have the "Blank Starter" bindings at the moment, however.</li>
 	<li>2019/03/24: Fixed one of the columns in the "positions" table was not set to auto-increment.</li>
 	<li>2019/03/24: Discovered and documented an issue related to the bit(1) datatype and importing of CSV files.</li>
 	<li>2019/03/24: Added bindings for <i>Kenshi</i>.</li>
@@ -35,14 +41,14 @@
 	<li>2019/03/21: Fixed missing leading zeros in "Keyboard Scan Codes" scheme.</li>
 	<li>2019/03/21: Fixed legend order bug in submission form.</li>
 	<li>2019/03/19: Renamed the "Blank Sample" scheme to "Blank Starter".</li>
-	<li>2019/03/19: Revert the bottom row of keys to better match standard ANSI/ISO layouts.</li>
+	<li>2019/03/19: Adjusted the bottom row of keys so they better match standard ANSI/ISO layouts.</li>
 	<li>2019/03/18: Genre names were missing from the alphabetical master list.</li>
 	<li>2019/03/18: Updated scripts to reflect that there is no longer a display order column in the genres table.</li>
 	<li>2019/03/18: You now select the keyboard before the game in the main page.</li>
 	<li>2019/03/11: You now need to fill the message form completely and correctly before data is sent to my mailbox.</li>
 	<li>2019/03/11: Loading image should load a little faster.</li>
 	<li>2019/03/11: The submission form now sends the data to me using UTF-8 encoding. (Sorry!)</li>
-	<li>2019/03/11: The script now checks first if the reCaptcha box has been checked before enabling the Submit Data button.</li>
+	<li>2019/03/11: The script now checks first if the reCaptcha box has been checked before enabling the "Submit Data" button.</li>
 	<li>2019/03/11: There was a bug preventing the code from signaling that the legend had been altered.</li>
 	<li>2018/06/28: Had to replace all stored procedures with regular SELECT calls since my Web host disabled the creation (and storage) of new routines.</li>
 	<li>2018/06/24: Made several JavaScript-related fixes to the submission form.</li>
@@ -52,10 +58,10 @@
 	<li>2018/06/20: Changed the license for the PHP and JavaScript code to GPLv3. (The database contents and chart designs remain licensed under the CC BY-SA 3.0 license.)</li>
 	<li>2018/06/19: Finished the graphical submission form I started working on. Start with a <a href="keyboard-diagram-blank-sample.php?sty=15&lay=1&fmt=3">blank sample</a>.</li>
 	<li>2018/06/06: Taz sent me updated bindings for <i>The Lord of the Rings Online</i>. Thanks Taz!</li>
-	<li>2018/06/05: Started working on a GUI tool to submit bindings to this project. It is incomplete, but you can <s><a href="keyboard-submit.html">view my progress so far</a></s>.</li>
+	<li>2018/06/05: Started working on a GUI tool to submit bindings to this project. It is incomplete, but you can <s><a href="keyboard-submit.html">view my progress so far</a></s>. [ed. dead link]</li>
 	<li>2018/06/05: Tweaked some HTML and CSS code. Added box borders to the default style.</li>
 	<li>2018/06/04: You can now select between the HTML, SVG and MediaWiki formats from the front page and charts. Hopefully, I can get PDF output working sometime soon.</li>
-	<li>2018/06/04: Renamed the "svg" URL query to "fmt".</li>
+	<li>2018/06/04: Renamed the "svg" URL query to "fmt" since there are now more than two formats.</li>
 	<li>2018/06/04: Fixed a bug in URL query detection.</li>
 	<li>2018/05/30: Created a <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for this project.</li>
 	<li>2018/05/29: Renamed the project from "Video Game Hotkey Maps" back to "Video Game Keyboard Diagrams".</li>
@@ -125,14 +131,16 @@
 	<li>2009/05/11: After several years of neglect, I've done a major overhaul of the project's scripts. Please forgive (and report) any errors! Also, feel free to submit new bindings, layouts or styles.</li>
 	<li>This project was initially started circa 2004 when my site was hosted on GeoCities. Back then it was mostly pure JavaScript and HTML. (Free GeoCities accounts were not permitted to use PHP or MySQL.) It has come a long way since then. ;)</li>
 </ul>
-<h2>Credits:</h2>
+<h2>Credits</h2>
 <ul>
+	<li>If you have submitted layouts, bindings or styles, then your name will also appear at the bottom of each diagram.</li>
 	<li>Kozierok style: <i>Keyboard Key Groupings</i> by Charles M. Kozierok (<a target="_blank" href="http://www.pcguide.com/ref/kb/group-c.html">link</a>)</li>
 	<li>Savard style: <i>Scan Codes Demystified</i> by John J. G. Savard (<a target="_blank" href="http://www.quadibloc.com/comp/scan.htm">link</a>)</li>
 	<li>Hello Kitty style: <i>Hello Kitty Keyboard</i> by DreamKitty.com (<a target="_blank" href="http://www.dreamkitty.com/Merchant2/merchant.mv?Screen=PROD&Store_Code=DK2000&Product_Code=K-FB109141&Category_Code=HK">link</a>)</li>
 	<li>Doraemon style: <i>Doraemon Keyboard</i> by DreamKitty.com (<a target="_blank" href="http://www.dreamkitty.com/Merchant5/merchant.mvc?Screen=PROD&Store_Code=DK2000&Product_Code=O-FB761011&Category_Code=">link</a>)</li>
 	<li>FunKeyBoard style: <i>FunKeyBoard</i> by Chester Creek Technologies (<a target="_blank" href="http://www.venturaes.com/index_new.asp?http://www.venturaes.com/chestercreek/index.html">link</a>)</li>
 	<li>"Simple JQuery Accordion Menu" by Marco van Hylckama Vlieg. (<a target="_blank" href="http://www.i-marco.nl/weblog/">link</a>)</li>
+	<li>Table sorting script by W3Schools.com. (<a target="_blank" href="https://www.w3schools.com/howto/howto_js_sort_table.asp">link</a>)</li>
 	<li>Several icons from the Noun Project. (<a target="_blank" href="https://thenounproject.com/">link</a>)
 		<ul>
 			<li>Spreadsheet by Arthur Shlain</li>
@@ -144,7 +152,7 @@
 		</ul>
 	</li>
 </ul>
-<h2>Links to further reading:</h2>
+<h2>Links to Further Reading</h2>
 <ul>
 
 	<li>ShortcutMapper (<a target="_blank" href="http://waldobronchart.github.io/ShortcutMapper/">link</a>)</li>

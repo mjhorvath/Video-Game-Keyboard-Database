@@ -1,10 +1,10 @@
 *	{font-family:Verdana,sans-serif;}
-body	{color:#fff;background:#000;font-size:11pt;}
-select	{color:#fff;background:#000;border:1px solid #fff;}
-option	{color:#fff;background:#000;}
+body	{color:#ffffff;background:#000000;font-size:11pt;}
+select	{color:#ffffff;background:#000000;border:1px solid #ffffff;}
+option	{color:#ffffff;background:#000000;}
 footer	{font-size:smaller;}
 .bodiv	{position:relative;margin:1em;}
-.keyout	{position:absolute;overflow:hidden;font-size:smaller;border:1px solid #fff;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;}
+.keyout	{position:absolute;overflow:hidden;font-size:smaller;border:1px solid #ffffff;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;}
 .keyhgh,.keylow,.keyrgt,.capopt,.capopf
 	{position:absolute;overflow:hidden;padding:2px;white-space:pre;}
 .keyhgh	{font-weight:  bold;left: 0px;top:   0px;}
@@ -15,11 +15,11 @@ footer	{font-size:smaller;}
 .capopf	{font-weight:normal;left: 0px;bottom:1em;}
 .capshf,.capctl,.capalt,.capagr,.capxtr
 	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
-.capshf	{color:#008;}
-.capctl	{color:#080;}
-.capalt	{color:#800;}
-.capagr	{color:#808;}
-.capxtr	{color:#088;}
+.capshf	{color:#000080;}
+.capctl	{color:#008000;}
+.capalt	{color:#800000;}
+.capagr	{color:#800080;}
+.capxtr	{color:#008080;}
 .capimg	{position:absolute;}
 .legtbl	{display:table;border-collapse:separate;border-spacing:2px;}
 .legrow	{display:table-row;}
@@ -29,29 +29,29 @@ footer	{font-size:smaller;}
 .inbtop	{display:inline-block;vertical-align:top;}
 .inbmid	{display:inline-block;vertical-align:middle;}
 .combox	{width:22em;}
-.capred,.legred,.selred,.optred	{background:#e22;color:#000;}
-.capyel,.legyel,.selyel,.optyel	{background:#ee2;color:#000;}
-.capgrn,.leggrn,.selgrn,.optgrn	{background:#2e2;color:#000;}
-.capcyn,.legcyn,.selcyn,.optcyn	{background:#2ee;color:#000;}
-.capblu,.legblu,.selblu,.optblu	{background:#22e;color:#000;}
-.capmag,.legmag,.selmag,.optmag	{background:#e2e;color:#000;}
-.capwht,.legwht,.selwht,.optwht	{background:#fff;color:#000;}
-.capgry,.leggry,.selgry,.optgry	{background:#888;color:#000;}
-.capblk,.legblk,.selblk,.optblk	{background:#000;color:#fff;}
-.caporg,.legorg,.selorg,.optorg	{background:#f80;color:#000;}
-.capolv,.legolv,.selolv,.optolv	{background:#880;color:#000;}
-.capbrn,.legbrn,.selbrn,.optbrn	{background:#840;color:#000;}
-.capnon,.legnon,.selnon,.optnon	{background:#000;color:#fff;}
-.capred,.legred	{border:1px solid #fff;}
-.capyel,.legyel	{border:1px solid #fff;}
-.capgrn,.leggrn	{border:1px solid #fff;}
-.capcyn,.legcyn	{border:1px solid #fff;}
-.capblu,.legblu	{border:1px solid #fff;}
-.capmag,.legmag	{border:1px solid #fff;}
-.capwht,.legwht	{border:1px solid #fff;}
-.capgry,.leggry	{border:1px solid #fff;}
-.capblk,.legblk	{border:1px solid #fff;}
-.caporg,.legorg	{border:1px solid #fff;}
-.capolv,.legolv	{border:1px solid #fff;}
-.capbrn,.legbrn	{border:1px solid #fff;}
-.capnon,.legnon	{border:1px solid #fff;}
+.capred,.legred,.selred,.optred	{background:#e02020;color:#000000;}
+.capyel,.legyel,.selyel,.optyel	{background:#e0e020;color:#000000;}
+.capgrn,.leggrn,.selgrn,.optgrn	{background:#20e020;color:#000000;}
+.capcyn,.legcyn,.selcyn,.optcyn	{background:#20e0e0;color:#000000;}
+.capblu,.legblu,.selblu,.optblu	{background:#2020e0;color:#000000;}
+.capmag,.legmag,.selmag,.optmag	{background:#e020e0;color:#000000;}
+.capwht,.legwht,.selwht,.optwht	{background:#ffffff;color:#000000;}
+.capgry,.leggry,.selgry,.optgry	{background:#808080;color:#000000;}
+.capblk,.legblk,.selblk,.optblk	{background:#000000;color:#ffffff;}
+.caporg,.legorg,.selorg,.optorg	{background:#f08000;color:#000000;}
+.capolv,.legolv,.selolv,.optolv	{background:#808000;color:#000000;}
+.capbrn,.legbrn,.selbrn,.optbrn	{background:#804000;color:#000000;}
+.capnon,.legnon,.selnon,.optnon	{background:#000000;color:#ffffff;}
+.capred,.legred	{border:1px solid #ffffff;}
+.capyel,.legyel	{border:1px solid #ffffff;}
+.capgrn,.leggrn	{border:1px solid #ffffff;}
+.capcyn,.legcyn	{border:1px solid #ffffff;}
+.capblu,.legblu	{border:1px solid #ffffff;}
+.capmag,.legmag	{border:1px solid #ffffff;}
+.capwht,.legwht	{border:1px solid #ffffff;}
+.capgry,.leggry	{border:1px solid #ffffff;}
+.capblk,.legblk	{border:1px solid #ffffff;}
+.caporg,.legorg	{border:1px solid #ffffff;}
+.capolv,.legolv	{border:1px solid #ffffff;}
+.capbrn,.legbrn	{border:1px solid #ffffff;}
+.capnon,.legnon	{border:1px solid #ffffff;}

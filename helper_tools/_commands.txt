@@ -1,14 +1,5 @@
-\N	229	1	blah	blah
-\N	229	1	blah	blah
-\N	229	2	blah	blah
-\N	229	2	blah	blah
-\N	229	3	blah	blah
-\N	229	3	blah	blah
-\N	229	4		blah
-\N	229	4		blah
-\N	229	5	blah	blah
-\N	229	5	blah	blah
-\N	229	6	blah	blah
-\N	229	6	blah	blah
-\N	229	7	blah	blah
-\N	229	7	blah	blah
+\N	233	2	MMB	Autorun
+\N	233	2	MB4	Action button 1
+\N	233	1	CTRL + Tab	Target nearest friend
+\N	233	1	CTRL + Shift + Tab	Target previous friend
+\N	233	1	CTRL + Shift + F	Toggle framerate

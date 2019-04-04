@@ -35,17 +35,17 @@ svg	{font-family:DejaVu Sans Condensed,Sans-Serif;font-size:14px;}
 .recorg	{fill:#ECA777;}	/* CIE-L*ch ( 74, 40, 60) */
 .recolv	{fill:#A8BF75;}	/* CIE-L*ch ( 74, 40,120) */
 .recbrn	{fill:#685510;}	/* CIE-L*ch ( 37, 40, 90) */
-.recnon	{fill:#404040;}
+.recnon	{fill:#B6B6B6;} /* CIE-L*ch ( 74,  0,  0) */
 .txtred	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* CIE-L*ch ( 74, 40, 30) */
 .txtyel	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* CIE-L*ch ( 74, 40, 90) */
 .txtgrn	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* CIE-L*ch ( 74, 40,150) */
 .txtcyn	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* CIE-L*ch ( 74, 40,210) */
 .txtblu	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* CIE-L*ch ( 74, 40,270) */
 .txtmag	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* CIE-L*ch ( 74, 40,330) */
-.txtwht	{fill:#000000;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* CIE-L*ch (100,  0,  0) */
-.txtgry	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* CIE-L*ch ( 74,  0,  0) */
-.txtblk	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* CIE-L*ch (  0,  0,  0) */
+.txtwht	{fill:#000000;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
+.txtgry	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
+.txtblk	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
 .txtorg	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* CIE-L*ch ( 74, 40, 60) */
 .txtolv	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* CIE-L*ch ( 74, 40,120) */
 .txtbrn	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* CIE-L*ch ( 37, 40, 90) */
-.txtnon	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
+.txtnon	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);} /* CIE-L*ch ( 74,  0,  0) */

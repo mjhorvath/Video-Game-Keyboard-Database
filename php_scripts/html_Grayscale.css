@@ -1,12 +1,12 @@
 *	{font-family:Verdana,sans-serif;}
-body	{color:#000;font-size:11pt;}
-select	{color:#000;background:#ffffff;border:1px solid #000;}
-option	{color:#000;background:#ffffff;}
+body	{color:#000000;font-size:11pt;}
+select	{color:#000000;background:#ffffff;border:1px solid #000000;}
+option	{color:#000000;background:#ffffff;}
 footer	{font-size:smaller;}
 .bodiv	{position:relative;margin:1em;}
 .title	{font-size:small;font-weight:bold;}
-.cut	{position:absolute;border:1px dashed #000;}
-.keyout	{position:absolute;overflow:hidden;border:1px solid #ccc;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
+.cut	{position:absolute;border:1px dashed #000000;}
+.keyout	{position:absolute;overflow:hidden;border:1px solid #c0c0c0;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
 .keyhgh,.keylow,.keyrgt,.capopt,.capopf
 	{position:absolute;overflow:hidden;padding:2px;white-space:pre;text-shadow:0px 0px 4px #ffffff;width:100%;}
 .keyhgh	{font-weight:  bold;left: 0px;top:   0px;}
@@ -16,11 +16,11 @@ footer	{font-size:smaller;}
 .capopf	{font-weight:normal;left: 0px;bottom:1em;}
 .capshf,.capctl,.capalt,.capagr,.capxtr
 	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
-.capshf	{background:#444;color:#ffffff;}	/*url(gray_trans_016.png), */
-.capctl	{background:#888;color:#ffffff;}	/*url(gray_trans_128.png), */
-.capalt	{background:#ccc;color:#000000;}	/*url(gray_trans_255.png), */
-.capagr	{background:#fff;color:#000000;}	/*url(gray_trans_064.png), */
-.capxtr	{background:#000;color:#ffffff;}	/*url(gray_trans_192.png), */
+.capshf	{background:#404040;color:#ffffff;}	/*url(gray_trans_016.png), */
+.capctl	{background:#808080;color:#ffffff;}	/*url(gray_trans_128.png), */
+.capalt	{background:#c0c0c0;color:#000000;}	/*url(gray_trans_255.png), */
+.capagr	{background:#ffffff;color:#000000;}	/*url(gray_trans_064.png), */
+.capxtr	{background:#000000;color:#ffffff;}	/*url(gray_trans_192.png), */
 .capimg	{position:absolute;}
 .legtbl	{display:table;border-collapse:separate;border-spacing:2px;}
 .legrow	{display:table-row;}

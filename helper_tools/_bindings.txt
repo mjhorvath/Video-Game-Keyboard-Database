@@ -1,12 +1,50 @@
-\N	229	2	one	1	shift	\N	ctrl	\N	alt	\N	\N	\N	\N	\N	\N	\N
-\N	229	3	two	2	shift	\N	ctrl	\N	alt	\N	\N	\N	\N	\N	\N	\N
-\N	229	4	three	3	shift	\N	ctrl	\N	alt	\N	\N	\N	\N	\N	\N	\N
-\N	229	5	four	4	shift	\N	ctrl	\N	alt	\N	\N	\N	\N	\N	\N	\N
-\N	229	6	five	5	shift	\N	ctrl	\N	alt	\N	\N	\N	\N	\N	\N	\N
-\N	229	7	six	6	shift	\N	ctrl	\N	alt	\N	\N	\N	\N	\N	\N	\N
-\N	229	8	seven	7	shift	\N	ctrl	\N	alt	\N	\N	\N	\N	\N	\N	\N
-\N	229	9	eight	8	shift	\N	ctrl	\N	alt	\N	\N	\N	\N	\N	\N	\N
-\N	229	10	nine	9	shift	\N	ctrl	\N	alt	\N	\N	\N	\N	\N	\N	\N
-\N	229	11	ten	10	shift	\N	ctrl	\N	alt	\N	\N	\N	\N	\N	\N	\N
-\N	229	12	eleven	11	shift	\N	ctrl	\N	alt	\N	\N	\N	\N	\N	\N	\N
-\N	229	13	twelve	12	shift	\N	ctrl	\N	alt	\N	\N	\N	\N	\N	\N	\N
+\N	233	1	Attack\\nStance	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	2	Action\\nButton 2	1	Shortcut\\n1	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	3	Action\\nButton 3	1	Shortcut\\n2	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	4	\N	\N	Shortcut\\n3	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	14	Toggle\\nRun/Walk	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	15	Drink\\nAnima\\nPotion	1	\N	\N	Target\\nNearest\\nFriend	2	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	16	Action\\nButton 1	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	17	Move\\nForward	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	18	Action\\nButton 4	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	19	Fast\\nReply	4	Alternate\\nWeapons	1	Send\\nReport	6	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	20	\N	\N	Teleport\\nWindow	6	Fast\\nTell	4	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	21	Assembly\\nWindow	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	23	Inventory	6	Dressing\\nRoom	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	24	Emotes	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	25	Agent\\nNetwork	6	Pet\\nInventory	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	30	Strafe\\nLeft	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	31	Move\\nBackward	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	32	Strafe\\nRight	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	33	Interact	1	Friends	6	Assist\\nHostile’s\\nTarget	1	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	34	\N	\N	Cabal\\nWindow	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	35	Auction\\nHouse	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	36	Mission\\nJournal	6	Challenge\\nJournal	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	38	Achv &\\nLegends	6	Lockout\\nGUI	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	42	Activate\\nChat	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	43	Active Dodge	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	45	Ultima\\nAbility	1	\N	\N	Toggle\\nGUI	6	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	46	Toggle\\nSelected\\nSprint	3	\N	\N	Toggle\\nDefault\\nSprint	3	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	47	Use\\nGadget	1	Social	6	Copy\\nText	6	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	48	Vanity\\nCamera	6	Activity\\nFinder	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	49	Web\\nBrowser	6	\N	\N	Report\\nBug	6	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	50	Abilities	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	51	Map	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	56	Simple\\nGround\\nTargeting	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	57	Toggle\\nTarget\\nMode	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	58	Jump	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	63	Turn\\nLeft	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	66	Move\\nForward	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	67	Move\\nBackward	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	70	Turn\\nRight	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	71	Autorun	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	75	Activate\\nCommand\\nInput	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	88	Abort\\nAction	1	Clear\\nScreen	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	89	Self	2	Raid\\nMember 1	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	90	Group\\nMember 2	2	Raid\\nMember 2	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	91	Group\\nMember 3	2	Raid\\nMember 3	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	92	Group\\nMember 4	2	Raid\\nMember 4	2	\N	\N	Exit\\nGame	6	\N	\N	\N	\N	\N	\N
+\N	233	93	Group\\nMember 5	2	Raid\\nMember 5	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	97	Print\\nCharacter\\nPosition	4	Extended	4	Clipboard	4	\N	\N	\N	\N	\N	\N	\N	\N
+\N	233	98	\N	\N	\N	\N	\N	\N	Camp to\\nLogin	6	\N	\N	\N	\N	\N	\N
+\N	233	99	Screen-\\nshot	6	\N	\N	JPEG	6	\N	\N	\N	\N	\N	\N	\N	\N

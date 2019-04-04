@@ -1,10 +1,10 @@
 *	{font-family:Verdana,sans-serif;}
-body	{color:#000;font-size:11pt;}
-select	{color:#000;background:#fff;border:1px solid #000;}
-option	{color:#000;background:#fff;}
+body	{color:#000000;font-size:11pt;}
+select	{color:#000000;background:#ffffff;border:1px solid #000000;}
+option	{color:#000000;background:#ffffff;}
 footer	{font-size:smaller;}
 .bodiv	{position:relative;margin:1em;}
-.keyout	{position:absolute;overflow:hidden;font-size:smaller;box-shadow:4px 4px 4px #888;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;box-shadow: 0px 1px 1px #444;}
+.keyout	{position:absolute;overflow:hidden;font-size:smaller;box-shadow:4px 4px 4px #808080;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;box-shadow: 0px 1px 1px #404040;}
 .keyhgh,.keylow,.keyrgt,.capopt,.capopf
 	{position:absolute;overflow:hidden;padding:2px;white-space:pre;}
 .keyhgh	{font-weight:  bold;left: 0px;top:   0px;}
@@ -15,11 +15,11 @@ footer	{font-size:smaller;}
 .capopf	{font-weight:normal;left: 0px;bottom:1em;}
 .capshf,.capctl,.capalt,.capagr,.capxtr
 	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;background:transparent;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
-.capshf	{color:#00e;}
-.capctl	{color:#080;}
-.capalt	{color:#e00;}
-.capagr	{color:#ee0;}
-.capxtr	{color:#0ee;}
+.capshf	{color:#0000e0;}
+.capctl	{color:#008000;}
+.capalt	{color:#e00000;}
+.capagr	{color:#e0e000;}
+.capxtr	{color:#00e0e0;}
 .capimg	{position:absolute;}
 .legtbl	{display:table;border-collapse:separate;border-spacing:2px;}
 .legrow	{display:table-row;}
@@ -29,15 +29,15 @@ footer	{font-size:smaller;}
 .inbtop	{display:inline-block;vertical-align:top;}
 .inbmid	{display:inline-block;vertical-align:middle;}
 .combox	{width:22em;}
-.cssA	{background:#fcc;}
-.cssB	{background:#ffc;}
-.cssC	{background:#cfc;}
-.cssD	{background:#cff;}
-.cssE	{background:#ccf;}
-.cssF	{background:#fcf;}
-.cssG	{background:#fff;}
-.cssH	{background:#000;}
-.cssI	{background:#ccc;}
+.cssA	{background:#ffc0c0;}
+.cssB	{background:#ffffc0;}
+.cssC	{background:#c0ffc0;}
+.cssD	{background:#c0ffff;}
+.cssE	{background:#c0c0ff;}
+.cssF	{background:#ffc0ff;}
+.cssG	{background:#ffffff;}
+.cssH	{background:#000000;}
+.cssI	{background:#c0c0c0;}
 .capred,.legred,.selred,.optred	{}                                 
 .capyel,.legyel,.selyel,.optyel	{}
 .capgrn,.leggrn,.selgrn,.optgrn	{}

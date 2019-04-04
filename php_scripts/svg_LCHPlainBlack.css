@@ -1,8 +1,8 @@
 *	{}
 svg	{font-family:DejaVu Sans Condensed,Sans-Serif;font-size:14px;}
-#bkgrec	{stroke:none;fill:#444;}
+#bkgrec	{stroke:none;fill:#404040;}
 .keyout	{overflow:visible;}
-.legtxt	{font-size:14px;fill:#fff;}
+.legtxt	{font-size:14px;fill:#ffffff;}
 .keyhgh,.keylow,.keyrgt
 	{font-size:12px;font-weight:bold;}
 .keyrgt	{text-anchor:end;}
@@ -37,7 +37,7 @@ svg	{font-family:DejaVu Sans Condensed,Sans-Serif;font-size:14px;}
 .recorg	{fill:#ECA777;}	/* ( 74, 40, 60) */
 .recolv	{fill:#A8BF75;}	/* ( 74, 40,120) */
 .recbrn	{fill:#685510;}	/* ( 37, 40, 90) */
-.recnon	{fill:#B6B6B6;}
+.recnon	{fill:#B6B6B6;} /* ( 74,  0,  0) */
 .txtred	{fill:#000000;}
 .txtyel	{fill:#000000;}
 .txtgrn	{fill:#000000;}

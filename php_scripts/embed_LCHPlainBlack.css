@@ -1,10 +1,10 @@
 *		{font-family:DejaVu Sans Condensed,Sans-Serif;}
-body		{background:#444;color:#fff;font-size:11pt;}
-select		{background:#fff;color:#000;}
-option		{background:#fff;color:#000;}
+body		{background:#404040;color:#ffffff;font-size:11pt;}
+select		{background:#ffffff;color:#000000;}
+option		{background:#ffffff;color:#000000;}
 footer		{font-size:smaller;}
 a:link,a:visited
-	{color:#ff0;text-decoration:none;}
+	{color:#ffff00;text-decoration:none;}
 a:hover,a:active
-	{color:#ff0;text-decoration:underline;}
+	{color:#ffff00;text-decoration:underline;}
 div.bodiv	{position:relative;margin:0em;padding:18px;}

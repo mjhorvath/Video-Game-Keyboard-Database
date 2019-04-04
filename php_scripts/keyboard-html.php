@@ -154,7 +154,7 @@
 	$temp_style_name	= $style_name ? $style_name : "Unrecognized Style";
 	$temp_platform_name	= $platform_name ? $platform_name : "Unrecognized Platform";
 	$thispage_title_a	= $temp_game_name;
-	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " " . $temp_layout_name . " - " . $temp_style_name . " - GRID:" . $gamesrecord_id;
+	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - GRID:" . $gamesrecord_id;
 
 	// validity checks (should check the layout here too... but)
 	if (!checkStyle($style_id))

@@ -1,25 +1,25 @@
 *	{font-family:Verdana,sans-serif;}
-body	{color:#fff;background:#000;font-size:11pt;}
-select	{color:#fff;background:#000;border:1px solid #fff;}
-option	{color:#fff;background:#000;}
+body	{color:#ffffff;background:#000000;font-size:11pt;}
+select	{color:#ffffff;background:#000000;border:1px solid #ffffff;}
+option	{color:#ffffff;background:#000000;}
 footer	{font-size:smaller;}
 .bodiv	{position:relative;margin:1em;}
 .keyout	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
 .keyhgh,.keylow,.keyrgt,.capopt,.capopf
 	{position:absolute;overflow:hidden;padding:2px;white-space:pre;}
-.keyhgh	{font-weight:  bold;left: 0px;top:   0px;}
-.keylow	{font-weight:  bold;left: 0px;bottom:0px;}
-.keyrgt	{font-weight:  bold;right:0px;top:   0px;}
+.keyhgh	{font-weight:bold;left: 0px;top:   0px;}
+.keylow	{font-weight:bold;left: 0px;bottom:0px;}
+.keyrgt	{font-weight:bold;right:0px;top:   0px;}
 .keynon	{display:none;}
 .capopt	{font-weight:normal;left: 0px;bottom:0em;}
 .capopf	{font-weight:normal;left: 0px;bottom:1em;}
 .capshf,.capctl,.capalt,.capagr,.capxtr
 	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;background:transparent;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
-.capshf	{color:#00c;}
-.capctl	{color:#0c0;}
-.capalt	{color:#c00;}
-.capagr	{color:#cc0;}
-.capxtr	{color:#0cc;}
+.capshf	{color:#0000cc;}
+.capctl	{color:#00cc00;}
+.capalt	{color:#cc0000;}
+.capagr	{color:#cccc00;}
+.capxtr	{color:#00cccc;}
 .capimg	{position:absolute;}
 .legtbl	{display:table;border-collapse:separate;border-spacing:2px;}
 .legrow	{display:table-row;}

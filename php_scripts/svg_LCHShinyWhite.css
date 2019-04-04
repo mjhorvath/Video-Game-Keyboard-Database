@@ -1,6 +1,6 @@
 *	{}
 svg	{font-family:DejaVu Sans Condensed,Sans-Serif;font-size:14px;}
-#bkgrec	{stroke:none;fill:#ccc;}
+#bkgrec	{stroke:none;fill:#ffffff;}
 .keyout	{overflow:visible;}
 .legtxt	{font-size:14px;fill:#000000;}
 .keyhgh,.keylow,.keyrgt
@@ -31,13 +31,13 @@ svg	{font-family:DejaVu Sans Condensed,Sans-Serif;font-size:14px;}
 .reccyn	{fill:#0CC9D9;}	/* ( 74, 40,210)	cyan	*/
 .recblu	{fill:#80B9FF;}	/* ( 74, 40,270)	blue	*/
 .recmag	{fill:#E4A0DB;}	/* ( 74, 40,330)	magenta	*/
-.recwht	{fill:#ffffff;}
-.recgry	{fill:#808080;}
-.recblk	{fill:#404040;}
+.recwht	{fill:#ffffff;} /*			white	*/
+.recgry	{fill:#808080;} /*			gray	*/
+.recblk	{fill:#000000;} /*			black	*/
 .recorg	{fill:#ECA777;}	/* ( 74, 40, 60)	orange	*/
 .recolv	{fill:#A8BF75;}	/* ( 74, 40,120)	olive	*/
 .recbrn	{fill:#685510;}	/* ( 37, 40, 90)	brown	*/
-.recnon	{fill:#B6B6B6;}
+.recnon	{fill:#B6B6B6;} /* ( 74,  0,  0)	blank	*/
 .txtred	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
 .txtyel	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
 .txtgrn	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}

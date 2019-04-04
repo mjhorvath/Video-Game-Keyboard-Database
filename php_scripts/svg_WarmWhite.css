@@ -2,7 +2,7 @@
 svg	{font-family:Verdana,Sans-Serif;font-size:14px;}
 #bkgrec	{stroke:none;fill:#ffffff;}
 .keyout	{overflow:visible;}
-.legtxt	{font-size:14px;fill:#000;}
+.legtxt	{font-size:14px;fill:#000000;}
 .keyhgh,.keylow,.keyrgt
 	{font-size:12px;font-weight:bold;}
 .keyrgt	{text-anchor:end;}
@@ -10,11 +10,11 @@ svg	{font-family:Verdana,Sans-Serif;font-size:14px;}
 .capnor	{font-size:12px;font-weight:normal;}
 .capshf,.capctl,.capalt,.capagr,.capxtr
 	{font-size:10px;text-anchor:end;font-weight:normal;}
-.capshf	{fill:#00c;}
-.capctl	{fill:#0c0;}
-.capalt	{fill:#c00;}
-.capagr	{fill:#cc0;}
-.capxtr	{fill:#0cc;}
+.capshf	{fill:#0000c0;}
+.capctl	{fill:#00c000;}
+.capalt	{fill:#c00000;}
+.capagr	{fill:#c0c000;}
+.capxtr	{fill:#00c0c0;}
 .bakshf	{fill:none;}
 .bakctl	{fill:none;}
 .bakalt	{fill:none;}

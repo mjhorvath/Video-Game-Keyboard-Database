@@ -1,10 +1,10 @@
 *	{font-family:Verdana,sans-serif;}
-body	{color:#000;font-size:11pt;}
-select	{color:#000;background:#fff;border:1px solid #000;}
-option	{color:#000;background:#fff;}
+body	{color:#000000;font-size:11pt;}
+select	{color:#000000;background:#ffffff;border:1px solid #000000;}
+option	{color:#000000;background:#ffffff;}
 footer	{font-size:smaller;}
 .bodiv	{position:relative;margin:1em;}
-.keyout	{position:absolute;overflow:hidden;border:1px solid #000;font-size:smaller;}
+.keyout	{position:absolute;overflow:hidden;border:1px solid #000000;font-size:smaller;}
 .keyhgh,.keylow,.keyrgt,.capopt,.capopf
 	{position:absolute;overflow:hidden;padding:2px;white-space:pre;}
 .keyhgh	{font-weight:  bold;left: 0px;top:   0px;}
@@ -15,11 +15,11 @@ footer	{font-size:smaller;}
 .capopf	{font-weight:normal;left: 0px;bottom:1em;}
 .capshf,.capctl,.capalt,.capagr,.capxtr
 	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;background:transparent;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
-.capshf	{color:#aae;}
-.capctl	{color:#aea;}
-.capalt	{color:#eaa;}
-.capagr	{color:#eea;}
-.capxtr	{color:#aae;}
+.capshf	{color:#a0a0e0;}
+.capctl	{color:#a0e0a0;}
+.capalt	{color:#e0a0a0;}
+.capagr	{color:#e0e0a0;}
+.capxtr	{color:#a0a0e0;}
 .capimg	{position:absolute;}
 .legtbl	{display:table;border-collapse:separate;border-spacing:2px;}
 .legrow	{display:table-row;}
@@ -29,12 +29,12 @@ footer	{font-size:smaller;}
 .inbtop	{display:inline-block;vertical-align:top;}
 .inbmid	{display:inline-block;vertical-align:middle;}
 .combox	{width:22em;}
-.cssA	{background:#c44;border:2px outset #f00;}
-.cssB	{background:#cc4;border:2px outset #ff0;}
-.cssC	{background:#4c4;border:2px outset #0f0;}
-.cssD	{background:#4cc;border:2px outset #0ff;}
-.cssE	{background:#44c;border:2px outset #00f;}
-.cssF	{background:#c4c;border:2px outset #f0f;}
+.cssA	{background:#c44;border:2px outset #ff0000;}
+.cssB	{background:#cc4;border:2px outset #ffff00;}
+.cssC	{background:#4c4;border:2px outset #00ff00;}
+.cssD	{background:#4cc;border:2px outset #00ffff;}
+.cssE	{background:#44c;border:2px outset #0000ff;}
+.cssF	{background:#c4c;border:2px outset #ff00ff;}
 .capred,.legred,.selred,.optred	{}
 .capyel,.legyel,.selyel,.optyel	{}
 .capgrn,.leggrn,.selgrn,.optgrn	{}

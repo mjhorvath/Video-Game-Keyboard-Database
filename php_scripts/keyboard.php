@@ -300,8 +300,8 @@
 			<div id="but_check" class="acc_check">&#x2714;</div>
 			<div id="but_xmark" class="acc_xmark">&#x2718;</div>
 			<h2>5. Create the Diagram:</h2>
-			<input id="butspawn" type="button" value="Spawn New Diagram" onclick="Check_Values_and_Spawn()"/>
-			<p id="butready">All set! Click the Spawn New Diagram button and let's go!</p>
+			<input id="butspawn" type="button" value="Create New Diagram" onclick="Check_Values_and_Spawn()"/>
+			<p id="butready">All set! Click the Create New Diagram button and let's go!</p>
 			<p id="buterror">Try selecting a keyboard, theme, game and format, and create the diagram again!</p>
 		</div>
 	</div>
@@ -315,7 +315,7 @@
 	<li>Select a theme (visual formatting).</li>
 	<li>Select a game (key bindings).</li>
 	<li>Select a format (output media type).</li>
-	<li>Click on the 'Create Diagram' button. A new window with your selected diagram will appear.</li>
+	<li>Click on the 'Create New Diagram' button. A new window with your selected diagram will appear.</li>
 	<li>View or print the page in the new window.</li>
 </ol>
 <p>The vast majority of the bindings are for the <i>US 104 Key (ANSI)</i> keyboard at this time. If you would like to see more bindings for the other keyboards, you are welcome to contribute! (More on that, below.)</p>
@@ -334,8 +334,8 @@
 	<li>When printing, most likely the chart will not fit within a single letter- or legal-sized page, even when selecting 'Landscape' mode instead of 'Portrait' mode in your printer settings. Luckily, your browser or printer may have a 'shrink to fit' feature that you can take advantage of to automatically adjust the size of the printed page output. Unfortunately, Google Chrome is missing a 'shrink to fit' feature by default, so I recommend investigating one of the workarounds discussed on Super User, <a target="_blank" href="https://superuser.com/questions/979741/how-can-i-make-chrome-shrink-to-fit-on-printing">here</a>.</li>
 	<li>Remember also to enable printing of background colors and images. This setting is found in 'Page Setup' (Mozilla Firefox and Internet Explorer) or within the print dialog itself (Google Chrome). Sadly, this option does not exist at all in Microsoft Edge. I recommend using a different browser.</li>
 	<li>If the colors or keyboard theme are not to your liking, select a different "Theme" from among the options at the top of this page, then try generating the chart again.</li>
-	<li>Printing at 96dpi (dots-per-inch) and 100% scaling should result in a printed page that closely approximates the size and dimensions of many real physical keyboards. Of course, not every keyboard is exactly the same, so YMMV.</li>
+	<li>Printing at 90dpi (dots-per-inch) and 100% scaling should result in a printed page that closely approximates the size and dimensions of many real physical keyboards. Of course, not every keyboard is exactly the same, even when adhering to some of the standard dimensions, so YMMV.</li>
 	<li>On Windows, some Web browers (Google Chrome for instance) use your desktop DPI scaling settings to adjust the size of on-screen HTML elements, resulting in a document that can appear larger or smaller than normal. I'm not 100% sure this affects the printed page output, however.</li>
-	<li>Note, that the darker themes will use a lot of ink.</li>
+	<li>Note, that the darker themes will use up a lot of ink if you print them.</li>
 </ol>
 <?php print($page_bot); ?>

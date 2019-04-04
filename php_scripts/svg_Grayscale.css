@@ -11,16 +11,16 @@ svg	{font-family:Verdana,Sans-Serif;font-size:14px;}
 .capimg	{}
 .capshf,.capctl,.capalt,.capagr,.capxtr
 	{font-size:10px;text-anchor:end;}
-.capshf	{fill:#fff;}
-.capctl	{fill:#fff;}
-.capalt	{fill:#fff;}
-.capagr	{fill:#000;}
-.capxtr	{fill:#fff;}
-.bakshf	{fill:#444;}
-.bakctl	{fill:#888;}
-.bakalt	{fill:#ccc;}
-.bakagr	{fill:#fff;}
-.bakxtr	{fill:#000;}
+.capshf	{fill:#ffffff;}
+.capctl	{fill:#ffffff;}
+.capalt	{fill:#ffffff;}
+.capagr	{fill:#000000;}
+.capxtr	{fill:#ffffff;}
+.bakshf	{fill:#404040;}
+.bakctl	{fill:#808080;}
+.bakalt	{fill:#c0c0c0;}
+.bakagr	{fill:#ffffff;}
+.bakxtr	{fill:#000000;}
 /*
 .bakshf	{fill:url(#gry04)}
 .bakctl	{fill:url(#gry08)}

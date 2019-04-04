@@ -6,7 +6,7 @@ footer	{font-size:smaller;}
 .bodiv	{position:relative;margin:1em;}
 .keyout	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
 .keyhgh,.keylow,.keyrgt,.capopt,.capopf
-	{position:absolute;overflow:hidden;padding:2px;white-space:pre;text-shadow:0px 1px 1px #444;}
+	{position:absolute;overflow:hidden;padding:2px;white-space:pre;text-shadow:0px 1px 1px #404040;}
 .keyhgh	{font-weight:  bold;left: 0px;top:   0px;}
 .keylow	{font-weight:  bold;left: 0px;bottom:0px;}
 .keyrgt	{font-weight:  bold;right:0px;top:   0px;}
@@ -29,16 +29,16 @@ footer	{font-size:smaller;}
 .inbtop	{display:inline-block;vertical-align:top;}
 .inbmid	{display:inline-block;vertical-align:middle;}
 .combox	{width:22em;}
-.capred,.legred,.selred,.optred	{background-image:-webkit-linear-gradient(#000,#FC9C93);background-image:-moz-linear-gradient(#000,#FC9C93);background-image:linear-gradient(#000,#FC9C93);}	/* CIE-L*ch ( 74, 40, 30) */
-.capyel,.legyel,.selyel,.optyel	{background-image:-webkit-linear-gradient(#000,#CEB46C);background-image:-moz-linear-gradient(#000,#CEB46C);background-image:linear-gradient(#000,#CEB46C);}	/* CIE-L*ch ( 74, 40, 90) */
-.capgrn,.leggrn,.selgrn,.optgrn	{background-image:-webkit-linear-gradient(#000,#7CC690);background-image:-moz-linear-gradient(#000,#7CC690);background-image:linear-gradient(#000,#7CC690);}	/* CIE-L*ch ( 74, 40,150) */
-.capcyn,.legcyn,.selcyn,.optcyn	{background-image:-webkit-linear-gradient(#000,#0CC9D9);background-image:-moz-linear-gradient(#000,#0CC9D9);background-image:linear-gradient(#000,#0CC9D9);}	/* CIE-L*ch ( 74, 40,210) */
-.capblu,.legblu,.selblu,.optblu	{background-image:-webkit-linear-gradient(#000,#80B9FF);background-image:-moz-linear-gradient(#000,#80B9FF);background-image:linear-gradient(#000,#80B9FF);}	/* CIE-L*ch ( 74, 40,270) */
-.capmag,.legmag,.selmag,.optmag	{background-image:-webkit-linear-gradient(#000,#E4A0DB);background-image:-moz-linear-gradient(#000,#E4A0DB);background-image:linear-gradient(#000,#E4A0DB);}	/* CIE-L*ch ( 74, 40,330) */
-.capwht,.legwht,.selwht,.optwht	{background-image:-webkit-linear-gradient(#000,#ffffff);background-image:-moz-linear-gradient(#000,#ffffff);background-image:linear-gradient(#000,#ffffff);}	/* CIE-L*ch (100,  0,  0) */
-.capgry,.leggry,.selgry,.optgry	{background-image:-webkit-linear-gradient(#000,#B6B6B6);background-image:-moz-linear-gradient(#000,#B6B6B6);background-image:linear-gradient(#000,#B6B6B6);}	/* CIE-L*ch ( 74,  0,  0) */
-.capblk,.legblk,.selblk,.optblk	{background-image:-webkit-linear-gradient(#000,#000000);background-image:-moz-linear-gradient(#000,#000000);background-image:linear-gradient(#000,#000000);}	/* CIE-L*ch (  0,  0,  0) */
-.caporg,.legorg,.selorg,.optorg	{background-image:-webkit-linear-gradient(#000,#ECA777);background-image:-moz-linear-gradient(#000,#ECA777);background-image:linear-gradient(#000,#ECA777);}	/* CIE-L*ch ( 74, 40, 60) */
-.capolv,.legolv,.selolv,.optolv	{background-image:-webkit-linear-gradient(#000,#A8BF75);background-image:-moz-linear-gradient(#000,#A8BF75);background-image:linear-gradient(#000,#A8BF75);}	/* CIE-L*ch ( 74, 40,120) */
-.capbrn,.legbrn,.selbrn,.optbrn	{background-image:-webkit-linear-gradient(#000,#685510);background-image:-moz-linear-gradient(#000,#685510);background-image:linear-gradient(#000,#685510);}	/* CIE-L*ch ( 37, 40, 90) */
-.capnon,.legnon,.selnon,.optnon	{background-image:-webkit-linear-gradient(#000,#404040);background-image:-moz-linear-gradient(#000,#404040);background-image:linear-gradient(#000,#404040);}
+.capred,.legred,.selred,.optred	{background-image:-webkit-linear-gradient(#000000,#FC9C93);background-image:-moz-linear-gradient(#000000,#FC9C93);background-image:linear-gradient(#000000,#FC9C93);}	/* CIE-L*ch ( 74, 40, 30) */
+.capyel,.legyel,.selyel,.optyel	{background-image:-webkit-linear-gradient(#000000,#CEB46C);background-image:-moz-linear-gradient(#000000,#CEB46C);background-image:linear-gradient(#000000,#CEB46C);}	/* CIE-L*ch ( 74, 40, 90) */
+.capgrn,.leggrn,.selgrn,.optgrn	{background-image:-webkit-linear-gradient(#000000,#7CC690);background-image:-moz-linear-gradient(#000000,#7CC690);background-image:linear-gradient(#000000,#7CC690);}	/* CIE-L*ch ( 74, 40,150) */
+.capcyn,.legcyn,.selcyn,.optcyn	{background-image:-webkit-linear-gradient(#000000,#0CC9D9);background-image:-moz-linear-gradient(#000000,#0CC9D9);background-image:linear-gradient(#000000,#0CC9D9);}	/* CIE-L*ch ( 74, 40,210) */
+.capblu,.legblu,.selblu,.optblu	{background-image:-webkit-linear-gradient(#000000,#80B9FF);background-image:-moz-linear-gradient(#000000,#80B9FF);background-image:linear-gradient(#000000,#80B9FF);}	/* CIE-L*ch ( 74, 40,270) */
+.capmag,.legmag,.selmag,.optmag	{background-image:-webkit-linear-gradient(#000000,#E4A0DB);background-image:-moz-linear-gradient(#000000,#E4A0DB);background-image:linear-gradient(#000000,#E4A0DB);}	/* CIE-L*ch ( 74, 40,330) */
+.capwht,.legwht,.selwht,.optwht	{background-image:-webkit-linear-gradient(#000000,#ffffff);background-image:-moz-linear-gradient(#000000,#ffffff);background-image:linear-gradient(#000000,#ffffff);}	/* CIE-L*ch (100,  0,  0) */
+.capgry,.leggry,.selgry,.optgry	{background-image:-webkit-linear-gradient(#000000,#B6B6B6);background-image:-moz-linear-gradient(#000000,#B6B6B6);background-image:linear-gradient(#000000,#B6B6B6);}	/* CIE-L*ch ( 74,  0,  0) */
+.capblk,.legblk,.selblk,.optblk	{background-image:-webkit-linear-gradient(#000000,#000000);background-image:-moz-linear-gradient(#000000,#000000);background-image:linear-gradient(#000000,#000000);}	/* CIE-L*ch (  0,  0,  0) */
+.caporg,.legorg,.selorg,.optorg	{background-image:-webkit-linear-gradient(#000000,#ECA777);background-image:-moz-linear-gradient(#000000,#ECA777);background-image:linear-gradient(#000000,#ECA777);}	/* CIE-L*ch ( 74, 40, 60) */
+.capolv,.legolv,.selolv,.optolv	{background-image:-webkit-linear-gradient(#000000,#A8BF75);background-image:-moz-linear-gradient(#000000,#A8BF75);background-image:linear-gradient(#000000,#A8BF75);}	/* CIE-L*ch ( 74, 40,120) */
+.capbrn,.legbrn,.selbrn,.optbrn	{background-image:-webkit-linear-gradient(#000000,#685510);background-image:-moz-linear-gradient(#000000,#685510);background-image:linear-gradient(#000000,#685510);}	/* CIE-L*ch ( 37, 40, 90) */
+.capnon,.legnon,.selnon,.optnon	{background-image:-webkit-linear-gradient(#000000,#404040);background-image:-moz-linear-gradient(#000000,#404040);background-image:linear-gradient(#000000,#404040);}
