@@ -385,7 +385,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 					$bkg_xtr = getcolor($binding_row[10]);
 					$cap_xtr = splittext(cleantextSVG($binding_row[11]));
 					$img_fil = $binding_row[12];
-					$img_uri = $binding_row[14];
+					$img_uri = $binding_row[13];
 				}
 				else
 				{

@@ -1,8 +1,11 @@
-*		{font-family:DejaVu Sans Condensed,Sans-Serif;}
-body		{background:#ffffff;color:#000000;font-size:11pt;}
+*		{}
+body		{background:#ffffff;color:#000000;font-size:11pt;padding:6px;font-family:DejaVu Sans Condensed,Sans-Serif;}
 select		{background:#ffffff;color:#000000;}
 option		{background:#ffffff;color:#000000;}
-footer		{font-size:smaller;clear:left;}
-div.bodiv	{position:relative;margin:0.5em;padding:18px;border:solid 1px #c0c0c0;}
-div.svgdiv	{position:relative;margin:0.5em;padding: 0px;border:solid 1px #c0c0c0;}
-div.combox	{width:20em;float:left;}
+footer		{font-size:smaller;clear:both;margin:0;}
+header		{margin:0;}
+main		{margin:0;}
+div.bodiv	{position:relative;margin:6px;padding:18px;border:solid 1px #c0c0c0;}
+div.svgdiv	{position:relative;margin:6px;padding: 0px;border:solid 1px #c0c0c0;}
+div.combox	{width:22em;}
+div.inbtop	{display:inline-block;vertical-align:top;}

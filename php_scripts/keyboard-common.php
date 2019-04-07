@@ -355,13 +355,15 @@
 	// need to move the stuff that used to be here to `doLanguages`
 	function doLayoutsHTML($in_result)
 	{
-		global $layout_platform, $layout_name, $layout_author, $layout_keysnum;
-		// platform_id, layout_name, author_id, layout_keysnum
+		global $layout_platform, $layout_name, $layout_author, $layout_keysnum, $layout_language, $layout_description;
+		// platform_id, layout_name, author_id, layout_keysnum, layout_language
 		$layout_row		= mysqli_fetch_row($in_result);
 		$layout_platform	= $layout_row[0];
 		$layout_name		= cleantextHTML($layout_row[1]);
 		$layout_author		= cleantextHTML(getAuthorName($layout_row[2]));
 		$layout_keysnum		= $layout_row[3];
+		$layout_language	= $layout_row[4];
+		$layout_description	= $layout_row[5];
 	}
 	function doAuthorsHTML($in_result)
 	{
@@ -592,7 +594,7 @@
 	function selLayoutsHTML()
 	{
 		global $con, $layout_id;
-		$selectString = "SELECT l.platform_id, l.layout_name, l.author_id, l.layout_keysnum FROM layouts AS l WHERE l.layout_id = " . $layout_id . ";";
+		$selectString = "SELECT l.platform_id, l.layout_name, l.author_id, l.layout_keysnum, l.layout_language, l.layout_description FROM layouts AS l WHERE l.layout_id = " . $layout_id . ";";
 		selectQuery($con, $selectString, "doLayoutsHTML");
 	}
 	function selPlatformsHTML()

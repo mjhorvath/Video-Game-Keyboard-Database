@@ -1,7 +1,7 @@
 <?php
 	header('Content-Type: text/html; charset=utf8');
 	$path_root	= "../";
-	$page_title	= "Video Game Keyboard Diagrams - Change Log";
+	$page_title	= "VGKD - Change Log";
 	$page_desc	= "Visual keyboard hotkey & binding diagrams for video games and other software.";
 	$page_keywords	= "visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference";
 	$foot_array	= array("copyright","license_kbd");
@@ -11,12 +11,13 @@
 ?>
 <h2>News &amp; Updates</h2>
 <ul>
+	<li>2019/04/06: CSS tweaks. Added an "layout_language" column to the database. Fixed icon images not showing up behind keys. Link to "normalize.css" got broken at some point.</li>
 	<li>2019/04/04: Added bindings for <i>Secret World Legends</i>. This brings the total number of games up to 200!</li>
 	<li>2019/04/03: Added bindings for <i>Rebel Galaxy</i>.</li>
 	<li>2019/04/03: Fixed many minor errors in CSS color definitions.</li>
 	<li>2019/04/02: Created bindings for the "Test Sample" and "Database Key Numbers" reference materials for the "US 104 Key (Dvorak)", "UK 105 Key (ISO)" and "ES 105 Key (ISO)" keyboards.</li>
 	<li>2019/04/02: Added bindings for <i>X Rebirth</i> and <i>X4: Foundations</i>.</li>
-	<li>2019/04/02: I merged the HTML and SVG formats into one format. The diagrams are no longer rendered using pure HTML code, and the SVG file is now once again embedded within an HTML wrapper. (This is how the old "embed" format worked.) Not sure what effect this will have on search engines, however.</li>
+	<li>2019/04/02: Merged the HTML and SVG formats into one format. The diagrams are no longer rendered using pure HTML code, and the SVG file is now once again embedded within an HTML wrapper. (This is how the old "embed" format worked.) Not sure what effect this will have on search engines, however.</li>
 	<li>2019/04/01: Tweaked diagram dimensions. The gaps between the different sections of keys are now 1/2 unit in width. The borders around the edges are now 1/4 unit wide.</li>
 	<li>2019/04/01: Added bindings for <i>Apex Legends</i> and <i>Tom Clancy's Rainbow Six Siege</i>.</li>
 	<li>2019/03/30: Fixed alphabetical sort order of acronyms on front page.</li>

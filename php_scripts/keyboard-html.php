@@ -23,7 +23,7 @@
 	$path_root		= "../";
 	$path_file		= "./keyboard-html.php";
 
-	include($path_root . 'ssi/analyticstracking.php');
+	include($path_root . "ssi/analyticstracking.php");
 	include($path_root . "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
 
@@ -77,6 +77,7 @@
 	$layout_author		= "";
 	$layout_description	= "";
 	$layout_keywords	= "";
+	$layout_language	= "";
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
 	$string_title		= cleantextHTML("Video Game Keyboard Diagrams");
@@ -173,19 +174,19 @@
 		die();
 	}
 ?>
-<!DOCTYPE HTML>
-<html>
-	<head>
 <?php
 	echo
-"		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></meta>
+"<!DOCTYPE HTML>
+<html lang=\"" . $layout_language . "\">
+	<head>
+		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">
 		<title>" . $thispage_title_a . $thispage_title_b . "</title>
-		<link rel=\"canonical\" href=\"" . $php_url . "\"/>
-		<link rel=\"icon\" type=\"image/png\" href=\"../favicon.png\" />
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"normalize.css\"/>
-		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
-		<meta name=\"description\" content=\"" . $layout_description . $game_name . ".\"></meta>
-		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference," . $layout_keywords . "," . $game_name . "\"></meta>
+		<link rel=\"canonical\" href=\"" . $php_url . "\">
+		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\">
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\">
+		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+		<meta name=\"description\" content=\"" . $string_description . $game_name . ".\">
+		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference," . $layout_keywords . "," . $game_name . "\">
 		<script src=\"keyboard-chart-js.php\"></script>\n";
 	echo writeAnalyticsTracking();
 	echo
@@ -202,7 +203,7 @@
 		<main>
 			<div class="svgdiv" style="position:relative;width:1692px;height:612px;">
 				<iframe src="<?php echo $svg_url; ?>" width="1692" height="612" sandbox style="border:none;margin:0;padding:0;">
-				<!--    <img src="triangle.png" alt="Triangle with three unequal sides" />-->
+					<!--<img src="triangle.png" alt="Triangle with three unequal sides" />-->
 				</iframe>
 <?php
 /*
@@ -229,8 +230,7 @@
 			{
 				$combo_com = cleantextHTML($combo_row[0]);
 				$combo_des = cleantextHTML($combo_row[1]);
-				echo
-"					" . $combo_com . " = " . $combo_des . "<br/>\n";
+				echo $combo_com . " = " . $combo_des . "<br>\n";
 			}
 		}
 		echo
@@ -252,8 +252,7 @@
 			{
 				$mouse_com = cleantextHTML($mouse_row[0]);
 				$mouse_des = cleantextHTML($mouse_row[1]);
-				echo
-"					" . $mouse_com . " = " . $mouse_des . "<br/>\n";
+				echo $mouse_com . " = " . $mouse_des . "<br>\n";
 			}
 		}
 		echo
@@ -275,8 +274,7 @@
 			{
 				$joystick_com = cleantextHTML($joystick_row[0]);
 				$joystick_des = cleantextHTML($joystick_row[1]);
-				echo
-"					" . $joystick_com . " = " . $joystick_des . "<br/>\n";
+				echo $joystick_com . " = " . $joystick_des . "<br>\n";
 			}
 		}
 		echo
@@ -298,8 +296,7 @@
 			{
 				$note_com = cleantextHTML($note_row[0]);
 				$note_des = cleantextHTML($note_row[1]);
-				echo
-"					" . $note_des . "<br/>\n";
+				echo $note_des . "<br>\n";
 			}
 		}
 		echo
@@ -321,8 +318,7 @@
 			{
 				$cheat_com = cleantextHTML($cheat_row[0]);
 				$cheat_des = cleantextHTML($cheat_row[1]);
-				echo
-"					" . $cheat_com . " = " . $cheat_des . "<br/>\n";
+				echo $cheat_com . " = " . $cheat_des . "<br>\n";
 			}
 		}
 		echo
@@ -344,8 +340,7 @@
 			{
 				$console_com = cleantextHTML($console_row[0]);
 				$console_des = cleantextHTML($console_row[1]);
-				echo
-"					" . $console_com . " = " . $console_des . "<br/>\n";
+				echo $console_com . " = " . $console_des . "<br>\n";
 			}
 		}
 		echo
@@ -367,8 +362,7 @@
 			{
 				$emote_com = cleantextHTML($emote_row[0]);
 				$emote_des = cleantextHTML($emote_row[1]);
-				echo
-"					" . $emote_com . " = " . $emote_des . "<br/>\n";
+				echo $emote_com . " = " . $emote_des . "<br>\n";
 			}
 		}
 		echo

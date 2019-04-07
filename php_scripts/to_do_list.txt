@@ -75,3 +75,5 @@ x Implement a "languages" table. [Ed. It may be sufficient to simply tie the
 - Users should maybe be able to press the ALT modifier key and see the bindings 
   that make use of it. IIRC there is another project on the Internet that works 
   in this manner.
+- Embedded icon images not showing up anymore. See the bindings for Homeworld 2 
+  for an example.

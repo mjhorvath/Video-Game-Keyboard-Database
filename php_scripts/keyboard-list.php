@@ -1,7 +1,7 @@
 <?php
 	header("Content-Type: text/html; charset=utf8");
 	$path_root = "../";
-	$page_title = "Video Game Keyboard Diagrams - Master List";
+	$page_title = "VGKD - Master List";
 	$page_onload	= "sortTableInit();Toggle_Waiting(false);";
 	$analytics	= true;
 	$is_short	= true;
@@ -65,7 +65,7 @@
 
 	echo
 "<img id=\"waiting\" src=\"animated_loading_icon.webp\" alt=\"loading\" style=\"position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;\"/>
-<table id=\"tableToSort\" cellspacing=\"0\" cellpadding=\"0\" class=\"kbd_tab\">
+<table id=\"tableToSort\" class=\"kbd_tab\">
 	<tr>
 		<th onclick=\"Wait_and_Sort(0);\">Name		<span id=\"arrw_u0\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d0\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n0\" class=\"arrw_n\">&#9674;</span></th>
 		<th onclick=\"Wait_and_Sort(1);\">Genre		<span id=\"arrw_u1\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d1\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n1\" class=\"arrw_n\">&#9674;</span></th>
