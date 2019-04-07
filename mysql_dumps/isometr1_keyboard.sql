@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Apr 04, 2019 at 02:12 PM
+-- Generation Time: Apr 07, 2019 at 02:00 PM
 -- Server version: 5.5.52-cll
 -- PHP Version: 5.4.31
 
@@ -14961,6 +14961,7 @@ CREATE TABLE IF NOT EXISTS `layouts` (
   `layout_keywords` varchar(256) NOT NULL,
   `layout_keysnum` tinyint(3) unsigned NOT NULL,
   `layout_title` varchar(45) NOT NULL,
+  `layout_language` char(2) NOT NULL,
   PRIMARY KEY (`layout_id`),
   UNIQUE KEY `layout_id_UNIQUE` (`layout_id`),
   KEY `idx_layouts_platform_id` (`platform_id`),
@@ -14971,16 +14972,16 @@ CREATE TABLE IF NOT EXISTS `layouts` (
 -- Dumping data for table `layouts`
 --
 
-INSERT INTO `layouts` (`layout_id`, `platform_id`, `author_id`, `layout_name`, `layout_mouse`, `layout_joystick`, `layout_keyboard`, `layout_notes`, `layout_legend`, `layout_description`, `layout_keywords`, `layout_keysnum`, `layout_title`) VALUES
-(1, 1, 1, 'US 104 Key (ANSI)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 106, 'blah'),
-(3, 1, 1, 'DE 105 Key (ISO)', 'Maus Kontrolle', 'Joystick Kontrolle', 'Tastatur Kombinationen', 'Zusätzliche Notizen', 'Zeichenerklä4rung ', 'Keyboard hotkey & binding chart for ', 'German,Deutsch,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 106, 'blah'),
-(4, 1, 1, 'FR 105 Key (ISO)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 106, 'blah'),
-(5, 2, 1, 'US 109 Key (A1048)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 118, 'blah'),
-(6, 2, 1, 'US 109 Key (A1243)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 118, 'blah'),
-(7, 2, 1, 'UK 110 Key (A1048)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 118, 'blah'),
-(8, 1, 1, 'UK 105 Key (ISO)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 106, 'blah'),
-(9, 1, 1, 'ES 105 Key (ISO)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 106, 'blah'),
-(10, 1, 1, 'US 104 Key (Dvorak)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 106, 'blah');
+INSERT INTO `layouts` (`layout_id`, `platform_id`, `author_id`, `layout_name`, `layout_mouse`, `layout_joystick`, `layout_keyboard`, `layout_notes`, `layout_legend`, `layout_description`, `layout_keywords`, `layout_keysnum`, `layout_title`, `layout_language`) VALUES
+(1, 1, 1, 'US 104 Key (ANSI)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 106, 'blah', 'en'),
+(3, 1, 1, 'DE 105 Key (ISO)', 'Maus Kontrolle', 'Joystick Kontrolle', 'Tastatur Kombinationen', 'Zusätzliche Notizen', 'Zeichenerklä4rung ', 'Keyboard hotkey & binding chart for ', 'German,Deutsch,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 106, 'blah', 'de'),
+(4, 1, 1, 'FR 105 Key (ISO)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 106, 'blah', 'fr'),
+(5, 2, 1, 'US 109 Key (A1048)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 118, 'blah', 'en'),
+(6, 2, 1, 'US 109 Key (A1243)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 118, 'blah', 'en'),
+(7, 2, 1, 'UK 110 Key (A1048)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 118, 'blah', 'en'),
+(8, 1, 1, 'UK 105 Key (ISO)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 106, 'blah', 'en'),
+(9, 1, 1, 'ES 105 Key (ISO)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 106, 'blah', 'es'),
+(10, 1, 1, 'US 104 Key (Dvorak)', 'Mouse Controls', 'Joystick Controls', 'Keyboard Combinations', 'Additional Notes', 'Legend', 'Keyboard hotkey & binding chart for ', 'English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference', 106, 'blah', 'en');
 
 -- --------------------------------------------------------
 
