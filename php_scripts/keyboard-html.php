@@ -198,7 +198,7 @@
 	</head>
 	<body>
 		<header>
-			<div class="bodiv"><h2><?php echo $thispage_title_a; ?><small><?php echo $thispage_title_b; ?></small></h2></div>
+			<div class="boxdiv"><h2><?php echo $thispage_title_a; ?><small><?php echo $thispage_title_b; ?></small></h2></div>
 		</header>
 		<main>
 			<div class="svgdiv" style="position:relative;width:1692px;height:612px;">
@@ -215,12 +215,13 @@
 */
 ?>
 			</div>
+			<div id="flxdiv">
 <?php
 	// combo
 	if ($combo_count > 0)
 	{
 		echo
-"			<div class=\"bodiv inbtop combox\">
+"			<div class=\"comdiv\">
 				<h3>" . $string_combo . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $combo_count; $i++)
@@ -242,7 +243,7 @@
 	if ($mouse_count > 0)
 	{
 		echo
-"			<div class=\"bodiv inbtop combox\">
+"			<div class=\"comdiv\">
 				<h3>" . $string_mouse . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $mouse_count; $i++)
@@ -264,7 +265,7 @@
 	if ($joystick_count > 0)
 	{
 		echo
-"			<div class=\"bodiv inbtop combox\">
+"			<div class=\"comdiv\">
 				<h3>" . $string_joystick . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $joystick_count; $i++)
@@ -286,7 +287,7 @@
 	if ($note_count > 0)
 	{
 		echo
-"			<div class=\"bodiv inbtop combox\">
+"			<div class=\"comdiv\">
 				<h3>" . $string_note . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $note_count; $i++)
@@ -308,7 +309,7 @@
 	if ($cheat_count > 0)
 	{
 		echo
-"			<div class=\"bodiv inbtop combox\">
+"			<div class=\"comdiv\">
 				<h3>" . $string_cheat . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $cheat_count; $i++)
@@ -330,7 +331,7 @@
 	if ($console_count > 0)
 	{
 		echo
-"			<div class=\"bodiv inbtop combox\">
+"			<div class=\"comdiv\">
 				<h3>" . $string_console . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $console_count; $i++)
@@ -352,7 +353,7 @@
 	if ($emote_count > 0)
 	{
 		echo
-"			<div class=\"bodiv inbtop combox\">
+"			<div class=\"comdiv\">
 				<h3>" . $string_emote . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $emote_count; $i++)
@@ -370,6 +371,7 @@
 			</div>\n";
 	}
 ?>
+			</div>
 		</main>
 		<footer>
 <?php include("keyboard-footer.php"); ?>

@@ -5,7 +5,7 @@ div.keyout:hover
 div#butt_min:hover,div#butt_max:hover,div#butt_inp:hover,div#butt_hlp:hover,div#butt_kbd:hover,div#butt_csv:hover
 		{background-color:#fff !important;}
 div.keysel	{background-color:#eee;color:#000;border:1px solid #eee;z-index:1;filter:drop-shadow(0px 0px 10px #eee);}
-div.combox	{width:25em;}
+div.comdiv	{width:25em;}
 div.nottbl,div.inptbl,div.emltbl
 		{display:table;border-collapse:separate;border-spacing:2px;}
 div.notrow,div.inprow,div.emlrow

@@ -3,7 +3,9 @@ body		{color:#000000;background:#ffffff;font-size:11pt;}
 select		{color:#000000;background:#ffffff;border:1px solid #000000;}
 option		{color:#000000;background:#ffffff;}
 footer		{font-size:smaller;}
-div.bodiv	{position:relative;margin:1em;}
+div.boxdiv	{position:relative;margin:6px;padding:18px;}
+div.comdiv	{position:relative;margin:3px;padding:18px;}
+div#flxdiv	{position:relative;margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
 div.keyout	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
 div.keyhgh,div.keylow,div.keyrgt,div.capopt,div.capopf
 		{position:absolute;overflow:hidden;padding:2px;white-space:pre;text-shadow:0px 1px 1px #404040;}

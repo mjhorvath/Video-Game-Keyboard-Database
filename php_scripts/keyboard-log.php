@@ -11,6 +11,7 @@
 ?>
 <h2>News &amp; Updates</h2>
 <ul>
+	<li>2019/04/09: Switched to using flexbox for combo boxes.</li>
 	<li>2019/04/06: CSS tweaks. Added an "layout_language" column to the database. Fixed icon images not showing up behind keys. Link to "normalize.css" got broken at some point.</li>
 	<li>2019/04/04: Added bindings for <i>Secret World Legends</i>. This brings the total number of games up to 200!</li>
 	<li>2019/04/03: Added bindings for <i>Rebel Galaxy</i>.</li>

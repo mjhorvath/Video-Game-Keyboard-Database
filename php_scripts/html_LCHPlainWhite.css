@@ -7,7 +7,9 @@ a:link,a:visited
 	{color:#00f;text-decoration:none;}
 a:hover,a:active
 	{color:#00f;text-decoration:underline;}
-div.bodiv	{position:relative;margin:0.5em;padding:18px;border:solid 1px #c0c0c0;}
+div.boxdiv	{position:relative;margin:6px;padding:18px;border:solid 1px #c0c0c0;}
+div.comdiv	{position:relative;margin:3px;padding:18px;border:solid 1px #c0c0c0;}
+div#flxdiv	{position:relative;margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
 div.keyout	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
 div.keyhgh,div.keylow,div.keyrgt,div.capopt,div.capopf
 		{position:absolute;overflow:hidden;padding:2px;white-space:pre;}

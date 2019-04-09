@@ -3,7 +3,9 @@ body	{color:#000000;font-size:11pt;}
 select	{color:#000000;background:#ffffff;border:1px solid #000000;}
 option	{color:#000000;background:#ffffff;}
 footer	{font-size:smaller;}
-.bodiv	{position:relative;margin:1em;}
+div.boxdiv	{position:relative;margin:6px;padding:18px;}
+div.comdiv	{position:relative;margin:3px;padding:18px;}
+div#flxdiv	{position:relative;margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
 .cut	{position:absolute;border:1px dashed #000000;}
 .keyout	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
 .keyhgh	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;left: 0px;top:   0px;}
@@ -14,11 +16,11 @@ footer	{font-size:smaller;}
 .capopf	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:normal;left: 0px;bottom:1em;}
 .capshf,.capctl,.capalt,.capagr,.capxtr
 	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;background:transparent;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
-.capshf	{color:#0000c0;}
-.capctl	{color:#00c000;}
-.capalt	{color:#c00000;}
-.capagr	{color:#c0c000;}
-.capxtr	{color:#00c0c0;}
+.capshf	{color:#0000cc;}
+.capctl	{color:#00cc00;}
+.capalt	{color:#cc0000;}
+.capagr	{color:#cccc00;}
+.capxtr	{color:#00cccc;}
 .capimg	{position:absolute;}
 .legtbl	{display:table;border-collapse:separate;border-spacing:2px;}
 .legrow	{display:table-row;}
@@ -28,26 +30,26 @@ footer	{font-size:smaller;}
 .inbtop	{display:inline-block;vertical-align:top;}
 .inbmid	{display:inline-block;vertical-align:middle;}
 .combox	{width:22em;}
-.capred,.legred,.selred,.optred	{background:#ff6600;}
-.capyel,.legyel,.selyel,.optyel	{background:#ffcc00;}
-.capgrn,.leggrn,.selgrn,.optgrn	{background:#99cc00;}
-.capcyn,.legcyn,.selcyn,.optcyn	{background:#00ffcc;}
-.capblu,.legblu,.selblu,.optblu	{background:#3366ff;}
-.capmag,.legmag,.selmag,.optmag	{background:#ff99cc;}
-.capwht,.legwht,.selwht,.optwht	{background:#ffffff;}
-.capgry,.leggry,.selgry,.optgry	{background:#999999;}
+.capred,.legred,.selred,.optred	{background:#ff6600;color:#000000;}
+.capyel,.legyel,.selyel,.optyel	{background:#ffcc00;color:#000000;}
+.capgrn,.leggrn,.selgrn,.optgrn	{background:#99cc00;color:#000000;}
+.capcyn,.legcyn,.selcyn,.optcyn	{background:#00ffcc;color:#000000;}
+.capblu,.legblu,.selblu,.optblu	{background:#3366ff;color:#000000;}
+.capmag,.legmag,.selmag,.optmag	{background:#ff99cc;color:#000000;}
+.capwht,.legwht,.selwht,.optwht	{background:#ffffff;color:#000000;}
+.capgry,.leggry,.selgry,.optgry	{background:#999999;color:#000000;}
 .capblk,.legblk,.selblk,.optblk	{background:#333333;color:#ffffff;}
-.caporg,.legorg,.selorg,.optorg	{background:#cc9900;}
-.capolv,.legolv,.selolv,.optolv	{background:#999900;}
-.capbrn,.legbrn,.selbrn,.optbrn	{background:#996600;}
-.capnon,.legnon,.selnon,.optnon	{background:#c0c0c0;}
+.caporg,.legorg,.selorg,.optorg	{background:#cc9900;color:#000000;}
+.capolv,.legolv,.selolv,.optolv	{background:#999900;color:#000000;}
+.capbrn,.legbrn,.selbrn,.optbrn	{background:#996600;color:#000000;}
+.capnon,.legnon,.selnon,.optnon	{background:#cccccc;color:#000000;}
 .capred,.legred	{border:1px solid #ffffff;}
 .capyel,.legyel	{border:1px solid #ffffff;}
 .capgrn,.leggrn	{border:1px solid #ffffff;}
 .capcyn,.legcyn	{border:1px solid #ffffff;}
 .capblu,.legblu	{border:1px solid #ffffff;}
 .capmag,.legmag	{border:1px solid #ffffff;}
-.capwht,.legwht	{border:1px solid #c0c0c0;}
+.capwht,.legwht	{border:1px solid #cccccc;}
 .capgry,.leggry	{border:1px solid #ffffff;}
 .capblk,.legblk	{border:1px solid #ffffff;}
 .caporg,.legorg	{border:1px solid #ffffff;}

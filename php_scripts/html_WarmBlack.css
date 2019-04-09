@@ -3,7 +3,9 @@ body	{color:#ffffff;background:#000000;font-size:11pt;}
 select	{color:#ffffff;background:#000000;border:1px solid #ffffff;}
 option	{color:#ffffff;background:#000000;}
 footer	{font-size:smaller;}
-.bodiv	{position:relative;margin:1em;}
+div.boxdiv	{position:relative;margin:6px;padding:18px;}
+div.comdiv	{position:relative;margin:3px;padding:18px;}
+div#flxdiv	{position:relative;margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
 .keyout	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
 .keyhgh,.keylow,.keyrgt,.capopt,.capopf
 	{position:absolute;overflow:hidden;padding:2px;white-space:pre;}
@@ -29,16 +31,16 @@ footer	{font-size:smaller;}
 .inbtop	{display:inline-block;vertical-align:top;}
 .inbmid	{display:inline-block;vertical-align:middle;}
 .combox	{width:22em;}
-.capred,.legred,.selred,.optred	{background:#ff6600;color:#000;}
-.capyel,.legyel,.selyel,.optyel	{background:#ffcc00;color:#000;}
-.capgrn,.leggrn,.selgrn,.optgrn	{background:#99cc00;color:#000;}
-.capcyn,.legcyn,.selcyn,.optcyn	{background:#00ffcc;color:#000;}
-.capblu,.legblu,.selblu,.optblu	{background:#3366ff;color:#000;}
-.capmag,.legmag,.selmag,.optmag	{background:#ff99cc;color:#000;}
-.capwht,.legwht,.selwht,.optwht	{background:#ffffff;color:#000;}
-.capgry,.leggry,.selgry,.optgry	{background:#999999;color:#000;}
-.capblk,.legblk,.selblk,.optblk	{background:#333333;color:#fff;}
-.caporg,.legorg,.selorg,.optorg	{background:#cc9900;color:#000;}
-.capolv,.legolv,.selolv,.optolv	{background:#999900;color:#000;}
-.capbrn,.legbrn,.selbrn,.optbrn	{background:#996600;color:#000;}
-.capnon,.legnon,.selnon,.optnon	{background:#c0c0c0;color:#000;}
+.capred,.legred,.selred,.optred	{background:#ff6600;color:#000000;}
+.capyel,.legyel,.selyel,.optyel	{background:#ffcc00;color:#000000;}
+.capgrn,.leggrn,.selgrn,.optgrn	{background:#99cc00;color:#000000;}
+.capcyn,.legcyn,.selcyn,.optcyn	{background:#00ffcc;color:#000000;}
+.capblu,.legblu,.selblu,.optblu	{background:#3366ff;color:#000000;}
+.capmag,.legmag,.selmag,.optmag	{background:#ff99cc;color:#000000;}
+.capwht,.legwht,.selwht,.optwht	{background:#ffffff;color:#000000;}
+.capgry,.leggry,.selgry,.optgry	{background:#999999;color:#000000;}
+.capblk,.legblk,.selblk,.optblk	{background:#333333;color:#ffffff;}
+.caporg,.legorg,.selorg,.optorg	{background:#cc9900;color:#000000;}
+.capolv,.legolv,.selolv,.optolv	{background:#999900;color:#000000;}
+.capbrn,.legbrn,.selbrn,.optbrn	{background:#996600;color:#000000;}
+.capnon,.legnon,.selnon,.optnon	{background:#666666;color:#000000;}

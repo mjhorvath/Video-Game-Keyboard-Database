@@ -3,7 +3,9 @@ body	{color:#000000;font-size:11pt;}
 select	{color:#000000;background:#ffffff;border:1px solid #000000;}
 option	{color:#000000;background:#ffffff;}
 footer	{font-size:smaller;}
-.bodiv	{position:relative;margin:1em;}
+div.boxdiv	{position:relative;margin:6px;padding:18px;border:solid 1px #c0c0c0;}
+div.comdiv	{position:relative;margin:3px;padding:18px;border:solid 1px #c0c0c0;}
+div#flxdiv	{position:relative;margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
 .keyout	{position:absolute;overflow:hidden;border:1px solid #000000;font-size:smaller;}
 .keyhgh,.keylow,.keyrgt,.capopt,.capopf
 	{position:absolute;overflow:hidden;padding:2px;white-space:pre;}

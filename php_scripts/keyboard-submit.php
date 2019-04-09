@@ -380,11 +380,11 @@ var binding_table =
 				<div id="butt_csv" class="tabs_butt" title="Toggle Spreadsheet Panel" onclick="switch_right_pane(1);"><img src="./icon_spd.png"/></div>
 			</div>
 			<div id="pane_kbd" style="display:block;">
-				<div class="bodiv">
+				<div class="boxdiv">
 					<input id="game_tit" type="text" size="25" maxlength="100" placeholder="Game Title" title="Game Title" style="font-size:x-large;" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $thispage_title_a; ?>"/>
 					<input id="game_url" type="text" size="25" maxlength="100" placeholder="URL String" title="URL String" style="font-size:x-large;" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $game_seo; ?>" disabled="disabled"/>
 				</div>
-				<div class="bodiv" style="position:relative;width:1660px;height:480px;">
+				<div class="boxdiv" style="position:relative;width:1660px;height:480px;">
 					<form enctype="multipart/form-data" accept-charset="UTF-8">
 						<div id="keydiv" style="position:relative;width:1660px;height:480px;">
 <?php
@@ -535,7 +535,7 @@ var binding_table =
 						</div>
 					</form>
 				</div>
-				<div class="bodiv">
+				<div class="boxdiv">
 					<div class="inbtop" style="margin-right:1em;margin-bottom:1em;">
 						<div class="keyout capnon" style="position:relative;left:2px;top:2px;width:68px;height:68px;">
 							<div class="keyhgh">Upcase</div>
@@ -578,8 +578,8 @@ var binding_table =
 ?>
 					</div>
 				</div>
-				<div>
-					<div class="bodiv inbtop combox">
+				<div id="flxdiv">
+					<div class="inbtop comdiv">
 						<h3><?php echo $string_combo; ?></h3>
 						<div id="table_combo" class="nottbl">
 <?php
@@ -609,7 +609,7 @@ var binding_table =
 							</div>
 						</div>
 					</div>
-					<div class="bodiv inbtop combox">
+					<div class="inbtop comdiv">
 						<h3><?php echo $string_mouse; ?></h3>
 						<div id="table_mouse" class="nottbl">
 <?php
@@ -639,7 +639,7 @@ var binding_table =
 							</div>
 						</div>
 					</div>
-					<div class="bodiv inbtop combox">
+					<div class="inbtop comdiv">
 						<h3><?php echo $string_joystick; ?></h3>
 						<div id="table_joystick" class="nottbl">
 <?php
@@ -669,7 +669,7 @@ var binding_table =
 							</div>
 						</div>
 					</div>
-					<div class="bodiv inbtop combox">
+					<div class="inbtop comdiv">
 						<h3><?php echo $string_note; ?></h3>
 						<div id="table_note" class="nottbl">
 <?php
@@ -695,7 +695,7 @@ var binding_table =
 							</div>
 						</div>
 					</div>
-					<div class="bodiv inbtop combox">
+					<div class="inbtop comdiv">
 						<h3><?php echo $string_cheat; ?></h3>
 						<div id="table_cheat" class="nottbl">
 <?php
@@ -725,7 +725,7 @@ var binding_table =
 							</div>
 						</div>
 					</div>
-					<div class="bodiv inbtop combox">
+					<div class="inbtop comdiv">
 						<h3><?php echo $string_console; ?></h3>
 						<div id="table_console" class="nottbl">
 <?php
@@ -755,7 +755,7 @@ var binding_table =
 							</div>
 						</div>
 					</div>
-					<div class="bodiv inbtop combox">
+					<div class="inbtop comdiv">
 						<h3><?php echo $string_emote; ?></h3>
 						<div id="table_emote" class="nottbl">
 <?php

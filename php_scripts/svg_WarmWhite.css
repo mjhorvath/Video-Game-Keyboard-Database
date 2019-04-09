@@ -10,11 +10,11 @@ svg	{font-family:Verdana,Sans-Serif;font-size:14px;}
 .capnor	{font-size:12px;font-weight:normal;}
 .capshf,.capctl,.capalt,.capagr,.capxtr
 	{font-size:10px;text-anchor:end;font-weight:normal;}
-.capshf	{fill:#0000c0;}
-.capctl	{fill:#00c000;}
-.capalt	{fill:#c00000;}
-.capagr	{fill:#c0c000;}
-.capxtr	{fill:#00c0c0;}
+.capshf	{fill:#0000cc;}
+.capctl	{fill:#00cc00;}
+.capalt	{fill:#cc0000;}
+.capagr	{fill:#cccc00;}
+.capxtr	{fill:#00cccc;}
 .bakshf	{fill:none;}
 .bakctl	{fill:none;}
 .bakalt	{fill:none;}
@@ -33,7 +33,7 @@ svg	{font-family:Verdana,Sans-Serif;font-size:14px;}
 .recorg	{fill:#cc9900;}
 .recolv	{fill:#999900;}
 .recbrn	{fill:#663300;}
-.recnon	{fill:#c0c0c0;}
+.recnon	{fill:#cccccc;}
 .txtred	{fill:#000000;}
 .txtyel	{fill:#000000;}
 .txtgrn	{fill:#000000;}

@@ -3,4 +3,7 @@ body	{color:#ffffff;background:#000000;font-size:11pt;}
 select	{color:#ffffff;background:#000000;border:1px solid #ffffff;}
 option	{color:#ffffff;background:#000000;}
 footer	{font-size:smaller;}
-.bodiv	{position:relative;margin:1em;margin-top:0em;}
+div.boxdiv	{margin:6px;padding:18px;position:relative;}
+div.svgdiv	{margin:6px;padding:   0;position:relative;}
+div.comdiv	{margin:3px;padding:18px;position:relative;width:22em;}
+div#flxdiv	{margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}

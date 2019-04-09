@@ -67,7 +67,7 @@ x Implement a "languages" table. [Ed. It may be sufficient to simply tie the
 - Now that I have ditched the HTML format for the principal viewing, I should 
   update the editor to use SVG as well. This will require some cross-frame 
   JavaScript.
-- Experiment with flexbox in the "CSS3 Testing" theme. The "Command" DIVs could 
++ Experiment with flexbox in the "CSS3 Testing" theme. The "Command" DIVs could 
   make use of it to automatically wrap or resize themselves based on the amount 
   of space available to them.
 - Users should maybe be able to enter text directly onto the keyboard on the 
@@ -77,3 +77,6 @@ x Implement a "languages" table. [Ed. It may be sufficient to simply tie the
   in this manner.
 - Embedded icon images not showing up anymore. See the bindings for Homeworld 2 
   for an example.
+- Patterned grayscale theme has several newly introduced issues.
+- Optgroup styles messed up in dark themes.
+- Rename "html_XXXXX.css" to "submit_XXXXX.css".

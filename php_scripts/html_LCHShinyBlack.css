@@ -12,7 +12,9 @@ a:link,a:visited
 	{color:#ffff00;text-decoration:none;}
 a:hover,a:active
 	{color:#ffff00;text-decoration:underline;}
-.bodiv	{position:relative;margin:1em;}
+div.boxdiv	{position:relative;margin:6px;padding:18px;}
+div.comdiv	{position:relative;margin:3px;padding:18px;}
+div#flxdiv	{position:relative;margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
 .keyout	{font-family:pt-sans-narrow,sans-serif;line-height:100%;font-size:smaller;position:absolute;overflow:hidden;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;box-shadow:0px 1px 1px #404040;}
 .keyhgh,.keylow,.keyrgt,.capopt,.capopf
 	{position:absolute;overflow:hidden;padding:2px;white-space:pre;text-shadow:0px 1px 1px #404040;color:#ffffff;}
