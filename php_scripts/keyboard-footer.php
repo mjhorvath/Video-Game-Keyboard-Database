@@ -62,7 +62,7 @@
 					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad2\" value=\"2\"" . ($format_id == 2 ? " checked" : "") . ">&nbsp;<label for=\"rad2\">MediaWiki</label>
 					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad3\" value=\"3\"" . ($format_id == 3 ? " checked" : "") . ">&nbsp;<label for=\"rad3\">Editor</label>
 					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad4\" value=\"4\" disabled>&nbsp;<label for=\"rad4\"><s>PDF</s></label>
-					<input class=\"stylechange\" type=\"button\" value=\"Change\" onclick=\"reloadThisPage('" . $game_id . "', '" . $layout_id . "', '" . $game_seo . "');\" />
+					<input class=\"stylechange\" type=\"button\" value=\"Update\" onclick=\"reloadThisPage('" . $game_id . "', '" . $layout_id . "', '" . $game_seo . "');\" />
 				</form>
 				<p>" . getFileTime($path_file) . "</p>
 			</div>\n";

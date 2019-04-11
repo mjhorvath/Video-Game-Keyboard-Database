@@ -202,7 +202,7 @@
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";
-	include("./html_" . $style_filename . ".css");
+	include("./submit_" . $style_filename . ".css");
 	echo
 "		</style>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_submit.css\"/>

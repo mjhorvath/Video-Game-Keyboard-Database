@@ -1,9 +1,9 @@
 TO DO LIST
 
-Completed tasks are marked with a plus '+'.
-Partially completed or problematic tasks are marked with a tilde '~'.
-Canceled, broken or non-implementable tasks are marked with an 'x'.
-Incomplete tasks are marked with a minus '-'.
+New incomplete tasks are marked with a minus '-'.
+Fully completed tasks are marked with a plus '+'.
+Partially completed, stalled or problematic tasks are marked with a tilde '~'.
+Rejected, broken or non-implementable tasks are marked with an 'x'.
 
 + In the submission form, selecting a colored OPTION element should change the 
   color of the corresponding parent SELECT element as well.
@@ -17,19 +17,22 @@ Incomplete tasks are marked with a minus '-'.
   submit button.
 - Should maybe store the SVG patterns, filters and gradients in separate files, 
   rather than cluttering up the main SVG file. But since there are only a dozen 
-  or so styles at this time, it may not currently be important.
+  or so styles at this time, it is not currently very important.
 - Continue developing the "Spreadsheet View" of the submission form, and permit 
   users to alter or update the keyboard data using it if they want to.
 + Convert input TABLEs to DIVs.
 - Sub-pages should maybe not repeat the parent project's title since the title 
   already appears in the site's horizontal breadcrumbs. Not sure.
 + Need a loading icon since it takes a while for all the AJAX stuff (e.g. 
-  reCAPTCHA) to download completely.
+  reCAPTCHA) to download and load fully.
 - I should change all the various JavaScript alert boxes to something prettier.
 + The "required" attribute of the email INPUT elements should cause the 
   submission form to not post if those INPUTs are not filled properly. This 
   includes the email address field, which requires special syntax.
-- The key caption legend should also be configurable.
+- The key caption legend should also be configurable. Right now it always says 
+  "SHIFT", "CTRL", and "ALT", and can't be customized. Not sure which table to 
+  put this stuff in. There will need to be a way to turn each string on and off 
+  as well as insert a value.
 x Implement a "languages" table. [Ed. It may be sufficient to simply tie the 
   languages the bindings texts are written in to the languages of the 
   keyboards.]
@@ -37,8 +40,8 @@ x Implement a "languages" table. [Ed. It may be sufficient to simply tie the
   separate file and simply included.
 - Add timestamp columns to the various SQL tables to record the dates and times 
   when records are added or modified.
-- I would also like to create charts/diagrams for gamepads, mice and joysticks, 
-  but the sheer number of different devices will make this task very difficult.
+- I would also like to create charts/diagrams for gamepads, mice and joysticks. 
+  But the sheer number of different devices will make this task very difficult.
 + It may be better to reverse the order of the selection dialogs on the front 
   page. E.g. select the Keyboard first, then the Style, and then the Game. 
   Otherwise, finding bindings for the German or French keyboards will be like 
@@ -50,33 +53,46 @@ x Implement a "languages" table. [Ed. It may be sufficient to simply tie the
   update the "displayorder" columns using SQL commands, then I may add them.
 - Should mouse, joystick, etc. commands be lined up neatly with left and right 
   parts separated by an equal '=' sign, for instance using a table? Or should I 
-  instead use a definition list?
+  instead use a definition/description list? This should not be too hard since 
+  I already store the left and right texts in separate fields.
 - Instead of one genre per game, I could create a tag cloud so that a game can  
-  be placed into multiple genres. What type of GUI do I need to facilitate this 
-  and allow  visitors to select more than one genre?
+  be placed into multiple genres. What type of GUI is necessary to facilitate 
+  this and allow  visitors to select from among more than one genre per game?
 - How granular should I get WRT video game genres? Should I list sub- and sub-
   sub-genres? How many? Which ones? How about a tag cloud?
-- Rename "Win" key to "Super" or "Meta"?
+- Maybe rename "Win" key to "Super" or "Meta"?
 + Remake the loading icon in animated WebP format. Does this graphics format 
   work properly in other browsers besides Google Chrome?
-- Find out if the Git Powershell tool can accept multi-line change notes.
+- Find out if the Git Powershell tool can accept multi-line commit notes.
 - I merged the HTML and SVG formats into one format. The diagrams are no longer 
   rendered using pure HTML code, and the SVG file is now once again embedded 
   within an HTML wrapper. (This is how the old "embed" format worked.) Not sure 
   what effect this will have on search engines, however.
 - Now that I have ditched the HTML format for the principal viewing, I should 
   update the editor to use SVG as well. This will require some cross-frame 
-  JavaScript.
+  JavaScript as well as text input, which I'm not sure is possible.
 + Experiment with flexbox in the "CSS3 Testing" theme. The "Command" DIVs could 
   make use of it to automatically wrap or resize themselves based on the amount 
   of space available to them.
-- Users should maybe be able to enter text directly onto the keyboard on the 
-  submissions form. Have to think this through.
+- Users should maybe be able to enter text directly onto the keyboard diagram 
+  on the submission form. Have to think this through.
 - Users should maybe be able to press the ALT modifier key and see the bindings 
   that make use of it. IIRC there is another project on the Internet that works 
   in this manner.
-- Embedded icon images not showing up anymore. See the bindings for Homeworld 2 
++ Embedded icon images not showing up anymore. See the bindings for Homeworld 2 
   for an example.
-- Patterned grayscale theme has several newly introduced issues.
-- Optgroup styles messed up in dark themes.
-- Rename "html_XXXXX.css" to "submit_XXXXX.css".
+- "Patterned Grayscale" theme has several newly-introduced issues since 
+  switching from HTML to SVG rendering. [Ed. On second thought, they aren't 
+  really that bad. Maybe I will leave things the way they are.]
++ Optgroup styles are messed up in dark/black themes in Firefox.
++ Rename "html_XXXXX.css" files to "submit_XXXXX.css" and/or rename 
+  "keyboard-html.php" to "keyboard-embed.php".
+- Automatically send confirmation emails to anyone who completes the submission 
+  form. Also, do this for the email form on my main website.
+- Should be able to easily create "Typing Reference" schemes for the other 
+  keyboards as well.
+x Maybe the red in the "Warm" styles can be made deeper? [Ed. Tried this, but 
+  it doesn't look nice.]
+- File permissions recently started getting messed up when uploading them using 
+  FileZilla. Is it a bug in the software? I now have to fix them manually each 
+  time.

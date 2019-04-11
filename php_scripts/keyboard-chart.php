@@ -35,7 +35,7 @@
 	}
 	if ($format_id == 0)
 	{
-		include("./keyboard-html.php");
+		include("./keyboard-embed.php");
 	}
 	elseif ($format_id == 1)
 	{

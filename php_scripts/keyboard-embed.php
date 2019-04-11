@@ -21,7 +21,7 @@
 	header("Content-Type: text/html; charset=utf8");
 
 	$path_root		= "../";
-	$path_file		= "./keyboard-html.php";
+	$path_file		= "./keyboard-embed.php";
 
 	include($path_root . "ssi/analyticstracking.php");
 	include($path_root . "ssi/keyboard-connection.php");

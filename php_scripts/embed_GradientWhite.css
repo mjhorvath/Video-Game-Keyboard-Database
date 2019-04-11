@@ -1,8 +1,8 @@
-*	{font-family:DejaVu Sans Condensed,Sans-Serif;}
-body	{color:#000000;background:#ffffff;font-size:11pt;}
-select	{color:#000000;background:#ffffff;border:1px solid #000000;}
-option	{color:#000000;background:#ffffff;}
-footer	{font-size:smaller;}
+*		{}
+body		{color:#000000;background:#ffffff;font-family:"DejaVu Sans Condensed",Sans-Serif;font-size:11pt;}
+footer		{font-size:smaller;}
+input[type="radio"]	{margin-left:0.5em;vertical-align:middle;}
+input[type="button"]	{margin-left:0.5em;}
 div.boxdiv	{margin:6px;padding:18px;position:relative;}
 div.svgdiv	{margin:6px;padding:   0;position:relative;}
 div.comdiv	{margin:3px;padding:18px;position:relative;width:22em;}

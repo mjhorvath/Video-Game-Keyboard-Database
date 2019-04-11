@@ -308,7 +308,7 @@
 </form>
 <hr/>
 <h2>Description:</h2>
-<p>This PHP form generates a keyboard control diagram in a new window. You can select from among hotkeys and bindings for various video games and other software.</p>
+<p>This PHP form generates a keyboard control diagram in a new window. You can select from among hotkeys and bindings for various video games and other software. If you do not have a JavaScript-enabled browser, then you may refer to the <a href="keyboard-list.php">master list</a> table instead, as it should be viewable in a JavaScript-less browser.</p>
 <h2>Instructions:</h2>
 <ol>
 	<li>Select a keyboard (key positions).</li>
@@ -327,7 +327,6 @@
 <p>I have created templates for MediaWiki that do basically the same thing as the other charts available on this site. You can find the templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Wikia</a>. By selecting the "MediaWiki" format type, you can generate the code you will need to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the chart is wider than a typical browser window.</p>
 <p>I have also created SVG versions of the charts, which you can also select in the "Formats" menu above. I have not migrated over to using SVG images exclusively yet, because they are less compatible with older browsers, and I have not figured out how I want to implement the mouse and joystick controls listings, yet. (I have not yet figured out how to create containers that expand, wrap and scale automatically as the volume of text inside increases.)</p>
 <p>PDF versions of the charts will hopefully be added at some point in the future.</p>
-<p>If you do not have a JavaScript-enabled browser, then you may refer to the <a href="keyboard-list.php">master list</a> table instead, as it should be viewable in a JavaScript-less browser.</p>
 <a name="print_tips"></a>
 <h2>Printing Tips:</h2>
 <ol>
