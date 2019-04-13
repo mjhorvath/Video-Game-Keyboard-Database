@@ -84,7 +84,7 @@
 	function print_key_html($in_id, $in_class, $in_color, $in_value)
 	{
 		echo
-"						<div id=\"" . $in_id . "\" class=\"" . $in_class . "\">" . cleantextHTML($in_value) . "</div>\n";
+"								<div id=\"" . $in_id . "\" class=\"" . $in_class . "\">" . cleantextHTML($in_value) . "</div>\n";
 	}
 	function cleantextHTML($instring)
 	{

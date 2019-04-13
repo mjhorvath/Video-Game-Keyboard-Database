@@ -14,13 +14,14 @@ div#flxdiv	{position:relative;margin:3px;padding:   0;margin-top:-3px;margin-bot
 .keyhgh	{font-weight:  bold;left: 0px;top:   0px;}
 .keylow	{font-weight:  bold;left: 0px;bottom:0px;}
 .keyrgt	{font-weight:  bold;right:0px;top:   0px;}
+.keynon	{display:none;}
 .capopt	{font-weight:normal;left: 0px;bottom:0em;}
 .capopf	{font-weight:normal;left: 0px;bottom:1em;}
 .capshf,.capctl,.capalt,.capagr,.capxtr
-	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;text-align:right;display:inline;float:right;clear:right;font-size:smaller;}
+	{position:relative;overflow:hidden;padding-left:1px;padding-right:1px;white-space:pre;text-align:right;display:block;font-size:smaller;}
 .capshf	{background:#404040;color:#ffffff;}	/*url(gray_trans_016.png), */
 .capctl	{background:#808080;color:#ffffff;}	/*url(gray_trans_128.png), */
-.capalt	{background:#c0c0c0;color:#000000;}	/*url(gray_trans_255.png), */
+.capalt	{background:#c0c0c0;color:#ffffff;}	/*url(gray_trans_255.png), */
 .capagr	{background:#ffffff;color:#000000;}	/*url(gray_trans_064.png), */
 .capxtr	{background:#000000;color:#ffffff;}	/*url(gray_trans_192.png), */
 .capimg	{position:absolute;}

@@ -1,5 +1,9 @@
-\N	233	2	MMB	Autorun
-\N	233	2	MB4	Action button 1
-\N	233	1	CTRL + Tab	Target nearest friend
-\N	233	1	CTRL + Shift + Tab	Target previous friend
-\N	233	1	CTRL + Shift + F	Toggle framerate
+\N	234	4	\N	Caption: IBM Position number
+\N	234	4	\N	Row 1: Set 1
+\N	234	4	\N	Row 2: Set 2
+\N	234	4	\N	Row 3: Set 3
+\N	234	4	\N	Row 4: USB
+\N	234	4	\N	Row 5: Microsoft Virtual Key
+\N	234	4	\N	ACPI Power: Set 1: E0 5E, Set 2: E0 37
+\N	234	4	\N	ACPI Sleep: Set 1: E0 5F, Set 2: E0 3F, VKey: 5F
+\N	234	4	\N	ACPI Wake: Set 1: E0 63, Set 2: E0 5E

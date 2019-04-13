@@ -416,6 +416,7 @@ var binding_table =
 				$key_low	= $position_row[4];
 				$key_hgh	= $position_row[5];
 				$key_rgt	= $position_row[6];
+				$key_num	= $position_row[7];
 				$key_opt	= $position_row[8];
 				$img_wid	= 48;
 				$img_hgh	= 48;
@@ -474,38 +475,7 @@ var binding_table =
 					echo
 "								<img id=\"capimg_" . $i . "\" class=\"capimg\" style=\"left:" . $img_pos_x . "px;top:" . $img_pos_y . "px;width:" . $img_wid . "px;height:" . $img_hgh . "px;display:" . $display . ";\" src=\"" . $img_uri . "\"/>\n";
 				}
-				// key characters
-				if (($key_hgh != "") || ($write_maximal_keys == true))
-				{
-					print_key_html("keyhgh_" . $i, "keyhgh", null, $key_hgh);
-				}
-				if (($key_low != "") || ($write_maximal_keys == true))
-				{
-					if ($key_opt == false)
-					{
-						print_key_html("keylow_" . $i, "keylow", null, $key_low);
-					}
-					else
-					{
-						print_key_html("keylow_" . $i, "keynon", null, $key_low);
-					}
-				}
-				if (($key_rgt != "") || ($write_maximal_keys == true))
-				{
-					print_key_html("keyrgt_" . $i, "keyrgt", null, $key_rgt);
-				}
 				// key captions
-				if (($cap_nor != "") || ($write_maximal_keys == true))
-				{
-					if ($key_opt == false)
-					{
-						print_key_html("capnor_" . $i, "capopf", $bkg_nor, $cap_nor);
-					}
-					else
-					{
-						print_key_html("capnor_" . $i, "capopt", $bkg_nor, $cap_nor);
-					}
-				}
 				if (($cap_shf != "") || ($write_maximal_keys == true))
 				{
 					print_key_html("capshf_" . $i, "capshf", $bkg_shf, $cap_shf);
@@ -526,6 +496,37 @@ var binding_table =
 				{
 					print_key_html("capxtr_" . $i, "capxtr", $bkg_xtr, $cap_xtr);
 				}
+				if (($cap_nor != "") || ($write_maximal_keys == true))
+				{
+					if ($key_opt == false)
+					{
+						print_key_html("capnor_" . $i, "capopf", $bkg_nor, $cap_nor);
+					}
+					else
+					{
+						print_key_html("capnor_" . $i, "capopt", $bkg_nor, $cap_nor);
+					}
+				}
+				// key characters
+				if (($key_hgh != "") || ($write_maximal_keys == true))
+				{
+					print_key_html("keyhgh_" . $i, "keyhgh", null, $key_hgh);
+				}
+				if (($key_low != "") || ($write_maximal_keys == true))
+				{
+					if ($key_opt == false)
+					{
+						print_key_html("keylow_" . $i, "keylow", null, $key_low);
+					}
+					else
+					{
+						print_key_html("keylow_" . $i, "keynon", null, $key_low);
+					}
+				}
+				if (($key_rgt != "") || ($write_maximal_keys == true))
+				{
+					print_key_html("keyrgt_" . $i, "keyrgt", null, $key_rgt);
+				}
 				echo
 "							</div>\n";
 			}
@@ -538,12 +539,12 @@ var binding_table =
 				<div class="boxdiv">
 					<div class="inbtop" style="margin-right:1em;margin-bottom:1em;">
 						<div class="keyout capnon" style="position:relative;left:2px;top:2px;width:68px;height:68px;">
-							<div class="keyhgh">Upcase</div>
-							<div class="keylow">Lowcase</div>
-							<div class="capopf">Caption</div>
 							<div class="capshf">Shift</div>
 							<div class="capctl">Ctrl</div>
 							<div class="capalt">Alt</div>
+							<div class="keyhgh">Upcase</div>
+							<div class="keylow">Lowcase</div>
+							<div class="capopf">Caption</div>
 						</div>
 					</div>
 					<div id="table_legend" class="inbtop">
