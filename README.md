@@ -8,3 +8,7 @@ View a live version of the project at http://isometricland.net/keyboard/keyboard
 The software code and PHP scripts are licensed under GNU Lesser General Public License version 3.
 
 The data content is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported License.
+
+A list of credits/dependencies can be found [here](credits.txt).
+
+A "to do" list can be found [here](to_do_list.txt).
