@@ -25,6 +25,7 @@ var keycount = 106;
 var colors = ['non','red','yel','grn','cyn','blu','mag','wht','gry','blk','org','olv','brn'];
 var layout_id = 1;
 var is_key_dirty = false;
+var is_leg_dirty = false;
 var is_doc_dirty = false;
 var is_eml_dirty = true;
 var is_cap_dirty = false;
@@ -79,7 +80,8 @@ function click_document_body(event)
 	var elm = event.target;
 	while (elm !== document.body)
 	{
-		// some buttons delete themselves, so you have to check if the button still exists
+		// Some buttons delete themselves, so you have to check if the button still exists.
+		// Is the 'matches' method case-sensitive? Need to check.
 		if (elm)
 		{
 			if
@@ -100,6 +102,22 @@ function click_document_body(event)
 			}
 			else if
 			(
+				(is_leg_dirty == true) &&
+				(
+					elm.matches('#set_doc_button') ||
+					elm.matches('#unset_doc_button') ||
+					elm.matches('.email_input') ||
+					elm.matches('.email_textarea') ||
+					elm.matches('#email_recaptcha') ||
+					(true === false)
+				)
+			)
+			{
+				key_legend_warning(elm, 'E');
+				return;
+			}
+			else if
+			(
 				elm.matches('#pane_lft') ||
 				elm.matches('#table_inp') ||
 				elm.matches('#button_inp') ||
@@ -116,6 +134,24 @@ function click_document_body(event)
 			else if (elm.matches('.keyout'))
 			{
 				click_on_chart_key(elm);
+				return;
+			}
+			// could be optimized a little
+			else if
+			(
+				(is_leg_dirty == true) &&
+				(does_ancestor_have_id(elm, 'pane_rgt') == true) &&
+				(
+					(elm.tagName.toUpperCase() == 'INPUT') ||
+					(elm.tagName.toUpperCase() == 'BUTTON') ||
+					(elm.tagName.toUpperCase() == 'TEXTAREA') ||
+					(elm.tagName.toUpperCase() == 'SELECT') ||
+					(elm.tagName.toUpperCase() == 'OPTION') ||
+					(true === false)
+				)
+			)
+			{
+				key_legend_warning(elm, 'A');
 				return;
 			}
 			// could be optimized a little
@@ -178,6 +214,11 @@ function click_on_chart_key(elm)
 		key_change_warning(elm, 'C');
 		return;
 	}
+	if (is_leg_dirty == true)
+	{
+		key_legend_warning(elm, 'C');
+		return;
+	}
 
 	last_id = current_id;
 	current_id = elm.id.slice(7);
@@ -199,6 +240,11 @@ function click_off_chart_key(elm)
 	if (is_key_dirty == true)
 	{
 		key_change_warning(elm, 'B');
+		return;
+	}
+	if (is_leg_dirty == true)
+	{
+		key_legend_warning(elm, 'B');
 		return;
 	}
 
@@ -247,6 +293,7 @@ function key_save_changes()
 	document.getElementById('set_key_button').disabled = true;
 	document.getElementById('unset_key_button').disabled = true;
 	flag_key_clean();
+//	flag_leg_clean();		// this may actually confuse users
 	flag_doc_dirty();
 }
 
@@ -257,6 +304,7 @@ function key_revert_changes()
 	document.getElementById('set_key_button').disabled = true;
 	document.getElementById('unset_key_button').disabled = true;
 	flag_key_clean();
+	flag_leg_clean();		// this may actually confuse users
 }
 
 function is_embedded_image_okay()
@@ -444,21 +492,51 @@ function have_input_key_values_changed()
 	return false;
 }
 
-// need to rename this function since its purpose has changed slightly
+function are_all_captions_in_groups()
+{
+	if
+	(
+		((document.getElementById('inp_capnor').value != '') && (get_form_color(document.getElementById('sel_capnor')) == 0)) ||
+		((document.getElementById('inp_capshf').value != '') && (get_form_color(document.getElementById('sel_capshf')) == 0)) ||
+		((document.getElementById('inp_capctl').value != '') && (get_form_color(document.getElementById('sel_capctl')) == 0)) ||
+		((document.getElementById('inp_capalt').value != '') && (get_form_color(document.getElementById('sel_capalt')) == 0)) ||
+		((document.getElementById('inp_capagr').value != '') && (get_form_color(document.getElementById('sel_capagr')) == 0)) ||
+		((document.getElementById('inp_capxtr').value != '') && (get_form_color(document.getElementById('sel_capxtr')) == 0)) ||
+		(true === false)
+	)
+	{
+		return false;
+	}
+
+	return true;
+}
+
+// Need to rename this function since its purpose has changed slightly.
 function toggle_set_and_revert_buttons(event)
 {
-	if (have_input_key_values_changed() == true)
+	var val_change = have_input_key_values_changed();
+	var leg_change = are_all_captions_in_groups();
+
+	if (val_change == true)
+		flag_key_dirty();
+	else
+		flag_key_clean();
+	if (leg_change == false)
+		flag_leg_dirty();
+	else
+		flag_leg_clean();
+
+	if ((val_change == true) || (leg_change == false))
 	{
 		document.getElementById('set_key_button').disabled = false;
 		document.getElementById('unset_key_button').disabled = false;
-		flag_key_dirty();
 	}
 	else
 	{
 		document.getElementById('set_key_button').disabled = true;
 		document.getElementById('unset_key_button').disabled = true;
-		flag_key_clean();
 	}
+
 	var elm = event.target;
 	if (elm.tagName.toUpperCase() == 'SELECT')
 	{
@@ -528,7 +606,7 @@ function cleannumTSV(in_number)
 
 function does_not_work_yet()
 {
-	alert('This function does not work yet.');
+	alert('This feature does not work yet.');
 }
 
 function test_function()
@@ -779,6 +857,13 @@ function key_change_warning(elm, letter)
 	alert('A key has been altered. Please save or revert any changes to this key before proceeding. (' + letter + ')');
 }
 
+function key_legend_warning(elm, letter)
+{
+	elm.blur();
+	document.body.focus();
+	alert('A caption has been set, but its color has not also been set as well. Please make sure every caption has a corresponding color. This includes SHIFT, CTRL, ALT and ALTGR captions. Alternatively, you revert any changes to the key. (' + letter + ')');
+}
+
 function document_change_warning(letter)
 {
 	return confirm('Pressing this button will reset the submission form to its orignal state, discarding any changes you may have made. Do you wish to proceed? (' + letter + ')');
@@ -811,6 +896,12 @@ function document_save_changes()
 	{
 		var elm = document.getElementById('set_doc_button');
 		key_change_warning(elm, 'D');
+		return;
+	}
+	if (is_leg_dirty == true)
+	{
+		var elm = document.getElementById('set_doc_button');
+		key_legend_warning(elm, 'D');
 		return;
 	}
 	if (document_save_warning('A') == false)
@@ -964,6 +1055,16 @@ function flag_key_dirty()
 function flag_key_clean()
 {
 	is_key_dirty = false;
+}
+
+function flag_leg_dirty()
+{
+	is_leg_dirty = true;
+}
+
+function flag_leg_clean()
+{
+	is_leg_dirty = false;
 }
 
 function flag_doc_dirty()

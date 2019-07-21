@@ -310,7 +310,7 @@
 </form>
 <hr/>
 <h2>Description:</h2>
-<p>This PHP form generates a keyboard control diagram in a new window. You can select from among hotkeys and bindings for various video games and other software. If you do not have a JavaScript-enabled browser, then you may refer to the <a href="keyboard-list.php">master list</a> table instead, as it should be viewable in a JavaScript-less browser.</p>
+<p>This PHP form generates a keyboard control diagram in a new window. You can select from among hotkeys and bindings for various video games and other software. If you do not have a JavaScript-enabled browser, then you may refer to the <a href="keyboard-list.php">master list</a> table instead, as it should be viewable in a JavaScript-less browser. If you are looking for Apple or non-English bindings, you may <i>also</i> have an easier time searching the master list, as there are so few of them.</p>
 <h2>Instructions:</h2>
 <ol>
 	<li>Select a keyboard (key positions).</li>

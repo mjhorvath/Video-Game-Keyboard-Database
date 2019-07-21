@@ -59,8 +59,11 @@
   [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/).
 * Whether or not to show lower case key caps should maybe be a per-game setting 
   rather than a per-layout setting.
-* The HTML editor should throw an error if a legend group has not been assigned 
-  to each and every binding.
+* Since the main diagrams are now rendered in SVG, I could make the Enter key 
+  in the European ISO layouts the correct shape. I.e. a polygon with six 
+  vertices instead of four vertices.
+* Need to switch to using something other than alert boxes for reporting 
+  errors, since alert boxes can be inadvertently disabled by the user.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
@@ -123,3 +126,5 @@
   their defaults.]
 * Rename "html_XXXXX.css" files to "submit_XXXXX.css" and/or rename 
   "keyboard-html.php" to "keyboard-embed.php".
+* The HTML editor should throw an error if a legend group has not been assigned 
+  to each and every binding.
