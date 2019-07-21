@@ -1,4 +1,4 @@
-# To Do List
+## To Do List
 
 ### Incomplete
 * Should maybe store the SVG patterns, filters and gradients in separate files, 
@@ -68,21 +68,24 @@
   to enable or disable the warning. It could go beneath the "Enter new lines by 
   typing \n" message, since there are not any other configurable settings 
   currently.
-
-### Problematic
-* Sub-pages should maybe not repeat the parent project's title since the title 
-  already appears in the site's horizontal breadcrumbs. Not sure.
-* The key caption legend should also be configurable. Right now it always says 
-  "SHIFT", "CTRL", and "ALT", and can't be customized. Not sure which table to 
-  put this stuff in. There will need to be a way to turn each string on and off 
-  as well as insert a value. [Ed. I went ahead and created the table. However, 
-  the table is empty as of now until I think of a way to let users modify these 
-  strings in the submission form.]
 * Automatically send confirmation emails to anyone who completes the submission 
   form. Also, do this for the email form on my main website.
 * Should be able to easily create "Typing Reference" schemes for the other 
   keyboards as well. I would like to have the GUI strings translated into the 
   respective languages first, however.
+* Users of the submission form should be able to specify which layout using a 
+  drop-down list or whatever. Not urgent, since they are able to specify and 
+  edit a "blank sample" for all of the layouts.
+
+### Problematic
+* Sub-pages should maybe not repeat the parent project's title since the title 
+  already appears in the site's horizontal breadcrumbs. Not sure.
+* The key caption legend should also be configurable. Right now it always says 
+  "SHIFT", "CTRL", "ALT", etc. and can't be customized. Not sure which table to 
+  put this stuff in. There will need to be a way to turn each string on and off 
+  as well as insert a value. [Ed. I went ahead and created the table. However, 
+  the table is empty until I think of a way to let users modify these strings 
+  in the submission form.]
 
 ### Rejected
 * Implement a "languages" table. [Ed. It may be sufficient to simply tie the 
