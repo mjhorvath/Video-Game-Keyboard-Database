@@ -343,9 +343,9 @@ var binding_table =
 				<hr/>
 				<form id="email_form" method="post" enctype="multipart/form-data" accept-charset="UTF-8" action="">
 					<div id="email_table" class="emltbl inbtop" style="margin:auto;">
-						<div class="emlrow"><div class="emlcll"><label for="email_1">Name: </label></div><div class="emlcll"><input class="email_input"  type="text" name="email_1" id="email_1" onchange="flag_eml_clean();" placeholder="First and last name"  required="required" autocomplete="off" data-lpignore="true"/></div></div>
-						<div class="emlrow"><div class="emlcll"><label for="email_2">Email:</label></div><div class="emlcll"><input class="email_input" type="email" name="email_2" id="email_2" onchange="flag_eml_clean();" placeholder="Return email address" required="required" autocomplete="off" data-lpignore="true"/></div></div>
-						<div class="emlrow"><div class="emlcll"><label for="email_3">Messg:</label></div><div class="emlcll"><textarea class="email_textarea"        name="email_3" id="email_3" onchange="flag_eml_clean();" placeholder="Message to admin"     required="required" autocomplete="off"></textarea></div></div>
+						<div class="emlrow"><div class="emlcll"><label for="email_1">Name: </label></div><div class="emlcll"><input class="email_input"  type="text" name="email_1" id="email_1" onchange="flag_eml_dirty();" placeholder="First and last name"  required="required" autocomplete="off" data-lpignore="true"/></div></div>
+						<div class="emlrow"><div class="emlcll"><label for="email_2">Email:</label></div><div class="emlcll"><input class="email_input" type="email" name="email_2" id="email_2" onchange="flag_eml_dirty();" placeholder="Return email address" required="required" autocomplete="off" data-lpignore="true"/></div></div>
+						<div class="emlrow"><div class="emlcll"><label for="email_3">Messg:</label></div><div class="emlcll"><textarea class="email_textarea"        name="email_3" id="email_3" onchange="flag_eml_dirty();" placeholder="Message to admin"     required="required" autocomplete="off"></textarea></div></div>
 					</div>
 					<div id="email_recaptcha" class="g-recaptcha" data-callback="flag_cap_dirty" data-sitekey="<?php echo writeRecaptchaKey(); ?>"></div>
 					<p style="text-align:left;">For human verification purposes, please click the checkbox labeled "I'm not a robot".</p>

@@ -28,3 +28,4 @@ In order for VGKD to work properly, it currently requires the following things:
 * Hello Kitty style: Hello Kitty Keyboard by DreamKitty.com (http://www.dreamkitty.com/Merchant2/merchant.mv?Screen=PROD&Store_Code=DK2000&Product_Code=K-FB109141&Category_Code=HK)
 * Doraemon style: Doraemon Keyboard by DreamKitty.com (http://www.dreamkitty.com/Merchant5/merchant.mvc?Screen=PROD&Store_Code=DK2000&Product_Code=O-FB761011&Category_Code=)
 * FunKeyBoard style: FunKeyBoard by Chester Creek Technologies (http://www.venturaes.com/index_new.asp?http://www.venturaes.com/chestercreek/index.html)
+* Recaptcha script: Stack Overflow (https://stackoverflow.com/questions/30006081/recaptcha-2-0-with-ajax)

@@ -25,9 +25,8 @@ var keycount = 106;
 var colors = ['non','red','yel','grn','cyn','blu','mag','wht','gry','blk','org','olv','brn'];
 var layout_id = 1;
 var is_key_dirty = false;
-var is_leg_dirty = false;
 var is_doc_dirty = false;
-var is_eml_dirty = true;
+var is_eml_dirty = false;
 var is_cap_dirty = false;
 var last_id = null;
 var last_class = null;
@@ -88,11 +87,11 @@ function click_document_body(event)
 			(
 				(is_key_dirty == true) &&
 				(
-					elm.matches('#set_doc_button') ||
+					elm.matches('#set_doc_button')   ||
 					elm.matches('#unset_doc_button') ||
-					elm.matches('.email_input') ||
-					elm.matches('.email_textarea') ||
-					elm.matches('#email_recaptcha') ||
+					elm.matches('.email_input')      ||
+					elm.matches('.email_textarea')   ||
+					elm.matches('#email_recaptcha')  ||
 					(true === false)
 				)
 			)
@@ -102,29 +101,13 @@ function click_document_body(event)
 			}
 			else if
 			(
-				(is_leg_dirty == true) &&
-				(
-					elm.matches('#set_doc_button') ||
-					elm.matches('#unset_doc_button') ||
-					elm.matches('.email_input') ||
-					elm.matches('.email_textarea') ||
-					elm.matches('#email_recaptcha') ||
-					(true === false)
-				)
-			)
-			{
-				key_legend_warning(elm, 'E');
-				return;
-			}
-			else if
-			(
-				elm.matches('#pane_lft') ||
-				elm.matches('#table_inp') ||
+				elm.matches('#pane_lft')   ||
+				elm.matches('#table_inp')  ||
 				elm.matches('#button_inp') ||
-				elm.matches('#tbar_lft') ||
-				elm.matches('#tbar_rgt') ||
-				elm.matches('.side_butt') ||
-				elm.matches('.tabs_butt') ||
+				elm.matches('#tbar_lft')   ||
+				elm.matches('#tbar_rgt')   ||
+				elm.matches('.side_butt')  ||
+				elm.matches('.tabs_butt')  ||
 				(true === false)
 			)
 			{
@@ -139,32 +122,14 @@ function click_document_body(event)
 			// could be optimized a little
 			else if
 			(
-				(is_leg_dirty == true) &&
-				(does_ancestor_have_id(elm, 'pane_rgt') == true) &&
-				(
-					(elm.tagName.toUpperCase() == 'INPUT') ||
-					(elm.tagName.toUpperCase() == 'BUTTON') ||
-					(elm.tagName.toUpperCase() == 'TEXTAREA') ||
-					(elm.tagName.toUpperCase() == 'SELECT') ||
-					(elm.tagName.toUpperCase() == 'OPTION') ||
-					(true === false)
-				)
-			)
-			{
-				key_legend_warning(elm, 'A');
-				return;
-			}
-			// could be optimized a little
-			else if
-			(
 				(is_key_dirty == true) &&
 				(does_ancestor_have_id(elm, 'pane_rgt') == true) &&
 				(
-					(elm.tagName.toUpperCase() == 'INPUT') ||
-					(elm.tagName.toUpperCase() == 'BUTTON') ||
+					(elm.tagName.toUpperCase() == 'INPUT')    ||
+					(elm.tagName.toUpperCase() == 'BUTTON')   ||
 					(elm.tagName.toUpperCase() == 'TEXTAREA') ||
-					(elm.tagName.toUpperCase() == 'SELECT') ||
-					(elm.tagName.toUpperCase() == 'OPTION') ||
+					(elm.tagName.toUpperCase() == 'SELECT')   ||
+					(elm.tagName.toUpperCase() == 'OPTION')   ||
 					(true === false)
 				)
 			)
@@ -214,11 +179,6 @@ function click_on_chart_key(elm)
 		key_change_warning(elm, 'C');
 		return;
 	}
-	if (is_leg_dirty == true)
-	{
-		key_legend_warning(elm, 'C');
-		return;
-	}
 
 	last_id = current_id;
 	current_id = elm.id.slice(7);
@@ -240,11 +200,6 @@ function click_off_chart_key(elm)
 	if (is_key_dirty == true)
 	{
 		key_change_warning(elm, 'B');
-		return;
-	}
-	if (is_leg_dirty == true)
-	{
-		key_legend_warning(elm, 'B');
 		return;
 	}
 
@@ -288,12 +243,16 @@ function key_save_changes()
 		image_file_warning();
 		return;
 	}
+	if (are_all_captions_in_groups() == false)
+	{
+		if (key_legend_warning('A') == false)
+			return;
+	}
 	push_values_from_form_into_cache();
 	push_values_from_cache_into_array();
 	document.getElementById('set_key_button').disabled = true;
 	document.getElementById('unset_key_button').disabled = true;
 	flag_key_clean();
-//	flag_leg_clean();		// this may actually confuse users
 	flag_doc_dirty();
 }
 
@@ -304,7 +263,6 @@ function key_revert_changes()
 	document.getElementById('set_key_button').disabled = true;
 	document.getElementById('unset_key_button').disabled = true;
 	flag_key_clean();
-	flag_leg_clean();		// this may actually confuse users
 }
 
 function is_embedded_image_okay()
@@ -314,7 +272,8 @@ function is_embedded_image_okay()
 	if
 	(
 		((img_filename == '') && (img_datauri != '')) ||
-		((img_filename != '') && (img_datauri == ''))
+		((img_filename != '') && (img_datauri == '')) ||
+		(true === false)
 	)
 	{
 		return false;
@@ -488,7 +447,6 @@ function have_input_key_values_changed()
 	{
 		return true;
 	}
-
 	return false;
 }
 
@@ -507,34 +465,23 @@ function are_all_captions_in_groups()
 	{
 		return false;
 	}
-
 	return true;
 }
 
 // Need to rename this function since its purpose has changed slightly.
 function toggle_set_and_revert_buttons(event)
 {
-	var val_change = have_input_key_values_changed();
-	var leg_change = are_all_captions_in_groups();
-
-	if (val_change == true)
-		flag_key_dirty();
-	else
-		flag_key_clean();
-	if (leg_change == false)
-		flag_leg_dirty();
-	else
-		flag_leg_clean();
-
-	if ((val_change == true) || (leg_change == false))
+	if (have_input_key_values_changed() == true)
 	{
 		document.getElementById('set_key_button').disabled = false;
 		document.getElementById('unset_key_button').disabled = false;
+		flag_key_dirty();
 	}
 	else
 	{
 		document.getElementById('set_key_button').disabled = true;
 		document.getElementById('unset_key_button').disabled = true;
+		flag_key_clean();
 	}
 
 	var elm = event.target;
@@ -857,11 +804,9 @@ function key_change_warning(elm, letter)
 	alert('A key has been altered. Please save or revert any changes to this key before proceeding. (' + letter + ')');
 }
 
-function key_legend_warning(elm, letter)
+function key_legend_warning(letter)
 {
-	elm.blur();
-	document.body.focus();
-	alert('A key caption has been set, but its color has not also been set. Please make sure every key caption has a corresponding color. This includes the SHIFT, CTRL, ALT and ALTGR captions. Alternatively, you may revert any changes using the Revert button. (' + letter + ')');
+	return confirm('A key caption has been set, but its color has not also been set. Please make sure every key caption has a corresponding color. Do you wish to proceed anyway? (' + letter + ')');
 }
 
 function document_change_warning(letter)
@@ -876,8 +821,7 @@ function image_file_warning()
 
 function document_save_warning(letter)
 {
-//	return confirm('Pressing this button will post the keyboard bindings data to the site admin. You will not be able to return later and continue where you left off. Do you wish to proceed? (' + letter + ')');
-	return confirm('Pressing this button will post the keyboard bindings data to the site admin. Do you wish to proceed? (' + letter + ')');
+	return confirm('Pressing this button will post the keyboard bindings data to the site admin. You will not be able to return later and continue where you left off. Do you wish to proceed? (' + letter + ')');
 }
 
 function window_leave_warning(event)
@@ -894,14 +838,9 @@ function document_save_changes()
 {
 	if (is_key_dirty == true)
 	{
-		var elm = document.getElementById('set_doc_button');
-		key_change_warning(elm, 'D');
-		return;
-	}
-	if (is_leg_dirty == true)
-	{
-		var elm = document.getElementById('set_doc_button');
-		key_legend_warning(elm, 'D');
+		// this message actually gets spawned earlier anyway
+//		var elm = document.getElementById('set_doc_button');
+//		key_change_warning(elm, 'D');
 		return;
 	}
 	if (document_save_warning('A') == false)
@@ -1057,53 +996,40 @@ function flag_key_clean()
 	is_key_dirty = false;
 }
 
-function flag_leg_dirty()
-{
-	is_leg_dirty = true;
-}
-
-function flag_leg_clean()
-{
-	is_leg_dirty = false;
-}
-
 function flag_doc_dirty()
 {
 	is_doc_dirty = true;
-	check_all_dirty();
+	toggle_doc_controls();
 }
 
 function flag_doc_clean()
 {
 	is_doc_dirty = false;
-	check_all_dirty();
+	toggle_doc_controls();
 }
 
 function flag_cap_dirty()
 {
 	is_cap_dirty = true;
-	check_all_dirty();
+	toggle_doc_controls();
 }
 
 function flag_cap_clean()
 {
 	is_cap_dirty = false;
-	check_all_dirty();
+	toggle_doc_controls();
 }
 
-function flag_eml_clean()
+function flag_eml_dirty()
 {
 	var name	= $('#email_1');
 	var email	= $('#email_2');
 	var message	= $('#email_3');
 	if
 	(
-		name.val() == ''	||
-		email.val() == ''	||
-		message.val() == ''	||
-		!name.get(0).validity.valid	||
-		!email.get(0).validity.valid	||
-		!message.get(0).validity.valid	||
+		name.val() != ''	||
+		email.val() != ''	||
+		message.val() != ''	||
 		(true === false)
 	)
 	{
@@ -1113,17 +1039,35 @@ function flag_eml_clean()
 	{
 		is_eml_dirty = false;
 	}
-	check_all_dirty();
+	toggle_doc_controls();
 }
 
-function check_all_dirty()
+function check_eml_valid()
+{
+	var name	= $('#email_1');
+	var email	= $('#email_2');
+	var message	= $('#email_3');
+	if
+	(
+		name.get(0).validity.valid	&&
+		email.get(0).validity.valid	&&
+		message.get(0).validity.valid	&&
+		(true === true)
+	)
+	{
+		return true;
+	}
+	return false;
+}
+
+function toggle_doc_controls()
 {
 	if
 	(
-		(is_doc_dirty == true)  &&
-		(is_cap_dirty == true)  &&
-		(is_eml_dirty == false) &&
-		(true === true)
+		(is_doc_dirty == true) ||
+		(is_cap_dirty == true) ||
+		(is_eml_dirty == true) ||
+		(true === false)
 	)
 	{
 		enable_doc_controls();
@@ -1136,7 +1080,10 @@ function check_all_dirty()
 
 function enable_doc_controls()
 {
-	document.getElementById('set_doc_button').disabled = false;
+	if (check_eml_valid() == true)
+		document.getElementById('set_doc_button').disabled = false;
+	else
+		document.getElementById('set_doc_button').disabled = true;
 	document.getElementById('unset_doc_button').disabled = false;
 }
 
