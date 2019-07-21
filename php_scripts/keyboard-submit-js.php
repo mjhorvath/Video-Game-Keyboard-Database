@@ -21,7 +21,6 @@
 
 new Image().src = 'animated_loading_icon.webp';
 
-var keycount = 106;
 var colors = ['non','red','yel','grn','cyn','blu','mag','wht','gry','blk','org','olv','brn'];
 var layout_id = 1;
 var is_key_dirty = false;
@@ -243,9 +242,9 @@ function key_save_changes()
 		image_file_warning();
 		return;
 	}
-	if (are_all_captions_in_groups() == false)
+	if (are_captions_in_groups() == false)
 	{
-		if (key_legend_warning('A') == false)
+		if (key_legend_warning_single('A') == false)
 			return;
 	}
 	push_values_from_form_into_cache();
@@ -450,7 +449,7 @@ function have_input_key_values_changed()
 	return false;
 }
 
-function are_all_captions_in_groups()
+function are_captions_in_groups()
 {
 	if
 	(
@@ -464,6 +463,31 @@ function are_all_captions_in_groups()
 	)
 	{
 		return false;
+	}
+	return true;
+}
+
+function check_all_caption_colors()
+{
+	for (var i = 0, n = binding_table.length; i < n; i++)
+	{
+		var this_binding = binding_table[i];
+		if (this_binding)
+		{
+			if
+			(
+				((this_binding[ 4] != '') && (this_binding[12] == 0)) ||
+				((this_binding[ 5] != '') && (this_binding[13] == 0)) ||
+				((this_binding[ 6] != '') && (this_binding[14] == 0)) ||
+				((this_binding[ 7] != '') && (this_binding[15] == 0)) ||
+				((this_binding[ 8] != '') && (this_binding[16] == 0)) ||
+				((this_binding[ 9] != '') && (this_binding[17] == 0)) ||
+				(true === false)
+			)
+			{
+				return false;
+			}
+		}
 	}
 	return true;
 }
@@ -804,9 +828,17 @@ function key_change_warning(elm, letter)
 	alert('A key has been altered. Please save or revert any changes to this key before proceeding. (' + letter + ')');
 }
 
-function key_legend_warning(letter)
+function key_legend_warning_single(letter)
 {
+	// Is this message too annoying?
 	return confirm('A key caption has been set, but its color has not also been set. Please make sure every key caption has a corresponding color. Do you wish to proceed anyway? (' + letter + ')');
+	// If it is too annoying, use this instead.
+//	return 1;
+}
+
+function key_legend_warning_multiple(letter)
+{
+	return confirm('One or more key captions have been set, but their colors have not also been set. Please make sure every key caption has a corresponding color. Do you wish to proceed anyway? (' + letter + ')');
 }
 
 function document_change_warning(letter)
@@ -843,10 +875,13 @@ function document_save_changes()
 //		key_change_warning(elm, 'D');
 		return;
 	}
-	if (document_save_warning('A') == false)
+	if (check_all_caption_colors() == false)
 	{
-		return;
+		if (key_legend_warning_multiple('D') == false)
+			return;
 	}
+	if (document_save_warning('D') == false)
+		return;
 	collect_nonkey_data();
 	document.getElementById('email_4').value = document.getElementById('game_tit').value;
 	document.getElementById('email_5').value = document.getElementById('game_url').value;
