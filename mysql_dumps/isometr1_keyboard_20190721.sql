@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Jul 21, 2019 at 06:05 AM
+-- Generation Time: Jul 21, 2019 at 01:50 PM
 -- Server version: 5.5.52-cll
 -- PHP Version: 5.4.31
 
@@ -30,23 +30,26 @@ CREATE TABLE IF NOT EXISTS `authors` (
   `author_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `author_name` varchar(45) NOT NULL,
   PRIMARY KEY (`author_id`),
-  UNIQUE KEY `author_id_UNIQUE` (`author_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+  UNIQUE KEY `author_id_UNIQUE` (`author_id`),
+  UNIQUE KEY `author_name_UNIQUE` (`author_name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `authors`
 --
 
 INSERT INTO `authors` (`author_id`, `author_name`) VALUES
-(1, 'Michael Horvath'),
-(2, 'Charles M. Kozierok'),
-(3, 'John J. G. Savard'),
-(4, 'DreamKitty.com'),
-(5, 'Chester Creek Technologies'),
 (6, 'Agnes Beste'),
-(7, 'Taz'),
+(2, 'Charles M. Kozierok'),
+(5, 'Chester Creek Technologies'),
+(9, 'Cris'),
+(10, 'Daniel'),
+(4, 'DreamKitty.com'),
+(11, 'etejam'),
+(3, 'John J. G. Savard'),
 (8, 'Josiah Stearns'),
-(9, 'Cris');
+(1, 'Michael Horvath'),
+(7, 'Taz');
 
 -- --------------------------------------------------------
 
@@ -75,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `bindings` (
   PRIMARY KEY (`binding_id`),
   UNIQUE KEY `binding_id_UNIQUE` (`binding_id`),
   KEY `fk_bindings_record_id_idx` (`record_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21456 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22090 ;
 
 --
 -- Dumping data for table `bindings`
@@ -11990,7 +11993,124 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (21397, 240, 99, 'Włącz-\\nwyłącz\\nimiona', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (21398, 240, 100, 'Screen-\\nshot', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (21399, 240, 102, 'Szybki\\nzapis', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(21400, 240, 103, 'Zatrzymaj\\ngrę', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(21400, 240, 103, 'Zatrzymaj\\ngrę', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21900, 241, 2, 'Slot paska\\nwyboru nr', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21901, 241, 3, 'Slot paska\\nwyboru nr', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21902, 241, 4, 'Slot paska\\nwyboru nr', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21903, 241, 5, 'Slot paska\\nwyboru nr', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21904, 241, 6, 'Slot paska\\nwyboru nr', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21905, 241, 7, 'Slot paska\\nwyboru nr', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21906, 241, 8, 'Slot paska\\nwyboru nr', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21907, 241, 9, 'Slot paska\\nwyboru nr', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21908, 241, 10, 'Slot paska\\nwyboru nr', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21909, 241, 15, 'Lista graczy', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21910, 241, 16, 'Upuść\\nprzedmiot', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21911, 241, 17, 'Idź do\\nprzodu', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21912, 241, 18, 'Ekwipunek', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21913, 241, 20, 'Otwórz\\nczat', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21914, 241, 30, 'Idź w\\nlewo', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21915, 241, 31, 'Idź do\\ntyłu', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21916, 241, 32, 'Idź w\\nprawo', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21917, 241, 33, 'Zamień\\nprzedmiot\\nw rękach', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21918, 241, 38, 'Postępy', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21919, 241, 43, 'Skradanie /\\nUkładaj przedmioty', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21920, 241, 46, 'Załaduj \\npasek \\nwyboru', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21921, 241, 47, 'Zapisz \\npasek \\nwyboru', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21922, 241, 54, 'Wpisz\\nkomendę', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21923, 241, 55, 'Układaj przedmioty', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21924, 241, 56, 'Sprint', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21925, 241, 58, 'Skok / latanie', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21926, 241, 88, 'Menu\\ngłówne', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21927, 241, 89, 'Przełącz\\nHUD', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21928, 241, 90, 'Zrób zrzut\\nekranu', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21929, 241, 91, 'Informacje\\nsystemowe', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21930, 241, 92, 'Wyłącz\\ncienie', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21931, 241, 93, 'Przełącz\\nwidok', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21932, 241, 94, 'Stream\\non/off', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21933, 241, 95, 'Pause\\nstream', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21934, 241, 99, 'Przełącz na\\nfullscreen', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21963, 242, 2, 'Opción\\nMenú', 6, 'Chat #1', NULL, NULL, NULL, 'Sel. Objetivo', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21964, 242, 3, 'Opción\\nMenú', 6, 'Chat #2', NULL, NULL, NULL, 'Dispara Arma', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(21965, 242, 4, 'Opción\\nMenú', 6, 'Chat #3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21966, 242, 5, 'Opción\\nMenú', 6, 'Chat #4', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21967, 242, 6, 'Opción\\nMenú', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21968, 242, 7, 'Opción\\nMenú', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21969, 242, 8, 'Opción\\nMenú', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21970, 242, 9, 'Opción\\nMenú', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21971, 242, 10, 'Opción\\nMenú', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21972, 242, 11, 'Menú\\nPrevio', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21973, 242, 12, 'Baja\\nVelocidad', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21974, 242, 13, 'Sube\\nVelocidad', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21975, 242, 14, 'Maxima\\nVelocidad', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21976, 242, 15, 'Comandos:\\nChat de Equipo', 6, 'Chat\\nLinea', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21977, 242, 16, 'Abandona\\nMision', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21978, 242, 17, 'Ciclo\\nArmas', 1, '¡Parad y\\nEsperad!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21979, 242, 18, 'Atacante', 2, 'Acción\\nEvasiva', NULL, NULL, NULL, 'Ejectarse', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21980, 242, 19, 'Enemigo\\nCercano', 2, 'Informe\\nde Estado', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21981, 242, 20, '»»»\\nObjetivo\\nSig.', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21982, 242, 21, '«««\\nObjetivo\\nAnt.', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21983, 242, 22, 'Nueva\\nNave', 2, NULL, NULL, NULL, NULL, 'Ver \\nObjetivo', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21984, 242, 23, 'Misil +\\nCercano', 2, '¡Ignorad\\nObjetivo!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21985, 242, 24, 'Objetivo +\\nCercano', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21986, 242, 25, 'Jugador +\\nCercano', 2, 'Recoger', NULL, NULL, NULL, 'Pausa', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21987, 242, 26, '1/3 de\\nVelocid.', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21988, 242, 27, '2/3 de\\nVelocid.', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21989, 242, 28, '0\\nVelocidad', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21990, 242, 30, 'Ver Quien\\nAtaca\\nObjetivo', 2, '¡Atacad\\nObjetivo!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21991, 242, 31, 'Config.\\nEscudo', 4, '¡Ayudadle!', NULL, NULL, NULL, 'Mensaje\\nSistema', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21992, 242, 32, 'Informe\\nde Daños', NULL, 'Dock', NULL, 'Nivel Detalle', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21993, 242, 33, 'Ciclo\\nTorretas\\nAI', 1, 'Grabar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21994, 242, 34, 'Ciclo\\nTorretas', 1, 'Continua\\nCurso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21995, 242, 35, 'Reiniciar\\nMision', 6, '¡Regrese\\nA Base!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21996, 242, 36, 'Cambiar\\nNave', 3, NULL, NULL, NULL, NULL, 'Vista de\\nVuelo', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21997, 242, 38, 'Registro\\nMensajes', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21998, 242, 39, 'Energia\\na Armas', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21999, 242, 40, 'Energia\\na Escudo', 4, 'Todo A\\nEscudos', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22000, 242, 42, 'Igualar\\nVelocidad\\nObjetivo', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22001, 242, 45, 'Visor de\\nAmenaza', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22002, 242, 46, 'Config.\\nArmas', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22003, 242, 47, 'Disparar\\nContra-\\nmedidas', 1, '¡Cubridme!', NULL, NULL, NULL, 'Borra PMCO', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22004, 242, 48, 'Abre O\\nCierra\\nAlas-S', 3, NULL, NULL, NULL, NULL, 'Versión', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22005, 242, 49, 'Alternar\\nRayos', 1, '!Reabas-\\ntecedme¡', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22006, 242, 50, 'Boya +\\nCercana', 2, NULL, NULL, NULL, NULL, 'Vista de\\nMisil', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22007, 242, 51, 'Mapa', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22008, 242, 52, 'Proximo\\nSubsis-\\ntema', 2, 'Previo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22009, 242, 53, NULL, NULL, NULL, NULL, NULL, NULL, 'HUD Simple', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22010, 242, 58, 'Ir a Hiperespacio : Cambia Mapa 2D/3D : Confirma Ordenes', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22011, 242, 61, 'Sensores\\nDelante-\\nros', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22012, 242, 62, 'Izquierda\\nMFD', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22013, 242, 63, 'Prev MFD\\nMode', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22014, 242, 64, 'Centro\\nHUD', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22015, 242, 65, 'Centro\\nCMD', 6, NULL, NULL, 'Cambiar \\nHUD ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22016, 242, 66, 'Prev\\nItem', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22017, 242, 67, 'Next\\nItem', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22018, 242, 68, 'Sensores\\nTraseros', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22019, 242, 69, 'Derecha\\nMFD', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22020, 242, 70, 'Next MFD\\nMode', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22021, 242, 73, 'Vista\\nIzquierda', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22022, 242, 74, 'Esquina\\nIzquierda', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22023, 242, 75, 'Modo\\nExterno', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22024, 242, 76, 'Vista\\nDelantera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22025, 242, 78, 'Vista\\nTrasera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22026, 242, 80, 'Posicion\\nCámara', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22027, 242, 82, 'Vista\\nDerecha', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22028, 242, 83, 'Esquina\\nDerecha', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22029, 242, 84, 'Vista\\nCabina', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22030, 242, 88, 'Opciones', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22031, 242, 89, 'Amigo»', 2, 'Ver', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22032, 242, 90, '«Amigo', 2, 'Ver', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22033, 242, 91, 'Enemigo»', 2, 'Ver', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22034, 242, 92, '«Enemigo', 2, 'Ver', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22035, 242, 93, 'Carga\\nObj. #1', 2, 'Graba\\nObjetivo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22036, 242, 94, 'Carga\\nObj. #2', 2, 'Graba\\nObjetivo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22037, 242, 95, 'Carga\\nObj. #3', 2, 'Graba\\nObjetivo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22038, 242, 96, 'Recarga\\nIones', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22039, 242, 97, 'Recarga\\nLaser', 4, 'Energia a\\nEscudos', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22040, 242, 98, 'Recarga\\nEscudo', 4, 'Energia\\nLaser', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22041, 242, 99, 'Presel.\\nEnerg #1', 4, 'Graba Sel.#1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22042, 242, 100, 'Presel.\\nEnerg #2', 4, 'Graba Sel.#1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22043, 242, 102, 'Ratón\\nCabina', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -12024,7 +12144,7 @@ CREATE TABLE IF NOT EXISTS `commands` (
   UNIQUE KEY `command_id_UNIQUE` (`command_id`),
   KEY `fk_commands_copy_record_id_idx` (`record_id`),
   KEY `fk_commands_commandtype_id_idx` (`commandtype_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2234 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2262 ;
 
 --
 -- Dumping data for table `commands`
@@ -13156,7 +13276,14 @@ INSERT INTO `commands` (`command_id`, `record_id`, `commandtype_id`, `command_te
 (2230, 240, 6, '/pm <message>', 'private message'),
 (2231, 240, 6, '/reply <message> or /r <message>', 'reply for last private message (sent/received)'),
 (2232, 240, 6, '/players', 'amount of players online'),
-(2233, 240, 6, '/report', 'reporting player, who is doing illegal stuff');
+(2233, 240, 6, '/report', 'reporting player, who is doing illegal stuff'),
+(2248, 241, 1, 'Space', 'When double-tapped, toggles Fly Mode (Creative only).'),
+(2249, 241, 2, 'X-axis', 'Turn left/right.'),
+(2250, 241, 2, 'Y-axis', 'Look up/down.'),
+(2251, 241, 2, 'Scroll wheel', 'Scroll through quick bar.'),
+(2252, 241, 2, 'LMB', 'Attack creature. Destroy block.'),
+(2253, 241, 2, 'MMB', 'Pick block.'),
+(2254, 241, 2, 'RMB', 'Use item. Place block.');
 
 -- --------------------------------------------------------
 
@@ -15384,7 +15511,7 @@ CREATE TABLE IF NOT EXISTS `legends` (
   PRIMARY KEY (`legend_id`),
   UNIQUE KEY `legend_id_UNIQUE` (`legend_id`),
   KEY `fk_legends_record_id_idx` (`record_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1209 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1230 ;
 
 --
 -- Dumping data for table `legends`
@@ -16389,7 +16516,18 @@ INSERT INTO `legends` (`legend_id`, `record_id`, `legend_group`, `legend_descrip
 (1204, 240, 3, 'Movement'),
 (1205, 240, 4, 'Multiplayer Mod'),
 (1206, 240, 5, 'Camera'),
-(1207, 240, 6, 'Game Controls');
+(1207, 240, 6, 'Game Controls'),
+(1216, 241, 2, 'Inventory'),
+(1217, 241, 3, 'Movement'),
+(1218, 241, 4, 'Chat'),
+(1219, 241, 5, 'Camera'),
+(1220, 241, 6, 'Game Controls'),
+(1223, 242, 1, 'Combate'),
+(1224, 242, 2, 'Objetivos'),
+(1225, 242, 3, 'Movimiento'),
+(1226, 242, 4, 'Energia/Escudos'),
+(1227, 242, 5, 'Camara'),
+(1228, 242, 6, 'Menus/Interfaz');
 
 -- --------------------------------------------------------
 
@@ -17524,7 +17662,7 @@ CREATE TABLE IF NOT EXISTS `records_games` (
   KEY `fk_records_game_id_idx` (`game_id`),
   KEY `fk_records_layouts_idx` (`layout_id`),
   KEY `fk_records_author_id_idx` (`author_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=241 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=243 ;
 
 --
 -- Dumping data for table `records_games`
@@ -17766,7 +17904,9 @@ INSERT INTO `records_games` (`record_id`, `game_id`, `layout_id`, `author_id`) V
 (237, 93, 11, 1),
 (238, 153, 11, 1),
 (239, 184, 11, 1),
-(240, 115, 11, 9);
+(240, 115, 11, 9),
+(241, 114, 11, 10),
+(242, 41, 9, 11);
 
 -- --------------------------------------------------------
 
