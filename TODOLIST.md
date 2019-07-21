@@ -5,35 +5,20 @@ Fully completed tasks are marked with a plus '+'.<br>
 Questionable, problematic or partially incomplete tasks are marked with a tilde '~'.<br>
 Rejected or non-implementable tasks are marked with an 'x'.<br>
 
-* In the submission form, selecting a colored OPTION element should change the color of the corresponding parent SELECT element as well.
-* A warning should be thrown ONBEFOREUNLOAD if someone attempts to leave the submission form and there is any unsaved or unsubmitted data.
-* Make sure all buttons in the submission form have their TITLE attributes set so that tooltips appear when hovering the mouse over them.
-* The Creative Commons and GNU icons need to have their ALT attributes set.
-* The CAPTCHA dialog should check for a correct security code *before* sending the user on to the next page. At the very least, it should warn the user that he or she will not be able to return to the form page after clicking the submit button.
-* Should maybe store the SVG patterns, filters and gradients in separate files, rather than cluttering up the main SVG file. But since there are only a dozen or so styles right now, it is currently not very important.
-* Continue developing the "Spreadsheet View" of the submission form, and permit users to alter or update the keyboard data using it if they want to.
-* Convert input TABLEs to DIVs.
+## To Do
+* Should maybe store the SVG patterns, filters and gradients in separate files, 
+  rather than cluttering up the main SVG file. But since there are only a dozen 
+  or so styles right now, it is currently not very important.
+* Continue developing the "Spreadsheet View" of the submission form, and permit 
+  users to alter or update the keyboard data using it if they want to.
+* I should change all the various JavaScript alert boxes to something prettier.
 
-\~ Sub-pages should maybe not repeat the parent project's title since the title 
-   already appears in the site's horizontal breadcrumbs. Not sure.
+## Problematic
+* Sub-pages should maybe not repeat the parent project's title since the title already appears in the site's horizontal breadcrumbs. Not sure.
+* The key caption legend should also be configurable. Right now it always says "SHIFT", "CTRL", and "ALT", and can't be customized. Not sure which table to put this stuff in. There will need to be a way to turn each string on and off as well as insert a value. [Ed. I went ahead and created the table. However, the table is empty as of now until I think of a way to let users modify these strings in the submission form.]
 
-\+ Need a loading icon since it takes a while for all the AJAX stuff (e.g. 
-   reCAPTCHA) to download and load fully.
-
-\- I should change all the various JavaScript alert boxes to something prettier.
-
-\+ The "required" attribute of the email INPUT elements should cause the 
-   submission form to not post if those INPUTs are not filled properly. This 
-   includes the email address field, which requires special syntax.
-
-\~ The key caption legend should also be configurable. Right now it always says 
-   "SHIFT", "CTRL", and "ALT", and can't be customized. Not sure which table to 
-   put this stuff in. There will need to be a way to turn each string on and off 
-   as well as insert a value. [Ed. I went ahead and created the table. However, 
-   the table is empty as of now until I think of a way to let users modify these 
-   strings in the submission form.]
-
-\x Implement a "languages" table. [Ed. It may be sufficient to simply tie the 
+## Rejected
+*  Implement a "languages" table. [Ed. It may be sufficient to simply tie the 
    languages the bindings texts are written in to the languages of the 
    keyboards.]
 
@@ -148,3 +133,14 @@ Rejected or non-implementable tasks are marked with an 'x'.<br>
 
 \- The HTML editor should throw an error if a legend group has not been assigned 
    to each and every binding.
+
+## Done
+
+* In the submission form, selecting a colored OPTION element should change the color of the corresponding parent SELECT element as well.
+* A warning should be thrown ONBEFOREUNLOAD if someone attempts to leave the submission form and there is any unsaved or unsubmitted data.
+* Make sure all buttons in the submission form have their TITLE attributes set so that tooltips appear when hovering the mouse over them.
+* The Creative Commons and GNU icons need to have their ALT attributes set.
+* The CAPTCHA dialog should check for a correct security code *before* sending the user on to the next page. At the very least, it should warn the user that he or she will not be able to return to the form page after clicking the submit button.
+* Convert input TABLEs to DIVs.
+* Need a loading icon since it takes a while for all the AJAX stuff (e.g. reCAPTCHA) to download and load fully.
+* The "required" attribute of the email INPUT elements should cause the submission form to not post if those INPUTs are not filled properly. This includes the email address field, which requires special syntax.
