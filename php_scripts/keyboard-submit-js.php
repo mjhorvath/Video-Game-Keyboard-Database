@@ -35,6 +35,7 @@ var current_values = {};
 current_values.val_keynum = '';
 current_values.val_keynormlow = '';
 current_values.val_keynormhgh = '';
+current_values.val_keyaltgrlow = '';
 current_values.val_keyaltgrhgh = '';
 current_values.val_capnor = '';
 current_values.val_capshf = '';
@@ -213,6 +214,7 @@ function click_off_chart_key(elm)
 	current_values.val_keynum = '';
 	current_values.val_keynormlow = '';
 	current_values.val_keynormhgh = '';
+	current_values.val_keyaltgrlow = '';
 	current_values.val_keyaltgrhgh = '';
 	current_values.val_capnor = '';
 	current_values.val_capshf = '';
