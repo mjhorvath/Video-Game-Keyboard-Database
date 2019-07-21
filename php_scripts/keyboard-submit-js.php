@@ -207,7 +207,7 @@ function click_off_chart_key(elm)
 		document.getElementById('keyout_' + current_id).className = last_class;
 	}
 
-	last_id = null
+	last_id = null;
 	last_class = null;
 	current_id = null;
 	current_values = {};
@@ -467,7 +467,8 @@ function are_captions_in_groups()
 	return true;
 }
 
-function check_all_caption_colors()
+// I have not tested yet whether this produces false positives. No real harm done if it does, though.
+function check_all_caption_groups()
 {
 	for (var i = 0, n = binding_table.length; i < n; i++)
 	{
@@ -830,15 +831,15 @@ function key_change_warning(elm, letter)
 
 function key_legend_warning_single(letter)
 {
-	// Is this message too annoying?
-	return confirm('A key caption has been set, but its color has not also been set. Please make sure every key caption has a corresponding color. Do you wish to proceed anyway? (' + letter + ')');
-	// If it is too annoying, use this instead.
+	// Is this message too annoying? We'll have to wait and see.
+	return confirm('A caption for this key has been set, but its color has not also been set. Please make sure every key caption has a corresponding color, even if the color is not displayed in the chart. Do you wish to proceed anyway? (' + letter + ')');
+	// If it is too annoying, do this instead.
 //	return 1;
 }
 
 function key_legend_warning_multiple(letter)
 {
-	return confirm('One or more key captions have been set, but their colors have not also been set. Please make sure every key caption has a corresponding color. Do you wish to proceed anyway? (' + letter + ')');
+	return confirm('One or more key captions have been set, but their colors have not also been set. Please make sure every key caption has a corresponding color, even if the color is not displayed in the chart. Do you wish to proceed anyway? (' + letter + ')');
 }
 
 function document_change_warning(letter)
@@ -875,7 +876,7 @@ function document_save_changes()
 //		key_change_warning(elm, 'D');
 		return;
 	}
-	if (check_all_caption_colors() == false)
+	if (check_all_caption_groups() == false)
 	{
 		if (key_legend_warning_multiple('D') == false)
 			return;
