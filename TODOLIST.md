@@ -76,6 +76,11 @@
 * Users of the submission form should be able to specify which layout using a 
   drop-down list or whatever. Not urgent, since they are able to specify and 
   edit a "blank sample" for all of the layouts.
+* There needs to be some indication on the submission page that there is a help 
+  pane as well as the "Spreadsheet View".
+* Should create a table of authors/contributers that automatically pulls info 
+  from the database. It should show a list of authors, and the stuff they 
+  contributed.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
