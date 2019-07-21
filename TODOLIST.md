@@ -64,6 +64,10 @@
   vertices instead of four vertices.
 * Need to switch to using something other than alert boxes for reporting 
   errors, since alert boxes can be inadvertently disabled by the user.
+* The warning about unset/missing caption colors could benefit from a checkbox 
+  to enable or disable the warning. It could go beneath the "Enter new lines by 
+  typing \n" message, since there are not any other configurable settings 
+  currently.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
