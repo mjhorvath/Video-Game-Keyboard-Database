@@ -8,9 +8,10 @@ div.comdiv	{position:relative;margin:3px;padding:18px;}
 div#flxdiv	{position:relative;margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
 .cut	{position:absolute;border:1px dashed #000000;}
 .keyout	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
-.keyhgh	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;left: 0px;top:   0px;}
-.keylow	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;left: 0px;bottom:0px;}
-.keyrgt	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;right:0px;top:   0px;}
+.uppnor	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;left: 0px;top:   0px;}
+.lownor	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;left: 0px;bottom:0px;}
+.uppagr	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;right:0px;top:   0px;}
+.lowagr	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:  bold;right:0px;bottom:0px;}
 .keynon	{display:none;}
 .capopt	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:normal;left: 0px;bottom:0em;}
 .capopf	{position:absolute;overflow:hidden;padding:2px;white-space:pre;font-weight:normal;left: 0px;bottom:1em;}

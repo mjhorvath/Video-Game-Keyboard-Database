@@ -15,7 +15,7 @@
 	<li>2019/04/10: Lots of CSS tweaks. Renamed several files back to the old "embed" conventions. Created the "captions" table to store labels that go into the key cap legends, although it is currently still empty. Switched the order in which key captions are rendered in the submissions form so that the "Grayscale" theme works better.</li>
 	<li>2019/04/09: Switched to using flexbox for combo boxes.</li>
 	<li>2019/04/06: CSS tweaks. Added an "layout_language" column to the database. Fixed icon images not showing up behind keys. Link to "normalize.css" got broken at some point.</li>
-	<li>2019/04/04: Added bindings for <i>Secret World Legends</i>. This brings the total number of games up to 200, and the total number sets of bindings to 233!</li>
+	<li>2019/04/04: Added bindings for <i>Secret World Legends</i>. This brings the total number of games up to 200, and the total number of bindings to 233!</li>
 	<li>2019/04/03: Added bindings for <i>Rebel Galaxy</i>.</li>
 	<li>2019/04/03: Fixed many minor errors in CSS color definitions.</li>
 	<li>2019/04/02: Created bindings for the "Test Sample" and "Database Key Numbers" reference materials for the "US 104 Key (Dvorak)", "UK 105 Key (ISO)" and "ES 105 Key (ISO)" keyboards.</li>

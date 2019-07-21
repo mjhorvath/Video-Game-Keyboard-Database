@@ -33,9 +33,9 @@ var last_class = null;
 var current_id = null;
 var current_values = {};
 current_values.val_keynum = '';
-current_values.val_keylow = '';
-current_values.val_keyhgh = '';
-current_values.val_keyrgt = '';
+current_values.val_keynormlow = '';
+current_values.val_keynormhgh = '';
+current_values.val_keyaltgrhgh = '';
 current_values.val_capnor = '';
 current_values.val_capshf = '';
 current_values.val_capctl = '';
@@ -211,9 +211,9 @@ function click_off_chart_key(elm)
 	current_id = null;
 	current_values = {};
 	current_values.val_keynum = '';
-	current_values.val_keylow = '';
-	current_values.val_keyhgh = '';
-	current_values.val_keyrgt = '';
+	current_values.val_keynormlow = '';
+	current_values.val_keynormhgh = '';
+	current_values.val_keyaltgrhgh = '';
 	current_values.val_capnor = '';
 	current_values.val_capshf = '';
 	current_values.val_capctl = '';
@@ -289,23 +289,24 @@ function push_values_from_array_into_cache()
 		return null;
 
 	current_values.val_keynum = current_id;
-	current_values.val_keylow = binding_table[current_id][ 0];
-	current_values.val_keyhgh = binding_table[current_id][ 1];
-	current_values.val_keyrgt = binding_table[current_id][ 2];
-	current_values.val_capnor = binding_table[current_id][ 3];
-	current_values.val_capshf = binding_table[current_id][ 4];
-	current_values.val_capctl = binding_table[current_id][ 5];
-	current_values.val_capalt = binding_table[current_id][ 6];
-	current_values.val_capagr = binding_table[current_id][ 7];
-	current_values.val_capxtr = binding_table[current_id][ 8];
-	current_values.val_imgfil = binding_table[current_id][ 9];
-	current_values.val_imguri = binding_table[current_id][10];
-	current_values.col_capnor = binding_table[current_id][11];
-	current_values.col_capshf = binding_table[current_id][12];
-	current_values.col_capctl = binding_table[current_id][13];
-	current_values.col_capalt = binding_table[current_id][14];
-	current_values.col_capagr = binding_table[current_id][15];
-	current_values.col_capxtr = binding_table[current_id][16];
+	current_values.val_keynormlow = binding_table[current_id][ 0];
+	current_values.val_keynormhgh = binding_table[current_id][ 1];
+	current_values.val_keyaltgrlow = binding_table[current_id][ 2];
+	current_values.val_keyaltgrhgh = binding_table[current_id][ 3];
+	current_values.val_capnor = binding_table[current_id][ 4];
+	current_values.val_capshf = binding_table[current_id][ 5];
+	current_values.val_capctl = binding_table[current_id][ 6];
+	current_values.val_capalt = binding_table[current_id][ 7];
+	current_values.val_capagr = binding_table[current_id][ 8];
+	current_values.val_capxtr = binding_table[current_id][ 9];
+	current_values.val_imgfil = binding_table[current_id][10];
+	current_values.val_imguri = binding_table[current_id][11];
+	current_values.col_capnor = binding_table[current_id][12];
+	current_values.col_capshf = binding_table[current_id][13];
+	current_values.col_capctl = binding_table[current_id][14];
+	current_values.col_capalt = binding_table[current_id][15];
+	current_values.col_capagr = binding_table[current_id][16];
+	current_values.col_capxtr = binding_table[current_id][17];
 }
 
 function push_values_from_form_into_cache()
@@ -314,9 +315,10 @@ function push_values_from_form_into_cache()
 		return null;
 
 	current_values.val_keynum = document.getElementById('inp_keynum').value;
-	current_values.val_keylow = document.getElementById('inp_keylow').value;
-	current_values.val_keyhgh = document.getElementById('inp_keyhgh').value;
-	current_values.val_keyrgt = document.getElementById('inp_keyrgt').value;
+	current_values.val_keynormlow = document.getElementById('inp_lownor').value;
+	current_values.val_keynormhgh = document.getElementById('inp_uppnor').value;
+	current_values.val_keyaltgrlow = document.getElementById('inp_lowagr').value;
+	current_values.val_keyaltgrhgh = document.getElementById('inp_uppagr').value;
 	current_values.val_capnor = document.getElementById('inp_capnor').value;
 	current_values.val_capshf = document.getElementById('inp_capshf').value;
 	current_values.val_capctl = document.getElementById('inp_capctl').value;
@@ -338,27 +340,29 @@ function push_values_from_cache_into_array()
 	if (current_id == null)
 		return null;
 
-	binding_table[current_id][ 0] = current_values.val_keylow;
-	binding_table[current_id][ 1] = current_values.val_keyhgh;
-	binding_table[current_id][ 2] = current_values.val_keyrgt;
-	binding_table[current_id][ 3] = current_values.val_capnor;
-	binding_table[current_id][ 4] = current_values.val_capshf;
-	binding_table[current_id][ 5] = current_values.val_capctl;
-	binding_table[current_id][ 6] = current_values.val_capalt;
-	binding_table[current_id][ 7] = current_values.val_capagr;
-	binding_table[current_id][ 8] = current_values.val_capxtr;
-	binding_table[current_id][ 9] = current_values.val_imgfil;
-	binding_table[current_id][10] = current_values.val_imguri;
-	binding_table[current_id][11] = current_values.col_capnor;
-	binding_table[current_id][12] = current_values.col_capshf;
-	binding_table[current_id][13] = current_values.col_capctl;
-	binding_table[current_id][14] = current_values.col_capalt;
-	binding_table[current_id][15] = current_values.col_capagr;
-	binding_table[current_id][16] = current_values.col_capxtr;
+	binding_table[current_id][ 0] = current_values.val_keynormlow;
+	binding_table[current_id][ 1] = current_values.val_keynormhgh;
+	binding_table[current_id][ 2] = current_values.val_keyaltgrlow;
+	binding_table[current_id][ 3] = current_values.val_keyaltgrhgh;
+	binding_table[current_id][ 4] = current_values.val_capnor;
+	binding_table[current_id][ 5] = current_values.val_capshf;
+	binding_table[current_id][ 6] = current_values.val_capctl;
+	binding_table[current_id][ 7] = current_values.val_capalt;
+	binding_table[current_id][ 8] = current_values.val_capagr;
+	binding_table[current_id][ 9] = current_values.val_capxtr;
+	binding_table[current_id][10] = current_values.val_imgfil;
+	binding_table[current_id][11] = current_values.val_imguri;
+	binding_table[current_id][12] = current_values.col_capnor;
+	binding_table[current_id][13] = current_values.col_capshf;
+	binding_table[current_id][14] = current_values.col_capctl;
+	binding_table[current_id][15] = current_values.col_capalt;
+	binding_table[current_id][16] = current_values.col_capagr;
+	binding_table[current_id][17] = current_values.col_capxtr;
 
-	document.getElementById('keylow_' + current_id).innerHTML = cleantextHTML(current_values.val_keylow);
-	document.getElementById('keyhgh_' + current_id).innerHTML = cleantextHTML(current_values.val_keyhgh);
-	document.getElementById('keyrgt_' + current_id).innerHTML = cleantextHTML(current_values.val_keyrgt);
+	document.getElementById('keynormlow_' + current_id).innerHTML = cleantextHTML(current_values.val_keynormlow);
+	document.getElementById('keynormhgh_' + current_id).innerHTML = cleantextHTML(current_values.val_keynormhgh);
+	document.getElementById('keyaltgrlow_' + current_id).innerHTML = cleantextHTML(current_values.val_keyaltgrlow);
+	document.getElementById('keyaltgrhgh_' + current_id).innerHTML = cleantextHTML(current_values.val_keyaltgrhgh);
 	document.getElementById('capnor_' + current_id).innerHTML = cleantextHTML(current_values.val_capnor);
 	document.getElementById('capshf_' + current_id).innerHTML = cleantextHTML(current_values.val_capshf);
 	document.getElementById('capctl_' + current_id).innerHTML = cleantextHTML(current_values.val_capctl);
@@ -384,9 +388,10 @@ function push_values_from_cache_into_array()
 function push_values_from_cache_into_form()
 {
 	document.getElementById('inp_keynum').value = current_values.val_keynum;
-	document.getElementById('inp_keylow').value = current_values.val_keylow;
-	document.getElementById('inp_keyhgh').value = current_values.val_keyhgh;
-	document.getElementById('inp_keyrgt').value = current_values.val_keyrgt;
+	document.getElementById('inp_lownor').value = current_values.val_keynormlow;
+	document.getElementById('inp_uppnor').value = current_values.val_keynormhgh;
+	document.getElementById('inp_lowagr').value = current_values.val_keyaltgrlow;
+	document.getElementById('inp_uppagr').value = current_values.val_keyaltgrhgh;
 	document.getElementById('inp_capnor').value = current_values.val_capnor;
 	document.getElementById('inp_capshf').value = current_values.val_capshf;
 	document.getElementById('inp_capctl').value = current_values.val_capctl;
@@ -410,9 +415,10 @@ function have_input_key_values_changed()
 
 	if
 	(
-		(current_values.val_keylow != document.getElementById('inp_keylow').value) ||
-		(current_values.val_keyhgh != document.getElementById('inp_keyhgh').value) ||
-		(current_values.val_keyrgt != document.getElementById('inp_keyrgt').value) ||
+		(current_values.val_keynormlow != document.getElementById('inp_lownor').value) ||
+		(current_values.val_keynormhgh != document.getElementById('inp_uppnor').value) ||
+		(current_values.val_keyaltgrlow != document.getElementById('inp_lowagr').value) ||
+		(current_values.val_keyaltgrhgh != document.getElementById('inp_uppagr').value) ||
 		(current_values.val_capnor != document.getElementById('inp_capnor').value) ||
 		(current_values.val_capshf != document.getElementById('inp_capshf').value) ||
 		(current_values.val_capctl != document.getElementById('inp_capctl').value) ||
@@ -467,9 +473,10 @@ function add_window_exit_event()
 function add_input_typing_events()
 {
 	addListener(document.getElementById('inp_keynum'), 'input', toggle_set_and_revert_buttons);
-	addListener(document.getElementById('inp_keylow'), 'input', toggle_set_and_revert_buttons);
-	addListener(document.getElementById('inp_keyhgh'), 'input', toggle_set_and_revert_buttons);
-	addListener(document.getElementById('inp_keyrgt'), 'input', toggle_set_and_revert_buttons);
+	addListener(document.getElementById('inp_lownor'), 'input', toggle_set_and_revert_buttons);
+	addListener(document.getElementById('inp_uppnor'), 'input', toggle_set_and_revert_buttons);
+	addListener(document.getElementById('inp_lowagr'), 'input', toggle_set_and_revert_buttons);
+	addListener(document.getElementById('inp_uppagr'), 'input', toggle_set_and_revert_buttons);
 	addListener(document.getElementById('inp_capnor'), 'input', toggle_set_and_revert_buttons);
 	addListener(document.getElementById('inp_capshf'), 'input', toggle_set_and_revert_buttons);
 	addListener(document.getElementById('inp_capctl'), 'input', toggle_set_and_revert_buttons);

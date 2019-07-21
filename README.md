@@ -1,5 +1,4 @@
-# vgkd
-Video Game Keyboard Diagrams
+# Video Game Keyboard Diagrams
 
 A set of PHP forms and MySQL databases that generate keyboard control diagrams in a new browser window. You can select from among control bindings for various video games and other software.
 
@@ -9,6 +8,6 @@ The software code and PHP scripts are licensed under GNU Lesser General Public L
 
 The data content is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported License.
 
-A list of credits/dependencies can be found [here](credits.txt).
+A list of credits/dependencies can be found [here](credits.md).
 
 A "to do" list can be found [here](to_do_list.txt).

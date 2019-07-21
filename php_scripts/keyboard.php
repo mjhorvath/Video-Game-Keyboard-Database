@@ -190,8 +190,10 @@
 //		array_multisort($name_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $id_array);
 		for ($j = 0; $j < count($id_array); $j++)
 		{
+			$this_id = $id_array[$j];
+			$this_name = $name_array[$j];
 			echo
-"						<li><a id=\"lay_" . ($id_array[$j] - 1) . "\" menu=\"lay\" value=\"" . $id_array[$j] . "\" class=\"acc_nrm\" onclick=\"Set_Select_Value(this);Set_Game(" . ($id_array[$j]-1) . ",this);Set_Style(" . ($id_array[$j]-1) . ",this);\">" . $name_array[$j] . "</a></li>\n";
+"						<li><a id=\"lay_" . ($this_id-1) . "\" menu=\"lay\" value=\"" . $this_id . "\" class=\"acc_nrm\" onclick=\"Set_Select_Value(this);Set_Game(" . ($this_id-1) . ",this);Set_Style(" . ($this_id-1) . ",this);\">" . $this_name . "</a></li>\n";
 		}
 		echo
 "					</ul>

@@ -4,9 +4,10 @@ svg	{font-family:Verdana,sans-serif;font-size:14px;}
 .keyout	{overflow:visible;}
 .legtxt	{font-size:14px;fill:#000000;}
 .legkey	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.keyhgh,.keylow,.keyrgt
+.uppnor,.lownor,.uppagr,.lowagr
 	{font-size:12px;font-weight:bold;fill:#000000;}
-.keyrgt	{text-anchor:end;}
+.uppagr,.lowagr
+	{text-anchor:end;}
 .keyrec	{}
 .capimg	{}
 .capnor	{font-size:12px;font-weight:normal;fill:#000000;}

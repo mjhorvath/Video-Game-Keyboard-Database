@@ -117,3 +117,5 @@ x Maybe the red in the "Warm" styles can be made deeper? [Ed. I tried this, but
   keyboard layouts. Or, support layout scripts created using other software, 
   for instance those created using "Keyboard Layout Editor" 
   (http://www.keyboard-layout-editor.com/).
++ Whether or not to show lower case key caps should maybe be a per-game setting 
+  versus a per-layout setting.

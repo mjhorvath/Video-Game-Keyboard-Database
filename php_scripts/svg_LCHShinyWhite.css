@@ -3,9 +3,10 @@ svg	{font-family:DejaVu Sans Condensed,Sans-Serif;font-size:14px;}
 #bkgrec	{stroke:none;fill:#ffffff;}
 .keyout	{overflow:visible;}
 .legtxt	{font-size:14px;fill:#000000;}
-.keyhgh,.keylow,.keyrgt
+.uppnor,.lownor,.uppagr,.lowagr
 	{font-size:12px;font-weight:bold;}
-.keyrgt	{text-anchor:end;}
+.uppagr,.lowagr
+	{text-anchor:end;}
 .keyrec	{}
 .capnor	{font-size:12px;font-weight:normal;}
 .capshf,.capctl,.capalt,.capagr,.capxtr

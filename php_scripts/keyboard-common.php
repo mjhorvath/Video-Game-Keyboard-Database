@@ -300,8 +300,8 @@
 		global $position_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
-			// position_left, position_top, position_width, position_height, symbol_low, symbol_cap, symbol_altgr, key_number, lowcap_optional
-			$position_table[$temp_row[7]-1] = $temp_row;
+			// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowcap_optional
+			$position_table[$temp_row[8]-1] = $temp_row;
 		}
 	}
 	function doKeystylesHTML($in_result)
@@ -434,8 +434,8 @@
 		global $position_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
-			// position_left, position_top, position_width, position_height, symbol_low, symbol_cap, symbol_altgr, key_number, lowcap_optional
-			$position_table[$temp_row[7]-1] = $temp_row;
+			// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowcap_optional
+			$position_table[$temp_row[8]-1] = $temp_row;
 		}
 	}
 	function doKeystylesSVG($in_result)
@@ -588,7 +588,7 @@
 	function selPositionsHTML()
 	{
 		global $con, $layout_id;
-		$selectString = "SELECT p.position_left, p.position_top, p.position_width, p.position_height, p.symbol_low, p.symbol_cap, p.symbol_altgr, p.key_number, p.lowcap_optional FROM positions AS p WHERE p.layout_id = " . $layout_id . ";";
+		$selectString = "SELECT p.position_left, p.position_top, p.position_width, p.position_height, p.symbol_norm_low, p.symbol_norm_cap, p.symbol_altgr_low, p.symbol_altgr_cap, p.key_number, p.lowcap_optional FROM positions AS p WHERE p.layout_id = " . $layout_id . ";";
 		selectQuery($con, $selectString, "doPositionsHTML");
 	}
 	function selLayoutsHTML()
@@ -672,7 +672,7 @@
 	function selPositionsSVG()
 	{
 		global $con, $layout_id;
-		$selectString = "SELECT p.position_left, p.position_top, p.position_width, p.position_height, p.symbol_low, p.symbol_cap, p.symbol_altgr, p.key_number, p.lowcap_optional FROM positions AS p WHERE p.layout_id = " . $layout_id . ";";
+		$selectString = "SELECT p.position_left, p.position_top, p.position_width, p.position_height, p.symbol_norm_low, p.symbol_norm_cap, p.symbol_altgr_low, p.symbol_altgr_cap, p.key_number, p.lowcap_optional FROM positions AS p WHERE p.layout_id = " . $layout_id . ";";
 		selectQuery($con, $selectString, "doPositionsSVG");
 	}
 	function selLayoutsSVG()

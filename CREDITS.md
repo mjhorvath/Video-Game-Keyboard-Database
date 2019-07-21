@@ -1,4 +1,6 @@
-In order for VGKD to work properly, it requires these following things:
+## Dependencies
+
+In order for VGKD to work properly, it currently requires the following things:
 
 * "Simple JQuery Accordion menu" by Marco van Hylckama Vlieg
 * CSS code from W3Schools. (https://www.w3schools.com/howto/howto_css_custom_checkbox.asp)
@@ -18,7 +20,7 @@ In order for VGKD to work properly, it requires these following things:
 * "Simple JQuery Accordion Menu" by Marco van Hylckama Vlieg. (http://www.i-marco.nl/weblog/)
 * Table sorting script by W3Schools. (https://www.w3schools.com/howto/howto_js_sort_table.asp)
 
-Further credits:
+## Further credits
 
 * If you have contributed layouts, bindings or styles, then your name will also appear at the bottom of each diagram.
 * Kozierok style: Keyboard Key Groupings by Charles M. Kozierok (http://www.pcguide.com/ref/kb/group-c.html)

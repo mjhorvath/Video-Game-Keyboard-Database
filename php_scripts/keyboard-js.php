@@ -372,7 +372,7 @@ function Check_Values_and_Spawn()
 
 function getValueFromRadioButton(name)
 {
-	//Get all elements with the name
+	// Get all elements with the name
 	var buttons = document.getElementsByName(name);
 	for (var i = 0, n = buttons.length; i < n; i++)
 	{
@@ -384,6 +384,6 @@ function getValueFromRadioButton(name)
 			return button.value;
 		}
 	}
-	//No radio button is selected
+	// No radio button is selected
 	return null;
 }

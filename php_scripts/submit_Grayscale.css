@@ -9,11 +9,12 @@ div#flxdiv	{position:relative;margin:3px;padding:   0;margin-top:-3px;margin-bot
 .title	{font-size:small;font-weight:bold;}
 .cut	{position:absolute;border:1px dashed #000000;}
 .keyout	{position:absolute;overflow:hidden;border:1px solid #c0c0c0;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
-.keyhgh,.keylow,.keyrgt,.capopt,.capopf
+.uppnor,.lownor,.uppagr,.lowagr,.capopt,.capopf
 	{position:absolute;overflow:hidden;padding:2px;white-space:pre;text-shadow:0px 0px 4px #ffffff;width:100%;}
-.keyhgh	{font-weight:  bold;left: 0px;top:   0px;}
-.keylow	{font-weight:  bold;left: 0px;bottom:0px;}
-.keyrgt	{font-weight:  bold;right:0px;top:   0px;}
+.uppnor	{font-weight:  bold;left: 0px;top:   0px;}
+.lownor	{font-weight:  bold;left: 0px;bottom:0px;}
+.uppagr	{font-weight:  bold;right:0px;top:   0px;}
+.lowagr	{font-weight:  bold;right:0px;bottom:0px;}
 .keynon	{display:none;}
 .capopt	{font-weight:normal;left: 0px;bottom:0em;}
 .capopf	{font-weight:normal;left: 0px;bottom:1em;}
@@ -47,17 +48,17 @@ div#flxdiv	{position:relative;margin:3px;padding:   0;margin-top:-3px;margin-bot
 .capbrn,.legbrn,.selbrn,.optbrn	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAKElEQVQImWP+z+iwv4HRYT8zI0M9QyNDPQMTlG5k/A+hGZigdD0eNQCYExGRPdzmZgAAAABJRU5ErkJggg==');}	/*10*/
 .capnon,.legnon,.selnon,.optnon	{background:none;}
 /*
-.keyred .keyhgh, .keyred .keylow, .keyred .keyrgt, .keyred .capopt, .keyred .capopf	{background:#ffffff;color:#000000;}
-.keyyel .keyhgh, .keyyel .keylow, .keyyel .keyrgt, .keyyel .capopt, .keyyel .capopf	{background:#f0f0f0;color:#000000;}
-.keygrn .keyhgh, .keygrn .keylow, .keygrn .keyrgt, .keygrn .capopt, .keygrn .capopf	{background:#ffffff;color:#000000;}
-.keycyn .keyhgh, .keycyn .keylow, .keycyn .keyrgt, .keycyn .capopt, .keycyn .capopf	{background:#d0d0d0;color:#000000;}
-.keyblu .keyhgh, .keyblu .keylow, .keyblu .keyrgt, .keyblu .capopt, .keyblu .capopf	{background:#d0d0d0;color:#000000;}
-.keymag .keyhgh, .keymag .keylow, .keymag .keyrgt, .keymag .capopt, .keymag .capopf	{background:#d0d0d0;color:#000000;}
-.keywht .keyhgh, .keywht .keylow, .keywht .keyrgt, .keywht .capopt, .keywht .capopf	{background:#ffffff;color:#000000;}
-.keygry .keyhgh, .keygry .keylow, .keygry .keyrgt, .keygry .capopt, .keygry .capopf	{background:#d0d0d0;color:#000000;}
-.keyblk .keyhgh, .keyblk .keylow, .keyblk .keyrgt, .keyblk .capopt, .keyblk .capopf	{background:#000000;color:#ffffff;}
-.keyorg .keyhgh, .keyorg .keylow, .keyorg .keyrgt, .keyorg .capopt, .keyorg .capopf	{background:#ffffff;color:#000000;}
-.keyolv .keyhgh, .keyolv .keylow, .keyolv .keyrgt, .keyolv .capopt, .keyolv .capopf	{background:#ffffff;color:#000000;}
-.keybrn .keyhgh, .keybrn .keylow, .keybrn .keyrgt, .keybrn .capopt, .keybrn .capopf	{background:#000000;color:#ffffff;}
-.keynon .keyhgh, .keynon .keylow, .keynon .keyrgt, .keynon .capopt, .keynon .capopf	{background:none;color:#000000;}
+.keyred .uppnor, .keyred .lownor, .keyred .uppagr, .keyred .capopt, .keyred .capopf	{background:#ffffff;color:#000000;}
+.keyyel .uppnor, .keyyel .lownor, .keyyel .uppagr, .keyyel .capopt, .keyyel .capopf	{background:#f0f0f0;color:#000000;}
+.keygrn .uppnor, .keygrn .lownor, .keygrn .uppagr, .keygrn .capopt, .keygrn .capopf	{background:#ffffff;color:#000000;}
+.keycyn .uppnor, .keycyn .lownor, .keycyn .uppagr, .keycyn .capopt, .keycyn .capopf	{background:#d0d0d0;color:#000000;}
+.keyblu .uppnor, .keyblu .lownor, .keyblu .uppagr, .keyblu .capopt, .keyblu .capopf	{background:#d0d0d0;color:#000000;}
+.keymag .uppnor, .keymag .lownor, .keymag .uppagr, .keymag .capopt, .keymag .capopf	{background:#d0d0d0;color:#000000;}
+.keywht .uppnor, .keywht .lownor, .keywht .uppagr, .keywht .capopt, .keywht .capopf	{background:#ffffff;color:#000000;}
+.keygry .uppnor, .keygry .lownor, .keygry .uppagr, .keygry .capopt, .keygry .capopf	{background:#d0d0d0;color:#000000;}
+.keyblk .uppnor, .keyblk .lownor, .keyblk .uppagr, .keyblk .capopt, .keyblk .capopf	{background:#000000;color:#ffffff;}
+.keyorg .uppnor, .keyorg .lownor, .keyorg .uppagr, .keyorg .capopt, .keyorg .capopf	{background:#ffffff;color:#000000;}
+.keyolv .uppnor, .keyolv .lownor, .keyolv .uppagr, .keyolv .capopt, .keyolv .capopf	{background:#ffffff;color:#000000;}
+.keybrn .uppnor, .keybrn .lownor, .keybrn .uppagr, .keybrn .capopt, .keybrn .capopf	{background:#000000;color:#ffffff;}
+.keynon .uppnor, .keynon .lownor, .keynon .uppagr, .keynon .capopt, .keynon .capopf	{background:none;color:#000000;}
 */

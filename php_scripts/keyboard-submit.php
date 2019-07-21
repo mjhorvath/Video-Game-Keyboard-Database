@@ -230,9 +230,10 @@ var binding_table =
 			if (array_key_exists($i, $position_table))
 			{
 				$position_row	= $position_table[$i];
-				$key_low	= "\"" . cleantextJS($position_row[ 4]) . "\"";
-				$key_hgh	= "\"" . cleantextJS($position_row[ 5]) . "\"";
-				$key_rgt	= "\"" . cleantextJS($position_row[ 6]) . "\"";
+				$low_nor	= "\"" . cleantextJS($position_row[ 4]) . "\"";
+				$upp_nor	= "\"" . cleantextJS($position_row[ 5]) . "\"";
+				$low_agr	= "\"" . cleantextJS($position_row[ 6]) . "\"";
+				$upp_agr	= "\"" . cleantextJS($position_row[ 7]) . "\"";
 				if (array_key_exists($i, $binding_table))
 				{
 					$binding_row = $binding_table[$i];
@@ -270,9 +271,10 @@ var binding_table =
 				}
 				echo
 				"	[" .
-				$key_low . ", " .
-				$key_hgh . ", " .
-				$key_rgt . ", " .
+				$low_nor . ", " .
+				$upp_nor . ", " .
+				$low_agr . ", " .
+				$upp_agr . ", " .
 				$cap_nor . ", " .
 				$cap_shf . ", " .
 				$cap_ctl . ", " .
@@ -321,15 +323,16 @@ var binding_table =
 				<div id="table_inp" class="inptbl" style="margin:auto;">
 					<div class="inprow"><div class="inphed">Param</div><div class="inphed">Value</div><div class="inphed">Col</div></div>
 					<div class="inprow"><div class="inpcll"><label for="inp_keynum" title="Key ID#"		>keynum:</label></div><div class="inpcll"><input id="inp_keynum" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Key ID#"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
-					<div class="inprow"><div class="inpcll"><label for="inp_keylow" title="Lower case"	>keylow:</label></div><div class="inpcll"><input id="inp_keylow" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Lower case"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
-					<div class="inprow"><div class="inpcll"><label for="inp_keyhgh" title="Upper case"	>keyhgh:</label></div><div class="inpcll"><input id="inp_keyhgh" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Upper case"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
-					<div class="inprow"><div class="inpcll"><label for="inp_keyrgt" title="AltGr case"	>keyrgt:</label></div><div class="inpcll"><input id="inp_keyrgt" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="AltGr case"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
-					<div class="inprow"><div class="inpcll"><label for="inp_capnor" title="Normal"		>capnor:</label></div><div class="inpcll"><input id="inp_capnor" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Normal"		/></div><div class="inpcll"><select id="sel_capnor" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
-					<div class="inprow"><div class="inpcll"><label for="inp_capshf" title="Shift"		>capshf:</label></div><div class="inpcll"><input id="inp_capshf" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Shift"		/></div><div class="inpcll"><select id="sel_capshf" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
-					<div class="inprow"><div class="inpcll"><label for="inp_capctl" title="Control"		>capctl:</label></div><div class="inpcll"><input id="inp_capctl" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Control"	/></div><div class="inpcll"><select id="sel_capctl" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
-					<div class="inprow"><div class="inpcll"><label for="inp_capalt" title="Alt"		>capalt:</label></div><div class="inpcll"><input id="inp_capalt" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Alt"		/></div><div class="inpcll"><select id="sel_capalt" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
-					<div class="inprow"><div class="inpcll"><label for="inp_capagr" title="AltGr"		>capagr:</label></div><div class="inpcll"><input id="inp_capagr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="AltGr"		/></div><div class="inpcll"><select id="sel_capagr" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
-					<div class="inprow"><div class="inpcll"><label for="inp_capxtr" title="Extra"		>capxtr:</label></div><div class="inpcll"><input id="inp_capxtr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Extra"		/></div><div class="inpcll"><select id="sel_capxtr" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_lownor" title="Normal lower"	>lownor:</label></div><div class="inpcll"><input id="inp_lownor" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Normal lower"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_uppnor" title="Normal upper"	>uppnor:</label></div><div class="inpcll"><input id="inp_uppnor" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Normal upper"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_lowagr" title="AltGr lower"	>lowagr:</label></div><div class="inpcll"><input id="inp_lowagr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="AltGr lower"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_uppagr" title="AltGr upper"	>uppagr:</label></div><div class="inpcll"><input id="inp_uppagr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="AltGr upper"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capnor" title="Normal caption"	>capnor:</label></div><div class="inpcll"><input id="inp_capnor" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Normal caption"	/></div><div class="inpcll"><select id="sel_capnor" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capshf" title="Shift caption"	>capshf:</label></div><div class="inpcll"><input id="inp_capshf" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Shift caption"	/></div><div class="inpcll"><select id="sel_capshf" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capctl" title="Control caption"	>capctl:</label></div><div class="inpcll"><input id="inp_capctl" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Control caption"/></div><div class="inpcll"><select id="sel_capctl" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capalt" title="Alt caption"	>capalt:</label></div><div class="inpcll"><input id="inp_capalt" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Alt caption"	/></div><div class="inpcll"><select id="sel_capalt" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capagr" title="AltGr caption"	>capagr:</label></div><div class="inpcll"><input id="inp_capagr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="AltGr caption"	/></div><div class="inpcll"><select id="sel_capagr" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capxtr" title="Extra caption"	>capxtr:</label></div><div class="inpcll"><input id="inp_capxtr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Extra caption"	/></div><div class="inpcll"><select id="sel_capxtr" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
 					<div class="inprow"><div class="inpcll"><label for="inp_imgfil" title="Image filename"	>imgfil:</label></div><div class="inpcll"><input id="inp_imgfil" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Image filename"	/></div><div class="inpcll">n/a</div></div>
 					<div class="inprow"><div class="inpcll"><label for="inp_imguri" title="Image data-URI"	>imguri:</label></div><div class="inpcll"><input id="inp_imguri" class="inplft" type="text" size="11"                 autocomplete="off" title="Image data-URI"	/></div><div class="inpcll">n/a</div></div>
 				</div>
@@ -413,11 +416,12 @@ var binding_table =
 				$pos_top	= $position_row[1] + $layout_keygap/2;
 				$pos_wid	= $position_row[2] - $layout_keygap;		// 4
 				$pos_hgh	= $position_row[3] - $layout_keygap;
-				$key_low	= $position_row[4];
-				$key_hgh	= $position_row[5];
-				$key_rgt	= $position_row[6];
-				$key_num	= $position_row[7];
-				$key_opt	= $position_row[8];
+				$low_nor	= $position_row[4];
+				$upp_nor	= $position_row[5];
+				$low_agr	= $position_row[6];
+				$upp_agr	= $position_row[7];
+				$key_num	= $position_row[8];
+				$key_opt	= $position_row[9];
 				$img_wid	= 48;
 				$img_hgh	= 48;
 				$img_pos_x	= $pos_wid/2 - $img_wid/2;
@@ -507,25 +511,37 @@ var binding_table =
 						print_key_html("capnor_" . $i, "capopt", $bkg_nor, $cap_nor);
 					}
 				}
-				// key characters
-				if (($key_hgh != "") || ($write_maximal_keys == true))
+				// normal key labels
+				if (($upp_nor != "") || ($write_maximal_keys == true))
 				{
-					print_key_html("keyhgh_" . $i, "keyhgh", null, $key_hgh);
+					print_key_html("keynormhgh_" . $i, "uppnor", null, $upp_nor);
 				}
-				if (($key_low != "") || ($write_maximal_keys == true))
+				if (($low_nor != "") || ($write_maximal_keys == true))
 				{
 					if ($key_opt == false)
 					{
-						print_key_html("keylow_" . $i, "keylow", null, $key_low);
+						print_key_html("keynormlow_" . $i, "lownor", null, $low_nor);
 					}
 					else
 					{
-						print_key_html("keylow_" . $i, "keynon", null, $key_low);
+						print_key_html("keynormlow_" . $i, "keynon", null, $low_nor);
 					}
 				}
-				if (($key_rgt != "") || ($write_maximal_keys == true))
+				// altgr key labels
+				if (($upp_agr != "") || ($write_maximal_keys == true))
 				{
-					print_key_html("keyrgt_" . $i, "keyrgt", null, $key_rgt);
+					print_key_html("keyaltgrhgh_" . $i, "uppagr", null, $upp_agr);
+				}
+				if (($low_agr != "") || ($write_maximal_keys == true))
+				{
+					if ($key_opt == false)
+					{
+						print_key_html("keyaltgrlow_" . $i, "lownor", null, $low_agr);
+					}
+					else
+					{
+						print_key_html("keyaltgrlow_" . $i, "keynon", null, $low_agr);
+					}
 				}
 				echo
 "							</div>\n";
@@ -542,8 +558,8 @@ var binding_table =
 							<div class="capshf">Shift</div>
 							<div class="capctl">Ctrl</div>
 							<div class="capalt">Alt</div>
-							<div class="keyhgh">Upcase</div>
-							<div class="keylow">Lowcase</div>
+							<div class="uppnor">Upcase</div>
+							<div class="lownor">Lowcase</div>
 							<div class="capopf">Caption</div>
 						</div>
 					</div>

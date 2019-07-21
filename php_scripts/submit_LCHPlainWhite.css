@@ -11,11 +11,12 @@ div.boxdiv	{position:relative;margin:6px;padding:18px;border:solid 1px #c0c0c0;}
 div.comdiv	{position:relative;margin:3px;padding:18px;border:solid 1px #c0c0c0;}
 div#flxdiv	{position:relative;margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
 div.keyout	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
-div.keyhgh,div.keylow,div.keyrgt,div.capopt,div.capopf
+div.uppnor,div.lownor,div.uppagr,div.lowagr,div.capopt,div.capopf
 		{position:absolute;overflow:hidden;padding:2px;white-space:pre;}
-div.keyhgh	{font-weight:  bold;left: 0px;top:   0px;}
-div.keylow	{font-weight:  bold;left: 0px;bottom:0px;}
-div.keyrgt	{font-weight:  bold;right:0px;top:   0px;}
+div.uppnor	{font-weight:  bold;left: 0px;top:   0px;}
+div.lownor	{font-weight:  bold;left: 0px;bottom:0px;}
+div.uppagr	{font-weight:  bold;right:0px;top:   0px;}
+div.lowagr	{font-weight:  bold;right:0px;bottom:0px;}
 div.keynon	{display:none;}
 div.capopt	{font-weight:normal;left: 0px;bottom:0em;}
 div.capopf	{font-weight:normal;left: 0px;bottom:1em;}

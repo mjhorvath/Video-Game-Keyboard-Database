@@ -353,17 +353,18 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		{
 			if (array_key_exists($i, $position_table))
 			{
-				// position_left, position_top, position_width, position_height, symbol_low, symbol_cap, symbol_altgr, key_number, lowkey_optional
+				// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowkey_optional
 				$key_sty	= array_key_exists($i, $keystyle_table) ? getkeyclass($keystyle_table[$i][0]) : "";
 				$position_row	= $position_table[$i];
 				$pos_lft	= $position_row[0] + $layout_keygap/2;
 				$pos_top	= $position_row[1] + $layout_keygap/2;
 				$pos_wid	= $position_row[2] - $layout_keygap;		//4
 				$pos_hgh	= $position_row[3] - $layout_keygap;
-				$key_low	= cleantextSVG($position_row[4]);
-				$key_hgh	= cleantextSVG($position_row[5]);
-				$key_rgt	= cleantextSVG($position_row[6]);
-				$key_opt	= $position_row[8];
+				$low_nor	= cleantextSVG($position_row[4]);
+				$upp_nor	= cleantextSVG($position_row[5]);
+				$low_agr	= cleantextSVG($position_row[6]);
+				$upp_agr	= cleantextSVG($position_row[7]);
+				$key_opt	= $position_row[9];
 				$img_wid	= 48;
 				$img_hgh	= 48;
 				$img_pos_x	= $layout_keygap/2 + $pos_wid/2 - $img_wid/2 - 1/2;
@@ -476,29 +477,34 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 					}
 				}
 
-				// caps
-				if (($key_opt == false) && ($key_low != ""))
+				// labels text
+				if (($key_opt == false) && ($low_nor != ""))
 				{
 					echo
-"		<text class=\"keylow txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"" . ($pos_hgh-3.5) . "\">" . $key_low . "</text>\n";
+"		<text class=\"lownor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"" . ($pos_hgh-3.5) . "\">" . $low_nor . "</text>\n";
 				}
-				if ($key_hgh != "")
+				if ($upp_nor != "")
 				{
 					echo
-"		<text class=\"keyhgh txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"13.5\">" . $key_hgh . "</text>\n";
+"		<text class=\"uppnor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"13.5\">" . $upp_nor . "</text>\n";
 				}
-				if ($key_rgt != "")
+				// altgr
+				if (($key_opt == false) && ($low_agr != ""))
 				{
 					echo
-"		<text class=\"keyrgt txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($pos_wid-2.5) . "\" y=\"13.5\">" . $key_rgt . "</text>\n";
+"		<text class=\"lownor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"" . ($pos_hgh-3.5) . "\">" . $low_agr . "</text>\n";
 				}
+				if ($upp_agr != "")
+				{
+					echo
+"		<text class=\"uppagr txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($pos_wid-2.5) . "\" y=\"13.5\">" . $upp_agr . "</text>\n";
+				}
+				// captions text
 				for ($j = 0; $j < count($cap_nor); $j++)
 				{
 					echo
 "		<text class=\"capnor txt" . $bkg_nor . " txt" . $key_sty . " ideo\" x=\"2.5\" y=\"" . ($top_nor+0.5) . "\" dy=\"" . (($j+1) * -14) . "\">" . $cap_nor[count($cap_nor)-($j+1)] . "</text>\n";
 				}
-
-				// bindings text
 				$jcount		= 0;
 				for ($j = 0; $j < count($cap_shf); $j++)
 				{
@@ -542,8 +548,8 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		<rect class="bakalt" x="1.0" y="27" width="67" height="12" rx="1" ry="1"></rect>
 		<text class="capalt hang" x="65.5" y="37">Alt</text>
 		<text class="capnor txtnon ideo" x="2.5" y="50.5">Caption</text>
-		<text class="keylow txtnon" x="2.5" y="64.5">Lowcase</text>
-		<text class="keyhgh txtnon" x="2.5" y="13.5">Upcase</text>
+		<text class="lownor txtnon" x="2.5" y="64.5">Lowcase</text>
+		<text class="uppnor txtnon" x="2.5" y="13.5">Upcase</text>
 	</svg>
 	<svg class="leg" x="109.5" y="505.5" width="1000" height="300">
 <?php
