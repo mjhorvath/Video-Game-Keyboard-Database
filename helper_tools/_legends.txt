@@ -1,5 +1,6 @@
-\N	233	1	Combat/Actions
-\N	233	2	Targeting
-\N	233	3	Movement
-\N	233	4	Chat
-\N	233	6	Game Controls/Menus
+\N	240	1	Vehicle Controls
+\N	240	2	Route Advisor
+\N	240	3	Movement
+\N	240	4	Multiplayer Mod
+\N	240	5	Camera
+\N	240	6	Game Controls

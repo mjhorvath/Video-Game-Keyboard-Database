@@ -1,19 +1,19 @@
 --VOLATILE!!!
 
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\VGKD_Git\\helper_tools\\_bindings.txt' INTO TABLE isometr1_keyboard.bindings
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\helper_tools\\_bindings.txt' INTO TABLE isometr1_keyboard.bindings
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n';
 
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\VGKD_Git\\helper_tools\\_commands.txt' INTO TABLE isometr1_keyboard.commands
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\helper_tools\\_commands.txt' INTO TABLE isometr1_keyboard.commands
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n';
 
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\VGKD_Git\\helper_tools\\_legends.txt' INTO TABLE isometr1_keyboard.legends
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\helper_tools\\_legends.txt' INTO TABLE isometr1_keyboard.legends
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n';
@@ -21,13 +21,13 @@ LINES TERMINATED BY '\r\n';
 -- note that the "lowcap_optional" column has a bit data type and requires special handling
 -- see: https://stackoverflow.com/questions/15683809/load-data-from-csv-inside-bit-field-in-mysql
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\VGKD_Git\\helper_tools\\_positions.txt' INTO TABLE isometr1_keyboard.positions
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\helper_tools\\_positions.txt' INTO TABLE isometr1_keyboard.positions
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n';
 
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\VGKD_Git\\helper_tools\\_records_styles.txt' INTO TABLE isometr1_keyboard.records_styles
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\helper_tools\\_records_styles.txt' INTO TABLE isometr1_keyboard.records_styles
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n';
