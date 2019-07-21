@@ -1,9 +1,9 @@
 # To Do List
 
-New and incomplete tasks are marked with a minus '-'.
-Fully completed tasks are marked with a plus '+'.
-Questionable, problematic or partially incomplete tasks are marked with a tilde '~'.
-Rejected or non-implementable tasks are marked with an 'x'.
+New and incomplete tasks are marked with a minus '-'.<br>
+Fully completed tasks are marked with a plus '+'.<br>
+Questionable, problematic or partially incomplete tasks are marked with a tilde '~'.<br>
+Rejected or non-implementable tasks are marked with an 'x'.<br>
 
 \+ In the submission form, selecting a colored OPTION element should change the 
    color of the corresponding parent SELECT element as well.
