@@ -5,14 +5,14 @@ Fully completed tasks are marked with a plus '+'.<br>
 Questionable, problematic or partially incomplete tasks are marked with a tilde '~'.<br>
 Rejected or non-implementable tasks are marked with an 'x'.<br>
 
-*\+ In the submission form, selecting a colored OPTION element should change the color of the corresponding parent SELECT element as well.
-*\+ A warning should be thrown ONBEFOREUNLOAD if someone attempts to leave the submission form and there is any unsaved or unsubmitted data.
-*\+ Make sure all buttons in the submission form have their TITLE attributes set so that tooltips appear when hovering the mouse over them.
-*\+ The Creative Commons and GNU icons need to have their ALT attributes set.
-*\+ The CAPTCHA dialog should check for a correct security code *before* sending the user on to the next page. At the very least, it should warn the user that he or she will not be able to return to the form page after clicking the submit button.
-*\- Should maybe store the SVG patterns, filters and gradients in separate files, rather than cluttering up the main SVG file. But since there are only a dozen or so styles right now, it is currently not very important.
-*\- Continue developing the "Spreadsheet View" of the submission form, and permit users to alter or update the keyboard data using it if they want to.
-*\+ Convert input TABLEs to DIVs.
+* In the submission form, selecting a colored OPTION element should change the color of the corresponding parent SELECT element as well.
+* A warning should be thrown ONBEFOREUNLOAD if someone attempts to leave the submission form and there is any unsaved or unsubmitted data.
+* Make sure all buttons in the submission form have their TITLE attributes set so that tooltips appear when hovering the mouse over them.
+* The Creative Commons and GNU icons need to have their ALT attributes set.
+* The CAPTCHA dialog should check for a correct security code *before* sending the user on to the next page. At the very least, it should warn the user that he or she will not be able to return to the form page after clicking the submit button.
+* Should maybe store the SVG patterns, filters and gradients in separate files, rather than cluttering up the main SVG file. But since there are only a dozen or so styles right now, it is currently not very important.
+* Continue developing the "Spreadsheet View" of the submission form, and permit users to alter or update the keyboard data using it if they want to.
+* Convert input TABLEs to DIVs.
 
 \~ Sub-pages should maybe not repeat the parent project's title since the title 
    already appears in the site's horizontal breadcrumbs. Not sure.
