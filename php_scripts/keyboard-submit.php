@@ -514,33 +514,33 @@ var binding_table =
 				// normal key labels
 				if (($upp_nor != "") || ($write_maximal_keys == true))
 				{
-					print_key_html("keynormhgh_" . $i, "uppnor", null, $upp_nor);
+					print_key_html("uppnor_" . $i, "uppnor", null, $upp_nor);
 				}
 				if (($low_nor != "") || ($write_maximal_keys == true))
 				{
 					if ($key_opt == false)
 					{
-						print_key_html("keynormlow_" . $i, "lownor", null, $low_nor);
+						print_key_html("lownor_" . $i, "lownor", null, $low_nor);
 					}
 					else
 					{
-						print_key_html("keynormlow_" . $i, "keynon", null, $low_nor);
+						print_key_html("lownor_" . $i, "keynon", null, $low_nor);
 					}
 				}
 				// altgr key labels
 				if (($upp_agr != "") || ($write_maximal_keys == true))
 				{
-					print_key_html("keyaltgrhgh_" . $i, "uppagr", null, $upp_agr);
+					print_key_html("uppagr_" . $i, "uppagr", null, $upp_agr);
 				}
 				if (($low_agr != "") || ($write_maximal_keys == true))
 				{
 					if ($key_opt == false)
 					{
-						print_key_html("keyaltgrlow_" . $i, "lownor", null, $low_agr);
+						print_key_html("lowagr_" . $i, "lownor", null, $low_agr);
 					}
 					else
 					{
-						print_key_html("keyaltgrlow_" . $i, "keynon", null, $low_agr);
+						print_key_html("lowagr_" . $i, "keynon", null, $low_agr);
 					}
 				}
 				echo
