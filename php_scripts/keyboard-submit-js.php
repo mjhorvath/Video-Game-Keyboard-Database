@@ -861,7 +861,7 @@ function key_legend_warning(elm, letter)
 {
 	elm.blur();
 	document.body.focus();
-	alert('A caption has been set, but its color has not also been set. Please make sure every caption has a corresponding color. This includes SHIFT, CTRL, ALT and ALTGR captions. Alternatively, you may revert any changes using the Revert button. (' + letter + ')');
+	alert('A caption has been set, but its color has not also been set. Please make sure every caption has a corresponding color. This includes the SHIFT, CTRL, ALT and ALTGR captions. Alternatively, you may revert any changes using the Revert button. (' + letter + ')');
 }
 
 function document_change_warning(letter)
