@@ -11,6 +11,9 @@
 ?>
 <h2>News &amp; Updates</h2>
 <ul>
+	<li>2019/07/21: Added two Polish binding schemes and one Spanish binding scheme submitted by visitors to the site.</li>
+	<li>2019/07/21: Added the "PL 104 Key (Programmers)" layout.</li>
+	<li>2019/07/21: Added support for displaying both lowercase and uppercase AltGr commands in a layout. This is usually disabled however. I may redress that later.</li>
 	<li>2019/04/12: Added bindings for the "Keyboard Scan Codes" scheme and the "ES 105 Key" layout.</li>
 	<li>2019/04/10: Lots of CSS tweaks. Renamed several files back to the old "embed" conventions. Created the "captions" table to store labels that go into the key cap legends, although it is currently still empty. Switched the order in which key captions are rendered in the submissions form so that the "Grayscale" theme works better.</li>
 	<li>2019/04/09: Switched to using flexbox for combo boxes.</li>
@@ -144,15 +147,27 @@
 	<li>Doraemon style: <i>Doraemon Keyboard</i> by DreamKitty.com (<a target="_blank" href="http://www.dreamkitty.com/Merchant5/merchant.mvc?Screen=PROD&Store_Code=DK2000&Product_Code=O-FB761011&Category_Code=">link</a>)</li>
 	<li>FunKeyBoard style: <i>FunKeyBoard</i> by Chester Creek Technologies (<a target="_blank" href="http://www.venturaes.com/index_new.asp?http://www.venturaes.com/chestercreek/index.html">link</a>)</li>
 	<li>"Simple JQuery Accordion Menu" by Marco van Hylckama Vlieg. (<a target="_blank" href="http://www.i-marco.nl/weblog/">link</a>)</li>
-	<li>Table sorting script by W3Schools.com. (<a target="_blank" href="https://www.w3schools.com/howto/howto_js_sort_table.asp">link</a>)</li>
+	<li>CSS checkbox code by W3Schools. (<a target="_blank" href="https://www.w3schools.com/howto/howto_css_custom_checkbox.asp">link</a>)</li>
+	<li>JavaScript table sorting routine by W3Schools. (<a target="_blank" href="https://www.w3schools.com/howto/howto_js_sort_table.asp">link</a>)</li>
+	<li>Recaptcha script from Stack Overflow. (<a target="_blank" href="https://stackoverflow.com/questions/30006081/recaptcha-2-0-with-ajax">link</a>)</li>
 	<li>Several icons from the Noun Project. (<a target="_blank" href="https://thenounproject.com/">link</a>)
 		<ul>
-			<li>Spreadsheet by Arthur Shlain</li>
-			<li>Keyboard by Alexey Ivanov</li>
-			<li>Information by AnsteyDesign</li>
-			<li>Edit by Garrett Knoll</li>
-			<li>Plus by P.J. Onori</li>
-			<li>Delete by P.J. Onori</li>
+			<li>"Spreadsheet" by Arthur Shlain</li>
+			<li>"Keyboard" by Alexey Ivanov</li>
+			<li>"Information" by AnsteyDesign</li>
+			<li>"Edit" by Garrett Knoll</li>
+			<li>"Plus" by P.J. Onori</li>
+			<li>"Delete" by P.J. Onori</li>
+		</ul>
+	</li>
+	<li>Binding schemes submitted by:
+		<ul>
+			<li>Agnes Beste</li>
+			<li>Taz</li>
+			<li>Josiah Stearns</li>
+			<li>Cris</li>
+			<li>Daniel</li>
+			<li>etejam</li>
 		</ul>
 	</li>
 </ul>
