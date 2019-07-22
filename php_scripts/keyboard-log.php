@@ -13,7 +13,7 @@
 <ul>
 	<li>2019/07/21: Added two Polish binding schemes and one Spanish binding scheme submitted by visitors to the site.</li>
 	<li>2019/07/21: Added the "PL 104 Key (Programmers)" layout.</li>
-	<li>2019/07/21: Added support for displaying both lowercase and uppercase AltGr commands in a layout. This is usually disabled however. I may redress that later.</li>
+	<li>2019/07/21: Added support for displaying both lowercase and uppercase AltGr commands in a layout. This is usually disabled however. I may redress this at a later date.</li>
 	<li>2019/04/12: Added bindings for the "Keyboard Scan Codes" scheme and the "ES 105 Key" layout.</li>
 	<li>2019/04/10: Lots of CSS tweaks. Renamed several files back to the old "embed" conventions. Created the "captions" table to store labels that go into the key cap legends, although it is currently still empty. Switched the order in which key captions are rendered in the submissions form so that the "Grayscale" theme works better.</li>
 	<li>2019/04/09: Switched to using flexbox for combo boxes.</li>
