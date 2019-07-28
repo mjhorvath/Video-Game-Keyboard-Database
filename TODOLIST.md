@@ -81,6 +81,8 @@
 * Should create a table of authors/contributers that automatically pulls info 
   from the database. It should show a list of authors, and the stuff they 
   contributed.
+* Experiment again with scaling and rotating the diagrams so that they are 
+  easier to print.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
