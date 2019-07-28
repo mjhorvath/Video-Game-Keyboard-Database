@@ -1,2 +1,0 @@
-The TSV code on the spreadsheet page of the submission form is not lining up 
-properly I think. There are too many tabs between certain values.

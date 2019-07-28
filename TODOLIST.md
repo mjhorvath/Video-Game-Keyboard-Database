@@ -76,13 +76,15 @@
 * Users of the submission form should be able to specify which layout using a 
   drop-down list or whatever. Not urgent, since they are able to specify and 
   edit a "blank sample" for all of the layouts.
-* There needs to be some indication on the submission page that there is a help 
-  pane as well as the "Spreadsheet View".
+* There needs to be some indication on the submission page that there is a 
+  "Help Pane" as well as a "Spreadsheet View".
 * Should create a table of authors/contributers that automatically pulls info 
   from the database. It should show a list of authors, and the stuff they 
   contributed.
 * Experiment again with scaling and rotating the diagrams so that they are 
   easier to print.
+* The CSV code on the Spreadsheet page of the submission form is not lining up 
+  properly I think. There are too many tabs between a couple of columns.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 

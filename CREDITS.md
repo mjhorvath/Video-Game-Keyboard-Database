@@ -2,14 +2,13 @@
 
 In order for VGKD to work properly, it currently requires the following things:
 
-* "Simple JQuery Accordion menu" by Marco van Hylckama Vlieg
-* CSS code from W3Schools. (https://www.w3schools.com/howto/howto_css_custom_checkbox.asp)
 * jQuery 1.2.1 or higher
-* Two icons provided by Creative Commons for CC BY-SA 3.0 and GPLv3.
+* Two icons provided by Wikimedia Commons for the CC BY-SA 3.0 and GPLv3 software licenses.
   * https://commons.wikimedia.org/wiki/File:CC-BY-SA_icon_white.svg
   * https://commons.wikimedia.org/wiki/File:License_icon-gpl-88x31-2.svg
-* I have refrained from including in this repo several open source fonts that 
-  may be needed by some of the themes.
+* I have refrained from including in this repo several fonts that may be needed 
+  by some of the themes. I don't recall whether these fonts are open source or 
+  proprietary.
 * Several icons from the Noun Project. (https://thenounproject.com/)
   * "Spreadsheet" by Arthur Shlain
   * "Keyboard" by Alexey Ivanov
@@ -18,7 +17,9 @@ In order for VGKD to work properly, it currently requires the following things:
   * "Plus" by P.J. Onori
   * "Delete" by P.J. Onori
 * "Simple JQuery Accordion Menu" by Marco van Hylckama Vlieg. (http://www.i-marco.nl/weblog/)
-* Table sorting script by W3Schools. (https://www.w3schools.com/howto/howto_js_sort_table.asp)
+* JavaScript table sorting routine by W3Schools. (https://www.w3schools.com/howto/howto_js_sort_table.asp)
+* CSS checkbox code by W3Schools. (https://www.w3schools.com/howto/howto_css_custom_checkbox.asp)
+* Recaptcha script from Stack Overflow. (https://stackoverflow.com/questions/30006081/recaptcha-2-0-with-ajax)
 
 ## Further credits
 
@@ -28,4 +29,10 @@ In order for VGKD to work properly, it currently requires the following things:
 * Hello Kitty style: Hello Kitty Keyboard by DreamKitty.com (http://www.dreamkitty.com/Merchant2/merchant.mv?Screen=PROD&Store_Code=DK2000&Product_Code=K-FB109141&Category_Code=HK)
 * Doraemon style: Doraemon Keyboard by DreamKitty.com (http://www.dreamkitty.com/Merchant5/merchant.mvc?Screen=PROD&Store_Code=DK2000&Product_Code=O-FB761011&Category_Code=)
 * FunKeyBoard style: FunKeyBoard by Chester Creek Technologies (http://www.venturaes.com/index_new.asp?http://www.venturaes.com/chestercreek/index.html)
-* Recaptcha script: Stack Overflow (https://stackoverflow.com/questions/30006081/recaptcha-2-0-with-ajax)
+* Binding schemes submitted by:
+  * Agnes Beste
+  * Taz
+  * Josiah Stearns
+  * Cris
+  * Daniel
+  * etejam
