@@ -8,6 +8,6 @@ The software code and PHP scripts are licensed under GNU Lesser General Public L
 
 The data content is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported License.
 
-A list of credits/dependencies can be found [here](credits.md).
+A list of credits/dependencies can be found [here](CREDITS.md).
 
-A list of proposed tasks can be found [here](todolist.md).
+A list of proposed tasks can be found [here](TODOLIST.md).
