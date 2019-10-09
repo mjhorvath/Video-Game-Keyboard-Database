@@ -85,6 +85,12 @@
   easier to print.
 * The CSV code on the Spreadsheet page of the submission form is not lining up 
   properly I think. There are too many tabs between a couple of columns.
+* Currently, the "layouts", "languages", "records_games" and "records_styles" 
+  tables each have an "author_id" column. However, this column is only capable 
+  of recording a single author. Need to set things up so that multiple authors 
+  can be associated with each of these items. This will most likely require the 
+  creation of four new bridge tables since the corresponding relationships are 
+  many-to-many.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 

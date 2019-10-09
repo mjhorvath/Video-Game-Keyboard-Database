@@ -1,9 +1,0 @@
-TO DO
-- stretchy text for large strings
-+ sortable table instead of alphabetical list
-- sort genres and other tables on front page alphabetically
-+ green checkmarks and red Xs when selecting game, layout, style, etc.
-+ contributers' names need to show up in the SVG output too
-+ upload the website and database to github
-- split coloring when a key has more than one use
-- need to show game and style names translated into different languages

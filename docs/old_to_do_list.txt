@@ -10,6 +10,7 @@ TO-DO LIST
 + make sure all special/foreign characters got converted/recorded correctly
   + hopefully done
 - add the remaining meta header tags to PHP pages
+  - which tags am I referring to?
 - implement (IE-only) CSS effect filters
   - figure out why IE8 is misbehaving on the rotation filter
 + move all style properties to stylesheets
@@ -32,17 +33,35 @@ TO-DO LIST
   + done, but not used inconsistently and not actually rendered on the page
 + fix captcha image problems on the submission form where a failed check results in the form fields being cleared upon going back to the submission
   + done
-- in the "commands" table move the "layout_id" column upward one spot so it matches the position in the other tables
-  - er, what? it already matches the bindings table
-- in the "legends" table rename "legend_group" column to "group_id"
-  - no, this is consistent with the bindings table
++ in the "commands" table move the "layout_id" column upward one spot so it matches the position in the other tables
+  + in the commands and bindings tables, "layout_id" has been replaced with "record_id", and they are now positioned properly
+x in the "legends" table rename "legend_group" column to "group_id"
+  x there is no "legend_groups" table, so there should not be an "id" column
 + newlines are not consistent inside strings
   + sometimes they are represented by escape sequences (which should always be the case), other times they exist explicitly (which should not be the case)
   + luckily does not affect how the page is rendered
   + hopefully done
 + right now it's only incidental that bindings and positions match up properly, need to add new columns as well as a foreign key relationship to make it fool-proof
   + done, though in many places it is still implicitly assumed that everything is based on a master 118 key schema
-- add brown color to all styles, right now only pastel colors use them
-- commands should be rendered in a table format, "additional notes" need to be updated correspondingly
-- "Mac" and "PC/AT" are not displayed in the submission form, there's no way to tell them apart
-- some characters are escaped in the page title
++ add brown color to all styles, right now only pastel colors use them
+  + done
++ commands should be rendered in a table format, "additional notes" need to be updated correspondingly
+  + done
++ "Mac" and "PC/AT" are not displayed in the submission form, there's no way to tell them apart
+  + done
+- some characters are still escaped in the page title
+  - which characters?
+- stretchy text for large strings, like in Excel
++ sortable table instead of alphabetical list
+  + done
+- sort genres and other tables on front page alphabetically
+  - debatable
++ green checkmarks and red Xs when selecting game, layout, style, etc.
+  + done
++ contributers' names need to show up in the SVG output too
+  + contributers are listed in the SVG source code
++ upload the website and database to github
+  + done
+- split coloring when a key has more than one use
+  - may be difficult to implement, or confuse people
+- need to show game and style names translated into different languages
