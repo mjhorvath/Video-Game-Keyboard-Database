@@ -81,7 +81,9 @@
 * Should create a table of authors/contributers that automatically pulls info 
   from the database. It should show a list of authors, and the stuff they 
   contributed.
-* The TSV code on the Spreadsheet page of the submission form is not lining up 
+* Experiment again with scaling and rotating the diagrams so that they are 
+  easier to print.
+* The CSV code on the Spreadsheet page of the submission form is not lining up 
   properly I think. There are too many tabs between a couple of columns.
 
 ### Problematic
