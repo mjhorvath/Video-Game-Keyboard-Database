@@ -1,0 +1,12 @@
+<svg viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+	<rect x="0" y="0" width="300" height="100" fill="red"></rect>
+	<switch>
+		<g requiredFeatures="http://www.w3.org/Graphics/SVG/feature/1.2/#TextFlow">
+			<textArea width="200" height="auto">Text goes here pjsa as;lkjas;  aoauasj hgkjcj iohklhsa</textArea>
+		</g>
+		<foreignObject x="0" y="0" width="200" height="200" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+			<p xmlns="http://www.w3.org/1999/xhtml" style="color:black;background:green;">Text goes here ajhgsa sakjsah  jdhs  kjhas sk</p>
+		</foreignObject>
+		<text x="20" y="20" fill="black">No automatic linewrapping.</text>
+	</switch>
+</svg>

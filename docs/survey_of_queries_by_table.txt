@@ -1,0 +1,190 @@
+====================
+genres
+====================
+
+SELECT	g.genre_id, g.genre_name
+FROM	genres as g;
++ keyboard.php
++ no index necessary
+
+
+====================
+games
+====================
+
+SELECT	g.genre_id, g.game_id, g.game_name
+FROM	games as g;
++ keyboard.php
++ no index necessary
+
+SELECT	g.game_name
+FROM	games as g
+WHERE	g.game_id = $game_id;
++ keyboardchart.php
++ index on g.game_id
+
+====================
+stylegroups
+====================
+
+SELECT	s.stylegroup_id, s.stylegroup_name
+FROM	stylegroups as s;
++ keyboard.php
++ no index necessary
+
+
+====================
+styles
+====================
+
+SELECT	s.stylegroup_id, s.style_id, s.style_name
+FROM	styles as s;
++ keyboard.php
++ no index necessary
+
+SELECT	s.style_filename
+FROM	styles as s
+WHERE	s.style_id = $style_id;
++ keyboardchart.php
++ index on s.style_id
+
+SELECT	s.style_name
+FROM	styles as s;
++ keyboardsubmit.php
++ no index necessary
+
+
+====================
+platforms
+====================
+
+SELECT	p.platform_id, p.platform_name
+FROM	platforms as p;
++ keyboard.php
++ no index necessary
+
+SELECT	p.platform_name
+FROM	platforms as p
+WHERE	p.platform_id = $layout_platform
++ keyboardchart.php
++ index on p.platform_id
+
+
+====================
+layouts
+====================
+
+SELECT	l.platform_id, l.layout_id, l.layout_name
+FROM	layouts as l;
++ keyboard.php
++ no index necessary
+
+SELECT	l.platform_id, l.layout_name, l.layout_title, l.layout_mouse, l.layout_joystick, l.layout_combos, l.layout_notes, l.layout_legend, l.layout_return
+FROM	layouts as l
+WHERE	l.layout_id = $layout_id;
++ keyboardchart.php
++ index on l.layout_id
+
+SELECT	l.layout_name
+FROM	layouts as l;
++ keyboardsubmit.php
++ no index necessary
+
+SELECT	l.platform_id
+FROM	layouts as l;
++ keyboardjs.php
++ no index necessary
+
+
+====================
+effects
+====================
+
+SELECT	e.effect_name
+FROM	effects as e;
++ keyboard.php
++ no index necessary
+
+SELECT	e.effect_name
+FROM	effects as e;
++ keyboardchart.php
++ no index necessary
+
+
+====================
+positions
+====================
+
+SELECT	p.position_left, p.position_top, p.position_width, p.position_height, p.symbol_low, p.symbol_cap, p.symbol_altgr
+FROM	positions as p
+WHERE	p.layout_id = $layout_id;
++ keyboardchart.php
++ index on p.layout_id
+
+SELECT	p.symbol_low, p.symbol_cap
+FROM	positions as p
+WHERE	p.layout_id = $get_lay;
++ keyboardjs.php
++ index on p.layout_id
+
+
+====================
+cutouts
+====================
+
+SELECT	c.cutout_left, c.cutout_top, c.cutout_width, c.cutout_height
+FROM	cutouts as c
+WHERE	c.layout_id = $layout_id;
++ keyboardchart.php
++ index on c.layout_id
+
+
+====================
+keystyles
+====================
+
+SELECT	k.keystyle_group
+FROM	keystyles as k
+WHERE	k.style_id = $style_id;
++ keyboardchart.php
++ index on k.style_id
+
+====================
+bindings ++ done
+====================
+
+SELECT	b.normal_group, b.normal_action, b.shift_group, b.shift_action, b.ctrl_group, b.ctrl_action, b.alt_group, b.alt_action, b.altgr_group, b.altgr_action, b.extra_group, b.extra_action, b.image_file
+FROM	bindings as b
+WHERE	b.layout_id = $layout_id
+AND	b.game_id = $game_id;
++ keyboardchart.php
++ indexe on b.layout_id and b.game_id
+
+SELECT	b.game_id, b.layout_id
+FROM	bindings as b;
++ keyboardjs.php
++ no index necessary
+
+
+====================
+legends ++ done
+====================
+
+SELECT	l.legend_group, l.legend_description
+FROM	legends as l
+WHERE	l.layout_id = $layout_id
+AND	l.game_id = $game_id;
++ keyboardchart.php
++ index on l.layout_id and l.game_id
+
+
+====================
+commands ++ done
+====================
+
+SELECT	c.command_text, c.command_description
+FROM	commands as c
+WHERE	c.layout_id = $layout_id
+AND	c.game_id = $game_id;
++ keyboardchart.php
++ index on c.layout_id and c.game_id

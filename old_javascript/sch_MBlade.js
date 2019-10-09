@@ -1,0 +1,157 @@
+sLay = 'ATUS104'
+Sch_Table['gam'][sLay] = 'Mount & Blade'
+Sch_Table['aut'][sLay] = ''
+Sch_Table['key'][sLay] =
+[
+,
+['blu','Toggle\nFree Look',,,,,,],
+['yel','Select\nAll',,'Add to...',,,,],
+['yel','Select\nArchers',,'Add to...',,,,],
+['yel','Select\nInfantry',,'Add to...',,,,],
+['yel','Select\nCavalry',,'Add to...',,,,],
+,
+['yel','Select all\nOthers',,'Add to...',,,,],
+,
+,
+,
+,
+,
+,
+,
+['grn','Exit Area',,,,,,],
+['mag','Quest\nDialogue',,,,,,],
+['grn','Move\nForward /\nFaster',,,,,,],
+,
+['blu','Toggle\nFirst/Third\nPerson',,,,,,],
+,
+,
+,
+['mag','Inventory',,,,,,],
+,
+['mag','Party\nInfo',,,,,,],
+,
+,
+,
+,
+['grn','Move /\nTurn Left',,,,,,],
+['grn','Move\nBackward /\nSlower',,,,,,],
+['grn','Move /\nTurn Right',,,,,,],
+['red','Interact\nwith\nScenery',,,,,,],
+['cyn','View\nOrders',,,,,,],
+,
+,
+,
+['mag','Game\nLog',,,,,,],
+,
+['red','Sheath\nWeapon',,,,,,],
+,
+,
+['blu','(Hold)\nZoom Camera',,,,,,],
+,
+,
+,
+['mag','Character\nInfo',,,,,,],
+,
+,
+,
+,
+,
+,
+,
+['blu','(Hold)\nZoom Camera',,,,,,],
+['red','(Hold)\nMove Item\nAcross Table',,,,,,],
+,
+['grn','[Combat] Jump\n[World Map] Pause/Resume Time',,,,,,],
+,
+['red','(Hold)\nMove Item\nAcross Table',,,,,,],
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+['mag','Game\nMenu',,,,,,],
+['cyn','Hold\nPosition',,,,,,],
+['cyn','Follow\nMe',,,,,,],
+['cyn','Charge!',,,,,,],
+['cyn','Mount /\nDismount',,,,,,],
+['cyn','Toggle\nHold Fire /\nFire at Will',,,,,,],
+['cyn','Advance\n10 Paces',,,,,,],
+['cyn','Recede\n10 Paces',,,,,,],
+['cyn','Stand\nCloser',,,,,,],
+['cyn','Spread\nOut',,,,,,],
+,
+['cyn','Blunt\nWeapons',,,,,,],
+['mag','Quick\nSave',,,,,,],
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+
+]
+Sch_Table['leg'][sLay] =
+[
+['red','Actions'],
+['grn','Movement'],
+['yel','Selection'],
+['cyn','Orders'],
+['blu','Camera'],
+['mag','Game Controls']
+]
+Sch_Table['com'][sLay] =
+[
+'CTRL + LMB = Move Item Across Table'
+]
+Sch_Table['mou'][sLay] =
+[
+'XY Axes = Look',
+'LMB (Press) = Quick Attack',
+'LMB (Hold) = Careful Attack',
+'RMB (Press) = Cancel Attack',
+'RMB (Hold) = Block'
+]
+Sch_Table['joy'][sLay] = []
+Sch_Table['add'][sLay] = []
+sLay = 'ATUS104DVO'
+Sch_Table['gam'][sLay] = Sch_Table['gam']['ATUS104']
+Sch_Table['aut'][sLay] = Sch_Table['aut']['ATUS104']
+Sch_Table['key'][sLay] = Sch_Table['key']['ATUS104']
+Sch_Table['leg'][sLay] = Sch_Table['leg']['ATUS104']
+Sch_Table['com'][sLay] = Sch_Table['com']['ATUS104']
+Sch_Table['mou'][sLay] = Sch_Table['mou']['ATUS104']
+Sch_Table['joy'][sLay] = Sch_Table['joy']['ATUS104']
+Sch_Table['add'][sLay] = Sch_Table['add']['ATUS104']

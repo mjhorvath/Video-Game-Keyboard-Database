@@ -1,0 +1,171 @@
+<html>
+	<head>
+		<title>keyboard db mysql output</title>
+		<script type= "text/javascript">
+/*<![CDATA[*/
+var itemcount = 1
+var schemecount = 1
+var layoutcount = 1
+var Sch_Table = {}
+Sch_Table['key'] = {}
+Sch_Table['gam'] = {}
+Sch_Table['aut'] = {}
+Sch_Table['leg'] = {}
+Sch_Table['com'] = {}
+Sch_Table['mou'] = {}
+Sch_Table['joy'] = {}
+Sch_Table['add'] = {}
+
+var schemas =
+[
+['break',						'Default'],
+['Sample',	'Blank Sample (default)',	1,	[1,2,3,4,6,7,8]],
+['break',						'First-Person Shooters'],
+['AVP',		'Alien vs. Predator',		0,	[1,2]],
+['Alice',	'American McGee\'s Alice',	0,	[1,2]],
+['Doom',	'DOOM & DOOM II: Hell on Earth',	0,	[1,2]],
+['FarCry',	'FarCry',			0,	[1,2]],
+['HalfLife',	'Half-Life',			0,	[1,2]],
+['HalfLife2',	'Half-Life 2',			0,	[1,2]],
+['MBlade',	'Mount & Blade',		0,	[1,2]],
+['SShock',	'System Shock',			0,	[1,2]],
+['SShock2',	'System Shock 2',		0,	[1,2]],
+['ThiefTDP',	'Thief: The Dark Project',	0,	[1,2]],
+['Thief2TMA',	'Thief 2: The Metal Age',	0,	[1,2]],
+['Tron20',	'TRON 2.0',			0,	[1,2]],
+['break',						'Simulation'],
+['Allegience',	'Allegience',			0,	[1,2]],
+['AquaNox',	'AquaNox',			0,	[1,2]],
+['BCM',		'Battlecruiser Millenium',	0,	[1,2]],
+['BBlock',	'Beta Blocker',			0,	[1,2]],
+['Elite2',	'Elite 2',			0,	[1,2]],
+['EVNova',	'Escape Velocity: Nova',	0,	[1,2]],
+['FST',		'Flight Sim Toolkit',		0,	[1,2]],
+['FreeLancer',	'FreeLancer',			0,	[1,2]],
+['FreeSpace',	'FreeSpace',			0,	[1,2]],
+['FreeSpace2',	'FreeSpace 2',			0,	[1,2]],
+['IWar',	'Independence War',		0,	[1,2]],
+['IWar2',	'Independence War 2: Edge of Chaos',	0,	[1,2]],
+['JUSAF',	'Jane\'s USAF',			0,	[1,2]],
+['Nexus',	'Nexus: The Jupiter Incident',	0,	[1,2]],
+['Privateer',	'Privateer',			0,	[1,2]],
+['SHunter2',	'Silent Hunter 2',		0,	[1,2]],
+['SC2K',	'SimCity 2000 (Win95)',		0,	[1,2]],
+['SC3KU',	'SimCity 3000 Unlimited',	0,	[1,2]],
+['SCity4',	'SimCity 4',			0,	[1,2]],
+['STrans',	'SimuTrans',			0,	[1,2]],
+['StarLancer',	'StarLancer',			0,	[1,2]],
+['StarShatter',	'StarShatter',			0,	[1,2]],
+['XWing',	'Star Wars: X-Wing',		0,	[1,2]],
+['Tachyon',	'Tachyon: The Fringe',		0,	[1,2]],
+['TheSims2',	'The Sims 2',			0,	[1,2]],
+['VStrike',	'Vega Strike',			0,	[1,2,3]],
+['XTension',	'X-Tension',			0,	[1,2]],
+['XWAlliance',	'X-Wing Alliance',			0,	[1,2]],
+['break',						'Strategy'],
+['BFWesnoth',	'Battle for Wesnoth',		0,	[1,2]],
+['BrigadeE5',	'Brigade E5: New Jagged Union',	0,	[1,2]],
+['FForce',	'Freedom Force',		0,	[1,2]],
+['GalCiv',	'Galactic Civilizations',	0,	[1,2]],
+['GalCiv2',	'Galactic Civilizations II: Dread Lords',	0,	[1,2]],
+['Homeworld',	'Homeworld & Homeworld: Cataclysm',	0,	[1,2]],
+['Homeworld2',	'Homeworld 2',			0,	[1,2]],
+['JAlliance',	'Jagged Alliance',		0,	[1,2]],
+['JA2',		'Jagged Alliance 2',		0,	[1,2]],
+['JA2113',	'Jagged Alliance 2 (1.13)',	0,	[1,2]],
+['LSNemesis',	'Laser Squad: Nemesis',		0,	[1,2]],
+['LoM',		'Lords of Magic',		0,	[1,2]],
+['MythTFL',	'Myth: The Fallen Lords',	0,	[1,2]],
+['ProjectE',	'Project Earth: Starmageddon',	0,	[1,2]],
+['RTycoon2',	'Railroad Tycoon II',		0,	[1,2]],
+['RomeTW',	'Rome: Total War',		0,	[1,2]],
+['SStorm',	'Silent Storm',			0,	[1,2]],
+['SEmpiresIV',	'Space Empires IV',		0,	[1,2]],
+['StarCraft',	'StarCraft (Common)',		0,	[1,2]],
+['TitansOS',	'Titans of Steel: Warring Suns',	0,	[1,2]],
+['TotalA',	'Total Annihilation',		0,	[1,2]],
+['TAKingdoms',	'Total Annihilation: Kingdoms',	0,	[1,2]],
+['Trop2',	'Tropico 2: Pirate Cove',	0,	[1,2]],
+['UFOAI',	'UFO: Alien Invasion (Stable)',	0,	[1,2]],
+['UFOAIdev',	'UFO: Alien Invasion (Development)',	0,	[1,2]],
+['XApocBatt',	'X-COM: Apocalypse (Tactical)',	0,	[1,2]],
+['XApocCity',	'X-COM: Apocalypse (Cityscape)',	0,	[1,2]],
+['XConq',	'Xconq',			0,	[1,2]],
+['break',						'Role-Playing'],
+['BGate2',	'Baldur\'s Gate II: Shadows of Amn',	0,	[1,2]],
+['DDivinity',	'Divine Divinity',		0,	[1,2]],
+['EnBpsw',	'Earth & Beyond (PSW)',		0,	[1,2]],
+['EnBfps',	'Earth & Beyond (FPS)',		0,	[1,2]],
+['Fallout',	'Fallout & Fallout 2',		0,	[1,2]],
+['Fate',	'FATE & FATE: Undiscovered Realms',	0,	[1,2]],
+['GearHead',	'GearHead',			0,	[1,2]],
+['Gothic',	'Gothic',			0,	[1,2]],
+['Gothic2',	'Gothic 2',			0,	[1,2]],
+['Gothic3',	'Gothic 3',			0,	[1,2]],
+['NetHack',	'NetHack',			0,	[1,2]],
+['SRang2Main',	'Space Rangers 2 (Main)',	0,	[1,2]],
+['SRang2Plan',	'Space Rangers 2 (RTS)',	0,	[1,2]],
+['StarWolves',	'Star Wolves & Star Wolves 2',	0,	[1,2]],
+['ToEE',	'Temple of Elemental Evil',	0,	[1,2]],
+['WoWarcraft',	'World of Warcraft',		0,	[1,2]],
+['break',						'Software'],
+['LDView',	'LDView',			0,	[1,2]],
+['Windows',	'Microsoft Windows',		0,	[1,2]],
+['WAmp',	'Winamp',			0,	[1,2]],
+['break',						'Technical'],
+['ScanCode',	'PC-AT Scan Codes',		0,	[1,2,3,4]],
+['ScanCodeMac',	'Apple Virtual Key Codes',	0,	[6,7,8]],
+['ASCII',	'ASCII/Unicode/HTML Codes',	0,	[1,2,3,4]],
+['Flash',	'ActionScript 3.0 Key Codes',	0,	[1,2]],
+['Typing',	'Typing Reference',		0,	[1,3,4]]//,
+// Internal use only
+//['Preview',	'Submission Preview',		0,	[1,2,3,4,6,7,8]]
+]
+
+function prewrite()
+{
+	for (var i = 0, n = schemas.length; i < n; i++)
+	{
+		if (schemas[i][0] != 'break')
+		{
+			var head = document.getElementsByTagName('head')[0]
+			var script = document.createElement('script')
+			script.type = 'text/javascript'
+			script.src = '../sch_' + schemas[i][0] + '.js'
+			script.onload = init
+			head.appendChild(script)
+		}
+	}
+}
+
+function init()
+{
+	var targetarr = Sch_Table['mou']['ATUS104']
+	var outtext = ''
+	for (var i = 0, n = targetarr.length; i < n; i++)
+	{
+		// key, game and layout IDs
+		outtext += itemcount + '\t' + schemecount + '\t' + layoutcount + '\t'
+		var thisitem = targetarr[i]
+
+		// combo text
+		if (thisitem && thisitem)
+			outtext += thisitem.replace(/\n/g, '\\\\n').replace(/\t/g, '\\\\t')
+		else
+			outtext += '\\N'
+
+		// done
+		outtext += '\n'
+		itemcount += 1
+	}
+	schemecount += 1
+	var innertext = document.createTextNode(outtext)
+	document.getElementById('render').appendChild(innertext)
+}
+/*]]>*/
+		</script>
+	</head>
+	<body onload="prewrite()">
+		<pre id="render"></pre>
+	</body>
+</html>

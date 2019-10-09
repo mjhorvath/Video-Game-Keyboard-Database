@@ -1,0 +1,156 @@
+sLay = 'ATUS104'
+Sch_Table['gam'][sLay] = 'FATE & FATE: Undiscovered Realms'
+Sch_Table['aut'][sLay] = ''
+Sch_Table['key'][sLay] =
+[
+,
+,
+['yel','Quick\nSlot 1','Feed to\nPet',,,,,],
+['yel','Quick\nSlot 2','Feed to\nPet',,,,,],
+['yel','Quick\nSlot 3','Feed to\nPet',,,,,],
+['yel','Quick\nSlot 4','Feed to\nPet',,,,,],
+['yel','Quick\nSlot 5','Feed to\nPet',,,,,],
+['yel','Quick\nSlot 6','Feed to\nPet',,,,,],
+,
+,
+,
+,
+,
+,
+,
+['mag','Toggle Minimap',,,,,,],
+['mag','Quests',,,,,,],
+['blu','Zoom In',,,,,,],
+,
+['red','Toggle\nRun/Walk',,,,,,],
+['mag','Pet Stats',,,,,,],
+,
+,
+['mag','Character\nInventory',,,,,,],
+,
+['mag','Pet\nInventory',,,,,,],
+['yel','Cycle\nSpells -',,,,,,],
+['yel','Cycle\nSpells +',,,,,,],
+,
+,
+['blu','Rotate\nLeft',,,,,,],
+['blu','Zoom Out',,,,,,],
+['blu','Rotate\nRight',,,,,,],
+,
+,
+['mag','Help',,,,,,],
+['mag','Journal',,,,,,],
+['mag','Character\nSkills',,,,,,],
+,
+,
+,
+,
+,
+['red','Stationary Attack /\nPet: Pick Up Items /\nPet: Sell Items',,,,,,],
+,
+,
+,
+['mag','Character\nStats',,,,,,],
+['mag','Exit /\nSave',,,,,,],
+['mag','Spellbook',,,,,,],
+,
+['mag','Toggle\nMinimap',,,,,,],
+,
+,
+,
+['red','Stationary Attack /\nPet: Pick Up Items /\nPet: Sell Items',,,,,,],
+['red','(Hold)\nRun',,,,,,],
+['mag','Highlight\nItems on\nGround',,,,,,],
+['mag','Close All Windows',,,,,,],
+['mag','Highlight\nItems on\nGround',,,,,,],
+['red','(Hold)\nRun',,,,,,],
+,
+,
+['blu','Rotate\nLeft',,,,,,],
+,
+,
+['blu','Zoom In',,,,,,],
+['blu','Zoom Out',,,,,,],
+,
+,
+['blu','Rotate\nRight',,,,,,],
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+['mag','Exit /\nSave',,,,,,],
+['yel','Set Active\nSpell',,,,,,],
+['yel','Set Active\nSpell',,,,,,],
+['yel','Set Active\nSpell',,,,,,],
+['yel','Set Active\nSpell',,,,,,],
+['yel','Set Active\nSpell',,,,,,],
+['yel','Set Active\nSpell',,,,,,],
+['yel','Set Active\nSpell',,,,,,],
+['yel','Set Active\nSpell',,,,,,],
+['yel','Set Active\nSpell',,,,,,],
+['yel','Set Active\nSpell',,,,,,],
+['yel','Set Active\nSpell',,,,,,],
+['yel','Set Active\nSpell',,,,,,],
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+
+]
+Sch_Table['leg'][sLay] =
+[
+['red','Actions/Movement'],
+['yel','Items/Spells'],
+['blu','Camera'],
+['mag','Game Menus']
+]
+Sch_Table['com'][sLay] =
+[
+'Left Click + SHIFT = Stationary Attack',
+'Left Click + CTRL = Run'
+]
+Sch_Table['mou'][sLay] =
+[
+'Left Click = Move, Attack & Interact',
+'Right Click = Cast Active Spell, Use Item',
+'Wheel Up = Zoom In',
+'Wheel Down = Zoom Out',
+'Click Wheel = Default Zoom'
+]
+Sch_Table['joy'][sLay] = []
+Sch_Table['add'][sLay] = []
+sLay = 'ATUS104DVO'
+Sch_Table['gam'][sLay] = Sch_Table['gam']['ATUS104']
+Sch_Table['aut'][sLay] = Sch_Table['aut']['ATUS104']
+Sch_Table['key'][sLay] = Sch_Table['key']['ATUS104']
+Sch_Table['leg'][sLay] = Sch_Table['leg']['ATUS104']
+Sch_Table['com'][sLay] = Sch_Table['com']['ATUS104']
+Sch_Table['mou'][sLay] = Sch_Table['mou']['ATUS104']
+Sch_Table['joy'][sLay] = Sch_Table['joy']['ATUS104']
+Sch_Table['add'][sLay] = Sch_Table['add']['ATUS104']

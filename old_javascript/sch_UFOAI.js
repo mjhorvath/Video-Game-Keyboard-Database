@@ -1,0 +1,156 @@
+sLay = 'ATUS104'
+Sch_Table['gam'][sLay] = 'UFO: Alien Invasion (Stable)'
+Sch_Table['aut'][sLay] = ''
+Sch_Table['key'][sLay] =
+[
+,
+,
+['yel','Select\nSoldier',,,,,,],
+['yel','Select\nSoldier',,,,,,],
+['yel','Select\nSoldier',,,,,,],
+['yel','Select\nSoldier',,,,,,],
+['yel','Select\nSoldier',,,,,,],
+['yel','Select\nSoldier','Game\nConsole',,,,,],
+['yel','Select\nSoldier',,,,,,],
+['yel','Select\nSoldier',,,,,,],
+,
+,
+,
+,
+,
+['yel','Next Soldier',,,,,,],
+['grn','Turn to\nPointer',,,,,,],
+['blu','Terrain\nUp',,,,,,],
+['red','End Turn',,,,,,],
+['blu','Rotate\nUp',,,,,,],
+,
+,
+,
+['red','Inventory',,,,,,],
+,
+,
+,
+,
+,
+,
+['blu','Rotate\nLeft',,,,,,],
+['blu','Terrain\nDown',,,,,,],
+['blu','Rotate\nRight',,,,,,],
+['blu','Rotate\nDown',,,,,,],
+,
+,
+,
+['cyn','Chat\nAll',,,,,,],
+['cyn','Chat\nTeam',,,,,,],
+,
+,
+,
+['red','Confirm Action',,,,,,],
+['red','Shoot at Ground',,,,,,],
+,
+,
+['red','Toggle\nReaction\nFire',,,,,,],
+['grn','Crouch /\nStand',,,,,,],
+['blu','First/Third\nPerson\nView',,,,,,],
+,
+,
+,
+,
+,
+,
+['red','Shoot at Ground',,,,,,],
+['grn','Turn to Pointer',,,,,,],
+,
+['yel','Next Alien',,,,,,],
+,
+['grn','Turn to Pointer',,,,,,],
+['blu','Rotate\nUp',,,,,,],
+['blu','Rotate\nDown',,,,,,],
+['blu','Rotate\nLeft',,,,,,],
+,
+,
+['blu','Terrain\nUp',,,,,,],
+['blu','Terrain\nDown',,,,,,],
+['blu','Zoom\nIn',,,,,,],
+['blu','Zoom\nOut',,,,,,],
+['blu','Rotate\nRight',,,,,,],
+,
+,
+['blu','Pan\nLeft',,,,,,],
+,
+,
+['blu','Pan\nForward',,,,,,],
+,
+['blu','Pan\nBackward',,,,,,],
+,
+,
+,
+['blu','Pan\nRight',,,,,,],
+,
+,
+,
+,
+,
+,
+['mag','Quick\nSave',,,,,,],
+['mag','Quick\nLoad',,,,,,],
+,
+,
+,
+,
+,
+,
+,
+['mag','Push Menu\nin Stack',,,,,,],
+['mag','Hide HUD',,,,,,],
+['mag','Screenshot',,,,,,],
+,
+,
+['mag','Pause\nGame',,,,,,],
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+
+]
+Sch_Table['leg'][sLay] =
+[
+['red','Actions'],
+['grn','Movement'],
+['yel','Selection'],
+['blu','Camera'],
+['cyn','Chat'],
+['mag','Game Controls']
+]
+Sch_Table['com'][sLay] =
+[
+'CTRL + Left Click = Turn Toward Pointer'
+]
+Sch_Table['mou'][sLay] =
+[
+'Left Click = Select Soldier / Walk Toward Pointer / Attack',
+'Right Click = Turn Toward Pointer',
+'Middle Click = Walk Toward Pointer / Cancel Attack',
+'Mouse Wheel = Zoom In/Out'
+]
+Sch_Table['joy'][sLay] = []
+Sch_Table['add'][sLay] = []
+sLay = 'ATUS104DVO'
+Sch_Table['gam'][sLay] = Sch_Table['gam']['ATUS104']
+Sch_Table['aut'][sLay] = Sch_Table['aut']['ATUS104']
+Sch_Table['key'][sLay] = Sch_Table['key']['ATUS104']
+Sch_Table['leg'][sLay] = Sch_Table['leg']['ATUS104']
+Sch_Table['com'][sLay] = Sch_Table['com']['ATUS104']
+Sch_Table['mou'][sLay] = Sch_Table['mou']['ATUS104']
+Sch_Table['joy'][sLay] = Sch_Table['joy']['ATUS104']
+Sch_Table['add'][sLay] = Sch_Table['add']['ATUS104']

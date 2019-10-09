@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<title>keyboard db mysql output</title>
+		<script type= "text/javascript">
+/*<![CDATA[*/
+var itemcount = 1
+var schemecount = 1
+var layoutcount = 1
+var Sty_Table = {}
+
+var schemas =
+[
+['break',						'Dynamic Colors'],
+['SatWhite',	'Saturated on White (default)',		1],
+['SatBlack',	'Saturated on Black',			0],
+['WarmWhite',	'Warm Colors on White',			0],
+['WarmBlack',	'Warm Colors on Black',			0],
+['GradeWht',	'Gradient on White',			0],
+['GradeBlk',	'Gradient on Black',			0],
+['Printer',	'Printer-Friendly',			0],
+['break',						'Fixed Colors'],
+['FunKey',	'FunKeyBoard',				0],
+['Kitty',	'Hello Kitty',				0],
+['Doraemon',	'Doraemon',				0],
+['Kozierok',	'Kozierok',				0],
+['Savard',	'Savard',				0],
+['PlainWhite',	'Plain White',				0],
+['PlainBlack',	'Plain Black',				0]
+]
+function prewrite()
+{
+	for (var i = 0, n = schemas.length; i < n; i++)
+	{
+		if (schemas[i][0] != 'break')
+		{
+			var head = document.getElementsByTagName('head')[0]
+			var script = document.createElement('script')
+			script.type = 'text/javascript'
+			script.src = '../sty_' + schemas[i][0] + '.js'
+			script.onload = init
+			head.appendChild(script)
+		}
+	}
+}
+
+function init()
+{
+	var targetarr = Sty_Table['key']
+	var outtext = ''
+	for (var i = 1, n = targetarr.length; i < n; i++)
+	{
+		// key, game and layout IDs
+		outtext += itemcount + '\t' + schemecount + '\t'
+		var thisitem = targetarr[i]
+
+		// normal group
+		if (thisitem)
+		{
+			switch (thisitem)
+			{
+				case 'key cssA':	outtext += 1;	break;
+				case 'key cssB':	outtext += 2;	break;
+				case 'key cssC':	outtext += 3;	break;
+				case 'key cssD':	outtext += 4;	break;
+				case 'key cssE':	outtext += 5;	break;
+				case 'key cssF':	outtext += 6;	break;
+				case 'key cssG':	outtext += 7;	break;
+				case 'key cssH':	outtext += 8;	break;
+				case 'key cssI':	outtext += 9;	break;
+				case 'key cssJ':	outtext += 10;	break;
+				default:		outtext += '\\N';	break;
+			}
+		}
+		outtext += '\n'
+		itemcount += 1
+	}
+	schemecount += 1
+	var innertext = document.createTextNode(outtext)
+	document.getElementById('render').appendChild(innertext)
+}
+/*]]>*/
+		</script>
+	</head>
+	<body onload="prewrite()">
+		<pre id="render"></pre>
+	</body>
+</html>

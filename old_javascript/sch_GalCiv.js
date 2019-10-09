@@ -1,0 +1,156 @@
+sLay = 'ATUS104'
+Sch_Table['gam'][sLay] = 'Galactic Civilizations'
+Sch_Table['aut'][sLay] = ''
+Sch_Table['key'][sLay] =
+[
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+['yel','Next Free Ship',,,,,,],
+,
+,
+,
+[,,,'Refresh\nSensors',,,,],
+,
+,
+['red','Unform\nFleet',,,,,,],
+,
+,
+,
+,
+,
+,
+,
+['red','Auto\nSurvey',,,,,,],
+['red','Sentry\nMode',,,,,,],
+,
+['red','Form\nFleet',,,,,,],
+['red','Guard\nMode',,,,,,],
+,
+,
+,
+,
+,
+,
+,
+['red','End Turn',,,,,,],
+,
+,
+,
+,
+['blu','Center\non Ship',,,,,,],
+,
+,
+[,,,'New\nGalaxy',,,,],
+,
+,
+,
+,
+,
+,
+,
+['red','Confirm Ship Orders',,,,,,],
+,
+,
+,
+,
+['grn','Move\nShip\nLeft',,,,,,],
+,
+,
+['grn','Move\nShip\nForward',,,,,,],
+['grn','Move\nShip\nBackward',,,,,,],
+,
+,
+['grn','Move\nShip\nRight',,,,,,],
+,
+,
+['grn','Move\nShip\nLeft',,,,,,],
+,
+,
+['grn','Move\nShip\nForward',,,,,,],
+,
+['grn','Move\nShip\nBackward',,,,,,],
+,
+,
+,
+['grn','Move\nShip\nRight',,,,,,],
+,
+,
+,
+,
+,
+['mag','Options\nMenu',,,,,,],
+['mag','Galactic\nMap',,,,,,],
+['mag','Planet\nList',,,,,,],
+['mag','Ship\nList',,,,,,],
+['mag','Domestic\nPolicy',,,,,,],
+['mag','Foreign\nPolicy',,,,,,],
+['mag','Research\nPolicy',,,,,,],
+['mag','View\nFirst\nPlanet',,,,,,],
+,
+['mag','Tactical\nMap',,,,,,],
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+
+]
+Sch_Table['leg'][sLay] =
+[
+['red','Commands/Orders'],
+['grn','Movement'],
+['yel','Selection'],
+['blu','Camera'],
+['mag','Game Controls']
+]
+Sch_Table['com'][sLay] =
+[
+'CTRL + Click LMB = Add Ships to Selection',
+'SHIFT + Drag LMB = Band-box Select'
+]
+Sch_Table['mou'][sLay] =
+[        
+'Click LMB = Select Ship',
+'Double-Click LMB = Object Data',
+'Click RMB = Move Ship to Destination',
+'Drag LMB = Pan Map'
+]
+Sch_Table['joy'][sLay] = []
+Sch_Table['add'][sLay] = []
+sLay = 'ATUS104DVO'
+Sch_Table['gam'][sLay] = Sch_Table['gam']['ATUS104']
+Sch_Table['aut'][sLay] = Sch_Table['aut']['ATUS104']
+Sch_Table['key'][sLay] = Sch_Table['key']['ATUS104']
+Sch_Table['leg'][sLay] = Sch_Table['leg']['ATUS104']
+Sch_Table['com'][sLay] = Sch_Table['com']['ATUS104']
+Sch_Table['mou'][sLay] = Sch_Table['mou']['ATUS104']
+Sch_Table['joy'][sLay] = Sch_Table['joy']['ATUS104']
+Sch_Table['add'][sLay] = Sch_Table['add']['ATUS104']

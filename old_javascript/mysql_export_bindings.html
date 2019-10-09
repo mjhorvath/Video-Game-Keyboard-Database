@@ -1,0 +1,268 @@
+<html>
+	<head>
+		<title>keyboard db mysql output</title>
+		<script type= "text/javascript">
+/*<![CDATA[*/
+var Sch_Table = {}
+Sch_Table['key'] = {}
+Sch_Table['gam'] = {}
+Sch_Table['aut'] = {}
+Sch_Table['leg'] = {}
+Sch_Table['com'] = {}
+Sch_Table['mou'] = {}
+Sch_Table['joy'] = {}
+Sch_Table['add'] = {}
+
+var schemas =
+[
+//Default
+['Sample',	'Blank Sample (default)',	1,	[1,2,3,4,6,7,8]],
+//First-Person Shooters
+['AVP',		'Alien vs. Predator',		0,	[1,2]],
+['Alice',	'American McGee\'s Alice',	0,	[1,2]],
+['Doom',	'DOOM & DOOM II: Hell on Earth',	0,	[1,2]],
+['FarCry',	'FarCry',			0,	[1,2]],
+['HalfLife',	'Half-Life',			0,	[1,2]],
+['HalfLife2',	'Half-Life 2',			0,	[1,2]],
+['MBlade',	'Mount & Blade',		0,	[1,2]],
+['SShock',	'System Shock',			0,	[1,2]],
+['SShock2',	'System Shock 2',		0,	[1,2]],
+['ThiefTDP',	'Thief: The Dark Project',	0,	[1,2]],
+['Thief2TMA',	'Thief 2: The Metal Age',	0,	[1,2]],
+['Tron20',	'TRON 2.0',			0,	[1,2]],
+//Simulation
+['Allegience',	'Allegience',			0,	[1,2]],
+['AquaNox',	'AquaNox',			0,	[1,2]],
+['BCM',		'Battlecruiser Millenium',	0,	[1,2]],
+['BBlock',	'Beta Blocker',			0,	[1,2]],
+['Elite2',	'Elite 2',			0,	[1,2]],
+['EVNova',	'Escape Velocity: Nova',	0,	[1,2]],
+['FST',		'Flight Sim Toolkit',		0,	[1,2]],
+['FreeLancer',	'FreeLancer',			0,	[1,2]],
+['FreeSpace',	'FreeSpace',			0,	[1,2]],
+['FreeSpace2',	'FreeSpace 2',			0,	[1,2]],
+['IWar',	'Independence War',		0,	[1,2]],
+['IWar2',	'Independence War 2: Edge of Chaos',	0,	[1,2]],
+['JUSAF',	'Jane\'s USAF',			0,	[1,2]],
+['Nexus',	'Nexus: The Jupiter Incident',	0,	[1,2]],
+['Privateer',	'Privateer',			0,	[1,2]],
+['SHunter2',	'Silent Hunter 2',		0,	[1,2]],
+['SC2K',	'SimCity 2000 (Win95)',		0,	[1,2]],
+['SC3KU',	'SimCity 3000 Unlimited',	0,	[1,2]],
+['SCity4',	'SimCity 4',			0,	[1,2]],
+['STrans',	'SimuTrans',			0,	[1,2]],
+['StarLancer',	'StarLancer',			0,	[1,2]],
+['StarShatter',	'StarShatter',			0,	[1,2]],
+['XWing',	'Star Wars: X-Wing',		0,	[1,2]],
+['Tachyon',	'Tachyon: The Fringe',		0,	[1,2]],
+['TheSims2',	'The Sims 2',			0,	[1,2]],
+['VStrike',	'Vega Strike',			0,	[1,2,3]],
+['XTension',	'X-Tension',			0,	[1,2]],
+['XWAlliance',	'X-Wing Alliance',			0,	[1,2]],
+//Strategy
+['BFWesnoth',	'Battle for Wesnoth',		0,	[1,2]],
+['BrigadeE5',	'Brigade E5: New Jagged Union',	0,	[1,2]],
+['FForce',	'Freedom Force',		0,	[1,2]],
+['GalCiv',	'Galactic Civilizations',	0,	[1,2]],
+['GalCiv2',	'Galactic Civilizations II: Dread Lords',	0,	[1,2]],
+['Homeworld',	'Homeworld & Homeworld: Cataclysm',	0,	[1,2]],
+['Homeworld2',	'Homeworld 2',			0,	[1,2]],
+['JAlliance',	'Jagged Alliance',		0,	[1,2]],
+['JA2',		'Jagged Alliance 2',		0,	[1,2]],
+['JA2113',	'Jagged Alliance 2 (1.13)',	0,	[1,2]],
+['LSNemesis',	'Laser Squad: Nemesis',		0,	[1,2]],
+['LoM',		'Lords of Magic',		0,	[1,2]],
+['MythTFL',	'Myth: The Fallen Lords',	0,	[1,2]],
+['ProjectE',	'Project Earth: Starmageddon',	0,	[1,2]],
+['RTycoon2',	'Railroad Tycoon II',		0,	[1,2]],
+['RomeTW',	'Rome: Total War',		0,	[1,2]],
+['SStorm',	'Silent Storm',			0,	[1,2]],
+['SEmpiresIV',	'Space Empires IV',		0,	[1,2]],
+['StarCraft',	'StarCraft (Common)',		0,	[1,2]],
+['TitansOS',	'Titans of Steel: Warring Suns',	0,	[1,2]],
+['TotalA',	'Total Annihilation',		0,	[1,2]],
+['TAKingdoms',	'Total Annihilation: Kingdoms',	0,	[1,2]],
+['Trop2',	'Tropico 2: Pirate Cove',	0,	[1,2]],
+['UFOAI',	'UFO: Alien Invasion (Stable)',	0,	[1,2]],
+['UFOAIdev',	'UFO: Alien Invasion (Development)',	0,	[1,2]],
+['XApocBatt',	'X-COM: Apocalypse (Tactical)',	0,	[1,2]],
+['XApocCity',	'X-COM: Apocalypse (Cityscape)',	0,	[1,2]],
+['XConq',	'Xconq',			0,	[1,2]],
+//Role-Playing
+['BGate2',	'Baldur\'s Gate II: Shadows of Amn',	0,	[1,2]],
+['DDivinity',	'Divine Divinity',		0,	[1,2]],
+['EnBpsw',	'Earth & Beyond (PSW)',		0,	[1,2]],
+['EnBfps',	'Earth & Beyond (FPS)',		0,	[1,2]],
+['Fallout',	'Fallout & Fallout 2',		0,	[1,2]],
+['Fate',	'FATE & FATE: Undiscovered Realms',	0,	[1,2]],
+['GearHead',	'GearHead',			0,	[1,2]],
+['Gothic',	'Gothic',			0,	[1,2]],
+['Gothic2',	'Gothic 2',			0,	[1,2]],
+['Gothic3',	'Gothic 3',			0,	[1,2]],
+['NetHack',	'NetHack',			0,	[1,2]],
+['SRang2Main',	'Space Rangers 2 (Main)',	0,	[1,2]],
+['SRang2Plan',	'Space Rangers 2 (RTS)',	0,	[1,2]],
+['StarWolves',	'Star Wolves & Star Wolves 2',	0,	[1,2]],
+['ToEE',	'Temple of Elemental Evil',	0,	[1,2]],
+['WoWarcraft',	'World of Warcraft',		0,	[1,2]],
+//Software
+['LDView',	'LDView',			0,	[1,2]],
+['Windows',	'Microsoft Windows',		0,	[1,2]],
+['WAmp',	'Winamp',			0,	[1,2]],
+//Technical
+['ScanCode',	'PC-AT Scan Codes',		0,	[1,2,3,4]],
+['ScanCodeMac',	'Apple Virtual Key Codes',	0,	[6,7,8]],
+['ASCII',	'ASCII/Unicode/HTML Codes',	0,	[1,2,3,4]],
+['Flash',	'ActionScript 3.0 Key Codes',	0,	[1,2]],
+['Typing',	'Typing Reference',		0,	[1,3,4]]//,
+// Internal use only
+//['Preview',	'Submission Preview',		0,	[1,2,3,4,6,7,8]]
+]
+
+var layouts =
+[
+//PC/AT
+['ATUS104',	'US 104 Key (default)',		1],
+['ATUS104DVO',	'US 104 Key Dvorak',		0],
+['ATDE105',	'DE 105 Key',			0],
+['ATFR105',	'FR 105 Key',			0],
+//Macintosh
+['MACUS109OLD',	'US 109 Key (old)',		0],
+['MACUS109NEW',	'US 109 Key (new)',		0],
+['MACUK110OLD',	'UK 110 Key (old)',		0]
+]
+
+function prewrite()
+{
+	for (var gamecount_i = 0, n = schemas.length; gamecount_i < n; gamecount_i++)
+	{
+		var head = document.getElementsByTagName('head')[0]
+		var script = document.createElement('script')
+		script.type = 'text/javascript'
+		script.src = 'sch_' + schemas[gamecount_i][0] + '.js'
+		script.onload = init
+		head.appendChild(script)
+	}
+}
+
+var gamecount = 1
+function init()
+{
+	for (var layoutcount = 0, o = layouts.length; layoutcount < o; layoutcount++)
+	{
+		var thislayout = layouts[layoutcount][0]
+		var targetarr = Sch_Table['key'][thislayout]
+		if (targetarr)
+		{
+			var outtext = ''
+			for (var keycount = 1, n = targetarr.length; keycount < n; keycount++)
+			{
+				var thisitem = targetarr[keycount]
+				if (thisitem)
+				{
+					// key, game and layout IDs
+					outtext += '\\N\t' + gamecount + '\t' + (layoutcount+1) + '\t'
+
+					// normal action
+					if (thisitem && thisitem[1])
+						outtext += thisitem[1].replace(/\n/g, '\\\\n')
+					else
+						outtext += '\\N'
+					outtext += '\t'
+
+					// normal group
+					if (thisitem && thisitem[0])
+					{
+						switch (thisitem[0])
+						{
+							case 'red':	outtext += 1;	break;
+							case 'yel':	outtext += 2;	break;
+							case 'grn':	outtext += 3;	break;
+							case 'cyn':	outtext += 4;	break;
+							case 'blu':	outtext += 5;	break;
+							case 'mag':	outtext += 6;	break;
+							case 'wht':	outtext += 7;	break;
+							case 'gry':	outtext += 8;	break;
+							case 'blk':	outtext += 9;	break;
+							case 'org':	outtext += 10;	break;
+							case 'olv':	outtext += 11;	break;
+						}
+					}
+					else
+						outtext += '\\N'
+					outtext += '\t'
+
+					// shift action
+					if (thisitem && thisitem[2])
+						outtext += thisitem[2].replace(/\n/g, '\\\\n')
+					else
+						outtext += '\\N'
+					outtext += '\t\\N\t'
+
+					// ctrl action
+					if (thisitem && thisitem[3])
+						outtext += thisitem[3].replace(/\n/g, '\\\\n')
+					else
+						outtext += '\\N'
+					outtext += '\t\\N\t'
+
+					// alt action
+					if (thisitem && thisitem[4])
+						outtext += thisitem[4].replace(/\n/g, '\\\\n')
+					else
+						outtext += '\\N'
+					outtext += '\t\\N\t'
+
+					// altgr action
+					if (thisitem && thisitem[5])
+						outtext += thisitem[5].replace(/\n/g, '\\\\n')
+					else
+						outtext += '\\N'
+					outtext += '\t\\N\t'
+
+					// extra action
+					if (thisitem && thisitem[6])
+						outtext += thisitem[6].replace(/\n/g, '\\\\n')
+					else
+						outtext += '\\N'
+					outtext += '\t\\N\t'
+
+					// image file
+					if (thisitem && thisitem[7])
+						outtext += thisitem[7].replace(/\n/g, '\\\\n')
+					else
+						outtext += '\\N'
+
+					// done
+					outtext += '\t' + keycount + '\n'
+				}
+			}
+			var innertext = document.createTextNode(outtext)
+			document.getElementById('render').appendChild(innertext)
+		}
+	}
+	Sch_Table = {}
+	Sch_Table['key'] = {}
+	Sch_Table['gam'] = {}
+	Sch_Table['aut'] = {}
+	Sch_Table['leg'] = {}
+	Sch_Table['com'] = {}
+	Sch_Table['mou'] = {}
+	Sch_Table['joy'] = {}
+	Sch_Table['add'] = {}
+	gamecount += 1
+	var scripttags = getElementsByTagName('script')
+	for (var keycount = 0, n = scripttags; keycount < n; keycount++)
+	{
+		var thistag = scripttags[0]
+		var thisparent = thistag.parent
+		thisparent.removeChild(thistag)
+	}
+}
+/*]]>*/
+		</script>
+	</head>
+	<body onload="prewrite()">
+		<pre id="render"></pre>
+	</body>
+</html>

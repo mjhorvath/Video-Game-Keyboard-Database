@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<title>keyboard db mysql output</title>
+		<script type= "text/javascript">
+/*<![CDATA[*/
+var itemcount = 1
+var schemecount = 1
+var layoutcount = 1
+var Lay_Table = {}
+
+var layouts =
+[
+['break',					'PC/AT'],
+['ATUS104',	'US 104 Key (default)',		1],
+['ATUS104DVO',	'US 104 Key Dvorak',		0],
+['ATDE105',	'DE 105 Key',			0],
+['ATFR105',	'FR 105 Key',			0],
+['break',					'Macintosh'],
+['MACUS109OLD',	'US 109 Key (old)',		0],
+['MACUS109NEW',	'US 109 Key (new)',		0],
+['MACUK110OLD',	'UK 110 Key (old)',		0]
+]
+
+function prewrite()
+{
+	for (var i = 0, n = layouts.length; i < n; i++)
+	{
+		if (layouts[i][0] != 'break')
+		{
+			var head = document.getElementsByTagName('head')[0]
+			var script = document.createElement('script')
+			script.type = 'text/javascript'
+			script.src = '../lay_' + layouts[i][0] + '.js'
+			script.onload = init
+			head.appendChild(script)
+		}
+	}
+}
+
+function init()
+{
+	var targetarr = Lay_Table['cut']
+	var outtext = ''
+	for (var i = 0, n = targetarr.length; i < n; i++)
+	{
+		// key, game and layout IDs
+		outtext += itemcount + '\t' + schemecount + '\t'
+		var thisitem = targetarr[i]
+		for (var j = 0; j < 4; j++)
+		{
+			if (thisitem && thisitem[j] != null)
+				outtext += thisitem[j].toString().replace(/\n/g, '\\\\n').replace(/\\/g, '\\\\')
+			else
+				outtext += '\\N'
+			if (j < 3)
+				outtext += '\t'
+		}
+		outtext += '\n'
+		itemcount += 1
+	}
+	schemecount += 1
+	var innertext = document.createTextNode(outtext)
+	document.getElementById('render').appendChild(innertext)
+}
+/*]]>*/
+		</script>
+	</head>
+	<body onload="prewrite()">
+		<pre id="render"></pre>
+	</body>
+</html>

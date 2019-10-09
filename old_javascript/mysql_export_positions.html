@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>keyboard db mysql output</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<script type= "text/javascript">
+/*<![CDATA[*/
+var layoutcount = 1
+var Lay_Table = {}
+
+var layouts =
+[
+['break',					'PC/AT'],
+['ATUS104',	'US 104 Key (default)',		1],
+['ATUS104DVO',	'US 104 Key Dvorak',		0],
+['ATDE105',	'DE 105 Key',			0],
+['ATFR105',	'FR 105 Key',			0],
+['break',					'Macintosh'],
+['MACUS109OLD',	'US 109 Key (old)',		0],
+['MACUS109NEW',	'US 109 Key (new)',		0],
+['MACUK110OLD',	'UK 110 Key (old)',		0]
+]
+
+function prewrite()
+{
+	for (var layoutcount_i = 0, n = layouts.length; layoutcount_i < n; layoutcount_i++)
+	{
+		if (layouts[layoutcount_i][0] != 'break')
+		{
+			var head = document.getElementsByTagName('head')[0]
+			var script = document.createElement('script')
+			script.type = 'text/javascript'
+			script.src = 'lay_' + layouts[layoutcount_i][0] + '.js'
+			script.onload = init
+			head.appendChild(script)
+		}
+	}
+}
+
+function cleantext(instring)
+{
+	return instring.replace(/\\/g, '\\\\').replace(/\t/g, '\\\\t').replace(/\n/g, '\\\\n')
+}
+
+function init()
+{
+	var targetarr = Lay_Table['key']
+	var outtext = ''
+	for (var keycount = 1, n = targetarr.length; keycount < n; keycount++)
+	{
+		var thisitem = targetarr[keycount]
+		if (thisitem)
+		{
+			// key, game and layout IDs
+			outtext += '\\N\t' + layoutcount + '\t'
+			for (var j = 0; j < 7; j++)
+			{
+				if (thisitem && thisitem[j] != null)
+				{
+					if (typeof(thisitem[j]) == 'string')
+						outtext += cleantext(thisitem[j])
+					if (typeof(thisitem[j]) == 'number')
+						outtext += Math.round(thisitem[j])
+				}
+				else
+					outtext += '\\N'
+				outtext += '\t'
+			}
+			outtext += keycount + '\n'
+		}
+	}
+	layoutcount += 1
+	var innertext = document.createTextNode(outtext)
+	document.getElementById('render').appendChild(innertext)
+}
+/*]]>*/
+		</script>
+	</head>
+	<body onload="prewrite()">
+		<pre id="render"></pre>
+	</body>
+</html>

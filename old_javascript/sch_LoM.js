@@ -1,0 +1,155 @@
+sLay = 'ATUS104'
+Sch_Table['gam'][sLay] = 'Lords of Magic'
+Sch_Table['aut'][sLay] = ''
+Sch_Table['key'][sLay] =
+[
+,
+,
+['yel','Group 1',,'Assign','Center',,,],
+['yel','Group 2',,'Assign','Center',,,],
+['yel','Group 3',,'Assign','Center',,,],
+,
+,
+,
+,
+,
+,
+,
+['yel','Previous\nUnit',,,,,,],
+['yel','Next\nUnit',,,,,,],
+,
+,
+,
+,
+[,,,'End\nTurn',,,,],
+,
+['red','Stealth',,,,,,],
+,
+,
+[,,,'Intel\nReport',,,,],
+[,,,'Main Menu',,,,],
+,
+['mag','Scroll\nSpeed -',,,,,,],
+['mag','Scroll\nSpeed +',,,,,,],
+['mag','Reset\nScroll\nSpeed',,,,,,],
+,
+['red','Attack',,'Aimed\nAttack',,,,],
+[,,,'Save\nGame',,,,],
+['red','Defend',,'Parry',,,,],
+,
+,
+,
+,
+,
+[,,,'Load\nGame',,,,],
+,
+,
+,
+,
+,
+,
+[,,,'Toggle\nView',,,,],
+[,,,'Exit\nGame',,,,],
+[,,,'Cheat\nConsole',,,,],
+[,,,'Version\nInfo',,,,],
+['red','Berserk',,,,,,],
+,
+[,,,'Mod\nInfo',,,,],
+['mag','Game\nSpeed -',,,,,,],
+['mag','Game\nSpeed +',,,,,,],
+['mag','Reset\nGame\nSpeed',,,,,,],
+,
+['yel','Select Unit\nin Group',,,,,,],
+,
+['mag','Pause Game',,,,,,],
+,
+['yel','Select Unit\nin Group',,,,,,],
+,
+,
+,
+['blu','Center\non Leader',,,,,,],
+,
+,
+,
+['blu','Rotate\nLeft',,,,,,],
+['blu','Rotate\nRight',,,,,,],
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+['mag','Main Menu',,,,,,],
+['red','Cast\nOffensive\nSpell',,,,,,],
+['red','Cast\nDefensive\nSpell',,,,,,],
+['red','Remove\nShroud',,,,,,],
+['red','Replace\nShroud',,,,,,],
+['cyn','Chat\nPlayer 1',,,,,,],
+['cyn','Chat\nPlayer 2',,,,,,],
+['cyn','Chat\nPlayer 3',,,,,,],
+['cyn','Chat\nPlayer 4',,,,,,],
+['cyn','Chat\nAll',,,,,,],
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+
+]
+Sch_Table['leg'][sLay] =
+[
+['red','Combat/Actions'],
+['yel','Selection'],
+['blu','Camera'],
+['cyn','Messaging'],
+['mag','Game Controls']
+]
+Sch_Table['com'][sLay] =
+[
+'CTRL + Left Click on Unit = Select Individual in Group',
+'SHIFT + Left Click on Unit = Add to Selection'
+]
+Sch_Table['mou'][sLay] =
+[
+'Left Click on Unit = Select/Attack Unit',
+'Left Click on Map = Move Unit',
+'Left Click and Drag on Map = Select Units'
+]
+Sch_Table['joy'][sLay] = []
+Sch_Table['add'][sLay] = []
+sLay = 'ATUS104DVO'
+Sch_Table['gam'][sLay] = Sch_Table['gam']['ATUS104']
+Sch_Table['aut'][sLay] = Sch_Table['aut']['ATUS104']
+Sch_Table['key'][sLay] = Sch_Table['key']['ATUS104']
+Sch_Table['leg'][sLay] = Sch_Table['leg']['ATUS104']
+Sch_Table['com'][sLay] = Sch_Table['com']['ATUS104']
+Sch_Table['mou'][sLay] = Sch_Table['mou']['ATUS104']
+Sch_Table['joy'][sLay] = Sch_Table['joy']['ATUS104']
+Sch_Table['add'][sLay] = Sch_Table['add']['ATUS104']

@@ -1,0 +1,105 @@
+<html>
+	<head>
+		<title>keyboard db wiki output</title>
+		<script type= "text/javascript">
+/*<![CDATA[*/
+var Sch_Table = {}
+Sch_Table['key'] = {}
+Sch_Table['gam'] = {}
+Sch_Table['aut'] = {}
+Sch_Table['leg'] = {}
+Sch_Table['com'] = {}
+Sch_Table['mou'] = {}
+Sch_Table['joy'] = {}
+Sch_Table['add'] = {}
+/*]]>*/
+		</script>
+		<script type="text/javascript" src="sch_TheSims2.js"></script>
+		<script type= "text/javascript">
+/*<![CDATA[*/
+function init()
+{
+	var targetarr = Sch_Table['key']['ATUS104']
+	var outtext = '{{kbdchart\n'
+	for (var i = 1, n = targetarr.length; i < n; i++)
+	{
+		var thisitem = targetarr[i]
+		var count = (i + 1000 - 1).toString().substring(1,4)
+		var thisbkgrepl = ''
+		if (thisitem)
+		{
+			var thisbkg = thisitem[0]
+			var thistxt = thisitem[1]
+			var thisshf = thisitem[2]
+			var thisctl = thisitem[3]
+			var thisalt = thisitem[4]
+			switch (thisbkg)
+			{
+				case 'red':
+					thisbkgrepl = '#e02020'
+				break;
+				case 'yel':
+					thisbkgrepl = '#e0e020'
+				break;
+				case 'grn':
+					thisbkgrepl = '#20e020'
+				break;
+				case 'cyn':
+					thisbkgrepl = '#20e0e0'
+				break;
+				case 'blu':
+					thisbkgrepl = '#2020e0'
+				break;
+				case 'mag':
+					thisbkgrepl = '#e020e0'
+				break;
+				case 'wht':
+					thisbkgrepl = '#ffffff'
+				break;
+				case 'gry':
+					thisbkgrepl = '#808080'
+				break;
+				case 'blk':
+					thisbkgrepl = '#000000'
+				break;
+				case 'org':
+					thisbkgrepl = '#ff8000'
+				break;
+				case 'olv':
+					thisbkgrepl = '#808000'
+				break;
+			}
+		}
+		else
+		{
+			var thisbkg = ''
+			var thistxt = ''
+			var thisshf = ''
+			var thisctl = ''
+			var thisalt = ''
+		}
+		var linetext = ''
+		if (thisbkg)
+			linetext += '|' + count + 'bkg=' + thisbkgrepl
+		if (thistxt)
+			linetext += '|' + count + 'txt=' + thistxt.replace(/\n/g, '<br/>').replace(/\|/g, '&brvbar;').replace(/\&/g, '&amp;')
+		if (thisshf)
+			linetext += '|' + count + 'shf=' + thisshf.replace(/\n/g, '<br/>').replace(/\|/g, '&brvbar;').replace(/\&/g, '&amp;')
+		if (thisctl)
+			linetext += '|' + count + 'ctl=' + thisctl.replace(/\n/g, '<br/>').replace(/\|/g, '&brvbar;').replace(/\&/g, '&amp;')
+		if (thisalt)
+			linetext += '|' + count + 'alt=' + thisalt.replace(/\n/g, '<br/>').replace(/\|/g, '&brvbar;').replace(/\&/g, '&amp;')
+		if (linetext != '')
+			outtext += linetext + '\n'
+	}
+	outtext += '}}\n'
+	var innertext = document.createTextNode(outtext)
+	document.getElementById('render').appendChild(innertext)
+}
+/*]]>*/
+		</script>
+	</head>
+	<body onload="init()">
+		<pre id="render"></pre>
+	</body>
+</html>

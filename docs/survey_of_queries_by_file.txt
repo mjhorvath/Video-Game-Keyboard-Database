@@ -1,0 +1,134 @@
+====================
+keyboard.php
+====================
+
+SELECT	g.genre_id, g.genre_name
+FROM	genres as g;
++ all columns are used
++ however they are used weirdly in an array, and foreach is needed to get the values back out of this array due to possible gaps in the primary key if left unoptimized
++ no where clauses, no indexes needed
+
+SELECT	g.genre_id, g.game_id, g.game_name
+FROM	games as g;
++ all columns are used
++ however they are used weirdly in an array, see above
++ no where clauses, no indexes needed
+
+SELECT	s.stylegroup_id, s.stylegroup_name
+FROM	stylegroups as s;
++ all columns are used
++ however they are used weirdly in an array, see above
++ no where clauses, no indexes needed
+
+SELECT	s.stylegroup_id, s.style_id, s.style_name
+FROM	styles as s;
++ all columns are used
++ however they are used weirdly in an array, see above
++ no where clauses, no indexes needed
+
+SELECT	p.platform_id, p.platform_name
+FROM	platforms as p;
++ all columns are used
++ however they are used weirdly in an array, see above
++ no where clauses, no indexes needed
+
+SELECT	l.platform_id, l.layout_id, l.layout_name
+FROM	layouts as l;
++ all columns are used
++ however they are used weirdly in an array, see above
++ no where clauses, no indexes needed
+
+SELECT	e.effect_name
+FROM	effects as e;
++ not implemented yet
++ no where clauses, no indexes needed
+
+
+====================
+keyboardchart.php
+====================
+
+SELECT	s.style_filename
+FROM	styles as s
+WHERE	s.style_id = $style_id;
++ is used properly
++ returns a single value
+
+SELECT	e.effect_name
+FROM	effects as e;
++ not implemented yet
+
+SELECT	p.position_left, p.position_top, p.position_width, p.position_height, p.symbol_low, p.symbol_cap, p.symbol_altgr
+FROM	positions as p
+WHERE	p.layout_id = $layout_id;
++ is used properly
+
+SELECT	c.cutout_left, c.cutout_top, c.cutout_width, c.cutout_height
+FROM	cutouts as c
+WHERE	c.layout_id = $layout_id;
++ is disabled currently
+
+SELECT	l.platform_id, l.layout_name, l.layout_title, l.layout_mouse, l.layout_joystick, l.layout_combos, l.layout_notes, l.layout_legend, l.layout_return
+FROM	layouts as l
+WHERE	l.layout_id = $layout_id;
++ is used properly
+
+SELECT	k.keystyle_group
+FROM	keystyles as k
+WHERE	k.style_id = $style_id;
+
+SELECT	b.normal_group, b.normal_action, b.shift_group, b.shift_action, b.ctrl_group, b.ctrl_action, b.alt_group, b.alt_action, b.altgr_group, b.altgr_action, b.extra_group, b.extra_action, b.image_file
+FROM	bindings as b
+WHERE	b.layout_id = $layout_id
+AND	b.game_id = $game_id;
+
+SELECT	l.legend_group, l.legend_description
+FROM	legends as l
+WHERE	l.layout_id = $layout_id
+AND	l.game_id = $game_id;
+
+SELECT	c.command_text, c.command_description
+FROM	commands as c
+WHERE	c.layout_id = $layout_id
+AND	c.game_id = $game_id;
+
+SELECT	g.game_name
+FROM	games as g
+WHERE	g.game_id = $game_id;
++ returns a single value
+
+SELECT	p.platform_name
+FROM	platforms as p
+WHERE	p.platform_id = $layout_platform
++ is based on the result of a previous query
++ returns a single value
+
+
+====================
+keyboardsubmit.php
+====================
+
+SELECT	l.layout_name
+FROM	layouts as l;
++ no where clauses, no indexes needed
+
+SELECT	s.style_name
+FROM	styles as s;
++ no where clauses, no indexes needed
+
+
+====================
+keyboardjs.php
+====================
+
+SELECT	p.symbol_low, p.symbol_cap
+FROM	positions as p
+WHERE	p.layout_id = $get_lay;
+
+SELECT	b.game_id, b.layout_id
+FROM	bindings as b;
++ no where clauses, no indexes needed
+
+SELECT	l.platform_id
+FROM	layouts as l;
++ no where clauses, no indexes needed
