@@ -1310,26 +1310,33 @@ function process_binding_data()
 		var binding_item = binding_table[i];
 		if (binding_item)
 		{
-			var binding_concat = binding_item[ 3] + binding_item[ 4] + binding_item[ 5] + binding_item[ 6] + binding_item[ 7] + binding_item[ 8] + binding_item[ 9] + binding_item[10];
+			var binding_concat =	binding_item[ 4] +
+						binding_item[ 5] +
+						binding_item[ 6] +
+						binding_item[ 7] +
+						binding_item[ 8] +
+						binding_item[ 9] +
+						binding_item[10] +
+						binding_item[11];
 			if (binding_concat != '')
 			{
-				binding_string +=	'\\N' + '\t' +
-							record_id + '\t' +
-							(i+1) + '\t' +
-							cleantextTSV(binding_item[ 3]) + '\t' +
-							 cleannumTSV(binding_item[11]) + '\t' +
-							cleantextTSV(binding_item[ 4]) + '\t' +
-							 cleannumTSV(binding_item[12]) + '\t' +
-							cleantextTSV(binding_item[ 5]) + '\t' +
-							 cleannumTSV(binding_item[13]) + '\t' +
-							cleantextTSV(binding_item[ 6]) + '\t' +
-							 cleannumTSV(binding_item[14]) + '\t' +
-							cleantextTSV(binding_item[ 7]) + '\t' +
-							 cleannumTSV(binding_item[15]) + '\t' +
-							cleantextTSV(binding_item[ 8]) + '\t' +
-							 cleannumTSV(binding_item[16]) + '\t' +
-							cleantextTSV(binding_item[ 9]) + '\t' +
-							cleantextTSV(binding_item[10]) + '\n';
+				binding_string +=	'\\N'				+ '\t' +
+							record_id			+ '\t' +
+							(i+1)				+ '\t' +
+							cleantextTSV(binding_item[ 4])	+ '\t' +
+							 cleannumTSV(binding_item[12])	+ '\t' +
+							cleantextTSV(binding_item[ 5])	+ '\t' +
+							 cleannumTSV(binding_item[13])	+ '\t' +
+							cleantextTSV(binding_item[ 6])	+ '\t' +
+							 cleannumTSV(binding_item[14])	+ '\t' +
+							cleantextTSV(binding_item[ 7])	+ '\t' +
+							 cleannumTSV(binding_item[15])	+ '\t' +
+							cleantextTSV(binding_item[ 8])	+ '\t' +
+							 cleannumTSV(binding_item[16])	+ '\t' +
+							cleantextTSV(binding_item[ 9])	+ '\t' +
+							 cleannumTSV(binding_item[17])	+ '\t' +
+							cleantextTSV(binding_item[10])	+ '\t' +
+							cleantextTSV(binding_item[11])	+ '\n';
 			}
 		}
 	}

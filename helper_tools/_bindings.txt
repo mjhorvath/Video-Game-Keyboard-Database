@@ -1,106 +1,74 @@
-\N	234	1	1	\N	29	\N	0E	\N	0E	\N	35	\N	C0	\N	\N	\N
-\N	234	2	2	\N	02	\N	16	\N	16	\N	1E	\N	31	\N	\N	\N
-\N	234	3	3	\N	03	\N	1E	\N	1E	\N	1F	\N	32	\N	\N	\N
-\N	234	4	4	\N	04	\N	26	\N	26	\N	20	\N	33	\N	\N	\N
-\N	234	5	5	\N	05	\N	25	\N	25	\N	21	\N	34	\N	\N	\N
-\N	234	6	6	\N	06	\N	2E	\N	2E	\N	22	\N	35	\N	\N	\N
-\N	234	7	7	\N	07	\N	36	\N	36	\N	23	\N	36	\N	\N	\N
-\N	234	8	8	\N	08	\N	3D	\N	3D	\N	24	\N	37	\N	\N	\N
-\N	234	9	9	\N	09	\N	3E	\N	3E	\N	25	\N	38	\N	\N	\N
-\N	234	10	10	\N	0A	\N	46	\N	46	\N	26	\N	39	\N	\N	\N
-\N	234	11	11	\N	0B	\N	45	\N	45	\N	27	\N	30	\N	\N	\N
-\N	234	12	12	\N	0C	\N	4E	\N	4E	\N	2D	\N	BD	\N	\N	\N
-\N	234	13	13	\N	0D	\N	55	\N	55	\N	2E	\N	BB	\N	\N	\N
-\N	234	14	15	\N	0E	\N	66	\N	66	\N	2A	\N	08	\N	\N	\N
-\N	234	15	16	\N	0F	\N	0D	\N	0D	\N	2B	\N	09	\N	\N	\N
-\N	234	16	17	\N	10	\N	15	\N	15	\N	14	\N	51	\N	\N	\N
-\N	234	17	18	\N	11	\N	1D	\N	1D	\N	1A	\N	57	\N	\N	\N
-\N	234	18	19	\N	12	\N	24	\N	24	\N	08	\N	45	\N	\N	\N
-\N	234	19	20	\N	13	\N	2D	\N	2D	\N	15	\N	52	\N	\N	\N
-\N	234	20	21	\N	14	\N	2C	\N	2C	\N	17	\N	54	\N	\N	\N
-\N	234	21	22	\N	15	\N	35	\N	35	\N	1C	\N	59	\N	\N	\N
-\N	234	22	23	\N	16	\N	3C	\N	3C	\N	18	\N	55	\N	\N	\N
-\N	234	23	24	\N	17	\N	43	\N	43	\N	0C	\N	49	\N	\N	\N
-\N	234	24	25	\N	18	\N	44	\N	44	\N	12	\N	4F	\N	\N	\N
-\N	234	25	26	\N	19	\N	4D	\N	4D	\N	13	\N	50	\N	\N	\N
-\N	234	26	27	\N	1A	\N	54	\N	54	\N	2F	\N	DB	\N	\N	\N
-\N	234	27	28	\N	1B	\N	5B	\N	5B	\N	30	\N	DD	\N	\N	\N
-\N	234	28	29	\N	2B	\N	5D	\N	5C	\N	31	\N	DC	\N	\N	\N
-\N	234	29	30	\N	3A	\N	58	\N	14	\N	39	\N	14	\N	\N	\N
-\N	234	30	31	\N	1E	\N	1C	\N	1C	\N	04	\N	41	\N	\N	\N
-\N	234	31	32	\N	1F	\N	1B	\N	1B	\N	16	\N	53	\N	\N	\N
-\N	234	32	33	\N	20	\N	23	\N	23	\N	07	\N	44	\N	\N	\N
-\N	234	33	34	\N	21	\N	2B	\N	2B	\N	09	\N	46	\N	\N	\N
-\N	234	34	35	\N	22	\N	34	\N	34	\N	0A	\N	47	\N	\N	\N
-\N	234	35	36	\N	23	\N	33	\N	33	\N	0B	\N	48	\N	\N	\N
-\N	234	36	37	\N	24	\N	3B	\N	3B	\N	0D	\N	4A	\N	\N	\N
-\N	234	37	38	\N	25	\N	42	\N	42	\N	0E	\N	4B	\N	\N	\N
-\N	234	38	39	\N	26	\N	4B	\N	4B	\N	0F	\N	4C	\N	\N	\N
-\N	234	39	40	\N	27	\N	4C	\N	4C	\N	33	\N	BA	\N	\N	\N
-\N	234	40	41	\N	28	\N	52	\N	52	\N	34	\N	DE	\N	\N	\N
-\N	234	41	42	\N	2B	\N	5D	\N	53	\N	32	\N	DF	\N	\N	\N
-\N	234	42	43	\N	1C	\N	5A	\N	5A	\N	28	\N	0D	\N	\N	\N
-\N	234	43	44	\N	2A	\N	12	\N	12	\N	E1	\N	A0	\N	\N	\N
-\N	234	44	45	\N	56	\N	61	\N	13	\N	64	\N	E2	\N	\N	\N
-\N	234	45	46	\N	2C	\N	1A	\N	1A	\N	1D	\N	5A	\N	\N	\N
-\N	234	46	47	\N	2D	\N	22	\N	22	\N	1B	\N	58	\N	\N	\N
-\N	234	47	48	\N	2E	\N	21	\N	21	\N	06	\N	43	\N	\N	\N
-\N	234	48	49	\N	2F	\N	2A	\N	2A	\N	19	\N	56	\N	\N	\N
-\N	234	49	50	\N	30	\N	32	\N	32	\N	05	\N	42	\N	\N	\N
-\N	234	50	51	\N	31	\N	31	\N	31	\N	11	\N	4E	\N	\N	\N
-\N	234	51	52	\N	32	\N	3A	\N	3A	\N	10	\N	4D	\N	\N	\N
-\N	234	52	53	\N	33	\N	41	\N	41	\N	36	\N	BC	\N	\N	\N
-\N	234	53	54	\N	34	\N	49	\N	49	\N	37	\N	BE	\N	\N	\N
-\N	234	54	55	\N	35	\N	4A	\N	4A	\N	38	\N	BF	\N	\N	\N
-\N	234	55	57	\N	36	\N	59	\N	59	\N	E5	\N	A1	\N	\N	\N
-\N	234	56	58	\N	1D	\N	14	\N	11	\N	E0	\N	A2	\N	\N	\N
-\N	234	57	60	\N	38	\N	11	\N	19	\N	E2	\N	12	\N	\N	\N
-\N	234	58	61	\N	39	\N	29	\N	29	\N	2C	\N	20	\N	\N	\N
-\N	234	59	62	\N	E0 38	\N	E0 11	\N	39	\N	E6	\N	12	\N	\N	\N
-\N	234	60	64	\N	E0 1D	\N	E0 14	\N	58	\N	E4	\N	A3	\N	\N	\N
-\N	234	61	75	\N	E0 52	\N	E0 70	\N	67	\N	49	\N	2D	\N	\N	\N
-\N	234	62	76	\N	E0 53	\N	E0 71	\N	64	\N	4C	\N	2E	\N	\N	\N
-\N	234	63	79	\N	E0 4B	\N	E0 6B	\N	61	\N	50	\N	25	\N	\N	\N
-\N	234	64	80	\N	E0 47	\N	E0 6C	\N	6E	\N	4A	\N	24	\N	\N	\N
-\N	234	65	81	\N	E0 4F	\N	E0 69	\N	65	\N	4D	\N	23	\N	\N	\N
-\N	234	66	83	\N	E0 48	\N	E0 75	\N	63	\N	52	\N	26	\N	\N	\N
-\N	234	67	84	\N	E0 50	\N	E0 72	\N	60	\N	51	\N	28	\N	\N	\N
-\N	234	68	85	\N	E0 49	\N	E0 7D	\N	6F	\N	4B	\N	21	\N	\N	\N
-\N	234	69	86	\N	E0 51	\N	E0 7A	\N	6D	\N	4E	\N	22	\N	\N	\N
-\N	234	70	89	\N	E0 4D	\N	E0 74	\N	6A	\N	4F	\N	27	\N	\N	\N
-\N	234	71	90	\N	45	\N	77	\N	76	\N	53	\N	90	\N	\N	\N
-\N	234	72	91	\N	47	\N	6C	\N	6C	\N	5F	\N	67	\N	\N	\N
-\N	234	73	92	\N	4B	\N	6B	\N	6B	\N	5C	\N	64	\N	\N	\N
-\N	234	74	93	\N	4F	\N	69	\N	69	\N	59	\N	61	\N	\N	\N
-\N	234	75	95	\N	E0 35	\N	E0 4A	\N	77	\N	54	\N	6F	\N	\N	\N
-\N	234	76	96	\N	48	\N	75	\N	75	\N	60	\N	68	\N	\N	\N
-\N	234	77	97	\N	4C	\N	73	\N	73	\N	5D	\N	65	\N	\N	\N
-\N	234	78	98	\N	50	\N	72	\N	72	\N	5A	\N	62	\N	\N	\N
-\N	234	79	99	\N	52	\N	70	\N	70	\N	62	\N	60	\N	\N	\N
-\N	234	80	100	\N	37	\N	7C	\N	7E	\N	55	\N	6A	\N	\N	\N
-\N	234	81	101	\N	49	\N	7D	\N	7D	\N	61	\N	69	\N	\N	\N
-\N	234	82	102	\N	4D	\N	74	\N	74	\N	5E	\N	66	\N	\N	\N
-\N	234	83	103	\N	51	\N	7A	\N	7A	\N	5B	\N	63	\N	\N	\N
-\N	234	84	104	\N	53	\N	71	\N	71	\N	63	\N	6E	\N	\N	\N
-\N	234	85	105	\N	4A	\N	7B	\N	84	\N	56	\N	6D	\N	\N	\N
-\N	234	86	106	\N	4E	\N	79	\N	7C	\N	57	\N	6B	\N	\N	\N
-\N	234	87	108	\N	E0 1C	\N	E0 5A	\N	79	\N	58	\N	6C	\N	\N	\N
-\N	234	88	110	\N	01	\N	76	\N	08	\N	29	\N	1B	\N	\N	\N
-\N	234	89	112	\N	3B	\N	05	\N	07	\N	3A	\N	70	\N	\N	\N
-\N	234	90	113	\N	3C	\N	06	\N	0F	\N	3B	\N	71	\N	\N	\N
-\N	234	91	114	\N	3D	\N	04	\N	17	\N	3C	\N	72	\N	\N	\N
-\N	234	92	115	\N	3E	\N	0C	\N	1F	\N	3D	\N	73	\N	\N	\N
-\N	234	93	116	\N	3F	\N	03	\N	27	\N	3E	\N	74	\N	\N	\N
-\N	234	94	117	\N	40	\N	0B	\N	2F	\N	3F	\N	75	\N	\N	\N
-\N	234	95	118	\N	41	\N	83	\N	37	\N	40	\N	76	\N	\N	\N
-\N	234	96	119	\N	42	\N	0A	\N	3F	\N	41	\N	77	\N	\N	\N
-\N	234	97	120	\N	43	\N	01	\N	47	\N	42	\N	78	\N	\N	\N
-\N	234	98	121	\N	44	\N	09	\N	4F	\N	43	\N	79	\N	\N	\N
-\N	234	99	122	\N	57	\N	78	\N	56	\N	44	\N	7A	\N	\N	\N
-\N	234	100	123	\N	58	\N	07	\N	5E	\N	45	\N	7B	\N	\N	\N
-\N	234	101	124	\N	E0 37	\N	E0 7C	\N	57	\N	46	\N	2C	\N	\N	\N
-\N	234	102	125	\N	46	\N	7E	\N	5F	\N	47	\N	91	\N	\N	\N
-\N	234	103	126	\N	E1 1D 45	\N	E1 14 77	\N	62	\N	48	\N	13	\N	\N	\N
-\N	234	104	?	\N	E0 5B	\N	E0 1F	\N	8B	\N	E3	\N	5B	\N	\N	\N
-\N	234	105	?	\N	E0 5C	\N	E0 27	\N	8C	\N	E7	\N	5C	\N	\N	\N
-\N	234	106	?	\N	E0 5D	\N	E0 2F	\N	8D	\N	65	\N	5D	\N	\N	\N
+\N	28	1	Voice\\nChat	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	2	Chat\\nAll	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	3	Chat\\nTeam	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	4	Chat\\nOpponents	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	5	Chat\\nTarget	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	12	Throttle\\nDown 5%	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	13	Throttle\\nUp 5%	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	14	Zero Throttle	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	15	Afterburner	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	16	Eq.\\nShields	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	17	\N	\N	Form\\non Wing	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	18	Next\\nEscort Ship	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	19	Closest\\nAttacker	2	\N	\N	\N	\N	Next\\nRepair\\nShip	2	\N	\N	\N	\N	\N	\N
+\N	28	20	Next\\nShip	2	Prev	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	21	Ship in\\nReticle	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	22	Next\\nUnscanned\\nObject	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	26	Throttle\\nto 1/3	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	27	Throttle\\nto 2/3	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	28	Full Throttle	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	30	Accelerate	3	Attack my\\nTarget	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	31	Next\\nSubsys	2	Prev	2	\N	\N	Cease\\nTar-\\ngeting	2	\N	\N	\N	\N	\N	\N
+\N	28	32	\N	\N	\N	\N	\N	\N	Eq.\\nEnergy	6	\N	\N	\N	\N	\N	\N
+\N	28	33	Next\\nClosest\\nFriendly	2	Prev	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	34	Newest\\nAttacker	2	\N	\N	\N	\N	Gliding	2	\N	\N	\N	\N	\N	\N
+\N	28	35	Next\\nClosest\\nHostile	2	Prev	2	\N	\N	Toggle\\nAuto\\nTarget	2	\N	\N	\N	\N	\N	\N
+\N	28	36	Target's\\nTarget	2	\N	\N	\N	\N	Sub-\\nspace\\nJump	3	\N	\N	\N	\N	\N	\N
+\N	28	40	Radar\\nRanges	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	45	Decelerate	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	46	Counter-\\nmeasures	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	47	Comms\\nMenu	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	48	Subsys in\\nReticle	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	49	Next Bomb\\n/ Bomber	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	50	Newest\\nin System	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	51	Match\\nTarget's\\nSpeed	3	\N	\N	\N	\N	Toggle\\nAuto\\nMatch	3	\N	\N	\N	\N	\N	\N
+\N	28	52	Cycle\\nPrimary -	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	53	Cycle\\nPrimary +	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	54	Cycle\\nSecondary	1	Toggle\\nDual Fire	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	56	Fire Primary	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	58	Fire Secondary	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	60	Fire Primary	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	61	Primary\\nRecharge +	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	62	Primary\\nRecharge -	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	63	Left\\nShield +	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	64	Shield\\nRecharge +	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	65	Shield\\nRecharge -	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	66	Forward\\nShield +	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	67	Rear\\nShield +	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	68	Engine\\nRecharge +	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	69	Engine\\nRecharge -	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	70	Right\\nShield +	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	72	Bank Left	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	73	Turn Left	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	75	Target\\nView	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	76	Pitch Down	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	77	Center\\nView	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	78	Pitch Up	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	80	Chase\\nView	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	81	Bank Right	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	82	Turn Right	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	84	External\\nView	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	85	Decrease\\nZoom	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	86	Increase\\nZoom	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	88	Help	8	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	89	Options	8	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	90	Assign\\nHotkeys	8	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	93	(Alpha)\\nWing 1	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	94	(Beta)\\nWing 2	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	95	(Gamma)\\nWing 3	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	96	Wing 4	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	97	Wing 5	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	98	Wing 6	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	99	Wing 7	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	100	Wing 8	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	28	102	Shield to\\nWeapons	6	Weapons\\nto Shields	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N

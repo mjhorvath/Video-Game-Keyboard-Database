@@ -230,21 +230,21 @@ var binding_table =
 			if (array_key_exists($i, $position_table))
 			{
 				$position_row	= $position_table[$i];
-				$low_nor	= "\"" . cleantextJS($position_row[ 4]) . "\"";
-				$upp_nor	= "\"" . cleantextJS($position_row[ 5]) . "\"";
-				$low_agr	= "\"" . cleantextJS($position_row[ 6]) . "\"";
-				$upp_agr	= "\"" . cleantextJS($position_row[ 7]) . "\"";
+				$low_nor	= "\"" . cleantextJS($position_row[ 4])	. "\"";
+				$upp_nor	= "\"" . cleantextJS($position_row[ 5])	. "\"";
+				$low_agr	= "\"" . cleantextJS($position_row[ 6])	. "\"";
+				$upp_agr	= "\"" . cleantextJS($position_row[ 7])	. "\"";
 				if (array_key_exists($i, $binding_table))
 				{
 					$binding_row = $binding_table[$i];
-					$cap_nor = "\"" . cleantextJS($binding_row[ 1]) . "\"";
-					$cap_shf = "\"" . cleantextJS($binding_row[ 3]) . "\"";
-					$cap_ctl = "\"" . cleantextJS($binding_row[ 5]) . "\"";
-					$cap_alt = "\"" . cleantextJS($binding_row[ 7]) . "\"";
-					$cap_agr = "\"" . cleantextJS($binding_row[ 9]) . "\"";
-					$cap_xtr = "\"" . cleantextJS($binding_row[11]) . "\"";
-					$img_fil = "\"" . $binding_row[12] . "\"";
-					$img_uri = "\"" . $binding_row[13] . "\"";
+					$cap_nor = "\"" . cleantextJS($binding_row[ 1])	. "\"";
+					$cap_shf = "\"" . cleantextJS($binding_row[ 3])	. "\"";
+					$cap_ctl = "\"" . cleantextJS($binding_row[ 5])	. "\"";
+					$cap_alt = "\"" . cleantextJS($binding_row[ 7])	. "\"";
+					$cap_agr = "\"" . cleantextJS($binding_row[ 9])	. "\"";
+					$cap_xtr = "\"" . cleantextJS($binding_row[11])	. "\"";
+					$img_fil = "\"" . $binding_row[12]		. "\"";
+					$img_uri = "\"" . $binding_row[13]		. "\"";
 					$bkg_nor = intval($binding_row[ 0]);
 					$bkg_shf = intval($binding_row[ 2]);
 					$bkg_ctl = intval($binding_row[ 4]);

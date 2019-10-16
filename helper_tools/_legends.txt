@@ -1,6 +1,3 @@
-\N	240	1	Vehicle Controls
-\N	240	2	Route Advisor
-\N	240	3	Movement
-\N	240	4	Multiplayer Mod
-\N	240	5	Camera
-\N	240	6	Game Controls
+\N	243	1	Action/Weapon Keys
+\N	243	3	Movement Keys
+\N	243	6	Menu Keys

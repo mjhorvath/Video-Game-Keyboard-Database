@@ -1,7 +1,4 @@
-\N	240	1	NumLock + 4	Interior camera display
-\N	240	1	NumLock + 9	Interior camera display
-\N	240	2	RMB + move mouse	Move camera
-\N	240	6	/pm <message>	private message
-\N	240	6	/reply <message> or /r <message>	reply for last private message (sent/received)
-\N	240	6	/players	amount of players online
-\N	240	6	/report	reporting player, who is doing illegal stuff
+\N	243	2	Mouse	XY Movement
+\N	243	2	Left Click	Shoot/Interact
+\N	243	2	Right Click	Aim/Charge
+\N	243	2	Middle Button Click	Summon/Unsummon Light Fixture

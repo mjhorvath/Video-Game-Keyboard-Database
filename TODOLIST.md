@@ -91,6 +91,10 @@
   can be associated with each of these items. This will most likely require the 
   creation of four new bridge tables since the corresponding relationships are 
   many-to-many.
+* Not sure every table needs a single numerical index column. Using two or more 
+  other columns to create a composite key might suffice.
+* Submission form may not be generating enough table columns for the "bindings" 
+  table.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
