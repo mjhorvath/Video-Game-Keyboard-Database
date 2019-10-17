@@ -1,74 +1,28 @@
-\N	28	1	Voice\\nChat	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	2	Chat\\nAll	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	3	Chat\\nTeam	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	4	Chat\\nOpponents	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	5	Chat\\nTarget	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	12	Throttle\\nDown 5%	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	13	Throttle\\nUp 5%	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	14	Zero Throttle	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	15	Afterburner	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	16	Eq.\\nShields	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	17	\N	\N	Form\\non Wing	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	18	Next\\nEscort Ship	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	19	Closest\\nAttacker	2	\N	\N	\N	\N	Next\\nRepair\\nShip	2	\N	\N	\N	\N	\N	\N
-\N	28	20	Next\\nShip	2	Prev	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	21	Ship in\\nReticle	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	22	Next\\nUnscanned\\nObject	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	26	Throttle\\nto 1/3	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	27	Throttle\\nto 2/3	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	28	Full Throttle	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	30	Accelerate	3	Attack my\\nTarget	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	31	Next\\nSubsys	2	Prev	2	\N	\N	Cease\\nTar-\\ngeting	2	\N	\N	\N	\N	\N	\N
-\N	28	32	\N	\N	\N	\N	\N	\N	Eq.\\nEnergy	6	\N	\N	\N	\N	\N	\N
-\N	28	33	Next\\nClosest\\nFriendly	2	Prev	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	34	Newest\\nAttacker	2	\N	\N	\N	\N	Gliding	2	\N	\N	\N	\N	\N	\N
-\N	28	35	Next\\nClosest\\nHostile	2	Prev	2	\N	\N	Toggle\\nAuto\\nTarget	2	\N	\N	\N	\N	\N	\N
-\N	28	36	Target's\\nTarget	2	\N	\N	\N	\N	Sub-\\nspace\\nJump	3	\N	\N	\N	\N	\N	\N
-\N	28	40	Radar\\nRanges	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	45	Decelerate	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	46	Counter-\\nmeasures	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	47	Comms\\nMenu	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	48	Subsys in\\nReticle	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	49	Next Bomb\\n/ Bomber	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	50	Newest\\nin System	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	51	Match\\nTarget's\\nSpeed	3	\N	\N	\N	\N	Toggle\\nAuto\\nMatch	3	\N	\N	\N	\N	\N	\N
-\N	28	52	Cycle\\nPrimary -	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	53	Cycle\\nPrimary +	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	54	Cycle\\nSecondary	1	Toggle\\nDual Fire	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	56	Fire Primary	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	58	Fire Secondary	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	60	Fire Primary	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	61	Primary\\nRecharge +	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	62	Primary\\nRecharge -	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	63	Left\\nShield +	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	64	Shield\\nRecharge +	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	65	Shield\\nRecharge -	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	66	Forward\\nShield +	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	67	Rear\\nShield +	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	68	Engine\\nRecharge +	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	69	Engine\\nRecharge -	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	70	Right\\nShield +	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	72	Bank Left	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	73	Turn Left	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	75	Target\\nView	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	76	Pitch Down	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	77	Center\\nView	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	78	Pitch Up	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	80	Chase\\nView	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	81	Bank Right	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	82	Turn Right	3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	84	External\\nView	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	85	Decrease\\nZoom	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	86	Increase\\nZoom	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	88	Help	8	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	89	Options	8	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	90	Assign\\nHotkeys	8	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	93	(Alpha)\\nWing 1	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	94	(Beta)\\nWing 2	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	95	(Gamma)\\nWing 3	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	96	Wing 4	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	97	Wing 5	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	98	Wing 6	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	99	Wing 7	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	100	Wing 8	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	28	102	Shield to\\nWeapons	6	Weapons\\nto Shields	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	2	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	3	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	4	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	5	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	6	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	7	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	8	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	9	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	10	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	15	Focus on\\nPlayer	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	16	Rotate\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	17	Move\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	18	Rotate\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	20	Time	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	23	Inventory	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	30	Move\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	31	Move\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	32	Move\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	36	Journal	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	47	Characteristics	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	49	Change\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	51	Map	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	54	Check\\nDate &amp;\\nTime	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	56	Manual\\nAttack	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	58	End Turn	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	64	Lock/\\nUnlock\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	93	Quick\\nSave	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	247	97	Quick\\nLoad	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N

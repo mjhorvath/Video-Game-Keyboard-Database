@@ -1,4 +1,2 @@
-\N	243	2	Mouse	XY Movement
-\N	243	2	Left Click	Shoot/Interact
-\N	243	2	Right Click	Aim/Charge
-\N	243	2	Middle Button Click	Summon/Unsummon Light Fixture
+\N	247	2	LMB	Interact
+\N	247	2	RMB	Attack Mode/Rotate Camera

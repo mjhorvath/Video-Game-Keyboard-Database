@@ -1,3 +1,4 @@
-\N	243	1	Action/Weapon Keys
-\N	243	3	Movement Keys
-\N	243	6	Menu Keys
+\N	247	1	Actions/Combat
+\N	247	4	Dialogue Choices
+\N	247	5	Camera
+\N	247	6	Menus
