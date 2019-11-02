@@ -128,7 +128,7 @@
 * Maybe the red in the "Warm" styles can be made deeper? [Ed. I tried this, but 
   it didn't look nice.]
 
-### Done
+### Completed
 * In the submission form, selecting a colored OPTION element should change the 
   color of the corresponding parent SELECT element as well.
 * A warning should be thrown ONBEFOREUNLOAD if someone attempts to leave the 
