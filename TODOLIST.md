@@ -98,6 +98,11 @@
   the PHP version, or simply some rules imposed by the Web host.
 * Not sure every table needs a single numerical index column. Using two or more 
   existing columns to create a composite key might suffice in some cases.
+* Once I get auditing set up, it would be great if the submission form had an 
+  additional tab showing the audit history. The tab icon could be an image of a 
+  clock face.
+* Hopefully, an update trigger will not be fired for every single row that gets 
+  altered. That would be too much data.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
