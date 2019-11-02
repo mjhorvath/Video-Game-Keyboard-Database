@@ -103,6 +103,10 @@
   clock face.
 * Hopefully, an update trigger will not be fired for every single row that gets 
   altered. That would be too much data.
+* In the two "keygroups" tables, make sure that the index of each group is not 
+  hardcoded. If possible, merge both tables into a single table.
+* On the submission form, replace the X icon in the tool bar with arrows 
+  pointing left and right.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 

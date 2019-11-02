@@ -1129,16 +1129,9 @@ function disable_doc_controls()
 	document.getElementById('unset_doc_button').disabled = true;
 }
 
-function collect_nonkey_data()
+function collect_legend_data()
 {
 	legend_table = [];
-	combo_table = [];
-	mouse_table = [];
-	joystick_table = [];
-	note_table = [];
-	cheat_table = [];
-	console_table = [];
-	emote_table = [];
 
 	// legend
 	for (var i = 0; i < 12; i++)
@@ -1151,6 +1144,18 @@ function collect_nonkey_data()
 			legend_table.push([i+1, this_value]);
 		}
 	}
+}
+
+function collect_command_data()
+{
+	combo_table = [];
+	mouse_table = [];
+	joystick_table = [];
+	note_table = [];
+	cheat_table = [];
+	console_table = [];
+	emote_table = [];
+
 	// combo - ignore the last child
 	var this_parent = document.getElementById('table_combo');
 	for (var i = 0, n = this_parent.children.length - 1; i < n; i++)
@@ -1343,21 +1348,32 @@ function process_binding_data()
 	return binding_string;
 }
 
-function fill_spreadsheet()
+function fill_legend()
 {
-	collect_nonkey_data();
+	collect_legend_data();
 	document.getElementById('legend_tsv').value = process_legend_data();
+}
+function fill_commands()
+{
+	collect_command_data();
 	document.getElementById('command_tsv').value = process_command_data();
+}
+function fill_bindings()
+{
 	document.getElementById('binding_tsv').value = process_binding_data();
 }
-
-function clear_spreadsheet()
+function clear_legend()
 {
 	document.getElementById('legend_tsv').value = '';
+}
+function clear_commands()
+{
 	document.getElementById('command_tsv').value = '';
+}
+function clear_bindings()
+{
 	document.getElementById('binding_tsv').value = '';
 }
-
 function text_select_and_copy(in_id)
 {
 	document.getElementById(in_id).select();

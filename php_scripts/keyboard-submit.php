@@ -811,16 +811,15 @@ var binding_table =
 				<h2>Tab-Separated Values (TSV)</h2>
 				<p>You should be able to copy and paste the following tab-separated values (TSV) into MS Excel or some other spreadsheet software and edit them further from there. Or you could import them directly into a SQL database using the <code>LOAD DATA</code> command.</p>
 				<p>The string <code>\N</code> (with an upper-case "n" and one backslash) indicates a value of null, and may represent an auto-increment field in SQL. The string <code>\\n</code> (with a lower-case "n" and two backslashes) indicates a newline character.</p>
-				<p><button style="padding:0.3em 1em;" onclick="fill_spreadsheet();">Fetch Data</button><button style="padding:0.3em 1em;" onclick="clear_spreadsheet();">Clear Data</button></p>
 				<h4>Legend</h4>
-				<textarea id="legend_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" readonly="readonly" autocomplete="off"></textarea>
-				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('legend_tsv');">Select &amp; Copy</button></p>
+				<textarea id="legend_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>
+				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_legend();">Fetch Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_legend();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('legend_tsv');">Select &amp; Copy</button></p>
 				<h4>Commands</h4>
-				<textarea id="command_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" readonly="readonly" autocomplete="off"></textarea>
-				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('command_tsv');">Select &amp; Copy</button></p>
+				<textarea id="command_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>
+				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_commands();">Fetch Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_commands();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('command_tsv');">Select &amp; Copy</button></p>
 				<h4>Bindings</h4>
-				<textarea id="binding_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" readonly="readonly" autocomplete="off"></textarea>
-				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('binding_tsv');">Select &amp; Copy</button></p>
+				<textarea id="binding_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>
+				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_bindings();">Fetch Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_bindings();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('binding_tsv');">Select &amp; Copy</button></p>
 			</div>
 		</div>
 	</body>
