@@ -107,6 +107,9 @@
   hardcoded. If possible, merge both tables into a single table.
 * On the submission form, replace the X icon in the tool bar with arrows 
   pointing left and right.
+* Need to add instructions to the effect that the SHIFT, ALT, etc. commands may 
+  require colors assigned to them, but these colors will not necessarily be 
+  displayed in the actual chart.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
