@@ -1,28 +1,48 @@
-\N	247	2	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	3	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	4	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	5	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	6	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	7	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	8	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	9	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	10	Dialogue\\nOption	4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	15	Focus on\\nPlayer	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	16	Rotate\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	17	Move\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	18	Rotate\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	20	Time	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	23	Inventory	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	30	Move\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	31	Move\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	32	Move\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	36	Journal	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	47	Characteristics	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	49	Change\\nWeapon	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	51	Map	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	54	Check\\nDate &amp;\\nTime	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	56	Manual\\nAttack	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	58	End Turn	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	64	Lock/\\nUnlock\\nCamera	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	93	Quick\\nSave	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\N	247	97	Quick\\nLoad	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	2	Station\\nTab	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	3	Train\\nTab	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	4	Player\\nTab	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	5	Company\\nTab	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	7	Resources\\nOverview	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	8	Stations\\nOverview	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	9	Grades\\nOverview	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	10	Traffic\\nDensity\\nOverview	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	11	Track\\nOwner\\nOverview	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	12	Game\\nSpeed -	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	13	Game\\nSpeed +	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	15	Multiplayer\\nChat	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	16	Quit\\nGame	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	18	Expand\\nList Box	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	20	Lay\\nTrack	1	\N	\N	Follow\\nTrain	\N	\N	\N	\N	\N	\N	\N
+\N	62	24	Overview	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	25	Purchase\\nTrain	2	\N	\N	Toggle\\nPolygons	\N	\N	\N	\N	\N	\N	\N
+\N	62	30	Anual Report	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	31	Build Station	2	\N	\N	Save Game	\N	\N	\N	\N	\N	\N	\N
+\N	62	32	Detail Screen	2	\N	\N	Dialog Box	\N	\N	\N	\N	\N	\N	\N
+\N	62	33	File Options	6	\N	\N	Find City	\N	\N	\N	\N	\N	\N	\N
+\N	62	34	Toggle Grid	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	38	List\\nScreen	2	\N	\N	Load\\nGame	\N	\N	\N	\N	\N	\N	\N
+\N	62	47	Control\\nPanel	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	49	Bulldoze	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	50	Recent\\nNewspaper	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	51	Stock\\nMarket	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	63	Scroll\\nLeft	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	66	Scroll\\nUp	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	67	Scroll\\nDown	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	70	Scroll\\nRight	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	73	Rotate\\nLeft	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	76	Zoom\\nIn	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	78	Zoom\\nOut	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	82	Rotate\\nRight	5	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	85	Speed	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	86	Speed	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	91	Toggle\\nColor\\nDepth	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	92	Toggle\\nFullscreen	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	93	Change\\nView	5	\N	\N	Store\\nView	\N	\N	\N	\N	\N	\N	\N
+\N	62	94	Change\\nView	5	\N	\N	Store\\nView	\N	\N	\N	\N	\N	\N	\N
+\N	62	95	Change\\nView	5	\N	\N	Store\\nView	\N	\N	\N	\N	\N	\N	\N
+\N	62	96	Change\\nView	5	\N	\N	Store\\nView	\N	\N	\N	\N	\N	\N	\N
+\N	62	97	Change\\nView	5	\N	\N	Store\\nView	\N	\N	\N	\N	\N	\N	\N
+\N	62	99	Change\\nView	5	\N	\N	Store\\nView	\N	\N	\N	\N	\N	\N	\N
+\N	62	100	Change\\nView	5	\N	\N	Store\\nView	\N	\N	\N	\N	\N	\N	\N
+\N	62	101	Screenshot	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\N	62	103	Pause\\nGame	6	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N

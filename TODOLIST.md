@@ -87,14 +87,12 @@
   properly I think. There are too many tabs between a couple of columns.
 * Currently, the "layouts", "languages", "records_games" and "records_styles" 
   tables each have an "author_id" column. However, this column is only capable 
-  of recording a single author. Need to set things up so that multiple authors 
-  can be associated with each of these items. This will most likely require the 
-  creation of four new bridge tables since the corresponding relationships are 
-  many-to-many.
+  of recording a single author, and does not record the time and date of when 
+  an entity is changed. I would rather log changes like in Wikipedia or GitHub, 
+  with user name and time stamp. Logging the content that was deleted or added 
+  may be overkill, however.
 * Not sure every table needs a single numerical index column. Using two or more 
-  other columns to create a composite key might suffice.
-* Submission form may not be generating enough table columns for the "bindings" 
-  table.
+  other columns to create a composite key might suffice in some cases.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
@@ -154,3 +152,5 @@
   "keyboard-html.php" to "keyboard-embed.php".
 * The HTML editor should throw an error if a legend group has not been assigned 
   to each and every binding.
+* Submission form may not be generating enough table columns for the "bindings" 
+  table.
