@@ -165,7 +165,7 @@
 	$temp_style_name	= $style_name ? $style_name : "Unrecognized Style";
 	$temp_platform_name	= $platform_name ? $platform_name : "Unrecognized Platform";
 	$thispage_title_a	= $temp_game_name;
-	$thispage_title_b	= " - VGKD Submission Editor (under construction) - " . $temp_platform_name . " " . $temp_layout_name . " - " . $temp_style_name;
+	$thispage_title_b	= " - VGKD Submission Editor - " . $temp_platform_name . " " . $temp_layout_name . " - " . $temp_style_name;
 
 	// validity checks (should check the layout here too... but)
 	if (!checkStyle($style_id))
@@ -383,9 +383,10 @@ var binding_table =
 				<div id="butt_csv" class="tabs_butt" title="Toggle Spreadsheet Panel" onclick="switch_right_pane(1);"><img src="./icon_spd.png"/></div>
 			</div>
 			<div id="pane_kbd" style="display:block;">
-				<div class="boxdiv">
-					<input id="game_tit" type="text" size="25" maxlength="100" placeholder="Game Title" title="Game Title" style="font-size:x-large;" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $thispage_title_a; ?>"/>
-					<input id="game_url" type="text" size="25" maxlength="100" placeholder="URL String" title="URL String" style="font-size:x-large;" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $game_seo; ?>" disabled="disabled"/>
+				<div class="boxdiv" style="font-size:x-large;">
+					<input id="game_tit" type="text" size="25" maxlength="100" placeholder="Game Title" title="Game Title" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $thispage_title_a; ?>"/>
+					<input id="game_url" type="text" size="25" maxlength="100" placeholder="URL String" title="URL String" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $game_seo; ?>" disabled="disabled"/>
+					<span title="Game Record ID">GRID: <?php echo $gamesrecord_id; ?></span>
 				</div>
 				<div class="boxdiv" style="position:relative;width:1660px;height:480px;">
 					<form enctype="multipart/form-data" accept-charset="UTF-8">
