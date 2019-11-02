@@ -58,9 +58,12 @@
 	$stylesrecord_id	= 0;
 	$stylesrecord_author	= "";
 	$combo_count		= 0;
-	$joystick_count		= 0;
 	$mouse_count		= 0;
+	$joystick_count		= 0;
 	$note_count		= 0;
+	$cheat_count		= 0;
+	$console_count		= 0;
+	$emote_count		= 0;
 	$style_filename		= "";
 	$style_name		= "";
 	$style_author		= "";
