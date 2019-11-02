@@ -46,6 +46,8 @@
 	$command	= $_POST["command"];
 	$binding	= $_POST["binding"];
 	$layout		= $_POST["layout"];
+	$timeraw	= time();
+	$timeform	= date("l jS \of F Y h:i:s A", $timeraw);
 
 	// handling the captcha and checking if it's ok
 	$secret = writeRecaptchaSecret();
@@ -63,7 +65,9 @@
 			"MESSAGE:\t"	. $message	. "\r\n" .
 			"GAME TITLE:\t"	. $titletxt	. "\r\n" .
 			"GAME URL:\t"	. $titleurl	. "\r\n" .
-			"LAYOUT:\t\t"	. $layout	. "\r\n\r\n" .
+			"LAYOUT:\t\t"	. $layout	. "\r\n" .
+			"TIMERAW:\t"	. $timeraw	. "\r\n" .
+			"TIMEFORM:\t"	. $timeform	. "\r\n\r\n" .
 			"LEGENDS:\r\n"	. $legend	. "\r\n\r\n" .
 			"COMMANDS:\r\n"	. $command	. "\r\n\r\n" .
 			"BINDINGS:\r\n"	. $binding	. "\r\n\r\n";
