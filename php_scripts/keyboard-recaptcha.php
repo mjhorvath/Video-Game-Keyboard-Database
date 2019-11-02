@@ -46,6 +46,7 @@
 	$command	= $_POST["command"];
 	$binding	= $_POST["binding"];
 	$layout		= $_POST["layout"];
+	$record		= $_POST["record"];
 	$timeraw	= time();
 	$timeform	= date("l jS \of F Y h:i:s A", $timeraw);
 
@@ -66,6 +67,7 @@
 			"GAME TITLE:\t"	. $titletxt	. "\r\n" .
 			"GAME URL:\t"	. $titleurl	. "\r\n" .
 			"LAYOUT:\t\t"	. $layout	. "\r\n" .
+			"RECORD:\t\t"	. $record	. "\r\n" .
 			"TIMERAW:\t"	. $timeraw	. "\r\n" .
 			"TIMEFORM:\t"	. $timeform	. "\r\n\r\n" .
 			"LEGENDS:\r\n"	. $legend	. "\r\n\r\n" .

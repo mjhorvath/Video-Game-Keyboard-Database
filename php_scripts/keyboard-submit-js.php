@@ -23,6 +23,7 @@ new Image().src = 'animated_loading_icon.webp';
 
 var colors = ['non','red','yel','grn','cyn','blu','mag','wht','gry','blk','org','olv','brn'];
 var layout_id = 1;
+var record_id = 1;
 var is_key_dirty = false;
 var is_doc_dirty = false;
 var is_eml_dirty = false;
@@ -883,13 +884,15 @@ function document_save_changes()
 	}
 	if (document_save_warning('D') == false)
 		return;
-	collect_nonkey_data();
+	collect_legend_data();
+	collect_command_data();
 	document.getElementById('email_4').value = document.getElementById('game_tit').value;
 	document.getElementById('email_5').value = document.getElementById('game_url').value;
 	document.getElementById('email_6').value = process_legend_data();
 	document.getElementById('email_7').value = process_command_data();
 	document.getElementById('email_8').value = process_binding_data();
 	document.getElementById('email_9').value = layout_id;
+	document.getElementById('email_10').value = record_id;
 	do_recaptcha();
 }
 
@@ -913,6 +916,7 @@ function do_recaptcha()
 	var command	= $('#email_7');
 	var binding	= $('#email_8');
 	var layout	= $('#email_9');
+	var record	= $('#email_10');
 	var captcha	= grecaptcha.getResponse();		// THIS WILL TELL THE FORM IF THE USER IS CAPTCHA VERIFIED.
 
 	if (!name.get(0).validity.valid || !email.get(0).validity.valid || !message.get(0).validity.valid)
@@ -942,6 +946,7 @@ function do_recaptcha()
 				command:	command.val(),
 				binding:	binding.val(),
 				layout:		layout.val(),
+				record:		record.val(),
 				captcha:	captcha
 			}
 		}).done(function(status)
@@ -959,6 +964,7 @@ function do_recaptcha()
 //				$('#email_7').val('');
 //				$('#email_8').val('');
 //				$('#email_9').val('');
+//				$('#email_10').val('');
 				if (is_doc_dirty == true)
 				{
 					flag_doc_clean();

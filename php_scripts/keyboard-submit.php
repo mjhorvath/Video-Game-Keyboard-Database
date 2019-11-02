@@ -355,6 +355,7 @@ var binding_table =
 					<input name="email_7" id="email_7" type="hidden" value=""/>
 					<input name="email_8" id="email_8" type="hidden" value=""/>
 					<input name="email_9" id="email_9" type="hidden" value=""/>
+					<input name="email_10" id="email_10" type="hidden" value=""/>
 					<div><button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit changes to data" data-callback="recaptchaCallback">Submit Data</button><button id="unset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state" data-callback="recaptchaCallback">Reset</button></div>
 				</form>
 			</div>

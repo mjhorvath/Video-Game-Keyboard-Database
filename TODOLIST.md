@@ -85,22 +85,22 @@
   easier to print.
 * The CSV code on the Spreadsheet page of the submission form is not lining up 
   properly I think. There are too many tabs between a couple of columns.
-* Currently, the "layouts", "languages", "records_games" and "records_styles" 
-  tables each have an "author_id" column. However, this column is only capable 
-  of recording a single author, and does not record the time and date when an 
-  entity was changed. I would rather log changes like Wikipedia or GitHub do, 
-  with a record of past and present users, as well as a timestamp. Recording 
-  the actual content that was added or removed may be overkill, however.
+* Currently, the "layouts", "records_games" and "records_styles" tables each 
+  have an "author_id" column. However, this column is only capable of recording 
+  a single author, and does not record the time and date when an entity was 
+  changed. I would rather log changes like Wikipedia or GitHub does, with a 
+  record of past and present users, as well as a timestamp. Recording the 
+  actual content that was added or removed may be overkill, however.
 * Auditing changes to the database might be easier if I write a frontend tool 
-  for users to make the changes with versus doing everything myself in MySQL 
+  for users to make changes with, versus doing everything myself in MySQL 
   Workbench. Also, IIRC, there are issues related to creating and running 
-  stored procedures on my Web server that have to do with the MySQL version, 
-  the PHP version, or simply some rules imposed by the Web host.
+  stored procedures on my Web server that have to do with either the installed 
+  MySQL version, the PHP version, or simply some rules imposed by the Web host.
 * Not sure every table needs a single numerical index column. Using two or more 
-  existing columns to create a composite key might suffice in some cases.
+  existing columns to form a composite key might suffice in several cases.
 * Once I get auditing set up, it would be great if the submission form had an 
-  additional tab showing the audit history. The tab icon could be an image of a 
-  clock face.
+  additional pane showing the audit history. The tab icon could be an image of 
+  a clock face.
 * Hopefully, an update trigger will not be fired for every single row that gets 
   altered. That would be too much data.
 * In the two "keygroups" tables, make sure that the index of each group is not 
@@ -110,6 +110,9 @@
 * Need to add instructions to the effect that the SHIFT, ALT, etc. commands may 
   require colors assigned to them, but these colors will not necessarily be 
   displayed in the actual chart.
+* I would like to change the text shown in the color selection boxes of the 
+  submission form from "non" to "null" or something else. This might have an 
+  adverse effect on some scripts, however.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
