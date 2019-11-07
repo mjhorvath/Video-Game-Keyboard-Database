@@ -23,17 +23,21 @@
 "				</p>
 				<p>Return to <a href=\"keyboard.php\">Video Game Keyboard Diagrams</a>. View the <a href=\"keyboard-list.php\">master list</a>. Having trouble printing? Take a look at <a href=\"keyboard.php#print_tips\">these printing tips</a>.</p>
 ";
-	// style switcher
+	// display toggles
+	// need to replace table with non-table markup
 	echo
 "				<form name=\"VisualStyleSwitch\">
-					<label for=\"stylesel\">Visual style:</label>
-					<select class=\"stylechange\" id=\"stylesel\" name=\"style\">\n";
+					<table id=\"footswitch\">
+						<tr>
+							<th>Theme:</th>
+							<td>
+								<select class=\"stylechange\" id=\"stylesel\" name=\"style\">\n";
 	for ($i = 0; $i < count($style_table); $i++)
 	{
 		$stylegroup_box = $style_table[$i];
 		$stylegroup_nam = cleantextHTML($style_group_table[$i][1]);
 		echo
-"						<optgroup label=\"" . $stylegroup_nam . "\">\n";
+"									<optgroup label=\"" . $stylegroup_nam . "\">\n";
 		for ($j = 0; $j < count($stylegroup_box); $j++)
 		{
 			$style_row = $stylegroup_box[$j];
@@ -44,25 +48,45 @@
 				if ($style_id == $style_idx)
 				{
 					echo
-"							<option value=\"" . $style_idx . "\" selected>" . $style_nam . "</option>\n";
+"										<option value=\"" . $style_idx . "\" selected>" . $style_nam . "</option>\n";
 				}
 				else
 				{
 					echo
-"							<option value=\"" . $style_idx . "\">" . $style_nam . "</option>\n";
+"										<option value=\"" . $style_idx . "\">" . $style_nam . "</option>\n";
 				}
 			}
 		}
 		echo
-"						</optgroup>\n";
+"									</optgroup>\n";
 	}
 	echo
-"					</select>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad0\" value=\"0\"" . ($format_id == 0 ? " checked" : "") . ">&nbsp;<label for=\"rad0\">HTML/SVG</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad2\" value=\"2\"" . ($format_id == 2 ? " checked" : "") . ">&nbsp;<label for=\"rad2\">MediaWiki</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad3\" value=\"3\"" . ($format_id == 3 ? " checked" : "") . ">&nbsp;<label for=\"rad3\">Editor</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"rad4\" value=\"4\" disabled>&nbsp;<label for=\"rad4\"><s>PDF</s></label>
-					<input class=\"stylechange\" type=\"button\" value=\"Update\" onclick=\"reloadThisPage('" . $game_id . "', '" . $layout_id . "', '" . $game_seo . "');\" />
+	"							</select>
+							</td>
+						</tr>
+						<tr>
+							<th>Format:</th>
+							<td>
+								<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"formrad0\" value=\"0\" " . ($format_id == 0 ? "checked" : "") . ">&nbsp;<label for=\"formrad0\">HTML/SVG</label>
+								<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"formrad2\" value=\"2\" " . ($format_id == 2 ? "checked" : "") . ">&nbsp;<label for=\"formrad2\">MediaWiki</label>
+								<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"formrad3\" value=\"3\" " . ($format_id == 3 ? "checked" : "") . ">&nbsp;<label for=\"formrad3\">Editor</label>
+								<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"formrad4\" value=\"4\" disabled>&nbsp;<label for=\"rad4\"><s>PDF</s></label>
+							</td>
+						</tr>
+						<tr>
+							<th>Tenkey:</th>
+							<td>
+								<input class=\"stylechange\" type=\"radio\" name=\"tkey\" id=\"tkeyrad0\" value=\"0\" disabled " . ($tenkey_id == 0 ? "checked" : "") . ">&nbsp;<label for=\"tkeyrad0\">Show</label>
+								<input class=\"stylechange\" type=\"radio\" name=\"tkey\" id=\"tkeyrad1\" value=\"1\" disabled " . ($tenkey_id == 1 ? "checked" : "") . ">&nbsp;<label for=\"tkeyrad1\">Hide</label>
+							</td>
+						</tr>
+						<tr>
+							<th>Submit:</th>
+							<td>
+								<input class=\"stylechange\" type=\"button\" value=\"Update\" onclick=\"reloadThisPage('" . $game_id . "', '" . $layout_id . "', '" . $game_seo . "');\" />
+							</td>
+						</tr>
+					</table>
 				</form>
 				<p>" . getFileTime($path_file) . "</p>
 			</div>\n";

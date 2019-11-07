@@ -24,7 +24,11 @@ SET FOREIGN_KEY_CHECKS = 0;
 LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\helper_tools\\_positions.txt' INTO TABLE isometr1_keyboard.positions
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
-LINES TERMINATED BY '\r\n';
+LINES TERMINATED BY '\r\n'
+(position_id,layout_id,key_number,position_left,position_top,position_width,position_height,symbol_norm_cap,symbol_norm_low,symbol_altgr_cap,symbol_altgr_low,@lowcap_optional,@numpad)
+set lowcap_optional=cast(@lowcap_optional as signed)
+set numpad=cast(@numpad as signed)
+SHOW WARNINGS;
 
 SET FOREIGN_KEY_CHECKS = 0;
 LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\helper_tools\\_records_styles.txt' INTO TABLE isometr1_keyboard.records_styles

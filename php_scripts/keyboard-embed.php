@@ -83,6 +83,12 @@
 	$layout_language	= "";
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
+	$layout_padding		= 18;
+	$layout_fullsize_width	= 0;
+	$layout_fullsize_height	= 0;
+	$layout_less_width	= 0;
+	$layout_tenkeyless_height	= 0;
+	$layout_legend_padding	= 108;
 	$string_title		= cleantextHTML("Video Game Keyboard Diagrams");
 	$string_combo		= cleantextHTML("Keyboard Combinations");
 	$string_mouse		= cleantextHTML("Mouse Controls");
@@ -176,6 +182,12 @@
 		header("Location: " . $php_url);
 		die();
 	}
+
+	// a bit of math
+	$layout_min_horizontal = -$layout_padding;
+	$layout_max_horizontal = $layout_padding * 2 + $layout_fullsize_width;
+	$layout_min_vertical = -$layout_padding;
+	$layout_max_vertical = $layout_padding * 2 + $layout_fullsize_height + $layout_legend_padding;
 ?>
 <?php
 	echo
@@ -204,8 +216,8 @@
 			<div class="boxdiv"><h2><?php echo $thispage_title_a; ?><small><?php echo $thispage_title_b; ?></small></h2></div>
 		</header>
 		<main>
-			<div class="svgdiv" style="position:relative;width:1692px;height:612px;">
-				<iframe src="<?php echo $svg_url; ?>" width="1692" height="612" sandbox style="border:none;margin:0;padding:0;">
+			<div class="svgdiv" style="position:relative;width:<?php echo $layout_max_horizontal; ?>px;height:<?php echo $layout_max_vertical; ?>px;">
+				<iframe src="<?php echo $svg_url; ?>" width="<?php echo $layout_max_horizontal; ?>px" height="<?php echo $layout_max_vertical; ?>px" sandbox style="border:none;margin:0;padding:0;">
 					<!--<img src="triangle.png" alt="Triangle with three unequal sides" />-->
 				</iframe>
 <?php

@@ -113,6 +113,7 @@
 * I would like to change the text shown in the color selection boxes of the 
   submission form from "non" to "null" or something else. This might have an 
   adverse effect on some scripts, however.
+* Add a toggle to turn the numpad on and off.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 

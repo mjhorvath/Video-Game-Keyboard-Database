@@ -65,6 +65,13 @@
 	$layout_author		= "";
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
+	$layout_padding		= 18;
+	$layout_fullsize_width	= 0;
+	$layout_fullsize_height	= 0;
+	$layout_less_width	= 0;
+	$layout_tenkeyless_height	= 0;
+	$layout_legend_padding	= 108;
+	$layout_legend_top	= 0;
 	$string_title		= cleantextSVG("Video Game Keyboard Diagrams");
 	$string_combo		= cleantextSVG("Keyboard Combinations");
 	$string_mouse		= cleantextSVG("Mouse Controls");
@@ -117,7 +124,7 @@
 		$fix_url = true;
 	}
 
-
+	// MySQL queries
 	selGamesSVG();
 	selAuthorsSVG();
 	selStyleGroupsSVG();
@@ -159,6 +166,13 @@
 	{
 		header("Location: " . $svg_url);
 	}
+
+	// a bit of math
+	$layout_min_horizontal = -$layout_padding;
+	$layout_max_horizontal = $layout_padding * 2 + $layout_fullsize_width;
+	$layout_min_vertical = -$layout_padding;
+	$layout_max_vertical = $layout_padding * 2 + $layout_fullsize_height + $layout_legend_padding;
+	$layout_legend_top = $layout_padding * 2 + $layout_fullsize_height;
 ?>
 <!--
 This file was generated using Video Game Keyboard Diagrams by Michael Horvath.
@@ -191,8 +205,8 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:ev="http://www.w3.org/2001/xml-events"
-	viewBox="-18 -18 1692 612"
-	width="1692" height="612">
+	viewBox="<?php echo $layout_min_horizontal . " " . $layout_min_vertical . " " . $layout_max_horizontal . " " . $layout_max_vertical; ?>"
+	width="<?php echo $layout_max_horizontal; ?>" height="<?php echo $layout_max_vertical; ?>">
 	<title><?php echo $thispage_title; ?></title>
 	<desc>Keyboard diagram for <?php echo $temp_game_name; ?>.</desc>
 	<metadata id="license"
@@ -353,7 +367,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		{
 			if (array_key_exists($i, $position_table))
 			{
-				// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowkey_optional
+				// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowkey_optional, numpad
 				$key_sty	= array_key_exists($i, $keystyle_table) ? getkeyclass($keystyle_table[$i][0]) : "";
 				$position_row	= $position_table[$i];
 				$pos_lft	= $position_row[0] + $layout_keygap/2;
@@ -365,6 +379,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 				$low_agr	= cleantextSVG($position_row[6]);
 				$upp_agr	= cleantextSVG($position_row[7]);
 				$key_opt	= $position_row[9];
+				$key_num	= $position_row[10];		// to hide the numpad keys (and sometimes some adjacent function keys)
 				$img_wid	= 48;
 				$img_hgh	= 48;
 				$img_pos_x	= $layout_keygap/2 + $pos_wid/2 - $img_wid/2 - 1/2;
@@ -539,7 +554,9 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		}
 	}
 ?>
-	<svg class="keyout legkey" x="1.5" y="505.5" width="69" height="69">
+<?php echo $layout_legend_top; ?>
+
+	<svg class="keyout legkey" x="1.5" y="<?php echo $layout_legend_top + 1.5; ?>" width="69" height="69">
 		<rect class="keyrec recnon" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
 		<rect class="bakshf" x="1.0" y="3" width="67" height="12" rx="1" ry="1"></rect>
 		<text class="capshf hang" x="65.5" y="13">Shift</text>
@@ -551,7 +568,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		<text class="lownor txtnon" x="2.5" y="64.5">Lowcase</text>
 		<text class="uppnor txtnon" x="2.5" y="13.5">Upcase</text>
 	</svg>
-	<svg class="leg" x="109.5" y="505.5" width="1000" height="300">
+	<svg class="leg" x="109.5" y="<?php echo $layout_legend_top + 1.5; ?>" width="1000" height="300">
 <?php
 	// legend
 	if ($stylegroup_id == 1)

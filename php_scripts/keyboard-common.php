@@ -355,15 +355,19 @@
 	// need to move the stuff that used to be here to `doLanguages`
 	function doLayoutsHTML($in_result)
 	{
-		global $layout_platform, $layout_name, $layout_author, $layout_keysnum, $layout_language, $layout_description;
-		// platform_id, layout_name, author_id, layout_keysnum, layout_language
+		global $layout_platform, $layout_name, $layout_author, $layout_keysnum, $layout_fullsize_width, $layout_fullsize_height, $layout_tenkeyless_width, $layout_tenkeyless_height, $layout_language, $layout_description;
+		// platform_id, layout_name, author_id, layout_keysnum, layout_fullsize_width, layout_fullsize_height, layout_tenkeyless_width, layout_tenkeyless_height, layout_language
 		$layout_row		= mysqli_fetch_row($in_result);
 		$layout_platform	= $layout_row[0];
 		$layout_name		= cleantextHTML($layout_row[1]);
 		$layout_author		= cleantextHTML(getAuthorName($layout_row[2]));
 		$layout_keysnum		= $layout_row[3];
-		$layout_language	= $layout_row[4];
-		$layout_description	= $layout_row[5];
+		$layout_fullsize_width	= $layout_row[4];
+		$layout_fullsize_height	= $layout_row[5];
+		$layout_tenkeyless_width	= $layout_row[6];
+		$layout_tenkeyless_height	= $layout_row[7];
+		$layout_language	= $layout_row[8];
+		$layout_description	= $layout_row[9];
 	}
 	function doAuthorsHTML($in_result)
 	{
@@ -434,7 +438,7 @@
 		global $position_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
-			// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowcap_optional
+			// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowcap_optional, numpad
 			$position_table[$temp_row[8]-1] = $temp_row;
 		}
 	}
@@ -489,13 +493,17 @@
 	// need to move the stuff that used to be here to `doLanguages`
 	function doLayoutsSVG($in_result)
 	{
-		global $layout_platform, $layout_name, $layout_author, $layout_keysnum;
-		// platform_id, layout_name, author_id, layout_keysnum
+		global $layout_platform, $layout_name, $layout_author, $layout_keysnum, $layout_fullsize_width, $layout_fullsize_height, $layout_tenkeyless_width, $layout_tenkeyless_height;
+		// platform_id, layout_name, author_id, layout_keysnum, layout_fullsize_width, layout_fullsize_height, layout_tenkeyless_width, layout_tenkeyless_height
 		$layout_row		= mysqli_fetch_row($in_result);
 		$layout_platform	= $layout_row[0];
 		$layout_name		= cleantextSVG($layout_row[1]);
 		$layout_author		= cleantextSVG(getAuthorName($layout_row[2]));
 		$layout_keysnum		= $layout_row[3];
+		$layout_fullsize_width	= $layout_row[4];
+		$layout_fullsize_height	= $layout_row[5];
+		$layout_tenkeyless_width	= $layout_row[6];
+		$layout_tenkeyless_height	= $layout_row[7];
 	}
 	function doAuthorsSVG($in_result)
 	{
@@ -594,7 +602,7 @@
 	function selLayoutsHTML()
 	{
 		global $con, $layout_id;
-		$selectString = "SELECT l.platform_id, l.layout_name, l.author_id, l.layout_keysnum, l.layout_language, l.layout_description FROM layouts AS l WHERE l.layout_id = " . $layout_id . ";";
+		$selectString = "SELECT l.platform_id, l.layout_name, l.author_id, l.layout_keysnum, l.layout_fullsize_width, l.layout_fullsize_height, l.layout_tenkeyless_width, l.layout_tenkeyless_height, l.layout_language, l.layout_description FROM layouts AS l WHERE l.layout_id = " . $layout_id . ";";
 		selectQuery($con, $selectString, "doLayoutsHTML");
 	}
 	function selPlatformsHTML()
@@ -672,13 +680,13 @@
 	function selPositionsSVG()
 	{
 		global $con, $layout_id;
-		$selectString = "SELECT p.position_left, p.position_top, p.position_width, p.position_height, p.symbol_norm_low, p.symbol_norm_cap, p.symbol_altgr_low, p.symbol_altgr_cap, p.key_number, p.lowcap_optional FROM positions AS p WHERE p.layout_id = " . $layout_id . ";";
+		$selectString = "SELECT p.position_left, p.position_top, p.position_width, p.position_height, p.symbol_norm_low, p.symbol_norm_cap, p.symbol_altgr_low, p.symbol_altgr_cap, p.key_number, p.lowcap_optional, p.numpad FROM positions AS p WHERE p.layout_id = " . $layout_id . ";";
 		selectQuery($con, $selectString, "doPositionsSVG");
 	}
 	function selLayoutsSVG()
 	{
 		global $con, $layout_id;
-		$selectString = "SELECT l.platform_id, l.layout_name, l.author_id, l.layout_keysnum FROM layouts AS l WHERE l.layout_id = " . $layout_id . ";";
+		$selectString = "SELECT l.platform_id, l.layout_name, l.author_id, l.layout_keysnum, l.layout_fullsize_width, l.layout_fullsize_height, l.layout_tenkeyless_width, l.layout_tenkeyless_height FROM layouts AS l WHERE l.layout_id = " . $layout_id . ";";
 		selectQuery($con, $selectString, "doLayoutsSVG");
 	}
 	function selPlatformsSVG()
