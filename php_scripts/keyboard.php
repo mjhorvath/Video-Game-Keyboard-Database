@@ -35,6 +35,7 @@
 
 	include($path_root. "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
+	include("./keyboard-queries.php");
 
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
  
@@ -54,105 +55,14 @@
 	$platform_array		= [];
 	$platform_order_array	= [];
 
-	function doGenresFront($in_result)
-	{
-		global $genre_array, $genre_order_array, $game_array;
-		while ($genre_row = mysqli_fetch_row($in_result))
-		{
-			// genre_id, genre_name
-			$genre_id = $genre_row[0];
-			$genre_array[$genre_id-1] = $genre_row[1];
-			$game_array[$genre_id-1] = [[],[]];
-		}
-	}
-	function sortGamesFront()
-	{
-		global $genre_array, $game_array;
-		array_multisort($genre_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $game_array);
-	}
-	function doGamesFront($in_result)
-	{
-		global $game_array;
-		while ($game_row = mysqli_fetch_row($in_result))
-		{
-			// genre_id, game_id, game_name, game_friendlyurl
-			$genre_id = $game_row[0];
-			$game_array[$genre_id-1][0][] = $game_row[1];
-			$game_array[$genre_id-1][1][] = $game_row[2];
-			$game_array[$genre_id-1][2][] = $game_row[3];
-		}
-	}
-	function doStylegroupsFront($in_result)
-	{
-		global $stylegroup_array, $style_array;
-		while ($stylegroup_row = mysqli_fetch_row($in_result))
-		{
-			// stylegroup_id, stylegroup_name
-			$stylegroup_id = $stylegroup_row[0];
-			$stylegroup_array[$stylegroup_id-1] = $stylegroup_row[1];
-			$style_array[$stylegroup_id-1] = [[],[]];
-		}
-	}
-	function doStylesFront($in_result)
-	{
-		global $style_array;
-		while ($style_row = mysqli_fetch_row($in_result))
-		{
-			// stylegroup_id, style_id, style_name
-			$stylegroup_id = $style_row[0];
-			$style_array[$stylegroup_id-1][0][] = $style_row[1];
-			$style_array[$stylegroup_id-1][1][] = $style_row[2];
-		}
-	}
-	function doPlatformsFront($in_result)
-	{
-		global $platform_array, $layout_array;
-		$platform_table = [];
-		while ($platform_row = mysqli_fetch_row($in_result))
-		{
-			// platform_id, platform_name, platform_displayorder
-			$platform_id = $platform_row[0];
-			$platform_name = $platform_row[1];
-			$platform_displayorder = $platform_row[2];
-			$platform_array[$platform_id-1] = $platform_name;
-			$layout_array[$platform_id-1] = [[],[]];
-			$platform_order_array[$platform_id-1] = $platform_displayorder;
-		}
-		array_multisort($platform_order_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $platform_array, $layout_array);
-	}
-	function doLayoutsFront($in_result)
-	{
-		global $layout_array;
-		while ($layout_row = mysqli_fetch_row($in_result))
-		{
-			// platform_id, layout_id, layout_name
-			$platform_id = $layout_row[0];
-			$layout_array[$platform_id-1][0][] = $layout_row[1];
-			$layout_array[$platform_id-1][1][] = $layout_row[2];
-		}
-	}
-
-
-	$selectString = "SELECT g.genre_id, g.genre_name FROM genres as g;";
-	selectQuery($con, $selectString, "doGenresFront");
-
-	$selectString = "SELECT g.genre_id, g.game_id, g.game_name, g.game_friendlyurl FROM games as g;";
-	selectQuery($con, $selectString, "doGamesFront");
-
-	$selectString = "SELECT s.stylegroup_id, s.stylegroup_name FROM stylegroups as s;";
-	selectQuery($con, $selectString, "doStylegroupsFront");
-
-	$selectString = "SELECT s.stylegroup_id, s.style_id, s.style_name FROM styles as s ORDER BY s.style_name;";
-	selectQuery($con, $selectString, "doStylesFront");
-
-	$selectString = "SELECT p.platform_id, p.platform_name, p.platform_displayorder FROM platforms as p;";
-	selectQuery($con, $selectString, "doPlatformsFront");
-
-	$selectString = "SELECT l.platform_id, l.layout_id, l.layout_name FROM layouts as l ORDER BY l.layout_name;";
-	selectQuery($con, $selectString, "doLayoutsFront");
-
+	// MySQL queries
+	selGenresFront();
+	selGamesFront();
+	selStylegroupsFront();
+	selStylesFront();
+	selPlatformsFront();
+	selLayoutsFront();
 	sortGamesFront();
-
 
 	mysqli_close($con);
 ?>
@@ -285,15 +195,19 @@
 				<input id="rad0" type="radio" name="fmtradio" value="0" checked="checked"/>
 				<span class="checkmark"></span>
 			</label>
-			<label label for="rad2" class="container">MediaWiki
+			<label for="rad1" class="container">SVG only
+				<input id="rad1" type="radio" name="fmtradio" value="1"/>
+				<span class="checkmark"></span>
+			</label>
+			<label for="rad2" class="container">MediaWiki
 				<input id="rad2" type="radio" name="fmtradio" value="2"/>
 				<span class="checkmark"></span>
 			</label>
-			<label label for="rad3" class="container">Editor
+			<label for="rad3" class="container">Editor
 				<input id="rad3" type="radio" name="fmtradio" value="3"/>
 				<span class="checkmark"></span>
 			</label>
-			<label label for="rad4" class="container"><s>PDF</s> [TBD]
+			<label for="rad4" class="container"><s>PDF</s> [TBD]
 				<input id="rad4" type="radio" name="fmtradio" value="4" disabled="disabled"/>
 				<span class="checkmark"></span>
 			</label>
@@ -303,7 +217,7 @@
 			<div id="but_xmark" class="acc_xmark">&#x2718;</div>
 			<h2>5. Create the Diagram:</h2>
 			<input id="butspawn" type="button" value="Create New Diagram" onclick="Check_Values_and_Spawn()"/>
-			<p id="butready">All set! Click the Create New Diagram button and let's go!</p>
+			<p id="butready">All set! Now click the &quot;Create New Diagram&quot; button, above. This will spawn a new browser window with the keyboard diagram.</p>
 			<p id="buterror">Try selecting a keyboard, theme, game and format, and create the diagram again!</p>
 		</div>
 	</div>

@@ -24,6 +24,7 @@
 
 	include($path_root. "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
+	include("./keyboard-queries.php");
 
 	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
  
@@ -45,78 +46,13 @@
 	$layouts_max		= 0;
 	$styles_max		= 0;
 
-	function doGamesAutoincJS($in_result)
-	{
-		global $games_max;
-		$game_row = mysqli_fetch_row($in_result);
-		$games_max = $game_row[0];
-	}
-	function doLayoutsAutoincJS($in_result)
-	{
-		global $layouts_max;
-		$layout_row = mysqli_fetch_row($in_result);
-		$layouts_max = $layout_row[0];
-	}
-	function doStylesAutoincJS($in_result)
-	{
-		global $styles_max;
-		$style_row = mysqli_fetch_row($in_result);
-		$styles_max = $style_row[0];
-	}
-	function doSeourlJS($in_result)
-	{
-		global $seourl_table;
-		while ($game_row = mysqli_fetch_row($in_result))
-		{
-			// game_id, game_friendlyurl
-			$game_id = $game_row[0];
-			$game_seo = $game_row[1];
-			$seourl_table[$game_id-1] = $game_seo;
-		}
-	}
-	function doGameRecordsJS($in_result)
-	{
-		global $game_table;
-		while ($gamesrecord_row = mysqli_fetch_row($in_result))
-		{
-			// record_id, game_id, layout_id
-//			$gamesrecord_id = $gamesrecord_row[0];
-			$game_id = $gamesrecord_row[1];
-			$layout_id = $gamesrecord_row[2];
-			$game_table[$layout_id-1][$game_id-1] = true;
-		}
-	}
-	function doStyleRecordsJS($in_result)
-	{
-		global $style_table;
-		while ($stylesrecord_row = mysqli_fetch_row($in_result))
-		{
-			// record_id, style_id, layout_id
-//			$stylesrecord_id = $stylesrecord_row[0];
-			$style_id = $stylesrecord_row[1];
-			$layout_id = $stylesrecord_row[2];
-			$style_table[$layout_id-1][$style_id-1] = true;
-		}
-	}
-
-
-	$selectString = "SELECT MAX(g.game_id) FROM games AS g;";
-	selectQuery($con, $selectString, "doGamesAutoincJS");
-
-	$selectString = "SELECT MAX(l.layout_id) FROM layouts AS l;";
-	selectQuery($con, $selectString, "doLayoutsAutoincJS");
-
-	$selectString = "SELECT MAX(s.style_id) FROM styles AS s;";
-	selectQuery($con, $selectString, "doStylesAutoincJS");
-
-	$selectString = "SELECT g.game_id, g.game_friendlyurl FROM games AS g;";
-	selectQuery($con, $selectString, "doSeourlJS");
-
-	$selectString = "SELECT r.record_id, r.game_id, r.layout_id FROM records_games AS r;";
-	selectQuery($con, $selectString, "doGameRecordsJS");
-
-	$selectString = "SELECT r.record_id, r.style_id, r.layout_id FROM records_styles AS r;";
-	selectQuery($con, $selectString, "doStyleRecordsJS");
+	// MySQL queries
+	selGamesAutoincJS();
+	selLayoutsAutoincJS();
+	selStylesAutoincJS();
+	selSeourlJS();
+	selGameRecordsJS();
+	selStyleRecordsJS();
 
 	for ($i = 0; $i < $games_max; $i++)
 	{
@@ -361,7 +297,7 @@ function Check_Values_and_Spawn()
 		WarnBoxReady.style.display = 'block'
 		WarnBoxError.style.display = 'none'
 		var seo_value = seourl_table[gam_value-1]
-		window.open('keyboard-diagram-' + seo_value + '.php?sty=' + sty_value + '&lay=' + lay_value + '&fmt=' + fmt_value)
+		window.open('keyboard-diagram-' + seo_value + '.php?sty=' + sty_value + '&lay=' + lay_value + '&fmt=' + fmt_value + '&ten=' + 1)
 	}
 	else	
 	{

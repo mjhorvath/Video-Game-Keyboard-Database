@@ -26,6 +26,7 @@
 
 	include($path_root. "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
+	include("./keyboard-queries.php");
 
 	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
  
@@ -37,14 +38,9 @@
 
 	mysqli_query($con, "SET NAMES 'utf8'");
 
-	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : null;
-	$game_id		= array_key_exists("gam", $_GET) ? intval(ltrim($_GET["gam"], "0")) : null;
-	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : null;
-	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : null;
-	$format_id		= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0")) : null;
-	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
 	$fix_url		= false;
 	$svg_url		= "";
+	$php_url		= "";
 	$stylegroup_id		= 0;
 	$legend_count		= 12;
 	$position_table		= [];
@@ -52,6 +48,7 @@
 	$binding_table		= [];
 	$legend_table		= [];
 	$author_table		= [];
+	$errors_table		= [];
 	$style_filename		= "";
 	$style_name		= "";
 	$gamesrecord_id		= 0;
@@ -60,18 +57,24 @@
 	$stylesrecord_author	= "";
 	$game_name		= "";
 	$platform_name		= "";
-	$layout_platform	= 0;
+	$platform_id		= 0;
 	$layout_name		= "";
 	$layout_author		= "";
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
 	$layout_padding		= 18;
-	$layout_fullsize_width	= 0;
-	$layout_fullsize_height	= 0;
-	$layout_less_width	= 0;
-	$layout_tenkeyless_height	= 0;
-	$layout_legend_padding	= 108;
-	$layout_legend_top	= 0;
+	$layout_fullsize_width		= 1200;
+	$layout_fullsize_height		= 400;
+	$layout_tenkeyless_width	= 1200;
+	$layout_tenkeyless_height	= 400;
+	$layout_legend_padding		= 36;
+	$layout_legend_height		= 72;
+	$temp_game_seo		= "";
+	$temp_game_name		= "";
+	$temp_layout_name	= "";
+	$temp_style_name	= "";
+	$temp_platform_name	= "";
+	// these should maybe be moved to the database and localized
 	$string_title		= cleantextSVG("Video Game Keyboard Diagrams");
 	$string_combo		= cleantextSVG("Keyboard Combinations");
 	$string_mouse		= cleantextSVG("Mouse Controls");
@@ -83,96 +86,62 @@
 	$string_description	= cleantextSVG("Keyboard hotkey & binding chart for ");
 	$string_keywords	= cleantextSVG("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
 
+	// gather and validate URL queries
+	gatherURLParameters();
+	checkURLParameters("svg");
 
-	// validity checks
-	if ($game_id === null)
-	{
-		if ($game_seo !== null)
-		{
-			$selectString = "SELECT g.game_name, g.game_id FROM games AS g WHERE g.game_friendlyurl = \"" . $game_seo . "\";";
-			selectQuery($con, $selectString, "doGamesSEOSVG");
-		}
-		else
-		{
-			$game_id = 1;
-		}
-	}
-	if ($game_seo === null)
-	{
-		$fix_url = true;
-	}
-	if ($style_id === null)
-	{
-		$style_id = 15;
-		$fix_url = true;
-	}
-	if ($layout_id === null)
-	{
-		$layout_id = 1;
-		$fix_url = true;
-	}
-	if ($format_id === null)
-	{
-		if ($svg_bool !== null)
-		{
-			$format_id = $svg_bool;
-		}
-		else
-		{
-			$format_id = 1;
-		}
-		$fix_url = true;
-	}
+	selPlatformsFront();
+	selLayoutsFront();
 
 	// MySQL queries
-	selGamesSVG();
 	selAuthorsSVG();
 	selStyleGroupsSVG();
 	selStylesSVG();
 	selThisStyleSVG();
 	selPositionsSVG();
-	selLayoutsSVG();
-	selPlatformsSVG();
 	selGamesRecordsSVG();
 	selStylesRecordsSVG();
+	selLayoutsSVG();
+	selPlatformsSVG();
 	selKeystylesSVG();
 	selBindingsSVG();
 	selLegendsSVG();
 
-
 	mysqli_close($con);
 
 	// validity checks
-	$game_seo		= $game_seo ? $game_seo : "unrecognized-game";
-	$temp_game_name		= $game_name ? $game_name : "Unrecognized Game";
-	$temp_layout_name	= $layout_name ? $layout_name : "Unrecognized Layout";
-	$temp_style_name	= $style_name ? $style_name : "Unrecognized Style";
-	$temp_platform_name	= $platform_name ? $platform_name : "Unrecognized Platform,";	// note the comma at the end
-//	$thispage_title	= $temp_game_name. " - " . $string_title . " - " . $temp_platform_name . " " . $temp_layout_name . " - " . $temp_style_name;
-	$thispage_title	= $temp_game_name. " - " . $temp_platform_name . " " . $temp_layout_name . " - " . $temp_style_name;
+	checkForErrors();
 
-	// validity checks (should check the layout here too... but)
-	if (!checkStyle($style_id))
-	{
-		$style_id = 15;
-		$fix_url = true;
-	}
+	$thispage_title_a	= $temp_game_name;
+	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - GRID:" . $gamesrecord_id;
 
-	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id;
-	$svg_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id;
+	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
+	$svg_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
 
 	// fix URL
 	if ($fix_url === true)
 	{
 		header("Location: " . $svg_url);
+		die();
 	}
 
-	// a bit of math
-	$layout_min_horizontal = -$layout_padding;
-	$layout_max_horizontal = $layout_padding * 2 + $layout_fullsize_width;
-	$layout_min_vertical = -$layout_padding;
-	$layout_max_vertical = $layout_padding * 2 + $layout_fullsize_height + $layout_legend_padding;
-	$layout_legend_top = $layout_padding * 2 + $layout_fullsize_height;
+	// layout outer bounds
+	if ($ten_bool == 0)
+	{
+		$layout_min_horizontal	= -$layout_padding;
+		$layout_max_horizontal	=  $layout_padding * 2 + $layout_tenkeyless_width;
+		$layout_min_vertical	= -$layout_padding;
+		$layout_max_vertical	=  $layout_padding * 2 + $layout_tenkeyless_height + $layout_legend_padding + $layout_legend_height;
+		$layout_legend_top	=  $layout_tenkeyless_height + $layout_legend_padding;
+	}
+	else if ($ten_bool == 1)
+	{
+		$layout_min_horizontal	= -$layout_padding;
+		$layout_max_horizontal	=  $layout_padding * 2 + $layout_fullsize_width;
+		$layout_min_vertical	= -$layout_padding;
+		$layout_max_vertical	=  $layout_padding * 2 + $layout_fullsize_height + $layout_legend_padding + $layout_legend_height;
+		$layout_legend_top	=  $layout_fullsize_height + $layout_legend_padding;
+	}
 ?>
 <!--
 This file was generated using Video Game Keyboard Diagrams by Michael Horvath.
@@ -207,7 +176,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	xmlns:ev="http://www.w3.org/2001/xml-events"
 	viewBox="<?php echo $layout_min_horizontal . " " . $layout_min_vertical . " " . $layout_max_horizontal . " " . $layout_max_vertical; ?>"
 	width="<?php echo $layout_max_horizontal; ?>" height="<?php echo $layout_max_vertical; ?>">
-	<title><?php echo $thispage_title; ?></title>
+	<title><?php echo $thispage_title_a . $thispage_title_b; ?></title>
 	<desc>Keyboard diagram for <?php echo $temp_game_name; ?>.</desc>
 	<metadata id="license"
 		xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -228,7 +197,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 				<cc:requires rdf:resource="http://creativecommons.org/ns#ShareAlike" />
 			</cc:License>
 			<rdf:Description about=""
-				dc:title="<?php echo $thispage_title; ?>"
+				dc:title="<?php echo $thispage_title_a . $thispage_title_b; ?>"
 				dc:description="<?php echo $string_description . $temp_game_name . ". (" . $temp_style_name . ")"; ?>"
 				dc:publisher="Video Game Keyboard Diagrams"
 				dc:date="<?php echo date("Y-m-d H:i:s"); ?>"
@@ -348,17 +317,11 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 <?php
 	echo
 "	<rect id=\"bkgrec\" x=\"-18\" y=\"-18\" width=\"1692\" height=\"612\" fill=\"none\" stroke=\"none\"/>\n";
-	// validity check 1
-	if ($gamesrecord_id == 0)
+	// print error messages
+	for ($i = 0; $i < count($errors_table); $i++)
 	{
 		echo
-"	<text y=\"0\">No bindings found for game \"" . $temp_game_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</text>";
-	}
-	// validity check 2
-	if ($stylesrecord_id == 0)
-	{
-		echo
-"	<text y=\"20\">No configurations found for style \"" . $temp_style_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</text>";
+"	<text y=\"" . ($i * 20) . "\">" . $errors_table[$i] . "</text>\n";
 	}
 	// keys
 	if (($gamesrecord_id > 0) && ($stylesrecord_id > 0))
@@ -553,23 +516,24 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 			}
 		}
 	}
-?>
-<?php echo $layout_legend_top; ?>
-
-	<svg class="keyout legkey" x="1.5" y="<?php echo $layout_legend_top + 1.5; ?>" width="69" height="69">
-		<rect class="keyrec recnon" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
-		<rect class="bakshf" x="1.0" y="3" width="67" height="12" rx="1" ry="1"></rect>
-		<text class="capshf hang" x="65.5" y="13">Shift</text>
-		<rect class="bakctl" x="1.0" y="15" width="67" height="12" rx="1" ry="1"></rect>
-		<text class="capctl hang" x="65.5" y="25">Ctrl</text>
-		<rect class="bakalt" x="1.0" y="27" width="67" height="12" rx="1" ry="1"></rect>
-		<text class="capalt hang" x="65.5" y="37">Alt</text>
-		<text class="capnor txtnon ideo" x="2.5" y="50.5">Caption</text>
-		<text class="lownor txtnon" x="2.5" y="64.5">Lowcase</text>
-		<text class="uppnor txtnon" x="2.5" y="13.5">Upcase</text>
-	</svg>
-	<svg class="leg" x="109.5" y="<?php echo $layout_legend_top + 1.5; ?>" width="1000" height="300">
-<?php
+	if ($gamesrecord_id != 0)
+	{
+		echo
+"	<svg class=\"keyout legkey\" x=\"1.5\" y=\"" . ($layout_legend_top + 1.5) . "\" width=\"69\" height=\"69\">
+		<rect class=\"keyrec recnon\" x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"68\" height=\"68\"/>
+		<rect class=\"bakshf\" x=\"1.0\" y=\"3\" width=\"67\" height=\"12\" rx=\"1\" ry=\"1\"></rect>
+		<text class=\"capshf hang\" x=\"65.5\" y=\"13\">Shift</text>
+		<rect class=\"bakctl\" x=\"1.0\" y=\"15\" width=\"67\" height=\"12\" rx=\"1\" ry=\"1\"></rect>
+		<text class=\"capctl hang\" x=\"65.5\" y=\"25\">Ctrl</text>
+		<rect class=\"bakalt\" x=\"1.0\" y=\"27\" width=\"67\" height=\"12\" rx=\"1\" ry=\"1\"></rect>
+		<text class=\"capalt hang\" x=\"65.5\" y=\"37\">Alt</text>
+		<text class=\"capnor txtnon ideo\" x=\"2.5\" y=\"50.5\">Caption</text>
+		<text class=\"lownor txtnon\" x=\"2.5\" y=\"64.5\">Lowcase</text>
+		<text class=\"uppnor txtnon\" x=\"2.5\" y=\"13.5\">Upcase</text>
+	</svg>\n";
+	}
+	echo
+"	<svg class=\"leg\" x=\"109.5\" y=\"" . ($layout_legend_top + 1.5) . "\" width=\"1000\" height=\"300\">\n";
 	// legend
 	if ($stylegroup_id == 1)
 	{
@@ -590,6 +554,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 			}
 		}
 	}
+	echo
+"	</svg>
+</svg>\n";
 ?>
-	</svg>
-</svg>

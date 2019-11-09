@@ -26,6 +26,7 @@
 	include($path_root . 'ssi/analyticstracking.php');
 	include($path_root . "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
+	include("./keyboard-queries.php");
 
 	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
  
@@ -38,12 +39,6 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	$path_root		= "../";
-	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : null;
-	$game_id		= array_key_exists("gam", $_GET) ? intval(ltrim($_GET["gam"], "0")) : null;
-	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : null;
-	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : null;
-	$format_id		= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0")) : null;
-	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
 	$fix_url		= false;
 	$php_url		= "";
 	$svg_url		= "";
@@ -64,6 +59,7 @@
 	$author_table		= [];
 	$style_table		= [];
 	$style_group_table	= [];
+	$errors_table		= [];
 	$gamesrecord_id		= 0;
 	$gamesrecord_author	= "";
 	$stylesrecord_id	= 0;
@@ -80,12 +76,18 @@
 	$style_name		= "";
 	$game_name		= "";
 	$platform_name		= "";
-	$layout_platform	= 0;
+	$platform_id		= 0;
 	$layout_name		= "";
 	$layout_author		= "";
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
-	$string_title		= cleantextHTML("Video Game Keyboard Diagrams");
+	$temp_game_seo		= "";
+	$temp_game_name		= "";
+	$temp_layout_name	= "";
+	$temp_style_name	= "";
+	$temp_platform_name	= "";
+	// these should maybe be moved to the database and localized
+	$string_title		= cleantextHTML("VGKD Submission Editor");
 	$string_combo		= cleantextHTML("Keyboard Combinations");
 	$string_mouse		= cleantextHTML("Mouse Controls");
 	$string_joystick	= cleantextHTML("Joystick/Gamepad Controls");
@@ -98,49 +100,11 @@
 
 	include($path_root . 'ssi/recaptchakey.php');
 
+	// gather and validate URL queries
+	gatherURLParameters();
+	checkURLParameters("html");
 
-	// validity checks
-	if ($game_id === null)
-	{
-		if ($game_seo !== null)
-		{
-			$selectString = "SELECT g.game_name, g.game_id FROM games AS g WHERE g.game_friendlyurl = \"" . $game_seo . "\";";
-			selectQuery($con, $selectString, "doGamesSEOHTML");
-		}
-		else
-		{
-			$game_id = 1;
-		}
-	}
-	if ($game_seo === null)
-	{
-		$fix_url = true;
-	}
-	if ($style_id === null)
-	{
-		$style_id = 15;
-		$fix_url = true;
-	}
-	if ($layout_id === null)
-	{
-		$layout_id = 1;
-		$fix_url = true;
-	}
-	if ($format_id === null)
-	{
-		if ($svg_bool !== null)
-		{
-			$format_id = $svg_bool;
-		}
-		else
-		{
-			$format_id = 3;
-		}
-		$fix_url = true;
-	}
-
-
-	selGamesHTML();
+	// MySQL queries
 	selAuthorsHTML();
 	selStyleGroupsHTML();
 	selStylesHTML();
@@ -159,23 +123,13 @@
 	mysqli_close($con);
 
 	// validity checks
-	$game_seo		= $game_seo ? $game_seo : "unrecognized-game";
-	$temp_game_name		= $game_name ? $game_name : "Unrecognized Game";
-	$temp_layout_name	= $layout_name ? $layout_name : "Unrecognized Layout";
-	$temp_style_name	= $style_name ? $style_name : "Unrecognized Style";
-	$temp_platform_name	= $platform_name ? $platform_name : "Unrecognized Platform";
+	checkForErrors();
+
 	$thispage_title_a	= $temp_game_name;
-	$thispage_title_b	= " - VGKD Submission Editor - " . $temp_platform_name . " " . $temp_layout_name . " - " . $temp_style_name;
+	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - GRID:" . $gamesrecord_id;
 
-	// validity checks (should check the layout here too... but)
-	if (!checkStyle($style_id))
-	{
-		$style_id = 15;
-		$fix_url = true;
-	}
-
-	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id;
-	$svg_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id;
+	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
+	$svg_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
 
 	// fix URL
 	if ($fix_url === true)
@@ -387,22 +341,16 @@ var binding_table =
 				<div class="boxdiv" style="font-size:x-large;">
 					<input id="game_tit" type="text" size="25" maxlength="100" placeholder="Game Title" title="Game Title" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $thispage_title_a; ?>"/>
 					<input id="game_url" type="text" size="25" maxlength="100" placeholder="URL String" title="URL String" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $game_seo; ?>" disabled="disabled"/>
-					<span title="Game Record ID">GRID: <?php echo $gamesrecord_id; ?></span>
 				</div>
 				<div class="boxdiv" style="position:relative;width:1660px;height:480px;">
 					<form enctype="multipart/form-data" accept-charset="UTF-8">
 						<div id="keydiv" style="position:relative;width:1660px;height:480px;">
 <?php
-	// validity checks
-	if (!$gamesrecord_id)
+	// print error messages
+	for ($i = 0; $i < count($errors_table); $i++)
 	{
 		echo
-"							<h3>No bindings found for game \"" . $temp_game_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</h3>";
-	}
-	if (!$stylesrecord_id)
-	{
-		echo
-"							<h3>No configurations found for style \"" . $temp_style_name . "\" on layout \"" . $temp_platform_name . " " . $temp_layout_name . "\".</h3>";
+"							<h3>" . $errors_table[$i] . "</h3>";
 	}
 	// keys
 	if ($gamesrecord_id && $stylesrecord_id)

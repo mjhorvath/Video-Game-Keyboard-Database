@@ -11,6 +11,10 @@
 ?>
 <h2>News &amp; Updates</h2>
 <ul>
+	<li>2019/11/08: Added "SVG only" as a possible format. Note, however, the "SVG only" format has no page footer with controls.</li>
+	<li>2019/11/08: Moved all SQL queries to their own file.</li>
+	<li>2019/11/08: Consolidated URL parameter checking.</li>
+	<li>2019/11/08: Added support for turning the ten key pad on/off.</li>
 	<li>2019/10/16: Fixed bug in submission form.</li>
 	<li>2019/10/16: Added two English bindings for <i>ATOM RPG</i>, <i>Mutant Year Zero</i>, <i>Freespace 2</i>, <i>Undead Defense</i>, <i>The Watchers</i>.</li>
 	<li>2019/07/21: Added two Polish binding schemes and one Spanish binding scheme submitted by visitors to the site.</li>

@@ -1,4 +1,22 @@
 <?php
+	switch ($format_id)
+	{
+		case 0:
+			$display_style = "table-row";
+			$display_tenkey = "table-row";
+		break;
+		case 1:
+			// this format does not display a footer
+		break;
+		case 2:
+			$display_style = "none";
+			$display_tenkey = "none";
+		break;
+		case 3:
+			$display_style = "table-row";
+			$display_tenkey = "none";
+		break;
+	}
 	echo
 "			<div class=\"boxdiv\">
 				<p><a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\"><img alt=\"GNU LGPLv3 icon\" src=\"" . $path_root . "images/license_lgpl_88x31.png\" /></a><a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/3.0/\"><img alt=\"CC BY-SA 3.0 icon\" style=\"border-width:0;\" src=\"" . $path_root . "images/license_cc-by-sa_88x31.png\" /></a></p>
@@ -28,7 +46,7 @@
 	echo
 "				<form name=\"VisualStyleSwitch\">
 					<table id=\"footswitch\">
-						<tr>
+						<tr style=\"display:" . $display_style . ";\">
 							<th>Theme:</th>
 							<td>
 								<select class=\"stylechange\" id=\"stylesel\" name=\"style\">\n";
@@ -61,23 +79,25 @@
 "									</optgroup>\n";
 	}
 	echo
-	"							</select>
+"								</select>
 							</td>
-						</tr>
-						<tr>
+						</tr>\n";
+	echo
+"						<tr>
 							<th>Format:</th>
 							<td>
 								<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"formrad0\" value=\"0\" " . ($format_id == 0 ? "checked" : "") . ">&nbsp;<label for=\"formrad0\">HTML/SVG</label>
+								<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"formrad1\" value=\"1\" " . ($format_id == 1 ? "checked" : "") . ">&nbsp;<label for=\"formrad1\">SVG only</label>
 								<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"formrad2\" value=\"2\" " . ($format_id == 2 ? "checked" : "") . ">&nbsp;<label for=\"formrad2\">MediaWiki</label>
 								<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"formrad3\" value=\"3\" " . ($format_id == 3 ? "checked" : "") . ">&nbsp;<label for=\"formrad3\">Editor</label>
 								<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"formrad4\" value=\"4\" disabled>&nbsp;<label for=\"rad4\"><s>PDF</s></label>
 							</td>
 						</tr>
-						<tr>
+						<tr style=\"display:" . $display_tenkey . ";\">
 							<th>Tenkey:</th>
 							<td>
-								<input class=\"stylechange\" type=\"radio\" name=\"tkey\" id=\"tkeyrad0\" value=\"0\" disabled " . ($tenkey_id == 0 ? "checked" : "") . ">&nbsp;<label for=\"tkeyrad0\">Show</label>
-								<input class=\"stylechange\" type=\"radio\" name=\"tkey\" id=\"tkeyrad1\" value=\"1\" disabled " . ($tenkey_id == 1 ? "checked" : "") . ">&nbsp;<label for=\"tkeyrad1\">Hide</label>
+								<input class=\"stylechange\" type=\"radio\" name=\"tkey\" id=\"tkeyrad1\" value=\"1\" " . ($ten_bool == 1 ? "checked" : "") . ">&nbsp;<label for=\"tkeyrad1\">Show</label>
+								<input class=\"stylechange\" type=\"radio\" name=\"tkey\" id=\"tkeyrad0\" value=\"0\" " . ($ten_bool == 0 ? "checked" : "") . ">&nbsp;<label for=\"tkeyrad0\">Hide</label>
 							</td>
 						</tr>
 						<tr>
@@ -88,6 +108,6 @@
 						</tr>
 					</table>
 				</form>
-				<p>" . getFileTime($path_file) . "</p>
+				<p>" . getFileTime($path_file) . " GRID: " . $gamesrecord_id . "</p>
 			</div>\n";
 ?>

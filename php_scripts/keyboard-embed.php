@@ -26,6 +26,7 @@
 	include($path_root . "ssi/analyticstracking.php");
 	include($path_root . "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
+	include("./keyboard-queries.php");
 
 	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
  
@@ -37,11 +38,6 @@
 
 	mysqli_query($con, "SET NAMES 'utf8'");
 
-	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : "";
-	$game_id		= array_key_exists("gam", $_GET) ? intval(ltrim($_GET["gam"], "0")) : null;
-	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : 15;
-	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : 1;
-	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : 0;
 	$fix_url		= false;
 	$php_url		= "";
 	$svg_url		= "";
@@ -69,7 +65,7 @@
 	$style_author		= "";
 	$game_name		= "";
 	$platform_name		= "";
-	$layout_platform	= 0;
+	$platform_id		= 0;
 	$layout_name		= "";
 	$layout_title		= "";
 	$layout_mouse		= "";
@@ -84,11 +80,18 @@
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
 	$layout_padding		= 18;
-	$layout_fullsize_width	= 0;
-	$layout_fullsize_height	= 0;
-	$layout_less_width	= 0;
-	$layout_tenkeyless_height	= 0;
-	$layout_legend_padding	= 108;
+	$layout_fullsize_width		= 1200;
+	$layout_fullsize_height		= 400;
+	$layout_tenkeyless_width	= 1200;
+	$layout_tenkeyless_height	= 400;
+	$layout_legend_padding		= 36;
+	$layout_legend_height		= 72;
+	$temp_game_seo		= "";
+	$temp_game_name		= "";
+	$temp_layout_name	= "";
+	$temp_style_name	= "";
+	$temp_platform_name	= "";
+	// these should maybe be moved to the database and localized
 	$string_title		= cleantextHTML("Video Game Keyboard Diagrams");
 	$string_combo		= cleantextHTML("Keyboard Combinations");
 	$string_mouse		= cleantextHTML("Mouse Controls");
@@ -100,56 +103,20 @@
 	$string_description	= cleantextHTML("Keyboard hotkey & binding chart for ");
 	$string_keywords	= cleantextHTML("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
 
-	// validity checks
-	if ($game_id === null)
-	{
-		if ($game_seo !== null)
-		{
-			$selectString = "SELECT g.game_name, g.game_id FROM games AS g WHERE g.game_friendlyurl = \"" . $game_seo . "\";";
-			selectQuery($con, $selectString, "doGamesSEOHTML");
-		}
-		else
-		{
-			$game_id = 1;
-		}
-	}
-	if ($game_seo === null)
-	{
-		$fix_url = true;
-	}
-	if ($style_id === null)
-	{
-		$style_id = 15;
-		$fix_url = true;
-	}
-	if ($layout_id === null)
-	{
-		$layout_id = 1;
-		$fix_url = true;
-	}
-	if ($format_id === null)
-	{
-		if ($svg_bool !== null)
-		{
-			$format_id = $svg_bool;
-		}
-		else
-		{
-			$format_id = 0;
-		}
-		$fix_url = true;
-	}
+	// gather and validate URL queries
+	gatherURLParameters();
+	checkURLParameters("html");
 
-	selGamesHTML();
+	// MySQL queries
 	selAuthorsHTML();
 	selStyleGroupsHTML();
 	selStylesHTML();
 	selThisStyleHTML();
 //	selPositionsHTML();
-	selLayoutsHTML();
-	selPlatformsHTML();
 	selGamesRecordsHTML();
 	selStylesRecordsHTML();
+	selLayoutsHTML();
+	selPlatformsHTML();
 //	selKeystylesHTML();
 //	selBindingsHTML();
 	selLegendsHTML();
@@ -158,23 +125,13 @@
 	mysqli_close($con);
 
 	// validity checks
-	$game_seo		= $game_seo ? $game_seo : "unrecognized-game";
-	$temp_game_name		= $game_name ? $game_name : "Unrecognized Game";
-	$temp_layout_name	= $layout_name ? $layout_name : "Unrecognized Layout";
-	$temp_style_name	= $style_name ? $style_name : "Unrecognized Style";
-	$temp_platform_name	= $platform_name ? $platform_name : "Unrecognized Platform";
+	checkForErrors();
+
 	$thispage_title_a	= $temp_game_name;
 	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - GRID:" . $gamesrecord_id;
 
-	// validity checks (should check the layout here too... but)
-	if (!checkStyle($style_id))
-	{
-		$style_id = 15;
-		$fix_url = true;
-	}
-
-	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id;
-	$svg_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id;
+	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
+	$svg_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
 
 	// fix URL
 	if ($fix_url === true)
@@ -183,11 +140,23 @@
 		die();
 	}
 
-	// a bit of math
-	$layout_min_horizontal = -$layout_padding;
-	$layout_max_horizontal = $layout_padding * 2 + $layout_fullsize_width;
-	$layout_min_vertical = -$layout_padding;
-	$layout_max_vertical = $layout_padding * 2 + $layout_fullsize_height + $layout_legend_padding;
+	// layout outer bounds
+	if ($ten_bool == 0)
+	{
+		$layout_min_horizontal	= -$layout_padding;
+		$layout_max_horizontal	=  $layout_padding * 2 + $layout_tenkeyless_width;
+		$layout_min_vertical	= -$layout_padding;
+		$layout_max_vertical	=  $layout_padding * 2 + $layout_tenkeyless_height + $layout_legend_padding + $layout_legend_height;
+		$layout_legend_top	=  $layout_tenkeyless_height + $layout_legend_padding;
+	}
+	else if ($ten_bool == 1)
+	{
+		$layout_min_horizontal	= -$layout_padding;
+		$layout_max_horizontal	=  $layout_padding * 2 + $layout_fullsize_width;
+		$layout_min_vertical	= -$layout_padding;
+		$layout_max_vertical	=  $layout_padding * 2 + $layout_fullsize_height + $layout_legend_padding + $layout_legend_height;
+		$layout_legend_top	=  $layout_fullsize_height + $layout_legend_padding;
+	}
 ?>
 <?php
 	echo
@@ -217,7 +186,7 @@
 		</header>
 		<main>
 			<div class="svgdiv" style="position:relative;width:<?php echo $layout_max_horizontal; ?>px;height:<?php echo $layout_max_vertical; ?>px;">
-				<iframe src="<?php echo $svg_url; ?>" width="<?php echo $layout_max_horizontal; ?>px" height="<?php echo $layout_max_vertical; ?>px" sandbox style="border:none;margin:0;padding:0;">
+				<iframe src="<?php echo $svg_url; ?>" width="<?php echo $layout_max_horizontal; ?>" height="<?php echo $layout_max_vertical; ?>" sandbox style="border:none;margin:0;padding:0;">
 					<!--<img src="triangle.png" alt="Triangle with three unequal sides" />-->
 				</iframe>
 <?php

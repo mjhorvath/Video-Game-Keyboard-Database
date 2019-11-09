@@ -21,19 +21,25 @@
 
 function reloadThisPage(gameID, layoutID, gameSeo)
 {
-	var targetForm = document.forms["VisualStyleSwitch"];
-	var targetDropDown = targetForm.elements["style"];
-	var targetRadioBox = targetForm.elements["tech"];
-	var styleID = targetDropDown.value;
+	// gameID is no longer needed
+	var styleID = getValueFromDropDownList("VisualStyleSwitch", "style");
 	var formatID = getValueFromRadioButton("tech");
-	var locHref = "keyboard-diagram-" + gameSeo + ".php?sty=" + styleID + "&lay=" + layoutID + "&fmt=" + formatID;
+	var tenkeyBool = getValueFromRadioButton("tkey");
+	var locHref = "keyboard-diagram-" + gameSeo + ".php?sty=" + styleID + "&lay=" + layoutID + "&fmt=" + formatID + "&ten=" + tenkeyBool;
 	window.location.href = locHref;
 }
 
-function getValueFromRadioButton(name)
+function getValueFromDropDownList(formname, listname)
+{
+	var targetForm = document.forms[formname];
+	var targetDropDown = targetForm.elements[listname];
+	return targetDropDown.value;
+}
+
+function getValueFromRadioButton(buttonsname)
 {
 	//Get all elements with the name
-	var buttons = document.getElementsByName(name);
+	var buttons = document.getElementsByName(buttonsname);
 	for (var i = 0, n = buttons.length; i < n; i++)
 	{
 		//Check if button is checked

@@ -30,6 +30,7 @@
 
 	include($path_root. "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
+	include("./keyboard-queries.php");
 
 	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
  
@@ -88,8 +89,8 @@
 		}
 
 		// Maybe not a good idea to list one page for every game/layout combination.
-//		for ($j = 0; $j < count($platform_array); $j++)
-		for ($j = 0; $j < 1; $j++)
+		for ($j = 0; $j < count($platform_array); $j++)
+//		for ($j = 0; $j < 1; $j++)
 		{
 			$platform_id_pla = $platform_array[$j][0];
 			$platform_abbv_pla = $platform_array[$j][2];
@@ -99,7 +100,7 @@
 				for ($k = 0; $k < count($this_platform); $k++)
 				{
 					$this_layout = $this_platform[$k];
-					echo "&lt;url&gt;&lt;loc&gt;http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo_gam . ".php?sty=15&amp;amp;lay=" . $this_layout . "&amp;amp;fmt=0&lt;/loc&gt;&lt;changefreq&gt;yearly&lt;/changefreq&gt;&lt;/url&gt;\n";
+					echo "&lt;url&gt;&lt;loc&gt;http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo_gam . ".php?sty=15&amp;amp;lay=" . $this_layout . "&amp;amp;fmt=0&amp;amp;ten=1&lt;/loc&gt;&lt;changefreq&gt;yearly&lt;/changefreq&gt;&lt;/url&gt;\n";
 				}
 			}
 		}

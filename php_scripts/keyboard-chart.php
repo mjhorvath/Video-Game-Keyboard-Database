@@ -18,10 +18,11 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
+	// gather URL queries
 	$format_id	= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0")) : null;
 	$svg_bool	= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
 
-	// validity checks
+	// check URL queries validity
 	if ($format_id === null)
 	{
 		if ($svg_bool !== null)

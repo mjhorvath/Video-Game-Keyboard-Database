@@ -33,6 +33,7 @@
 
 	include($path_root. "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
+	include("./keyboard-queries.php");
 
 	$genre_array		= [];
 	$layout_array		= [];
@@ -53,13 +54,12 @@
 
 	mysqli_query($con, "SET NAMES 'utf8'");
 
-
+	// MySQL queries
 	selGenresList();
 	selGamesList();
 	selLayoutsList();
 	selGamesRecordsList();
 	selPlatformsList();
-
 
 	mysqli_close($con);
 
@@ -121,7 +121,7 @@
 				{
 					$this_layout_id = $these_layout_ids[$k];
 					$this_layout_name = $these_layout_names[$k];
-					echo "<dd><a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout_id . "&fmt=0\">" . $this_layout_name . "</a></dd>";
+					echo "<dd><a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout_id . "&fmt=0&ten=1\">" . $this_layout_name . "</a></dd>";
 				}
 			}
 		}

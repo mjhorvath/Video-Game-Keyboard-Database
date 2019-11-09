@@ -26,6 +26,7 @@
 	include($path_root . 'ssi/analyticstracking.php');
 	include($path_root . "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
+	include("./keyboard-queries.php");
 
 	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
  
@@ -38,12 +39,6 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	$path_root		= "../";
-	$game_seo		= array_key_exists("seo", $_GET) ? $_GET["seo"] : null;
-	$game_id		= array_key_exists("gam", $_GET) ? intval(ltrim($_GET["gam"], "0")) : null;
-	$style_id		= array_key_exists("sty", $_GET) ? intval(ltrim($_GET["sty"], "0")) : null;
-	$layout_id		= array_key_exists("lay", $_GET) ? intval(ltrim($_GET["lay"], "0")) : null;
-	$format_id		= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0")) : null;
-	$svg_bool		= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
 	$fix_url		= false;
 	$php_url		= "";
 	$svg_url		= "";
@@ -62,6 +57,7 @@
 	$author_table		= [];
 	$style_table		= [];
 	$style_group_table	= [];
+	$errors_table		= [];
 	$record_id		= 0;
 	$record_author		= "";
 	$combo_count		= 0;
@@ -73,7 +69,7 @@
 	$style_author		= "";
 	$game_name		= "";
 	$platform_name		= "";
-	$layout_platform	= 0;
+	$platform_id		= 0;
 	$layout_name		= "";
 	$string_title		= "";
 	$string_mouse		= "";
@@ -84,51 +80,18 @@
 	$layout_author		= "";
 	$string_description	= "";
 	$string_keywords	= "";
+	$temp_game_seo		= "";
+	$temp_game_name		= "";
+	$temp_layout_name	= "";
+	$temp_style_name	= "";
+	$temp_platform_name	= "";
 	$game_array		= [];
 
+	// gather and validate URL queries
+	gatherURLParameters();
+	checkURLParameters("html");
 
-	// validity checks
-	if ($game_id === null)
-	{
-		if ($game_seo !== null)
-		{
-			$selectString = "SELECT g.game_name, g.game_id FROM games AS g WHERE g.game_friendlyurl = \"" . $game_seo . "\";";
-			selectQuery($con, $selectString, "doGamesSEOHTML");
-		}
-		else
-		{
-			$game_id = 1;
-		}
-	}
-	if ($game_seo === null)
-	{
-		$fix_url = true;
-	}
-	if ($style_id === null)
-	{
-		$style_id = 15;
-		$fix_url = true;
-	}
-	if ($layout_id === null)
-	{
-		$layout_id = 1;
-		$fix_url = true;
-	}
-	if ($format_id === null)
-	{
-		if ($svg_bool !== null)
-		{
-			$format_id = $svg_bool;
-		}
-		else
-		{
-			$format_id == 2;
-		}
-		$fix_url = true;
-	}
-
-
-	selGamesHTML();
+	// MySQL queries
 	selAuthorsHTML();
 	selStyleGroupsHTML();
 	selStylesHTML();
@@ -147,19 +110,19 @@
 	mysqli_close($con);
 
 	// validity checks
-	$game_seo		= $game_seo ? $game_seo : "unrecognized-game";
-	$temp_game_name		= $game_name ? $game_name : "Unrecognized Game";
+	checkForErrors();
+
 	$thispage_title_a	= $temp_game_name;
 	$thispage_title_b	= " - MediaWiki keyboard diagram code";
 
-	$thispage_title	= $game_name ? $game_name : "Unrecognized Game";
-
-	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id;
+	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
+	$svg_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
 
 	// fix URL
 	if ($fix_url)
 	{
 		header("Location: " . $php_url);
+		die();
 	}
 ?>
 <!DOCTYPE HTML>
@@ -171,7 +134,7 @@
 "		<title>" . $thispage_title_a . $thispage_title_b . "</title>\n" .
 "		<link rel=\"canonical\" href=\"" . $php_url . "\"/>\n" .
 "		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>\n" .
-"		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_normalize.css\"/>\n" .
+"		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>\n" .
 "		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>\n" .
 "		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_mediawiki.css\"/>\n" .
 "		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n" .
@@ -187,7 +150,7 @@
 		</header>
 		<main>
 			<p>I have created templates for MediaWiki that do basically the same thing as the other charts on this site. You can find the templates as well as instructions on how to use them on StrategyWiki and Wikia, <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">here</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">here</a>. Below is the code you would use to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the generated chart is wider than a typical MediaWiki page.</p>
-			<textarea readonly="readonly" wrap="off" style="width:100%;height:30em;">
+			<textarea readonly="readonly" wrap="off" style="width:100%;height:30em;font-size:smaller;">
 {{kbdchart
 <?php
 	// keys

@@ -1,3 +1,3 @@
-p#butready {width:12em;height:6em;white-space:normal;text-align:left;padding:0.75em;color:#ffffff;background-color:#208020;border-radius:7px;border:3px double #208020;display:none;}
-p#buterror {width:12em;height:6em;white-space:normal;text-align:left;padding:0.75em;color:#ffffff;background-color:#802020;border-radius:7px;border:3px double #802020;display:none;}
+p#butready {width:12em;height:8em;white-space:normal;text-align:left;padding:0.75em;color:#ffffff;background-color:#208020;border-radius:7px;border:3px double #208020;display:none;}
+p#buterror {width:12em;height:8em;white-space:normal;text-align:left;padding:0.75em;color:#ffffff;background-color:#802020;border-radius:7px;border:3px double #802020;display:none;}
 input#butspawn {padding:0.75em;border-radius:7px;}
