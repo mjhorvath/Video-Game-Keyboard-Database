@@ -16,7 +16,7 @@
 	<li>2019/11/08: Consolidated URL parameter checking.</li>
 	<li>2019/11/08: Added support for turning the ten key pad on/off.</li>
 	<li>2019/10/16: Fixed bug in submission form.</li>
-	<li>2019/10/16: Added two English bindings for <i>ATOM RPG</i>, <i>Mutant Year Zero</i>, <i>Freespace 2</i>, <i>Undead Defense</i>, <i>The Watchers</i>.</li>
+	<li>2019/10/16: Added English bindings for <i>ATOM RPG</i>, <i>Mutant Year Zero</i>, <i>Freespace 2</i>, <i>Undead Defense</i>, and <i>The Watchers</i>.</li>
 	<li>2019/07/21: Added two Polish binding schemes and one Spanish binding scheme submitted by visitors to the site.</li>
 	<li>2019/07/21: Added the "PL 104 Key (Programmers)" layout.</li>
 	<li>2019/07/21: Added support for displaying both lowercase and uppercase AltGr commands in a layout. This is usually disabled however. I may redress this at a later date.</li>

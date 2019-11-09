@@ -60,6 +60,7 @@
 
 	echo
 "<h2>Sitemap Code</h2>
+<p>This form generates code that can be copied into the site's \"sitemap.xml\" file.</p>
 <textarea readonly=\"readonly\" wrap=\"off\" style=\"width:100%;height:30em;\">\n";
 
 	// using 'count()' here may be a bad idea in case there ever appear gaps in the table indexes due to deletions

@@ -191,31 +191,44 @@
 			<div id="fmt_check" class="acc_check">&#x2714;</div>
 			<div id="fmt_xmark" class="acc_xmark">&#x2718;</div>
 			<h2>4. Select a Format:</h2>
-			<label for="rad0" class="container">HTML/SVG
-				<input id="rad0" type="radio" name="fmtradio" value="0" checked="checked"/>
+			<label for="fmtrad0" class="container">HTML/SVG
+				<input id="fmtrad0" type="radio" name="fmtradio" value="0" checked="checked"/>
 				<span class="checkmark"></span>
 			</label>
-			<label for="rad1" class="container">SVG only
-				<input id="rad1" type="radio" name="fmtradio" value="1"/>
+			<label for="fmtrad1" class="container">SVG only
+				<input id="fmtrad1" type="radio" name="fmtradio" value="1"/>
 				<span class="checkmark"></span>
 			</label>
-			<label for="rad2" class="container">MediaWiki
-				<input id="rad2" type="radio" name="fmtradio" value="2"/>
+			<label for="fmtrad2" class="container">MediaWiki
+				<input id="fmtrad2" type="radio" name="fmtradio" value="2"/>
 				<span class="checkmark"></span>
 			</label>
-			<label for="rad3" class="container">Editor
-				<input id="rad3" type="radio" name="fmtradio" value="3"/>
+			<label for="fmtrad3" class="container">Editor
+				<input id="fmtrad3" type="radio" name="fmtradio" value="3"/>
 				<span class="checkmark"></span>
 			</label>
-			<label for="rad4" class="container"><s>PDF</s> [TBD]
-				<input id="rad4" type="radio" name="fmtradio" value="4" disabled="disabled"/>
+			<label for="fmtrad4" class="container"><s>PDF</s> [TBD]
+				<input id="fmtrad4" type="radio" name="fmtradio" value="4" disabled="disabled"/>
+				<span class="checkmark"></span>
+			</label>
+		</div>
+		<div class="acc_div">
+			<div id="ten_check" class="acc_check">&#x2714;</div>
+			<div id="ten_xmark" class="acc_xmark">&#x2718;</div>
+			<h2>5. Numeric keypad:</h2>
+			<label for="tenrad1" class="container">Show
+				<input id="tenrad1" type="radio" name="tenradio" value="1" checked="checked"/>
+				<span class="checkmark"></span>
+			</label>
+			<label for="tenrad0" class="container">Hide
+				<input id="tenrad0" type="radio" name="tenradio" value="0"/>
 				<span class="checkmark"></span>
 			</label>
 		</div>
 		<div class="acc_div">
 			<div id="but_check" class="acc_check">&#x2714;</div>
 			<div id="but_xmark" class="acc_xmark">&#x2718;</div>
-			<h2>5. Create the Diagram:</h2>
+			<h2>6. Create the Diagram:</h2>
 			<input id="butspawn" type="button" value="Create New Diagram" onclick="Check_Values_and_Spawn()"/>
 			<p id="butready">All set! Now click the &quot;Create New Diagram&quot; button, above. This will spawn a new browser window with the keyboard diagram.</p>
 			<p id="buterror">Try selecting a keyboard, theme, game and format, and create the diagram again!</p>
@@ -231,6 +244,7 @@
 	<li>Select a theme (visual formatting).</li>
 	<li>Select a game (key bindings).</li>
 	<li>Select a format (output media type).</li>
+	<li>Toggle the numeric keypad on/off.</li>
 	<li>Click on the 'Create New Diagram' button. A new window with your selected diagram will appear.</li>
 	<li>View or print the page in the new window.</li>
 </ol>

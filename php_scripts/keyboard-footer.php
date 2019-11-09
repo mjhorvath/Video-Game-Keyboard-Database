@@ -35,7 +35,7 @@
 	if (($stylesrecord_author) && ($stylesrecord_author != "Michael Horvath"))
 	{
 		echo
-"Style design created by: " . $stylesrecord_author . ". ";
+"Theme designed by: " . $stylesrecord_author . ". ";
 	}
 	echo
 "				</p>
@@ -94,7 +94,7 @@
 							</td>
 						</tr>
 						<tr style=\"display:" . $display_tenkey . ";\">
-							<th>Tenkey:</th>
+							<th>Numpad:</th>
 							<td>
 								<input class=\"stylechange\" type=\"radio\" name=\"tkey\" id=\"tkeyrad1\" value=\"1\" " . ($ten_bool == 1 ? "checked" : "") . ">&nbsp;<label for=\"tkeyrad1\">Show</label>
 								<input class=\"stylechange\" type=\"radio\" name=\"tkey\" id=\"tkeyrad0\" value=\"0\" " . ($ten_bool == 0 ? "checked" : "") . ">&nbsp;<label for=\"tkeyrad0\">Hide</label>
