@@ -61,9 +61,9 @@
 	$style_group_table	= [];
 	$errors_table		= [];
 	$gamesrecord_id		= 0;
-	$gamesrecord_author	= "";
+	$gamesrecord_authors	= [];
 	$stylesrecord_id	= 0;
-	$stylesrecord_author	= "";
+	$stylesrecord_authors	= [];
 	$legend_count		= 12;
 	$combo_count		= 0;
 	$mouse_count		= 0;
@@ -78,7 +78,7 @@
 	$platform_name		= "";
 	$platform_id		= 0;
 	$layout_name		= "";
-	$layout_author		= "";
+	$layout_authors		= [];
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
 	$temp_game_seo		= "";
@@ -118,6 +118,9 @@
 	selBindingsHTML();
 	selLegendsHTML();
 	selCommandsHTML();
+	selContribGamesHTML();
+	selContribStylesHTML();
+	selContribLayoutsHTML();
 
 
 	mysqli_close($con);

@@ -4,17 +4,15 @@
 * Continue developing the "Spreadsheet View" of the submission form, and permit 
   users to alter or update the keyboard data using it.
 * I should change all the various JavaScript alert boxes to something prettier.
-* Add timestamp columns to the various SQL tables to record the dates and times 
-  when records were added or modified.
 * I would also like to create charts/diagrams for gamepads, mice and joysticks. 
   But the sheer number of different devices will make this task very difficult.
-* Not sure whether the sitemap should list each game once for every platform/
-  layout, or only once, period. Does it confuse the search engines to have 
-  multiples of each game?
-* Should the accordion menus be sorted alphabetically using PHP or JS, or 
-  should I add a "displayorder" column to each SQL table? If I can come up with 
-  an easy way to update such a "displayorder" column using SQL commands, then I 
-  may add them. Updating such a column manually would be a PITA.
+* Not sure whether the XML sitemap should list each game once for every 
+  platform/layout, or only once, period. Does it confuse the search engines to 
+  have multiple diagrams for each game?
+* Should the accordion menus be sorted alphabetically, or should I add a 
+  "displayorder" column to each SQL table? If I can come up with an easy way to 
+  update a "displayorder" column using SQL commands, then I may add one to each 
+  of the tables. Updating such a column manually would be a PITA, however.
 * Should the mouse, joystick, etc. commands be lined up neatly into pairs with 
   the left and right parts separated by an equal '=' sign? For instance using a 
   table? Or should I instead use a definition/description list? This should not 
@@ -25,8 +23,6 @@
   necessitate? Is this even possible using MySQL?
 * How granular do I want to get WRT video game genres? Should I list sub-genres 
   and sub-sub-genres? How many genres? Which ones?
-* Maybe rename "Win" key to "Super" or "Meta" as per some custom keyboard 
-  manufacturers?
 * Find out if the GitHub Powershell tool can accept multi-line commit messages.
 * I merged the HTML and SVG formats into one format. The diagrams are no longer 
   rendered using pure HTML code, and the SVG file is now once again embedded 
@@ -55,25 +51,26 @@
   column when adding "Additional Notes" to the table. Unlike the other command 
   types, the "Additional Notes" category usually leaves that column blank.
 * Need to create a form for users to create and submit new keyboard layouts 
-  with. Or, support layout scripts created using other software, for instance 
-  those created using 
+  with. Or, support layout scripts created using other software such as 
   [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/).
-* Whether or not to show lower case key caps should maybe be a per-game setting 
-  rather than a per-layout setting. Or, allow users toggle them on/off.
-* Since the main diagrams are now rendered in SVG, I could make the Enter key 
-  in the European ISO layouts the correct "L" shape. I.e. a polygon with six 
-  vertices instead of four vertices. However, the database does not support non-
-  rectangular keys.
+* Whether or not to show lower-case key caps should maybe be a per-game setting 
+  rather than a per-layout setting. Or, allow users toggle them on/off manually.
+* Since the main diagrams are now rendered in SVG, I could make it so the Enter 
+  key on the European ISO layouts have the correct "L" shape. I.e. a polygon 
+  with six vertices instead a rectangle with four vertices. However, the 
+  database currently only stores a key's position, width and height - not its 
+  vertices.
 * Need to switch to using something other than JavaScript alert boxes for 
-  providing the users with feedback, since alert boxes can be disabled by users.
-* The warning about unset/missing caption colors could benefit from a checkbox 
-  to enable or disable the warning. It could go beneath the "Enter new lines by 
-  typing \n" message, since there are not any other configurable settings 
-  currently.
+  providing users with feedback. Alert boxes can be disabled by users in some 
+  browsers.
+* The warning about unset/missing caption colors on the submission form could 
+  benefit from a checkbox allowing users to enable or disable future warnings. 
+  It could go beneath the "Enter new lines by typing \n" message in the left 
+  pane.
 * Automatically send confirmation emails to anyone who completes the submission 
   form. Also, do this for the email form on my main website too.
-* Should be able to easily create "Typing Reference" schemes for the other 
-  keyboards as well. I would like to have the GUI strings translated into the 
+* I should be able to easily create "Typing Reference" schemes for every 
+  keyboard layout. I would like to have the GUI strings translated into their 
   respective languages first, however.
 * Users of the submission form should be able to specify a layout using a drop-
   down list or whatever. Users are already able to specify and edit a "blank 
@@ -87,12 +84,12 @@
   easier to print.
 * The TSV code on the Spreadsheet page of the submission form is not always 
   lining up properly. Need to set the container to overflow instead of wrap.
-* Currently, the "layouts", "records_games" and "records_styles" tables each 
-  have an "author_id" column. However, this column can only store a single 
-  author ID, and does not record the time and date when an update was made. I 
-  would rather log changes like Wikipedia or GitHub does, with a record of 
-  users, as well as a timestamp. Recording the actual content that was added or 
-  removed may be overkill, however.
+* The tables "contrib_layouts", "contrib_games" and "contrib_styles" are 
+  missing time and date stamps indicating when items were created or modified.
+* I would like to audit changes to the database with a record of who made each 
+  change and when. Recording the actual content that was changed may be 
+  overkill, though. Maybe I can install a versioning system intended 
+  specifically for databases.
 * Auditing changes to the database might be easier if I write a frontend tool 
   for users to make changes with, versus doing everything myself in MySQL 
   Workbench. Also, IIRC, there are issues related to creating and running 
@@ -118,6 +115,9 @@
 * Need to create one or more styles that are accessible to people with color-
   blindness.
 * Several of the PHP and JS files should not be directly accessible via the Web.
+* The "Create New Diagram" button on the frontend page should have a "hover" 
+  effect that changes the button's color.
+* Maybe replace "up", "down", "right", "left" with arrow icons?
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
@@ -125,9 +125,7 @@
 * The key caption legend should also be configurable. Right now it always says 
   "SHIFT", "CTRL", "ALT", etc. and can't be customized. Not sure which table to 
   put this stuff in. There will need to be a way to turn each string on and off 
-  as well as insert a value. [Ed. I went ahead and created the table. However, 
-  the table is empty until I think of a way to let users modify these strings 
-  in the submission form.]
+  as well as insert a value.
 
 ### Rejected
 * Implement a "languages" table. [Ed. It may be sufficient to simply tie the 
@@ -182,3 +180,8 @@
 * Submission form may not be generating enough table columns for the "bindings" 
   table.
 * Add a toggle to turn the numpad on and off.
+* Maybe rename "Win" key to "Super" or "Meta" as per many Linuxes and custom 
+  keyboards?
+* Currently, the "layouts", "records_games" and "records_styles" tables each 
+  have an "author_id" column. However, this column can only store a single 
+  author ID whereas multiple people might have actually worked on an item.

@@ -50,9 +50,9 @@
 	$author_table		= [];
 	$style_table		= [];
 	$gamesrecord_id		= 0;
-	$gamesrecord_author	= "";
+	$gamesrecord_authors	= [];
 	$stylesrecord_id	= 0;
-	$stylesrecord_author	= "";
+	$stylesrecord_authors	= [];
 	$combo_count		= 0;
 	$mouse_count		= 0;
 	$joystick_count		= 0;
@@ -73,7 +73,7 @@
 	$layout_combos		= "";
 	$layout_notes		= "";
 	$layout_legend		= "";		// heading was removed from the database
-	$layout_author		= "";
+	$layout_authors		= [];
 	$layout_description	= "";
 	$layout_keywords	= "";
 	$layout_language	= "";
@@ -121,6 +121,9 @@
 //	selBindingsHTML();
 	selLegendsHTML();
 	selCommandsHTML();
+	selContribGamesHTML();
+	selContribStylesHTML();
+	selContribLayoutsHTML();
 
 	mysqli_close($con);
 

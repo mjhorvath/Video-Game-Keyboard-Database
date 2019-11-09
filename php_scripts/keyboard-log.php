@@ -11,14 +11,15 @@
 ?>
 <h2>News &amp; Updates</h2>
 <ul>
-	<li>2019/11/08: Added "SVG only" as a possible format. Note, however, the "SVG only" format has no page footer with controls.</li>
+	<li>2019/11/09: Multiple authors can now be listed for each binding scheme, keyboard layout, or theme.</li>
+	<li>2019/11/08: Added "SVG only" as a possible format. Note, however, that the "SVG only" format has no page footer at the bottom with controls.</li>
 	<li>2019/11/08: Moved all SQL queries to their own file.</li>
 	<li>2019/11/08: Consolidated URL parameter checking.</li>
-	<li>2019/11/08: Added support for turning the ten key pad on/off.</li>
+	<li>2019/11/08: Added support for toggling the numeric keypad on/off.</li>
 	<li>2019/10/16: Fixed bug in submission form.</li>
 	<li>2019/10/16: Added English bindings for <i>ATOM RPG</i>, <i>Mutant Year Zero</i>, <i>Freespace 2</i>, <i>Undead Defense</i>, and <i>The Watchers</i>.</li>
 	<li>2019/07/21: Added two Polish binding schemes and one Spanish binding scheme submitted by visitors to the site.</li>
-	<li>2019/07/21: Added the "PL 104 Key (Programmers)" layout.</li>
+	<li>2019/07/21: Added the "PL 104 Key (Programmers)" layout by request.</li>
 	<li>2019/07/21: Added support for displaying both lowercase and uppercase AltGr commands in a layout. This is usually disabled however. I may redress this at a later date.</li>
 	<li>2019/04/12: Added bindings for the "Keyboard Scan Codes" scheme and the "ES 105 Key" layout.</li>
 	<li>2019/04/10: Lots of CSS tweaks. Renamed several files back to the old "embed" conventions. Created the "captions" table to store labels that go into the key cap legends, although it is currently still empty. Switched the order in which key captions are rendered in the submissions form so that the "Grayscale" theme works better.</li>
@@ -174,6 +175,9 @@
 			<li>Cris</li>
 			<li>Daniel</li>
 			<li>etejam</li>
+			<li>Luke Fanning</li>
+			<li>Hunter Mansanas</li>
+			<li>Lucas</li>
 		</ul>
 	</li>
 </ul>

@@ -52,14 +52,14 @@
 	$style_filename		= "";
 	$style_name		= "";
 	$gamesrecord_id		= 0;
-	$gamesrecord_author	= "";
+	$gamesrecord_authors	= [];
 	$stylesrecord_id	= 0;
-	$stylesrecord_author	= "";
+	$stylesrecord_authors	= [];
 	$game_name		= "";
 	$platform_name		= "";
 	$platform_id		= 0;
 	$layout_name		= "";
-	$layout_author		= "";
+	$layout_authors		= [];
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
 	$layout_padding		= 18;
@@ -106,6 +106,9 @@
 	selKeystylesSVG();
 	selBindingsSVG();
 	selLegendsSVG();
+	selContribGamesSVG();
+	selContribStylesSVG();
+	selContribLayoutsSVG();
 
 	mysqli_close($con);
 
@@ -151,20 +154,35 @@ United States License. To view a copy of this license, visit
 http://creativecommons.org/licenses/by-sa/3.0/us/ or send a letter to Creative
 Commons, PO Box 1866, Mountain View, CA 94042, USA.
 <?php
-	if (($gamesrecord_author) && ($gamesrecord_author != "Michael Horvath"))
+	echo "Binding scheme created by: ";
+	$count_authors = count($gamesrecord_authors);
+	for ($i = 0; $i < $count_authors; $i++)
 	{
-		echo
-"Binding scheme by: " . $gamesrecord_author . ".\n";
+		echo $gamesrecord_authors[$i];
+		if ($i < $count_authors - 1)
+			echo ", ";
+		else
+			echo ".\n";
 	}
-	if (($layout_author) && ($layout_author != "Michael Horvath"))
+	echo "Keyboard layout created by: ";
+	$count_authors = count($layout_authors);
+	for ($i = 0; $i < $count_authors; $i++)
 	{
-		echo
-"Keyboard layout by: " . $layout_author . ".\n";
+		echo $layout_authors[$i];
+		if ($i < $count_authors - 1)
+			echo ", ";
+		else
+			echo ".\n";
 	}
-	if (($stylesrecord_author) && ($stylesrecord_author != "Michael Horvath"))
+	echo "Theme created by: ";
+	$count_authors = count($stylesrecord_authors);
+	for ($i = 0; $i < $count_authors; $i++)
 	{
-		echo
-"Style design by: " . $stylesrecord_author . ".\n";
+		echo $stylesrecord_authors[$i];
+		if ($i < $count_authors - 1)
+			echo ", ";
+		else
+			echo ".\n";
 	}
 ?>
 -->

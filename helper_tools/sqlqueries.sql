@@ -19,7 +19,19 @@ FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n';
 
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\helper_tools\\_contributions.txt' INTO TABLE isometr1_keyboard.contributions
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\helper_tools\\_contrib_games.txt' INTO TABLE isometr1_keyboard.contrib_games
+CHARACTER SET 'utf8'
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\r\n';
+
+SET FOREIGN_KEY_CHECKS = 0;
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\helper_tools\\_contrib_styles.txt' INTO TABLE isometr1_keyboard.contrib_styles
+CHARACTER SET 'utf8'
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\r\n';
+
+SET FOREIGN_KEY_CHECKS = 0;
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\helper_tools\\_contrib_layouts.txt' INTO TABLE isometr1_keyboard.contrib_layouts
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n';

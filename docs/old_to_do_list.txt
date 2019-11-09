@@ -1,18 +1,21 @@
 TO-DO LIST
+Need to merge this stuff into the main to-do list.
+
 + image files
   + done
 + altgr keys
   + done
 + extra keys
   + done
-+ title translations
-  + done
+- title and other translations
+  - needs work
 + make sure all special/foreign characters got converted/recorded correctly
   + hopefully done
 - add the remaining meta header tags to PHP pages
-  - which tags am I referring to?
-- implement (IE-only) CSS effect filters
-  - figure out why IE8 is misbehaving on the rotation filter
+  - which tags was I referring to?
+~ implement (IE-only) CSS effect filters
+  ~ figure out why IE8 is misbehaving on the rotation filter
+  ~ MS stopped developing IE and non-Chromium Edge
 + move all style properties to stylesheets
   + done
 + input/output
@@ -25,12 +28,12 @@ TO-DO LIST
   + done
 + update the submission form
   + done
-- when selecting a class/group from the drop-down list in the submission form the list should change color too
-  - works correctly in IE but not in Firefox
+~ when selecting a class/group from the drop-down list in the submission form the list should change color too
+  ~ works correctly in IE but not in Firefox
 + split the submission key table into two parts with the key name on the left side and all the commands on the right so that the key names are always visible
   + done
 + add support for command groupings on SHIFT, ALT, etc. bindings
-  + done, but not used inconsistently and not actually rendered on the page
+  + done, but not used inconsistently, and not actually rendered on the page
 + fix captcha image problems on the submission form where a failed check results in the form fields being cleared upon going back to the submission
   + done
 + in the "commands" table move the "layout_id" column upward one spot so it matches the position in the other tables
@@ -51,7 +54,8 @@ x in the "legends" table rename "legend_group" column to "group_id"
   + done
 - some characters are still escaped in the page title
   - which characters?
-- stretchy text for large strings, like in Excel
+- stretchy text for long strings, like in Excel
+  - may not work in the same way for both HTML and SVG
 + sortable table instead of alphabetical list
   + done
 - sort genres and other tables on front page alphabetically
@@ -59,9 +63,9 @@ x in the "legends" table rename "legend_group" column to "group_id"
 + green checkmarks and red Xs when selecting game, layout, style, etc.
   + done
 + contributers' names need to show up in the SVG output too
-  + contributers are listed in the SVG source code
+  + contributers are now listed in the SVG source code
 + upload the website and database to github
   + done
-- split coloring when a key has more than one use
-  - may be difficult to implement, or confuse people
-- need to show game and style names translated into different languages
+~ split coloring when a key has more than one use
+  ~ may be difficult to implement, or confuse people
+- need to also localize game and style names into different languages

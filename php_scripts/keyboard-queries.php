@@ -161,6 +161,24 @@
 
 	// ---------------------------------------------------------------------
 	// HTML
+	function selContribGamesHTML()
+	{
+		global $con, $gamesrecord_id;
+		$selectString = "SELECT c.author_id FROM contrib_games as c WHERE c.record_id = " . $gamesrecord_id . ";";
+		selectQuery($con, $selectString, "doContribGamesHTML");
+	}
+	function selContribStylesHTML()
+	{
+		global $con, $stylesrecord_id;
+		$selectString = "SELECT c.author_id FROM contrib_styles as c WHERE c.record_id = " . $stylesrecord_id . ";";
+		selectQuery($con, $selectString, "doContribStylesHTML");
+	}
+	function selContribLayoutsHTML()
+	{
+		global $con, $layout_id;
+		$selectString = "SELECT c.author_id FROM contrib_layouts as c WHERE c.layout_id = " . $layout_id . ";";
+		selectQuery($con, $selectString, "doContribLayoutsHTML");
+	}
 	function selGamesHTML_ID()
 	{
 		global $con, $game_id;
@@ -206,7 +224,7 @@
 	function selLayoutsHTML()
 	{
 		global $con, $layout_id;
-		$selectString = "SELECT l.platform_id, l.layout_name, l.author_id, l.layout_keysnum, l.layout_fullsize_width, l.layout_fullsize_height, l.layout_tenkeyless_width, l.layout_tenkeyless_height, l.layout_language, l.layout_description FROM layouts AS l WHERE l.layout_id = " . $layout_id . ";";
+		$selectString = "SELECT l.platform_id, l.layout_name, l.layout_keysnum, l.layout_fullsize_width, l.layout_fullsize_height, l.layout_tenkeyless_width, l.layout_tenkeyless_height, l.layout_language, l.layout_description FROM layouts AS l WHERE l.layout_id = " . $layout_id . ";";
 		selectQuery($con, $selectString, "doLayoutsHTML");
 	}
 	function selPlatformsHTML()
@@ -218,13 +236,13 @@
 	function selGamesRecordsHTML()
 	{
 		global $con, $layout_id, $game_id;
-		$selectString = "SELECT r.record_id, r.author_id FROM records_games AS r WHERE r.layout_id = " . $layout_id . " AND r.game_id = " . $game_id . ";";
+		$selectString = "SELECT r.record_id FROM records_games AS r WHERE r.layout_id = " . $layout_id . " AND r.game_id = " . $game_id . ";";
 		selectQuery($con, $selectString, "doGamesRecordsHTML");
 	}
 	function selStylesRecordsHTML()
 	{
 		global $con, $layout_id, $style_id;
-		$selectString = "SELECT r.record_id, r.author_id FROM records_styles AS r WHERE r.layout_id = " . $layout_id . " AND r.style_id = " . $style_id . ";";
+		$selectString = "SELECT r.record_id FROM records_styles AS r WHERE r.layout_id = " . $layout_id . " AND r.style_id = " . $style_id . ";";
 		selectQuery($con, $selectString, "doStylesRecordsHTML");
 	}
 	function selKeystylesHTML()
@@ -250,6 +268,33 @@
 		global $con, $gamesrecord_id;
 		$selectString = "SELECT c.commandtype_id, c.command_text, c.command_description FROM commands AS c WHERE c.record_id = " . $gamesrecord_id . ";";
 		selectQuery($con, $selectString, "doCommandsHTML");
+	}
+	function doContribGamesHTML($in_result)
+	{
+		global $gamesrecord_authors;
+		while ($temp_row = mysqli_fetch_row($in_result))
+		{
+			// author_id
+			$gamesrecord_authors[] = cleantextHTML(getAuthorName($temp_row[0]));
+		}
+	}
+	function doContribStylesHTML($in_result)
+	{
+		global $stylesrecord_authors;
+		while ($temp_row = mysqli_fetch_row($in_result))
+		{
+			// author_id
+			$stylesrecord_authors[] = cleantextHTML(getAuthorName($temp_row[0]));
+		}
+	}
+	function doContribLayoutsHTML($in_result)
+	{
+		global $layout_authors;
+		while ($temp_row = mysqli_fetch_row($in_result))
+		{
+			// author_id
+			$layout_authors[] = cleantextHTML(getAuthorName($temp_row[0]));
+		}
 	}
 	function doStyleGroupsHTML($in_result)
 	{
@@ -389,39 +434,36 @@
 	}
 	function doGamesRecordsHTML($in_result)
 	{
-		global $gamesrecord_id, $gamesrecord_author;
+		global $gamesrecord_id;
 		$gamesrecord_row = mysqli_fetch_row($in_result);
-		// record_id, author_id
+		// record_id
 		$gamesrecord_id = $gamesrecord_row[0];
-		$gamesrecord_author = cleantextHTML(getAuthorName($gamesrecord_row[1]));
 	}
 	function doStylesRecordsHTML($in_result)
 	{
-		global $stylesrecord_id, $stylesrecord_author;
+		global $stylesrecord_id;
 		$stylesrecord_row = mysqli_fetch_row($in_result);
-		// record_id, author_id
+		// record_id
 		$stylesrecord_id = $stylesrecord_row[0];
-		$stylesrecord_author = cleantextHTML(getAuthorName($stylesrecord_row[1]));
 	}
 	// need to move the stuff that used to be here to `doLanguages`
 	function doLayoutsHTML($in_result)
 	{
-		global $gamesrecord_id, $platform_id, $layout_name, $layout_author, $layout_keysnum, $layout_fullsize_width, $layout_fullsize_height, $layout_tenkeyless_width, $layout_tenkeyless_height, $layout_language, $layout_description;
-		// platform_id, layout_name, author_id, layout_keysnum, layout_fullsize_width, layout_fullsize_height, layout_tenkeyless_width, layout_tenkeyless_height, layout_language
+		global $gamesrecord_id, $platform_id, $layout_name, $layout_keysnum, $layout_fullsize_width, $layout_fullsize_height, $layout_tenkeyless_width, $layout_tenkeyless_height, $layout_language, $layout_description;
+		// platform_id, layout_name, layout_keysnum, layout_fullsize_width, layout_fullsize_height, layout_tenkeyless_width, layout_tenkeyless_height, layout_language
 		$layout_row		= mysqli_fetch_row($in_result);
 		$platform_id		= $layout_row[0];
 		$layout_name		= cleantextHTML($layout_row[1]);
-		$layout_author		= cleantextHTML(getAuthorName($layout_row[2]));
-		$layout_keysnum		= $layout_row[3];
+		$layout_keysnum		= $layout_row[2];
 		if ($gamesrecord_id > 0)
 		{
-			$layout_fullsize_width		= $layout_row[4];
-			$layout_fullsize_height		= $layout_row[5];
-			$layout_tenkeyless_width	= $layout_row[6];
-			$layout_tenkeyless_height	= $layout_row[7];
+			$layout_fullsize_width		= $layout_row[3];
+			$layout_fullsize_height		= $layout_row[4];
+			$layout_tenkeyless_width	= $layout_row[5];
+			$layout_tenkeyless_height	= $layout_row[6];
 		}
-		$layout_language	= $layout_row[8];
-		$layout_description	= $layout_row[9];
+		$layout_language	= $layout_row[7];
+		$layout_description	= $layout_row[8];
 	}
 	function doAuthorsHTML($in_result)
 	{
@@ -435,6 +477,24 @@
 
 	// ---------------------------------------------------------------------
 	// SVG
+	function selContribGamesSVG()
+	{
+		global $con, $gamesrecord_id;
+		$selectString = "SELECT c.author_id FROM contrib_games as c WHERE c.record_id = " . $gamesrecord_id . ";";
+		selectQuery($con, $selectString, "doContribGamesSVG");
+	}
+	function selContribStylesSVG()
+	{
+		global $con, $stylesrecord_id;
+		$selectString = "SELECT c.author_id FROM contrib_styles as c WHERE c.record_id = " . $stylesrecord_id . ";";
+		selectQuery($con, $selectString, "doContribStylesSVG");
+	}
+	function selContribLayoutsSVG()
+	{
+		global $con, $layout_id;
+		$selectString = "SELECT c.author_id FROM contrib_layouts as c WHERE c.layout_id = " . $layout_id . ";";
+		selectQuery($con, $selectString, "doContribLayoutsSVG");
+	}
 	function selGamesSVG_ID()
 	{
 		global $con, $game_id;
@@ -480,7 +540,7 @@
 	function selLayoutsSVG()
 	{
 		global $con, $layout_id;
-		$selectString = "SELECT l.platform_id, l.layout_name, l.author_id, l.layout_keysnum, l.layout_fullsize_width, l.layout_fullsize_height, l.layout_tenkeyless_width, l.layout_tenkeyless_height FROM layouts AS l WHERE l.layout_id = " . $layout_id . ";";
+		$selectString = "SELECT l.platform_id, l.layout_name, l.layout_keysnum, l.layout_fullsize_width, l.layout_fullsize_height, l.layout_tenkeyless_width, l.layout_tenkeyless_height FROM layouts AS l WHERE l.layout_id = " . $layout_id . ";";
 		selectQuery($con, $selectString, "doLayoutsSVG");
 	}
 	function selPlatformsSVG()
@@ -492,13 +552,13 @@
 	function selGamesRecordsSVG()
 	{
 		global $con, $layout_id, $game_id;
-		$selectString = "SELECT r.record_id, r.author_id FROM records_games AS r WHERE r.layout_id = " . $layout_id . " AND r.game_id = " . $game_id . ";";
+		$selectString = "SELECT r.record_id FROM records_games AS r WHERE r.layout_id = " . $layout_id . " AND r.game_id = " . $game_id . ";";
 		selectQuery($con, $selectString, "doGamesRecordsSVG");
 	}
 	function selStylesRecordsSVG()
 	{
 		global $con, $layout_id, $style_id;
-		$selectString = "SELECT r.record_id, r.author_id FROM records_styles AS r WHERE r.layout_id = " . $layout_id . " AND r.style_id = " . $style_id . ";";
+		$selectString = "SELECT r.record_id FROM records_styles AS r WHERE r.layout_id = " . $layout_id . " AND r.style_id = " . $style_id . ";";
 		selectQuery($con, $selectString, "doStylesRecordsSVG");
 	}
 	function selKeystylesSVG()
@@ -518,6 +578,33 @@
 		global $con, $gamesrecord_id;
 		$selectString = "SELECT l.legend_group, l.legend_description FROM legends AS l WHERE l.record_id = " . $gamesrecord_id . " ORDER BY l.legend_group;";
 		selectQuery($con, $selectString, "doLegendsSVG");
+	}
+	function doContribGamesSVG($in_result)
+	{
+		global $gamesrecord_authors;
+		while ($temp_row = mysqli_fetch_row($in_result))
+		{
+			// author_id
+			$gamesrecord_authors[] = cleantextSVG(getAuthorName($temp_row[0]));
+		}
+	}
+	function doContribStylesSVG($in_result)
+	{
+		global $stylesrecord_authors;
+		while ($temp_row = mysqli_fetch_row($in_result))
+		{
+			// author_id
+			$stylesrecord_authors[] = cleantextSVG(getAuthorName($temp_row[0]));
+		}
+	}
+	function doContribLayoutsSVG($in_result)
+	{
+		global $layout_authors;
+		while ($temp_row = mysqli_fetch_row($in_result))
+		{
+			// author_id
+			$layout_authors[] = cleantextSVG(getAuthorName($temp_row[0]));
+		}
 	}
 	function doStyleGroupsSVG($in_result)
 	{
@@ -617,35 +704,32 @@
 	}
 	function doGamesRecordsSVG($in_result)
 	{
-		global $gamesrecord_id, $gamesrecord_author;
+		global $gamesrecord_id;
 		$gamesrecord_row = mysqli_fetch_row($in_result);
-		// record_id, author_id
+		// record_id
 		$gamesrecord_id = $gamesrecord_row[0];
-		$gamesrecord_author = cleantextSVG(getAuthorName($gamesrecord_row[1]));
 	}
 	function doStylesRecordsSVG($in_result)
 	{
-		global $stylesrecord_id, $stylesrecord_author;
+		global $stylesrecord_id;
 		$stylesrecord_row = mysqli_fetch_row($in_result);
-		// record_id, author_id
+		// record_id
 		$stylesrecord_id = $stylesrecord_row[0];
-		$stylesrecord_author = cleantextSVG(getAuthorName($stylesrecord_row[1]));
 	}
 	function doLayoutsSVG($in_result)
 	{
-		global $gamesrecord_id, $platform_id, $layout_name, $layout_author, $layout_keysnum, $layout_fullsize_width, $layout_fullsize_height, $layout_tenkeyless_width, $layout_tenkeyless_height;
-		// platform_id, layout_name, author_id, layout_keysnum, layout_fullsize_width, layout_fullsize_height, layout_tenkeyless_width, layout_tenkeyless_height
+		global $gamesrecord_id, $platform_id, $layout_name, $layout_keysnum, $layout_fullsize_width, $layout_fullsize_height, $layout_tenkeyless_width, $layout_tenkeyless_height;
+		// platform_id, layout_name, layout_keysnum, layout_fullsize_width, layout_fullsize_height, layout_tenkeyless_width, layout_tenkeyless_height
 		$layout_row		= mysqli_fetch_row($in_result);
 		$platform_id		= $layout_row[0];
 		$layout_name		= cleantextSVG($layout_row[1]);
-		$layout_author		= cleantextSVG(getAuthorName($layout_row[2]));
-		$layout_keysnum		= $layout_row[3];
+		$layout_keysnum		= $layout_row[2];
 		if ($gamesrecord_id > 0)
 		{
-			$layout_fullsize_width		= $layout_row[4];
-			$layout_fullsize_height		= $layout_row[5];
-			$layout_tenkeyless_width	= $layout_row[6];
-			$layout_tenkeyless_height	= $layout_row[7];
+			$layout_fullsize_width		= $layout_row[3];
+			$layout_fullsize_height		= $layout_row[4];
+			$layout_tenkeyless_width	= $layout_row[5];
+			$layout_tenkeyless_height	= $layout_row[6];
 		}
 	}
 	function doAuthorsSVG($in_result)

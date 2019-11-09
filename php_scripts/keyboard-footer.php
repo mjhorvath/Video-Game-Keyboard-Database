@@ -21,26 +21,7 @@
 "			<div class=\"boxdiv\">
 				<p><a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\"><img alt=\"GNU LGPLv3 icon\" src=\"" . $path_root . "images/license_lgpl_88x31.png\" /></a><a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/3.0/\"><img alt=\"CC BY-SA 3.0 icon\" style=\"border-width:0;\" src=\"" . $path_root . "images/license_cc-by-sa_88x31.png\" /></a></p>
 				<p>&quot;Video Game Keyboard Diagrams&quot; software was created by Michael Horvath and is licensed under <a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\">GNU LGPLv3</a> or later license. Content is licensed under <a target=\"_blank\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CC BY-SA 3.0</a> or later license. You can find this project on <a target=\"_blank\" href=\"https://github.com/mjhorvath/vgkd\">GitHub</a>.</p>
-				<p>\n";
-	if (($gamesrecord_author) && ($gamesrecord_author != "Michael Horvath"))
-	{
-		echo
-"Binding scheme created by: " . $gamesrecord_author . ". ";
-	}
-	if (($layout_author) && ($layout_author != "Michael Horvath"))
-	{
-		echo
-"Keyboard layout created by: " . $layout_author . ". ";
-	}
-	if (($stylesrecord_author) && ($stylesrecord_author != "Michael Horvath"))
-	{
-		echo
-"Theme designed by: " . $stylesrecord_author . ". ";
-	}
-	echo
-"				</p>
-				<p>Return to <a href=\"keyboard.php\">Video Game Keyboard Diagrams</a>. View the <a href=\"keyboard-list.php\">master list</a>. Having trouble printing? Take a look at <a href=\"keyboard.php#print_tips\">these printing tips</a>.</p>
-";
+				<p>Return to <a href=\"keyboard.php\">Video Game Keyboard Diagrams</a>. View the <a href=\"keyboard-list.php\">master list</a>. Having trouble printing? Take a look at <a href=\"keyboard.php#print_tips\">these printing tips</a>.</p>\n";
 	// display toggles
 	// need to replace table with non-table markup
 	echo
@@ -108,6 +89,39 @@
 						</tr>
 					</table>
 				</form>
+				<p>\n";
+	echo "Binding scheme created by: ";
+	$count_authors = count($gamesrecord_authors);
+	for ($i = 0; $i < $count_authors; $i++)
+	{
+		echo $gamesrecord_authors[$i];
+		if ($i < $count_authors - 1)
+			echo ", ";
+		else
+			echo ".\n";
+	}
+	echo "Keyboard layout created by: ";
+	$count_authors = count($layout_authors);
+	for ($i = 0; $i < $count_authors; $i++)
+	{
+		echo $layout_authors[$i];
+		if ($i < $count_authors - 1)
+			echo ", ";
+		else
+			echo ".\n";
+	}
+	echo "Theme created by: ";
+	$count_authors = count($stylesrecord_authors);
+	for ($i = 0; $i < $count_authors; $i++)
+	{
+		echo $stylesrecord_authors[$i];
+		if ($i < $count_authors - 1)
+			echo ", ";
+		else
+			echo ".\n";
+	}
+	echo
+"				</p>
 				<p>" . getFileTime($path_file) . " GRID: " . $gamesrecord_id . "</p>
 			</div>\n";
 ?>
