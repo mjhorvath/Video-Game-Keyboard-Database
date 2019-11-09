@@ -1,0 +1,7 @@
+## Contributing
+
+The source code for this project is licensed under the [GNU LGPLv3](https://www.gnu.org/licenses/lgpl-3.0.en.html). The content is licensed under the [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/). Visit the [GitHub repository](https://github.com/mjhorvath/vgkd) for the project's source code. The [change log](http://isometricland.net/keyboard/keyboard-log.php) contains the project's update history and credits, as well as links to further reading. The ["to do" list](TODOLIST.md) outlines some of the tasks I've planned for the future. (Completed tasks are marked with a plus '+' and incomplete tasks are marked with a minus '-'.)</p>
+
+To submit a new set of bindings, you can fill out [this spreadsheet](https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/helper_tools/vgkd_bindings_template.xlsx) and [email me](http://isometricland.net/email.php) the contents (copy and paste) when you are done. Note that any content you submit falls under the CC BY-SA 3.0 license, as per the project as a whole. Your name will then appear at the bottom of each chart.</p>
+
+I have also recently started developing a form-based submission page. You can use it to submit changes to existing bindings by selecting the "Editor" option in Step 4, above. Or, you can get started making a brand new set of bindings with the "Blank Starter" game in the "Reference" category. There exist "Blank Starters" for every keyboard, though I personally still prefer using the spreadsheet for this purpose.</p>

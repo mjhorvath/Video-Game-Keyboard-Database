@@ -36,3 +36,6 @@ In order for VGKD to work properly, it currently requires the following things:
   * Cris
   * Daniel
   * etejam
+  * Luke Fanning
+  * Hunter Mansanas
+  * Lucas
