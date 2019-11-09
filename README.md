@@ -12,4 +12,4 @@ The data content is licensed under the [Creative Commons Attribution-Share Alike
 * Tips for contributers can be found [here](CONTRIBUTING.md).
 * A list of credits/dependencies can be found [here](CREDITS.md).
 * Notes about other formats can be found [here](OTHER-FORMATS.md).
-* A list of proposed tasks can be found [here](TODOLIST.md).
+* A list of possible future tasks can be found [here](TODOLIST.md).
