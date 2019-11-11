@@ -25,21 +25,10 @@
 
 	include($path_root . 'ssi/analyticstracking.php');
 	include($path_root . "ssi/keyboard-connection.php");
+	include($path_root . 'ssi/recaptchakey.php');
 	include("./keyboard-common.php");
 	include("./keyboard-queries.php");
 
-	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
- 
-	// check connection
-	if (mysqli_connect_errno())
-	{
-		trigger_error("Database connection failed: "  . mysqli_connect_error(), E_USER_ERROR);
-	}
-
-	mysqli_query($con, "SET NAMES 'utf8'");
-
-	$path_root		= "../";
-	$fix_url		= false;
 	$php_url		= "";
 	$svg_url		= "";
 	$write_maximal_keys	= true;
@@ -58,7 +47,7 @@
 	$emote_table		= [];
 	$author_table		= [];
 	$style_table		= [];
-	$style_group_table	= [];
+	$stylegroup_table	= [];
 	$errors_table		= [];
 	$gamesrecord_id		= 0;
 	$gamesrecord_authors	= [];
@@ -98,10 +87,16 @@
 	$string_description	= cleantextHTML("Keyboard hotkey & binding chart for ");
 	$string_keywords	= cleantextHTML("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
 
-	include($path_root . 'ssi/recaptchakey.php');
+	// MySQL connection
+	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
+	if (mysqli_connect_errno())
+	{
+		trigger_error("Database connection failed: "  . mysqli_connect_error(), E_USER_ERROR);
+	}
+	mysqli_query($con, "SET NAMES 'utf8'");
 
 	// gather and validate URL queries
-	gatherURLParameters();
+	// also executes some MySQL queries
 	checkURLParameters("html");
 
 	// MySQL queries
@@ -122,7 +117,6 @@
 	selContribStylesHTML();
 	selContribLayoutsHTML();
 
-
 	mysqli_close($con);
 
 	// validity checks
@@ -130,16 +124,6 @@
 
 	$thispage_title_a	= $temp_game_name;
 	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - GRID:" . $gamesrecord_id;
-
-	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
-	$svg_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
-
-	// fix URL
-	if ($fix_url === true)
-	{
-		header("Location: " . $php_url);
-		die();
-	}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -164,7 +148,6 @@
 "		</style>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_submit.css\"/>
 		<script src=\"" . $path_root . "java/jquery-3.3.1.min.js\"></script>
-		<script src=\"./keyboard-chart-js.php\"></script>
 		<script src=\"./keyboard-submit-js.php\"></script>
 		<script src=\"https://www.google.com/recaptcha/api.js\"></script>
 		<script>

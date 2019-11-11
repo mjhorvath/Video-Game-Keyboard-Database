@@ -974,7 +974,7 @@ function do_recaptcha()
 			}
 			else
 			{
-				alert('There were problems with reCAPTCHA. Try again.');
+				alert('There were problems with reCAPTCHA. Please try again.');
 				console.log('RECAPTCHA: mail was not sent');
 				hide_loading_image();
 			}

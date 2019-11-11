@@ -32,16 +32,6 @@
 	include("./keyboard-common.php");
 	include("./keyboard-queries.php");
 
-	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
- 
-	// check connection
-	if (mysqli_connect_errno())
-	{
-		trigger_error("Database connection failed: "  . mysqli_connect_error(), E_USER_ERROR);
-	}
-
-	mysqli_query($con, "SET NAMES 'utf8'");
-
 	$layout_array		= [];
 	$record_array		= [];
 	$platform_array		= [];
@@ -49,12 +39,19 @@
 	$game_index_array	= [];
 	$game_seourl_array	= [];
 
+	// MySQL connection
+	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
+ 	if (mysqli_connect_errno())
+	{
+		trigger_error("Database connection failed: "  . mysqli_connect_error(), E_USER_ERROR);
+	}
+	mysqli_query($con, "SET NAMES 'utf8'");
 
+	// MySQL queries
 	selGamesList();
 	selLayoutsList();
 	selGamesRecordsList();
 	selPlatformsList();
-
 
 	mysqli_close($con);
 

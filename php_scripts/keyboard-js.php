@@ -19,22 +19,13 @@
 	// <https://www.gnu.org/licenses/>.
 
 	$path_root		= "../";
+	$path_file		= "./keyboard-js.php";
 
 	header("Content-Type: text/javascript; charset=utf8");
 
 	include($path_root. "ssi/keyboard-connection.php");
 	include("./keyboard-common.php");
 	include("./keyboard-queries.php");
-
-	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
- 
-	// check connection
-	if (mysqli_connect_errno())
-	{
-		trigger_error("Database connection failed: "  . mysqli_connect_error(), E_USER_ERROR);
-	}
-
-	mysqli_query($con, "SET NAMES 'utf8'");
 
 	$game_table		= [];
 	$game_string		= "";
@@ -46,6 +37,14 @@
 	$layouts_max		= 0;
 	$styles_max		= 0;
 
+	// MySQL connection
+	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
+ 	if (mysqli_connect_errno())
+	{
+		trigger_error("Database connection failed: "  . mysqli_connect_error(), E_USER_ERROR);
+	}
+	mysqli_query($con, "SET NAMES 'utf8'");
+
 	// MySQL queries
 	selGamesAutoincJS();
 	selLayoutsAutoincJS();
@@ -53,6 +52,8 @@
 	selSeourlJS();
 	selGameRecordsJS();
 	selStyleRecordsJS();
+
+	mysqli_close($con);
 
 	for ($i = 0; $i < $games_max; $i++)
 	{
@@ -114,8 +115,6 @@
 		$style_string .= "//" . ($i+1) . "\n";
 		$game_string .= "//" . ($i+1) . "\n";
 	}
-
-	mysqli_close($con);
 ?>
 
 

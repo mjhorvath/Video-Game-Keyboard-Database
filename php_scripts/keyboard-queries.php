@@ -298,24 +298,24 @@
 	}
 	function doStyleGroupsHTML($in_result)
 	{
-		global $style_table, $style_group_table;
+		global $style_table, $stylegroup_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
 			$style_table[] = [];
 			// stylegroup_id, stylegroup_name
-			$style_group_table[] = $temp_row;
+			$stylegroup_table[] = $temp_row;
 		}
 	}
 	function doStylesHTML($in_result)
 	{
-		global $style_table, $style_group_table;
+		global $style_table, $stylegroup_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
 			// style_id, style_name, style_whiteonblack, stylegroup_id
 			$style_group_1 = $temp_row[3];
-			for ($i = 0; $i < count($style_group_table); $i++)
+			for ($i = 0; $i < count($stylegroup_table); $i++)
 			{
-				$style_group_2 = $style_group_table[$i][0];
+				$style_group_2 = $stylegroup_table[$i][0];
 				if ($style_group_1 == $style_group_2)
 				{
 					$style_table[$i][] = $temp_row;
@@ -608,24 +608,24 @@
 	}
 	function doStyleGroupsSVG($in_result)
 	{
-		global $style_table, $style_group_table;
+		global $style_table, $stylegroup_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
 			$style_table[] = [];
 			// stylegroup_id, stylegroup_name
-			$style_group_table[] = $temp_row;
+			$stylegroup_table[] = $temp_row;
 		}
 	}
 	function doStylesSVG($in_result)
 	{
-		global $style_table, $style_group_table;
+		global $style_table, $stylegroup_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
 			// style_id, style_name, style_whiteonblack, stylegroup_id
 			$style_group_1 = $temp_row[3];
-			for ($i = 0; $i < count($style_group_table); $i++)
+			for ($i = 0; $i < count($stylegroup_table); $i++)
 			{
-				$style_group_2 = $style_group_table[$i][0];
+				$style_group_2 = $stylegroup_table[$i][0];
 				if ($style_group_1 == $style_group_2)
 				{
 					$style_table[$i][] = $temp_row;

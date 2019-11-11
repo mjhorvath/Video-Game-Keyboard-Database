@@ -18,7 +18,8 @@
 		break;
 	}
 	echo
-"			<div class=\"boxdiv\">
+"			<script src=\"./keyboard-footer-js.php\"></script>
+			<div class=\"boxdiv\">
 				<p><a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\"><img alt=\"GNU LGPLv3 icon\" src=\"" . $path_root . "images/license_lgpl_88x31.png\" /></a><a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/3.0/\"><img alt=\"CC BY-SA 3.0 icon\" style=\"border-width:0;\" src=\"" . $path_root . "images/license_cc-by-sa_88x31.png\" /></a></p>
 				<p>&quot;Video Game Keyboard Diagrams&quot; software was created by Michael Horvath and is licensed under <a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\">GNU LGPLv3</a> or later license. Content is licensed under <a target=\"_blank\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CC BY-SA 3.0</a> or later license. You can find this project on <a target=\"_blank\" href=\"https://github.com/mjhorvath/vgkd\">GitHub</a>.</p>
 				<p>Return to <a href=\"keyboard.php\">Video Game Keyboard Diagrams</a>. View the <a href=\"keyboard-list.php\">master list</a>. Having trouble printing? Take a look at <a href=\"keyboard.php#print_tips\">these printing tips</a>.</p>\n";
@@ -31,29 +32,28 @@
 							<th>Theme:</th>
 							<td>
 								<select class=\"stylechange\" id=\"stylesel\" name=\"style\">\n";
+	// do a tiny bit of validity checking so that I get my preferred default style
+	$style_select = $style_name ? $style_id : $default_style_id;
 	for ($i = 0; $i < count($style_table); $i++)
 	{
 		$stylegroup_box = $style_table[$i];
-		$stylegroup_nam = cleantextHTML($style_group_table[$i][1]);
+		$stylegroup_nam = cleantextHTML($stylegroup_table[$i][1]);
 		echo
 "									<optgroup label=\"" . $stylegroup_nam . "\">\n";
 		for ($j = 0; $j < count($stylegroup_box); $j++)
 		{
 			$style_row = $stylegroup_box[$j];
-			if ($style_row[0])		// is this condition necessary?
+			$style_idx = $style_row[0];
+			$style_nam = cleantextHTML($style_row[1]);
+			if ($style_idx == $style_select)
 			{
-				$style_idx = $style_row[0];
-				$style_nam = cleantextHTML($style_row[1]);
-				if ($style_id == $style_idx)
-				{
-					echo
+				echo
 "										<option value=\"" . $style_idx . "\" selected>" . $style_nam . "</option>\n";
-				}
-				else
-				{
-					echo
+			}
+			else
+			{
+				echo
 "										<option value=\"" . $style_idx . "\">" . $style_nam . "</option>\n";
-				}
 			}
 		}
 		echo

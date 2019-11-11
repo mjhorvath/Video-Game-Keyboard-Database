@@ -28,18 +28,6 @@
 	include("./keyboard-common.php");
 	include("./keyboard-queries.php");
 
-	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
- 
-	// check connection
-	if (mysqli_connect_errno())
-	{
-		trigger_error("Database connection failed: "  . mysqli_connect_error(), E_USER_ERROR);
-	}
-
-	mysqli_query($con, "SET NAMES 'utf8'");
-
-	$path_root		= "../";
-	$fix_url		= false;
 	$php_url		= "";
 	$svg_url		= "";
 	$keys_number		= 118;		// should really be calculated dynamically or stored in the database for each layout
@@ -56,7 +44,7 @@
 	$note_table		= [];
 	$author_table		= [];
 	$style_table		= [];
-	$style_group_table	= [];
+	$stylegroup_table	= [];
 	$errors_table		= [];
 	$gamesrecord_id		= 0;
 	$gamesrecord_authors	= [];
@@ -88,8 +76,16 @@
 	$temp_platform_name	= "";
 	$game_array		= [];
 
+	// MySQL connection
+	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
+ 	if (mysqli_connect_errno())
+	{
+		trigger_error("Database connection failed: "  . mysqli_connect_error(), E_USER_ERROR);
+	}
+	mysqli_query($con, "SET NAMES 'utf8'");
+
 	// gather and validate URL queries
-	gatherURLParameters();
+	// also executes some MySQL queries
 	checkURLParameters("html");
 
 	// MySQL queries
@@ -110,7 +106,6 @@
 	selContribStylesHTML();
 	selContribLayoutsHTML();
 
-
 	mysqli_close($con);
 
 	// validity checks
@@ -118,33 +113,23 @@
 
 	$thispage_title_a	= $temp_game_name;
 	$thispage_title_b	= " - MediaWiki keyboard diagram code";
-
-	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
-	$svg_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
-
-	// fix URL
-	if ($fix_url)
-	{
-		header("Location: " . $php_url);
-		die();
-	}
 ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
 <?php
 	echo
-"		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>\n" .
-"		<title>" . $thispage_title_a . $thispage_title_b . "</title>\n" .
-"		<link rel=\"canonical\" href=\"" . $php_url . "\"/>\n" .
-"		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>\n" .
-"		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>\n" .
-"		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>\n" .
-"		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_mediawiki.css\"/>\n" .
-"		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n" .
-"		<meta name=\"description\" content=\"" . $string_description . $temp_game_name . ".\"></meta>\n" .
-"		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference,MediaWiki," . $temp_game_name . "\"></meta>\n" .
-"		<script src=\"keyboard-chart-js.php\"></script>\n";
+"		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
+		<title>" . $thispage_title_a . $thispage_title_b . "</title>
+		<link rel=\"canonical\" href=\"" . $php_url . "\"/>
+		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_mediawiki.css\"/>
+		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
+		<meta name=\"description\" content=\"" . $string_description . $temp_game_name . ".\"></meta>
+		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference,MediaWiki," . $temp_game_name . "\"></meta>
+";
 	echo writeAnalyticsTracking();
 ?>
 	</head>

@@ -18,7 +18,6 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
-
 	$path_root		= "../";
 	$path_file		= "./keyboard-svg.php";
 
@@ -28,19 +27,8 @@
 	include("./keyboard-common.php");
 	include("./keyboard-queries.php");
 
-	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
- 
-	// check connection
-	if (mysqli_connect_errno())
-	{
-		trigger_error("Database connection failed: "  . mysqli_connect_error(), E_USER_ERROR);
-	}
-
-	mysqli_query($con, "SET NAMES 'utf8'");
-
-	$fix_url		= false;
-	$svg_url		= "";
 	$php_url		= "";
+	$svg_url		= "";
 	$stylegroup_id		= 0;
 	$legend_count		= 12;
 	$position_table		= [];
@@ -86,14 +74,21 @@
 	$string_description	= cleantextSVG("Keyboard hotkey & binding chart for ");
 	$string_keywords	= cleantextSVG("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
 
+	// MySQL connection
+	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
+	if (mysqli_connect_errno())
+	{
+		trigger_error("Database connection failed: "  . mysqli_connect_error(), E_USER_ERROR);
+	}
+	mysqli_query($con, "SET NAMES 'utf8'");
+
 	// gather and validate URL queries
-	gatherURLParameters();
+	// also executes some MySQL queries
 	checkURLParameters("svg");
 
+	// MySQL queries
 	selPlatformsFront();
 	selLayoutsFront();
-
-	// MySQL queries
 	selAuthorsSVG();
 	selStyleGroupsSVG();
 	selStylesSVG();
@@ -117,16 +112,6 @@
 
 	$thispage_title_a	= $temp_game_name;
 	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - GRID:" . $gamesrecord_id;
-
-	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
-	$svg_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
-
-	// fix URL
-	if ($fix_url === true)
-	{
-		header("Location: " . $svg_url);
-		die();
-	}
 
 	// layout outer bounds
 	if ($ten_bool == 0)
@@ -224,20 +209,22 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 				<dc:creator>
 					<rdf:Bag>
 <?php
-	if ($gamesrecord_author)
+	// need to handle duplicate names somehow
+	// or prefix each line with "Binding scheme created by..." or whatever
+	for ($i = 0; $i < count($gamesrecord_authors); $i++)
 	{
 		echo
-"						<rdf:li>" . $gamesrecord_author . "</rdf:li>\n";
+"						<rdf:li>" . $gamesrecord_authors[$i] . "</rdf:li>\n";
 	}
-	if (($layout_author) && ($layout_author != $gamesrecord_author))
+	for ($i = 0; $i < count($layout_authors); $i++)
 	{
 		echo
-"						<rdf:li>" . $layout_author . "</rdf:li>\n";
+"						<rdf:li>" . $layout_authors[$i] . "</rdf:li>\n";
 	}
-	if (($stylesrecord_author) && ($stylesrecord_author != $gamesrecord_author) && ($stylesrecord_author != $layout_author))
+	for ($i = 0; $i < count($stylesrecord_authors); $i++)
 	{
 		echo
-"						<rdf:li>" . $stylesrecord_author . "</rdf:li>\n";
+"						<rdf:li>" . $stylesrecord_authors[$i] . "</rdf:li>\n";
 	}
 ?>
 					</rdf:Bag>

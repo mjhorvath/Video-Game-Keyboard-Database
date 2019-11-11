@@ -34,28 +34,26 @@
 			$format_id == 0;
 		}
 	}
-	if ($format_id == 0)
+
+	switch ($format_id)
 	{
-		include("./keyboard-embed.php");
-	}
-	elseif ($format_id == 1)
-	{
-		include("./keyboard-svg.php");
-	}
-	elseif ($format_id == 2)
-	{
-		include("./keyboard-wiki.php");
-	}
-	elseif ($format_id == 3)
-	{
-		include("./keyboard-submit.php");
-	}
-	elseif ($format_id == 4)
-	{
-		echo "PDF format not supported yet.\n";
-	}
-	else
-	{
-		echo "Unrecognized output format.\n";
+		case 0:
+			include("./keyboard-embed.php");
+		break;
+		case 1:
+			include("./keyboard-svg.php");
+		break;
+		case 2:
+			include("./keyboard-wiki.php");
+		break;
+		case 3:
+			include("./keyboard-submit.php");
+		break;
+		case 4:
+			echo "PDF format not implemented yet.\n";
+		break;
+		default:
+			echo "Unrecognized output format.\n";
+		break;
 	}
 ?>

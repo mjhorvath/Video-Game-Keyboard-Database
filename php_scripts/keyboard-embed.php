@@ -28,17 +28,6 @@
 	include("./keyboard-common.php");
 	include("./keyboard-queries.php");
 
-	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
- 
-	// check connection
-	if (mysqli_connect_errno())
-	{
-		trigger_error("Database connection failed: "  . mysqli_connect_error(), E_USER_ERROR);
-	}
-
-	mysqli_query($con, "SET NAMES 'utf8'");
-
-	$fix_url		= false;
 	$php_url		= "";
 	$svg_url		= "";
 	$stylegroup_id		= 0;
@@ -103,8 +92,16 @@
 	$string_description	= cleantextHTML("Keyboard hotkey & binding chart for ");
 	$string_keywords	= cleantextHTML("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
 
+	// MySQL connection
+	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
+ 	if (mysqli_connect_errno())
+	{
+		trigger_error("Database connection failed: "  . mysqli_connect_error(), E_USER_ERROR);
+	}
+	mysqli_query($con, "SET NAMES 'utf8'");
+
 	// gather and validate URL queries
-	gatherURLParameters();
+	// also executes some MySQL queries
 	checkURLParameters("html");
 
 	// MySQL queries
@@ -132,16 +129,6 @@
 
 	$thispage_title_a	= $temp_game_name;
 	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - GRID:" . $gamesrecord_id;
-
-	$php_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
-	$svg_url = "http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id . "&ten=" . $ten_bool;
-
-	// fix URL
-	if ($fix_url === true)
-	{
-		header("Location: " . $php_url);
-		die();
-	}
 
 	// layout outer bounds
 	if ($ten_bool == 0)
@@ -173,8 +160,7 @@
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\">
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
 		<meta name=\"description\" content=\"" . $string_description . $game_name . ".\">
-		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference," . $layout_keywords . "," . $game_name . "\">
-		<script src=\"keyboard-chart-js.php\"></script>\n";
+		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference," . $layout_keywords . "," . $game_name . "\">\n";
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";

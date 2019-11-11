@@ -44,14 +44,12 @@
 	$game_seourl_array	= [];
 	$game_genre_array	= [];
 
-	$con = mysqli_connect($con_website,$con_username,$con_password,$con_database);
- 
-	// check connection
-	if (mysqli_connect_errno())
+	// MySQL connection
+	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
+ 	if (mysqli_connect_errno())
 	{
 		trigger_error('Database connection failed: '  . mysqli_connect_error(), E_USER_ERROR);
 	}
-
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	// MySQL queries
