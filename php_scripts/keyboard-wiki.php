@@ -74,7 +74,6 @@
 	$temp_layout_name	= "";
 	$temp_style_name	= "";
 	$temp_platform_name	= "";
-	$game_array		= [];
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -149,17 +148,17 @@
 		if (array_key_exists($i, $binding_table))
 		{
 			$binding_row	= $binding_table[$i];
-			$bkg_nor	= getcolor($binding_row[0]);
+			$bkg_nor	= getkeycolor($binding_row[0]);
 			$key_nor	= cleantextWiki($binding_row[1]);
-			$bkg_shf	= getcolor($binding_row[2]);
+			$bkg_shf	= getkeycolor($binding_row[2]);
 			$key_shf	= cleantextWiki($binding_row[3]);
-			$bkg_ctl	= getcolor($binding_row[4]);
+			$bkg_ctl	= getkeycolor($binding_row[4]);
 			$key_ctl	= cleantextWiki($binding_row[5]);
-			$bkg_alt	= getcolor($binding_row[6]);
+			$bkg_alt	= getkeycolor($binding_row[6]);
 			$key_alt	= cleantextWiki($binding_row[7]);
-			$bkg_agr	= getcolor($binding_row[8]);
+			$bkg_agr	= getkeycolor($binding_row[8]);
 			$key_agr	= cleantextWiki($binding_row[9]);
-			$bkg_xtr	= getcolor($binding_row[10]);
+			$bkg_xtr	= getkeycolor($binding_row[10]);
 			$key_xtr	= cleantextWiki($binding_row[11]);
 		}
 		// is the 'else' really needed here? or can these be skipped?
@@ -193,7 +192,7 @@
 		if (isset($legend_table[$i]))
 		{
 			$legend_row = $legend_table[$i];
-			$leg_grp = getcolor($legend_row[0]);
+			$leg_grp = getkeycolor($legend_row[0]);
 			$leg_dsc = cleantextWiki($legend_row[1]);
 		}
 		// is the 'else' really needed here? or can these be skipped?

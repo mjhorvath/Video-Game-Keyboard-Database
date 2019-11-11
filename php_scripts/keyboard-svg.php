@@ -356,17 +356,17 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 				if (array_key_exists($i, $binding_table))
 				{
 					$binding_row	= $binding_table[$i];
-					$bkg_nor = getcolor($binding_row[0]);
+					$bkg_nor = getkeycolor($binding_row[0]);
 					$cap_nor = splittext(cleantextSVG($binding_row[1]));
-					$bkg_shf = getcolor($binding_row[2]);
+					$bkg_shf = getkeycolor($binding_row[2]);
 					$cap_shf = splittext(cleantextSVG($binding_row[3]));
-					$bkg_ctl = getcolor($binding_row[4]);
+					$bkg_ctl = getkeycolor($binding_row[4]);
 					$cap_ctl = splittext(cleantextSVG($binding_row[5]));
-					$bkg_alt = getcolor($binding_row[6]);
+					$bkg_alt = getkeycolor($binding_row[6]);
 					$cap_alt = splittext(cleantextSVG($binding_row[7]));
-					$bkg_agr = getcolor($binding_row[8]);
+					$bkg_agr = getkeycolor($binding_row[8]);
 					$cap_agr = splittext(cleantextSVG($binding_row[9]));
-					$bkg_xtr = getcolor($binding_row[10]);
+					$bkg_xtr = getkeycolor($binding_row[10]);
 					$cap_xtr = splittext(cleantextSVG($binding_row[11]));
 					$img_fil = $binding_row[12];
 					$img_uri = $binding_row[13];
@@ -548,7 +548,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 			$legend_row = $legend_table[$i];
 			if (isset($legend_row[0]))
 			{
-				$leg_grp = getcolor($legend_row[0]);
+				$leg_grp = getkeycolor($legend_row[0]);
 				$leg_dsc = cleantextSVG($legend_row[1]);
 				$row_div = floor($row_count/3);
 				$row_mod = $row_count % 3;

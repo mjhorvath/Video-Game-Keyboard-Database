@@ -32,8 +32,8 @@
 							<th>Theme:</th>
 							<td>
 								<select class=\"stylechange\" id=\"stylesel\" name=\"style\">\n";
-	// do a tiny bit of validity checking so that I get my preferred default style
-	$style_select = $style_name ? $style_id : $default_style_id;
+	// do a tiny bit of validity checking so that I get my preferred default style if a style ID is missing or out of bounds
+	$selected_style_id = $style_name ? $style_id : $default_style_id;
 	for ($i = 0; $i < count($style_table); $i++)
 	{
 		$stylegroup_box = $style_table[$i];
@@ -45,7 +45,11 @@
 			$style_row = $stylegroup_box[$j];
 			$style_idx = $style_row[0];
 			$style_nam = cleantextHTML($style_row[1]);
-			if ($style_idx == $style_select)
+			if ($style_idx == $default_style_id)
+			{
+				$style_nam .= " *";
+			}
+			if ($style_idx == $selected_style_id)
 			{
 				echo
 "										<option value=\"" . $style_idx . "\" selected>" . $style_nam . "</option>\n";
@@ -89,7 +93,10 @@
 						</tr>
 					</table>
 				</form>
+				<p>Items marked with an asterisk (*) are the &quot;default&quot;, or most common options.</p>
 				<p>\n";
+	// having someone's name repeated here three times bothers me
+	// is there a way to have someone's name listed here only once?
 	echo "Binding scheme created by: ";
 	$count_authors = count($gamesrecord_authors);
 	for ($i = 0; $i < $count_authors; $i++)

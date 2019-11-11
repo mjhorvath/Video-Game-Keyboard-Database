@@ -29,9 +29,9 @@
 	include("./keyboard-common.php");
 	include("./keyboard-queries.php");
 
+	$write_maximal_keys	= true;
 	$php_url		= "";
 	$svg_url		= "";
-	$write_maximal_keys	= true;
 	$stylegroup_id		= 0;
 	$position_table		= [];
 	$keystyle_table		= [];
@@ -366,17 +366,17 @@ var binding_table =
 				{
 					// normal_group, normal_action, shift_group, shift_action, ctrl_group, ctrl_action, alt_group, alt_action, altgr_group, altgr_action, extra_group, extra_action, image_file, image_uri, key_number
 					$binding_row	= $binding_table[$i];
-					$bkg_nor = getcolor($binding_row[0]);
+					$bkg_nor = getkeycolor($binding_row[0]);
 					$cap_nor = $binding_row[1];
-					$bkg_shf = getcolor($binding_row[2]);
+					$bkg_shf = getkeycolor($binding_row[2]);
 					$cap_shf = $binding_row[3];
-					$bkg_ctl = getcolor($binding_row[4]);
+					$bkg_ctl = getkeycolor($binding_row[4]);
 					$cap_ctl = $binding_row[5];
-					$bkg_alt = getcolor($binding_row[6]);
+					$bkg_alt = getkeycolor($binding_row[6]);
 					$cap_alt = $binding_row[7];
-					$bkg_agr = getcolor($binding_row[8]);
+					$bkg_agr = getkeycolor($binding_row[8]);
 					$cap_agr = $binding_row[9];
-					$bkg_xtr = getcolor($binding_row[10]);
+					$bkg_xtr = getkeycolor($binding_row[10]);
 					$cap_xtr = $binding_row[11];
 					$img_fil = $binding_row[12];
 					$img_uri = $binding_row[13];
@@ -505,7 +505,7 @@ var binding_table =
 	for ($i = 0; $i < $legend_count; $i++)
 	{
 		$leg_value = "";
-		$leg_color = getcolor($i+1);
+		$leg_color = getkeycolor($i+1);
 		for ($j = 0; $j < count($legend_table); $j++)
 		{
 			$leg_group = $legend_table[$j][0];

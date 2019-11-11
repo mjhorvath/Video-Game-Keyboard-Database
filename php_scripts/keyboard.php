@@ -100,6 +100,10 @@
 		{
 			$this_id = $id_array[$j];
 			$this_name = $name_array[$j];
+			if ($this_id == $default_layout_id)
+			{
+				$this_name .= " *";
+			}
 			echo
 "						<li><a id=\"lay_" . ($this_id-1) . "\" menu=\"lay\" value=\"" . $this_id . "\" class=\"acc_nrm\" onclick=\"Set_Select_Value(this);Set_Game(" . ($this_id-1) . ",this);Set_Style(" . ($this_id-1) . ",this);\">" . $this_name . "</a></li>\n";
 		}
@@ -137,8 +141,14 @@
 //		array_multisort($name_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $id_array);
 		for ($j = 0; $j < count($id_array); $j++)
 		{
+			$this_id = $id_array[$j];
+			$this_name = $name_array[$j];
+			if ($this_id == $default_style_id)
+			{
+				$this_name .= " *";
+			}
 			echo
-"						<li><a id=\"sty_" . ($id_array[$j] - 1) . "\" menu=\"sty\" value=\"" . $id_array[$j] . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);\">" . $name_array[$j] . "</a></li>\n";
+"						<li><a id=\"sty_" . ($this_id-1) . "\" menu=\"sty\" value=\"" . $this_id . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);\">" . $this_name . "</a></li>\n";
 		}
 		echo
 "					</ul>
@@ -171,12 +181,15 @@
 		}
 		$id_array	= $game_array[$i][0];
 		$name_array	= $game_array[$i][1];
-		$seourl_array	= $game_array[$i][2];
+		$seourl_array	= $game_array[$i][2];	// not used here
+		// should these be sorted elsewhere, like the other categories?
 		array_multisort($name_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $id_array, $seourl_array);
 		for ($j = 0; $j < count($id_array); $j++)
 		{
+			$this_id = $id_array[$j];
+			$this_name = $name_array[$j];
 			echo
-"						<li><a id=\"gam_" . ($id_array[$j] - 1) . "\" menu=\"gam\" value=\"" . $id_array[$j] . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);\">" . $name_array[$j] . "</a></li>\n";
+"						<li><a id=\"gam_" . ($this_id-1) . "\" menu=\"gam\" value=\"" . $this_id . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);\">" . $this_name . "</a></li>\n";
 		}
 		echo
 "					</ul>
@@ -246,22 +259,23 @@
 	<li>Click on the 'Create New Diagram' button. A new window with your selected diagram will appear.</li>
 	<li>View or print the page in the new window.</li>
 </ol>
+<p>Items marked with an asterisk (*) are the &quot;default&quot;, or most common options.</p>
 <p>The vast majority of the bindings are for the <i>US 104 Key (ANSI)</i> keyboard at this time. If you would like to see more bindings for the other keyboards, you are welcome to contribute! (More on that, below.)</p>
 <h2>Licenses &amp; Submissions:</h2>
-<p>The source code for this project is licensed under the <a rel="license" target="_blank" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">GNU LGPLv3</a>. The content is licensed under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading. The <a href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/TODOLIST.md">"to do" list</a> outlines some of the tasks I've planned for the future. (Completed tasks are marked with a plus '+' and incomplete tasks are marked with a minus '-'.)</p>
-<p>To submit a new set of bindings, you can fill out <a href="<?php echo $path_root; ?>files/vgkd_binding_template_20180629.xlsx">this spreadsheet</a> and <a href="http://isometricland.net/email.php">email</a> me the contents (copy and paste) when you are done. Note that any content you submit falls under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart.</p>
-<p>I have also recently started developing a form-based submission page. You can use it to submit changes to existing bindings by selecting the "Editor" option in Step 4, above. Or, you can get started making a brand new set of bindings with the "Blank Starter" game in the "Reference" category. There exist "Blank Starters" for every keyboard, though I personally still prefer using the spreadsheet for this purpose.</p>
+<p>The source code for this project is licensed under the <a rel="license" target="_blank" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">GNU LGPLv3</a>. The content is licensed under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading. The <a href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/TODOLIST.md">&quot;to do&quot; list</a> outlines some of the tasks I've planned for the future. (Completed tasks are marked with a plus &quot;+&quot; and incomplete tasks are marked with a minus &quot;-&quot;.)</p>
+<p>To submit a new set of bindings, you can fill out <a  target="_blank"href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/helper_tools/vgkd_bindings_template.xlsx">this spreadsheet</a> and <a href="http://isometricland.net/email/email.php">email</a> me the contents (copy and paste) when you are done. Note that any content you submit falls under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart.</p>
+<p>I have also recently started developing a form-based submission page. You can use it to submit changes to existing bindings by selecting the &quot;Editor&quot; option in Step 4, above. Or, you can get started making a brand new set of bindings with the &quot;Blank Starter&quot; game in the &quot;Reference&quot; category. There exist &quot;Blank Starters&quot; for every keyboard, though I personally still prefer using the spreadsheet for this purpose.</p>
 <h2>MediaWiki, SVG &amp; PDF:</h2>
-<p>I have created templates for MediaWiki that do basically the same thing as the other charts available on this site. You can find the templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Wikia</a>. By selecting the "MediaWiki" format type, you can generate the code you will need to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the chart is wider than a typical browser window.</p>
-<p>I have also created SVG versions of the charts, which you can also select in the "Formats" menu above. I have not migrated over to using SVG images exclusively yet, because they are less compatible with older browsers, and I have not figured out how I want to implement the mouse and joystick controls listings, yet. (I have not yet figured out how to create containers that expand, wrap and scale automatically as the volume of text inside increases.)</p>
+<p>I have created templates for MediaWiki that do basically the same thing as the other charts available on this site. You can find the templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Wikia</a>. By selecting the &quot;MediaWiki&quot; format type, you can generate the code you will need to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the chart is wider than a typical browser window.</p>
+<p>I have also created SVG versions of the charts, which you can also select in the &quot;Formats&quot; menu above. I have not migrated over to using SVG images exclusively yet, because they are less compatible with older browsers, and I have not figured out how I want to implement the mouse and joystick controls listings, yet. (I have not yet figured out how to create containers that expand, wrap and scale automatically as the volume of text inside increases.)</p>
 <p>PDF versions of the charts will hopefully be added at some point in the future.</p>
 <a name="print_tips"></a>
 <h2>Printing Tips:</h2>
 <ol>
-	<li>When printing, the chart may not fit within a single letter- or legal-sized page, even when selecting 'Landscape' mode instead of 'Portrait' mode in your printer dialog settings. Luckily, your browser or printer may have a 'shrink to fit' feature that you can take advantage of to automatically adjust the size of the printed page output. Unfortunately, Google Chrome is missing a 'shrink to fit' feature by default, so I recommend investigating one of the workarounds discussed on Super User, <a target="_blank" href="https://superuser.com/questions/979741/how-can-i-make-chrome-shrink-to-fit-on-printing">here</a>.</li>
+	<li>When printing, the chart may not fit within a single letter- or legal-sized page, even when selecting &quot;Landscape&quot; mode instead of &quot;Portrait&quot; mode in your printer dialog settings. Luckily, your browser or printer may have a &quot;shrink to fit&quot; feature that you can take advantage of to automatically adjust the size of the printed page output. Unfortunately, Google Chrome is missing a &quot;shrink to fit&quot; feature by default, so I recommend investigating one of the workarounds discussed on Super User, <a target="_blank" href="https://superuser.com/questions/979741/how-can-i-make-chrome-shrink-to-fit-on-printing">here</a>.</li>
 	<li>You may save a little more space by also hiding the numeric keypad. Be aware that many games have commands bound to these keys!</li>
-	<li>Remember also to enable printing of background colors and images. This setting is found in 'Page Setup' (Mozilla Firefox and Internet Explorer) or within the print dialog itself (Google Chrome). Sadly, this option does not exist at all in Microsoft Edge. I recommend using a different browser for printing these charts.</li>
-	<li>If the colors or keyboard theme are not to your liking, select a different "Theme" from among the options at the top of this page, then try generating the chart again.</li>
+	<li>Remember also to enable printing of background colors and images. This setting is found in &quot;Page Setup&quot; (Mozilla Firefox and Internet Explorer) or within the print dialog itself (Google Chrome). Sadly, this option does not exist at all in Microsoft Edge. I recommend using a different browser for printing these charts.</li>
+	<li>If the colors or keyboard theme are not to your liking, select a different &quot;Theme&quot; from among the options at the top of this page, then try generating the chart again.</li>
 	<li>Printing at 90dpi (dots-per-inch) and 100% scaling should result in a printed page that closely approximates the size and dimensions of many real physical keyboards. Of course, not every keyboard is exactly the same, so YMMV.</li>
 	<li>On Windows, some Web browers (Google Chrome for instance) use your desktop DPI scaling settings to adjust the size of on-screen HTML elements, resulting in a document that can appear larger or smaller than normal. I'm not 100% sure this affects the printed page output, however.</li>
 	<li>Note, that the darker themes will use up a lot of ink.</li>

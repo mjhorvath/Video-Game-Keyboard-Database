@@ -118,6 +118,8 @@
 * The "Create New Diagram" button on the frontend page should have a "hover" 
   effect that changes the button's color.
 * Maybe replace "up", "down", "right", "left" with arrow icons?
+* Move all "support" scripts to another directory, and use htaccess to block 
+  all external access to them.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
