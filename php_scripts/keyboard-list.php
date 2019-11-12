@@ -6,8 +6,8 @@
 	$analytics	= true;
 	$is_short	= true;
 	$foot_array	= array("copyright","license_kbd");
-	$java_array	= ["keyboard-list-js.php",$path_root . "java/sort_table.js"];
-	$stys_array	= ["style_alphalist.css"];
+	$java_array	= ["./lib/keyboard-list.js",$path_root . "java/sort_table.js"];
+	$stys_array	= ["./lib/style_alphalist.css"];
 	include($path_root . "ssi/normalpage.php");
 	echo $page_top;
 ?>
@@ -32,8 +32,8 @@
 	// <https://www.gnu.org/licenses/>.
 
 	include($path_root. "ssi/keyboard-connection.php");
-	include("./keyboard-common.php");
-	include("./keyboard-queries.php");
+	include("./lib/keyboard-common.php");
+	include("./lib/keyboard-queries.php");
 
 	$genre_array		= [];
 	$layout_array		= [];
@@ -62,7 +62,7 @@
 	mysqli_close($con);
 
 	echo
-"<img id=\"waiting\" src=\"animated_loading_icon.webp\" alt=\"loading\" style=\"position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;\"/>
+"<img id=\"waiting\" src=\"./lib/animated_loading_icon.webp\" alt=\"loading\" style=\"position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;\"/>
 <table id=\"tableToSort\" class=\"kbd_tab\">
 	<tr>
 		<th onclick=\"Wait_and_Sort(0);\">Name		<span id=\"arrw_u0\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d0\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n0\" class=\"arrw_n\">&#9674;</span></th>

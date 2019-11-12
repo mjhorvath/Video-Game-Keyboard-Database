@@ -1,5 +1,3 @@
-<?php header("Content-Type: text/javascript; charset=utf8"); ?>
-
 // Video Game Keyboard Diagrams
 // Copyright (C) 2018  Michael Horvath
 // 

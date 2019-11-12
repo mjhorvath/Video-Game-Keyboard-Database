@@ -11,6 +11,10 @@
 ?>
 <h2>News &amp; Updates</h2>
 <ul>
+	<li>2019/11/12: Moved "support" scripts to a new "lib" sub-directory.</li>
+	<li>2019/11/12: Trying to access certain files in the "lib" directory now results in a 403 error.</li>
+	<li>2019/11/12: Converted some PHP files containing JavaScript into JS files.</li>
+	<li>2019/11/11: Made changes to how the default settings are chosen and configured. Added a blurb to each page indicating which items are the defaults.</li>
 	<li>2019/11/09: Multiple authors can now be listed for each binding scheme, keyboard layout, or theme.</li>
 	<li>2019/11/08: Added "SVG only" as a possible format. Note, however, that the "SVG only" format has no page footer at the bottom with controls.</li>
 	<li>2019/11/08: Moved all SQL queries to their own file.</li>
@@ -70,7 +74,7 @@
 	<li>2018/06/21: Started making a "to do" list. You can view it <a href="to_do_list.txt">here</a>.</li>
 	<li>2018/06/20: Fixed some PHP loop code that was spawning warnings in the error log.</li>
 	<li>2018/06/20: Changed the license for the PHP and JavaScript code to GPLv3. (The database contents and chart designs remain licensed under the CC BY-SA 3.0 license.)</li>
-	<li>2018/06/19: Finished the graphical submission form I started working on. Start with a <a href="keyboard-diagram-blank-sample.php?sty=15&lay=1&fmt=3">blank sample</a>.</li>
+	<li>2018/06/19: Finished the graphical submission form I started working on. Start with a <a href="./keyboard-diagram-blank-sample.php?sty=15&lay=1&fmt=3">blank sample</a>.</li>
 	<li>2018/06/06: Taz sent me updated bindings for <i>The Lord of the Rings Online</i>. Thanks Taz!</li>
 	<li>2018/06/05: Started working on a GUI tool to submit bindings to this project. It is incomplete, but you can <s><a href="keyboard-submit.html">view my progress so far</a></s>. [ed. dead link]</li>
 	<li>2018/06/05: Tweaked some HTML and CSS code. Added box borders to the default style.</li>
@@ -91,12 +95,12 @@
 	<li>2017/05/29: I removed the Dvorak layout, since it was only used once, and was never properly implemented in the first place.</li>
 	<li>2017/05/29: You can now switch back and forth between SVG and HTML versions of the charts by simply changing the <tt>&amp;svg=</tt> URL parameter to equal 1 or 0.</li>
 	<li>2017/01/04: Altered several styles' appearances.</li>
-	<li>2017/01/04: Created SVG versions of the charts (<a href="keyboard-chart.php?gam=1&sty=15&lay=1&svg=1">here's a sample</a>). They are less compatible with older browsers, but are better compatible with different wiki software. Once again, remember to change the numbers after the "gam=" and "lay=" portions of the URL to the correct game and layout ID.</li>
+	<li>2017/01/04: Created SVG versions of the charts (<a href="./keyboard-chart.php?gam=1&sty=15&lay=1&svg=1">here's a sample</a>). They are less compatible with older browsers, but are better compatible with different wiki software. Once again, remember to change the numbers after the "gam=" and "lay=" portions of the URL to the correct game and layout ID.</li>
 	<li>2017/01/04: Renamed the website from "Video Game Keyboard Control Charts" to "Video Game Keyboard Diagrams".</li>
 	<li>2017/01/04: Switched the order of the "Games", "Styles" and "Layouts" menus on the front page to "Games", "Layouts" and "Styles".</li>
 	<li>2017/01/04: Checks are now done to make sure each style is only applied to the proper layout. Non-matching styles are now grayed-out in the front page menu, and error messages are now printed to the chart screen.</li>
 	<li>2016/12/23: Added bindings for <i>Windows 7</i>, <i>Neverwinter Nights</i>, <i>Neverwinter Nights 2</i>, <i>Psychonauts</i>, <i>The Age of Decadence</i>, <i>Shadowrun: Dragonfall</i> and <i>Pillars of Eternity</i>.</li>
-	<li>2016/12/22: The <a href="keyboard-list.php">alphabetical game list</a> now shows multiple platforms/layouts for each game.</li>
+	<li>2016/12/22: The <a href="./keyboard-list.php">alphabetical game list</a> now shows multiple platforms/layouts for each game.</li>
 	<li>2016/12/22: The alphabet letter keys no longer show the lowcaps letter. This adds a bit of extra room on each key for the caption strings.</li>
 	<li>2016/12/22: Solved a many-to-many relationship issue by adding a new associative table to the database. As a bonus, it's now possible to credit people who submit bindings, layouts and stylesheets directly on the chart pages.</li>
 	<li>2016/12/20: Renamed "Blank Sample" to "Test Sample".</li>
@@ -107,7 +111,7 @@
 	<li>2016/12/20: Removed all bindings for the Dvorak keyboard. I didn't approach this properly, and need to start over from scratch.</li>
 	<li>2016/12/18: Updated the URLs to "SEO friendly" URLs. Old links should still work, however.</li>
 	<li>2016/12/16: Created a PHP script to autogenerate the MediaWiki code for each game. This can then be used with the MediaWiki template I created earlier.</li>
-	<li>2016/07/28: Added an <a href="keyboard-list.php">alphabetical game list</a> of charts for those people who do not have JavaScript enabled in their browser.</li>	
+	<li>2016/07/28: Added an <a href="./keyboard-list.php">alphabetical game list</a> of charts for those people who do not have JavaScript enabled in their browser.</li>	
 	<li>2016/07/20: You can now select a different visual style from within the chart itself.</li>
 	<li>2016/05/19: Tweaked the text at the bottom of the charts page.</li>
 	<li>2016/05/19: Updated printing tips, and linked to the relevant section on the main page instead of a dedicated "Printing Tips" page.</li>

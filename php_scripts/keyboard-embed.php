@@ -25,8 +25,8 @@
 
 	include($path_root . "ssi/analyticstracking.php");
 	include($path_root . "ssi/keyboard-connection.php");
-	include("./keyboard-common.php");
-	include("./keyboard-queries.php");
+	include("./lib/keyboard-common.php");
+	include("./lib/keyboard-queries.php");
 
 	$php_url		= "";
 	$svg_url		= "";
@@ -101,7 +101,7 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	// gather and validate URL queries
-	// also executes some MySQL queries
+	// also executes a few MySQL queries
 	checkURLParameters("html");
 
 	// MySQL queries
@@ -164,7 +164,7 @@
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";
-	include("embed_" . $style_filename . ".css");
+	include("./lib/embed_" . $style_filename . ".css");
 	echo
 "		</style>\n";
 ?>
@@ -347,7 +347,7 @@
 			</div>
 		</main>
 		<footer>
-<?php include("keyboard-footer.php"); ?>
+<?php include("./keyboard-footer.php"); ?>
 		</footer>
 	</body>
 </html>

@@ -29,8 +29,8 @@
 	// <https://www.gnu.org/licenses/>.
 
 	include($path_root. "ssi/keyboard-connection.php");
-	include("./keyboard-common.php");
-	include("./keyboard-queries.php");
+	include("./lib/keyboard-common.php");
+	include("./lib/keyboard-queries.php");
 
 	$layout_array		= [];
 	$record_array		= [];

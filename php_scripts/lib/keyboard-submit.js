@@ -1,5 +1,3 @@
-<?php header("Content-Type: text/javascript; charset=utf8"); ?>
-
 // Video Game Keyboard Diagrams
 // Copyright (C) 2018  Michael Horvath
 // 
@@ -19,7 +17,7 @@
 // License along with this program.  If not, see 
 // <https://www.gnu.org/licenses/>.
 
-new Image().src = 'animated_loading_icon.webp';
+new Image().src = './lib/animated_loading_icon.webp';
 
 var colors = ['non','red','yel','grn','cyn','blu','mag','wht','gry','blk','org','olv','brn'];
 var layout_id = 1;
@@ -934,7 +932,7 @@ function do_recaptcha()
 		$.ajax
 		({
 			type: "POST",
-			url: "keyboard-recaptcha.php",
+			url: "./lib/keyboard-recaptcha.php",
 			data:
 			{
 				name:		name.val(),
@@ -1008,7 +1006,7 @@ function document_change_style(game_id, layout_id, game_seo)
 	}
 }
 
-// there is an analogous function written in PHP in "keyboard-common.php"
+// there is an analogous function written in PHP in "./keyboard-common.php"
 // need to keep the two functions synced
 function seo_url(input)
 {

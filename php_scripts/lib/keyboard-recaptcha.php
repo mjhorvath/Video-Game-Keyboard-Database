@@ -19,7 +19,7 @@
 	// <https://www.gnu.org/licenses/>.
 
 	// https://stackoverflow.com/questions/30006081/recaptcha-2-0-with-ajax
-	$path_root = "../";
+	$path_root = "../../";
 	header("Content-Type: text/html; charset=utf8");
 	include($path_root . 'ssi/recaptchakey.php');
 

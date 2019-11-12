@@ -120,6 +120,7 @@
 * Maybe replace "up", "down", "right", "left" with arrow icons?
 * Move all "support" scripts to another directory, and use htaccess to block 
   all external access to them.
+* Fix RDF stuff in the SVG files so that author names are not duplicated.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
@@ -187,3 +188,5 @@
 * Currently, the "layouts", "records_games" and "records_styles" tables each 
   have an "author_id" column. However, this column can only store a single 
   author ID whereas multiple people might have actually worked on an item.
+* On the frontend page, replace the asterisk used to indicate "default" 
+  selections with an icon of a star or something else.

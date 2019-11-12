@@ -26,8 +26,8 @@
 	include($path_root . 'ssi/analyticstracking.php');
 	include($path_root . "ssi/keyboard-connection.php");
 	include($path_root . 'ssi/recaptchakey.php');
-	include("./keyboard-common.php");
-	include("./keyboard-queries.php");
+	include("./lib/keyboard-common.php");
+	include("./lib/keyboard-queries.php");
 
 	$write_maximal_keys	= true;
 	$php_url		= "";
@@ -96,7 +96,7 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	// gather and validate URL queries
-	// also executes some MySQL queries
+	// also executes a few MySQL queries
 	checkURLParameters("html");
 
 	// MySQL queries
@@ -135,7 +135,7 @@
 		<link rel=\"canonical\" href=\"" . $php_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"./lib/style_common.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"" . $string_description . $temp_game_name . ". (" . $temp_style_name . ")\"/>
 		<meta name=\"keywords\" content=\"" . $temp_game_name . "," . $temp_style_name . "," . "HTML" . "," . $string_keywords . "\"/>
@@ -143,12 +143,12 @@
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";
-	include("./submit_" . $style_filename . ".css");
+	include("./lib/submit_" . $style_filename . ".css");
 	echo
 "		</style>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_submit.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"./lib/style_submit.css\"/>
 		<script src=\"" . $path_root . "java/jquery-3.3.1.min.js\"></script>
-		<script src=\"./keyboard-submit-js.php\"></script>
+		<script src=\"./lib/keyboard-submit.js\"></script>
 		<script src=\"https://www.google.com/recaptcha/api.js\"></script>
 		<script>
 var record_id = " . $gamesrecord_id . ";
@@ -251,13 +251,13 @@ var binding_table =
 ?>
 	</head>
 	<body onload="init_submissions();">
-		<img id="waiting" src="animated_loading_icon.webp" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
-		<div id="butt_min" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(0);"><img src="./icon_min.png"/></div>
-		<div id="butt_max" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(1);"><img src="./icon_max.png"/></div>
+		<img id="waiting" src="./lib/animated_loading_icon.webp" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
+		<div id="butt_min" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(0);"><img src="./lib/icon_min.png"/></div>
+		<div id="butt_max" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(1);"><img src="./lib/icon_max.png"/></div>
 		<div id="pane_lft">
 			<div id="tbar_lft">
-				<div id="butt_inp" class="tabs_butt" title="Toggle Input Panel" onclick="switch_left_pane(0);"><img src="./icon_inp.png"/></div>
-				<div id="butt_hlp" class="tabs_butt" title="Toggle Info Panel"  onclick="switch_left_pane(1);"><img src="./icon_hlp.png"/></div>
+				<div id="butt_inp" class="tabs_butt" title="Toggle Input Panel" onclick="switch_left_pane(0);"><img src="./lib/icon_inp.png"/></div>
+				<div id="butt_hlp" class="tabs_butt" title="Toggle Info Panel"  onclick="switch_left_pane(1);"><img src="./lib/icon_hlp.png"/></div>
 			</div>
 			<div id="pane_inp" style="display:block;">
 				<div id="table_inp" class="inptbl" style="margin:auto;">
@@ -320,8 +320,8 @@ var binding_table =
 		</div>
 		<div id="pane_rgt">
 			<div id="tbar_rgt">
-				<div id="butt_kbd" class="tabs_butt" title="Toggle Keyboard Panel"    onclick="switch_right_pane(0);"><img src="./icon_kbd.png"/></div>
-				<div id="butt_csv" class="tabs_butt" title="Toggle Spreadsheet Panel" onclick="switch_right_pane(1);"><img src="./icon_spd.png"/></div>
+				<div id="butt_kbd" class="tabs_butt" title="Toggle Keyboard Panel"    onclick="switch_right_pane(0);"><img src="./lib/icon_kbd.png"/></div>
+				<div id="butt_csv" class="tabs_butt" title="Toggle Spreadsheet Panel" onclick="switch_right_pane(1);"><img src="./lib/icon_spd.png"/></div>
 			</div>
 			<div id="pane_kbd" style="display:block;">
 				<div class="boxdiv" style="font-size:x-large;">

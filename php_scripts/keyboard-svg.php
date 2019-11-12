@@ -24,9 +24,10 @@
 	header("Content-type: image/svg+xml");
 
 	include($path_root. "ssi/keyboard-connection.php");
-	include("./keyboard-common.php");
-	include("./keyboard-queries.php");
+	include("./lib/keyboard-common.php");
+	include("./lib/keyboard-queries.php");
 
+	// move as many of these as possible to keyboard-common.php
 	$php_url		= "";
 	$svg_url		= "";
 	$stylegroup_id		= 0;
@@ -83,7 +84,7 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	// gather and validate URL queries
-	// also executes some MySQL queries
+	// also executes a few MySQL queries
 	checkURLParameters("svg");
 
 	// MySQL queries
@@ -234,7 +235,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	</metadata>
 	<style type="text/css">
 /* <![CDATA[ */
-<?php include("svg_" . $style_filename . ".css"); ?>
+<?php include("./lib/svg_" . $style_filename . ".css"); ?>
 /* ]]> */
 	</style>
 	<defs>

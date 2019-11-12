@@ -25,8 +25,8 @@
 
 	include($path_root . 'ssi/analyticstracking.php');
 	include($path_root . "ssi/keyboard-connection.php");
-	include("./keyboard-common.php");
-	include("./keyboard-queries.php");
+	include("./lib/keyboard-common.php");
+	include("./lib/keyboard-queries.php");
 
 	$php_url		= "";
 	$svg_url		= "";
@@ -84,7 +84,7 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	// gather and validate URL queries
-	// also executes some MySQL queries
+	// also executes a few MySQL queries
 	checkURLParameters("html");
 
 	// MySQL queries
@@ -123,8 +123,8 @@
 		<link rel=\"canonical\" href=\"" . $php_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_common.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"./style_mediawiki.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"./lib/style_common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"./lib/style_mediawiki.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"" . $string_description . $temp_game_name . ".\"></meta>
 		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference,MediaWiki," . $temp_game_name . "\"></meta>

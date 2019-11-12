@@ -6,8 +6,8 @@
 	$page_keywords	= "visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference";
 	$page_onload	= "Select_Init();";
 	$foot_array	= ["copyright","accordion","license_kbd"];
-	$java_array	= ["keyboard-js.php", $path_root . "java/jquery-1.4.2.min.js", $path_root . "java/jquery-accordionmenu.js"];
-	$stys_array	= ["style_accordion.css","style_radio.css","style_frontend.css"];
+	$java_array	= ["./lib/keyboard-front.js", $path_root . "java/jquery-1.4.2.min.js", $path_root . "java/jquery-accordionmenu.js"];
+	$stys_array	= ["./lib/style_accordion.css","./lib/style_radio.css","./lib/style_frontend.css"];
 	$analytics	= true;
 	$is_short	= false;
 	include($path_root . "ssi/normalpage.php");
@@ -34,8 +34,8 @@
 	// <https://www.gnu.org/licenses/>.
 
 	include($path_root. "ssi/keyboard-connection.php");
-	include("./keyboard-common.php");
-	include("./keyboard-queries.php");
+	include("./lib/keyboard-common.php");
+	include("./lib/keyboard-queries.php");
 
 	$genre_array		= [];
 	$game_array		= [];
@@ -44,6 +44,15 @@
 	$layout_array		= [];
 	$platform_array		= [];
 	$platform_order_array	= [];
+	$game_table		= [];
+	$game_string		= "";
+	$seourl_table		= [];
+	$seourl_string		= "";
+	$style_table		= [];
+	$style_string		= "";
+	$games_max		= 0;
+	$layouts_max		= 0;
+	$styles_max		= 0;
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -61,10 +70,93 @@
 	selPlatformsFront();
 	selLayoutsFront();
 	sortGamesFront();
+	selGamesAutoincJS();
+	selLayoutsAutoincJS();
+	selStylesAutoincJS();
+	selSeourlJS();
+	selGameRecordsJS();
+	selStyleRecordsJS();
 
 	mysqli_close($con);
+
+	for ($i = 0; $i < $games_max; $i++)
+	{
+		if (isset($seourl_table[$i]))
+		{
+			$seourl_string .= "\t'" . $seourl_table[$i] . "'";
+		}
+		else
+		{
+			$seourl_string .= "\tnull";
+		}
+		if ($i != $games_max - 1)
+		{
+			$seourl_string .= ",";
+		}
+		$seourl_string .= "//" . ($i+1) . "\n";
+	}
+	for ($i = 0; $i < $layouts_max; $i++)
+	{
+		if (isset($style_table[$i]))
+		{
+			$style_string .= "\t[";
+			for ($j = 0; $j < $styles_max; $j++)
+			{
+				$style_string .= isset($style_table[$i][$j]) ? 1 : 0;
+				if ($j != $styles_max - 1)
+				{
+					$style_string .= ",";
+				}
+			}
+			$style_string .= "]";
+		}
+		else
+		{
+			$style_string .= "\tnull";
+		}
+		if (isset($game_table[$i]))
+		{
+			$game_string .= "\t[";
+			for ($j = 0; $j < $games_max; $j++)
+			{
+				$game_string .= isset($game_table[$i][$j]) ? 1 : 0;
+				if ($j != $games_max - 1)
+				{
+					$game_string .= ",";
+				}
+			}
+			$game_string .= "]";
+		}
+		else
+		{
+			$game_string .= "\tnull";
+		}
+		if ($i != $layouts_max - 1)
+		{
+			$style_string .= ",";
+			$game_string .= ",";
+		}
+		$style_string .= "//" . ($i+1) . "\n";
+		$game_string .= "//" . ($i+1) . "\n";
+	}
 ?>
-<img id="waiting" src="animated_loading_icon.webp" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
+<script>
+var game_table =
+[
+<?php echo $game_string; ?>
+]
+
+var style_table =
+[
+<?php echo $style_string; ?>
+]
+
+var seourl_table =
+[
+<?php echo $seourl_string; ?>
+]
+</script>
+<img id="waiting" src="./lib/animated_loading_icon.webp" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
 <form name="keyboard_select">
 	<input type="hidden" name="lay" value=""/>
 	<input type="hidden" name="gam" value=""/>
@@ -102,7 +194,7 @@
 			$this_name = $name_array[$j];
 			if ($this_id == $default_layout_id)
 			{
-				$this_name .= " *";
+				$this_name .= " &#10022;";
 			}
 			echo
 "						<li><a id=\"lay_" . ($this_id-1) . "\" menu=\"lay\" value=\"" . $this_id . "\" class=\"acc_nrm\" onclick=\"Set_Select_Value(this);Set_Game(" . ($this_id-1) . ",this);Set_Style(" . ($this_id-1) . ",this);\">" . $this_name . "</a></li>\n";
@@ -145,7 +237,7 @@
 			$this_name = $name_array[$j];
 			if ($this_id == $default_style_id)
 			{
-				$this_name .= " *";
+				$this_name .= " &#10022;";
 			}
 			echo
 "						<li><a id=\"sty_" . ($this_id-1) . "\" menu=\"sty\" value=\"" . $this_id . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);\">" . $this_name . "</a></li>\n";
@@ -181,13 +273,17 @@
 		}
 		$id_array	= $game_array[$i][0];
 		$name_array	= $game_array[$i][1];
-		$seourl_array	= $game_array[$i][2];	// not used here
-		// should these be sorted elsewhere, like the other categories?
+		$seourl_array	= $game_array[$i][2];	// not actually used here
+		// should these be sorted elsewhere in the code, like the other two categories?
 		array_multisort($name_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $id_array, $seourl_array);
 		for ($j = 0; $j < count($id_array); $j++)
 		{
 			$this_id = $id_array[$j];
 			$this_name = $name_array[$j];
+			if ($this_id == $default_game_id)
+			{
+				$this_name .= " &#10022;";
+			}
 			echo
 "						<li><a id=\"gam_" . ($this_id-1) . "\" menu=\"gam\" value=\"" . $this_id . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);\">" . $this_name . "</a></li>\n";
 		}
@@ -259,10 +355,10 @@
 	<li>Click on the 'Create New Diagram' button. A new window with your selected diagram will appear.</li>
 	<li>View or print the page in the new window.</li>
 </ol>
-<p>Items marked with an asterisk (*) are the &quot;default&quot;, or most common options.</p>
+<p>Items marked with a star (&#10022;) are the &quot;default&quot; or most common options.</p>
 <p>The vast majority of the bindings are for the <i>US 104 Key (ANSI)</i> keyboard at this time. If you would like to see more bindings for the other keyboards, you are welcome to contribute! (More on that, below.)</p>
 <h2>Licenses &amp; Submissions:</h2>
-<p>The source code for this project is licensed under the <a rel="license" target="_blank" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">GNU LGPLv3</a>. The content is licensed under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading. The <a href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/TODOLIST.md">&quot;to do&quot; list</a> outlines some of the tasks I've planned for the future. (Completed tasks are marked with a plus &quot;+&quot; and incomplete tasks are marked with a minus &quot;-&quot;.)</p>
+<p>The source code for this project is licensed under the <a rel="license" target="_blank" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">GNU LGPLv3</a>. The content is licensed under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading. The <a href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/TODOLIST.md">&quot;to do&quot; list</a> outlines some of the tasks I've planned for the future.</p>
 <p>To submit a new set of bindings, you can fill out <a  target="_blank"href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/helper_tools/vgkd_bindings_template.xlsx">this spreadsheet</a> and <a href="http://isometricland.net/email/email.php">email</a> me the contents (copy and paste) when you are done. Note that any content you submit falls under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart.</p>
 <p>I have also recently started developing a form-based submission page. You can use it to submit changes to existing bindings by selecting the &quot;Editor&quot; option in Step 4, above. Or, you can get started making a brand new set of bindings with the &quot;Blank Starter&quot; game in the &quot;Reference&quot; category. There exist &quot;Blank Starters&quot; for every keyboard, though I personally still prefer using the spreadsheet for this purpose.</p>
 <h2>MediaWiki, SVG &amp; PDF:</h2>
