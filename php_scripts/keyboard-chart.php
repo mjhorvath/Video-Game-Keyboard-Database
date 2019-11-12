@@ -26,13 +26,9 @@
 	if ($format_id === null)
 	{
 		if ($svg_bool !== null)
-		{
 			$format_id = $svg_bool;
-		}
 		else
-		{
 			$format_id == 0;
-		}
 	}
 
 	switch ($format_id)

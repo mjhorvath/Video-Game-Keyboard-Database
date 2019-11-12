@@ -150,7 +150,7 @@
 		}
 	}
 
-	// there is an analogous function written in JavaScript in "keyboard-submit-js.php"
+	// there is an analogous function written in JavaScript in "keyboard-submit.js"
 	// need to keep the two functions synced
 	function seo_url($input)
 	{
@@ -308,32 +308,22 @@
 		global $genre_array, $game_array;
 		array_multisort($genre_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $game_array);
 	}
-
-	// no longer used
-	// should probably be moved to the database and properly localized
-	$word_part1 = ["keyboard","video game","software","printable","graphical","visual"];
-	$word_part2 = ["shortcut","binding","control","hotkey","command"];
-	$word_part3 = ["diagram","chart","overlay","database","reference","guide","list","map"];
-
-	// not fully implemented
-	// required if I decide I want to highlight my preferred "default" choices in the GUI
-	function setDefaultNames()
-	{
-//		$default_game_name	= getGameName($default_game_id);
-		$default_style_name	= getStyleName($default_style_id);
-//		$default_layout_name	= getLayoutName($default_layout_id);
-	}
 	function checkForErrors()
 	{
 		global	$errors_table,
 			$game_seo, $game_name, $platform_name, $layout_name, $style_name,
 			$temp_game_seo, $temp_game_name, $temp_platform_name, $temp_layout_name, $temp_style_name,
-			$layout_id, $style_id, $gamesrecord_id, $stylesrecord_id;
+			$game_id, $platform_id, $layout_id, $style_id, $gamesrecord_id, $stylesrecord_id;
 		$temp_game_seo		= $game_seo		? $game_seo		: "unrecognized-game";
 		$temp_game_name		= $game_name		? $game_name		: "Unrecognized Game";
 		$temp_platform_name	= $platform_name	? $platform_name	: "Unrecognized Platform";
 		$temp_layout_name	= $layout_name		? $layout_name		: "Unrecognized Layout";
 		$temp_style_name	= $style_name		? $style_name		: "Unrecognized Theme";
+		// checking for $game_name or $game_id isn't working right now
+		if (!$game_name)
+		{
+			$errors_table[] = "Game with ID number " . $game_id . " not found.";
+		}
 		if (!$layout_name)
 		{
 			$errors_table[] = "Layout with ID number " . $layout_id . " not found.";

@@ -83,10 +83,9 @@
 	}
 	mysqli_query($con, "SET NAMES 'utf8'");
 
-	// gather and validate URL queries
-	// also executes a few MySQL queries
-	getDefaults();
-	checkURLParameters("svg");
+	// these also execute a few MySQL queries
+	getDefaults();			// get default values for entities if missing
+	checkURLParameters("svg");	// gather and validate URL parameters
 
 	// MySQL queries
 	selPlatformsFront();

@@ -95,10 +95,9 @@
 	}
 	mysqli_query($con, "SET NAMES 'utf8'");
 
-	// gather and validate URL queries
-	// also executes a few MySQL queries
-	getDefaults();
-	checkURLParameters("html");
+	// these also execute a few MySQL queries
+	getDefaults();			// get default values for entities if missing
+	checkURLParameters("html");	// gather and validate URL parameters
 
 	// MySQL queries
 	selAuthorsHTML();

@@ -123,6 +123,8 @@
   easier in SQL using joins.
 * The file "keyboard-sitemap.php" is a tool and does not need to use the site's 
   styling. It should also be moved into the "lib" directory.
+* The scripts get kind of flaky when both an SEO string *and* a game ID are 
+  provided in the URL. Not sure which of the two should take precedence.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 

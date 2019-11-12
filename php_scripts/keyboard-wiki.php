@@ -65,7 +65,6 @@
 	$string_joystick	= "";
 	$string_combos		= "";
 	$string_notes		= "";
-	$layout_legend		= "";		// heading was removed from the database
 	$layout_authors		= [];
 	$string_description	= "";
 	$string_keywords	= "";
@@ -83,10 +82,9 @@
 	}
 	mysqli_query($con, "SET NAMES 'utf8'");
 
-	// gather and validate URL queries
-	// also executes a few MySQL queries
-	getDefaults();
-	checkURLParameters("html");
+	// these also execute a few MySQL queries
+	getDefaults();			// get default values for entities if missing
+	checkURLParameters("svg");	// gather and validate URL parameters
 
 	// MySQL queries
 	selAuthorsHTML();
