@@ -63,6 +63,7 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	// MySQL queries
+	getDefaults();
 	selGenresFront();
 	selGamesFront();
 	selStylegroupsFront();

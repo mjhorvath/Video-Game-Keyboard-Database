@@ -97,6 +97,7 @@
 
 	// gather and validate URL queries
 	// also executes a few MySQL queries
+	getDefaults();
 	checkURLParameters("html");
 
 	// MySQL queries

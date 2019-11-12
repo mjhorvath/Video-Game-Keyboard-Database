@@ -50,6 +50,46 @@
 	}
 
 	// ---------------------------------------------------------------------
+	// All
+	function selEntities()
+	{
+		global $con;
+		$selectString =	"SELECT e.entity_id, e.entity_name, e.entity_default FROM entities as e;";
+		selectQuery($con, $selectString, "doEntities");
+	}
+	function doEntities($in_result)
+	{
+		global $entities_array;
+		while ($entity_row = mysqli_fetch_row($in_result))
+		{
+			// entity_id, entity_name, entity_default
+			$entities_array[] = $entity_row;
+		}
+	}
+	function selDefaults()
+	{
+		global $con, $entities_array;
+		$selectString =	"SELECT g.game_id, g.game_name, g.game_friendlyurl, l.layout_id, l.layout_name, s.style_id, s.style_name
+				FROM games as g, layouts as l, styles as s
+				WHERE g.game_id = " . $entities_array[0][2] . "
+				AND l.layout_id = " . $entities_array[1][2] . "
+				AND s.style_id = " . $entities_array[2][2] . ";";
+		selectQuery($con, $selectString, "doDefaults");
+	}
+	function doDefaults($in_result)
+	{
+		global $default_game_id, $default_game_name, $default_game_seo, $default_layout_id, $default_layout_name, $default_style_id, $default_style_name;
+		$game_row = mysqli_fetch_row($in_result);
+		$default_game_id	= $game_row[0];
+		$default_game_name	= $game_row[1];
+		$default_game_seo	= $game_row[2];
+		$default_layout_id	= $game_row[3];
+		$default_layout_name	= $game_row[4];
+		$default_style_id	= $game_row[5];
+		$default_style_name	= $game_row[6];
+	}
+
+	// ---------------------------------------------------------------------
 	// Frontend
 	function selGenresFront()
 	{

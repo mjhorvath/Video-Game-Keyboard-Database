@@ -14,6 +14,7 @@
 	<li>2019/11/12: Moved "support" scripts to a new "lib" sub-directory.</li>
 	<li>2019/11/12: Trying to access certain files in the "lib" directory now results in a 403 error.</li>
 	<li>2019/11/12: Converted some PHP files containing JavaScript into JS files.</li>
+	<li>2019/11/12: The default game, layout and style are now stored in the database.</li>
 	<li>2019/11/11: Made changes to how the default settings are chosen and configured. Added a blurb to each page indicating which items are the defaults.</li>
 	<li>2019/11/09: Multiple authors can now be listed for each binding scheme, keyboard layout, or theme.</li>
 	<li>2019/11/08: Added "SVG only" as a possible format. Note, however, that the "SVG only" format has no page footer at the bottom with controls.</li>
