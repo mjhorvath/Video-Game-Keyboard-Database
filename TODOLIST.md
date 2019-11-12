@@ -2,7 +2,7 @@
 
 ### Incomplete
 * Continue developing the "Spreadsheet View" of the submission form, and permit 
-  users to alter or update the keyboard data using it.
+  users to alter or update the keyboard data directly using it.
 * I should change all the various JavaScript alert boxes to something prettier.
 * I would also like to create charts/diagrams for gamepads, mice and joysticks. 
   But the sheer number of different devices will make this task very difficult.
@@ -19,20 +19,20 @@
   be too hard since I already store the left and right texts in separate fields 
   in the database itself.
 * Instead of having one genre per game, I could maybe create a tag cloud so 
-  that a game can be placed into multiple genres. What type of GUI would this 
+  that a game can be placed in multiple genres. What type of GUI would this 
   necessitate? Is this even possible using MySQL?
-* How granular do I want to get WRT video game genres? Should I list sub-genres 
-  and sub-sub-genres? How many genres? Which ones?
+* How granular do I want to get with respect to video game genres? Should I 
+  list sub-genres and sub-sub-genres? How many genres? Which ones?
 * Find out if the GitHub Powershell tool can accept multi-line commit messages.
 * I merged the HTML and SVG formats into one format. The diagrams are no longer 
   rendered using pure HTML code, and the SVG file is now once again embedded 
   within an HTML wrapper. (This is how the old "embed" format worked.) Not sure 
   what effect using SVG will have on search engines, however. Do search engines 
-  parse the text inside SVG files?
+  parse text contained inside SVG files?
 * Now that I have ditched the HTML format in favor of SVG for the principal 
-  rendering methods, should I also update the editor to do the same? This will 
+  rendering method, should I also update the editor to do the same? This will 
   require some cross-frame JavaScript as well as SVG text input, which I'm not 
-  sure is possible or easy.
+  sure is going to be easy.
 * Users should maybe be able to enter text directly onto the keyboard diagram 
   on the submission form. Have to think this through, as things could get very 
   messy.
@@ -41,8 +41,8 @@
   manner.
 * File permissions recently started getting messed up when uploading new files 
   using FileZilla. Is it a bug in the software? I now have to fix the 
-  permissions manually each time I upload a new file for the first time. I need 
-  to figure out what is going on.
+  permissions manually each time I upload a new file. I need to figure out what 
+  is going on.
 * I thought the ID for each key in the "positions" table was based on the IBM 
   position codes. However, apparently this is not the case. Should I edit the 
   position table so that they *are* based on the IBM position codes?
@@ -72,15 +72,14 @@
 * I should be able to easily create "Typing Reference" schemes for every 
   keyboard layout. I would like to have the GUI strings translated into their 
   respective languages first, however.
-* Users of the submission form should be able to specify a layout using a drop-
-  down list or whatever. Users are already able to specify and edit a "blank 
-  sample" for every layout. But this is insufficient, IMO.
 * There needs to be additional indication on the submission page that there is 
   a "Help Pane" as well as a "Spreadsheet View".
+* "Spreadsheet View" needs to be renamed to something else since I am not 
+  generating an actual spreadsheet.
 * Should create a table of authors/contributers that automatically pulls info 
   from the database. It should show a list of authors, and the stuff they 
-  contributed to.
-* Experiment again with scaling and rotating the diagrams so that they are 
+  contributed.
+* Experiment again with scaling and rotating the diagrams so that they become 
   easier to print.
 * The TSV code on the Spreadsheet page of the submission form is not always 
   lining up properly. Need to set the container to overflow instead of wrap.
@@ -96,9 +95,9 @@
   stored procedures on my Web server that have to do with either the installed 
   MySQL version, the PHP version, or simply some rules imposed by the Web host.
 * Not sure every table needs a single numerical index column. Using two or more 
-  existing columns to form a composite key might suffice in several cases.
+  existing columns to form a composite key might suffice in a number of cases.
 * Once I get auditing set up, it would be great if the submission form had an 
-  additional pane showing the audit history. The tab icon could be an image of 
+  additional pane showing the change history. The tab icon could be an image of 
   a clock face.
 * Hopefully, an update trigger will not be fired for every single row that gets 
   altered. That would be too much data.
@@ -108,19 +107,22 @@
   pointing left and right.
 * Need to add instructions to the effect that the SHIFT, ALT, etc. commands may 
   require colors assigned to them, but these colors will not necessarily be 
-  displayed in the actual chart.
+  displayed in the current version of the chart.
 * I would like to change the text shown in the color selection boxes of the 
   submission form from "non" to "null" or something else. This might have an 
   adverse effect on some scripts, however.
 * Need to create one or more styles that are accessible to people with color-
   blindness.
-* Several of the PHP and JS files should not be directly accessible via the Web.
 * The "Create New Diagram" button on the frontend page should have a "hover" 
   effect that changes the button's color.
 * Maybe replace "up", "down", "right", "left" with arrow icons?
-* Move all "support" scripts to another directory, and use htaccess to block 
-  all external access to them.
-* Fix RDF stuff in the SVG files so that author names are not duplicated.
+* Fix the RDF stuff in SVG files so that author names are not duplicated 
+  multiple times.
+* My SQL queries are very simple, and all processing of data is done using PHP 
+  scripts. A lot of the same tasks could probably be performed quicker and 
+  easier in SQL using joins.
+* The file "keyboard-sitemap.php" is a tool and does not need to use the site's 
+  styling. It should also be moved into the "lib" directory.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
@@ -129,6 +131,13 @@
   "SHIFT", "CTRL", "ALT", etc. and can't be customized. Not sure which table to 
   put this stuff in. There will need to be a way to turn each string on and off 
   as well as insert a value.
+* Several of the PHP and JS files should not be directly accessible via the Web.
+  [Ed. this can be done easily for PHP files, but not JS or CSS files as far as 
+  I can tell.]
+* Users of the submission form should be able to specify a layout using a drop-
+  down list or whatever within the form itself. Users are already able to 
+  specify and edit a "Blank Sample" for every layout starting from the frontend 
+  page. But this is insufficient, IMO.
 
 ### Rejected
 * Implement a "languages" table. [Ed. It may be sufficient to simply tie the 
@@ -190,3 +199,7 @@
   author ID whereas multiple people might have actually worked on an item.
 * On the frontend page, replace the asterisk used to indicate "default" 
   selections with an icon of a star or something else.
+* Move all "support" scripts to another directory, and use htaccess to block 
+  all external access to them. [Ed. I created the "lib" directory, but I don't 
+  think there's a way to block graphic images, javascript, css, etc. without 
+  blocking the files everywhere else too.]
