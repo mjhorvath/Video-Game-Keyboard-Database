@@ -128,12 +128,12 @@
 * I moved most PHP routines and SQL statements to two dedicated files. But this 
   may be worse for performance since only a subset of the routines are needed 
   at any given time. Should I split the two big files into several smaller ones?
-* Generate MediaWiki code for layouts as well as games.
+* Generate MediaWiki code for layouts as well as for games.
 * Add support in the MediaWiki template for toggling the numpad on/off.
 * Add support in the MediaWiki template for shift/ctrl/alt command colors, even 
   if it's not currently possible to display these colors properly. [Ed. the 
-  reasoning being that it may possible to display these colors at some point in 
-  the future.]
+  reasoning being that it may possible to display these colors properly at some 
+  point in the future.]
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 

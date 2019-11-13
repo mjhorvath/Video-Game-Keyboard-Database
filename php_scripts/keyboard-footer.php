@@ -117,7 +117,7 @@
 		else
 			echo ".\n";
 	}
-	echo "Theme created by: ";
+	echo "Visual theme created by: ";
 	$count_authors = count($stylesrecord_authors);
 	for ($i = 0; $i < $count_authors; $i++)
 	{
