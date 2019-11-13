@@ -346,7 +346,7 @@
 			</div>
 		</main>
 		<footer>
-<?php include("./keyboard-footer.php"); ?>
+<?php include("./lib/keyboard-footer.php"); ?>
 		</footer>
 	</body>
 </html>

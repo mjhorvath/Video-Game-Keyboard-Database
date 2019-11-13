@@ -740,7 +740,7 @@ var binding_table =
 					</div>
 				</div>
 				<footer>
-<?php include("./keyboard-footer.php"); ?>
+<?php include("./lib/keyboard-footer.php"); ?>
 				</footer>
 			</div>
 			<div id="pane_tsv" style="display:none;">
