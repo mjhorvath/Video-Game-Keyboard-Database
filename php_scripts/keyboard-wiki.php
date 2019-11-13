@@ -148,7 +148,6 @@
 		</header>
 		<main>
 			<p>I have created templates for MediaWiki that do basically the same thing as the other charts on this site. You can find the templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Fandom</a>. Below is the code you would use to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the generated chart is wider than a typical MediaWiki page.</p>
-			<h4>Game</h4>
 			<textarea readonly="readonly" wrap="off" style="width:100%;height:30em;font-size:smaller;">
 {{kbdchart
 <?php
@@ -217,10 +216,6 @@
 	}
 ?>
 }}
-			</textarea>
-			<h4>Layout</h4>
-			<textarea readonly="readonly" wrap="off" style="width:100%;height:30em;font-size:smaller;">
-To do.
 			</textarea>
 		</main>
 		<footer>
