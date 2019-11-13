@@ -73,6 +73,17 @@
 	$temp_layout_name	= "";
 	$temp_style_name	= "";
 	$temp_platform_name	= "";
+	// these should maybe be moved to the database and localized
+	$string_title		= cleantextHTML("Video Game Keyboard Diagrams");
+	$string_combo		= cleantextHTML("Keyboard Combinations");
+	$string_mouse		= cleantextHTML("Mouse Controls");
+	$string_joystick	= cleantextHTML("Joystick/Gamepad Controls");
+	$string_note		= cleantextHTML("Additional Notes");
+	$string_cheat		= cleantextHTML("Cheat Codes");
+	$string_console		= cleantextHTML("Console Commands");
+	$string_emote		= cleantextHTML("Chat Commands/Emotes");
+	$string_description	= cleantextHTML("Keyboard hotkey & binding chart for ");
+	$string_keywords	= cleantextHTML("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -110,7 +121,7 @@
 	checkForErrors();
 
 	$thispage_title_a	= $temp_game_name;
-	$thispage_title_b	= " - MediaWiki keyboard diagram code";
+	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - MediaWiki code - GRID:" . $gamesrecord_id;
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -137,6 +148,7 @@
 		</header>
 		<main>
 			<p>I have created templates for MediaWiki that do basically the same thing as the other charts on this site. You can find the templates as well as instructions on how to use them on StrategyWiki and Wikia, <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">here</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">here</a>. Below is the code you would use to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the generated chart is wider than a typical MediaWiki page.</p>
+			<h4>Game</h4>
 			<textarea readonly="readonly" wrap="off" style="width:100%;height:30em;font-size:smaller;">
 {{kbdchart
 <?php
@@ -205,6 +217,10 @@
 	}
 ?>
 }}
+			</textarea>
+			<h4>Layout</h4>
+			<textarea readonly="readonly" wrap="off" style="width:100%;height:30em;font-size:smaller;">
+To do.
 			</textarea>
 		</main>
 		<footer>
