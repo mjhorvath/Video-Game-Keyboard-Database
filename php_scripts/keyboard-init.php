@@ -19,16 +19,24 @@
 	// <https://www.gnu.org/licenses/>.
 
 	// gather URL queries
-	$format_id	= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0")) : null;
-	$svg_bool	= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0")) : null;
+	$format_id	= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0"))	: null;
+
+	function extension($path)
+	{
+		$qpos = strpos($path, "?");
+		if ($qpos!==false) $path = substr($path, 0, $qpos);
+		$extension = pathinfo($path, PATHINFO_EXTENSION);
+		return $extension;
+	}
 
 	// check URL queries validity
-	if ($format_id === null)
+	if (extension($_SERVER["REQUEST_URI"]) == "svg")
 	{
-		if ($svg_bool !== null)
-			$format_id = $svg_bool;
-		else
-			$format_id == 0;
+		$format_id = 1;
+	}
+	else if ($format_id === null)
+	{
+		$format_id = 0;
 	}
 
 	switch ($format_id)

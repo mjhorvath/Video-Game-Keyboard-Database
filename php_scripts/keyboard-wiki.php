@@ -95,7 +95,7 @@
 
 	// these also execute a few MySQL queries
 	getDefaults();			// get default values for entities if missing
-	checkURLParameters("svg");	// gather and validate URL parameters
+	checkURLParameters();		// gather and validate URL parameters
 
 	// MySQL queries
 	selAuthorsHTML();
