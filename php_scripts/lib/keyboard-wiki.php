@@ -20,13 +20,14 @@
 
 	$path_root		= "../";
 	$path_file		= "./keyboard-wiki.php";
+	$path_lib		= "./lib/";
 
 	header("Content-Type: text/html; charset=utf8");
 
-	include($path_root . 'ssi/analyticstracking.php');
-	include($path_root . "ssi/keyboard-connection.php");
-	include("./lib/keyboard-common.php");
-	include("./lib/keyboard-queries.php");
+	include($path_root	. "ssi/analyticstracking.php");
+	include($path_root	. "ssi/keyboard-connection.php");
+	include($path_lib	. "keyboard-common.php");
+	include($path_lib	. "keyboard-queries.php");
 
 	$php_url		= "";
 	$svg_url		= "";
@@ -133,8 +134,8 @@
 		<link rel=\"canonical\" href=\"" . $php_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"./lib/style_common.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"./lib/style_mediawiki.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib . "style_common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib . "style_mediawiki.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"" . $string_description . $temp_game_name . ".\"></meta>
 		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference,MediaWiki," . $temp_game_name . "\"></meta>
@@ -219,7 +220,7 @@
 			</textarea>
 		</main>
 		<footer>
-<?php include("./lib/keyboard-footer.php"); ?>
+<?php include($path_lib . "keyboard-footer.php"); ?>
 		</footer>
 	</body>
 </html>

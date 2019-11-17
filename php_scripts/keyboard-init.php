@@ -20,6 +20,7 @@
 
 	// gather URL queries
 	$format_id	= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0"))	: null;
+	$svg_bool	= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0"))	: null;
 
 	function extension($path)
 	{
@@ -30,7 +31,7 @@
 	}
 
 	// check URL queries validity
-	if (extension($_SERVER["REQUEST_URI"]) == "svg")
+	if ((extension($_SERVER["REQUEST_URI"]) == "svg") || ($svg_bool == 1))
 	{
 		$format_id = 1;
 	}
@@ -42,16 +43,16 @@
 	switch ($format_id)
 	{
 		case 0:
-			include("./keyboard-embed.php");
+			include("./lib/keyboard-embed.php");
 		break;
 		case 1:
-			include("./keyboard-svg.php");
+			include("./lib/keyboard-svg.php");
 		break;
 		case 2:
-			include("./keyboard-wiki.php");
+			include("./lib/keyboard-wiki.php");
 		break;
 		case 3:
-			include("./keyboard-submit.php");
+			include("./lib/keyboard-submit.php");
 		break;
 		case 4:
 			echo "PDF format not implemented yet.\n";

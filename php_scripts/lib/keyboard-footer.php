@@ -18,7 +18,7 @@
 		break;
 	}
 	echo
-"			<script src=\"./lib/keyboard-footer.js\"></script>
+"			<script src=\"" . $path_lib . "keyboard-footer.js\"></script>
 			<div class=\"boxdiv\">
 				<p><a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\"><img alt=\"GNU LGPLv3 icon\" src=\"" . $path_root . "images/license_lgpl_88x31.png\" /></a><a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/3.0/\"><img alt=\"CC BY-SA 3.0 icon\" style=\"border-width:0;\" src=\"" . $path_root . "images/license_cc-by-sa_88x31.png\" /></a></p>
 				<p>&quot;Video Game Keyboard Diagrams&quot; software was created by Michael Horvath and is licensed under <a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\">GNU LGPLv3</a> or later license. Content is licensed under <a target=\"_blank\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CC BY-SA 3.0</a> or later license. You can find this project on <a target=\"_blank\" href=\"https://github.com/mjhorvath/vgkd\">GitHub</a>.</p>

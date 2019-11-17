@@ -22,11 +22,12 @@
 
 	$path_root		= "../";
 	$path_file		= "./keyboard-embed.php";
+	$path_lib		= "./lib/";
 
-	include($path_root . "ssi/analyticstracking.php");
-	include($path_root . "ssi/keyboard-connection.php");
-	include("./lib/keyboard-common.php");
-	include("./lib/keyboard-queries.php");
+	include($path_root	. "ssi/analyticstracking.php");
+	include($path_root	. "ssi/keyboard-connection.php");
+	include($path_lib	. "keyboard-common.php");
+	include($path_lib	. "keyboard-queries.php");
 
 	$php_url		= "";
 	$svg_url		= "";
@@ -163,7 +164,7 @@
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";
-	include("./lib/embed_" . $style_filename . ".css");
+	include($path_lib . "embed_" . $style_filename . ".css");
 	echo
 "		</style>\n";
 ?>
@@ -346,7 +347,7 @@
 			</div>
 		</main>
 		<footer>
-<?php include("./lib/keyboard-footer.php"); ?>
+<?php include($path_lib . "keyboard-footer.php"); ?>
 		</footer>
 	</body>
 </html>

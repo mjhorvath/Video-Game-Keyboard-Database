@@ -11,6 +11,9 @@
 ?>
 <h2>News &amp; Updates</h2>
 <ul>
+	<li>2019/11/17: Better handling of "lib" path strings.</li>
+	<li>2019/11/17: Improved handling of SVG file extension when navigating between formats or arriving from elsewhere on the Web.</li>
+	<li>2019/11/17: Move more files into "lib".</li>
 	<li>2019/11/12: Moved "support" scripts to a new "lib" sub-directory.</li>
 	<li>2019/11/12: Trying to access certain files in the "lib" directory now results in a 403 error.</li>
 	<li>2019/11/12: Converted some PHP files containing JavaScript into JS files.</li>
@@ -148,7 +151,7 @@
 	<li>2009/05/21: Fixed the measurements for most of the other layouts which were off by some fractions of an inch.</li>
 	<li>2009/05/16: Added over a dozen new bindings as well as French and German PC keyboard layouts. The new layouts are not compatible with most games, however, until someone contacts me with a list of corresponding French and German bindings.</li>
 	<li>2009/05/11: After several years of neglect, I've done a major overhaul of the project's scripts. Please forgive (and report) any errors! Also, feel free to submit new bindings, layouts or styles.</li>
-	<li>This project was initially started circa 2004 when my site was hosted on GeoCities. Back then it was mostly pure JavaScript and HTML. (Free GeoCities accounts were not permitted to use PHP or MySQL.) It has come a long way since then. ;)</li>
+	<li>This project was initially started circa 2004 when my site was still hosted at GeoCities. Back then it was mostly pure JavaScript and HTML. (Free GeoCities accounts were not permitted to use PHP or MySQL.) It has come a long way since then. ;)</li>
 </ul>
 <h2>Credits</h2>
 <ul>

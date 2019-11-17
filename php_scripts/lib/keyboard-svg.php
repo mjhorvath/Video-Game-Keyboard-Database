@@ -20,12 +20,13 @@
 
 	$path_root		= "../";
 	$path_file		= "./keyboard-svg.php";
+	$path_lib		= "./lib/";
 
 	header("Content-type: image/svg+xml");
 
-	include($path_root. "ssi/keyboard-connection.php");
-	include("./lib/keyboard-common.php");
-	include("./lib/keyboard-queries.php");
+	include($path_root	. "ssi/keyboard-connection.php");
+	include($path_lib	. "keyboard-common.php");
+	include($path_lib	. "keyboard-queries.php");
 
 	// move as many of these as possible to keyboard-common.php
 	$php_url		= "";
@@ -235,7 +236,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	</metadata>
 	<style type="text/css">
 /* <![CDATA[ */
-<?php include("./lib/svg_" . $style_filename . ".css"); ?>
+<?php include($path_lib . "svg_" . $style_filename . ".css"); ?>
 /* ]]> */
 	</style>
 	<defs>

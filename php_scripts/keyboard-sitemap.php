@@ -1,14 +1,4 @@
 <?php
-	header("Content-Type: text/html; charset=utf8");
-	$path_root = "../";
-	$page_title = "Video Game Keyboard Diagrams - Sitemap Code";
-	$foot_array = ["copyright","license_kbd"];
-	$analytics	= true;
-	$is_short	= true;
-	include($path_root . "ssi/normalpage.php");
-	echo $page_top;
-?>
-<?php
 	// Video Game Keyboard Diagrams
 	// Copyright (C) 2018  Michael Horvath
         // 
@@ -28,9 +18,13 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
+	$path_root		= "../";
+	$path_file		= "./keyboard-sitemap.php";
+	$path_lib		= "./lib/";
+
 	include($path_root. "ssi/keyboard-connection.php");
-	include("./lib/keyboard-common.php");
-	include("./lib/keyboard-queries.php");
+	include($path_lib . "keyboard-common.php");
+	include($path_lib . "keyboard-queries.php");
 
 	$layout_array		= [];
 	$record_array		= [];
@@ -56,11 +50,16 @@
 	mysqli_close($con);
 
 	echo
-"<h2>Sitemap Code</h2>
-<p>This form generates code that can be copied into the site's \"sitemap.xml\" file.</p>
-<textarea readonly=\"readonly\" wrap=\"off\" style=\"width:100%;height:30em;\">\n";
+"<!DOCTYPE HTML>
+<html>
+	<head>
+	</head>
+	<body>
+		<h2>Sitemap Code</h2>
+		<p>This form generates code that can be copied into the site's &quot;sitemap.xml&quot; file.</p>
+		<textarea readonly=\"readonly\" wrap=\"off\" style=\"width:100%;height:30em;\">\n";
 
-	// using 'count()' here may be a bad idea in case there ever appear gaps in the table indexes due to deletions
+	// using 'count()' here may be a bad idea in case there are ever any gaps in the table indexes due to records deletions
 	for ($i = 0; $i < count($game_name_array); $i++)
 	{
 		$game_id_gam = $game_index_array[$i];
@@ -88,7 +87,6 @@
 
 		// Maybe not a good idea to list one page for every game/layout combination.
 		for ($j = 0; $j < count($platform_array); $j++)
-//		for ($j = 0; $j < 1; $j++)
 		{
 			$platform_id_pla = $platform_array[$j][0];
 			$platform_abbv_pla = $platform_array[$j][2];
@@ -105,6 +103,7 @@
 	}
 
 	echo
-"</textarea>\n";
-	echo $page_bot;
+"		</textarea>
+	</body>
+</html>\n";
 ?>
