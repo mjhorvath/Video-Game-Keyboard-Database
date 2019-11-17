@@ -63,10 +63,6 @@
 		{
 			if ($format_id != 1)
 			{
-				if ($format_id == null)
-				{
-					$format_id = 1;
-				}
 				$fix_url = true;
 			}
 		}
@@ -132,7 +128,11 @@
 		if ($format_id === null)
 		{
 //			error_log("format_id is null", 0);
-			if ($svg_bool !== null)
+			if ($url_ext == "svg")
+			{
+				$format_id = 1;
+			}
+			else if ($svg_bool !== null)
 			{
 				$format_id = $svg_bool;
 			}
