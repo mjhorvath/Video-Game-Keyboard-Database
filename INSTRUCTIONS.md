@@ -11,3 +11,10 @@ This PHP form generates a keyboard control diagram in a new window. You can sele
 1. View or print the page in the new window.
 
 The vast majority of the bindings are for the *US 104 Key (ANSI)* keyboard at this time. If you would like to see more bindings for the other keyboards, you are welcome to contribute!
+
+### Note to self
+
+Some log files can be found here:
+
+* \xampp\apache\logs\error.log
+* \xampp\php\logs\php_error_log
