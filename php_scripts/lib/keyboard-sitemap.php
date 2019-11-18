@@ -18,9 +18,9 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
-	$path_root		= "../";
+	$path_root		= "../../";
 	$path_file		= "./keyboard-sitemap.php";
-	$path_lib		= "./lib/";
+	$path_lib		= "./";
 
 	include($path_root. "ssi/keyboard-connection.php");
 	include($path_lib . "keyboard-common.php");

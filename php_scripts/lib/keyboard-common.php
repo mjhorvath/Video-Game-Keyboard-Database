@@ -29,6 +29,22 @@
 	$default_style_name	= "";
 	$default_layout_name	= "";
 	$entities_array		= [];
+	$string_title		= "";
+	$string_description	= "";
+	$string_keywords	= "";
+	$string_legend		= "";
+	$string_mouse		= "";
+	$string_joystick	= "";
+	$string_keyboard	= "";
+	$string_note		= "";
+	$string_cheat		= "";
+	$string_console		= "";
+	$string_emote		= "";
+	$temp_game_seo		= "";
+	$temp_game_name		= "";
+	$temp_layout_name	= "";
+	$temp_style_name	= "";
+	$temp_platform_name	= "";
 
 	function getDefaults()
 	{

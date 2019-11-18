@@ -1,4 +1,15 @@
+# Block all ".php" files
 <FilesMatch "\.php$">
 Order deny,allow
 Deny from all
+</FilesMatch>
+# Permit a specific ".php" file
+<FilesMatch "^keyboard-recaptcha\.php$">
+Order deny,allow
+Allow from all
+</FilesMatch>
+# Permit a specific ".php" file
+<FilesMatch "^keyboard-sitemap\.php$">
+Order deny,allow
+Allow from all
 </FilesMatch>

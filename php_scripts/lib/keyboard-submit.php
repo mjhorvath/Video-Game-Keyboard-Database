@@ -71,22 +71,7 @@
 	$layout_authors		= [];
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
-	$temp_game_seo		= "";
-	$temp_game_name		= "";
-	$temp_layout_name	= "";
-	$temp_style_name	= "";
-	$temp_platform_name	= "";
-	// these should maybe be moved to the database and localized
-	$string_title		= cleantextHTML("VGKD Submission Editor");
-	$string_combo		= cleantextHTML("Keyboard Combinations");
-	$string_mouse		= cleantextHTML("Mouse Controls");
-	$string_joystick	= cleantextHTML("Joystick/Gamepad Controls");
-	$string_note		= cleantextHTML("Additional Notes");
-	$string_cheat		= cleantextHTML("Cheat Codes");
-	$string_console		= cleantextHTML("Console Commands");
-	$string_emote		= cleantextHTML("Chat Commands/Emotes");
-	$string_description	= cleantextHTML("Keyboard hotkey & binding chart for ");
-	$string_keywords	= cleantextHTML("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
+	$layout_language	= 1;	// temporary until I add translations to the database
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -101,6 +86,7 @@
 	checkURLParameters();		// gather and validate URL parameters
 
 	// MySQL queries
+	selLanguageStringsHTML();
 	selAuthorsHTML();
 	selStyleGroupsHTML();
 	selStylesHTML();
@@ -534,7 +520,7 @@ var binding_table =
 				</div>
 				<div id="flxdiv">
 					<div class="inbtop comdiv">
-						<h3><?php echo $string_combo; ?></h3>
+						<h3><?php echo $string_keyboard; ?></h3>
 						<div id="table_combo" class="nottbl">
 <?php
 		// combo

@@ -127,24 +127,14 @@
   provided in the URL. Not sure which of these two should take precedence.
 * I moved most PHP routines and SQL statements to two dedicated files. But this 
   may be worse for performance since only a subset of the routines are needed 
-  at any given time. Should I split the two big files into several smaller ones?
+  at any given time, yet the entire files are loaded each time. Should I split 
+  the two big files into several smaller ones?
 * Generate MediaWiki code for layouts as well as for games.
 * Add support in the MediaWiki template for toggling the numpad on/off.
 * Add support in the MediaWiki template for shift/ctrl/alt command colors, even 
   if it's not currently possible to display these colors properly. [Ed. the 
   reasoning being that it may possible to display these colors properly at some 
   point in the future.]
-* I would like to move "keyboard-embed.php", "keyboard-svg.php", 
-  "keyboard-wiki.php" and "keyboard-submit.php" into the "lib" directory. 
-  However, there are issues involving paths to these files. When the files are 
-  included inside "keyboard-chart.php", they are treated as if they were in the 
-  same folder as "keyboard-chart.php". But when "keyboard-svg.php" is loaded 
-  into an IFRAME in "keyboard-embed.php", it is correctly treated as if it were 
-  in the "lib" directory. A lot of stuff gets messed up when this happens. One 
-  solution might be to not use an IFRAME for the SVG files, but instead insert 
-  the SVG code directly into the HTML wrapper file code. Or, maybe there is a 
-  way to not include the files inside "keyboard-chart.php", and use some means 
-  of changing the page location instead.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
@@ -228,3 +218,14 @@
 * Direct links to SVG file will not load other formats when changing the "fmt" 
   URL parameter. Conversely, changing the "fmt" URL parameter on a PHP page can 
   load an SVG file, but the extension remains PHP and does not change to SVG.
+* I would like to move "keyboard-embed.php", "keyboard-svg.php", 
+  "keyboard-wiki.php" and "keyboard-submit.php" into the "lib" directory. 
+  However, there are issues involving paths to these files. When the files are 
+  included inside "keyboard-chart.php", they are treated as if they were in the 
+  same folder as "keyboard-chart.php". But when "keyboard-svg.php" is loaded 
+  into an IFRAME in "keyboard-embed.php", it is correctly treated as if it were 
+  in the "lib" directory. A lot of stuff gets messed up when this happens. One 
+  solution might be to not use an IFRAME for the SVG files, but instead insert 
+  the SVG code directly into the HTML wrapper file code. Or, maybe there is a 
+  way to not include the files inside "keyboard-chart.php", and use some means 
+  of changing the page location instead.

@@ -59,22 +59,7 @@
 	$layout_tenkeyless_height	= 400;
 	$layout_legend_padding		= 36;
 	$layout_legend_height		= 72;
-	$temp_game_seo		= "";
-	$temp_game_name		= "";
-	$temp_layout_name	= "";
-	$temp_style_name	= "";
-	$temp_platform_name	= "";
-	// these should maybe be moved to the database and localized
-	$string_title		= cleantextSVG("Video Game Keyboard Diagrams");
-	$string_combo		= cleantextSVG("Keyboard Combinations");
-	$string_mouse		= cleantextSVG("Mouse Controls");
-	$string_joystick	= cleantextSVG("Joystick Controls");
-	$string_note		= cleantextSVG("Additional Notes");
-	$string_cheat		= cleantextSVG("Cheat Codes");
-	$string_console		= cleantextSVG("Console Commands");
-	$string_emote		= cleantextSVG("Chat Commands/Emotes");
-	$string_description	= cleantextSVG("Keyboard hotkey & binding chart for ");
-	$string_keywords	= cleantextSVG("English,keyboard,keys,diagram,chart,overlay,shortcut,binding,mapping,map,controls,hotkeys,database,print,printable,video game,software,visual,guide,reference");
+	$layout_language	= 1;	// temporary until I add translations to the database
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -89,6 +74,7 @@
 	checkURLParameters();		// gather and validate URL parameters
 
 	// MySQL queries
+	selLanguageStringsSVG();
 	selPlatformsFront();
 	selLayoutsFront();
 	selAuthorsSVG();
