@@ -143,6 +143,12 @@
   may be worse for performance since only a subset of the routines are needed 
   at any given time, yet the entire files are loaded each time. Should I split 
   the two big files into several smaller ones?
+* Not sure if the GUI string language should be a per-keyboard layout setting, 
+  or something the user can configure manually. The latter will require yet 
+  another URL query parameter.
+* Maybe merge the "Completed" tasks on this page back into the other categories 
+  and use strikethrough text to indicate a task that has been completed. Or use 
+  GitHub's "Issues" interface.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
