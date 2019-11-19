@@ -49,6 +49,9 @@
 	$record		= $_POST["record"];
 	$timeraw	= time();
 	$timeform	= date("l jS \of F Y h:i:s A", $timeraw);
+	$at		= "@";
+	$dot		= ".";
+	$admin		= "mikh2161" . $at . "gmail" . $dot . "com";
 
 	// handling the captcha and checking if it's ok
 	$secret = writeRecaptchaSecret();
@@ -57,10 +60,9 @@
 	// if the captcha is cleared with google, send the mail and echo ok.
 	if ($response["success"] != false)
 	{
-		$mailto = "mikh2161@gmail.com";
-
+		// Send to admin
+		$mailto = $admin;
 		$subject = "VGKD Bindings Submission: " . $titletxt;
-
 		$message = "NAME:\t\t"	. $name		. "\r\n" .
 			"EMAIL:\t\t"	. $email	. "\r\n" .
 			"MESSAGE:\t"	. $message	. "\r\n" .
@@ -73,13 +75,32 @@
 			"LEGENDS:\r\n"	. $legend	. "\r\n\r\n" .
 			"COMMANDS:\r\n"	. $command	. "\r\n\r\n" .
 			"BINDINGS:\r\n"	. $binding	. "\r\n\r\n";
-
 		$headers = "MIME-Version: 1.0\r\n" .
 			"Content-type:text/plain;charset=UTF-8\r\n" .
 			"From: " . $email . "\r\n" .
 			"Reply-To: " . $email . "\r\n";
+		mail($mailto, $subject, $message, $headers);
 
-		// send the actual mail
+		// Send to submitter
+		$mailto = $email;
+		$subject = "VGKD Bindings Submission: " . $titletxt;
+		$message = "Thank you for submitting a binding scheme to Video Game Keyboard Diagrams. Below is a copy of the data you submitted.\r\n\r\n" .
+			"NAME:\t\t"	. $name		. "\r\n" .
+			"EMAIL:\t\t"	. $email	. "\r\n" .
+			"MESSAGE:\t"	. $message	. "\r\n" .
+			"GAME TITLE:\t"	. $titletxt	. "\r\n" .
+			"GAME URL:\t"	. $titleurl	. "\r\n" .
+			"LAYOUT:\t\t"	. $layout	. "\r\n" .
+			"RECORD:\t\t"	. $record	. "\r\n" .
+			"TIMERAW:\t"	. $timeraw	. "\r\n" .
+			"TIMEFORM:\t"	. $timeform	. "\r\n\r\n" .
+			"LEGENDS:\r\n"	. $legend	. "\r\n\r\n" .
+			"COMMANDS:\r\n"	. $command	. "\r\n\r\n" .
+			"BINDINGS:\r\n"	. $binding	. "\r\n\r\n";
+		$headers = "MIME-Version: 1.0\r\n" .
+			"Content-type:text/plain;charset=UTF-8\r\n" .
+			"From: " . $admin . "\r\n" .
+			"Reply-To: " . $admin . "\r\n";
 		mail($mailto, $subject, $message, $headers);
 
 		// the echo goes back to the ajax, so the user can know if everything is ok

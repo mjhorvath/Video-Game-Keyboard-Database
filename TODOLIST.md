@@ -7,14 +7,13 @@
   a "Help Pane" as well as a "Spreadsheet View".
 * "Spreadsheet View" needs to be renamed to something else since I have not 
   created an actual spreadsheet.
-* The TSV code on the "Spreadsheet View" of the submission form is not always 
-  lining up neatly. Need to set the container to overflow instead of wrap.
 * Users should maybe be able to enter text directly onto the keyboard diagram 
   on the submission form. Have to think this through, as things could get very 
   messy.
 * Need to create a form for users to create and submit new keyboard layouts 
   with. Or, support layout scripts generated using other software such as 
-  [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/).
+  [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/). Or, I could 
+  write a desktop application for this.
 * Need to switch to using something other than JavaScript alert boxes for 
   providing users with feedback. Alert boxes can be disabled by users in some 
   browsers, which is bad.
@@ -30,6 +29,14 @@
 * I would like to change the text shown in the color selection boxes of the 
   submission form from "non" to "null" or something else. This might have an 
   adverse effect on some scripts, however.
+* On the submission form, replace key code labels such as "capnor" and "lowagr" 
+  with actual English text.
+* On the submission form, draw an animated dotted line around the border of the 
+  selected key.
+* On the submission form, the column names for the TSV data in the "Spreadsheet 
+  View" should be fetched from the database instead of hardcoded.
+* Should make the size of the left pane adjustable and make the text input form 
+  fields shrink or grow.
 
 ### MediaWiki
 * Generate MediaWiki code for layouts as well as for games.
@@ -148,7 +155,7 @@
   another URL query parameter.
 * Maybe merge the "Completed" tasks on this page back into the other categories 
   and use strikethrough text to indicate a task that has been completed. Or use 
-  GitHub's "Issues" interface.
+  GitHub's "Issues" interface. Can "Issues" be categorized?
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
@@ -245,3 +252,5 @@
   of changing the page location instead.
 * The file "keyboard-sitemap.php" is a tool and does not need to use the site's 
   styling. It should also be moved into the "lib" directory.
+* The TSV code on the "Spreadsheet View" of the submission form is not always 
+  lining up neatly. Need to set the container to overflow instead of wrap.

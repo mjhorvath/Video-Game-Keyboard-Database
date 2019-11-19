@@ -733,7 +733,7 @@ var binding_table =
 			<div id="pane_tsv" style="display:none;">
 				<h2>Tab-Separated Values (TSV)</h2>
 				<p style="max-width:60em;">You should be able to copy and paste the following tab-separated values (TSV) into MS Excel or some other spreadsheet program and continue to edit the values from there. Alternatively, you could import the values directly into a SQL database using the <code>LOAD DATA</code> SQL command. (Make sure to delete the header row first, however.)</p>
-				<p style="max-width:60em;">The string <code>\N</code> (with an upper-case "n" and one backslash) indicates a value of null, and may represent an auto-increment field in SQL. The string <code>\\n</code> (with a lower-case "n" and two backslashes) indicates a newline character.</p>
+				<p style="max-width:60em;">The string <code>\N</code> (with an upper-case &quot;n&quot; and one backslash) indicates a value of null, and may represent an auto-increment field in SQL. The string <code>\\n</code> (with a lower-case &quot;n&quot; and two backslashes) indicates a newline character.</p>
 				<p style="max-width:60em;">If you run out of space, the text areas below can be resized by dragging on the bottom-right corners.</p>
 				<h4>Legend</h4>
 				<textarea id="legend_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>

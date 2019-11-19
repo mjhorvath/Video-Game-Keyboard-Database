@@ -11,7 +11,7 @@
 ?>
 <h2>News &amp; Updates</h2>
 <ul>
-	<li>2019/11/17: Interface strings are now stored in the database. They still need to be localized, however.</li>
+	<li>2019/11/19: A confirmation message is now sent to the user after submitting a binding scheme.</li>
 	<li>2019/11/17: Better handling of "lib" path strings.</li>
 	<li>2019/11/17: Improved handling of SVG file extension when navigating between formats or arriving from elsewhere on the Web.</li>
 	<li>2019/11/17: Move more files into "lib".</li>

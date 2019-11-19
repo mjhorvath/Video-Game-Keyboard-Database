@@ -1006,7 +1006,7 @@ function document_change_style(game_id, layout_id, game_seo)
 	}
 }
 
-// there is an analogous function written in PHP in "./keyboard-common.php"
+// there is an analogous function written in PHP in "./lib/keyboard-common.php"
 // need to keep the two functions synced
 function seo_url(input)
 {
@@ -1135,10 +1135,11 @@ function disable_doc_controls()
 
 function collect_legend_data()
 {
+	// legend_count hardcoded at 12
 	legend_table = [];
+	legend_count = 12;
 
-	// legend
-	for (var i = 0; i < 12; i++)
+	for (var i = 0; i < legend_count; i++)
 	{
 		var this_color = colors[i+1];
 		var this_input = document.getElementById('form_cap' + this_color);
@@ -1260,6 +1261,7 @@ function collect_command_data()
 
 function process_legend_data()
 {
+	// should fetch column names from database instead
 	var legend_string = 'legend_id\trecord_id\tlegend_group\tlegend_description\n';
 	for (var i = 0, n = legend_table.length; i < n; i++)
 	{
@@ -1271,6 +1273,7 @@ function process_legend_data()
 
 function process_command_data()
 {
+	// should fetch column names from database instead
 	var command_string = 'command_id\trecord_id\tcommandtype_id\tcommand_text\tcommand_description\n';
 	for (var i = 0, n = combo_table.length; i < n; i++)
 	{
@@ -1312,6 +1315,7 @@ function process_command_data()
 
 function process_binding_data()
 {
+	// should fetch column names from database instead
 	var binding_string = 'binding_id\trecord_id\tkey_number\tnormal_action\tnormal_group\tshift_action\tshift_group\tctrl_action\tctrl_group\talt_action\talt_group\taltgr_action\taltgr_group\textra_action\textra_group\timage_file\timage_uri\n';
 	for (var i = 0, n = binding_table.length; i < n; i++)
 	{
@@ -1352,7 +1356,7 @@ function process_binding_data()
 	return binding_string;
 }
 
-function fill_legend()
+function fill_legend(in_id)
 {
 	collect_legend_data();
 	document.getElementById('legend_tsv').value = process_legend_data();
