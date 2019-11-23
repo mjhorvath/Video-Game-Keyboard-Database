@@ -1,0 +1,332 @@
+;Description
+This is a 104-key PC keyboard command chart based on [http://isometricland.net/keyboard/keyboard.php Video Game Keyboard Diagrams] (LGPLv3, CC BY-SA 3.0) made by [http://strategywiki.org/w/index.php?title=User:Posfan12 Posfan12] at [http://strategywiki.org Strategy Wiki]. There are three sub-templates, [[Template:Kbdlegend]], [[Template:Kbdchartleg]] and [[Template:Kbdchartkey]], used in rendering the chart legend and individual keys.
+
+;Origin
+From http://strategywiki.org/w/index.php?title=Template:Kbdchart
+
+;Dependencies
+* [[Template:Kbdchartkey]]
+* [[Template:Kbdlegend]]
+* [[Template:Kbdchartleg]]
+
+;Example
+You can find an usage example [http://templates.wikia.com/wiki/User:Mikali_Homeworld/Kbdchart_example here].
+
+;Usage
+Keys are numbered from 000 to 105, with two of the keys reserved for European keyboards. Each key has five main parameters:
+
+*'''<code>NNNb</code>''' - the background color code for the key.
+*'''<code>NNNt</code>''' - text description of the action performed when pressing the key alone.
+*'''<code>NNNs</code>''' - text description of the action performed when pressing the key along with the SHIFT key.
+*'''<code>NNNc</code>''' - text description of the action performed when pressing the key along with the CTRL key.
+*'''<code>NNNa</code>''' - text description of the action performed when pressing the key along with the ALT key.
+
+Legal background color codes are:
+
+{|
+|- style="vertical-align:top;"
+|
+*<span style="font-family:monospace;background:#f99;border:1px solid #200;color:#200;">red</span>
+*<span style="font-family:monospace;background:#ff9;border:1px solid #220;color:#220;">yel</span>
+*<span style="font-family:monospace;background:#9f9;border:1px solid #020;color:#020;">grn</span>
+|
+*<span style="font-family:monospace;background:#9ff;border:1px solid #022;color:#022;">cyn</span>
+*<span style="font-family:monospace;background:#99f;border:1px solid #002;color:#002;">blu</span>
+*<span style="font-family:monospace;background:#f9f;border:1px solid #202;color:#202;">mag</span>
+|
+*<span style="font-family:monospace;background:#fff;border:1px solid #222;color:#222;">wht</span>
+*<span style="font-family:monospace;background:#999;border:1px solid #222;color:#eee;">gry</span>
+*<span style="font-family:monospace;background:#444;border:1px solid #222;color:#eee;">blk</span>
+|
+*<span style="font-family:monospace;background:#fc0;border:1px solid #222;color:#222;">org</span>
+*<span style="font-family:monospace;background:#cc0;border:1px solid #222;color:#222;">olv</span>
+*<span style="font-family:monospace;background:#862;border:1px solid #222;color:#222;">brn</span>
+|}
+
+Key groupings (which appear in the [[Template:Kbdlegend|chart legend]]) are numbered from 00 to 11. There are two main parameters:
+
+*'''<code>NNlgb</code>''' - the background color code for the key grouping.
+*'''<code>NNlgt</code>''' - the text description of the key grouping (for instance "Combat Controls").
+
+Here's a set of conventions with regard to group colors that works pretty well:
+
+*<span style="font-family:monospace;background:#f99;border:1px solid #200;color:#200;">red</span> Combat/Actions
+*<span style="font-family:monospace;background:#ff9;border:1px solid #220;color:#220;">yel</span> Targeting/Unit selection/Inventory
+*<span style="font-family:monospace;background:#9f9;border:1px solid #020;color:#020;">grn</span> Movement/Navigation
+*<span style="font-family:monospace;background:#9ff;border:1px solid #022;color:#022;">cyn</span> Communication/Chat
+*<span style="font-family:monospace;background:#99f;border:1px solid #002;color:#002;">blu</span> Camera/Point of view
+*<span style="font-family:monospace;background:#f9f;border:1px solid #202;color:#202;">mag</span> Game Interface/Menus
+
+The '''<code>numpadoff</code>''' parameter causes keyboard numberpad to not be displayed.
+
+Additional notes:
+*Two keys are reserved for European keyboards which will be added later.
+*The ALTGR key on some European keyboards is not currently supported but will be added later.
+*At 90dpi a printed version of the chart should fit very closely over an actual keyboard.
+*Line breaks need to be inserted manually using the HTML <nowiki><br/></nowiki> tag.
+*There are some additional parameters hidden away if you dig around a bit.
+*The order in which the keys are numbered are based on their scan codes on typical IBM-compatible keyboards.
+
+<table border="1" cellspacing="0" cellpadding="2" bordercolor="#808080" style="float:left;">
+<tr><th bgcolor="#808080">Key</th><th bgcolor="#808080">Code</th></tr>
+<tr><td align="center">
+<pre>
+...
+`
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+-
+=
+Backspace
+Tab
+q
+w
+e
+r
+t
+y
+u
+i
+o
+p
+[
+]
+\
+Caps Lock
+a
+s
+d
+f
+g
+h
+j
+k
+l
+;
+'
+reserved
+Enter
+LShift
+reserved
+z
+x
+c
+v
+b
+n
+m
+,
+.
+/
+RShift
+LCtrl
+LAlt
+Space
+RAlt
+RCtrl
+Insert
+Delete
+Left
+Home
+End
+Up
+Down
+Page Up
+Page Dn
+Right
+NumLk
+Home
+Left
+End
+/
+Up
+blank
+Down
+Ins
+*
+PgUp
+Right
+PgDn
+Del
+-
++
+Enter
+Esc
+F1
+F2
+F3
+F4
+F5
+F6
+F7
+F8
+F9
+F10
+F11
+F12
+PrtScr
+ScrLk
+Pause
+LWin
+RWin
+Menu
+...
+</pre>
+</td><td>
+<pre>
+{{kbdchart
+|000b= |000t= |000s= |000c= |000a= 
+|001b= |001t= |001s= |001c= |001a= 
+|002b= |002t= |002s= |002c= |002a= 
+|003b= |003t= |003s= |003c= |003a= 
+|004b= |004t= |004s= |004c= |004a= 
+|005b= |005t= |005s= |005c= |005a= 
+|006b= |006t= |006s= |006c= |006a= 
+|007b= |007t= |007s= |007c= |007a= 
+|008b= |008t= |008s= |008c= |008a= 
+|009b= |009t= |009s= |009c= |009a= 
+|010b= |010t= |010s= |010c= |010a= 
+|011b= |011t= |011s= |011c= |011a= 
+|012b= |012t= |012s= |012c= |012a= 
+|013b= |013t= |013s= |013c= |013a= 
+|014b= |014t= |014s= |014c= |014a= 
+|015b= |015t= |015s= |015c= |015a= 
+|016b= |016t= |016s= |016c= |016a= 
+|017b= |017t= |017s= |017c= |017a= 
+|018b= |018t= |018s= |018c= |018a= 
+|019b= |019t= |019s= |019c= |019a= 
+|020b= |020t= |020s= |020c= |020a= 
+|021b= |021t= |021s= |021c= |021a= 
+|022b= |022t= |022s= |022c= |022a= 
+|023b= |023t= |023s= |023c= |023a= 
+|024b= |024t= |024s= |024c= |024a= 
+|025b= |025t= |025s= |025c= |025a= 
+|026b= |026t= |026s= |026c= |026a= 
+|027b= |027t= |027s= |027c= |027a= 
+|028b= |028t= |028s= |028c= |028a= 
+|029b= |029t= |029s= |029c= |029a= 
+|030b= |030t= |030s= |030c= |030a= 
+|031b= |031t= |031s= |031c= |031a= 
+|032b= |032t= |032s= |032c= |032a= 
+|033b= |033t= |033s= |033c= |033a= 
+|034b= |034t= |034s= |034c= |034a= 
+|035b= |035t= |035s= |035c= |035a= 
+|036b= |036t= |036s= |036c= |036a= 
+|037b= |037t= |037s= |037c= |037a= 
+|038b= |038t= |038s= |038c= |038a= 
+|039b= |039t= |039s= |039c= |039a= 
+<!--skips a number-->
+|041b= |041t= |041s= |041c= |041a= 
+|042b= |042t= |042s= |042c= |042a= 
+<!--skips a number-->
+|044b= |044t= |044s= |044c= |044a= 
+|045b= |045t= |045s= |045c= |045a= 
+|046b= |046t= |046s= |046c= |046a= 
+|047b= |047t= |047s= |047c= |047a= 
+|048b= |048t= |048s= |048c= |048a= 
+|049b= |049t= |049s= |049c= |049a= 
+|050b= |050t= |050s= |050c= |050a= 
+|051b= |051t= |051s= |051c= |051a= 
+|052b= |052t= |052s= |052c= |052a= 
+|053b= |053t= |053s= |053c= |053a= 
+|054b= |054t= |054s= |054c= |054a= 
+|055b= |055t= |055s= |055c= |055a= 
+|056b= |056t= |056s= |056c= |056a= 
+|057b= |057t= |057s= |057c= |057a= 
+|058b= |058t= |058s= |058c= |058a= 
+|059b= |059t= |059s= |059c= |059a= 
+|060b= |060t= |060s= |060c= |060a= 
+|061b= |061t= |061s= |061c= |061a= 
+|062b= |062t= |062s= |062c= |062a= 
+|063b= |063t= |063s= |063c= |063a= 
+|064b= |064t= |064s= |064c= |064a= 
+|065b= |065t= |065s= |065c= |065a= 
+|066b= |066t= |066s= |066c= |066a= 
+|067b= |067t= |067s= |067c= |067a= 
+|068b= |068t= |068s= |068c= |068a= 
+|069b= |069t= |069s= |069c= |069a= 
+|070b= |070t= |070s= |070c= |070a= 
+|071b= |071t= |071s= |071c= |071a= 
+|072b= |072t= |072s= |072c= |072a= 
+|073b= |073t= |073s= |073c= |073a= 
+|074b= |074t= |074s= |074c= |074a= 
+|075b= |075t= |075s= |075c= |075a= 
+|076b= |076t= |076s= |076c= |076a= 
+|077b= |077t= |077s= |077c= |077a= 
+|078b= |078t= |078s= |078c= |078a= 
+|079b= |079t= |079s= |079c= |079a= 
+|080b= |080t= |080s= |080c= |080a= 
+|081b= |081t= |081s= |081c= |081a= 
+|082b= |082t= |082s= |082c= |082a= 
+|083b= |083t= |083s= |083c= |083a= 
+|084b= |084t= |084s= |084c= |084a= 
+|085b= |085t= |085s= |085c= |085a= 
+|086b= |086t= |086s= |086c= |086a= 
+|087b= |087t= |087s= |087c= |087a= 
+|088b= |088t= |088s= |088c= |088a= 
+|089b= |089t= |089s= |089c= |089a= 
+|090b= |090t= |090s= |090c= |090a= 
+|091b= |091t= |091s= |091c= |091a= 
+|092b= |092t= |092s= |092c= |092a= 
+|093b= |093t= |093s= |093c= |093a= 
+|094b= |094t= |094s= |094c= |094a= 
+|095b= |095t= |095s= |095c= |095a= 
+|096b= |096t= |096s= |096c= |096a= 
+|097b= |097t= |097s= |097c= |097a= 
+|098b= |098t= |098s= |098c= |098a= 
+|099b= |099t= |099s= |099c= |099a= 
+|100b= |100t= |100s= |100c= |100a= 
+|101b= |101t= |101s= |101c= |101a= 
+|102b= |102t= |102s= |102c= |102a= 
+|103b= |103t= |103s= |103c= |103a= 
+|104b= |104t= |104s= |104c= |104a= 
+|105b= |105t= |105s= |105c= |105a= 
+}}
+</pre>
+</td></tr></table>
+
+<table border="1" cellspacing="0" cellpadding="2" bordercolor="#808080" style="float:left;">
+<tr><th bgcolor="#808080">Legend</th><th bgcolor="#808080">Code</th></tr>
+<tr><td align="center">
+<pre>
+...
+Legend 0
+Legend 1
+Legend 2
+Legend 3
+Legend 4
+Legend 5
+Legend 6
+Legend 7
+Legend 8
+Legend 9
+Legend 10
+Legend 11
+...
+</pre>
+</td><td>
+<pre>
+{{kbdlegend
+|00lgb= |00lgt= 
+|01lgb= |01lgt= 
+|02lgb= |02lgt= 
+|03lgb= |03lgt= 
+|04lgb= |04lgt= 
+|05lgb= |05lgt= 
+|06lgb= |06lgt= 
+|07lgb= |07lgt= 
+|08lgb= |08lgt= 
+|09lgb= |09lgt= 
+|10lgb= |10lgt= 
+|11lgb= |11lgt= 
+}}
+</pre>
+</td></tr></table>

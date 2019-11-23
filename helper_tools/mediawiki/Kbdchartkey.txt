@@ -1,0 +1,12 @@
+<div style="position:{{{posflw|absolute}}};left:{{{poslft|0}}}px;top:{{{postop|0}}}px;width:{{#expr:{{{poswid|72}}}-3}}px;height:{{#expr:{{{poshgh|72}}}-3}}px;background:{{#switch:{{{colbkg|}}}|red=#f99|yel=#ff9|grn=#9f9|cyn=#9ff|blu=#99f|mag=#f9f|wht=#fff|gry=#999|blk=#444|org=#f90|olv=#990|brn=#862|#default=#f4f4f4}};border:1px solid {{#switch:{{{colbkg|}}}|red=#200|yel=#220|grn=#020|cyn=#022|blu=#002|mag=#202|#default=#222}};color:{{#switch:{{{colbkg|}}}|red=#200|yel=#220|grn=#020|cyn=#022|blu=#002|mag=#202|gry=#eee|blk=#eee|#default=#222}};-moz-border-radius:3px;-webkit-border-radius:3px;line-height:110%;font-size:smaller;">
+  <div style="position:absolute;left:0px;top:0px;   font-weight:bold;padding:2px;">{{{keycap|Cap key}}}</div>
+{{#if:{{{keylow|}}}|
+  <div style="position:absolute;left:0px;bottom:0px;font-weight:bold;padding:2px;">{{{keylow|Low key}}}</div>
+  <div style="position:absolute;left:0px;bottom:1em;padding:2px;">{{{keytxt|Caption}}}</div>
+|
+  <div style="position:absolute;left:0px;bottom:0em;padding:2px;">{{{keytxt|Caption}}}</div>
+}}
+  <div style="position:relative;background:{{{bkgshf|transparent}}};color:{{{colshf|#00a}}};text-align:right;display:inline;float:right;clear:right;padding:1px;font-size:smaller;line-height:100%;">{{{keyshf|Shift}}}</div>
+  <div style="position:relative;background:{{{bkgctl|transparent}}};color:{{{colctl|#0a0}}};text-align:right;display:inline;float:right;clear:right;padding:1px;font-size:smaller;line-height:100%;">{{{keyctl|Ctrl}}}</div>
+  <div style="position:relative;background:{{{bkgalt|transparent}}};color:{{{colalt|#a00}}};text-align:right;display:inline;float:right;clear:right;padding:1px;font-size:smaller;line-height:100%;">{{{keyalt|Alt}}}</div>
+</div>

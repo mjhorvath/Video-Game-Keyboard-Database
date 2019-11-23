@@ -1,0 +1,18 @@
+;Legend
+<div>
+  <div style="float:left;">{{kbdchartkey|posflw=relative}}</div>
+  <div style="float:left;margin-left:1em;">{{
+#if:{{{00lgt|}}}|{{kbdchartleg|{{{00lgb|}}}|{{{00lgt|}}}}}}}{{
+#if:{{{01lgt|}}}|{{kbdchartleg|{{{01lgb|}}}|{{{01lgt|}}}}}}}{{
+#if:{{{02lgt|}}}|{{kbdchartleg|{{{02lgb|}}}|{{{02lgt|}}}}}}}{{
+#if:{{{03lgt|}}}|{{kbdchartleg|{{{03lgb|}}}|{{{03lgt|}}}}}}}{{
+#if:{{{04lgt|}}}|{{kbdchartleg|{{{04lgb|}}}|{{{04lgt|}}}}}}}{{
+#if:{{{05lgt|}}}|{{kbdchartleg|{{{05lgb|}}}|{{{05lgt|}}}}}}}{{
+#if:{{{06lgt|}}}|{{kbdchartleg|{{{06lgb|}}}|{{{06lgt|}}}}}}}{{
+#if:{{{07lgt|}}}|{{kbdchartleg|{{{07lgb|}}}|{{{07lgt|}}}}}}}{{
+#if:{{{08lgt|}}}|{{kbdchartleg|{{{08lgb|}}}|{{{08lgt|}}}}}}}{{
+#if:{{{09lgt|}}}|{{kbdchartleg|{{{09lgb|}}}|{{{09lgt|}}}}}}}{{
+#if:{{{10lgt|}}}|{{kbdchartleg|{{{10lgb|}}}|{{{10lgt|}}}}}}}{{
+#if:{{{11lgt|}}}|{{kbdchartleg|{{{11lgb|}}}|{{{11lgt|}}}}}}}
+  </div><div style="clear:both;"></div>
+</div>

@@ -1,0 +1,58 @@
+Uses [[Template:kbdchartleg]] as a sub-template.
+
+==Groupings==
+
+Key groupings are numbered from 0 to 11. There are two main parameters:
+
+*'''<code>NNlgb</code>''' - the background color code for the key grouping.
+*'''<code>NNlgt</code>''' - the text description of the key grouping (for instance "Combat Controls").
+
+Here's a set of conventions with regard to group colors that works pretty well:
+
+*<span style="font-family:monospace;background:#f99;border:1px solid #200;color:#200;">red</span> Combat/Actions
+*<span style="font-family:monospace;background:#ff9;border:1px solid #220;color:#220;">yel</span> Targeting/Unit selection/Inventory
+*<span style="font-family:monospace;background:#9f9;border:1px solid #020;color:#020;">grn</span> Movement/Navigation
+*<span style="font-family:monospace;background:#9ff;border:1px solid #022;color:#022;">cyn</span> Communication/Chat
+*<span style="font-family:monospace;background:#99f;border:1px solid #002;color:#002;">blu</span> Camera/Point of view
+*<span style="font-family:monospace;background:#f9f;border:1px solid #202;color:#202;">mag</span> Game Controls/Menus
+
+==Reference chart==
+I've also uploaded an Excel sheet [http://www.mediafire.com/file/ymnggnaybny/strategywiki_kbdchart_template_20100528.zip here] to assist you in filling in the template parameters.
+
+<table border="1" cellspacing="0" cellpadding="2" bordercolor="#808080">
+<tr><th bgcolor="#808080">Key</th><th bgcolor="#808080">Code</th></tr>
+<tr><td align="center">
+<pre>
+...
+Legend 0
+Legend 1
+Legend 2
+Legend 3
+Legend 4
+Legend 5
+Legend 6
+Legend 7
+Legend 8
+Legend 9
+Legend 10
+Legend 11
+...
+</pre>
+</td><td>
+<pre>
+{{kbdlegend
+|00lgb= |00lgt= 
+|01lgb= |01lgt= 
+|02lgb= |02lgt= 
+|03lgb= |03lgt= 
+|04lgb= |04lgt= 
+|05lgb= |05lgt= 
+|06lgb= |06lgt= 
+|07lgb= |07lgt= 
+|08lgb= |08lgt= 
+|09lgb= |09lgt= 
+|10lgb= |10lgt= 
+|11lgb= |11lgt= 
+}}
+</pre>
+</td></tr></table>

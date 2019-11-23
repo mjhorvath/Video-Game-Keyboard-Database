@@ -1,0 +1,119 @@
+<div style="position:relative;height:490px;background:#f4f4f4;overflow:auto;"><!-- height:465px;width:1638px; -->
+  <!-- row 1 -->
+  {{kbdchartkey|   poslft=0|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=~|       keylow=`|        keytxt={{{000t|}}}|colbkg={{{000b|}}}|keyshf={{{000s|}}}|keyctl={{{000c|}}}|keyalt={{{000a|}}}}}
+  {{kbdchartkey|  poslft=72|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=!|       keylow=1|        keytxt={{{001t|}}}|colbkg={{{001b|}}}|keyshf={{{001s|}}}|keyctl={{{001c|}}}|keyalt={{{001a|}}}}}
+  {{kbdchartkey| poslft=144|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=@|       keylow=2|        keytxt={{{002t|}}}|colbkg={{{002b|}}}|keyshf={{{002s|}}}|keyctl={{{002c|}}}|keyalt={{{002a|}}}}}
+  {{kbdchartkey| poslft=216|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=#|       keylow=3|        keytxt={{{003t|}}}|colbkg={{{003b|}}}|keyshf={{{003s|}}}|keyctl={{{003c|}}}|keyalt={{{003a|}}}}}
+  {{kbdchartkey| poslft=288|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=$|       keylow=4|        keytxt={{{004t|}}}|colbkg={{{004b|}}}|keyshf={{{004s|}}}|keyctl={{{004c|}}}|keyalt={{{004a|}}}}}
+  {{kbdchartkey| poslft=360|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=%|       keylow=5|        keytxt={{{005t|}}}|colbkg={{{005b|}}}|keyshf={{{005s|}}}|keyctl={{{005c|}}}|keyalt={{{005a|}}}}}
+  {{kbdchartkey| poslft=432|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=^|       keylow=6|        keytxt={{{006t|}}}|colbkg={{{006b|}}}|keyshf={{{006s|}}}|keyctl={{{006c|}}}|keyalt={{{006a|}}}}}
+  {{kbdchartkey| poslft=504|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=&amp;|   keylow=7|        keytxt={{{007t|}}}|colbkg={{{007b|}}}|keyshf={{{007s|}}}|keyctl={{{007c|}}}|keyalt={{{007a|}}}}}
+  {{kbdchartkey| poslft=576|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=*|       keylow=8|        keytxt={{{008t|}}}|colbkg={{{008b|}}}|keyshf={{{008s|}}}|keyctl={{{008c|}}}|keyalt={{{008a|}}}}}
+  {{kbdchartkey| poslft=648|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=(|       keylow=9|        keytxt={{{009t|}}}|colbkg={{{009b|}}}|keyshf={{{009s|}}}|keyctl={{{009c|}}}|keyalt={{{009a|}}}}}
+  {{kbdchartkey| poslft=720|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=)|       keylow=0|        keytxt={{{010t|}}}|colbkg={{{010b|}}}|keyshf={{{010s|}}}|keyctl={{{010c|}}}|keyalt={{{010a|}}}}}
+  {{kbdchartkey| poslft=792|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=_|       keylow=-|        keytxt={{{011t|}}}|colbkg={{{011b|}}}|keyshf={{{011s|}}}|keyctl={{{011c|}}}|keyalt={{{011a|}}}}}
+  {{kbdchartkey| poslft=864|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=+|       keylow==|        keytxt={{{012t|}}}|colbkg={{{012b|}}}|keyshf={{{012s|}}}|keyctl={{{012c|}}}|keyalt={{{012a|}}}}}
+  {{kbdchartkey| poslft=936|postop=105|poswid=144| poshgh=72|colbkg=#808080|keycap=|        keylow=Backspace|keytxt={{{013t|}}}|colbkg={{{013b|}}}|keyshf={{{013s|}}}|keyctl={{{013c|}}}|keyalt={{{013a|}}}}}
+  <!-- row 2 -->
+  {{kbdchartkey|   poslft=0|postop=177|poswid=108| poshgh=72|colbkg=#808080|keycap=|        keylow=Tab|      keytxt={{{014t|}}}|colbkg={{{014b|}}}|keyshf={{{014s|}}}|keyctl={{{014c|}}}|keyalt={{{014a|}}}}}
+  {{kbdchartkey| poslft=108|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=Q|       keylow=|        keytxt={{{015t|}}}|colbkg={{{015b|}}}|keyshf={{{015s|}}}|keyctl={{{015c|}}}|keyalt={{{015a|}}}}}
+  {{kbdchartkey| poslft=180|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=W|       keylow=|        keytxt={{{016t|}}}|colbkg={{{016b|}}}|keyshf={{{016s|}}}|keyctl={{{016c|}}}|keyalt={{{016a|}}}}}
+  {{kbdchartkey| poslft=252|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=E|       keylow=|        keytxt={{{017t|}}}|colbkg={{{017b|}}}|keyshf={{{017s|}}}|keyctl={{{017c|}}}|keyalt={{{017a|}}}}}
+  {{kbdchartkey| poslft=324|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=R|       keylow=|        keytxt={{{018t|}}}|colbkg={{{018b|}}}|keyshf={{{018s|}}}|keyctl={{{018c|}}}|keyalt={{{018a|}}}}}
+  {{kbdchartkey| poslft=396|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=T|       keylow=|        keytxt={{{019t|}}}|colbkg={{{019b|}}}|keyshf={{{019s|}}}|keyctl={{{019c|}}}|keyalt={{{019a|}}}}}
+  {{kbdchartkey| poslft=468|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=Y|       keylow=|        keytxt={{{020t|}}}|colbkg={{{020b|}}}|keyshf={{{020s|}}}|keyctl={{{020c|}}}|keyalt={{{020a|}}}}}
+  {{kbdchartkey| poslft=540|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=U|       keylow=|        keytxt={{{021t|}}}|colbkg={{{021b|}}}|keyshf={{{021s|}}}|keyctl={{{021c|}}}|keyalt={{{021a|}}}}}
+  {{kbdchartkey| poslft=612|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=I|       keylow=|        keytxt={{{022t|}}}|colbkg={{{022b|}}}|keyshf={{{022s|}}}|keyctl={{{022c|}}}|keyalt={{{022a|}}}}}
+  {{kbdchartkey| poslft=684|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=O|       keylow=|        keytxt={{{023t|}}}|colbkg={{{023b|}}}|keyshf={{{023s|}}}|keyctl={{{023c|}}}|keyalt={{{023a|}}}}}
+  {{kbdchartkey| poslft=756|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=P|       keylow=|        keytxt={{{024t|}}}|colbkg={{{024b|}}}|keyshf={{{024s|}}}|keyctl={{{024c|}}}|keyalt={{{024a|}}}}}
+  {{kbdchartkey| poslft=828|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap={|       keylow=[|        keytxt={{{025t|}}}|colbkg={{{025b|}}}|keyshf={{{025s|}}}|keyctl={{{025c|}}}|keyalt={{{025a|}}}}}
+  {{kbdchartkey| poslft=900|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=}|       keylow=]|        keytxt={{{026t|}}}|colbkg={{{026b|}}}|keyshf={{{026s|}}}|keyctl={{{026c|}}}|keyalt={{{026a|}}}}}
+  {{kbdchartkey| poslft=972|postop=177|poswid=108| poshgh=72|colbkg=#808080|keycap=&brvbar;|keylow=\|        keytxt={{{027t|}}}|colbkg={{{027b|}}}|keyshf={{{027s|}}}|keyctl={{{027c|}}}|keyalt={{{027a|}}}}}
+  <!-- row 3 -->
+  {{kbdchartkey|   poslft=0|postop=249|poswid=126| poshgh=72|colbkg=#808080|keycap=|        keylow=Caps Lock|keytxt={{{028t|}}}|colbkg={{{028b|}}}|keyshf={{{028s|}}}|keyctl={{{028c|}}}|keyalt={{{028a|}}}}}
+  {{kbdchartkey| poslft=126|postop=249| poswid=72| poshgh=72|colbkg=#808080|keycap=A|       keylow=|        keytxt={{{029t|}}}|colbkg={{{029b|}}}|keyshf={{{029s|}}}|keyctl={{{029c|}}}|keyalt={{{029a|}}}}}
+  {{kbdchartkey| poslft=198|postop=249| poswid=72| poshgh=72|colbkg=#808080|keycap=S|       keylow=|        keytxt={{{030t|}}}|colbkg={{{030b|}}}|keyshf={{{030s|}}}|keyctl={{{030c|}}}|keyalt={{{030a|}}}}}
+  {{kbdchartkey| poslft=270|postop=249| poswid=72| poshgh=72|colbkg=#808080|keycap=D|       keylow=|        keytxt={{{031t|}}}|colbkg={{{031b|}}}|keyshf={{{031s|}}}|keyctl={{{031c|}}}|keyalt={{{031a|}}}}}
+  {{kbdchartkey| poslft=342|postop=249| poswid=72| poshgh=72|colbkg=#808080|keycap=F|       keylow=|        keytxt={{{032t|}}}|colbkg={{{032b|}}}|keyshf={{{032s|}}}|keyctl={{{032c|}}}|keyalt={{{032a|}}}}}
+  {{kbdchartkey| poslft=414|postop=249| poswid=72| poshgh=72|colbkg=#808080|keycap=G|       keylow=|        keytxt={{{033t|}}}|colbkg={{{033b|}}}|keyshf={{{033s|}}}|keyctl={{{033c|}}}|keyalt={{{033a|}}}}}
+  {{kbdchartkey| poslft=486|postop=249| poswid=72| poshgh=72|colbkg=#808080|keycap=H|       keylow=|        keytxt={{{034t|}}}|colbkg={{{034b|}}}|keyshf={{{034s|}}}|keyctl={{{034c|}}}|keyalt={{{034a|}}}}}
+  {{kbdchartkey| poslft=558|postop=249| poswid=72| poshgh=72|colbkg=#808080|keycap=J|       keylow=|        keytxt={{{035t|}}}|colbkg={{{035b|}}}|keyshf={{{035s|}}}|keyctl={{{035c|}}}|keyalt={{{035a|}}}}}
+  {{kbdchartkey| poslft=630|postop=249| poswid=72| poshgh=72|colbkg=#808080|keycap=K|       keylow=|        keytxt={{{036t|}}}|colbkg={{{036b|}}}|keyshf={{{036s|}}}|keyctl={{{036c|}}}|keyalt={{{036a|}}}}}
+  {{kbdchartkey| poslft=702|postop=249| poswid=72| poshgh=72|colbkg=#808080|keycap=L|       keylow=|        keytxt={{{037t|}}}|colbkg={{{037b|}}}|keyshf={{{037s|}}}|keyctl={{{037c|}}}|keyalt={{{037a|}}}}}
+  {{kbdchartkey| poslft=774|postop=249| poswid=72| poshgh=72|colbkg=#808080|keycap=:|       keylow=;|        keytxt={{{038t|}}}|colbkg={{{038b|}}}|keyshf={{{038s|}}}|keyctl={{{038c|}}}|keyalt={{{038a|}}}}}
+  {{kbdchartkey| poslft=846|postop=249| poswid=72| poshgh=72|colbkg=#808080|keycap=;|       keylow='|        keytxt={{{039t|}}}|colbkg={{{039b|}}}|keyshf={{{039s|}}}|keyctl={{{039c|}}}|keyalt={{{039a|}}}}}
+  <!-- extra key here on so European kboards -->
+  {{kbdchartkey| poslft=918|postop=249|poswid=162| poshgh=72|colbkg=#808080|keycap=|        keylow=Enter|    keytxt={{{041t|}}}|colbkg={{{041b|}}}|keyshf={{{041s|}}}|keyctl={{{041c|}}}|keyalt={{{041a|}}}}}
+  <!-- row 4 -->
+  {{kbdchartkey|   poslft=0|postop=321|poswid=162| poshgh=72|colbkg=#808080|keycap=|        keylow=Shift|   keytxt={{{042t|}}}|colbkg={{{042b|}}}|keyshf={{{042s|}}}|keyctl={{{042c|}}}|keyalt={{{042a|}}}}}
+  <!-- extra key here on so European kboards -->                                             
+  {{kbdchartkey| poslft=162|postop=321| poswid=72| poshgh=72|colbkg=#808080|keycap=Z|       keylow=|        keytxt={{{044t|}}}|colbkg={{{044b|}}}|keyshf={{{044s|}}}|keyctl={{{044c|}}}|keyalt={{{044a|}}}}}
+  {{kbdchartkey| poslft=234|postop=321| poswid=72| poshgh=72|colbkg=#808080|keycap=X|       keylow=|        keytxt={{{045t|}}}|colbkg={{{045b|}}}|keyshf={{{045s|}}}|keyctl={{{045c|}}}|keyalt={{{045a|}}}}}
+  {{kbdchartkey| poslft=306|postop=321| poswid=72| poshgh=72|colbkg=#808080|keycap=C|       keylow=|        keytxt={{{046t|}}}|colbkg={{{046b|}}}|keyshf={{{046s|}}}|keyctl={{{046c|}}}|keyalt={{{046a|}}}}}
+  {{kbdchartkey| poslft=378|postop=321| poswid=72| poshgh=72|colbkg=#808080|keycap=V|       keylow=|        keytxt={{{047t|}}}|colbkg={{{047b|}}}|keyshf={{{047s|}}}|keyctl={{{047c|}}}|keyalt={{{047a|}}}}}
+  {{kbdchartkey| poslft=450|postop=321| poswid=72| poshgh=72|colbkg=#808080|keycap=B|       keylow=|        keytxt={{{048t|}}}|colbkg={{{048b|}}}|keyshf={{{048s|}}}|keyctl={{{048c|}}}|keyalt={{{048a|}}}}}
+  {{kbdchartkey| poslft=522|postop=321| poswid=72| poshgh=72|colbkg=#808080|keycap=N|       keylow=|        keytxt={{{049t|}}}|colbkg={{{049b|}}}|keyshf={{{049s|}}}|keyctl={{{049c|}}}|keyalt={{{049a|}}}}}
+  {{kbdchartkey| poslft=594|postop=321| poswid=72| poshgh=72|colbkg=#808080|keycap=M|       keylow=|        keytxt={{{050t|}}}|colbkg={{{050b|}}}|keyshf={{{050s|}}}|keyctl={{{050c|}}}|keyalt={{{050a|}}}}}
+  {{kbdchartkey| poslft=666|postop=321| poswid=72| poshgh=72|colbkg=#808080|keycap=&lt;|    keylow=,|        keytxt={{{051t|}}}|colbkg={{{051b|}}}|keyshf={{{051s|}}}|keyctl={{{051c|}}}|keyalt={{{051a|}}}}}
+  {{kbdchartkey| poslft=738|postop=321| poswid=72| poshgh=72|colbkg=#808080|keycap=&gt;|    keylow=.|        keytxt={{{052t|}}}|colbkg={{{052b|}}}|keyshf={{{052s|}}}|keyctl={{{052c|}}}|keyalt={{{052a|}}}}}
+  {{kbdchartkey| poslft=810|postop=321| poswid=72| poshgh=72|colbkg=#808080|keycap=?|       keylow=/|        keytxt={{{053t|}}}|colbkg={{{053b|}}}|keyshf={{{053s|}}}|keyctl={{{053c|}}}|keyalt={{{053a|}}}}}
+  {{kbdchartkey| poslft=882|postop=321|poswid=198| poshgh=72|colbkg=#808080|keycap=|        keylow=Shift|   keytxt={{{054t|}}}|colbkg={{{054b|}}}|keyshf={{{054s|}}}|keyctl={{{054c|}}}|keyalt={{{054a|}}}}}
+  <!-- row 5 -->
+  {{kbdchartkey|   poslft=0|postop=393|poswid=108| poshgh=72|colbkg=#808080|keycap=|        keylow=Ctrl|    keytxt={{{055t|}}}|colbkg={{{055b|}}}|keyshf={{{055s|}}}|keyctl={{{055c|}}}|keyalt={{{055a|}}}}}
+  {{kbdchartkey| poslft=198|postop=393| poswid=90| poshgh=72|colbkg=#808080|keycap=|        keylow=Alt|     keytxt={{{056t|}}}|colbkg={{{056b|}}}|keyshf={{{056s|}}}|keyctl={{{056c|}}}|keyalt={{{056a|}}}}}
+  {{kbdchartkey| poslft=288|postop=393|poswid=414| poshgh=72|colbkg=#808080|keycap=|        keylow=Space|   keytxt={{{057t|}}}|colbkg={{{057b|}}}|keyshf={{{057s|}}}|keyctl={{{057c|}}}|keyalt={{{057a|}}}}}
+  {{kbdchartkey| poslft=702|postop=393| poswid=90| poshgh=72|colbkg=#808080|keycap=|        keylow=Alt|     keytxt={{{058t|}}}|colbkg={{{058b|}}}|keyshf={{{058s|}}}|keyctl={{{058c|}}}|keyalt={{{058a|}}}}}
+  {{kbdchartkey| poslft=972|postop=393|poswid=108| poshgh=72|colbkg=#808080|keycap=|        keylow=Ctrl|    keytxt={{{059t|}}}|colbkg={{{059b|}}}|keyshf={{{059s|}}}|keyctl={{{059c|}}}|keyalt={{{059a|}}}}}
+  <!-- navigation keys -->
+  {{kbdchartkey|poslft=1107|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=Insert|   keytxt={{{060t|}}}|colbkg={{{060b|}}}|keyshf={{{060s|}}}|keyctl={{{060c|}}}|keyalt={{{060a|}}}}}
+  {{kbdchartkey|poslft=1107|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=Delete|   keytxt={{{061t|}}}|colbkg={{{061b|}}}|keyshf={{{061s|}}}|keyctl={{{061c|}}}|keyalt={{{061a|}}}}}
+  {{kbdchartkey|poslft=1107|postop=393| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=Left|     keytxt={{{062t|}}}|colbkg={{{062b|}}}|keyshf={{{062s|}}}|keyctl={{{062c|}}}|keyalt={{{062a|}}}}}
+  {{kbdchartkey|poslft=1179|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=Home|     keytxt={{{063t|}}}|colbkg={{{063b|}}}|keyshf={{{063s|}}}|keyctl={{{063c|}}}|keyalt={{{063a|}}}}}
+  {{kbdchartkey|poslft=1179|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=End|      keytxt={{{064t|}}}|colbkg={{{064b|}}}|keyshf={{{064s|}}}|keyctl={{{064c|}}}|keyalt={{{064a|}}}}}
+  {{kbdchartkey|poslft=1179|postop=321| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=Up|       keytxt={{{065t|}}}|colbkg={{{065b|}}}|keyshf={{{065s|}}}|keyctl={{{065c|}}}|keyalt={{{065a|}}}}}
+  {{kbdchartkey|poslft=1179|postop=393| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=Down|     keytxt={{{066t|}}}|colbkg={{{066b|}}}|keyshf={{{066s|}}}|keyctl={{{066c|}}}|keyalt={{{066a|}}}}}
+  {{kbdchartkey|poslft=1251|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=Page Up|  keytxt={{{067t|}}}|colbkg={{{067b|}}}|keyshf={{{067s|}}}|keyctl={{{067c|}}}|keyalt={{{067a|}}}}}
+  {{kbdchartkey|poslft=1251|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=Page Dn|  keytxt={{{068t|}}}|colbkg={{{068b|}}}|keyshf={{{068s|}}}|keyctl={{{068c|}}}|keyalt={{{068a|}}}}}
+  {{kbdchartkey|poslft=1251|postop=393| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=Right|    keytxt={{{069t|}}}|colbkg={{{069b|}}}|keyshf={{{069s|}}}|keyctl={{{069c|}}}|keyalt={{{069a|}}}}}
+  <!-- number pad-->
+{{#ifeq:{{{numpadoff|}}}|true||
+  {{kbdchartkey|poslft=1350|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=NumLk|    keytxt={{{070t|}}}|colbkg={{{070b|}}}|keyshf={{{070s|}}}|keyctl={{{070c|}}}|keyalt={{{070a|}}}}}
+  {{kbdchartkey|poslft=1350|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=7|       keylow=Home|     keytxt={{{071t|}}}|colbkg={{{071b|}}}|keyshf={{{071s|}}}|keyctl={{{071c|}}}|keyalt={{{071a|}}}}}
+  {{kbdchartkey|poslft=1350|postop=249| poswid=72| poshgh=72|colbkg=#808080|keycap=4|       keylow=Left|     keytxt={{{072t|}}}|colbkg={{{072b|}}}|keyshf={{{072s|}}}|keyctl={{{072c|}}}|keyalt={{{072a|}}}}}
+  {{kbdchartkey|poslft=1350|postop=321| poswid=72| poshgh=72|colbkg=#808080|keycap=1|       keylow=End|      keytxt={{{073t|}}}|colbkg={{{073b|}}}|keyshf={{{073s|}}}|keyctl={{{073c|}}}|keyalt={{{073a|}}}}}
+  {{kbdchartkey|poslft=1422|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=/|        keytxt={{{074t|}}}|colbkg={{{074b|}}}|keyshf={{{074s|}}}|keyctl={{{074c|}}}|keyalt={{{074a|}}}}}
+  {{kbdchartkey|poslft=1422|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=8|       keylow=Up|       keytxt={{{075t|}}}|colbkg={{{075b|}}}|keyshf={{{075s|}}}|keyctl={{{075c|}}}|keyalt={{{075a|}}}}}
+  {{kbdchartkey|poslft=1422|postop=249| poswid=72| poshgh=72|colbkg=#808080|keycap=5|       keylow=|         keytxt={{{076t|}}}|colbkg={{{076b|}}}|keyshf={{{076s|}}}|keyctl={{{076c|}}}|keyalt={{{076a|}}}}}
+  {{kbdchartkey|poslft=1422|postop=321| poswid=72| poshgh=72|colbkg=#808080|keycap=2|       keylow=Down|     keytxt={{{077t|}}}|colbkg={{{077b|}}}|keyshf={{{077s|}}}|keyctl={{{077c|}}}|keyalt={{{077a|}}}}}
+  {{kbdchartkey|poslft=1350|postop=393|poswid=144| poshgh=72|colbkg=#808080|keycap=0|       keylow=Ins|      keytxt={{{078t|}}}|colbkg={{{078b|}}}|keyshf={{{078s|}}}|keyctl={{{078c|}}}|keyalt={{{078a|}}}}}
+  {{kbdchartkey|poslft=1494|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=*|        keytxt={{{079t|}}}|colbkg={{{079b|}}}|keyshf={{{079s|}}}|keyctl={{{079c|}}}|keyalt={{{079a|}}}}}
+  {{kbdchartkey|poslft=1494|postop=177| poswid=72| poshgh=72|colbkg=#808080|keycap=9|       keylow=PgUp|     keytxt={{{080t|}}}|colbkg={{{080b|}}}|keyshf={{{080s|}}}|keyctl={{{080c|}}}|keyalt={{{080a|}}}}}
+  {{kbdchartkey|poslft=1494|postop=249| poswid=72| poshgh=72|colbkg=#808080|keycap=6|       keylow=Right|    keytxt={{{081t|}}}|colbkg={{{081b|}}}|keyshf={{{081s|}}}|keyctl={{{081c|}}}|keyalt={{{081a|}}}}}
+  {{kbdchartkey|poslft=1494|postop=321| poswid=72| poshgh=72|colbkg=#808080|keycap=3|       keylow=PgDn|     keytxt={{{082t|}}}|colbkg={{{082b|}}}|keyshf={{{082s|}}}|keyctl={{{082c|}}}|keyalt={{{082a|}}}}}
+  {{kbdchartkey|poslft=1494|postop=393| poswid=72| poshgh=72|colbkg=#808080|keycap=.|       keylow=Del|      keytxt={{{083t|}}}|colbkg={{{083b|}}}|keyshf={{{083s|}}}|keyctl={{{083c|}}}|keyalt={{{083a|}}}}}
+  {{kbdchartkey|poslft=1566|postop=105| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=-|        keytxt={{{084t|}}}|colbkg={{{084b|}}}|keyshf={{{084s|}}}|keyctl={{{084c|}}}|keyalt={{{084a|}}}}}
+  {{kbdchartkey|poslft=1566|postop=177| poswid=72|poshgh=144|colbkg=#808080|keycap=|        keylow=+|        keytxt={{{085t|}}}|colbkg={{{085b|}}}|keyshf={{{085s|}}}|keyctl={{{085c|}}}|keyalt={{{085a|}}}}}
+  {{kbdchartkey|poslft=1566|postop=321| poswid=72|poshgh=144|colbkg=#808080|keycap=|        keylow=Enter|    keytxt={{{086t|}}}|colbkg={{{086b|}}}|keyshf={{{086s|}}}|keyctl={{{086c|}}}|keyalt={{{086a|}}}}}
+}}
+  <!-- function keys -->
+  {{kbdchartkey|   poslft=0|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=Esc|      keytxt={{{087t|}}}|colbkg={{{087b|}}}|keyshf={{{087s|}}}|keyctl={{{087c|}}}|keyalt={{{087a|}}}}}
+  {{kbdchartkey| poslft=144|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=F1|       keytxt={{{088t|}}}|colbkg={{{088b|}}}|keyshf={{{088s|}}}|keyctl={{{088c|}}}|keyalt={{{088a|}}}}}
+  {{kbdchartkey| poslft=216|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=F2|       keytxt={{{089t|}}}|colbkg={{{089b|}}}|keyshf={{{089s|}}}|keyctl={{{089c|}}}|keyalt={{{089a|}}}}}
+  {{kbdchartkey| poslft=288|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=F3|       keytxt={{{090t|}}}|colbkg={{{090b|}}}|keyshf={{{090s|}}}|keyctl={{{090c|}}}|keyalt={{{090a|}}}}}
+  {{kbdchartkey| poslft=360|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=F4|       keytxt={{{091t|}}}|colbkg={{{091b|}}}|keyshf={{{091s|}}}|keyctl={{{091c|}}}|keyalt={{{091a|}}}}}
+  {{kbdchartkey| poslft=468|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=F5|       keytxt={{{092t|}}}|colbkg={{{092b|}}}|keyshf={{{092s|}}}|keyctl={{{092c|}}}|keyalt={{{092a|}}}}}
+  {{kbdchartkey| poslft=540|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=F6|       keytxt={{{093t|}}}|colbkg={{{093b|}}}|keyshf={{{093s|}}}|keyctl={{{093c|}}}|keyalt={{{093a|}}}}}
+  {{kbdchartkey| poslft=612|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=F7|       keytxt={{{094t|}}}|colbkg={{{094b|}}}|keyshf={{{094s|}}}|keyctl={{{094c|}}}|keyalt={{{094a|}}}}}
+  {{kbdchartkey| poslft=684|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=F8|       keytxt={{{095t|}}}|colbkg={{{095b|}}}|keyshf={{{095s|}}}|keyctl={{{095c|}}}|keyalt={{{095a|}}}}}
+  {{kbdchartkey| poslft=792|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=F9|       keytxt={{{096t|}}}|colbkg={{{096b|}}}|keyshf={{{096s|}}}|keyctl={{{096c|}}}|keyalt={{{096a|}}}}}
+  {{kbdchartkey| poslft=864|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=F10|      keytxt={{{097t|}}}|colbkg={{{097b|}}}|keyshf={{{097s|}}}|keyctl={{{097c|}}}|keyalt={{{097a|}}}}}
+  {{kbdchartkey| poslft=936|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=F11|      keytxt={{{098t|}}}|colbkg={{{098b|}}}|keyshf={{{098s|}}}|keyctl={{{098c|}}}|keyalt={{{098a|}}}}}
+  {{kbdchartkey|poslft=1008|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=F12|      keytxt={{{099t|}}}|colbkg={{{099b|}}}|keyshf={{{099s|}}}|keyctl={{{099c|}}}|keyalt={{{099a|}}}}}
+  {{kbdchartkey|poslft=1107|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=SysRq|   keylow=PrtScr|   keytxt={{{100t|}}}|colbkg={{{100b|}}}|keyshf={{{100s|}}}|keyctl={{{100c|}}}|keyalt={{{100a|}}}}}
+  {{kbdchartkey|poslft=1179|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=|        keylow=ScrLk|    keytxt={{{101t|}}}|colbkg={{{101b|}}}|keyshf={{{101s|}}}|keyctl={{{101c|}}}|keyalt={{{101a|}}}}}
+  {{kbdchartkey|poslft=1251|  postop=0| poswid=72| poshgh=72|colbkg=#808080|keycap=Break|   keylow=Pause|    keytxt={{{102t|}}}|colbkg={{{102b|}}}|keyshf={{{102s|}}}|keyctl={{{102c|}}}|keyalt={{{102a|}}}}}
+  <!-- windows keys -->
+  {{kbdchartkey| poslft=108|postop=393| poswid=90| poshgh=72|colbkg=#808080|keycap=|        keylow=Win|     keytxt={{{103t|}}}|colbkg={{{103b|}}}|keyshf={{{103s|}}}|keyctl={{{103c|}}}|keyalt={{{103a|}}}}}
+  {{kbdchartkey| poslft=792|postop=393| poswid=90| poshgh=72|colbkg=#808080|keycap=|        keylow=Win|     keytxt={{{104t|}}}|colbkg={{{104b|}}}|keyshf={{{104s|}}}|keyctl={{{104c|}}}|keyalt={{{104a|}}}}}
+  {{kbdchartkey| poslft=882|postop=393| poswid=90| poshgh=72|colbkg=#808080|keycap=|        keylow=Menu|     keytxt={{{105t|}}}|colbkg={{{105b|}}}|keyshf={{{105s|}}}|keyctl={{{105c|}}}|keyalt={{{105a|}}}}}
+</div>

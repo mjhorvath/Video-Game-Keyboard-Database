@@ -1,0 +1,8 @@
+===Visual map===
+[[File:Kbd-fortnite-battle-royale.svg|thumb|none|700px|Visual map of ''Fortnite'' keyboard controls. Click on the image for a clearer view.]]
+
+== Summary ==
+This file was generated using [http://isometricland.net/keyboard/keyboard.php Video Game Keyboard Diagrams] by Michael Horvath.
+
+== Licensing ==
+{{copyright CC-BY-SA 3.0}}

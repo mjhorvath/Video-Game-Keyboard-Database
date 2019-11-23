@@ -1,0 +1,1 @@
+<div><span style="background:{{#switch:{{{1|}}}|red=#f99|yel=#ff9|grn=#9f9|cyn=#9ff|blu=#99f|mag=#f9f|wht=#fff|gry=#999|blk=#444|org=#f90|olv=#990|brn=#862|#default=#f4f4f4}};border:1px solid #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;{{{2|}}}</div>
