@@ -16,39 +16,28 @@
   write a desktop application for this.
 * Need to switch to using something other than JavaScript alert boxes for 
   providing users with feedback. Alert boxes can be disabled by users in some 
-  browsers, which is bad.
-* The warning about unset/missing caption colors on the submission form could 
-  benefit from a checkbox allowing users to enable or disable future warnings. 
-  It could go beneath the "Enter new lines by typing \n" message in the left 
-  pane.
+  browsers, which is bad. Custom alert boxes could also be made prettier.
 * On the submission form, replace the X icon in the tool bar with arrows 
   pointing left and right.
 * Need to add instructions to the effect that the SHIFT, ALT, etc. commands may 
   require colors assigned to them, but these colors will not necessarily be 
-  displayed in the current version of the chart.
+  displayed in the chart. (At least, in the current version of the chart.)
 * I would like to change the text shown in the color selection boxes of the 
   submission form from "non" to "null" or something else. This might have an 
   adverse effect on some scripts, however.
-* On the submission form, replace key code labels such as "capnor" and "lowagr" 
-  with actual English text.
 * On the submission form, draw an animated dotted line around the border of the 
   selected key.
 * On the submission form, the column names for the TSV data in the "Spreadsheet 
   View" should be fetched from the database instead of hardcoded.
 * Should make the size of the left pane adjustable and make the text input form 
   fields shrink or grow.
-* I should change all the various JavaScript alert boxes on the submission form 
-  to something prettier.
-* The "entities" table should be renamed to "url_parameters" or something close 
-  to it.
+* The "entities" table should be renamed to "url_queries" or something similar.
 * The submission form does not indicate anywhere which layout and style are 
   selected.
-* On the submission form the displayed value for "inp_keynum" should start at 
-  one instead of zero like in the database. In JavaScript the number should 
-  remain the same as it appears now, however.
-* Maybe add a checkbox on the submission form to indicate that a brand new item 
-  is being created. The "record_id" value in the TSV output should be replaced 
-  with "\N" or null character when this is the case.
+* Maybe add a checkbox to the submission form for users to indicate to me that 
+  bindings for a brand new game are being created. The "record_id" value in the 
+  TSV output should be replaced with "\N" or null character when this is the 
+  case.
 * Link to the Excel sheet directly from the submission form, so that those who 
   might prefer using it over the default methods will have easy access to it.
 
@@ -218,6 +207,9 @@
 * Experiment more with CSS effect filters. [Ed. May not work in all browsers.]
 * There remain some meta header tags that have not been added to the PHP pages, 
   yet. [Ed. I cannot remember which tags, however.]
+* On the submission form, replace key code labels such as "capnor" and "lowagr" 
+  with actual English text. [Ed. space is at a premium. Not sure I can fit the 
+  English text there.]
 
 ### Rejected
 * Implement a "languages" table. [Ed. It may be sufficient to simply tie the 
@@ -301,3 +293,7 @@
   styling. It should also be moved into the "lib" directory.
 * The TSV code on the "Spreadsheet View" of the submission form is not always 
   lining up neatly. Need to set the container to overflow instead of wrap.
+* On the submission form the displayed value for "inp_keynum" should start at 
+  one instead of zero like in the database. In JavaScript the number should 
+  remain the same as it appears now, however.
+  
