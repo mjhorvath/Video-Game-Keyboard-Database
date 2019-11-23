@@ -11,59 +11,63 @@
 ?>
 <h2>News &amp; Updates</h2>
 <ul>
+	<li>2019/11/23: Default numpad state is now stored in the database just like the other default URL parameters.</li>
+	<li>2019/11/23: Added a &quot;formats&quot; table to the database. The name of each format, and whether or not a format is enabled, can now be retrieved from this table.</li>
+	<li>2019/11/23: The current &quot;format&quot; is now listed in the page title and description.</li>
+	<li>2019/11/23: Page descriptions and keywords are now handled in the same manner across the different formats (except for SVG).</li>
 	<li>2019/11/19: A confirmation message is now sent to the user after submitting a binding scheme.</li>
-	<li>2019/11/17: Better handling of "lib" path strings.</li>
+	<li>2019/11/17: Better handling of &quot;lib&quot; path strings.</li>
 	<li>2019/11/17: Improved handling of SVG file extension when navigating between formats or arriving from elsewhere on the Web.</li>
-	<li>2019/11/17: Move more files into "lib".</li>
-	<li>2019/11/12: Moved "support" scripts to a new "lib" sub-directory.</li>
-	<li>2019/11/12: Trying to access certain files in the "lib" directory now results in a 403 error.</li>
+	<li>2019/11/17: Move more files into &quot;lib&quot;.</li>
+	<li>2019/11/12: Moved &quot;support&quot; scripts to a new &quot;lib&quot; sub-directory.</li>
+	<li>2019/11/12: Trying to access certain files in the &quot;lib&quot; directory now results in a 403 error.</li>
 	<li>2019/11/12: Converted some PHP files containing JavaScript into JS files.</li>
 	<li>2019/11/12: The default game, layout and style are now stored in the database.</li>
 	<li>2019/11/11: Made changes to how the default settings are chosen and configured. Added a blurb to each page indicating which items are the defaults.</li>
 	<li>2019/11/09: Multiple authors can now be listed for each binding scheme, keyboard layout, or theme.</li>
-	<li>2019/11/08: Added "SVG only" as a possible format. Note, however, that the "SVG only" format has no page footer at the bottom with controls.</li>
+	<li>2019/11/08: Added &quot;SVG only&quot; as a possible format. Note, however, that the &quot;SVG only&quot; format has no page footer at the bottom with controls.</li>
 	<li>2019/11/08: Moved all SQL queries to their own file.</li>
 	<li>2019/11/08: Consolidated URL parameter checking.</li>
 	<li>2019/11/08: Added support for toggling the numeric keypad on/off.</li>
 	<li>2019/10/16: Fixed bug in submission form.</li>
 	<li>2019/10/16: Added English bindings for <i>ATOM RPG</i>, <i>Mutant Year Zero</i>, <i>Freespace 2</i>, <i>Undead Defense</i>, and <i>The Watchers</i>.</li>
 	<li>2019/07/21: Added two Polish binding schemes and one Spanish binding scheme submitted by visitors to the site.</li>
-	<li>2019/07/21: Added the "PL 104 Key (Programmers)" layout by request.</li>
+	<li>2019/07/21: Added the &quot;PL 104 Key (Programmers)&quot; layout by request.</li>
 	<li>2019/07/21: Added support for displaying both lowercase and uppercase AltGr commands in a layout. This is usually disabled however. I may redress this at a later date.</li>
-	<li>2019/04/12: Added bindings for the "Keyboard Scan Codes" scheme and the "ES 105 Key" layout.</li>
-	<li>2019/04/10: Lots of CSS tweaks. Renamed several files back to the old "embed" conventions. Created the "captions" table to store labels that go into the key cap legends, although it is currently still empty. Switched the order in which key captions are rendered in the submissions form so that the "Grayscale" theme works better.</li>
+	<li>2019/04/12: Added bindings for the &quot;Keyboard Scan Codes&quot; scheme and the &quot;ES 105 Key&quot; layout.</li>
+	<li>2019/04/10: Lots of CSS tweaks. Renamed several files back to the old &quot;embed&quot; conventions. Created the &quot;captions&quot; table to store labels that go into the key cap legends, although it is currently still empty. Switched the order in which key captions are rendered in the submissions form so that the &quot;Grayscale&quot; theme works better.</li>
 	<li>2019/04/09: Switched to using flexbox for combo boxes.</li>
-	<li>2019/04/06: CSS tweaks. Added an "layout_language" column to the database. Fixed icon images not showing up behind keys. Link to "normalize.css" got broken at some point.</li>
+	<li>2019/04/06: CSS tweaks. Added an &quot;layout_language&quot; column to the database. Fixed icon images not showing up behind keys. Link to &quot;normalize.css&quot; got broken at some point.</li>
 	<li>2019/04/04: Added bindings for <i>Secret World Legends</i>. This brings the total number of games up to 200, and the total number of bindings to 233!</li>
 	<li>2019/04/03: Added bindings for <i>Rebel Galaxy</i>.</li>
 	<li>2019/04/03: Fixed many minor errors in CSS color definitions.</li>
-	<li>2019/04/02: Created bindings for the "Test Sample" and "Database Key Numbers" reference materials for the "US 104 Key (Dvorak)", "UK 105 Key (ISO)" and "ES 105 Key (ISO)" keyboards.</li>
+	<li>2019/04/02: Created bindings for the &quot;Test Sample&quot; and &quot;Database Key Numbers&quot; reference materials for the &quot;US 104 Key (Dvorak)&quot;, &quot;UK 105 Key (ISO)&quot; and &quot;ES 105 Key (ISO)&quot; keyboards.</li>
 	<li>2019/04/02: Added bindings for <i>X Rebirth</i> and <i>X4: Foundations</i>.</li>
-	<li>2019/04/02: Merged the HTML and SVG formats into one format. The diagrams are no longer rendered using pure HTML code, and the SVG file is now once again embedded within an HTML wrapper. (This is how the old "embed" format worked.) Not sure what effect this will have on search engines, however.</li>
+	<li>2019/04/02: Merged the HTML and SVG formats into one format. The diagrams are no longer rendered using pure HTML code, and the SVG file is now once again embedded within an HTML wrapper. (This is how the old &quot;embed&quot; format worked.) Not sure what effect this will have on search engines, however.</li>
 	<li>2019/04/01: Tweaked diagram dimensions. The gaps between the different sections of keys are now 1/2 unit in width. The borders around the edges are now 1/4 unit wide.</li>
 	<li>2019/04/01: Added bindings for <i>Apex Legends</i> and <i>Tom Clancy's Rainbow Six Siege</i>.</li>
 	<li>2019/03/30: Fixed alphabetical sort order of acronyms on front page.</li>
 	<li>2019/03/30: Fixed some minor issues with the alphabetical list.</li>
 	<li>2019/03/28: Moved all font files to a different folder.</li>
-	<li>2019/03/28: Added the "US 104 Key (Dvorak)" layout.</li>
+	<li>2019/03/28: Added the &quot;US 104 Key (Dvorak)&quot; layout.</li>
 	<li>2019/03/28: Added bindings for <i>World of Tanks</i> and <i>Counter-Strike: Global Offensive</i>.</li>
 	<li>2019/03/27: The diagram legends are now sorted by legend group.</li>
 	<li>2019/03/27: Updated the <i>Elite Dangerous</i> keyboard and mouse controls.</li>
 	<li>2019/03/26: Style selection dialog in page footers is now alphabetized and organized into groups.</li>
 	<li>2019/03/25: Replaced loading icon with one I created myself.</li>
-	<li>2019/03/24: Added the "UK 105 Key (ISO)" and "ES 105 Key (ISO)" keyboards. They only have the "Blank Starter" bindings at the moment, however.</li>
-	<li>2019/03/24: Fixed one of the columns in the "positions" table was not set to auto-increment.</li>
+	<li>2019/03/24: Added the &quot;UK 105 Key (ISO)&quot; and &quot;ES 105 Key (ISO)&quot; keyboards. They only have the &quot;Blank Starter&quot; bindings at the moment, however.</li>
+	<li>2019/03/24: Fixed one of the columns in the &quot;positions&quot; table was not set to auto-increment.</li>
 	<li>2019/03/24: Discovered and documented an issue related to the bit(1) datatype and importing of CSV files.</li>
 	<li>2019/03/24: Added bindings for <i>Kenshi</i>.</li>
-	<li>2019/03/24: Reversed the order of the "Game" and "Theme" selection dialogs.</li>
-	<li>2019/03/24: Made changes to the "Spawn New Diagram" button in the frontend.</li>
+	<li>2019/03/24: Reversed the order of the &quot;Game&quot; and &quot;Theme&quot; selection dialogs.</li>
+	<li>2019/03/24: Made changes to the &quot;Spawn New Diagram&quot; button in the frontend.</li>
 	<li>2019/03/24: Moved several stylesheets from the website's main directory to the local keyboard directory.</li>
 	<li>2019/03/23: Added OBS Production Profile bindings by Josiah Stearns.</li>
 	<li>2019/03/22: Fixed key ID less by 1 when making a submission.</li>
 	<li>2019/03/21: Tweaked LCH styles.</li>
-	<li>2019/03/21: Fixed missing leading zeros in "Keyboard Scan Codes" scheme.</li>
+	<li>2019/03/21: Fixed missing leading zeros in &quot;Keyboard Scan Codes&quot; scheme.</li>
 	<li>2019/03/21: Fixed legend order bug in submission form.</li>
-	<li>2019/03/19: Renamed the "Blank Sample" scheme to "Blank Starter".</li>
+	<li>2019/03/19: Renamed the &quot;Blank Sample&quot; scheme to &quot;Blank Starter&quot;.</li>
 	<li>2019/03/19: Adjusted the bottom row of keys so they better match standard ANSI/ISO layouts.</li>
 	<li>2019/03/18: Genre names were missing from the alphabetical master list.</li>
 	<li>2019/03/18: Updated scripts to reflect that there is no longer a display order column in the genres table.</li>
@@ -71,12 +75,12 @@
 	<li>2019/03/11: You now need to fill the message form completely and correctly before data is sent to my mailbox.</li>
 	<li>2019/03/11: Loading image should load a little faster.</li>
 	<li>2019/03/11: The submission form now sends the data to me using UTF-8 encoding. (Sorry!)</li>
-	<li>2019/03/11: The script now checks first if the reCaptcha box has been checked before enabling the "Submit Data" button.</li>
+	<li>2019/03/11: The script now checks first if the reCaptcha box has been checked before enabling the &quot;Submit Data&quot; button.</li>
 	<li>2019/03/11: There was a bug preventing the code from signaling that the legend had been altered.</li>
 	<li>2018/06/28: Had to replace all stored procedures with regular SELECT calls since my Web host disabled the creation (and storage) of new routines.</li>
 	<li>2018/06/24: Made several JavaScript-related fixes to the submission form.</li>
 	<li>2018/06/23: Switched to Google's reCAPTCHA for the submission form.</li>
-	<li>2018/06/21: Started making a "to do" list. You can view it <a href="to_do_list.txt">here</a>.</li>
+	<li>2018/06/21: Started making a &quot;to do&quot; list. You can view it <a href="to_do_list.txt">here</a>.</li>
 	<li>2018/06/20: Fixed some PHP loop code that was spawning warnings in the error log.</li>
 	<li>2018/06/20: Changed the license for the PHP and JavaScript code to GPLv3. (The database contents and chart designs remain licensed under the CC BY-SA 3.0 license.)</li>
 	<li>2018/06/19: Finished the graphical submission form I started working on. Start with a <a href="./keyboard-diagram-blank-sample.php?sty=15&lay=1&fmt=3">blank sample</a>.</li>
@@ -84,43 +88,43 @@
 	<li>2018/06/05: Started working on a GUI tool to submit bindings to this project. It is incomplete, but you can <s><a href="keyboard-submit.html">view my progress so far</a></s>. [ed. dead link]</li>
 	<li>2018/06/05: Tweaked some HTML and CSS code. Added box borders to the default style.</li>
 	<li>2018/06/04: You can now select between the HTML, SVG and MediaWiki formats from the front page and charts. Hopefully, I can get PDF output working sometime soon.</li>
-	<li>2018/06/04: Renamed the "svg" URL query to "fmt" since there are now more than two formats.</li>
+	<li>2018/06/04: Renamed the &quot;svg&quot; URL query to &quot;fmt&quot; since there are now more than two formats.</li>
 	<li>2018/06/04: Fixed a bug in URL query detection.</li>
 	<li>2018/05/30: Created a <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for this project.</li>
-	<li>2018/05/29: Renamed the project from "Video Game Hotkey Maps" back to "Video Game Keyboard Diagrams".</li>
+	<li>2018/05/29: Renamed the project from &quot;Video Game Hotkey Maps&quot; back to &quot;Video Game Keyboard Diagrams&quot;.</li>
 	<li>2018/05/29: Updated the printing tips with new info on potential problems and workarounds.</li>
 	<li>2018/05/25: Made tweaks to style sheets and meta tags in order to (somewhat) better support mobile browsers.</li>
 	<li>2018/05/25: Fixed a bug that was causing some browsers to not be able to switch between the HTML and SVG versions of the diagrams.</li>
 	<li>2018/05/25: Old URLs are now being properly converted to the new URL syntax.</li>
 	<li>2018/05/23: Added bindings for <i>PlayerUnknown's Battlegrounds</i>, <i>Fortnite</i>, <i>Overwatch</i>, <i>Far Cry 5</i> and <i>Everspace</i>. I've only played the last one, but hopefully people will appreciate the others.</li>
-	<li>2018/05/18: Made changes to the accordion menu in the front page. Made changes to the alphabetical list (now renamed to "master list").</li>
+	<li>2018/05/18: Made changes to the accordion menu in the front page. Made changes to the alphabetical list (now renamed to &quot;master list&quot;).</li>
 	<li>2018/05/14: Added a button to the bottom of each chart to quickly switch between SVG and HTML rendering.</li>
 	<li>2018/05/14: Added bindings for <i>Battletech</i> and <i>Stellar Tactics</i>.</li>
 	<li>2018/05/14: Fixed a bug preventing charts from being loaded if the <tt>gam</tt>, <tt>sty</tt>, <tt>lay</tt> and <tt>svg</tt> parameters were missing from the URL.</li>
 	<li>2017/05/29: I removed the Dvorak layout, since it was only used once, and was never properly implemented in the first place.</li>
 	<li>2017/05/29: You can now switch back and forth between SVG and HTML versions of the charts by simply changing the <tt>&amp;svg=</tt> URL parameter to equal 1 or 0.</li>
 	<li>2017/01/04: Altered several styles' appearances.</li>
-	<li>2017/01/04: Created SVG versions of the charts (<a href="./keyboard-chart.php?gam=1&sty=15&lay=1&svg=1">here's a sample</a>). They are less compatible with older browsers, but are better compatible with different wiki software. Once again, remember to change the numbers after the "gam=" and "lay=" portions of the URL to the correct game and layout ID.</li>
-	<li>2017/01/04: Renamed the website from "Video Game Keyboard Control Charts" to "Video Game Keyboard Diagrams".</li>
-	<li>2017/01/04: Switched the order of the "Games", "Styles" and "Layouts" menus on the front page to "Games", "Layouts" and "Styles".</li>
+	<li>2017/01/04: Created SVG versions of the charts (<a href="./keyboard-chart.php?gam=1&sty=15&lay=1&svg=1">here's a sample</a>). They are less compatible with older browsers, but are better compatible with different wiki software. Once again, remember to change the numbers after the &quot;gam=&quot; and &quot;lay=&quot; portions of the URL to the correct game and layout ID.</li>
+	<li>2017/01/04: Renamed the website from &quot;Video Game Keyboard Control Charts&quot; to &quot;Video Game Keyboard Diagrams&quot;.</li>
+	<li>2017/01/04: Switched the order of the &quot;Games&quot;, &quot;Styles&quot; and &quot;Layouts&quot; menus on the front page to &quot;Games&quot;, &quot;Layouts&quot; and &quot;Styles&quot;.</li>
 	<li>2017/01/04: Checks are now done to make sure each style is only applied to the proper layout. Non-matching styles are now grayed-out in the front page menu, and error messages are now printed to the chart screen.</li>
 	<li>2016/12/23: Added bindings for <i>Windows 7</i>, <i>Neverwinter Nights</i>, <i>Neverwinter Nights 2</i>, <i>Psychonauts</i>, <i>The Age of Decadence</i>, <i>Shadowrun: Dragonfall</i> and <i>Pillars of Eternity</i>.</li>
 	<li>2016/12/22: The <a href="./keyboard-list.php">alphabetical game list</a> now shows multiple platforms/layouts for each game.</li>
 	<li>2016/12/22: The alphabet letter keys no longer show the lowcaps letter. This adds a bit of extra room on each key for the caption strings.</li>
 	<li>2016/12/22: Solved a many-to-many relationship issue by adding a new associative table to the database. As a bonus, it's now possible to credit people who submit bindings, layouts and stylesheets directly on the chart pages.</li>
-	<li>2016/12/20: Renamed "Blank Sample" to "Test Sample".</li>
+	<li>2016/12/20: Renamed &quot;Blank Sample&quot; to &quot;Test Sample&quot;.</li>
 	<li>2016/12/20: Made a version of this test sample for every layout.</li>
 	<li>2016/12/20: Added bindings for <i>Icewind Dale Enhanced Edition</i>.</li>
 	<li>2016/12/20: Renamed the Apple keyboard layouts to include the keyboard model number. Also fixed a bug preventing the last key on these keyboards to be displayed.</li>
-	<li>2016/12/20: Added an "Database Key Numbers" item to the "Reference" category. It shows the default key numbers for each keyboard layout.</li>
+	<li>2016/12/20: Added an &quot;Database Key Numbers&quot; item to the &quot;Reference&quot; category. It shows the default key numbers for each keyboard layout.</li>
 	<li>2016/12/20: Removed all bindings for the Dvorak keyboard. I didn't approach this properly, and need to start over from scratch.</li>
-	<li>2016/12/18: Updated the URLs to "SEO friendly" URLs. Old links should still work, however.</li>
+	<li>2016/12/18: Updated the URLs to &quot;SEO friendly&quot; URLs. Old links should still work, however.</li>
 	<li>2016/12/16: Created a PHP script to autogenerate the MediaWiki code for each game. This can then be used with the MediaWiki template I created earlier.</li>
 	<li>2016/07/28: Added an <a href="./keyboard-list.php">alphabetical game list</a> of charts for those people who do not have JavaScript enabled in their browser.</li>	
 	<li>2016/07/20: You can now select a different visual style from within the chart itself.</li>
 	<li>2016/05/19: Tweaked the text at the bottom of the charts page.</li>
-	<li>2016/05/19: Updated printing tips, and linked to the relevant section on the main page instead of a dedicated "Printing Tips" page.</li>
-	<li>2016/05/19: Renamed the "First-Person Shooters" category to "Action".</li>
+	<li>2016/05/19: Updated printing tips, and linked to the relevant section on the main page instead of a dedicated &quot;Printing Tips&quot; page.</li>
+	<li>2016/05/19: Renamed the &quot;First-Person Shooters&quot; category to &quot;Action&quot;.</li>
 	<li>2016/05/19: Updated bindings for <i>Star Wolves</i> series.</li>
 	<li>2016/05/19: Added bindings for <i>TES III</i>, <i>TES V</i>, <i>Metal Gear Rising: Revengeance</i>, <i>Metal Gear Solid V: The Phantom Pain</i> and <i>The Witcher 3</i>. This brings the total up to 150 games!</li>
 	<li>2015/01/09: Updated all PHP scripts to a newer version.</li>

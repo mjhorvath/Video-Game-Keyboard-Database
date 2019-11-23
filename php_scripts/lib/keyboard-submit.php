@@ -33,6 +33,7 @@
 	$write_maximal_keys	= true;
 	$php_url		= "";
 	$svg_url		= "";
+	$can_url		= "";
 	$stylegroup_id		= 0;
 	$position_table		= [];
 	$keystyle_table		= [];
@@ -67,11 +68,12 @@
 	$game_name		= "";
 	$platform_name		= "";
 	$platform_id		= 0;
+	$format_name		= "";
 	$layout_name		= "";
 	$layout_authors		= [];
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
-	$layout_language	= 1;	// temporary until I add translations to the database
+	$layout_language	= 1;	// temporary until I add language translations to the database
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -91,6 +93,7 @@
 	selStyleGroupsHTML();
 	selStylesHTML();
 	selThisStyleHTML();
+	selFormatsHTML();
 	selPositionsHTML();
 	selLayoutsHTML();
 	selPlatformsHTML();
@@ -110,7 +113,7 @@
 	checkForErrors();
 
 	$thispage_title_a	= $temp_game_name;
-	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - GRID:" . $gamesrecord_id;
+	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - " . $temp_format_name . " - GRID:" . $gamesrecord_id;
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -119,13 +122,13 @@
 	echo
 "		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
 		<title>" . $thispage_title_a . $thispage_title_b . "</title>
-		<link rel=\"canonical\" href=\"" . $php_url . "\"/>
+		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib . "style_common.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
-		<meta name=\"description\" content=\"" . $string_description . $temp_game_name . ". (" . $temp_style_name . ")\"/>
-		<meta name=\"keywords\" content=\"" . $temp_game_name . "," . $temp_style_name . "," . "HTML" . "," . $string_keywords . "\"/>
+		<meta name=\"description\" content=\""	. $string_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name	. ")\"/>
+		<meta name=\"keywords\" content=\""	. $string_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
 ";
 	echo writeAnalyticsTracking();
 	echo

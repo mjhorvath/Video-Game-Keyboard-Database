@@ -54,7 +54,7 @@
 	function selEntities()
 	{
 		global $con;
-		$selectString =	"SELECT e.entity_id, e.entity_name, e.entity_default FROM entities as e;";
+		$selectString =	"SELECT e.entity_id, e.entity_name, e.entity_default FROM entities AS e;";
 		selectQuery($con, $selectString, "doEntities");
 	}
 	function doEntities($in_result)
@@ -69,24 +69,34 @@
 	function selDefaults()
 	{
 		global $con, $entities_array;
-		$selectString =	"SELECT g.game_id, g.game_name, g.game_friendlyurl, l.layout_id, l.layout_name, s.style_id, s.style_name
-				FROM games as g, layouts as l, styles as s
-				WHERE g.game_id = " . $entities_array[0][2] . "
-				AND l.layout_id = " . $entities_array[1][2] . "
-				AND s.style_id = " . $entities_array[2][2] . ";";
+		// array indices are hardcoded here. should get them from database instead
+		$selectString =	"SELECT g.game_name, g.game_friendlyurl, l.layout_name, s.style_name, f.format_name
+				FROM games AS g, layouts AS l, styles AS s, formats AS f
+				WHERE g.game_id = "	. $entities_array[0][2] . "
+				AND l.layout_id = "	. $entities_array[1][2] . "
+				AND s.style_id = "	. $entities_array[2][2] . "
+				AND f.format_id = "	. $entities_array[3][2] . ";";
 		selectQuery($con, $selectString, "doDefaults");
 	}
 	function doDefaults($in_result)
 	{
-		global $default_game_id, $default_game_name, $default_game_seo, $default_layout_id, $default_layout_name, $default_style_id, $default_style_name;
+		global	$entities_array,
+			$default_game_id,	$default_game_name,	$default_game_seo,
+			$default_layout_id,	$default_layout_name,
+			$default_style_id,	$default_style_name,
+			$default_format_id,	$default_format_name,
+			$default_ten_bool;
 		$game_row = mysqli_fetch_row($in_result);
-		$default_game_id	= $game_row[0];
-		$default_game_name	= $game_row[1];
-		$default_game_seo	= $game_row[2];
-		$default_layout_id	= $game_row[3];
-		$default_layout_name	= $game_row[4];
-		$default_style_id	= $game_row[5];
-		$default_style_name	= $game_row[6];
+		$default_game_id	= $entities_array[0][2];
+		$default_game_name	= $game_row[0];
+		$default_game_seo	= $game_row[1];
+		$default_layout_id	= $entities_array[1][2];
+		$default_layout_name	= $game_row[2];
+		$default_style_id	= $entities_array[2][2];
+		$default_style_name	= $game_row[3];
+		$default_format_id	= $entities_array[3][2];		// starts at 0 instead of 1
+		$default_format_name	= $game_row[4];
+		$default_ten_bool	= $entities_array[4][2];		// note that in the database this is stored as an integer versus boolean
 	}
 
 	// ---------------------------------------------------------------------
@@ -94,37 +104,37 @@
 	function selGenresFront()
 	{
 		global $con;
-		$selectString = "SELECT g.genre_id, g.genre_name FROM genres as g;";
+		$selectString = "SELECT g.genre_id, g.genre_name FROM genres AS g;";
 		selectQuery($con, $selectString, "doGenresFront");
 	}
 	function selGamesFront()
 	{
 		global $con;
-		$selectString = "SELECT g.genre_id, g.game_id, g.game_name, g.game_friendlyurl FROM games as g;";
+		$selectString = "SELECT g.genre_id, g.game_id, g.game_name, g.game_friendlyurl FROM games AS g;";
 		selectQuery($con, $selectString, "doGamesFront");
 	}
 	function selStylegroupsFront()
 	{
 		global $con;
-		$selectString = "SELECT s.stylegroup_id, s.stylegroup_name FROM stylegroups as s;";
+		$selectString = "SELECT s.stylegroup_id, s.stylegroup_name FROM stylegroups AS s;";
 		selectQuery($con, $selectString, "doStylegroupsFront");
 	}
 	function selStylesFront()
 	{
 		global $con;
-		$selectString = "SELECT s.stylegroup_id, s.style_id, s.style_name FROM styles as s ORDER BY s.style_name;";
+		$selectString = "SELECT s.stylegroup_id, s.style_id, s.style_name FROM styles AS s ORDER BY s.style_name;";
 		selectQuery($con, $selectString, "doStylesFront");
 	}
 	function selPlatformsFront()
 	{
 		global $con;
-		$selectString = "SELECT p.platform_id, p.platform_name, p.platform_displayorder FROM platforms as p;";
+		$selectString = "SELECT p.platform_id, p.platform_name, p.platform_displayorder FROM platforms AS p;";
 		selectQuery($con, $selectString, "doPlatformsFront");
 	}
 	function selLayoutsFront()
 	{
 		global $con;
-		$selectString = "SELECT l.platform_id, l.layout_id, l.layout_name FROM layouts as l ORDER BY l.layout_name;";
+		$selectString = "SELECT l.platform_id, l.layout_id, l.layout_name FROM layouts AS l ORDER BY l.layout_name;";
 		selectQuery($con, $selectString, "doLayoutsFront");
 	}
 	function doGenresFront($in_result)
@@ -204,19 +214,19 @@
 	function selContribGamesHTML()
 	{
 		global $con, $gamesrecord_id;
-		$selectString = "SELECT c.author_id FROM contrib_games as c WHERE c.record_id = " . $gamesrecord_id . ";";
+		$selectString = "SELECT c.author_id FROM contrib_games AS c WHERE c.record_id = " . $gamesrecord_id . ";";
 		selectQuery($con, $selectString, "doContribGamesHTML");
 	}
 	function selContribStylesHTML()
 	{
 		global $con, $stylesrecord_id;
-		$selectString = "SELECT c.author_id FROM contrib_styles as c WHERE c.record_id = " . $stylesrecord_id . ";";
+		$selectString = "SELECT c.author_id FROM contrib_styles AS c WHERE c.record_id = " . $stylesrecord_id . ";";
 		selectQuery($con, $selectString, "doContribStylesHTML");
 	}
 	function selContribLayoutsHTML()
 	{
 		global $con, $layout_id;
-		$selectString = "SELECT c.author_id FROM contrib_layouts as c WHERE c.layout_id = " . $layout_id . ";";
+		$selectString = "SELECT c.author_id FROM contrib_layouts AS c WHERE c.layout_id = " . $layout_id . ";";
 		selectQuery($con, $selectString, "doContribLayoutsHTML");
 	}
 	function selGamesHTML_ID()
@@ -254,6 +264,12 @@
 		global $con, $style_id;
 		$selectString = "SELECT s.style_filename, s.style_name, s.stylegroup_id FROM styles AS s WHERE s.style_id = " . $style_id . " ORDER BY s.stylegroup_id, s.style_name;";
 		selectQuery($con, $selectString, "doThisStyleHTML");
+	}
+	function selFormatsHTML()
+	{
+		global $con, $format_id;
+		$selectString = "SELECT f.format_name, f.format_enabled FROM formats AS f WHERE f.format_id = " . ($format_id + 1) . ";";
+		selectQuery($con, $selectString, "doThisFormatHTML");
 	}
 	function selPositionsHTML()
 	{
@@ -379,6 +395,13 @@
 		$style_name = cleantextHTML($style_row[1]);
 		$stylegroup_id = $style_row[2];
 	}
+	function doThisFormatHTML($in_result)
+	{
+		global $format_name;
+		// format_name
+		$format_row		= mysqli_fetch_row($in_result);
+		$format_name		= cleantextHTML($format_row[0]);
+	}
 	function doBindingsHTML($in_result)
 	{
 		global $binding_table;
@@ -492,7 +515,6 @@
 		// record_id
 		$stylesrecord_id = $stylesrecord_row[0];
 	}
-	// need to move the stuff that used to be here to `doLanguages`
 	function doLayoutsHTML($in_result)
 	{
 		global $gamesrecord_id, $platform_id, $layout_name, $layout_keysnum, $layout_fullsize_width, $layout_fullsize_height, $layout_tenkeyless_width, $layout_tenkeyless_height;
@@ -543,19 +565,19 @@
 	function selContribGamesSVG()
 	{
 		global $con, $gamesrecord_id;
-		$selectString = "SELECT c.author_id FROM contrib_games as c WHERE c.record_id = " . $gamesrecord_id . ";";
+		$selectString = "SELECT c.author_id FROM contrib_games AS c WHERE c.record_id = " . $gamesrecord_id . ";";
 		selectQuery($con, $selectString, "doContribGamesSVG");
 	}
 	function selContribStylesSVG()
 	{
 		global $con, $stylesrecord_id;
-		$selectString = "SELECT c.author_id FROM contrib_styles as c WHERE c.record_id = " . $stylesrecord_id . ";";
+		$selectString = "SELECT c.author_id FROM contrib_styles AS c WHERE c.record_id = " . $stylesrecord_id . ";";
 		selectQuery($con, $selectString, "doContribStylesSVG");
 	}
 	function selContribLayoutsSVG()
 	{
 		global $con, $layout_id;
-		$selectString = "SELECT c.author_id FROM contrib_layouts as c WHERE c.layout_id = " . $layout_id . ";";
+		$selectString = "SELECT c.author_id FROM contrib_layouts AS c WHERE c.layout_id = " . $layout_id . ";";
 		selectQuery($con, $selectString, "doContribLayoutsSVG");
 	}
 	function selGamesSVG_ID()
@@ -593,6 +615,12 @@
 		global $con, $style_id;
 		$selectString = "SELECT s.style_filename, s.style_name, s.stylegroup_id FROM styles AS s WHERE s.style_id = " . $style_id . " ORDER BY s.stylegroup_id, s.style_name;";
 		selectQuery($con, $selectString, "doThisStyleSVG");
+	}
+	function selFormatsSVG()
+	{
+		global $con, $format_id;
+		$selectString = "SELECT f.format_name, f.format_enabled FROM formats AS f WHERE f.format_id = " . ($format_id + 1) . ";";
+		selectQuery($con, $selectString, "doThisFormatSVG");
 	}
 	function selPositionsSVG()
 	{
@@ -645,7 +673,7 @@
 	function selLanguageStringsSVG()
 	{
 		global $con, $layout_language;
-		$selectString = "SELECT l.language_title, l.language_description, l.language_keywords, l.language_legend, l.language_mouse, l.language_joystick, l.language_keyboard, l.language_notes, l.language_cheats, l.language_console, l.language_emote FROM languages as l WHERE l.language_id = " . $layout_language . ";";
+		$selectString = "SELECT l.language_title, l.language_description, l.language_keywords, l.language_legend, l.language_mouse, l.language_joystick, l.language_keyboard, l.language_notes, l.language_cheats, l.language_console, l.language_emote FROM languages AS l WHERE l.language_id = " . $layout_language . ";";
 		selectQuery($con, $selectString, "doLanguageStringsSVG");
 	}
 	function doContribGamesSVG($in_result)
@@ -711,6 +739,13 @@
 		$style_filename = $style_row[0];
 		$style_name = cleantextSVG($style_row[1]);
 		$stylegroup_id = $style_row[2];
+	}
+	function doThisFormatSVG($in_result)
+	{
+		global $format_name;
+		// format_name
+		$format_row		= mysqli_fetch_row($in_result);
+		$format_name		= cleantextSVG($format_row[0]);
 	}
 	function doBindingsSVG($in_result)
 	{
@@ -835,31 +870,31 @@
 	function selGenresList()
 	{
 		global $con;
-		$selectString = "SELECT g.genre_id, g.genre_name FROM genres as g ORDER BY g.genre_id;";
+		$selectString = "SELECT g.genre_id, g.genre_name FROM genres AS g ORDER BY g.genre_id;";
 		selectQuery($con, $selectString, "doGenresList");
 	}
 	function selGamesList()
 	{
 		global $con;
-		$selectString = "SELECT g.genre_id, g.game_id, g.game_name, g.game_friendlyurl FROM games as g ORDER BY g.game_name;";
+		$selectString = "SELECT g.genre_id, g.game_id, g.game_name, g.game_friendlyurl FROM games AS g ORDER BY g.game_name;";
 		selectQuery($con, $selectString, "doGamesList");
 	}
 	function selLayoutsList()
 	{
 		global $con;
-		$selectString = "SELECT l.layout_id, l.layout_name, l.platform_id FROM layouts as l ORDER BY l.layout_name;";
+		$selectString = "SELECT l.layout_id, l.layout_name, l.platform_id FROM layouts AS l ORDER BY l.layout_name;";
 		selectQuery($con, $selectString, "doLayoutsList");
 	}
 	function selGamesRecordsList()
 	{
 		global $con;
-		$selectString = "SELECT r.game_id, r.layout_id FROM records_games as r;";
+		$selectString = "SELECT r.game_id, r.layout_id FROM records_games AS r;";
 		selectQuery($con, $selectString, "doGamesRecordsList");
 	}
 	function selPlatformsList()
 	{
 		global $con;
-		$selectString = "SELECT p.platform_id, p.platform_name, p.platform_abbv FROM platforms as p ORDER BY p.platform_name;";
+		$selectString = "SELECT p.platform_id, p.platform_name, p.platform_abbv FROM platforms AS p ORDER BY p.platform_name;";
 		selectQuery($con, $selectString, "doPlatformsList");
 	}
 	function doGenresList($in_result)

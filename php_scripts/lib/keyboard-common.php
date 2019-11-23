@@ -28,6 +28,7 @@
 	$default_game_name	= "";
 	$default_style_name	= "";
 	$default_layout_name	= "";
+	$default_format_name	= "";
 	$entities_array		= [];
 	$string_title		= "";
 	$string_description	= "";
@@ -45,6 +46,7 @@
 	$temp_layout_name	= "";
 	$temp_style_name	= "";
 	$temp_platform_name	= "";
+	$temp_format_name	= "";
 
 	function getDefaults()
 	{
@@ -53,7 +55,7 @@
 	}
 	function checkURLParameters()
 	{
-		global	$php_url,	$svg_url,
+		global	$php_url, $svg_url, $can_url,
 			$game_seo,	$default_game_seo,
 			$game_id,	$default_game_id,
 			$game_name,	$default_game_name,
@@ -62,6 +64,7 @@
 			$layout_id,	$default_layout_id,
 			$layout_name,	$default_layout_name,
 			$format_id,	$default_format_id,
+			$format_name,	$default_format_name,
 			$svg_bool,	$default_svg_bool,
 			$ten_bool,	$default_ten_bool;
 //		error_log("checking URL query validity", 0);
@@ -147,15 +150,20 @@
 			if ($url_ext == "svg")
 			{
 				$format_id = 1;
+				// what should I do here?
+//				$format_name = ???;
 			}
 			else if ($svg_bool !== null)
 			{
 				$format_id = $svg_bool;
+				// what should I do here?
+//				$format_name = ???;
 			}
 			else
 			{
 //				error_log("svg_bool is null", 0);
 				$format_id = $default_format_id;
+				$format_name = $default_format_name;
 				$svg_bool = $default_svg_bool;
 			}
 			$fix_url = true;
@@ -173,8 +181,9 @@
 			$fix_url = true;
 		}
 
-		$php_url = "./keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id	. "&ten=" . $ten_bool;
-		$svg_url = "./keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . 1		. "&ten=" . $ten_bool;
+		$php_url = "keyboard-diagram-" . $game_seo . ".php?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . $format_id	. "&ten=" . $ten_bool;
+		$svg_url = "keyboard-diagram-" . $game_seo . ".svg?sty=" . $style_id . "&lay=" . $layout_id . "&fmt=" . 1		. "&ten=" . $ten_bool;
+		$can_url = "http://isometricland.net/keyboard/" . $php_url;
 
 		if ($fix_url === true)
 		{
@@ -351,13 +360,16 @@
 			$game_name,	$temp_game_name,	$game_id,
 			$platform_name,	$temp_platform_name,	$platform_id,
 			$layout_name,	$temp_layout_name,	$layout_id,
-			$style_name,	$temp_style_name,	$style_id;
-		$temp_game_seo		= $game_seo		? $game_seo		: "unrecognized-game";
+			$style_name,	$temp_style_name,	$style_id,
+			$format_name,	$temp_format_name,	$format_id;
+		$temp_game_seo		= $game_seo		? $game_seo		: "unrecognized-game";		// needs to be low caps
 		$temp_game_name		= $game_name		? $game_name		: "Unrecognized Game";
 		$temp_platform_name	= $platform_name	? $platform_name	: "Unrecognized Platform";
 		$temp_layout_name	= $layout_name		? $layout_name		: "Unrecognized Layout";
 		$temp_style_name	= $style_name		? $style_name		: "Unrecognized Theme";
-		// checking for $game_name or $game_id isn't working right now
+		$temp_format_name	= $format_name		? $format_name		: "Unrecognized Format";
+		// checking for $game_id or $game_name  isn't working right now
+		// do we need to check for $format_id and $format_name too?
 		if (!$game_name)
 		{
 			$errors_table[] = "Game with ID number " . $game_id . " not found.";

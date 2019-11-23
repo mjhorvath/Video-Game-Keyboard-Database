@@ -31,6 +31,7 @@
 
 	$php_url		= "";
 	$svg_url		= "";
+	$can_url		= "";
 	$keys_number		= 118;		// should really be calculated dynamically or stored in the database for each layout
 	$actions_number		= 10;
 	$legend_number		= 12;
@@ -62,7 +63,7 @@
 	$platform_id		= 0;
 	$layout_name		= "";
 	$layout_authors		= [];
-	$layout_language	= 1;	// temporary until I add translations to the database
+	$layout_language	= 1;	// temporary until I add language translations to the database
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -82,6 +83,7 @@
 	selStyleGroupsHTML();
 	selStylesHTML();
 	selThisStyleHTML();
+	selFormatsHTML();
 	selPositionsHTML();
 	selLayoutsHTML();
 	selPlatformsHTML();
@@ -101,7 +103,7 @@
 	checkForErrors();
 
 	$thispage_title_a	= $temp_game_name;
-	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - MediaWiki code - GRID:" . $gamesrecord_id;
+	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_format_name . " - GRID:" . $gamesrecord_id;
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -110,14 +112,14 @@
 	echo
 "		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
 		<title>" . $thispage_title_a . $thispage_title_b . "</title>
-		<link rel=\"canonical\" href=\"" . $php_url . "\"/>
+		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib . "style_common.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib . "style_mediawiki.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
-		<meta name=\"description\" content=\"" . $string_description . $temp_game_name . ".\"></meta>
-		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference,MediaWiki," . $temp_game_name . "\"></meta>
+		<meta name=\"description\" content=\""	. $string_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name	. ")\"/>
+		<meta name=\"keywords\" content=\""	. $string_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
 ";
 	echo writeAnalyticsTracking();
 ?>

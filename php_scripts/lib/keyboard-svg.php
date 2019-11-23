@@ -31,6 +31,7 @@
 	// move as many of these as possible to keyboard-common.php
 	$php_url		= "";
 	$svg_url		= "";
+	$can_url		= "";
 	$stylegroup_id		= 0;
 	$legend_count		= 12;
 	$position_table		= [];
@@ -59,7 +60,7 @@
 	$layout_tenkeyless_height	= 400;
 	$layout_legend_padding		= 36;
 	$layout_legend_height		= 72;
-	$layout_language	= 1;	// temporary until I add translations to the database
+	$layout_language	= 1;	// temporary until I add language translations to the database
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -81,6 +82,7 @@
 	selStyleGroupsSVG();
 	selStylesSVG();
 	selThisStyleSVG();
+	selFormatsSVG();
 	selPositionsSVG();
 	selGamesRecordsSVG();
 	selStylesRecordsSVG();
@@ -99,7 +101,7 @@
 	checkForErrors();
 
 	$thispage_title_a	= $temp_game_name;
-	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - GRID:" . $gamesrecord_id;
+	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - " . $temp_format_name . " - GRID:" . $gamesrecord_id;
 
 	// layout outer bounds
 	if ($ten_bool == 0)
@@ -177,7 +179,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 			<cc:Work rdf:about="">
 				<dc:format>image/svg+xml</dc:format>
 				<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-			<cc:license rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+				<cc:license rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
 			</cc:Work>
 			<cc:License rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
 				<cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction" />
@@ -541,8 +543,8 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 				$row_div = floor($row_count/3);
 				$row_mod = $row_count % 3;
 				echo
-"		<rect class=\"keyrec rec" . $leg_grp . "\" x=\"" . ($row_div*200+0.5) . "\" y=\"" . ($row_mod*20+0.5) . "\" width=\"16\" height=\"16\"/>\n" .
-"		<text class=\"legtxt\" x=\"" . ($row_div*200+20.5) . "\" y=\"" . ($row_mod*20+14.5) . "\">" . $leg_dsc . "</text>\n";
+"		<rect class=\"keyrec rec" . $leg_grp . "\" x=\"" . ($row_div*200+0.5) . "\" y=\"" . ($row_mod*20+0.5) . "\" width=\"16\" height=\"16\"/>
+		<text class=\"legtxt\" x=\"" . ($row_div*200+20.5) . "\" y=\"" . ($row_mod*20+14.5) . "\">" . $leg_dsc . "</text>\n";
 				$row_count += 1;
 			}
 		}

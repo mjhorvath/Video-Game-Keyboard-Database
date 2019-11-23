@@ -37,6 +37,10 @@
   View" should be fetched from the database instead of hardcoded.
 * Should make the size of the left pane adjustable and make the text input form 
   fields shrink or grow.
+* I should change all the various JavaScript alert boxes on the submission form 
+  to something prettier.
+* The "entities" table should be renamed to "url_parameters" or something close 
+  to it.
 
 ### MediaWiki
 * Generate MediaWiki code for layouts as well as for games.
@@ -72,13 +76,11 @@
   multiple times.
 
 ### Miscellaneous
-* I should change all the various JavaScript alert boxes on the submission form 
-  to something prettier.
 * I would also like to create charts/diagrams for gamepads, mice and joysticks. 
   But the sheer number of different devices will make this task very difficult.
 * Not sure whether the XML sitemap should list each game once for every 
-  platform/layout, or only once, period. Does it confuse the search engines to 
-  have multiple diagrams for each game?
+  platform/layout, or only once, period. Does it confuse search engines to have 
+  multiple diagrams for each game?
 * Should the accordion menus on the front-end page be sorted alphabetically, or 
   should I add a "displayorder" column to each SQL table? If I can come up with 
   an easy way to update a "displayorder" column using SQL commands, then I may 
@@ -93,8 +95,8 @@
   that a game can be placed in multiple genres. What type of GUI would this 
   necessitate? Is this even possible using MySQL? [Ed. it is possible but would 
   require a lengthy bridge table.]
-* How granular do I want to get with respect to video game genres? Should I 
-  list sub-genres and sub-sub-genres? How many genres? Which ones?
+* How granular should I get with respect to video game genres? Should I list 
+  sub-genres and sub-sub-genres? How many genres? Which ones?
 * I merged the HTML and SVG formats into one format. The diagrams are no longer 
   rendered using pure HTML code, and the SVG files are now once again embedded 
   within an HTML wrapper. (This is also how the old "embed" format worked.) Not 
@@ -102,9 +104,9 @@
   engines parse text embedded within SVG files? What if those SVG files are 
   themselves embedded within HTML files?
 * Now that I have ditched the HTML format in favor of SVG for the principal 
-  rendering method, should I also update the submission editor to use SVG as 
-  well? This will require some cross-frame JavaScript, and may require some 
-  method of text input for the SVG files. Not sure this is going to be easy.
+  rendering method, should I update the submission editor to use SVG as well? 
+  This will require some cross-frame JavaScript, and may require some method of 
+  text input for the SVG files. Not sure this is going to be easy.
 * Users should maybe be able to press the ALT modifier key and see the bindings 
   that make use of that modifier. There is another project on the Internet that 
   works in this manner. Need to check it out.
@@ -141,9 +143,9 @@
   effect that changes the button's color.
 * Maybe replace the "up", "down", "right" and "left" key captions with arrow 
   icons? (Or Unicode arrow characters?)
-* My SQL queries are very simple, and all processing of data is done using PHP 
-  scripts. A lot of the same tasks could probably be performed more quickly and 
-  easily in SQL using joins.
+* Currently, all the SQL queries are very simple, and all processing of data is 
+  done using PHP scripts. A lot of the tasks being done using the PHP scripts 
+  could probably be performed more quickly and easily in SQL using joins.
 * The PHP scripts get kind of flaky when both an SEO string *and* a game ID are 
   provided in the URL. Not sure which of these should override the other.
 * I moved most PHP routines and SQL statements to two dedicated files. But this 
@@ -155,7 +157,13 @@
   another URL query parameter.
 * Maybe merge the "Completed" tasks on this page back into the other categories 
   and use strikethrough text to indicate a task that has been completed. Or use 
-  GitHub's "Issues" interface. Can "Issues" be categorized?
+  GitHub's "Issues" interface. Can GitHub "Issues" be categorized?
+* Formats are now stored in the database. I could use the database to generate 
+  the format list in the footer now if I wanted to. This is also true for the 
+  default numpad state.
+* I would like to re-index the "layouts" table since a gap exists at ID#2. This 
+  would break links to many pages, however. Better to simply re-use the ID for 
+  a future layout.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 

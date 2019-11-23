@@ -61,9 +61,9 @@
 	if ($response["success"] != false)
 	{
 		// Send to admin
-		$mailto = $admin;
-		$subject = "VGKD Bindings Submission: " . $titletxt;
-		$message = "NAME:\t\t"	. $name		. "\r\n" .
+		$mail = $admin;
+		$subj = "VGKD Bindings Submission: " . $titletxt;
+		$body = "NAME:\t\t"	. $name		. "\r\n" .
 			"EMAIL:\t\t"	. $email	. "\r\n" .
 			"MESSAGE:\t"	. $message	. "\r\n" .
 			"GAME TITLE:\t"	. $titletxt	. "\r\n" .
@@ -75,16 +75,16 @@
 			"LEGENDS:\r\n"	. $legend	. "\r\n\r\n" .
 			"COMMANDS:\r\n"	. $command	. "\r\n\r\n" .
 			"BINDINGS:\r\n"	. $binding	. "\r\n\r\n";
-		$headers = "MIME-Version: 1.0\r\n" .
+		$head = "MIME-Version: 1.0\r\n" .
 			"Content-type:text/plain;charset=UTF-8\r\n" .
 			"From: " . $email . "\r\n" .
 			"Reply-To: " . $email . "\r\n";
-		mail($mailto, $subject, $message, $headers);
+		mail($mail, $subj, $body, $head);
 
 		// Send to submitter
-		$mailto = $email;
-		$subject = "VGKD Bindings Submission: " . $titletxt;
-		$message = "Thank you for submitting a binding scheme to Video Game Keyboard Diagrams. Below is a copy of the data you submitted.\r\n\r\n" .
+		$mail = $email;
+		$subj = "VGKD Bindings Submission: " . $titletxt;
+		$body = "Thank you for submitting a binding scheme to Video Game Keyboard Diagrams. Below is a copy of the data you submitted.\r\n\r\n" .
 			"NAME:\t\t"	. $name		. "\r\n" .
 			"EMAIL:\t\t"	. $email	. "\r\n" .
 			"MESSAGE:\t"	. $message	. "\r\n" .
@@ -97,11 +97,11 @@
 			"LEGENDS:\r\n"	. $legend	. "\r\n\r\n" .
 			"COMMANDS:\r\n"	. $command	. "\r\n\r\n" .
 			"BINDINGS:\r\n"	. $binding	. "\r\n\r\n";
-		$headers = "MIME-Version: 1.0\r\n" .
+		$head = "MIME-Version: 1.0\r\n" .
 			"Content-type:text/plain;charset=UTF-8\r\n" .
 			"From: " . $admin . "\r\n" .
 			"Reply-To: " . $admin . "\r\n";
-		mail($mailto, $subject, $message, $headers);
+		mail($mail, $subj, $body, $head);
 
 		// the echo goes back to the ajax, so the user can know if everything is ok
 		echo "ok";
