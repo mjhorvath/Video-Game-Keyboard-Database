@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Nov 23, 2019 at 07:35 AM
+-- Generation Time: Nov 23, 2019 at 11:01 AM
 -- Server version: 5.5.52-cll
 -- PHP Version: 5.4.31
 
@@ -211,7 +211,6 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (166, 9, 98, 'Quit\\nGame', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (167, 9, 99, 'Gamma\\nCorrection', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (168, 9, 103, 'Pause\\name', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(189, 0, 2, 'Attack /\\nDialogue', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (209, 10, 2, 'Quick\\nSlot 1', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (210, 10, 3, 'Quick\\nSlot 2', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (211, 10, 4, 'Quick\\nSlot 3', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -587,9 +586,9 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (970, 16, 19, 'Drop Item', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (971, 16, 20, 'Look Up', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (972, 16, 24, 'Objectives', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(973, 16, 26, 'Previous\\nItem', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(973, 16, 26, 'Previous\\nItem', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(974, 16, 27, 'Next\\nItem', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
-(974, 16, 27, 'Next\\nItem', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (975, 16, 30, 'Turn Left', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (976, 16, 31, 'Walk', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (977, 16, 32, 'Turn Right', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1056,9 +1055,9 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (1905, 25, 23, 'ILS', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1906, 25, 24, 'Track\\nView', 5, NULL, NULL, NULL, NULL, 'Options', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1907, 25, 25, 'Padlock\\nView', 5, NULL, NULL, NULL, NULL, 'Pause', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1908, 25, 26, 'Next Radial\\n(VOR1)', 2, 'Prev', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1908, 25, 26, 'Next Radial\\n(VOR1)', 2, 'Prev', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1909, 25, 28, 'Next Radial\\n(VOR2)', 2, 'Prev', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
-(1909, 25, 28, 'Next Radial\\n(VOR2)', 2, 'Prev', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1910, 25, 31, 'Raise\\nFlaps', 3, NULL, NULL, 'Haze +', NULL, 'Haze -', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1911, 25, 32, 'Target\\nTracking', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1912, 25, 33, 'Flare', 1, NULL, NULL, NULL, NULL, 'Show\\nVector', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1507,9 +1506,9 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (2805, 32, 58, 'Pause', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2806, 32, 61, 'Lock\\nCamera\\non Target', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2807, 32, 62, 'Delete\\nNAV Point', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2808, 32, 88, 'In-Game\\nMenu', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(2808, 32, 88, 'In-Game\\nMenu', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2809, 32, 89, 'Auto', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
-(2809, 32, 89, 'Auto', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2810, 32, 90, 'Approach', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2811, 32, 91, 'Hold\\nPosition', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2812, 32, 92, 'Run Away', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1965,9 +1964,9 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (3722, 41, 19, 'Target\\nNearest', 2, 'Report\\nIn', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3723, 41, 20, 'Target\\nNext', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3724, 41, 21, 'Target\\nPrevious', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3725, 41, 22, 'Target\\nAhead', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(3725, 41, 22, 'Target\\nAhead', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3726, 41, 23, 'Toggle\\nCMD', 2, 'Ignore Target', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
-(3726, 41, 23, 'Toggle\\nCMD', 2, 'Ignore Target', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3727, 41, 26, '1/3\\nThrottle', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3728, 41, 27, '2/3\\nThrottle', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3729, 41, 28, 'Zero Throttle', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -2419,9 +2418,9 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (4494, 47, 90, 'Next\\nNeutral', 2, 'Prev', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4495, 47, 91, 'Next\\nEnemy', 2, 'Prev', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4496, 47, 93, 'Recall\\nTarget #1', 2, 'Store\\nTarget', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4497, 47, 94, 'Recall\\nTarget #2', 2, 'Store\\nTarget', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(4497, 47, 94, 'Recall\\nTarget #2', 2, 'Store\\nTarget', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4498, 47, 95, 'Recall\\nTarget #3', 2, 'Store\\nTarget', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
-(4498, 47, 95, 'Recall\\nTarget #3', 2, 'Store\\nTarget', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4499, 47, 96, 'Beam\\nRecharge', 9, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4500, 47, 97, 'Weapon\\nRecharge', 9, 'Power to\\nShields', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4501, 47, 98, 'Shield\\nRecharge', 9, 'Power to\\nWeapons', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -2736,9 +2735,9 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (5160, 54, 40, 'Special\\nCommand', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5161, 54, 42, 'Chat', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5162, 54, 45, 'Special\\nAttack', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5163, 54, 46, 'Ping', 1, NULL, NULL, NULL, NULL, 'Cancel\\nShip', NULL, NULL, NULL, NULL, NULL, 'icon_hw2_ping.png', 'data:image/png;base64,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');
+(5163, 54, 46, 'Ping', 1, NULL, NULL, NULL, NULL, 'Cancel\\nShip', NULL, NULL, NULL, NULL, NULL, 'icon_hw2_ping.png', 'data:image/png;base64,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'),
+(5164, 54, 47, 'Cloak', 1, NULL, NULL, NULL, NULL, 'Corvette', NULL, NULL, NULL, NULL, NULL, 'icon_hw2_cloak.png', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfgDB8WJjjkbf+SAAAAGXRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4wLjEzNANbegAAA9lJREFUeF7tmjtv1EAUhVNFoqKAKkVSJBSJhKJARwQFKaCIRJQgBSkFUkQBggKBxPv1z8P5VserWXts767H+5wjfYo99869c73jGa83G1lZWVlZWVkrp5ubm10frp9U/IW49ul6ycX/Azetj8Li1+4ClItfqwsQKx5sXm2p0GjxYJfVlYqsLR7stppSgY3Fg11XTyqutXiw+3ylgeyKp+KVeC++i/JgacOGD761T3GyjVU8uMvspeRb4rl4WwxmCuhLjC2Hnah4cLfZSUm3xZn4WgwiAcQiJsTstXhYs5ESnohP4QACfok34oV4JO6Ju4Zj2rDhg2+5P5/8kbgO2lrx0PqVEu2IqzBxwGvxWNyxe6vwdR/6EuPCJmyb4lT8tq0Rd+tPSnIo3oVJxR9xKfbtNrUUg1nB1N9200A6PxafRZi3gt37kRI8FOUpzxQ9sksnKU644JHnxKaBdP5AfLQ9il3TS8H55MPimZJMzU27RCX7gaCwsC/HtB3YrVx8CLfajt2Ki1A7E+yWVgrMPR9OewZwbHOt5MOW9tN9YmDDp674AnIfOixxuR2ia4Jd0kqBwwWPxOMWPzK4Gs5Fsfg1wUUIZwKzr+JnczopKFtdmOTUplrJh2nf9MkXDFZ7/d0TX4L2Oq4GCSQdsztUtkib00gBecgJ710SNt7zSD5tUxqGWx3ivGSvY7gw6pjnBHagod2mNFLA8EmMRGOt9vILL1qMkeKR2ljcYr5liD3cInXM9ju0u7m7FIxn+/Dx9tKmVgV9YlSKR2rnYSjmH+PM3ei3H9rc3F0K1scFiBaPZFusC4BIFATvegvUFo9kX6xbAJFIpFgEG4tHkT51zG4RRAradRscp/jF3AYLKfC0D0LnPq2VfG6LxX0QQgo88aOw7ExpCttzU0XY7DNSRIT5PgojBR/7y5DawvuZqc05ixwrPXBM21jTXsz3y1AhJWj9OqzjcRezNshT/jocyz+CXfuTkjS9EOFlRtg+DcX7wPILkSfih4j1GWL3fqVEsVdifPJd3gxX3ggjnd8SL0WsTwV3m42UsHgpWtnq1Nb020DrbwJqY5t7JkYKbMPdZyclZbomeR9YSLGYYVycvyJaaB0OMRspYXnBY0ub6I1wIfXhdTm3wDcRxpwIh+tfSta02tf9JsD9DMVvA+znvBH6IGJxJsbD61dKlGqrS46H2J+UZGGLBw+zHynBQhcPHmp6KfjCFw8eblop8FIUDx5yOino0hQPHnYaKeBSFQ8eencp2NIVDx5+NynQUhYv0vyzNIFKgZcBxnzfJWRlZWVlZWVlZVW1sfEf8dTNZALi72IAAAAASUVORK5CYII=');
 INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
-(5164, 54, 47, 'Cloak', 1, NULL, NULL, NULL, NULL, 'Corvette', NULL, NULL, NULL, NULL, NULL, 'icon_hw2_cloak.png', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfgDB8WJjjkbf+SAAAAGXRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4wLjEzNANbegAAA9lJREFUeF7tmjtv1EAUhVNFoqKAKkVSJBSJhKJARwQFKaCIRJQgBSkFUkQBggKBxPv1z8P5VserWXts767H+5wjfYo99869c73jGa83G1lZWVlZWVkrp5ubm10frp9U/IW49ul6ycX/Azetj8Li1+4ClItfqwsQKx5sXm2p0GjxYJfVlYqsLR7stppSgY3Fg11XTyqutXiw+3ylgeyKp+KVeC++i/JgacOGD761T3GyjVU8uMvspeRb4rl4WwxmCuhLjC2Hnah4cLfZSUm3xZn4WgwiAcQiJsTstXhYs5ESnohP4QACfok34oV4JO6Ju4Zj2rDhg2+5P5/8kbgO2lrx0PqVEu2IqzBxwGvxWNyxe6vwdR/6EuPCJmyb4lT8tq0Rd+tPSnIo3oVJxR9xKfbtNrUUg1nB1N9200A6PxafRZi3gt37kRI8FOUpzxQ9sksnKU644JHnxKaBdP5AfLQ9il3TS8H55MPimZJMzU27RCX7gaCwsC/HtB3YrVx8CLfajt2Ki1A7E+yWVgrMPR9OewZwbHOt5MOW9tN9YmDDp674AnIfOixxuR2ia4Jd0kqBwwWPxOMWPzK4Gs5Fsfg1wUUIZwKzr+JnczopKFtdmOTUplrJh2nf9MkXDFZ7/d0TX4L2Oq4GCSQdsztUtkib00gBecgJ710SNt7zSD5tUxqGWx3ivGSvY7gw6pjnBHagod2mNFLA8EmMRGOt9vILL1qMkeKR2ljcYr5liD3cInXM9ju0u7m7FIxn+/Dx9tKmVgV9YlSKR2rnYSjmH+PM3ei3H9rc3F0K1scFiBaPZFusC4BIFATvegvUFo9kX6xbAJFIpFgEG4tHkT51zG4RRAradRscp/jF3AYLKfC0D0LnPq2VfG6LxX0QQgo88aOw7ExpCttzU0XY7DNSRIT5PgojBR/7y5DawvuZqc05ixwrPXBM21jTXsz3y1AhJWj9OqzjcRezNshT/jocyz+CXfuTkjS9EOFlRtg+DcX7wPILkSfih4j1GWL3fqVEsVdifPJd3gxX3ggjnd8SL0WsTwV3m42UsHgpWtnq1Nb020DrbwJqY5t7JkYKbMPdZyclZbomeR9YSLGYYVycvyJaaB0OMRspYXnBY0ub6I1wIfXhdTm3wDcRxpwIh+tfSta02tf9JsD9DMVvA+znvBH6IGJxJsbD61dKlGqrS46H2J+UZGGLBw+zHynBQhcPHmp6KfjCFw8eblop8FIUDx5yOino0hQPHnYaKeBSFQ8eencp2NIVDx5+NynQUhYv0vyzNIFKgZcBxnzfJWRlZWVlZWVlZVW1sfEf8dTNZALi72IAAAAASUVORK5CYII='),
 (5165, 54, 48, 'Events', 6, NULL, NULL, NULL, NULL, 'Cancel\\nBuild\\nSubsys', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5166, 54, 49, 'Build\\nManager', 6, NULL, NULL, 'Close', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5167, 54, 50, 'Lay Mine', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'icon_hw2_mine.png', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfgDB8WKyarzLy8AAAAGXRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4wLjEzNANbegAAActJREFUeF7tlkFLQlEQhV25Ef+AuIsgXddKaNvCdi2ijUG0cBNERESF9c/tHDjGYNNTSZ/Py/ngg3rOnZlDvYstY4wxxhhjjDHGmF0zn88/q1RZuSDkV5UqK5csdFRl5ZKFjqqsXLLQUZWVSxY6qrJyyUJHVVYuWeioysolCx1VWblkoaMqK5csdFRl5ZKFjqqsXLLQUZWVSxY6qrJyyUJHVVYmCHi0HDjxSOXlgFAdeAnfFLJK1rC2o+OHC0K04Tl8hlnYKnmGZ9tqd1hg8QGcwizcJrLHQG2bD5btwRstv03Zs6cxzQPL8T0fw1eYBdiG7M0ZzbkfsAzf8zP4BLOldyFnceZ+7wcsMIR3MFuyDjl7qHXqB8NnYZlNfYG85Sl/zmrWcaZ16gfDJ0vLrOM7vIJdtWGfrp7xs+xMlRO1qR8M78OPsMwqb+Gxjv+Cn6kmO5vJ2X0d3w9YgLdytlz0AZ7qyEpYqzNZr+hYR/YHluC/72NYKsp3+wJufFvzjM7+dT9w5s9rtFewyCgstvAa/vuLC3uo13L/kUqaARZafO29hyd6vDXYU705Y6rHzQFL8QLb+V+FMzhLvxpjjDHGGGOMMcaYzWi1vgHP3ja96oxPjAAAAABJRU5ErkJggg=='),
@@ -3147,8 +3146,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (6078, 63, 52, 'Rotate\\nClockwise', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6079, 63, 53, 'Rotate\\nCounter-\\nclockwise', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6080, 63, 55, 'Show Stored Waypoints', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6081, 63, 58, 'Show Movement Destinations / Game Speed +', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(6081, 63, 58, 'Show Movement Destinations / Game Speed +', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6082, 63, 63, 'Pan\\nLeft', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6083, 63, 64, 'Focus on\\nGeneral\\n/Home', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6084, 63, 65, 'Focus\\non Unit', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -3164,7 +3162,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (6094, 63, 85, 'Tilt\\nDown', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6095, 63, 86, 'Tilt\\nUp', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6096, 63, 88, 'Options\\nScreen', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6097, 63, 89, 'Help\\nScreen', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6097, 63, 89, 'Help\\nScreen', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (6147, 64, 2, 'Select\\nUnit', 2, NULL, NULL, 'Add', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6148, 64, 3, 'Select\\nUnit', 2, NULL, NULL, 'Add', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6149, 64, 4, 'Select\\nUnit', 2, NULL, NULL, 'Add', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -3606,8 +3605,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (6968, 72, 103, 'Pause\\nGame', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7025, 73, 2, 'Select\\nSquad', 2, NULL, NULL, 'Assign', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7026, 73, 3, 'Select\\nSquad', 2, NULL, NULL, 'Assign', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7027, 73, 4, 'Select\\nSquad', 2, NULL, NULL, 'Assign', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(7027, 73, 4, 'Select\\nSquad', 2, NULL, NULL, 'Assign', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7028, 73, 5, 'Select\\nSquad', 2, NULL, NULL, 'Assign', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7029, 73, 6, 'Select\\nSquad', 2, NULL, NULL, 'Assign', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7030, 73, 7, 'Select\\nSquad', 2, NULL, NULL, 'Assign', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -3623,7 +3621,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (7040, 73, 42, 'Equipment', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7041, 73, 47, 'Toggle\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7042, 73, 48, 'Toggle\\nLevel', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7043, 73, 51, 'Message\\nHistory', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7043, 73, 51, 'Message\\nHistory', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (7044, 73, 58, 'Pause', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7045, 73, 64, 'Center on\\nMessage', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7046, 73, 68, 'Up\\nLevel', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -4058,8 +4057,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (7907, 83, 88, 'Main Menu', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7927, 84, 2, 'Melee\\nWeapon', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7928, 84, 3, 'Ranged\\nWeapon', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7929, 84, 4, 'Last Spell', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(7929, 84, 4, 'Last Spell', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7930, 84, 5, 'Spell 1', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7931, 84, 6, 'Spell 2', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7932, 84, 7, 'Spell 3', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -4076,7 +4074,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (7943, 84, 31, 'Move\\nBackward', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7944, 84, 32, 'Strafe Right', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7945, 84, 38, 'Log Book', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7946, 84, 43, 'Switch Run/Walk', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7946, 84, 43, 'Switch Run/Walk', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (7947, 84, 47, 'Character\\nScreen', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7948, 84, 50, 'Log Book', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7949, 84, 51, 'Map', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -4534,8 +4533,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (8911, 96, 49, '50', NULL, '30', NULL, '32', NULL, '32', NULL, '05', NULL, '42', NULL, NULL, NULL),
 (8912, 96, 50, '51', NULL, '31', NULL, '31', NULL, '31', NULL, '11', NULL, '4E', NULL, NULL, NULL),
 (8913, 96, 51, '52', NULL, '32', NULL, '3A', NULL, '3A', NULL, '10', NULL, '4D', NULL, NULL, NULL),
-(8914, 96, 52, '53', NULL, '33', NULL, '41', NULL, '41', NULL, '36', NULL, 'BC', NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(8914, 96, 52, '53', NULL, '33', NULL, '41', NULL, '41', NULL, '36', NULL, 'BC', NULL, NULL, NULL),
 (8915, 96, 53, '54', NULL, '34', NULL, '49', NULL, '49', NULL, '37', NULL, 'BE', NULL, NULL, NULL),
 (8916, 96, 54, '55', NULL, '35', NULL, '4A', NULL, '4A', NULL, '38', NULL, 'BF', NULL, NULL, NULL),
 (8917, 96, 55, '57', NULL, '36', NULL, '59', NULL, '59', NULL, 'E5', NULL, 'A1', NULL, NULL, NULL),
@@ -4552,7 +4550,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (8928, 96, 66, '83', NULL, 'E0 48', NULL, 'E0 75', NULL, '63', NULL, '52', NULL, '26', NULL, NULL, NULL),
 (8929, 96, 67, '84', NULL, 'E0 50', NULL, 'E0 72', NULL, '60', NULL, '51', NULL, '28', NULL, NULL, NULL),
 (8930, 96, 68, '85', NULL, 'E0 49', NULL, 'E0 7D', NULL, '6F', NULL, '4B', NULL, '21', NULL, NULL, NULL),
-(8931, 96, 69, '86', NULL, 'E0 51', NULL, 'E0 7A', NULL, '6D', NULL, '4E', NULL, '22', NULL, NULL, NULL),
+(8931, 96, 69, '86', NULL, 'E0 51', NULL, 'E0 7A', NULL, '6D', NULL, '4E', NULL, '22', NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (8932, 96, 70, '89', NULL, 'E0 4D', NULL, 'E0 74', NULL, '6A', NULL, '4F', NULL, '27', NULL, NULL, NULL),
 (8933, 96, 71, '90', NULL, '45', NULL, '77', NULL, '76', NULL, '53', NULL, '90', NULL, NULL, NULL),
 (8934, 96, 72, '91', NULL, '47', NULL, '6C', NULL, '6C', NULL, '5F', NULL, '67', NULL, NULL, NULL),
@@ -5037,8 +5036,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (9413, 100, 115, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (9414, 100, 116, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (9415, 100, 117, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9416, 100, 118, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(9416, 100, 118, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (9417, 101, 1, '96\\nx0060', NULL, '126\\nx007E', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (9418, 101, 2, '49\\nx0031', NULL, '33\\nx0021', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (9419, 101, 3, '50\\nx0032', NULL, '64\\nx0040', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -5053,7 +5051,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (9428, 101, 12, '45\\nx002D', NULL, '95\\nx005F', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (9429, 101, 13, '61\\nx003D', NULL, '43\\nx002B', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (9430, 101, 14, '8\\nx2408', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9431, 101, 15, '9\\nx2409', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9431, 101, 15, '9\\nx2409', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (9432, 101, 16, '113\\nx0071', NULL, '81\\nx0051', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (9433, 101, 17, '119\\nx0077', NULL, '87\\nx0057', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (9434, 101, 18, '101\\nx0065', NULL, '69\\nx0045', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -5519,8 +5518,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (10001, 109, 24, 'Build\\nOffshore\\nPlatform', 1, NULL, NULL, 'Options', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10002, 109, 25, 'Ping\\nMap', 1, 'Build\\nPasture', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10003, 109, 28, 'Previous\\nSelected Unit', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10004, 109, 30, 'Build\\nImprove-\\nment', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(10004, 109, 30, 'Build\\nImprove-\\nment', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10005, 109, 31, 'Sentry /\\nAir Strike', 1, NULL, NULL, 'Save\\nGame', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10006, 109, 32, NULL, NULL, NULL, NULL, NULL, NULL, 'Change\\nPlayer\\nInfo', 4, NULL, NULL, NULL, NULL, NULL, NULL),
 (10007, 109, 33, 'Fortify /\\nBuild\\nNets', 1, NULL, NULL, 'Build\\nFort', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -5535,7 +5533,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (10016, 109, 51, 'Build\\nMine', 1, NULL, NULL, 'Music\\nOn/Off', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10017, 109, 52, 'Previous\\nUnit', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10018, 109, 53, 'Next\\nUnit', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10019, 109, 58, 'Skip Turn', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10019, 109, 58, 'Skip Turn', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (10020, 109, 61, 'Nearest\\nFreindly\\nCity', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10021, 109, 62, 'Delete\\nUnit', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10022, 109, 63, 'Previous\\nCity', 2, 'Clock-\\nwise', 5, '45', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -5976,8 +5975,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (10790, 120, 51, NULL, NULL, NULL, NULL, NULL, NULL, 'Mu μ', 3, NULL, NULL, NULL, NULL, NULL, NULL),
 (10791, 120, 52, NULL, NULL, NULL, NULL, NULL, NULL, 'Less than\\nor Equal ≤', 3, NULL, NULL, NULL, NULL, NULL, NULL),
 (10792, 120, 53, NULL, NULL, NULL, NULL, NULL, NULL, 'Greater than\\nor Equal ≥', 3, NULL, NULL, NULL, NULL, NULL, NULL),
-(10793, 120, 62, 'Delete\\nObject', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(10793, 120, 62, 'Delete\\nObject', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10794, 120, 63, 'Decrement/\\nMove Left', 3, '-0.1x Speed', 6, NULL, NULL, '-100x Speed', 6, NULL, NULL, NULL, NULL, NULL, NULL),
 (10795, 120, 64, 'Select\\nFirst Item', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10796, 120, 65, 'Select\\nLast Item', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -5992,7 +5990,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (10805, 120, 92, 'Copy\\nValue to\\nInput Bar', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10806, 120, 93, 'Copy\\nName to\\nInput Bar', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10807, 120, 97, 'Recompute', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10894, 121, 1, 'Show\\nFPS', 6, 'Show\\nconsole', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10894, 121, 1, 'Show\\nFPS', 6, 'Show\\nconsole', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (10895, 121, 2, 'Select\\nplanet', 5, 'Set time\\nto now', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10896, 121, 3, 'Select\\nplanet', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10897, 121, 4, 'Select\\nplanet', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -6434,8 +6433,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (11886, 127, 102, 'Quick\\nsave', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (11887, 127, 103, 'Pause\\ngame', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (11888, 127, 104, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11889, 127, 105, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(11889, 127, 105, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (11890, 127, 106, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (11891, 127, 107, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (11892, 127, 108, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -6453,7 +6451,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (11914, 116, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (11915, 116, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (11916, 116, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11917, 116, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11917, 116, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (11918, 116, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (11919, 116, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (11920, 116, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -6918,8 +6917,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (13011, 131, 83, 'Use\\nSkill', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13012, 131, 84, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13013, 131, 85, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(13014, 131, 86, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(13014, 131, 86, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13015, 131, 87, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13016, 131, 88, 'Go Back /\\nSave\\nMenu', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13017, 131, 89, 'Select\\nCharacter', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -6936,7 +6934,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (13028, 131, 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13029, 131, 101, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13030, 131, 102, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(13031, 131, 103, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(13031, 131, 103, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (13032, 131, 104, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13033, 131, 105, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13034, 131, 106, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -7395,8 +7394,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (13740, 138, 77, 'Equalize\\nShields', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13741, 138, 78, 'Shields\\nto Back', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13742, 138, 82, 'Shields\\nto Right', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(13743, 138, 88, 'Main\\nMenu', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(13743, 138, 88, 'Main\\nMenu', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13744, 138, 100, 'Screen-\\nshot', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13751, 139, 15, 'Start/Stop\\nCombat', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13752, 139, 17, 'Pan\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -7412,7 +7410,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (13762, 139, 43, 'Queue commands (hold)', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13763, 139, 47, 'Sneak', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13764, 139, 48, 'Rotate\\nCamera\\n(hold)', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(13765, 139, 49, 'Tactical\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(13765, 139, 49, 'Tactical\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (13766, 139, 51, 'Map', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13767, 139, 55, 'Queue commands (hold)', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13768, 139, 56, 'Show\\nTarget Info', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -7855,8 +7854,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (14434, 151, 51, 'Map', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14435, 151, 57, 'Highlight', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14436, 151, 58, 'End Turn', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(14437, 151, 63, 'Pan\\nLeft', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(14437, 151, 63, 'Pan\\nLeft', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14438, 151, 66, 'Pan\\nForward', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14439, 151, 67, 'Pan\\nBack', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14440, 151, 70, 'Pan\\nRight', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -7873,7 +7871,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (14476, 152, 30, 'Move\\nLeft', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14477, 152, 31, 'Move\\nBack', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14478, 152, 32, 'Move\\nRight', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(14479, 152, 58, 'Interact With Object', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(14479, 152, 58, 'Interact With Object', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (14480, 152, 63, 'Move\\nLeft', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14481, 152, 66, 'Move\\nForward', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14482, 152, 67, 'Move\\nBack', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -8308,8 +8307,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (15271, 163, 60, 'Attack', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15272, 163, 55, 'Add to\\nSelection', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15273, 163, 43, 'Add to\\nSelection', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(15274, 163, 40, 'Special\\nCommand', 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(15274, 163, 40, 'Special\\nCommand', 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15275, 163, 54, 'Leave\\nStrike\\nGroup', 1, 'Alt', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15276, 1, 2, 'one', 1, 'shift', NULL, 'ctrl', NULL, 'alt', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15277, 1, 3, 'two', 2, 'shift', NULL, 'ctrl', NULL, 'alt', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -8327,7 +8325,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (15292, 164, 3, 'Select\\nChar 2', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15293, 164, 4, 'Select\\nChar 3', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15294, 164, 5, 'Select\\nChar 4', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(15295, 164, 6, 'Select\\nChar 5', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(15295, 164, 6, 'Select\\nChar 5', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (15296, 164, 7, 'Select\\nChar 6', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15297, 164, 8, 'Select\\nChars\\n1 &amp; 2', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15298, 164, 9, 'Select\\nChars\\n3 &amp; 4', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -8800,8 +8799,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (15978, 169, 72, '72', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15979, 169, 73, '73', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15980, 169, 74, '74', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(15981, 169, 75, '75', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(15981, 169, 75, '75', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15982, 169, 76, '76', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15983, 169, 77, '77', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15984, 169, 78, '78', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -8820,7 +8818,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (15997, 169, 91, '91', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15998, 169, 92, '92', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15999, 169, 93, '93', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(16000, 169, 94, '94', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(16000, 169, 94, '94', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (16001, 169, 95, '95', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16002, 169, 96, '96', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16003, 169, 97, '97', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -9280,8 +9279,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (16807, 177, 63, 'Rotate\\nLeft', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16808, 177, 64, 'Zoom\\nIn Full', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16809, 177, 65, 'Zoom\\nOut Full', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(16810, 177, 66, 'Zoom\\nIn', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(16810, 177, 66, 'Zoom\\nIn', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16811, 177, 67, 'Zoom\\nOut', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16812, 177, 68, 'Pitch\\nCamera\\nUp', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16813, 177, 69, 'Pitch\\nCamera\\nDown', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -9298,7 +9296,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (16855, 178, 43, NULL, NULL, 'Switch\\nLanguage', NULL, 'Change\\nReading\\nDirection', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16856, 178, 45, NULL, NULL, NULL, NULL, 'Undo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16857, 178, 46, NULL, NULL, NULL, NULL, 'Cut', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(16858, 178, 47, NULL, NULL, NULL, NULL, 'Copy', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(16858, 178, 47, NULL, NULL, NULL, NULL, 'Copy', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (16859, 178, 48, NULL, NULL, NULL, NULL, 'Paste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16860, 178, 56, NULL, NULL, 'Switch\\nKeyboard\\nLayout', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16861, 178, 57, NULL, NULL, 'Switch\\nLanguage', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -9620,7 +9619,6 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (17372, 86, 52, 'Pick Up\\nItem', 2, 'Ascend\\nStairs', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17373, 86, 53, 'Rest', 1, 'Descend\\nStairs', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17374, 86, 54, 'Symbol\\nInfo', 5, 'Help\\nMenu', 5, NULL, NULL, 'List\\nCommands', 6, NULL, NULL, NULL, NULL, NULL, NULL),
-(17394, 0, 0, 'normal_action', 0, 'shift_action', 0, 'ctrl_action', 0, 'alt_action', 0, 'altgr_action', 0, 'extra_action', 0, 'image_file', 'image_uri'),
 (17457, 184, 1, 'Known\\nObjects\\nof Type', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17458, 184, 2, 'Move SW', 3, 'Escape\\nto Shell', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17459, 184, 3, 'Move S', 3, 'Auto-\\npickup', 5, NULL, NULL, 'Dual-\\nWeapon', 1, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -9731,8 +9729,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (17575, 13, 61, NULL, NULL, NULL, NULL, 'Screen-\\nshot', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17576, 13, 13, 'Zoom In\\n(Map)', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17577, 13, 12, 'Zoom Out\\n(Map)', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17578, 13, 14, 'Command Interface', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(17578, 13, 14, 'Command Interface', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17579, 13, 6, 'Invert\\nSelection', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17651, 66, 34, 'Gather\\nResource', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17652, 66, 47, 'Return\\nResource', 1, NULL, NULL, NULL, NULL, 'Center on\\nSelected', 5, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -9750,7 +9747,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (17664, 186, 2, 'Select\\nGroup', 2, NULL, NULL, 'Define', 2, 'Hard\\nDefine', 2, NULL, NULL, NULL, NULL, NULL, NULL),
 (17665, 186, 3, 'Select\\nGroup', 2, NULL, NULL, 'Define', 2, 'Hard\\nDefine', 2, NULL, NULL, NULL, NULL, NULL, NULL),
 (17666, 186, 4, 'Select\\nGroup', 2, NULL, NULL, 'Define', 2, 'Hard\\nDefine', 2, NULL, NULL, NULL, NULL, NULL, NULL),
-(17667, 186, 5, 'Select\\nGroup', 2, NULL, NULL, 'Define', 2, 'Hard\\nDefine', 2, NULL, NULL, NULL, NULL, NULL, NULL),
+(17667, 186, 5, 'Select\\nGroup', 2, NULL, NULL, 'Define', 2, 'Hard\\nDefine', 2, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (17668, 186, 6, 'Select\\nGroup', 2, NULL, NULL, 'Define', 2, 'Hard\\nDefine', 2, NULL, NULL, NULL, NULL, NULL, NULL),
 (17669, 186, 7, 'Select\\nGroup', 2, NULL, NULL, 'Define', 2, 'Hard\\nDefine', 2, NULL, NULL, NULL, NULL, NULL, NULL),
 (17670, 186, 8, 'Select\\nGroup', 2, NULL, NULL, 'Define', 2, 'Hard\\nDefine', 2, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -9816,62 +9814,6 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (17755, 115, 16, 'Auto-\\nMove', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17756, 115, 15, 'Journal', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17757, 115, 57, 'Block', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17758, 0, 2, 'Activate\\nSlot', 1, 'Switch', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17759, 0, 3, 'Activate\\nSlot', 1, 'Switch', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17760, 0, 4, 'Activate\\nSlot', 1, 'Switch', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17761, 0, 5, 'Activate\\nSlot', 1, 'Switch', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17762, 0, 6, 'Activate\\nSlot', 1, 'Switch', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17763, 0, 7, 'Activate\\nSlot', 1, 'Switch', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17764, 0, 8, 'Activate\\nSlot', 1, 'Switch', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17765, 0, 9, 'Activate\\nSlot', 1, 'Switch', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17766, 0, 10, 'Activate\\nSlot', 1, 'Switch', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17767, 0, 11, 'Activate\\nSlot', 1, 'Switch', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17768, 0, 12, 'Activate\\nSlot', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17769, 0, 13, 'Activate\\nSlot', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17770, 0, 14, 'Target\\nPrevious', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17771, 0, 15, 'Target\\nNext Enemy', 2, 'Previous', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17772, 0, 17, 'Run\\nForward', 3, 'Walk', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17773, 0, 18, 'Default\\nAction', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17774, 0, 19, 'Rest', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17775, 0, 23, 'Inventory', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17776, 0, 28, 'Target\\nNearest', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17777, 0, 30, 'Turn\\nLeft', 3, 'Strafe', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17778, 0, 31, 'Run\\nBackward', 3, 'Walk', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17779, 0, 32, 'Turn\\nRight', 3, 'Strafe', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17780, 0, 33, 'Quick\\nCast', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17781, 0, 34, 'Toggle\\nMode\\nBar', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17782, 0, 35, 'Toggle\\nGUI', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17783, 0, 36, 'Journal', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17784, 0, 45, 'Quick\\nInspect', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17785, 0, 47, 'Character', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17786, 0, 49, 'Spells', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17787, 0, 51, 'Map', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17788, 0, 58, 'Pause Game', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17789, 0, 63, 'Rotate\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17790, 0, 66, 'Zoom\\nIn', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17791, 0, 67, 'Zoom\\nOut', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17792, 0, 68, 'Pitch\\nUp', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17793, 0, 69, 'Pitch\\nDown', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17794, 0, 70, 'Rotate\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17795, 0, 73, 'Rotate\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17796, 0, 76, 'Zoom\\nIn', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17797, 0, 78, 'Zoom\\nIn', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17798, 0, 80, 'Switch\\nMode', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17799, 0, 81, 'Pitch\\nUp', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17800, 0, 82, 'Rotate\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17801, 0, 83, 'Pitch\\nUp', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17802, 0, 89, 'Possess\\nCompanion', 2, 'Target', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17803, 0, 90, 'Possess\\nCompanion', 2, 'Target', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17804, 0, 91, 'Possess\\nCompanion', 2, 'Target', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17805, 0, 92, 'Possess\\nCompanion', 2, 'Target', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17806, 0, 93, 'Possess\\nCompanion', 2, 'Target', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17807, 0, 94, 'Possess\\nCompanion', 2, 'Target', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17808, 0, 95, 'Possess\\nCompanion', 2, 'Target', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17809, 0, 96, 'Possess\\nCompanion', 2, 'Target', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17810, 0, 97, 'Possess\\nCompanion', 2, 'Target', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17811, 0, 98, 'Possess\\nCompanion', 2, 'Target', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17812, 0, 100, 'Quick\\nSave', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17813, 0, 101, 'Screenshot', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17821, 187, 14, 'Drop\\nCurrent\\nItem', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17822, 187, 15, 'Change\\nAttack/Firing\\nMode', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17823, 187, 17, 'Move\\nForward', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -10188,8 +10130,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (18472, 194, 21, 'Overwatch', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18473, 194, 25, 'Skyranger', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18474, 194, 30, 'Move\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(18475, 194, 31, 'Move\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(18475, 194, 31, 'Move\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18476, 194, 32, 'Move\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18477, 194, 33, 'Ascend\\nFloor', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18478, 194, 34, 'Zoom\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -10220,11 +10161,6 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (18505, 195, 69, 'Rotate\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18506, 195, 88, 'Cancel\\nAction\\nor Menu', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18518, 195, 31, 'Move\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(18519, 0, 15, 'Highlight\\nObjects', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(18520, 0, 16, 'Follow\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(18521, 0, 17, 'Scroll\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(18522, 0, 18, 'Fine\\nAiming', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(18523, 0, 19, 'Reload\\nWeapon', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18550, 196, 15, 'Highlight\\nObjects', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18551, 196, 16, 'Follow\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18552, 196, 17, 'Scroll\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -10267,7 +10203,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (18613, 196, 58, 'End Turn', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18614, 196, 88, 'Main\\nMenu', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18615, 196, 93, 'Quick\\nSave', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(18619, 197, 88, 'Main\\nMenu', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(18619, 197, 88, 'Main\\nMenu', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (18620, 197, 93, 'Quick\\nSave', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18622, 197, 31, 'Decelerate', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18623, 196, 31, 'Scroll\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -10647,8 +10584,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (19490, 211, 48, 'Vanity\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19491, 211, 49, 'Player\\nList', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19492, 211, 51, 'Map', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(19493, 211, 56, 'Kick', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(19493, 211, 56, 'Kick', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19494, 211, 57, 'Dodge', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19495, 211, 58, 'Jump/Float/Climb', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19496, 211, 71, 'Auto\\nRun', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -10727,7 +10663,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (19689, 214, 7, 'Select\\nWeapon', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19690, 214, 8, 'Select\\nWeapon', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19691, 214, 9, 'Select\\nWeapon', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(19692, 214, 10, 'Select\\nWeapon', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19692, 214, 10, 'Select\\nWeapon', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (19693, 214, 11, 'Select\\nWeapon', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19694, 214, 15, 'Toggle Compass/\\nMini-map', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19695, 214, 16, 'Climb/\\nStart\\nEngine', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -10890,12 +10827,6 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (19905, 217, 95, 'Hide\\nGUI', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19906, 217, 97, 'Quick\\nLoad', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19937, 217, 43, 'Select Multiple\\nCharacters', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(19938, 0, 21, 'Crafting\\nMenu', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(19939, 0, 49, 'Build\\nMenu', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(19940, 0, 52, 'Tilt\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(19941, 0, 53, 'Tilt\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(19942, 0, 57, 'Show\\nLabels', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(19943, 0, 64, 'Zoom\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19944, 217, 65, 'Zoom\\nCamera', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19945, 217, 68, 'Go Up\\nOne Floor', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19946, 217, 69, 'Go Down\\nOne Floor', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -11100,8 +11031,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (20191, 224, 13, '13', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20192, 224, 14, '14', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20193, 224, 15, '15', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(20194, 224, 16, '16', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(20194, 224, 16, '16', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20195, 224, 17, '17', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20196, 224, 18, '18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20197, 224, 19, '19', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -11194,7 +11124,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (20284, 224, 106, '106', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20306, 225, 1, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20307, 225, 2, '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(20308, 225, 3, '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(20308, 225, 3, '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (20309, 225, 4, '4', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20310, 225, 5, '5', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20311, 225, 6, '6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -11579,8 +11510,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (20837, 233, 20, NULL, NULL, 'Teleport\\nWindow', 6, 'Fast\\nTell', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20838, 233, 21, 'Assembly\\nWindow', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20839, 233, 23, 'Inventory', 6, 'Dressing\\nRoom', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(20840, 233, 24, 'Emotes', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(20840, 233, 24, 'Emotes', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20841, 233, 25, 'Agent\\nNetwork', 6, 'Pet\\nInventory', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20842, 233, 30, 'Strafe\\nLeft', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20843, 233, 31, 'Move\\nBackward', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -11669,7 +11599,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (20940, 234, 50, '51', NULL, '31', NULL, '31', NULL, '31', NULL, '11', NULL, '4E', NULL, NULL, NULL),
 (20941, 234, 51, '52', NULL, '32', NULL, '3A', NULL, '3A', NULL, '10', NULL, '4D', NULL, NULL, NULL),
 (20942, 234, 52, '53', NULL, '33', NULL, '41', NULL, '41', NULL, '36', NULL, 'BC', NULL, NULL, NULL),
-(20943, 234, 53, '54', NULL, '34', NULL, '49', NULL, '49', NULL, '37', NULL, 'BE', NULL, NULL, NULL),
+(20943, 234, 53, '54', NULL, '34', NULL, '49', NULL, '49', NULL, '37', NULL, 'BE', NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (20944, 234, 54, '55', NULL, '35', NULL, '4A', NULL, '4A', NULL, '38', NULL, 'BF', NULL, NULL, NULL),
 (20945, 234, 55, '57', NULL, '36', NULL, '59', NULL, '59', NULL, 'E5', NULL, 'A1', NULL, NULL, NULL),
 (20946, 234, 56, '58', NULL, '1D', NULL, '14', NULL, '11', NULL, 'E0', NULL, 'A2', NULL, NULL, NULL),
@@ -11723,7 +11654,6 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (20994, 234, 104, '?', NULL, 'E0 5B', NULL, 'E0 1F', NULL, '8B', NULL, 'E3', NULL, '5B', NULL, NULL, NULL),
 (20995, 234, 105, '?', NULL, 'E0 5C', NULL, 'E0 27', NULL, '8C', NULL, 'E7', NULL, '5C', NULL, NULL, NULL),
 (20996, 234, 106, '?', NULL, 'E0 5D', NULL, 'E0 2F', NULL, '8D', NULL, '65', NULL, '5D', NULL, NULL, NULL),
-(20997, 0, 0, 'normal_action', 0, 'shift_action', 0, 'ctrl_action', 0, 'alt_action', 0, 'altgr_action', 0, 'extra_action', 0, 'image_file', 'image_uri'),
 (20998, 235, 2, 'one', 1, 'shift', NULL, 'ctrl', NULL, 'alt', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20999, 235, 3, 'two', 2, 'shift', NULL, 'ctrl', NULL, 'alt', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (21000, 235, 4, 'three', 3, 'shift', NULL, 'ctrl', NULL, 'alt', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -12047,8 +11977,7 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (22002, 242, 46, 'Config.\\nArmas', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (22003, 242, 47, 'Disparar\\nContra-\\nmedidas', 1, '¡Cubridme!', NULL, NULL, NULL, 'Borra PMCO', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (22004, 242, 48, 'Abre O\\nCierra\\nAlas-S', 3, NULL, NULL, NULL, NULL, 'Versión', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(22005, 242, 49, 'Alternar\\nRayos', 1, '!Reabas-\\ntecedme¡', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
+(22005, 242, 49, 'Alternar\\nRayos', 1, '!Reabas-\\ntecedme¡', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (22006, 242, 50, 'Boya +\\nCercana', 2, NULL, NULL, NULL, NULL, 'Vista de\\nMisil', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (22007, 242, 51, 'Mapa', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (22008, 242, 52, 'Proximo\\nSubsis-\\ntema', 2, 'Previo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -12136,7 +12065,8 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (22167, 28, 26, 'Throttle\\nto 1/3', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (22168, 28, 27, 'Throttle\\nto 2/3', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (22169, 28, 28, 'Full Throttle', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(22170, 28, 30, 'Accelerate', 3, 'Attack my\\nTarget', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22170, 28, 30, 'Accelerate', 3, 'Attack my\\nTarget', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`) VALUES
 (22171, 28, 31, 'Next\\nSubsys', 2, 'Prev', 2, NULL, NULL, 'Cease\\nTar-\\ngeting', 2, NULL, NULL, NULL, NULL, NULL, NULL),
 (22172, 28, 32, NULL, NULL, NULL, NULL, NULL, NULL, 'Eq.\\nEnergy', 6, NULL, NULL, NULL, NULL, NULL, NULL),
 (22173, 28, 33, 'Next\\nClosest\\nFriendly', 2, 'Prev', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -12247,7 +12177,6 @@ INSERT INTO `bindings` (`binding_id`, `record_id`, `key_number`, `normal_action`
 (22349, 247, 93, 'Quick\\nSave', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (22350, 247, 97, 'Quick\\nLoad', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (22354, 247, 43, 'Move Camera\\nFaster', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(22355, 0, 0, 'normal_action', 0, 'shift_action', 0, 'ctrl_action', 0, 'alt_action', 0, 'altgr_action', 0, 'extra_action', 0, 'image_file', 'image_uri'),
 (22418, 62, 2, 'Station\\nTab', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (22419, 62, 3, 'Train\\nTab', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (22420, 62, 4, 'Player\\nTab', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -14351,17 +14280,18 @@ CREATE TABLE IF NOT EXISTS `keystyles` (
   `keystyle_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `record_id` smallint(5) unsigned NOT NULL,
   `key_number` tinyint(3) unsigned NOT NULL,
-  `keystyle_group` tinyint(2) unsigned NOT NULL,
+  `keygroup_id` tinyint(2) unsigned NOT NULL,
   PRIMARY KEY (`keystyle_id`),
   UNIQUE KEY `keystyle_id_UNIQUE` (`keystyle_id`),
-  KEY `fk_keystyles_record_id_idx` (`record_id`)
+  KEY `fk_keystyles_record_id_idx` (`record_id`),
+  KEY `fk_keystyles_keystyle_group_idx` (`keygroup_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1771 ;
 
 --
 -- Dumping data for table `keystyles`
 --
 
-INSERT INTO `keystyles` (`keystyle_id`, `record_id`, `key_number`, `keystyle_group`) VALUES
+INSERT INTO `keystyles` (`keystyle_id`, `record_id`, `key_number`, `keygroup_id`) VALUES
 (1, 5, 1, 2),
 (2, 5, 2, 6),
 (3, 5, 3, 6),
@@ -18978,6 +18908,7 @@ ALTER TABLE `games`
 -- Constraints for table `keystyles`
 --
 ALTER TABLE `keystyles`
+  ADD CONSTRAINT `fk_keystyles_keygroup_id` FOREIGN KEY (`keygroup_id`) REFERENCES `keygroups_static` (`keygroup_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_keystyles_record_id` FOREIGN KEY (`record_id`) REFERENCES `records_styles` (`record_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --

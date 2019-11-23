@@ -99,7 +99,7 @@ WHERE	g.game_id = $game_id;
 
 SELECT	p.platform_name
 FROM	platforms as p
-WHERE	p.platform_id = $layout_platform
+WHERE	p.platform_id = $layout_platform;
 + is based on the result of a previous query
 + returns a single value
 

@@ -1,5 +1,5 @@
 ;Description
-This is a 104-key PC keyboard command chart based on [http://isometricland.net/keyboard/keyboard.php Video Game Keyboard Diagrams] (LGPLv3, CC BY-SA 3.0) made by [http://strategywiki.org/w/index.php?title=User:Posfan12 Posfan12] at [http://strategywiki.org Strategy Wiki]. There are three sub-templates, [[Template:Kbdlegend]], [[Template:Kbdchartleg]] and [[Template:Kbdchartkey]], used in rendering the chart legend and individual keys.
+This is a 104-key PC keyboard command chart based on [http://isometricland.net/keyboard/keyboard.php Video Game Keyboard Diagrams] (LGPLv3, CC BY-SA 3.0) which [http://strategywiki.org/w/index.php?title=User:Posfan12 Posfan12] at [http://strategywiki.org Strategy Wiki] authored. There are three sub-templates, [[Template:Kbdlegend]], [[Template:Kbdchartleg]] and [[Template:Kbdchartkey]], used in rendering the chart legend and individual keys.
 
 ;Origin
 From http://strategywiki.org/w/index.php?title=Template:Kbdchart
@@ -64,9 +64,9 @@ Additional notes:
 *The ALTGR key on some European keyboards is not currently supported but will be added later.
 *At 90dpi a printed version of the chart should fit very closely over an actual keyboard.
 *Line breaks need to be inserted manually using the HTML <nowiki><br/></nowiki> tag.
-*There are some additional parameters hidden away if you dig around a bit.
-*The order in which the keys are numbered are based on their scan codes on typical IBM-compatible keyboards.
+*There are some additional parameters hidden away if you dig a bit.
 
+;Reference chart
 <table border="1" cellspacing="0" cellpadding="2" bordercolor="#808080" style="float:left;">
 <tr><th bgcolor="#808080">Key</th><th bgcolor="#808080">Code</th></tr>
 <tr><td align="center">

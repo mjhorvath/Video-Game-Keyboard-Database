@@ -304,7 +304,7 @@
 	function selKeystylesHTML()
 	{
 		global $con, $stylesrecord_id;
-		$selectString = "SELECT k.keystyle_group, k.key_number FROM keystyles AS k WHERE k.record_id = " . $stylesrecord_id . ";";
+		$selectString = "SELECT k.keygroup_id, k.key_number FROM keystyles AS k WHERE k.record_id = " . $stylesrecord_id . ";";
 		selectQuery($con, $selectString, "doKeystylesHTML");
 	}
 	function selBindingsHTML()
@@ -474,7 +474,7 @@
 		global $keystyle_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
-			// keystyle_group, key_number
+			// keygroup_id, key_number
 			$keystyle_table[$temp_row[1]-1] = $temp_row;
 		}
 	}
@@ -655,7 +655,7 @@
 	function selKeystylesSVG()
 	{
 		global $con, $stylesrecord_id;
-		$selectString = "SELECT k.keystyle_group, k.key_number FROM keystyles AS k WHERE k.record_id = " . $stylesrecord_id . ";";
+		$selectString = "SELECT k.keygroup_id, k.key_number FROM keystyles AS k WHERE k.record_id = " . $stylesrecord_id . ";";
 		selectQuery($con, $selectString, "doKeystylesSVG");
 	}
 	function selBindingsSVG()
@@ -779,7 +779,7 @@
 		global $keystyle_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
-			// keystyle_group, key_number
+			// keygroup_id, key_number
 			$keystyle_table[$temp_row[1]-1] = $temp_row;
 		}
 	}

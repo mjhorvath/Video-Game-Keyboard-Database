@@ -1,0 +1,23 @@
+MediaWiki Source Code
+* https://strategywiki.org/wiki/Template:Kbdchart
+* https://strategywiki.org/wiki/Template:Kbdchartkey
+* https://strategywiki.org/wiki/Template:Kbdlegend
+* https://strategywiki.org/wiki/Template:Kbdchartleg
+* https://strategywiki.org/wiki/Template:Kbdchart/Documentation
+* https://strategywiki.org/wiki/Template:Kbdchartkey/Documentation
+* https://strategywiki.org/wiki/Template:Kbdlegend/Documentation
+* https://strategywiki.org/wiki/Template:Kbdchartleg/Documentation
+* https://templates.fandom.com/wiki/Template:Kbdchart
+* https://templates.fandom.com/wiki/Template:Kbdchartkey
+* https://templates.fandom.com/wiki/Template:Kbdlegend
+* https://templates.fandom.com/wiki/Template:Kbdchartleg
+* https://templates.fandom.com/wiki/Template:Kbdchart/doc
+* https://templates.fandom.com/wiki/Template:Kbdchartkey/doc
+* https://templates.fandom.com/wiki/Template:Kbdlegend/doc
+* https://templates.fandom.com/wiki/Template:Kbdchartleg/doc
+
+MediaWiki Examples
+* https://templates.fandom.com/wiki/User:Mikali_Dilvish/Kbdchart_example
+
+SVG Embed Examples
+* https://starcraft.fandom.com/wiki/Hotkey#Visual_Maps

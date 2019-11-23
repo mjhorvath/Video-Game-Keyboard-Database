@@ -11,10 +11,11 @@
 ?>
 <h2>News &amp; Updates</h2>
 <ul>
+	<li>2019/11/23: The displayed values for "keynum" in the submission form now correctly start at 1 instead of 0. This value is now always treated as an integer instead of a string.</li>
 	<li>2019/11/23: Default numpad state is now stored in the database just like the other default URL parameters.</li>
 	<li>2019/11/23: Added a &quot;formats&quot; table to the database. The name of each format, and whether or not a format is enabled, can now be retrieved from this table.</li>
 	<li>2019/11/23: The current &quot;format&quot; is now listed in the page title and description.</li>
-	<li>2019/11/23: Page descriptions and keywords are now handled in the same manner across the different formats (except for SVG).</li>
+	<li>2019/11/23: Page descriptions and keywords are now handled in the same manner across the different formats.</li>
 	<li>2019/11/19: A confirmation message is now sent to the user after submitting a binding scheme.</li>
 	<li>2019/11/17: Better handling of &quot;lib&quot; path strings.</li>
 	<li>2019/11/17: Improved handling of SVG file extension when navigating between formats or arriving from elsewhere on the Web.</li>

@@ -41,6 +41,11 @@
   to something prettier.
 * The "entities" table should be renamed to "url_parameters" or something close 
   to it.
+* The submission form does not indicate anywhere which layout and style are 
+  selected.
+* On the submission form the displayed value for "inp_keynum" should start at 
+  one instead of zero like in the database. In JavaScript the number should 
+  remain the same as it appears now, however.
 
 ### MediaWiki
 * Generate MediaWiki code for layouts as well as for games.
@@ -74,6 +79,32 @@
   altered. That would be too much data.
 * Fix the RDF stuff in SVG files so that author names are not duplicated 
   multiple times.
+
+### Database
+* Right now it may only be incidental that bindings and positions match up with 
+  each other properly. Need to make sure I am not relying on hard-coded values.
+* Maybe add a new "keys" table and have "key_number" be the index column. The 
+  "key_number" is referenced by the "bindings" and "keystyles" tables. Not sure 
+  what else to put in the "keys" table besides the index, however.
+* The "record_id" column name is used in two different contexts within the 
+  database: once as a game record, once as a style record. Need to rename the 
+  columns in both contexts to prevent confusion.
+* Should calculate the correct key IDs dynamically based on the "bindings" 
+  table instead of hard-coding the max key ID inside the "layouts" table.
+* I thought the ID for each key in the "positions" table was based on the IBM 
+  position codes. However, apparently this is not the case. Should I edit the 
+  position table so that they *are* based on the IBM position codes?
+* I would like for the "command_text" column in the "commands" table to be set 
+  to NOT NULL. But I will have to come up with something else to put into that 
+  column when adding "Additional Notes" to the table. Unlike the other command 
+  types, the "Additional Notes" category usually leaves that column blank.
+* Not sure every table needs a single numerical index column. Using two or more 
+  existing columns to form a composite key might suffice in many cases.
+* In the two "keygroups" tables, make sure that the index of each group is not 
+  hardcoded. If possible, merge both tables into a single table.
+* I would like to re-index the "layouts" table since a gap exists between ID #1 
+  and ID #3. This would break links to many pages, however. Better to simply re-
+  use this ID in a future layout.
 
 ### Miscellaneous
 * I would also like to create charts/diagrams for gamepads, mice and joysticks. 
@@ -114,13 +145,6 @@
   using FileZilla. Is it a bug or setting in the software? I now have to fix 
   the permissions manually each time I upload a new file. I need to figure out 
   what is going on.
-* I thought the ID for each key in the "positions" table was based on the IBM 
-  position codes. However, apparently this is not the case. Should I edit the 
-  position table so that they *are* based on the IBM position codes?
-* I would like for the "command_text" column in the "commands" table to be set 
-  to NOT NULL. But I will have to come up with something else to put into that 
-  column when adding "Additional Notes" to the table. Unlike the other command 
-  types, the "Additional Notes" category usually leaves that column blank.
 * Whether or not to show lower-case key caps should maybe be a per-game setting 
   rather than a per-layout setting. Or, allow users toggle them on/off manually.
 * Since the main diagrams are now rendered in SVG instead of HTML, I could make 
@@ -130,13 +154,9 @@
   width and height - not the coordinates of its four vertices.
 * I should be able to easily create "Typing Reference" schemes for every 
   keyboard layout. I would like to have the GUI strings translated into their 
-  respective languages first, however.
+  respective languages before I do this, however.
 * Experiment again with scaling and rotating the diagrams so that they become 
   easier to print. IIRC, last time I tried this it didn't work in every browser.
-* Not sure every table needs a single numerical index column. Using two or more 
-  existing columns to form a composite key might suffice in many cases.
-* In the two "keygroups" tables, make sure that the index of each group is not 
-  hardcoded. If possible, merge both tables into a single table.
 * Need to create one or more styles that are accessible to people with color-
   blindness.
 * The "Create New Diagram" button on the front-end page should have a "hover" 
@@ -153,7 +173,7 @@
   at any given time, yet the entire files are loaded each time. Should I split 
   the two big files into several smaller ones?
 * Not sure if the GUI string language should be a per-keyboard layout setting, 
-  or something the user can configure manually. The latter will require yet 
+  or something the user can configure manually. The latter would require yet 
   another URL query parameter.
 * Maybe merge the "Completed" tasks on this page back into the other categories 
   and use strikethrough text to indicate a task that has been completed. Or use 
@@ -161,9 +181,10 @@
 * Formats are now stored in the database. I could use the database to generate 
   the format list in the footer now if I wanted to. This is also true for the 
   default numpad state.
-* I would like to re-index the "layouts" table since a gap exists at ID#2. This 
-  would break links to many pages, however. Better to simply re-use the ID for 
-  a future layout.
+* Make sure there are no more characters that are still escaped in the page 
+  title, since page titles do not benefit from having characters escaped.
+* Make sure I did not overlook any characters that need to be escaped. Is there 
+  a library I can use to do this?
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
@@ -179,6 +200,16 @@
   down list or whatever within the form itself. Users are already able to 
   specify and edit a "Blank Sample" for every layout starting from the frontend 
   page. But this is insufficient, IMO.
+* It would be nice to split the background coloring for when a key has more 
+  than one use. For instance, one could subdivide each rectangular key into two 
+  triangles and color each triangle differently. [Ed. this may be difficult to 
+  implement in both HTML and SVG, and may confuse visitors.]
+* It would be nice to stretch the text on each key so that it fits without the 
+  need for line breaks, like in a spreadsheet program. [Ed. I don't think this 
+  can be accomplished without lots of JavaScript, which I would rather avoid.]
+* Experiment more with CSS effect filters. [Ed. May not work in all browsers.]
+* There remain some meta header tags that have not been added to the PHP pages, 
+  yet. [Ed. I cannot remember which tags, however.]
 
 ### Rejected
 * Implement a "languages" table. [Ed. It may be sufficient to simply tie the 
