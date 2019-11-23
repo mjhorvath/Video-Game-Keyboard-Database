@@ -510,9 +510,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 "	</svg>\n";
 			}
 		}
-	}
-	if ($gamesrecord_id != 0)
-	{
+		// legend key
 		echo
 "	<svg class=\"keyout legkey\" x=\"1.5\" y=\"" . ($layout_legend_top + 1.5) . "\" width=\"69\" height=\"69\">
 		<rect class=\"keyrec recnon\" x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"68\" height=\"68\"/>
@@ -526,30 +524,31 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		<text class=\"lownor txtnon\" x=\"2.5\" y=\"64.5\">Lowcase</text>
 		<text class=\"uppnor txtnon\" x=\"2.5\" y=\"13.5\">Upcase</text>
 	</svg>\n";
-	}
-	echo
-"	<svg class=\"leg\" x=\"109.5\" y=\"" . ($layout_legend_top + 1.5) . "\" width=\"1000\" height=\"300\">\n";
-	// legend
-	if ($stylegroup_id == 1)
-	{
-		$row_count = 0;
-		for ($i = 0; $i < count($legend_table); $i++)
+		// legend descriptions
+		if ($stylegroup_id == 1)
 		{
-			$legend_row = $legend_table[$i];
-			if (isset($legend_row[0]))
+			echo
+"	<svg class=\"leg\" x=\"109.5\" y=\"" . ($layout_legend_top + 1.5) . "\" width=\"1000\" height=\"300\">\n";
+			$row_count = 0;
+			for ($i = 0; $i < count($legend_table); $i++)
 			{
-				$leg_grp = getkeycolor($legend_row[0]);
-				$leg_dsc = cleantextSVG($legend_row[1]);
-				$row_div = floor($row_count/3);
-				$row_mod = $row_count % 3;
-				echo
+				$legend_row = $legend_table[$i];
+				if (isset($legend_row[0]))
+				{
+					$leg_grp = getkeycolor($legend_row[0]);
+					$leg_dsc = cleantextSVG($legend_row[1]);
+					$row_div = floor($row_count/3);
+					$row_mod = $row_count % 3;
+					echo
 "		<rect class=\"keyrec rec" . $leg_grp . "\" x=\"" . ($row_div*200+0.5) . "\" y=\"" . ($row_mod*20+0.5) . "\" width=\"16\" height=\"16\"/>
 		<text class=\"legtxt\" x=\"" . ($row_div*200+20.5) . "\" y=\"" . ($row_mod*20+14.5) . "\">" . $leg_dsc . "</text>\n";
-				$row_count += 1;
+					$row_count += 1;
+				}
 			}
+			echo
+"	</svg>\n";
 		}
 	}
 	echo
-"	</svg>
-</svg>\n";
+"</svg>\n";
 ?>

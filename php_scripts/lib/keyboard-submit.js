@@ -30,7 +30,7 @@ var last_id = null;
 var last_class = null;
 var current_id = null;
 var current_values = {};
-current_values.val_keynum = 0;
+current_values.val_keynum = '';
 current_values.val_lownor = '';
 current_values.val_uppnor = '';
 current_values.val_lowagr = '';
@@ -70,6 +70,21 @@ function hide_loading_image()
 function show_loading_image()
 {
 	document.getElementById('waiting').style.display = 'block';
+}
+
+function addOne(in_string)
+{
+	if (in_string == '')
+		return '';
+	else
+		return (parseInt(in_string, 10) + 1).toString();
+}
+function subOne(in_string)
+{
+	if (in_string == '')
+		return '';
+	else
+		return (parseInt(in_string, 10) - 1).toString();
 }
 
 function click_document_body(event)
@@ -210,7 +225,7 @@ function click_off_chart_key(elm)
 	last_class = null;
 	current_id = null;
 	current_values = {};
-	current_values.val_keynum = 0;
+	current_values.val_keynum = '';
 	current_values.val_lownor = '';
 	current_values.val_uppnor = '';
 	current_values.val_lowagr = '';
@@ -295,7 +310,7 @@ function push_values_from_array_into_cache()
 	if (current_id == null)
 		return null;
 
-	current_values.val_keynum = parseInt(current_id, 10);
+	current_values.val_keynum = current_id;
 	current_values.val_lownor = binding_table[current_id][ 0];
 	current_values.val_uppnor = binding_table[current_id][ 1];
 	current_values.val_lowagr = binding_table[current_id][ 2];
@@ -321,7 +336,7 @@ function push_values_from_form_into_cache()
 	if (current_id == null)
 		return null;
 
-	current_values.val_keynum = parseInt(document.getElementById('inp_keynum').value, 10) - 1;
+	current_values.val_keynum = subOne(document.getElementById('inp_keynum').value);
 	current_values.val_lownor = document.getElementById('inp_lownor').value;
 	current_values.val_uppnor = document.getElementById('inp_uppnor').value;
 	current_values.val_lowagr = document.getElementById('inp_lowagr').value;
@@ -394,7 +409,7 @@ function push_values_from_cache_into_array()
 
 function push_values_from_cache_into_form()
 {
-	document.getElementById('inp_keynum').value = parseInt(current_values.val_keynum, 10) + 1;
+	document.getElementById('inp_keynum').value = addOne(current_values.val_keynum);
 	document.getElementById('inp_lownor').value = current_values.val_lownor;
 	document.getElementById('inp_uppnor').value = current_values.val_uppnor;
 	document.getElementById('inp_lowagr').value = current_values.val_lowagr;

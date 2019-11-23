@@ -11,7 +11,7 @@
 ?>
 <h2>News &amp; Updates</h2>
 <ul>
-	<li>2019/11/23: The displayed values for "keynum" in the submission form now correctly start at 1 instead of 0. This value is now always treated as an integer instead of a string.</li>
+	<li>2019/11/23: The displayed values for the "keynum" parameter in the submission form now correctly start at 1 instead of 0, as per the database itself.</li>
 	<li>2019/11/23: Default numpad state is now stored in the database just like the other default URL parameters.</li>
 	<li>2019/11/23: Added a &quot;formats&quot; table to the database. The name of each format, and whether or not a format is enabled, can now be retrieved from this table.</li>
 	<li>2019/11/23: The current &quot;format&quot; is now listed in the page title and description.</li>

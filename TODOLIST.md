@@ -47,15 +47,14 @@
   one instead of zero like in the database. In JavaScript the number should 
   remain the same as it appears now, however.
 
-### MediaWiki
-* Generate MediaWiki code for layouts as well as for games.
-* Add support in the MediaWiki template for toggling the numpad on/off.
+### MediaWiki Code
+* Generate MediaWiki code for layouts and styles in addition to games.
+* Add support in the MediaWiki template for toggling the numpad on/off. [Ed. it 
+  may actually be possible to do this already. Need to double check.]
 * Add support in the MediaWiki template for shift/ctrl/alt command colors, even 
-  if it's not currently possible to display these colors properly. [Ed. the 
-  reasoning being that it may possible to display these colors properly at some 
-  point in the future.]
-* The tables "contrib_layouts", "contrib_games" and "contrib_styles" are 
-  missing time and date stamps indicating when items were added or updated.
+  if it's not possible to display these colors properly right now. [Ed. the 
+  reasoning being that it may become possible to display these colors properly 
+  at some point in the future.]
 
 ### Auditing, Authors, Submissions, Etc.
 * Should create a table of authors/contributers that automatically pulls info 
@@ -79,8 +78,10 @@
   altered. That would be too much data.
 * Fix the RDF stuff in SVG files so that author names are not duplicated 
   multiple times.
+* The tables "contrib_layouts", "contrib_games" and "contrib_styles" are 
+  missing time and date stamps indicating when items were added or updated.
 
-### Database
+### Database Schema
 * Right now it may only be incidental that bindings and positions match up with 
   each other properly. Need to make sure I am not relying on hard-coded values.
 * Maybe add a new "keys" table and have "key_number" be the index column. The 
@@ -89,8 +90,8 @@
 * The "record_id" column name is used in two different contexts within the 
   database: once as a game record, once as a style record. Need to rename the 
   columns in both contexts to prevent confusion.
-* Should calculate the correct key IDs dynamically based on the "bindings" 
-  table instead of hard-coding the max key ID inside the "layouts" table.
+* Should calculate the correct key IDs dynamically based on what is in the 
+  "bindings" table versus hard-coding the max key ID in the "layouts" table.
 * I thought the ID for each key in the "positions" table was based on the IBM 
   position codes. However, apparently this is not the case. Should I edit the 
   position table so that they *are* based on the IBM position codes?
@@ -105,6 +106,8 @@
 * I would like to re-index the "layouts" table since a gap exists between ID #1 
   and ID #3. This would break links to many pages, however. Better to simply re-
   use this ID in a future layout.
+* Rename the "contrib" tables to "contribs" in order to remain consistent with 
+  the other tables.
 
 ### Miscellaneous
 * I would also like to create charts/diagrams for gamepads, mice and joysticks. 
