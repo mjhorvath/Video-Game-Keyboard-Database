@@ -2,7 +2,7 @@
 
 ### Submission Form
 * Continue developing the "Spreadsheet View" of the submission form, and permit 
-  users to alter or update the keyboard data directly using it.
+  users to alter or update the keyboard bindings directly using it.
 * There needs to be additional indication on the submission page that there is 
   a "Help Pane" as well as a "Spreadsheet View".
 * "Spreadsheet View" needs to be renamed to something else since I have not 
@@ -46,15 +46,20 @@
 * On the submission form the displayed value for "inp_keynum" should start at 
   one instead of zero like in the database. In JavaScript the number should 
   remain the same as it appears now, however.
+* Maybe add a checkbox on the submission form to indicate that a brand new item 
+  is being created. The "record_id" value in the TSV output should be replaced 
+  with "\N" or null character when this is the case.
+* Link to the Excel sheet directly from the submission form, so that those who 
+  might prefer using it over the default methods will have easy access to it.
 
 ### MediaWiki Code
 * Generate MediaWiki code for layouts and styles in addition to games.
 * Add support in the MediaWiki template for toggling the numpad on/off. [Ed. it 
   may actually be possible to do this already. Need to double check.]
-* Add support in the MediaWiki template for shift/ctrl/alt command colors, even 
-  if it's not possible to display these colors properly right now. [Ed. the 
-  reasoning being that it may become possible to display these colors properly 
-  at some point in the future.]
+* Add support in the MediaWiki template for Shift/CTRL/Alt command colors, even 
+  if it is not actually possible to display these colors properly at this time.
+  [Ed. the reasoning being that it may become possible to display these colors 
+  properly at some point in the future.]
 
 ### Auditing, Authors, Submissions, Etc.
 * Should create a table of authors/contributers that automatically pulls info 

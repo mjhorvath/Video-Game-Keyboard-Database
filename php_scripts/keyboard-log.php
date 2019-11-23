@@ -11,24 +11,25 @@
 ?>
 <h2>News &amp; Updates</h2>
 <ul>
+	<li>2019/11/23: Sorted credits into categories.</li>
 	<li>2019/11/23: The displayed values for the "keynum" parameter in the submission form now correctly start at 1 instead of 0, as per the database itself.</li>
-	<li>2019/11/23: Default numpad state is now stored in the database just like the other default URL parameters.</li>
-	<li>2019/11/23: Added a &quot;formats&quot; table to the database. The name of each format, and whether or not a format is enabled, can now be retrieved from this table.</li>
-	<li>2019/11/23: The current &quot;format&quot; is now listed in the page title and description.</li>
+	<li>2019/11/23: Default numpad/tenkey state is now stored in the database just like the other URL parameters.</li>
+	<li>2019/11/23: Added a &quot;formats&quot; table to the database. The name of each format, and whether or not a format is enabled by default, can now be retrieved from this table.</li>
+	<li>2019/11/23: The current &quot;format&quot; is now listed in the page titles and descriptions.</li>
 	<li>2019/11/23: Page descriptions and keywords are now handled in the same manner across the different formats.</li>
 	<li>2019/11/19: A confirmation message is now sent to the user after submitting a binding scheme.</li>
-	<li>2019/11/17: Better handling of &quot;lib&quot; path strings.</li>
-	<li>2019/11/17: Improved handling of SVG file extension when navigating between formats or arriving from elsewhere on the Web.</li>
+	<li>2019/11/17: Improved handling of &quot;lib&quot; path strings.</li>
+	<li>2019/11/17: Improved handling of the SVG file extension when navigating between formats or arriving from elsewhere on the Internet.</li>
 	<li>2019/11/17: Move more files into &quot;lib&quot;.</li>
 	<li>2019/11/12: Moved &quot;support&quot; scripts to a new &quot;lib&quot; sub-directory.</li>
-	<li>2019/11/12: Trying to access certain files in the &quot;lib&quot; directory now results in a 403 error.</li>
-	<li>2019/11/12: Converted some PHP files containing JavaScript into JS files.</li>
-	<li>2019/11/12: The default game, layout and style are now stored in the database.</li>
+	<li>2019/11/12: Trying to access forbidden files in the &quot;lib&quot; directory now results in a 403 error.</li>
+	<li>2019/11/12: Converted some PHP files containing mostly JavaScript into pure JS files.</li>
+	<li>2019/11/12: The default game, layout and style are now stored in the database versus the PHP code.</li>
 	<li>2019/11/11: Made changes to how the default settings are chosen and configured. Added a blurb to each page indicating which items are the defaults.</li>
 	<li>2019/11/09: Multiple authors can now be listed for each binding scheme, keyboard layout, or theme.</li>
-	<li>2019/11/08: Added &quot;SVG only&quot; as a possible format. Note, however, that the &quot;SVG only&quot; format has no page footer at the bottom with controls.</li>
+	<li>2019/11/08: Added &quot;SVG only&quot; as a possible format. Note, however, that the &quot;SVG only&quot; format has no page footer with controls at the bottom of it.</li>
 	<li>2019/11/08: Moved all SQL queries to their own file.</li>
-	<li>2019/11/08: Consolidated URL parameter checking.</li>
+	<li>2019/11/08: Consolidated URL query parameter checking.</li>
 	<li>2019/11/08: Added support for toggling the numeric keypad on/off.</li>
 	<li>2019/10/16: Fixed bug in submission form.</li>
 	<li>2019/10/16: Added English bindings for <i>ATOM RPG</i>, <i>Mutant Year Zero</i>, <i>Freespace 2</i>, <i>Undead Defense</i>, and <i>The Watchers</i>.</li>
@@ -160,40 +161,42 @@
 	<li>This project was initially started circa 2004 when my site was still hosted at GeoCities. Back then it was mostly pure JavaScript and HTML. (Free GeoCities accounts were not permitted to use PHP or MySQL.) It has come a long way since then. ;)</li>
 </ul>
 <h2>Credits</h2>
-<ul>
-	<li>If you have submitted layouts, bindings or styles, then your name will also appear at the bottom of each diagram.</li>
+<p>If you have submitted layouts, bindings or styles, then your name will also appear at the bottom of each diagram.</p>
+<h4 style="margin:0.5em;">Binding schemes</h4>
+<ul style="margin:0.5em;">
+	<li>Agnes Beste</li>
+	<li>Taz</li>
+	<li>Josiah Stearns</li>
+	<li>Cris</li>
+	<li>Daniel</li>
+	<li>etejam</li>
+	<li>Luke Fanning</li>
+	<li>Hunter Mansanas</li>
+	<li>Lucas</li>
+</ul>
+<h4 style="margin:0.5em;">Visual themes</h4>
+<ul style="margin:0.5em;">
 	<li>Kozierok style: <i>Keyboard Key Groupings</i> by Charles M. Kozierok (<a target="_blank" href="http://www.pcguide.com/ref/kb/group-c.html">link</a>)</li>
 	<li>Savard style: <i>Scan Codes Demystified</i> by John J. G. Savard (<a target="_blank" href="http://www.quadibloc.com/comp/scan.htm">link</a>)</li>
 	<li>Hello Kitty style: <i>Hello Kitty Keyboard</i> by DreamKitty.com (<a target="_blank" href="http://www.dreamkitty.com/Merchant2/merchant.mv?Screen=PROD&Store_Code=DK2000&Product_Code=K-FB109141&Category_Code=HK">link</a>)</li>
 	<li>Doraemon style: <i>Doraemon Keyboard</i> by DreamKitty.com (<a target="_blank" href="http://www.dreamkitty.com/Merchant5/merchant.mvc?Screen=PROD&Store_Code=DK2000&Product_Code=O-FB761011&Category_Code=">link</a>)</li>
 	<li>FunKeyBoard style: <i>FunKeyBoard</i> by Chester Creek Technologies (<a target="_blank" href="http://www.venturaes.com/index_new.asp?http://www.venturaes.com/chestercreek/index.html">link</a>)</li>
-	<li>"Simple JQuery Accordion Menu" by Marco van Hylckama Vlieg. (<a target="_blank" href="http://www.i-marco.nl/weblog/">link</a>)</li>
-	<li>CSS checkbox code by W3Schools. (<a target="_blank" href="https://www.w3schools.com/howto/howto_css_custom_checkbox.asp">link</a>)</li>
-	<li>JavaScript table sorting routine by W3Schools. (<a target="_blank" href="https://www.w3schools.com/howto/howto_js_sort_table.asp">link</a>)</li>
-	<li>Recaptcha script from Stack Overflow. (<a target="_blank" href="https://stackoverflow.com/questions/30006081/recaptcha-2-0-with-ajax">link</a>)</li>
-	<li>Several icons from the Noun Project. (<a target="_blank" href="https://thenounproject.com/">link</a>)
-		<ul>
-			<li>"Spreadsheet" by Arthur Shlain</li>
-			<li>"Keyboard" by Alexey Ivanov</li>
-			<li>"Information" by AnsteyDesign</li>
-			<li>"Edit" by Garrett Knoll</li>
-			<li>"Plus" by P.J. Onori</li>
-			<li>"Delete" by P.J. Onori</li>
-		</ul>
-	</li>
-	<li>Binding schemes submitted by:
-		<ul>
-			<li>Agnes Beste</li>
-			<li>Taz</li>
-			<li>Josiah Stearns</li>
-			<li>Cris</li>
-			<li>Daniel</li>
-			<li>etejam</li>
-			<li>Luke Fanning</li>
-			<li>Hunter Mansanas</li>
-			<li>Lucas</li>
-		</ul>
-	</li>
+</ul>
+<h4 style="margin:0.5em;">Scripts</h4>
+<ul style="margin:0.5em;">
+	<li>"Simple JQuery Accordion Menu" by Marco van Hylckama Vlieg (<a target="_blank" href="http://www.i-marco.nl/weblog/">link</a>)</li>
+	<li>CSS checkbox code by W3Schools (<a target="_blank" href="https://www.w3schools.com/howto/howto_css_custom_checkbox.asp">link</a>)</li>
+	<li>JavaScript table sorting routine by W3Schools (<a target="_blank" href="https://www.w3schools.com/howto/howto_js_sort_table.asp">link</a>)</li>
+	<li>Recaptcha script from Stack Overflow (<a target="_blank" href="https://stackoverflow.com/questions/30006081/recaptcha-2-0-with-ajax">link</a>)</li>
+</ul>
+<h4 style="margin:0.5em;">Icon graphics</h4>
+<ul style="margin:0.5em;">
+	<li>"Spreadsheet" by Arthur Shlain (<a href="https://thenounproject.com/ArtZ91/collection/useful-icons-user-interface/?i=360259">link</a>)</li>
+	<li>"Keyboard" by Alexey Ivanov (<a href="https://thenounproject.com/search/?q=keyboard&creator=17566&i=17427">link</a>)</li>
+	<li>"Information" by AnsteyDesign (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
+	<li>"Edit" by Garrett Knoll (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
+	<li>"Plus" by P.J. Onori (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
+	<li>"Delete" by P.J. Onori (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
 </ul>
 <h2>Links to Further Reading</h2>
 <ul>

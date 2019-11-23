@@ -373,7 +373,7 @@ var seourl_table =
 	<li>You may save a little more space by also hiding the numeric keypad. Be aware that many games have commands bound to these keys!</li>
 	<li>Remember also to enable printing of background colors and images. This setting is found in &quot;Page Setup&quot; (Mozilla Firefox and Internet Explorer) or within the print dialog itself (Google Chrome). Sadly, this option does not exist at all in Microsoft Edge. I recommend using a different browser for printing these charts.</li>
 	<li>If the colors or keyboard theme are not to your liking, select a different &quot;Theme&quot; from among the options at the top of this page, then try generating the chart again.</li>
-	<li>Printing at 90dpi (dots-per-inch) and 100% scaling should result in a printed page that closely approximates the size and dimensions of many real physical keyboards. Of course, not every keyboard is exactly the same, so YMMV.</li>
+	<li>Printing at 96dpi (dots-per-inch) and 100% scaling should result in a printed page that closely approximates the size and dimensions of many real physical keyboards. Of course, not every keyboard is exactly the same, so YMMV.</li>
 	<li>On Windows, some Web browers (Google Chrome for instance) use your desktop DPI scaling settings to adjust the size of on-screen HTML elements, resulting in a document that can appear larger or smaller than normal. I'm not 100% sure this affects the printed page output, however.</li>
 	<li>Note, that the darker themes will use up a lot of ink.</li>
 </ol>
