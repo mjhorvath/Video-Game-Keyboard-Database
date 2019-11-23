@@ -113,7 +113,7 @@
 	checkForErrors();
 
 	$thispage_title_a	= $temp_game_name;
-	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - " . $temp_format_name . " - GRID:" . $gamesrecord_id;
+	$thispage_title_b	= $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - " . $temp_format_name . " - GRID:" . $gamesrecord_id;
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -314,10 +314,14 @@ var binding_table =
 				<div id="butt_csv" class="tabs_butt" title="Toggle Spreadsheet Panel" onclick="switch_right_pane(1);"><img src="<?php echo $path_lib; ?>icon_spd.png"/></div>
 			</div>
 			<div id="pane_kbd" style="display:block;">
-				<div class="boxdiv" style="font-size:x-large;">
-					<input id="game_tit" type="text" size="25" maxlength="100" placeholder="Game Title" title="Game Title" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $thispage_title_a; ?>"/>
-					<input id="game_url" type="text" size="25" maxlength="100" placeholder="URL String" title="URL String" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $game_seo; ?>" disabled="disabled"/>
-				</div>
+				<header>
+					<div class="boxdiv"><?php echo $thispage_title_b; ?></span></div>
+					<div class="boxdiv">
+						<span>Game Title:</span>
+						<input style="font-size:x-large;" id="game_tit" type="text" size="25" maxlength="100" placeholder="Game Title" title="Game Title" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $thispage_title_a; ?>"/>
+						<input style="font-size:x-large;" id="game_url" type="text" size="25" maxlength="100" placeholder="URL String" title="URL String" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $game_seo; ?>" disabled="disabled"/>
+					</div>
+				</header>
 				<div class="boxdiv" style="position:relative;width:1660px;height:480px;">
 					<form enctype="multipart/form-data" accept-charset="UTF-8">
 						<div id="keydiv" style="position:relative;width:1660px;height:480px;">

@@ -32,8 +32,6 @@
 * Should make the size of the left pane adjustable and make the text input form 
   fields shrink or grow.
 * The "entities" table should be renamed to "url_queries" or something similar.
-* The submission form does not indicate anywhere which layout and style are 
-  selected.
 * Maybe add a checkbox to the submission form for users to indicate to me that 
   bindings for a brand new game are being created. The "record_id" value in the 
   TSV output should be replaced with "\N" or null character when this is the 
@@ -182,6 +180,8 @@
   title, since page titles do not benefit from having characters escaped.
 * Make sure I did not overlook any characters that need to be escaped. Is there 
   a library I can use to do this?
+* Need to add "header", "footer", "main", etc. HTML5 semantic tags to every 
+  generated page.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent project's title since the title 
@@ -296,4 +296,5 @@
 * On the submission form the displayed value for "inp_keynum" should start at 
   one instead of zero like in the database. In JavaScript the number should 
   remain the same as it appears now, however.
-  
+* The submission form does not indicate anywhere which layout and style are 
+  selected.
