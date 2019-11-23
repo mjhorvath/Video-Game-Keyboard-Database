@@ -102,8 +102,7 @@
 	// validity checks
 	checkForErrors();
 
-	$thispage_title_a	= $temp_game_name;
-	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_format_name . " - GRID:" . $gamesrecord_id;
+	pageTitle();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -111,7 +110,7 @@
 <?php
 	echo
 "		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
-		<title>" . $thispage_title_a . $thispage_title_b . "</title>
+		<title>" . $page_title_a . $page_separator . $page_title_b . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
@@ -126,7 +125,7 @@
 	</head>
 	<body style="margin:auto;width:80%;">
 		<header>
-			<h2><?php echo $thispage_title_a; ?><?php echo $thispage_title_b; ?></h2>
+			<h2><?php echo $page_title_a . $page_separator . $page_title_b; ?></h2>
 		</header>
 		<main>
 			<p>I have created templates for MediaWiki that do basically the same thing as the other charts on this site. You can find the templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Fandom</a>. Below is the code you would use to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the generated chart is wider than a typical MediaWiki page.</p>

@@ -100,8 +100,7 @@
 	// validity checks
 	checkForErrors();
 
-	$thispage_title_a	= $temp_game_name;
-	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - " . $temp_format_name . " - GRID:" . $gamesrecord_id;
+	pageTitle();
 
 	// layout outer bounds
 	if ($ten_bool == 0)
@@ -169,7 +168,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	xmlns:ev="http://www.w3.org/2001/xml-events"
 	viewBox="<?php echo $layout_min_horizontal . " " . $layout_min_vertical . " " . $layout_max_horizontal . " " . $layout_max_vertical; ?>"
 	width="<?php echo $layout_max_horizontal; ?>" height="<?php echo $layout_max_vertical; ?>">
-	<title><?php echo $thispage_title_a . $thispage_title_b; ?></title>
+	<title><?php echo $page_title_a . $page_separator . $page_title_b; ?></title>
 	<desc>Keyboard diagram for <?php echo $temp_game_name; ?>.</desc>
 	<metadata id="license"
 		xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -190,7 +189,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 				<cc:requires rdf:resource="http://creativecommons.org/ns#ShareAlike" />
 			</cc:License>
 			<rdf:Description about=""
-				dc:title="<?php echo $thispage_title_a . $thispage_title_b; ?>"
+				dc:title="<?php echo $page_title_a . $page_separator . $page_title_b; ?>"
 				dc:description="<?php echo $string_description . $temp_game_name . ". (" . $temp_style_name . ")"; ?>"
 				dc:publisher="Video Game Keyboard Diagrams"
 				dc:date="<?php echo date("Y-m-d H:i:s"); ?>"

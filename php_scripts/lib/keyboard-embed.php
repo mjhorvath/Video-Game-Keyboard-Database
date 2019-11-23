@@ -107,8 +107,7 @@
 	// validity checks
 	checkForErrors();
 
-	$thispage_title_a	= $temp_game_name;
-	$thispage_title_b	= " - " . $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - " . $temp_format_name . " - GRID:" . $gamesrecord_id;
+	pageTitle();
 
 	// layout outer bounds
 	if ($ten_bool == 0)
@@ -134,7 +133,7 @@
 <html lang=\"" . $layout_language . "\">
 	<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">
-		<title>" . $thispage_title_a . $thispage_title_b . "</title>
+		<title>" . $page_title_a . $page_separator . $page_title_b . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\">
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\">
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\">
@@ -152,7 +151,7 @@
 	</head>
 	<body>
 		<header>
-			<div class="boxdiv"><h2><?php echo $thispage_title_a; ?><small><?php echo $thispage_title_b; ?></small></h2></div>
+			<div class="boxdiv"><h2><?php echo $page_title_a; ?><small><?php echo $page_separator . $page_title_b; ?></small></h2></div>
 		</header>
 		<main>
 			<div class="svgdiv" style="position:relative;width:<?php echo $layout_max_horizontal; ?>px;height:<?php echo $layout_max_vertical; ?>px;">

@@ -11,7 +11,7 @@
 ?>
 <h2>News &amp; Updates</h2>
 <ul>
-	<li>2019/11/23: Added verbose page header to submission form.</li>
+	<li>2019/11/23: Added verbose page title to submission form.</li>
 	<li>2019/11/23: Sorted credits into categories.</li>
 	<li>2019/11/23: The displayed values for the "keynum" parameter in the submission form now correctly start at 1 instead of 0, as per the database itself.</li>
 	<li>2019/11/23: Default numpad/tenkey state is now stored in the database just like the other URL parameters.</li>

@@ -112,8 +112,7 @@
 	// validity checks
 	checkForErrors();
 
-	$thispage_title_a	= $temp_game_name;
-	$thispage_title_b	= $string_title . " - " . $temp_platform_name . " - " . $temp_layout_name . " - " . $temp_style_name . " - " . $temp_format_name . " - GRID:" . $gamesrecord_id;
+	pageTitle();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -121,7 +120,7 @@
 <?php
 	echo
 "		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
-		<title>" . $thispage_title_a . $thispage_title_b . "</title>
+		<title>" . $page_title_a . $page_separator . $page_title_b . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
@@ -315,10 +314,10 @@ var binding_table =
 			</div>
 			<div id="pane_kbd" style="display:block;">
 				<header>
-					<div class="boxdiv"><?php echo $thispage_title_b; ?></span></div>
+					<div class="boxdiv"><?php echo $page_title_b; ?></span></div>
 					<div class="boxdiv">
 						<span>Game Title:</span>
-						<input style="font-size:x-large;" id="game_tit" type="text" size="25" maxlength="100" placeholder="Game Title" title="Game Title" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $thispage_title_a; ?>"/>
+						<input style="font-size:x-large;" id="game_tit" type="text" size="25" maxlength="100" placeholder="Game Title" title="Game Title" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $page_title_a; ?>"/>
 						<input style="font-size:x-large;" id="game_url" type="text" size="25" maxlength="100" placeholder="URL String" title="URL String" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $game_seo; ?>" disabled="disabled"/>
 					</div>
 				</header>

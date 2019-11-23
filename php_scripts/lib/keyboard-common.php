@@ -47,6 +47,9 @@
 	$temp_style_name	= "";
 	$temp_platform_name	= "";
 	$temp_format_name	= "";
+	$page_separator	= "";
+	$page_title_a	= "";
+	$page_title_b	= "";
 
 	function getDefaults()
 	{
@@ -194,7 +197,14 @@
 			die();
 		}
 	}
-
+	function pageTitle()
+	{
+		global	$page_separator, $page_title_a, $page_title_b, $string_title,
+			$temp_game_name, $temp_platform_name, $temp_layout_name, $temp_style_name, $temp_format_name, $gamesrecord_id;
+		$page_separator	= " - ";
+		$page_title_a	= $temp_game_name;
+		$page_title_b	= $string_title . $page_separator . $temp_platform_name . $page_separator . $temp_layout_name . $page_separator . $temp_style_name . $page_separator . $temp_format_name . $page_separator . "GRID:" . $gamesrecord_id;
+	}
 	// there is an analogous function written in JavaScript in "keyboard-submit.js"
 	// need to keep the two functions synced
 	function seo_url($input)
