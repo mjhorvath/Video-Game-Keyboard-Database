@@ -18,21 +18,12 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
-	$path_root		= "../../";
-	$path_file		= "./keyboard-wiki.php";
-	$path_lib1		= "./lib/";
-	$path_lib2		= "./";
-
 	header("Content-Type: text/html; charset=utf8");
 
-	include($path_root	. "ssi/analyticstracking.php");
-	include($path_root	. "ssi/keyboard-connection.php");
-	include($path_lib2	. "keyboard-common.php");
-	include($path_lib2	. "keyboard-queries.php");
-
-	$keys_number		= 118;		// should really be calculated dynamically or stored in the database for each layout
-	$actions_number		= 10;
-	$legend_number		= 12;
+	$path_file		= "./keyboard-wiki.php";
+	$keys_number		= 118;		// hardcoded
+	$actions_number		= 10;		// hardcoded
+	$legend_number		= 12;		// hardcoded
 	$position_table		= [];
 	$keystyle_table		= [];
 	$binding_table		= [];

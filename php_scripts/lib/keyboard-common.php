@@ -21,7 +21,6 @@
 	$php_url		= "";
 	$svg_url		= "";
 	$can_url		= "";
-	$url_ext		= extension($_SERVER["REQUEST_URI"]);
 	$default_game_id	= 0;
 	$default_style_id	= 0;
 	$default_layout_id	= 0;
@@ -59,6 +58,13 @@
 	$page_title_b		= "";
 	$layout_language	= 1;	// temporary until I add language translations to the database
 
+	function extension($path)
+	{
+		$qpos = strpos($path, "?");
+		if ($qpos!==false) $path = substr($path, 0, $qpos);
+		$extension = pathinfo($path, PATHINFO_EXTENSION);
+		return $extension;
+	}
 	function getDefaults()
 	{
 		selEntities();

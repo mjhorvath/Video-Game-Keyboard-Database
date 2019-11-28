@@ -18,18 +18,9 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
-	$path_root		= "../../";
-	$path_file		= "./keyboard-svg.php";
-	$path_lib1		= "./lib/";
-	$path_lib2		= "./";
-
 	header("Content-type: image/svg+xml");
 
-	include($path_root	. "ssi/keyboard-connection.php");
-	include($path_lib2	. "keyboard-common.php");
-	include($path_lib2	. "keyboard-queries.php");
-
-	// move as many of these as possible to keyboard-common.php
+	$path_file		= "./keyboard-svg.php";
 	$stylegroup_id		= 0;
 	$position_table		= [];
 	$keystyle_table		= [];

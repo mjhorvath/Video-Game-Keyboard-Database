@@ -18,20 +18,23 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
+	$path_file		= "./keyboard-init.php";	// possibly unneeded
+	$path_root		= "../../";	// for PHP files
+	$path_lib1		= "./lib/";	// for HTML and JS files
+	$path_lib2		= "./";		// for PHP files
+
+	include($path_root	. "ssi/analyticstracking.php");
+	include($path_root	. "ssi/keyboard-connection.php");
+	include($path_lib2	. "keyboard-common.php");
+	include($path_lib2	. "keyboard-queries.php");
+
 	// gather URL queries
 	$format_id	= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0"))	: null;
 	$svg_bool	= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0"))	: null;
-
-	function extension($path)
-	{
-		$qpos = strpos($path, "?");
-		if ($qpos!==false) $path = substr($path, 0, $qpos);
-		$extension = pathinfo($path, PATHINFO_EXTENSION);
-		return $extension;
-	}
+	$url_ext	= extension($_SERVER["REQUEST_URI"]);
 
 	// check URL queries validity
-	if ((extension($_SERVER["REQUEST_URI"]) == "svg") || ($svg_bool == 1))
+	if (($url_ext == "svg") || ($svg_bool == 1))
 	{
 		$format_id = 1;
 	}
@@ -43,16 +46,16 @@
 	switch ($format_id)
 	{
 		case 0:
-			include("./keyboard-embed.php");
+			include($path_lib2 . "keyboard-embed.php");
 		break;
 		case 1:
-			include("./keyboard-svg.php");
+			include($path_lib2 . "keyboard-svg.php");
 		break;
 		case 2:
-			include("./keyboard-wiki.php");
+			include($path_lib2 . "keyboard-wiki.php");
 		break;
 		case 3:
-			include("./keyboard-submit.php");
+			include($path_lib2 . "keyboard-submit.php");
 		break;
 		case 4:
 			echo "PDF format not implemented yet.\n";

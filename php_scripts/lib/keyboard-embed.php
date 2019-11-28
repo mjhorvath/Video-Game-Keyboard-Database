@@ -20,16 +20,7 @@
 
 	header("Content-Type: text/html; charset=utf8");
 
-	$path_root		= "../../";
 	$path_file		= "./keyboard-embed.php";
-	$path_lib1		= "./lib/";
-	$path_lib2		= "./";
-
-	include($path_root	. "ssi/analyticstracking.php");
-	include($path_root	. "ssi/keyboard-connection.php");
-	include($path_lib2	. "keyboard-common.php");
-	include($path_lib2	. "keyboard-queries.php");
-
 	$stylegroup_id		= 0;
 	$command_table		= [];
 	$combo_table		= [];

@@ -17,8 +17,8 @@
 // License along with this program.  If not, see 
 // <https://www.gnu.org/licenses/>.
 
-var path_lib = './';
-new Image().src = path_lib + 'lib/animated_loading_icon.webp';
+var path_lib1 = './lib/';
+new Image().src = path_lib1 + 'animated_loading_icon.webp';
 
 var layout_id = 1;
 var record_id = 1;

@@ -39,7 +39,6 @@
 * On the "spreadsheet view" of the submission form, add buttons to update the 
   "keyboard view" using TSV in the text boxes. Leave the buttons disabled until 
   the update feature is fully implemented.
->>>>>>> 8bd886d8eb0faba1cf7aca5c46d137018acd0294
 
 ### MediaWiki Code
 * Generate MediaWiki code for layouts and styles in addition to games.
@@ -118,8 +117,8 @@
 * Should maybe store the SVG patterns, filters and gradients in separate files 
   to be included only when needed, rather than cluttering up "keyboard-svg.php".
 * Currently, all the SQL queries are very simple, and all processing of data is 
-  done using PHP scripts. A lot of the tasks being done using the PHP scripts 
-  could probably be performed more efficiently in SQL using joins.
+  done using PHP scripts. A lot of these tasks could probably be performed more 
+  efficiently using SQL and joins.
 * I moved most PHP routines and SQL statements to two dedicated files. But this 
   may be worse for performance since only a subset of the routines are needed 
   at any given time, yet the entire files are loaded each time. Should I split 
@@ -199,14 +198,12 @@
   a library I can use to do this?
 * Need to add "header", "footer", "main" and other HTML5 semantic tags to every 
   generated page.
-* The value of the "html" tag's "lang" attribute should be a short two-letter 
-  string instead of an integer as it is now. It should not be hardcoded either.
 * All HTML code should be echo'd using PHP in order to be consistent, IMO.
 * Search the source code for instances of the word "hardcoded", since they 
   represent data that should really be put in/retrieved from the database.
 * Should the "non" color be added to the color tables too?
-* Tweak the "cleantext" functions or the query functions so that I no longer 
-  require separate copies of every query function for HTML and SVG.
+* Tweak the "cleantext" functions and/or the query functions so that separate 
+  copies of every query function are required for HTML and SVG.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent page's title in the page headers 
@@ -323,3 +320,5 @@
 * The "$legend_count" PHP variable is hardcoded. Maybe needs to be calculated 
   based on size of "$color_array".
 * Implement a "languages" table.
+* The value of the "html" tag's "lang" attribute should be a short two-letter 
+  string instead of an integer as it is now. It should not be hardcoded either.

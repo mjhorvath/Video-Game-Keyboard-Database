@@ -18,19 +18,10 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
-	$path_root		= "../../";
-	$path_file		= "./keyboard-submit.php";
-	$path_lib1		= "./lib/";
-	$path_lib2		= "./";
-
 	header("Content-Type: text/html; charset=utf8");
-
-	include($path_root	. "ssi/analyticstracking.php");
-	include($path_root	. "ssi/keyboard-connection.php");
 	include($path_root	. "ssi/recaptchakey.php");
-	include($path_lib2	. "keyboard-common.php");
-	include($path_lib2	. "keyboard-queries.php");
 
+	$path_file		= "./keyboard-submit.php";
 	$write_maximal_keys	= true;
 	$stylegroup_id		= 0;
 	$position_table		= [];

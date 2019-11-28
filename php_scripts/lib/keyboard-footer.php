@@ -129,6 +129,6 @@
 	}
 	echo
 "				</p>
-				<p>" . getFileTime($path_lib . $path_file) . " GRID: " . $gamesrecord_id . "</p>
+				<p>" . getFileTime($path_lib2 . $path_file) . " GRID: " . $gamesrecord_id . "</p>
 			</div>\n";
 ?>
