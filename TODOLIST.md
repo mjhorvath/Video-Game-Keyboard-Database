@@ -36,6 +36,10 @@
   "record_ID".
 * Link to the Excel sheet directly from the submission form, so that those who 
   might prefer using it over the default methods will have easier access to it.
+* On the "spreadsheet view" of the submission form, add buttons to update the 
+  "keyboard view" using TSV in the text boxes. Leave the buttons disabled until 
+  the update feature is fully implemented.
+>>>>>>> 8bd886d8eb0faba1cf7aca5c46d137018acd0294
 
 ### MediaWiki Code
 * Generate MediaWiki code for layouts and styles in addition to games.
