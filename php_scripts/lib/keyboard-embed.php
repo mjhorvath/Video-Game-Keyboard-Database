@@ -20,18 +20,16 @@
 
 	header("Content-Type: text/html; charset=utf8");
 
-	$path_root		= "../";
+	$path_root		= "../../";
 	$path_file		= "./keyboard-embed.php";
-	$path_lib		= "./lib/";
+	$path_lib1		= "./lib/";
+	$path_lib2		= "./";
 
 	include($path_root	. "ssi/analyticstracking.php");
 	include($path_root	. "ssi/keyboard-connection.php");
-	include($path_lib	. "keyboard-common.php");
-	include($path_lib	. "keyboard-queries.php");
+	include($path_lib2	. "keyboard-common.php");
+	include($path_lib2	. "keyboard-queries.php");
 
-	$php_url		= "";
-	$svg_url		= "";
-	$can_url		= "";
 	$stylegroup_id		= 0;
 	$command_table		= [];
 	$combo_table		= [];
@@ -68,7 +66,6 @@
 	$layout_tenkeyless_height	= 400;
 	$layout_legend_padding		= 36;
 	$layout_legend_height		= 72;
-	$layout_language	= 1;	// temporary until I add language translations to the database
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -104,9 +101,7 @@
 
 	mysqli_close($con);
 
-	// validity checks
 	checkForErrors();
-
 	pageTitle();
 
 	// layout outer bounds
@@ -126,32 +121,31 @@
 		$layout_max_vertical	=  $layout_padding * 2 + $layout_fullsize_height + $layout_legend_padding + $layout_legend_height;
 		$layout_legend_top	=  $layout_fullsize_height + $layout_legend_padding;
 	}
-?>
-<?php
+
 	echo
 "<!DOCTYPE HTML>
-<html lang=\"" . $layout_language . "\">
+<html lang=\"" . $language_code . "\">
 	<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">
-		<title>" . $page_title_a . $page_separator . $page_title_b . "</title>
+		<title>" . $page_title_a . $temp_separator . $page_title_b . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\">
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\">
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\">
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-		<meta name=\"description\" content=\""	. $string_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name	. ")\"/>
-		<meta name=\"keywords\" content=\""	. $string_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
+		<meta name=\"description\" content=\""	. $language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name	. ")\"/>
+		<meta name=\"keywords\" content=\""	. $language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
 ";
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";
-	include($path_lib . "embed_" . $style_filename . ".css");
+	include($path_lib2 . "embed_" . $style_filename . ".css");
 	echo
 "		</style>\n";
 ?>
 	</head>
 	<body>
 		<header>
-			<div class="boxdiv"><h2><?php echo $page_title_a; ?><small><?php echo $page_separator . $page_title_b; ?></small></h2></div>
+			<div class="boxdiv"><h2><?php echo $page_title_a; ?><small><?php echo $temp_separator . $page_title_b; ?></small></h2></div>
 		</header>
 		<main>
 			<div class="svgdiv" style="position:relative;width:<?php echo $layout_max_horizontal; ?>px;height:<?php echo $layout_max_vertical; ?>px;">
@@ -175,7 +169,7 @@
 	{
 		echo
 "			<div class=\"comdiv\">
-				<h3>" . $string_keyboard . "</h3>
+				<h3>" . $language_keyboard . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $combo_count; $i++)
 		{
@@ -197,7 +191,7 @@
 	{
 		echo
 "			<div class=\"comdiv\">
-				<h3>" . $string_mouse . "</h3>
+				<h3>" . $language_mouse . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $mouse_count; $i++)
 		{
@@ -219,7 +213,7 @@
 	{
 		echo
 "			<div class=\"comdiv\">
-				<h3>" . $string_joystick . "</h3>
+				<h3>" . $language_joystick . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $joystick_count; $i++)
 		{
@@ -241,7 +235,7 @@
 	{
 		echo
 "			<div class=\"comdiv\">
-				<h3>" . $string_note . "</h3>
+				<h3>" . $language_note . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $note_count; $i++)
 		{
@@ -263,7 +257,7 @@
 	{
 		echo
 "			<div class=\"comdiv\">
-				<h3>" . $string_cheat . "</h3>
+				<h3>" . $language_cheat . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $cheat_count; $i++)
 		{
@@ -285,7 +279,7 @@
 	{
 		echo
 "			<div class=\"comdiv\">
-				<h3>" . $string_console . "</h3>
+				<h3>" . $language_console . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $console_count; $i++)
 		{
@@ -307,7 +301,7 @@
 	{
 		echo
 "			<div class=\"comdiv\">
-				<h3>" . $string_emote . "</h3>
+				<h3>" . $language_emote . "</h3>
 				<p>\n";
 		for ($i = 0; $i < $emote_count; $i++)
 		{
@@ -327,7 +321,7 @@
 			</div>
 		</main>
 		<footer>
-<?php include($path_lib . "keyboard-footer.php"); ?>
+<?php include($path_lib2 . "keyboard-footer.php"); ?>
 		</footer>
 	</body>
 </html>

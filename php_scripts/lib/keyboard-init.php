@@ -43,16 +43,16 @@
 	switch ($format_id)
 	{
 		case 0:
-			include("./lib/keyboard-embed.php");
+			include("./keyboard-embed.php");
 		break;
 		case 1:
-			include("./lib/keyboard-svg.php");
+			include("./keyboard-svg.php");
 		break;
 		case 2:
-			include("./lib/keyboard-wiki.php");
+			include("./keyboard-wiki.php");
 		break;
 		case 3:
-			include("./lib/keyboard-submit.php");
+			include("./keyboard-submit.php");
 		break;
 		case 4:
 			echo "PDF format not implemented yet.\n";

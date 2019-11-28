@@ -17,9 +17,9 @@
 // License along with this program.  If not, see 
 // <https://www.gnu.org/licenses/>.
 
-new Image().src = './lib/animated_loading_icon.webp';
+var path_lib = './';
+new Image().src = path_lib + 'lib/animated_loading_icon.webp';
 
-var colors = ['non','red','yel','grn','cyn','blu','mag','wht','gry','blk','org','olv','brn'];
 var layout_id = 1;
 var record_id = 1;
 var is_key_dirty = false;
@@ -297,7 +297,7 @@ function is_embedded_image_okay()
 function set_form_color(this_select, target_value)
 {
 	this_select.selectedIndex = target_value;
-	this_select.className = 'sel' + colors[target_value];
+	this_select.className = 'sel' + color_table[target_value];
 }
 
 function get_form_color(this_select)
@@ -404,7 +404,7 @@ function push_values_from_cache_into_array()
 		this_image.style.display = 'none';
 	}
 
-	last_class = 'keyout cap' + colors[current_values.col_capnor];
+	last_class = 'keyout cap' + color_table[current_values.col_capnor];
 }
 
 function push_values_from_cache_into_form()
@@ -527,7 +527,7 @@ function toggle_set_and_revert_buttons(event)
 	if (elm.tagName.toUpperCase() == 'SELECT')
 	{
 		var this_index = elm.selectedIndex;
-		elm.className = 'sel' + colors[this_index];
+		elm.className = 'sel' + color_table[this_index];
 	}
 }
 
@@ -947,7 +947,7 @@ function do_recaptcha()
 		$.ajax
 		({
 			type: "POST",
-			url: "./lib/keyboard-recaptcha.php",
+			url: path_lib + "keyboard-recaptcha.php",
 			data:
 			{
 				name:		name.val(),
@@ -1150,13 +1150,13 @@ function disable_doc_controls()
 
 function collect_legend_data()
 {
-	// legend_count hardcoded at 12
 	legend_table = [];
-	legend_count = 12;
+	legend_count = color_table.length;
 
-	for (var i = 0; i < legend_count; i++)
+	// skip first array member
+	for (var i = 1; i < legend_count; i++)
 	{
-		var this_color = colors[i+1];
+		var this_color = color_table[i+1];
 		var this_input = document.getElementById('form_cap' + this_color);
 		var this_value = this_input.value;
 		if (this_value != '')
@@ -1277,7 +1277,7 @@ function collect_command_data()
 function process_legend_data()
 {
 	// should fetch column names from database instead
-	var legend_string = 'legend_id\trecord_id\tlegend_group\tlegend_description\n';
+	var legend_string = 'legend_id\trecord_id\tkeygroup_id\tlegend_description\n';
 	for (var i = 0, n = legend_table.length; i < n; i++)
 	{
 		var legend_item = legend_table[i];

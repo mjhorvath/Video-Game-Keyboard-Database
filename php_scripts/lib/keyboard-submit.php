@@ -18,22 +18,20 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
-	$path_root		= "../";
+	$path_root		= "../../";
 	$path_file		= "./keyboard-submit.php";
-	$path_lib		= "./lib/";
+	$path_lib1		= "./lib/";
+	$path_lib2		= "./";
 
 	header("Content-Type: text/html; charset=utf8");
 
 	include($path_root	. "ssi/analyticstracking.php");
 	include($path_root	. "ssi/keyboard-connection.php");
 	include($path_root	. "ssi/recaptchakey.php");
-	include($path_lib	. "keyboard-common.php");
-	include($path_lib	. "keyboard-queries.php");
+	include($path_lib2	. "keyboard-common.php");
+	include($path_lib2	. "keyboard-queries.php");
 
 	$write_maximal_keys	= true;
-	$php_url		= "";
-	$svg_url		= "";
-	$can_url		= "";
 	$stylegroup_id		= 0;
 	$position_table		= [];
 	$keystyle_table		= [];
@@ -55,7 +53,6 @@
 	$gamesrecord_authors	= [];
 	$stylesrecord_id	= 0;
 	$stylesrecord_authors	= [];
-	$legend_count		= 12;
 	$combo_count		= 0;
 	$mouse_count		= 0;
 	$joystick_count		= 0;
@@ -73,7 +70,6 @@
 	$layout_authors		= [];
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
-	$layout_language	= 1;	// temporary until I add language translations to the database
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -99,45 +95,51 @@
 	selPlatformsHTML();
 	selGamesRecordsHTML();
 	selStylesRecordsHTML();
-	selKeystylesHTML();
 	selBindingsHTML();
 	selLegendsHTML();
 	selCommandsHTML();
 	selContribGamesHTML();
 	selContribStylesHTML();
 	selContribLayoutsHTML();
+	selLegendColors();
+	selKeyStyles();
+	selKeyStyleClasses();
 
 	mysqli_close($con);
 
-	// validity checks
 	checkForErrors();
-
 	pageTitle();
-?>
-<!DOCTYPE HTML>
-<html>
-	<head>
-<?php
+
+	$option_string = "<option class=\"optnon\">non</option>";
+	$color_count = count($color_array);
+	for ($i = 0; $i < $color_count; $i++)
+	{
+		$option_string .= "<option class=\"opt" . $color_array[$i] . "\">" . $color_array[$i] . "</option>";
+	}
+
 	echo
-"		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
-		<title>" . $page_title_a . $page_separator . $page_title_b . "</title>
+"<!DOCTYPE HTML>
+<html lang=\"" . $language_code . "\">
+	<head>
+		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
+		<title>" . $page_title_a . $temp_separator . $page_title_b . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib . "style_common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_common.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
-		<meta name=\"description\" content=\""	. $string_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name	. ")\"/>
-		<meta name=\"keywords\" content=\""	. $string_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
+		<meta name=\"description\" content=\""	. $language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name	. ")\"/>
+		<meta name=\"keywords\" content=\""	. $language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
 ";
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";
-	include($path_lib . "submit_" . $style_filename . ".css");
+	include($path_lib2 . "submit_" . $style_filename . ".css");
 	echo
 "		</style>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib . "style_submit.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_submit.css\"/>
 		<script src=\"" . $path_root . "java/jquery-3.3.1.min.js\"></script>
-		<script src=\"" . $path_lib . "keyboard-submit.js\"></script>
+		<script src=\"" . $path_lib1 . "keyboard-submit.js\"></script>
 		<script src=\"https://www.google.com/recaptcha/api.js\"></script>
 		<script>
 var record_id = " . $gamesrecord_id . ";
@@ -149,6 +151,17 @@ var note_table = [];
 var cheat_table = [];
 var console_table = [];
 var emote_table = [];
+var color_table = ['non',";
+	$color_count = count($color_array);
+	for ($i = 0; $i < $color_count; $i++)
+	{
+		echo "'" . $color_array[$i] . "'";
+		if ($i < $color_count - 1)
+			echo ",";
+	}
+	echo
+"];
+var class_table = [];
 var binding_table =
 [
 ";
@@ -240,13 +253,13 @@ var binding_table =
 ?>
 	</head>
 	<body onload="init_submissions();">
-		<img id="waiting" src="<?php echo $path_lib; ?>animated_loading_icon.webp" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
-		<div id="butt_min" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(0);"><img src="<?php echo $path_lib; ?>icon_min.png"/></div>
-		<div id="butt_max" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(1);"><img src="<?php echo $path_lib; ?>icon_max.png"/></div>
+		<img id="waiting" src="<?php echo $path_lib1; ?>animated_loading_icon.webp" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
+		<div id="butt_min" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(0);"><img src="<?php echo $path_lib1; ?>icon_min.png"/></div>
+		<div id="butt_max" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(1);"><img src="<?php echo $path_lib1; ?>icon_max.png"/></div>
 		<div id="pane_lft">
 			<div id="tbar_lft">
-				<div id="butt_inp" class="tabs_butt" title="Toggle Input Panel" onclick="switch_left_pane(0);"><img src="<?php echo $path_lib; ?>icon_inp.png"/></div>
-				<div id="butt_hlp" class="tabs_butt" title="Toggle Info Panel"  onclick="switch_left_pane(1);"><img src="<?php echo $path_lib; ?>icon_hlp.png"/></div>
+				<div id="butt_inp" class="tabs_butt" title="Toggle Input Panel" onclick="switch_left_pane(0);"><img src="<?php echo $path_lib1; ?>icon_inp.png"/></div>
+				<div id="butt_hlp" class="tabs_butt" title="Toggle Info Panel"  onclick="switch_left_pane(1);"><img src="<?php echo $path_lib1; ?>icon_hlp.png"/></div>
 			</div>
 			<div id="pane_inp" style="display:block;">
 				<div id="table_inp" class="inptbl" style="margin:auto;">
@@ -256,12 +269,12 @@ var binding_table =
 					<div class="inprow"><div class="inpcll"><label for="inp_uppnor" title="Normal uppercase"	>uppnor:</label></div><div class="inpcll"><input id="inp_uppnor" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Normal upper"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
 					<div class="inprow"><div class="inpcll"><label for="inp_lowagr" title="AltGr lowercase"		>lowagr:</label></div><div class="inpcll"><input id="inp_lowagr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="AltGr lower"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
 					<div class="inprow"><div class="inpcll"><label for="inp_uppagr" title="AltGr uppercase"		>uppagr:</label></div><div class="inpcll"><input id="inp_uppagr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="AltGr upper"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
-					<div class="inprow"><div class="inpcll"><label for="inp_capnor" title="Normal caption"		>capnor:</label></div><div class="inpcll"><input id="inp_capnor" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Normal caption"	/></div><div class="inpcll"><select id="sel_capnor" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
-					<div class="inprow"><div class="inpcll"><label for="inp_capshf" title="Shift caption"		>capshf:</label></div><div class="inpcll"><input id="inp_capshf" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Shift caption"	/></div><div class="inpcll"><select id="sel_capshf" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
-					<div class="inprow"><div class="inpcll"><label for="inp_capctl" title="Control caption"		>capctl:</label></div><div class="inpcll"><input id="inp_capctl" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Control caption"/></div><div class="inpcll"><select id="sel_capctl" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
-					<div class="inprow"><div class="inpcll"><label for="inp_capalt" title="Alt caption"		>capalt:</label></div><div class="inpcll"><input id="inp_capalt" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Alt caption"	/></div><div class="inpcll"><select id="sel_capalt" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
-					<div class="inprow"><div class="inpcll"><label for="inp_capagr" title="AltGr caption"		>capagr:</label></div><div class="inpcll"><input id="inp_capagr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="AltGr caption"	/></div><div class="inpcll"><select id="sel_capagr" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
-					<div class="inprow"><div class="inpcll"><label for="inp_capxtr" title="Extra caption"		>capxtr:</label></div><div class="inpcll"><input id="inp_capxtr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Extra caption"	/></div><div class="inpcll"><select id="sel_capxtr" class="selnon" size="1" autocomplete="off"><option class="optnon">non</option><option class="optred">red</option><option class="optyel">yel</option><option class="optgrn">grn</option><option class="optcyn">cyn</option><option class="optblu">blu</option><option class="optmag">mag</option><option class="optwht">wht</option><option class="optgry">gry</option><option class="optblk">blk</option><option class="optorg">org</option><option class="optolv">olv</option><option class="optbrn">brn</option></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capnor" title="Normal caption"		>capnor:</label></div><div class="inpcll"><input id="inp_capnor" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Normal caption"	/></div><div class="inpcll"><select id="sel_capnor" class="selnon" size="1" autocomplete="off"><?php echo $option_string; ?></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capshf" title="Shift caption"		>capshf:</label></div><div class="inpcll"><input id="inp_capshf" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Shift caption"	/></div><div class="inpcll"><select id="sel_capshf" class="selnon" size="1" autocomplete="off"><?php echo $option_string; ?></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capctl" title="Control caption"		>capctl:</label></div><div class="inpcll"><input id="inp_capctl" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Control caption"/></div><div class="inpcll"><select id="sel_capctl" class="selnon" size="1" autocomplete="off"><?php echo $option_string; ?></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capalt" title="Alt caption"		>capalt:</label></div><div class="inpcll"><input id="inp_capalt" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Alt caption"	/></div><div class="inpcll"><select id="sel_capalt" class="selnon" size="1" autocomplete="off"><?php echo $option_string; ?></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capagr" title="AltGr caption"		>capagr:</label></div><div class="inpcll"><input id="inp_capagr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="AltGr caption"	/></div><div class="inpcll"><select id="sel_capagr" class="selnon" size="1" autocomplete="off"><?php echo $option_string; ?></select></div></div>
+					<div class="inprow"><div class="inpcll"><label for="inp_capxtr" title="Extra caption"		>capxtr:</label></div><div class="inpcll"><input id="inp_capxtr" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Extra caption"	/></div><div class="inpcll"><select id="sel_capxtr" class="selnon" size="1" autocomplete="off"><?php echo $option_string; ?></select></div></div>
 					<div class="inprow"><div class="inpcll"><label for="inp_imgfil" title="Image filename"		>imgfil:</label></div><div class="inpcll"><input id="inp_imgfil" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Image filename"	/></div><div class="inpcll">n/a</div></div>
 					<div class="inprow"><div class="inpcll"><label for="inp_imguri" title="Image data-URI"		>imguri:</label></div><div class="inpcll"><input id="inp_imguri" class="inplft" type="text" size="11"                 autocomplete="off" title="Image data-URI"	/></div><div class="inpcll">n/a</div></div>
 				</div>
@@ -309,16 +322,17 @@ var binding_table =
 		</div>
 		<div id="pane_rgt">
 			<div id="tbar_rgt">
-				<div id="butt_kbd" class="tabs_butt" title="Toggle Keyboard Panel"    onclick="switch_right_pane(0);"><img src="<?php echo $path_lib; ?>icon_kbd.png"/></div>
-				<div id="butt_csv" class="tabs_butt" title="Toggle Spreadsheet Panel" onclick="switch_right_pane(1);"><img src="<?php echo $path_lib; ?>icon_spd.png"/></div>
+				<div id="butt_kbd" class="tabs_butt" title="Toggle Keyboard Panel"    onclick="switch_right_pane(0);"><img src="<?php echo $path_lib1; ?>icon_kbd.png"/></div>
+				<div id="butt_csv" class="tabs_butt" title="Toggle Spreadsheet Panel" onclick="switch_right_pane(1);"><img src="<?php echo $path_lib1; ?>icon_spd.png"/></div>
 			</div>
 			<div id="pane_kbd" style="display:block;">
 				<header>
-					<div class="boxdiv"><?php echo $page_title_b; ?></span></div>
 					<div class="boxdiv">
+						<!-- I don't like how these float/stack when the window size is very small. -->
 						<span>Game Title:</span>
 						<input style="font-size:x-large;" id="game_tit" type="text" size="25" maxlength="100" placeholder="Game Title" title="Game Title" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $page_title_a; ?>"/>
 						<input style="font-size:x-large;" id="game_url" type="text" size="25" maxlength="100" placeholder="URL String" title="URL String" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $game_seo; ?>" disabled="disabled"/>
+						<span style="float:right;"><?php echo $temp_layout_name; ?><br><?php echo $temp_style_name; ?></span>
 					</div>
 				</header>
 				<div class="boxdiv" style="position:relative;width:1660px;height:480px;">
@@ -494,8 +508,7 @@ var binding_table =
 					</div>
 					<div id="table_legend" class="inbtop">
 <?php
-	// legend - $legend_count is hardcoded at 12!
-	for ($i = 0; $i < $legend_count; $i++)
+	for ($i = 0; $i < count($color_array); $i++)
 	{
 		$leg_value = "";
 		$leg_color = getkeycolor($i+1);
@@ -526,7 +539,7 @@ var binding_table =
 				</div>
 				<div id="flxdiv">
 					<div class="inbtop comdiv">
-						<h3><?php echo $string_keyboard; ?></h3>
+						<h3><?php echo $language_keyboard; ?></h3>
 						<div id="table_combo" class="nottbl">
 <?php
 		// combo
@@ -556,7 +569,7 @@ var binding_table =
 						</div>
 					</div>
 					<div class="inbtop comdiv">
-						<h3><?php echo $string_mouse; ?></h3>
+						<h3><?php echo $language_mouse; ?></h3>
 						<div id="table_mouse" class="nottbl">
 <?php
 		// mouse
@@ -586,7 +599,7 @@ var binding_table =
 						</div>
 					</div>
 					<div class="inbtop comdiv">
-						<h3><?php echo $string_joystick; ?></h3>
+						<h3><?php echo $language_joystick; ?></h3>
 						<div id="table_joystick" class="nottbl">
 <?php
 		// joystick
@@ -616,7 +629,7 @@ var binding_table =
 						</div>
 					</div>
 					<div class="inbtop comdiv">
-						<h3><?php echo $string_note; ?></h3>
+						<h3><?php echo $language_note; ?></h3>
 						<div id="table_note" class="nottbl">
 <?php
 		// note
@@ -642,7 +655,7 @@ var binding_table =
 						</div>
 					</div>
 					<div class="inbtop comdiv">
-						<h3><?php echo $string_cheat; ?></h3>
+						<h3><?php echo $language_cheat; ?></h3>
 						<div id="table_cheat" class="nottbl">
 <?php
 		// cheat
@@ -672,7 +685,7 @@ var binding_table =
 						</div>
 					</div>
 					<div class="inbtop comdiv">
-						<h3><?php echo $string_console; ?></h3>
+						<h3><?php echo $language_console; ?></h3>
 						<div id="table_console" class="nottbl">
 <?php
 		// console
@@ -702,7 +715,7 @@ var binding_table =
 						</div>
 					</div>
 					<div class="inbtop comdiv">
-						<h3><?php echo $string_emote; ?></h3>
+						<h3><?php echo $language_emote; ?></h3>
 						<div id="table_emote" class="nottbl">
 <?php
 		// emote
@@ -733,7 +746,7 @@ var binding_table =
 					</div>
 				</div>
 				<footer>
-<?php include($path_lib . "keyboard-footer.php"); ?>
+<?php include($path_lib2 . "keyboard-footer.php"); ?>
 				</footer>
 			</div>
 			<div id="pane_tsv" style="display:none;">

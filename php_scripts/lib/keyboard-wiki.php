@@ -18,20 +18,18 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
-	$path_root		= "../";
+	$path_root		= "../../";
 	$path_file		= "./keyboard-wiki.php";
-	$path_lib		= "./lib/";
+	$path_lib1		= "./lib/";
+	$path_lib2		= "./";
 
 	header("Content-Type: text/html; charset=utf8");
 
 	include($path_root	. "ssi/analyticstracking.php");
 	include($path_root	. "ssi/keyboard-connection.php");
-	include($path_lib	. "keyboard-common.php");
-	include($path_lib	. "keyboard-queries.php");
+	include($path_lib2	. "keyboard-common.php");
+	include($path_lib2	. "keyboard-queries.php");
 
-	$php_url		= "";
-	$svg_url		= "";
-	$can_url		= "";
 	$keys_number		= 118;		// should really be calculated dynamically or stored in the database for each layout
 	$actions_number		= 10;
 	$legend_number		= 12;
@@ -63,7 +61,6 @@
 	$platform_id		= 0;
 	$layout_name		= "";
 	$layout_authors		= [];
-	$layout_language	= 1;	// temporary until I add language translations to the database
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -89,43 +86,40 @@
 	selPlatformsHTML();
 	selGamesRecordsHTML();
 	selStylesRecordsHTML();
-	selKeystylesHTML();
 	selBindingsHTML();
 	selLegendsHTML();
 	selCommandsHTML();
 	selContribGamesHTML();
 	selContribStylesHTML();
 	selContribLayoutsHTML();
+	selKeystyles();
 
 	mysqli_close($con);
 
-	// validity checks
 	checkForErrors();
-
 	pageTitle();
-?>
-<!DOCTYPE HTML>
-<html>
-	<head>
-<?php
+
 	echo
-"		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
-		<title>" . $page_title_a . $page_separator . $page_title_b . "</title>
+"<!DOCTYPE HTML>
+<html lang=\"" . $language_code . "\">
+	<head>
+		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
+		<title>" . $page_title_a . $temp_separator . $page_title_b . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib . "style_common.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib . "style_mediawiki.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_mediawiki.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
-		<meta name=\"description\" content=\""	. $string_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name	. ")\"/>
-		<meta name=\"keywords\" content=\""	. $string_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
+		<meta name=\"description\" content=\""	. $language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name	. ")\"/>
+		<meta name=\"keywords\" content=\""	. $language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
 ";
 	echo writeAnalyticsTracking();
 ?>
 	</head>
 	<body style="margin:auto;width:80%;">
 		<header>
-			<h2><?php echo $page_title_a . $page_separator . $page_title_b; ?></h2>
+			<h2><?php echo $page_title_a . $temp_separator . $page_title_b; ?></h2>
 		</header>
 		<main>
 			<p>I have created templates for MediaWiki that do basically the same thing as the other charts on this site. You can find the templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Fandom</a>. Below is the code you would use to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the generated chart is wider than a typical MediaWiki page.</p>
@@ -200,7 +194,7 @@
 			</textarea>
 		</main>
 		<footer>
-<?php include($path_lib . "keyboard-footer.php"); ?>
+<?php include($path_lib2 . "keyboard-footer.php"); ?>
 		</footer>
 	</body>
 </html>

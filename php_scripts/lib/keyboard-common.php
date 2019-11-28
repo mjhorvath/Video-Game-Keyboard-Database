@@ -18,6 +18,10 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
+	$php_url		= "";
+	$svg_url		= "";
+	$can_url		= "";
+	$url_ext		= extension($_SERVER["REQUEST_URI"]);
 	$default_game_id	= 0;
 	$default_style_id	= 0;
 	$default_layout_id	= 0;
@@ -29,27 +33,31 @@
 	$default_style_name	= "";
 	$default_layout_name	= "";
 	$default_format_name	= "";
+	$color_array		= [];
+	$class_array		= [];
 	$entities_array		= [];
-	$string_title		= "";
-	$string_description	= "";
-	$string_keywords	= "";
-	$string_legend		= "";
-	$string_mouse		= "";
-	$string_joystick	= "";
-	$string_keyboard	= "";
-	$string_note		= "";
-	$string_cheat		= "";
-	$string_console		= "";
-	$string_emote		= "";
+	$language_code		= "";
+	$language_title		= "";
+	$language_description	= "";
+	$language_keywords	= "";
+	$language_legend	= "";
+	$language_mouse		= "";
+	$language_joystick	= "";
+	$language_keyboard	= "";
+	$language_note		= "";
+	$language_cheat		= "";
+	$language_console	= "";
+	$language_emote		= "";
 	$temp_game_seo		= "";
 	$temp_game_name		= "";
 	$temp_layout_name	= "";
 	$temp_style_name	= "";
 	$temp_platform_name	= "";
 	$temp_format_name	= "";
-	$page_separator	= "";
-	$page_title_a	= "";
-	$page_title_b	= "";
+	$temp_separator		= "";
+	$page_title_a		= "";
+	$page_title_b		= "";
+	$layout_language	= 1;	// temporary until I add language translations to the database
 
 	function getDefaults()
 	{
@@ -58,7 +66,7 @@
 	}
 	function checkURLParameters()
 	{
-		global	$php_url, $svg_url, $can_url,
+		global	$php_url, $svg_url, $can_url, $url_ext,
 			$game_seo,	$default_game_seo,
 			$game_id,	$default_game_id,
 			$game_name,	$default_game_name,
@@ -79,7 +87,6 @@
 		$svg_bool	= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0"))	: null;	// obsolete parameter kept so old links don't break
 		$ten_bool	= array_key_exists("ten", $_GET) ? intval(ltrim($_GET["ten"], "0"))	: null;
 		$fix_url	= false;
-		$url_ext	= extension($_SERVER["REQUEST_URI"]);
 
 		if ($url_ext == "svg")
 		{
@@ -119,9 +126,9 @@
 //			error_log("game_seo is null", 0);
 			if ($game_id !== null)
 			{
-				if ($code_format == "html")
+				if ($url_ext == "php")
 					selGamesHTML_ID();
-				else if ($code_format == "svg")
+				else if ($url_ext == "svg")
 					selGamesSVG_ID();
 			}
 			else
@@ -199,11 +206,11 @@
 	}
 	function pageTitle()
 	{
-		global	$page_separator, $page_title_a, $page_title_b, $string_title,
+		global	$temp_separator, $page_title_a, $page_title_b, $language_title,
 			$temp_game_name, $temp_platform_name, $temp_layout_name, $temp_style_name, $temp_format_name, $gamesrecord_id;
-		$page_separator	= " - ";
+		$temp_separator	= " - ";
 		$page_title_a	= $temp_game_name;
-		$page_title_b	= $string_title . $page_separator . $temp_platform_name . $page_separator . $temp_layout_name . $page_separator . $temp_style_name . $page_separator . $temp_format_name . $page_separator . "GRID:" . $gamesrecord_id;
+		$page_title_b	= $language_title . $temp_separator . $temp_platform_name . $temp_separator . $temp_layout_name . $temp_separator . $temp_style_name . $temp_separator . $temp_format_name . $temp_separator . "GRID:" . $gamesrecord_id;
 	}
 	// there is an analogous function written in JavaScript in "keyboard-submit.js"
 	// need to keep the two functions synced
@@ -307,16 +314,13 @@
 	}
 	function getkeycolor($group)
 	{
-		// hardcoded! should fetch from database instead
-		$color_array = ["red","yel","grn","cyn","blu","mag","wht","gry","blk","org","olv","brn"];
+		global $color_array;
 		return array_key_exists($group-1, $color_array) ? $color_array[$group-1] : "non";
 	}
 	function getkeyclass($group)
 	{
-		// hardcoded! should fetch from database instead
-		$class_array = ["cssA","cssB","cssC","cssD","cssE","cssF","cssG","cssH","cssI","cssJ","cssK","cssL"];
+		global $class_array;
 		return array_key_exists($group-1, $class_array) ? $class_array[$group-1] : "";
-
 	}
 	// should be made recursive so only a single procedure is required
 	function leadingZeros3($innumber)

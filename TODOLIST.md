@@ -6,7 +6,7 @@
 * There needs to be additional indication on the submission page that there is 
   a "Help Pane" as well as a "Spreadsheet View".
 * "Spreadsheet View" needs to be renamed to something else since I have not 
-  created an actual spreadsheet.
+  created an actual spreadsheet. Maybe "TSV View" would be a better name.
 * Users should maybe be able to enter text directly onto the keyboard diagram 
   on the submission form. Have to think this through, as things could get very 
   messy.
@@ -24,20 +24,18 @@
   displayed in the chart. (At least, in the current version of the chart.)
 * I would like to change the text shown in the color selection boxes of the 
   submission form from "non" to "null" or something else. This might have an 
-  adverse effect on some scripts, however.
+  adverse effect on some scripts, however. Also, the drop down list would take 
+  up more space.
 * On the submission form, draw an animated dotted line around the border of the 
-  selected key.
-* On the submission form, the column names for the TSV data in the "Spreadsheet 
-  View" should be fetched from the database instead of hardcoded.
+  selected key. [See this example](https://stackoverflow.com/questions/28365839/dashed-border-animation-in-css3-animation).
 * Should make the size of the left pane adjustable and make the text input form 
-  fields shrink or grow.
-* The "entities" table should be renamed to "url_queries" or something similar.
-* Maybe add a checkbox to the submission form for users to indicate to me that 
-  bindings for a brand new game are being created. The "record_id" value in the 
-  TSV output should be replaced with "\N" or null character when this is the 
-  case.
+  fields shrink or grow with the size of the pane.
+* Maybe add a checkbox to the submission form so that users can indicate to the 
+  admin that bindings for a brand new game are being created. The "record_id" 
+  field should then contain "\N" for each record instead of the existing game's 
+  "record_ID".
 * Link to the Excel sheet directly from the submission form, so that those who 
-  might prefer using it over the default methods will have easy access to it.
+  might prefer using it over the default methods will have easier access to it.
 
 ### MediaWiki Code
 * Generate MediaWiki code for layouts and styles in addition to games.
@@ -71,7 +69,8 @@
 * Fix the RDF stuff in SVG files so that author names are not duplicated 
   multiple times.
 * The tables "contrib_layouts", "contrib_games" and "contrib_styles" are 
-  missing time and date stamps indicating when items were added or updated.
+  missing time and date stamps properly indicating when items were added or 
+  updated.
 
 ### Database Schema
 * Right now it may only be incidental that bindings and positions match up with 
@@ -98,8 +97,29 @@
 * I would like to re-index the "layouts" table since a gap exists between ID #1 
   and ID #3. This would break links to many pages, however. Better to simply re-
   use this ID in a future layout.
-* Rename the "contrib" tables to "contribs" in order to remain consistent with 
-  the other tables.
+* Rename the "contrib" tables to "contribs" in order to use a consistent naming 
+  scheme.
+* On the submission form, the column names for the TSV data in the "Spreadsheet 
+  View" should be fetched from the database instead of hardcoded.
+* The "entities" table should be renamed to "url_queries" or something similar. 
+  The current name is too ambiguous.
+* The PHP and JS "color" and "class" tables are currently sorted by the index 
+  columns of the "keygroups" tables in the database. But what happens if new 
+  colors or classes are added, or the index columns somehow get corrupted? Can 
+  I sort and re-index the "keygroups" tables without affecting any other tables 
+  that might have foreign key constraints? What's the best method of specifying 
+  a custom sort order?
+
+### Optimizations
+* Should maybe store the SVG patterns, filters and gradients in separate files 
+  to be included only when needed, rather than cluttering up "keyboard-svg.php".
+* Currently, all the SQL queries are very simple, and all processing of data is 
+  done using PHP scripts. A lot of the tasks being done using the PHP scripts 
+  could probably be performed more efficiently in SQL using joins.
+* I moved most PHP routines and SQL statements to two dedicated files. But this 
+  may be worse for performance since only a subset of the routines are needed 
+  at any given time, yet the entire files are loaded each time. Should I split 
+  the two big files into several smaller ones?
 
 ### Miscellaneous
 * I would also like to create charts/diagrams for gamepads, mice and joysticks. 
@@ -140,8 +160,6 @@
   using FileZilla. Is it a bug or setting in the software? I now have to fix 
   the permissions manually each time I upload a new file. I need to figure out 
   what is going on.
-* Whether or not to show lower-case key caps should maybe be a per-game setting 
-  rather than a per-layout setting. Or, allow users toggle them on/off manually.
 * Since the main diagrams are now rendered in SVG instead of HTML, I could make 
   it so that the Enter keys on the European ISO layouts have the correct "L" 
   shape. I.e. a polygon with six vertices instead a rectangle with four 
@@ -158,34 +176,37 @@
   effect that changes the button's color.
 * Maybe replace the "up", "down", "right" and "left" key captions with arrow 
   icons? (Or Unicode arrow characters?)
-* Currently, all the SQL queries are very simple, and all processing of data is 
-  done using PHP scripts. A lot of the tasks being done using the PHP scripts 
-  could probably be performed more quickly and easily in SQL using joins.
 * The PHP scripts get kind of flaky when both an SEO string *and* a game ID are 
   provided in the URL. Not sure which of these should override the other.
-* I moved most PHP routines and SQL statements to two dedicated files. But this 
-  may be worse for performance since only a subset of the routines are needed 
-  at any given time, yet the entire files are loaded each time. Should I split 
-  the two big files into several smaller ones?
 * Not sure if the GUI string language should be a per-keyboard layout setting, 
   or something the user can configure manually. The latter would require yet 
   another URL query parameter.
+* Whether or not to show lower-case key caps should maybe be a per-game setting 
+  rather than a per-layout setting. Or, allow users toggle them on/off manually.
 * Maybe merge the "Completed" tasks on this page back into the other categories 
-  and use strikethrough text to indicate a task that has been completed. Or use 
-  GitHub's "Issues" interface. Can GitHub "Issues" be categorized?
-* Formats are now stored in the database. I could use the database to generate 
-  the format list in the footer now if I wanted to. This is also true for the 
-  default numpad state.
+  and use strike-through text to indicate whether the task has been completed. 
+  Or use GitHub's "Issues" interface. Can GitHub "Issues" be categorized?
+* Formats are now listed in the database. I could use the database to generate 
+  the format list in the page footer now if I wanted to. This is also true for 
+  the default numpad state.
 * Make sure there are no more characters that are still escaped in the page 
   title, since page titles do not benefit from having characters escaped.
 * Make sure I did not overlook any characters that need to be escaped. Is there 
   a library I can use to do this?
-* Need to add "header", "footer", "main", etc. HTML5 semantic tags to every 
+* Need to add "header", "footer", "main" and other HTML5 semantic tags to every 
   generated page.
+* The value of the "html" tag's "lang" attribute should be a short two-letter 
+  string instead of an integer as it is now. It should not be hardcoded either.
+* All HTML code should be echo'd using PHP in order to be consistent, IMO.
+* Search the source code for instances of the word "hardcoded", since they 
+  represent data that should really be put in/retrieved from the database.
+* Should the "non" color be added to the color tables too?
+* Tweak the "cleantext" functions or the query functions so that I no longer 
+  require separate copies of every query function for HTML and SVG.
 
 ### Problematic
-* Sub-pages should maybe not repeat the parent project's title since the title 
-  already appears in the site's horizontal breadcrumbs. Not sure.
+* Sub-pages should maybe not repeat the parent page's title in the page headers 
+  since the title already appears in the site's horizontal breadcrumbs.
 * The key caption legend should also be configurable. Right now it always says 
   "SHIFT", "CTRL", "ALT", etc. and can't be customized. Not sure which table to 
   put this stuff in. There will need to be a way to turn each string on and off 
@@ -193,10 +214,6 @@
 * Several of the PHP and JS files should not be directly accessible via the Web.
   [Ed. this can be done easily for PHP files, but not JS or CSS files as far as 
   I can tell.]
-* Users of the submission form should be able to specify a layout using a drop-
-  down list or whatever within the form itself. Users are already able to 
-  specify and edit a "Blank Sample" for every layout starting from the frontend 
-  page. But this is insufficient, IMO.
 * It would be nice to split the background coloring for when a key has more 
   than one use. For instance, one could subdivide each rectangular key into two 
   triangles and color each triangle differently. [Ed. this may be difficult to 
@@ -206,19 +223,18 @@
   can be accomplished without lots of JavaScript, which I would rather avoid.]
 * Experiment more with CSS effect filters. [Ed. May not work in all browsers.]
 * There remain some meta header tags that have not been added to the PHP pages, 
-  yet. [Ed. I cannot remember which tags, however.]
+  yet. [Ed. right now I can't remember which tags I was talking about, however.]
 * On the submission form, replace key code labels such as "capnor" and "lowagr" 
   with actual English text. [Ed. space is at a premium. Not sure I can fit the 
-  English text there.]
+  English text in there without stretching the page or triggering a scroll bar.]
+* Maybe the red in the "Warm" styles can be made deeper? [Ed. I tried this, but 
+  it didn't look very nice.]
 
 ### Rejected
-* Implement a "languages" table. [Ed. It may be sufficient to simply tie the 
-  languages of the bindings to the languages of the keyboard layouts.]
-* Maybe the red in the "Warm" styles can be made deeper? [Ed. I tried this, but 
-  it didn't look nice.]
-* Should maybe store the SVG patterns, filters and gradients in separate files, 
-  rather than cluttering up the main SVG files. [Ed. separating this stuff into 
-  additional files makes it harder to trade or upload the diagrams elsewhere.]
+* Users of the submission form should be able to specify a layout using a drop-
+  down list or whatever within the submission form itself. Users are already 
+  able to specify and edit a "Blank Sample" for every layout starting from the 
+  frontend page. But this is insufficient, IMO. [Ed. this is a bad idea.]
 
 ### Completed
 * In the submission form, selecting a colored OPTION element should change the 
@@ -298,3 +314,8 @@
   remain the same as it appears now, however.
 * The submission form does not indicate anywhere which layout and style are 
   selected.
+* Need to fetch the contents of the "colors" JavaScript array from the database 
+  instead of hardcoding the values.
+* The "$legend_count" PHP variable is hardcoded. Maybe needs to be calculated 
+  based on size of "$color_array".
+* Implement a "languages" table.

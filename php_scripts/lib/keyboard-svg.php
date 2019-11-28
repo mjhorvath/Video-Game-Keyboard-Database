@@ -18,22 +18,19 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
-	$path_root		= "../";
+	$path_root		= "../../";
 	$path_file		= "./keyboard-svg.php";
-	$path_lib		= "./lib/";
+	$path_lib1		= "./lib/";
+	$path_lib2		= "./";
 
 	header("Content-type: image/svg+xml");
 
 	include($path_root	. "ssi/keyboard-connection.php");
-	include($path_lib	. "keyboard-common.php");
-	include($path_lib	. "keyboard-queries.php");
+	include($path_lib2	. "keyboard-common.php");
+	include($path_lib2	. "keyboard-queries.php");
 
 	// move as many of these as possible to keyboard-common.php
-	$php_url		= "";
-	$svg_url		= "";
-	$can_url		= "";
 	$stylegroup_id		= 0;
-	$legend_count		= 12;
 	$position_table		= [];
 	$keystyle_table		= [];
 	$binding_table		= [];
@@ -60,7 +57,6 @@
 	$layout_tenkeyless_height	= 400;
 	$layout_legend_padding		= 36;
 	$layout_legend_height		= 72;
-	$layout_language	= 1;	// temporary until I add language translations to the database
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -88,18 +84,18 @@
 	selStylesRecordsSVG();
 	selLayoutsSVG();
 	selPlatformsSVG();
-	selKeystylesSVG();
 	selBindingsSVG();
 	selLegendsSVG();
 	selContribGamesSVG();
 	selContribStylesSVG();
 	selContribLayoutsSVG();
+	selLegendColors();
+	selKeyStyles();
+	selKeyStyleClasses();
 
 	mysqli_close($con);
 
-	// validity checks
 	checkForErrors();
-
 	pageTitle();
 
 	// layout outer bounds
@@ -168,7 +164,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	xmlns:ev="http://www.w3.org/2001/xml-events"
 	viewBox="<?php echo $layout_min_horizontal . " " . $layout_min_vertical . " " . $layout_max_horizontal . " " . $layout_max_vertical; ?>"
 	width="<?php echo $layout_max_horizontal; ?>" height="<?php echo $layout_max_vertical; ?>">
-	<title><?php echo $page_title_a . $page_separator . $page_title_b; ?></title>
+	<title><?php echo $page_title_a . $temp_separator . $page_title_b; ?></title>
 	<desc>Keyboard diagram for <?php echo $temp_game_name; ?>.</desc>
 	<metadata id="license"
 		xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -189,12 +185,12 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 				<cc:requires rdf:resource="http://creativecommons.org/ns#ShareAlike" />
 			</cc:License>
 			<rdf:Description about=""
-				dc:title="<?php echo $page_title_a . $page_separator . $page_title_b; ?>"
-				dc:description="<?php echo $string_description . $temp_game_name . ". (" . $temp_style_name . ")"; ?>"
+				dc:title="<?php echo $page_title_a . $temp_separator . $page_title_b; ?>"
+				dc:description="<?php echo $language_description . $temp_game_name . ". (" . $temp_style_name . ")"; ?>"
 				dc:publisher="Video Game Keyboard Diagrams"
 				dc:date="<?php echo date("Y-m-d H:i:s"); ?>"
 				dc:format="image/svg+xml"
-				dc:language="en" >
+				dc:language="<?php echo $language_code; ?>">
 				<dc:creator>
 					<rdf:Bag>
 <?php
@@ -223,7 +219,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	</metadata>
 	<style type="text/css">
 /* <![CDATA[ */
-<?php include($path_lib . "svg_" . $style_filename . ".css"); ?>
+<?php include($path_lib2 . "svg_" . $style_filename . ".css"); ?>
 /* ]]> */
 	</style>
 	<defs>

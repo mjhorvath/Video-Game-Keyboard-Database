@@ -98,6 +98,55 @@
 		$default_format_name	= $game_row[4];
 		$default_ten_bool	= $entities_array[4][2];		// note that in the database this is stored as an integer versus boolean
 	}
+	function selLegendColors()
+	{
+		global $con;
+		$selectString = "SELECT k.keygroup_id, k.keygroup_class FROM keygroups_dynamic AS k;";
+		selectQuery($con, $selectString, "doLegendColors");
+	}
+	function doLegendColors($in_result)
+	{
+		global $color_array;
+		while ($temp_row = mysqli_fetch_row($in_result))
+		{
+			// keygroup_id, keygroup_class
+			$colorid_array[] = $temp_row[0];
+			$color_array[] = $temp_row[1];
+		}
+		array_multisort($colorid_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $color_array);
+	}
+	function selKeyStyleClasses()
+	{
+		global $con;
+		$selectString = "SELECT k.keygroup_id, k.keygroup_class FROM keygroups_static AS k;";
+		selectQuery($con, $selectString, "doKeyStyleClasses");
+	}
+	function doKeyStyleClasses($in_result)
+	{
+		global $class_array;
+		while ($temp_row = mysqli_fetch_row($in_result))
+		{
+			// keygroup_id, keygroup_class
+			$classid_array[] = $temp_row[0];
+			$class_array[] = $temp_row[1];
+		}
+		array_multisort($classid_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $class_array);
+	}
+	function selKeyStyles()
+	{
+		global $con, $stylesrecord_id;
+		$selectString = "SELECT k.keygroup_id, k.key_number FROM keystyles AS k WHERE k.record_id = " . $stylesrecord_id . ";";
+		selectQuery($con, $selectString, "doKeyStyles");
+	}
+	function doKeyStyles($in_result)
+	{
+		global $keystyle_table;
+		while ($temp_row = mysqli_fetch_row($in_result))
+		{
+			// keygroup_id, key_number
+			$keystyle_table[$temp_row[1]-1] = $temp_row;
+		}
+	}
 
 	// ---------------------------------------------------------------------
 	// Frontend
@@ -301,12 +350,6 @@
 		$selectString = "SELECT r.record_id FROM records_styles AS r WHERE r.layout_id = " . $layout_id . " AND r.style_id = " . $style_id . ";";
 		selectQuery($con, $selectString, "doStylesRecordsHTML");
 	}
-	function selKeystylesHTML()
-	{
-		global $con, $stylesrecord_id;
-		$selectString = "SELECT k.keygroup_id, k.key_number FROM keystyles AS k WHERE k.record_id = " . $stylesrecord_id . ";";
-		selectQuery($con, $selectString, "doKeystylesHTML");
-	}
 	function selBindingsHTML()
 	{
 		global $con, $gamesrecord_id;
@@ -316,7 +359,7 @@
 	function selLegendsHTML()
 	{
 		global $con, $gamesrecord_id;
-		$selectString = "SELECT l.legend_group, l.legend_description FROM legends AS l WHERE l.record_id = " . $gamesrecord_id . " ORDER BY l.legend_group;";
+		$selectString = "SELECT l.keygroup_id, l.legend_description FROM legends AS l WHERE l.record_id = " . $gamesrecord_id . " ORDER BY l.keygroup_id;";
 		selectQuery($con, $selectString, "doLegendsHTML");
 	}
 	function selCommandsHTML()
@@ -328,7 +371,7 @@
 	function selLanguageStringsHTML()
 	{
 		global $con, $layout_language;
-		$selectString = "SELECT l.language_title, l.language_description, l.language_keywords, l.language_legend, l.language_mouse, l.language_joystick, l.language_keyboard, l.language_notes, l.language_cheats, l.language_console, l.language_emote FROM languages AS l WHERE l.language_id = " . $layout_language . ";";
+		$selectString = "SELECT l.language_code, l.language_title, l.language_description, l.language_keywords, l.language_legend, l.language_mouse, l.language_joystick, l.language_keyboard, l.language_notes, l.language_cheats, l.language_console, l.language_emote FROM languages AS l WHERE l.language_id = " . $layout_language . ";";
 		selectQuery($con, $selectString, "doLanguageStringsHTML");
 	}
 	function doContribGamesHTML($in_result)
@@ -416,7 +459,7 @@
 		global $legend_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
-			// legend_group, legend_description
+			// keygroup_id, legend_description
 			$legend_table[] = $temp_row;
 		}
 	}
@@ -467,15 +510,6 @@
 		{
 			// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowcap_optional
 			$position_table[$temp_row[8]-1] = $temp_row;
-		}
-	}
-	function doKeystylesHTML($in_result)
-	{
-		global $keystyle_table;
-		while ($temp_row = mysqli_fetch_row($in_result))
-		{
-			// keygroup_id, key_number
-			$keystyle_table[$temp_row[1]-1] = $temp_row;
 		}
 	}
 	function doGamesHTML_ID($in_result)
@@ -542,21 +576,22 @@
 	}
 	function doLanguageStringsHTML($in_result)
 	{
-		global $string_title, $string_description, $string_keywords, $string_legend, $string_mouse, $string_joystick, $string_keyboard, $string_note, $string_cheat, $string_console, $string_emote;
+		global $language_code, $language_title, $language_description, $language_keywords, $language_legend, $language_mouse, $language_joystick, $language_keyboard, $language_note, $language_cheat, $language_console, $language_emote;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
-			// language_title, language_description, language_keywords, language_legend, language_mouse, language_joystick, language_keyboard, language_notes, language_cheats, language_console, language_emote
-			$string_title		= cleantextHTML($temp_row[0]);
-			$string_description	= cleantextHTML($temp_row[1]);
-			$string_keywords	= cleantextHTML($temp_row[2]);
-			$string_legend		= cleantextHTML($temp_row[3]);
-			$string_mouse		= cleantextHTML($temp_row[4]);
-			$string_joystick	= cleantextHTML($temp_row[5]);
-			$string_keyboard	= cleantextHTML($temp_row[6]);
-			$string_note		= cleantextHTML($temp_row[7]);
-			$string_cheat		= cleantextHTML($temp_row[8]);
-			$string_console		= cleantextHTML($temp_row[9]);
-			$string_emote		= cleantextHTML($temp_row[10]);
+			// language_code, language_title, language_description, language_keywords, language_legend, language_mouse, language_joystick, language_keyboard, language_notes, language_cheats, language_console, language_emote
+			$language_code		= cleantextHTML($temp_row[0]);
+			$language_title		= cleantextHTML($temp_row[1]);
+			$language_description	= cleantextHTML($temp_row[2]);
+			$language_keywords	= cleantextHTML($temp_row[3]);
+			$language_legend	= cleantextHTML($temp_row[4]);
+			$language_mouse		= cleantextHTML($temp_row[5]);
+			$language_joystick	= cleantextHTML($temp_row[6]);
+			$language_keyboard	= cleantextHTML($temp_row[7]);
+			$language_note		= cleantextHTML($temp_row[8]);
+			$language_cheat		= cleantextHTML($temp_row[9]);
+			$language_console	= cleantextHTML($temp_row[10]);
+			$language_emote		= cleantextHTML($temp_row[11]);
 		}
 	}
 
@@ -652,12 +687,6 @@
 		$selectString = "SELECT r.record_id FROM records_styles AS r WHERE r.layout_id = " . $layout_id . " AND r.style_id = " . $style_id . ";";
 		selectQuery($con, $selectString, "doStylesRecordsSVG");
 	}
-	function selKeystylesSVG()
-	{
-		global $con, $stylesrecord_id;
-		$selectString = "SELECT k.keygroup_id, k.key_number FROM keystyles AS k WHERE k.record_id = " . $stylesrecord_id . ";";
-		selectQuery($con, $selectString, "doKeystylesSVG");
-	}
 	function selBindingsSVG()
 	{
 		global $con, $gamesrecord_id;
@@ -667,13 +696,13 @@
 	function selLegendsSVG()
 	{
 		global $con, $gamesrecord_id;
-		$selectString = "SELECT l.legend_group, l.legend_description FROM legends AS l WHERE l.record_id = " . $gamesrecord_id . " ORDER BY l.legend_group;";
+		$selectString = "SELECT l.keygroup_id, l.legend_description FROM legends AS l WHERE l.record_id = " . $gamesrecord_id . " ORDER BY l.keygroup_id;";
 		selectQuery($con, $selectString, "doLegendsSVG");
 	}
 	function selLanguageStringsSVG()
 	{
 		global $con, $layout_language;
-		$selectString = "SELECT l.language_title, l.language_description, l.language_keywords, l.language_legend, l.language_mouse, l.language_joystick, l.language_keyboard, l.language_notes, l.language_cheats, l.language_console, l.language_emote FROM languages AS l WHERE l.language_id = " . $layout_language . ";";
+		$selectString = "SELECT l.language_code, l.language_title, l.language_description, l.language_keywords, l.language_legend, l.language_mouse, l.language_joystick, l.language_keyboard, l.language_notes, l.language_cheats, l.language_console, l.language_emote FROM languages AS l WHERE l.language_id = " . $layout_language . ";";
 		selectQuery($con, $selectString, "doLanguageStringsSVG");
 	}
 	function doContribGamesSVG($in_result)
@@ -761,7 +790,7 @@
 		global $legend_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
-			// legend_group, legend_description
+			// keygroup_id, legend_description
 			$legend_table[] = $temp_row;
 		}
 	}
@@ -772,15 +801,6 @@
 		{
 			// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowcap_optional, numpad
 			$position_table[$temp_row[8]-1] = $temp_row;
-		}
-	}
-	function doKeystylesSVG($in_result)
-	{
-		global $keystyle_table;
-		while ($temp_row = mysqli_fetch_row($in_result))
-		{
-			// keygroup_id, key_number
-			$keystyle_table[$temp_row[1]-1] = $temp_row;
 		}
 	}
 	function doGamesSVG_ID($in_result)
@@ -847,21 +867,22 @@
 	}
 	function doLanguageStringsSVG($in_result)
 	{
-		global $string_title, $string_description, $string_keywords, $string_legend, $string_mouse, $string_joystick, $string_keyboard, $string_note, $string_cheat, $string_console, $string_emote;
+		global $language_code, $language_title, $language_description, $language_keywords, $language_legend, $language_mouse, $language_joystick, $language_keyboard, $language_note, $language_cheat, $language_console, $language_emote;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
-			// language_title, language_description, language_keywords, language_legend, language_mouse, language_joystick, language_keyboard, language_notes, language_cheats, language_console, language_emote
-			$string_title		= cleantextSVG($temp_row[0]);
-			$string_description	= cleantextSVG($temp_row[1]);
-			$string_keywords	= cleantextSVG($temp_row[2]);
-			$string_legend		= cleantextSVG($temp_row[3]);
-			$string_mouse		= cleantextSVG($temp_row[4]);
-			$string_joystick	= cleantextSVG($temp_row[5]);
-			$string_keyboard	= cleantextSVG($temp_row[6]);
-			$string_note		= cleantextSVG($temp_row[7]);
-			$string_cheat		= cleantextSVG($temp_row[8]);
-			$string_console		= cleantextSVG($temp_row[9]);
-			$string_emote		= cleantextSVG($temp_row[10]);
+			// language_code, language_title, language_description, language_keywords, language_legend, language_mouse, language_joystick, language_keyboard, language_notes, language_cheats, language_console, language_emote
+			$language_code		= cleantextSVG($temp_row[0]);
+			$language_title		= cleantextSVG($temp_row[1]);
+			$language_description	= cleantextSVG($temp_row[2]);
+			$language_keywords	= cleantextSVG($temp_row[3]);
+			$language_legend	= cleantextSVG($temp_row[4]);
+			$language_mouse		= cleantextSVG($temp_row[5]);
+			$language_joystick	= cleantextSVG($temp_row[6]);
+			$language_keyboard	= cleantextSVG($temp_row[7]);
+			$language_note		= cleantextSVG($temp_row[8]);
+			$language_cheat		= cleantextSVG($temp_row[9]);
+			$language_console	= cleantextSVG($temp_row[10]);
+			$language_emote		= cleantextSVG($temp_row[11]);
 		}
 	}
 

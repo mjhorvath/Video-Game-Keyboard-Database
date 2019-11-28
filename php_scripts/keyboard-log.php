@@ -11,6 +11,13 @@
 ?>
 <h2>News &amp; Updates</h2>
 <ul>
+	<li>2019/11/27: Moved "keyboard-init.php" to "lib". Updated "htaccess" accordingly.</li>
+	<li>2019/11/27: Language codes are now determined dynamically. Still require more of the text to be localized, however.</li>
+	<li>2019/11/27: Fixed a bug when "$game_seo" is null.</li>
+	<li>2019/11/27: Color-related HTML code is now generated dynamically based on these tables.</li>
+	<li>2019/11/26: Style color/class names are now retrieved from the database.</li>
+	<li>2019/11/26: Renamed the "legend_group" column in the "legends" table to "keygroup_id" and created a foreign key constraint on that column.</li>
+	<li>2019/11/26: Tweaked the page heading area on the submission form.</li>
 	<li>2019/11/23: Added verbose page title to submission form.</li>
 	<li>2019/11/23: Sorted credits into categories.</li>
 	<li>2019/11/23: The displayed values for the "keynum" parameter in the submission form now correctly start at 1 instead of 0, as per the database itself.</li>
