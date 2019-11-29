@@ -1,2 +1,14 @@
-\N	247	2	LMB	Interact
-\N	247	2	RMB	Attack Mode/Rotate Camera
+\N	235	1	blah	blah
+\N	235	1	blah	blah
+\N	235	2	blah	blah
+\N	235	2	blah	blah
+\N	235	3	blah	blah
+\N	235	3	blah	blah
+\N	235	4	blah	blah
+\N	235	4	blah	blah
+\N	235	5	blah	blah
+\N	235	5	blah	blah
+\N	235	6	blah	blah
+\N	235	6	blah	blah
+\N	235	7	blah	blah
+\N	235	7	blah	blah

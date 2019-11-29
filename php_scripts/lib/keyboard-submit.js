@@ -1168,108 +1168,24 @@ function collect_legend_data()
 
 function collect_command_data()
 {
-	combo_table = [];
-	mouse_table = [];
-	joystick_table = [];
-	note_table = [];
-	cheat_table = [];
-	console_table = [];
-	emote_table = [];
-
-	// combo - ignore the last child
-	var this_parent = document.getElementById('table_combo');
-	for (var i = 0, n = this_parent.children.length - 1; i < n; i++)
+	command_table = [];
+	for (var j = 0, o = commandlabels_table.length; j < o; j++)
 	{
-		var this_child = this_parent.children[i];
-		var this_input_1 = this_child.children[0].children[0];
-		var this_input_2 = this_child.children[2].children[0];
-		var this_value_1 = this_input_1.value;
-		var this_value_2 = this_input_2.value;
-		if ((this_value_1 != '') && (this_value_2 != ''))
+		command_table[j] = [];
+		var this_label = commandlabels_table[j];
+		var this_parent = document.getElementById('table_' + this_label);
+		// ignore the last child
+		for (var i = 0, n = this_parent.children.length - 1; i < n; i++)
 		{
-			combo_table.push([this_value_1, this_value_2]);
-		}
-	}
-	// mouse - ignore the last child
-	var this_parent = document.getElementById('table_mouse');
-	for (var i = 0, n = this_parent.children.length - 1; i < n; i++)
-	{
-		var this_child = this_parent.children[i];
-		var this_input_1 = this_child.children[0].children[0];
-		var this_input_2 = this_child.children[2].children[0];
-		var this_value_1 = this_input_1.value;
-		var this_value_2 = this_input_2.value;
-		if ((this_value_1 != '') && (this_value_2 != ''))
-		{
-			mouse_table.push([this_value_1, this_value_2]);
-		}
-	}
-	// joystick - ignore the last child
-	var this_parent = document.getElementById('table_joystick');
-	for (var i = 0, n = this_parent.children.length - 1; i < n; i++)
-	{
-		var this_child = this_parent.children[i];
-		var this_input_1 = this_child.children[0].children[0];
-		var this_input_2 = this_child.children[2].children[0];
-		var this_value_1 = this_input_1.value;
-		var this_value_2 = this_input_2.value;
-		if ((this_value_1 != '') && (this_value_2 != ''))
-		{
-			joystick_table.push([this_value_1, this_value_2]);
-		}
-	}
-	// note - ignore the last child
-	var this_parent = document.getElementById('table_note');
-	for (var i = 0, n = this_parent.children.length - 1; i < n; i++)
-	{
-		var this_child = this_parent.children[i];
-		var this_textarea = this_child.children[0].children[0];
-		var this_value = this_textarea.value;
-		if (this_value != '')
-		{
-			note_table.push(['', this_value]);
-		}
-	}
-	// cheat - ignore the last child
-	var this_parent = document.getElementById('table_cheat');
-	for (var i = 0, n = this_parent.children.length - 1; i < n; i++)
-	{
-		var this_child = this_parent.children[i];
-		var this_input_1 = this_child.children[0].children[0];
-		var this_input_2 = this_child.children[2].children[0];
-		var this_value_1 = this_input_1.value;
-		var this_value_2 = this_input_2.value;
-		if ((this_value_1 != '') && (this_value_2 != ''))
-		{
-			cheat_table.push([this_value_1, this_value_2]);
-		}
-	}
-	// console - ignore the last child
-	var this_parent = document.getElementById('table_console');
-	for (var i = 0, n = this_parent.children.length - 1; i < n; i++)
-	{
-		var this_child = this_parent.children[i];
-		var this_input_1 = this_child.children[0].children[0];
-		var this_input_2 = this_child.children[2].children[0];
-		var this_value_1 = this_input_1.value;
-		var this_value_2 = this_input_2.value;
-		if ((this_value_1 != '') && (this_value_2 != ''))
-		{
-			console_table.push([this_value_1, this_value_2]);
-		}
-	}
-	// emote - ignore the last child
-	var this_parent = document.getElementById('table_emote');
-	for (var i = 0, n = this_parent.children.length - 1; i < n; i++)
-	{
-		var this_child = this_parent.children[i];
-		var this_input_1 = this_child.children[0].children[0];
-		var this_input_2 = this_child.children[2].children[0];
-		var this_value_1 = this_input_1.value;
-		var this_value_2 = this_input_2.value;
-		if ((this_value_1 != '') && (this_value_2 != ''))
-		{
-			emote_table.push([this_value_1, this_value_2]);
+			var this_child = this_parent.children[i];
+			var this_input_1 = this_child.children[0].children[0];
+			var this_input_2 = this_child.children[2].children[0];
+			var this_value_1 = this_input_1.value;
+			var this_value_2 = this_input_2.value;
+			if ((this_value_1 != '') && (this_value_2 != ''))
+			{
+				command_table[j].push([this_value_1, this_value_2]);
+			}
 		}
 	}
 }
@@ -1290,40 +1206,14 @@ function process_command_data()
 {
 	// should fetch column names from database instead
 	var command_string = 'command_id\trecord_id\tcommandtype_id\tcommand_text\tcommand_description\n';
-	for (var i = 0, n = combo_table.length; i < n; i++)
+	for (var j = 0, o = command_table.length; j < o; j++)
 	{
-		var command_item = combo_table[i];
-		command_string += '\\N\t' + record_id + '\t1\t' + cleantextTSV(command_item[0]) + '\t' + cleantextTSV(command_item[1]) + '\n';
-	}
-	for (var i = 0, n = mouse_table.length; i < n; i++)
-	{
-		var command_item = mouse_table[i];
-		command_string += '\\N\t' + record_id + '\t2\t' + cleantextTSV(command_item[0]) + '\t' + cleantextTSV(command_item[1]) + '\n';
-	}
-	for (var i = 0, n = joystick_table.length; i < n; i++)
-	{
-		var command_item = joystick_table[i];
-		command_string += '\\N\t' + record_id + '\t3\t' + cleantextTSV(command_item[0]) + '\t' + cleantextTSV(command_item[1]) + '\n';
-	}
-	for (var i = 0, n = note_table.length; i < n; i++)
-	{
-		var command_item = note_table[i];
-		command_string += '\\N\t' + record_id + '\t4\t' + cleantextTSV(command_item[0]) + '\t' + cleantextTSV(command_item[1]) + '\n';
-	}
-	for (var i = 0, n = cheat_table.length; i < n; i++)
-	{
-		var command_item = cheat_table[i];
-		command_string += '\\N\t' + record_id + '\t5\t' + cleantextTSV(command_item[0]) + '\t' + cleantextTSV(command_item[1]) + '\n';
-	}
-	for (var i = 0, n = console_table.length; i < n; i++)
-	{
-		var command_item = console_table[i];
-		command_string += '\\N\t' + record_id + '\t6\t' + cleantextTSV(command_item[0]) + '\t' + cleantextTSV(command_item[1]) + '\n';
-	}
-	for (var i = 0, n = emote_table.length; i < n; i++)
-	{
-		var command_item = emote_table[i];
-		command_string += '\\N\t' + record_id + '\t7\t' + cleantextTSV(command_item[0]) + '\t' + cleantextTSV(command_item[1]) + '\n';
+		var this_table = command_table[j];
+		for (var i = 0, n = this_table.length; i < n; i++)
+		{
+			var command_item = this_table[i];
+			command_string += '\\N\t' + record_id + '\t1\t' + cleantextTSV(command_item[0]) + '\t' + cleantextTSV(command_item[1]) + '\n';
+		}
 	}
 	return command_string;
 }

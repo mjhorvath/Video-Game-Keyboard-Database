@@ -231,6 +231,7 @@
 * The "seourl_table" JavaScript array on the frontend page could probably be 
   replaced with a script that automatically generates the needed seourl strings.
 * Need to create an SVG equivalent of the "print_key_html" function.
+* Just for fun, run a script that counts and logs the number of lines of code.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent page's title in the page headers 

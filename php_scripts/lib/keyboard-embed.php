@@ -35,7 +35,6 @@
 	$game_name		= "";
 	$platform_name		= "";
 	$platform_id		= 0;
-	// layout params
 	$layout_name		= "";
 	$layout_authors		= [];
 	$layout_keysnum		= 0;

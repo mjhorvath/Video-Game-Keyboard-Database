@@ -1,8 +1,8 @@
 *		{font-family:DejaVu Sans Condensed,Sans-Serif;}
 body		{background-color:#c0c0c0;background-image:url("isometric_grid.png");background-attachment:fixed;color:#000000;font-size:11pt;margin:auto;width:80%;max-width:60em;}
 footer		{font-size:smaller;}
-p#butready {width:12em;height:6em;white-space:normal;text-align:left;padding:0.75em;color:#ffffff;background-color:#20a020;border-radius:7px;border:3px double #208020;display:none;}
-p#buterror {width:12em;height:6em;white-space:normal;text-align:left;padding:0.75em;color:#ffffff;background-color:#a02020;border-radius:7px;border:3px double #802020;display:none;}
+p#butready {width:12em;height:8em;white-space:normal;text-align:left;padding:0.75em;color:#ffffff;background-color:#20a020;border-radius:7px;border:3px double #208020;display:none;}
+p#buterror {width:12em;height:8em;white-space:normal;text-align:left;padding:0.75em;color:#ffffff;background-color:#a02020;border-radius:7px;border:3px double #802020;display:none;}
 input#butspawn {padding:0.75em;}
 div.acc_check {
   color:#00a000;

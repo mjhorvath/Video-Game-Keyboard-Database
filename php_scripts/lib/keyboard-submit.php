@@ -154,13 +154,7 @@
 		<script>
 var record_id = " . $gamesrecord_id . ";
 var legend_table = [];
-var combo_table = [];
-var mouse_table = [];
-var joystick_table = [];
-var note_table = [];
-var cheat_table = [];
-var console_table = [];
-var emote_table = [];
+var command_table = [];
 var color_table = ['non',";
 	$color_count = count($color_array);
 	for ($i = 0; $i < $color_count; $i++)
@@ -171,6 +165,17 @@ var color_table = ['non',";
 	}
 	echo "];
 var class_table = [];
+var commandlabels_table = [";
+
+
+	$command_type_count = count($command_table);
+	for ($i = 0; $i < $command_type_count; $i++)
+	{
+		echo "'" . $commandlabels_table[$i][2] . "'";
+		if ($i < $command_type_count - 1)
+			echo ",";
+	}
+	echo "];
 var binding_table =
 [
 ";
@@ -553,6 +558,7 @@ var binding_table =
 				</div>
 				<div id="flxdiv">
 <?php
+	// commands
 	$command_type_count = count($command_table);
 	for ($i = 0; $i < $command_type_count; $i++)
 	{
