@@ -18,13 +18,18 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
-	$path_file		= "./keyboard-sitemap.php";
-	$path_root2		= "../../";	// for PHP files
-	$path_lib1		= "./lib/";	// for HTML and JS files
-	$path_lib2		= "./";		// for PHP files
+	$path_file		= "./keyboard-sitemap.php";	// this file
+	$path_root1		= "../";		// for HTML and JS files
+	$path_lib1		= "./lib/";		// for HTML and JS files
+	$path_java1		= "../java/";		// for HTML and JS files
+	$path_ssi1		= "../ssi/";		// for HTML and JS files
+	$path_root2		= "../../";		// for PHP files
+	$path_lib2		= "./";			// for PHP files
+	$path_java2		= "../../java/";	// for PHP files
+	$path_ssi2		= "../../ssi/";		// for PHP files
 
-	include($path_root2	. "ssi/analyticstracking.php");
-	include($path_root2	. "ssi/keyboard-connection.php");
+	include($path_ssi2	. "analyticstracking.php");
+	include($path_ssi2	. "keyboard-connection.php");
 	include($path_lib2	. "keyboard-common.php");
 	include($path_lib2	. "keyboard-queries.php");
 
@@ -55,10 +60,10 @@
 "<!DOCTYPE HTML>
 <html>
 	<head>
-	</head>
-	<body>
 		<h2>Sitemap Code</h2>
 		<p>This form generates code that can be copied into the site's &quot;sitemap.xml&quot; file.</p>
+	</head>
+	<body>
 		<textarea readonly=\"readonly\" wrap=\"off\" style=\"width:100%;height:30em;\">\n";
 
 	// using 'count()' here may be a bad idea in case there are ever any gaps in the table indexes due to records deletions

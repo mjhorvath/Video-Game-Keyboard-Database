@@ -22,8 +22,8 @@
 
 	header("Content-Type: text/html; charset=utf8");
 
-	$path_root2 = "../../";
-	include($path_root2 . 'ssi/recaptchakey.php');
+	$path_ssi2 = "../../ssi/";
+	include($path_ssi2 . "recaptchakey.php");
 
 	// assemble the message from the POST fields
 

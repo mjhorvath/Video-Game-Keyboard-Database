@@ -1,16 +1,65 @@
 <?php
-	header('Content-Type: text/html; charset=utf8');
-	$path_root	= "../";
-	$page_title	= "VGKD - Change Log";
-	$page_desc	= "Visual keyboard hotkey & binding diagrams for video games and other software.";
-	$page_keywords	= "visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference";
-	$foot_array	= array("copyright","license_kbd");
-	$is_short	= false;
-	include($path_root . "ssi/normalpage.php");
-	echo $page_top;
+	// Video Game Keyboard Diagrams
+	// Copyright (C) 2018  Michael Horvath
+        // 
+	// This file is part of Video Game Keyboard Diagrams.
+        // 
+	// This program is free software: you can redistribute it and/or modify
+	// it under the terms of the GNU Lesser General Public License as 
+	// published by the Free Software Foundation, either version 3 of the 
+	// License, or (at your option) any later version.
+        // 
+	// This program is distributed in the hope that it will be useful, but 
+	// WITHOUT ANY WARRANTY; without even the implied warranty of 
+	// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU 
+	// Lesser General Public License for more details.
+        // 
+	// You should have received a copy of the GNU Lesser General Public 
+	// License along with this program.  If not, see 
+	// <https://www.gnu.org/licenses/>.
+
+	header("Content-Type: text/html; charset=utf8");
+
+	$path_file		= "./keyboard-log.php";	// this file
+	$path_root1		= "../";		// for HTML and JS files
+	$path_lib1		= "./lib/";		// for HTML and JS files
+	$path_java1		= "../java/";		// for HTML and JS files
+	$path_ssi1		= "../ssi/";		// for HTML and JS files
+	$path_root2		= "../../";		// for PHP files
+	$path_lib2		= "./";			// for PHP files
+	$path_java2		= "../../java/";	// for PHP files
+	$path_ssi2		= "../../ssi/";		// for PHP files
+
+	include($path_ssi1	. "analyticstracking.php");
+	include($path_lib1	. "keyboard-common.php");
+
+	echo
+"<!DOCTYPE HTML>
+<html lang=\"en\">
+	<head>
+		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
+		<title>VGKD - Change Log</title>
+		<link rel=\"canonical\" href=\"http://isometricland.net/keyboard/keyboard-log.php\"/>
+		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_changelog.css\"/>
+		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
+		<meta name=\"description\" content=\"\"/>
+		<meta name=\"keywords\" content=\"\"/>\n";
+	echo writeAnalyticsTracking();
+	echo
+"	</head>
+	<body>
+		<header>
+			<h2>VGKD - Change Log</h2>
+		</header>
+		<main>\n";
 ?>
-<h2>News &amp; Updates</h2>
+<h3>News &amp; Updates</h3>
 <ul>
+	<li>2019/11/29: Added more info about dependencies to this log.</li>
+	<li>2019/11/29: Divorced the project's visual style from that of my main website.</li>
 	<li>2019/11/29: Renamed several tables in the database. Deleted some tables I am not using right now.</li>
 	<li>2019/11/29: Text strings are no longer &quot;cleaned&quot; until the very last possible moment. Fixed a bug in the &quot;cleantextJS&quot; function in the process.</li>
 	<li>2019/11/29: Merged the HTML and SVG database queries together. Still need to check and compare the other queries.</li>
@@ -96,12 +145,12 @@
 	<li>2018/06/28: Had to replace all stored procedures with regular SELECT calls since my Web host disabled the creation (and storage) of new routines.</li>
 	<li>2018/06/24: Made several JavaScript-related fixes to the submission form.</li>
 	<li>2018/06/23: Switched to Google's reCAPTCHA for the submission form.</li>
-	<li>2018/06/21: Started making a &quot;to do&quot; list. You can view it <a href="to_do_list.txt">here</a>.</li>
+	<li>2018/06/21: Started making a &quot;to do&quot; list.</li>
 	<li>2018/06/20: Fixed some PHP loop code that was spawning warnings in the error log.</li>
 	<li>2018/06/20: Changed the license for the PHP and JavaScript code to GPLv3. (The database contents and chart designs remain licensed under the CC BY-SA 3.0 license.)</li>
-	<li>2018/06/19: Finished the graphical submission form I started working on. Start with a <a href="./keyboard-diagram-blank-sample.php?sty=15&lay=1&fmt=3">blank sample</a>.</li>
+	<li>2018/06/19: Finished the graphical submission form I started working on. Start with a <a href="./keyboard-diagram-blank-sample.php?sty=15&lay=1&fmt=3&ten=1">blank sample</a>.</li>
 	<li>2018/06/06: Taz sent me updated bindings for <i>The Lord of the Rings Online</i>. Thanks Taz!</li>
-	<li>2018/06/05: Started working on a GUI tool to submit bindings to this project. It is incomplete, but you can <s><a href="keyboard-submit.html">view my progress so far</a></s>. [ed. dead link]</li>
+	<li>2018/06/05: Started working on a GUI tool to submit bindings to this project. It is incomplete, but you can <s><a href="keyboard-submit.html">view my progress so far</a></s>.</li>
 	<li>2018/06/05: Tweaked some HTML and CSS code. Added box borders to the default style.</li>
 	<li>2018/06/04: You can now select between the HTML, SVG and MediaWiki formats from the front page and charts. Hopefully, I can get PDF output working sometime soon.</li>
 	<li>2018/06/04: Renamed the &quot;svg&quot; URL query to &quot;fmt&quot; since there are now more than two formats.</li>
@@ -120,7 +169,7 @@
 	<li>2017/05/29: I removed the Dvorak layout, since it was only used once, and was never properly implemented in the first place.</li>
 	<li>2017/05/29: You can now switch back and forth between SVG and HTML versions of the charts by simply changing the <tt>&amp;svg=</tt> URL parameter to equal 1 or 0.</li>
 	<li>2017/01/04: Altered several styles' appearances.</li>
-	<li>2017/01/04: Created SVG versions of the charts (<a href="./keyboard-chart.php?gam=1&sty=15&lay=1&svg=1">here's a sample</a>). They are less compatible with older browsers, but are better compatible with different wiki software. Once again, remember to change the numbers after the &quot;gam=&quot; and &quot;lay=&quot; portions of the URL to the correct game and layout ID.</li>
+	<li>2017/01/04: Created SVG versions of the charts (<s><a href="./keyboard-chart.php?gam=1&sty=15&lay=1&svg=1">here's a sample</a></s>). They are less compatible with older browsers, but are better compatible with different wiki software. Once again, remember to change the numbers after the &quot;gam=&quot; and &quot;lay=&quot; portions of the URL to the correct game and layout ID.</li>
 	<li>2017/01/04: Renamed the website from &quot;Video Game Keyboard Control Charts&quot; to &quot;Video Game Keyboard Diagrams&quot;.</li>
 	<li>2017/01/04: Switched the order of the &quot;Games&quot;, &quot;Styles&quot; and &quot;Layouts&quot; menus on the front page to &quot;Games&quot;, &quot;Layouts&quot; and &quot;Styles&quot;.</li>
 	<li>2017/01/04: Checks are now done to make sure each style is only applied to the proper layout. Non-matching styles are now grayed-out in the front page menu, and error messages are now printed to the chart screen.</li>
@@ -174,7 +223,7 @@
 	<li>2009/05/11: After several years of neglect, I've done a major overhaul of the project's scripts. Please forgive (and report) any errors! Also, feel free to submit new bindings, layouts or styles.</li>
 	<li>This project was initially started circa 2004 when my site was still hosted at GeoCities. Back then it was mostly pure JavaScript and HTML. (Free GeoCities accounts were not permitted to use PHP or MySQL.) It has come a long way since then. ;)</li>
 </ul>
-<h2>Credits</h2>
+<h3>Credits</h3>
 <p>If you have submitted layouts, bindings or styles, then your name will also appear at the bottom of each diagram.</p>
 <h4 style="margin:0.5em;">Binding schemes</h4>
 <ul style="margin:0.5em;">
@@ -202,6 +251,8 @@
 	<li>CSS checkbox code by W3Schools (<a target="_blank" href="https://www.w3schools.com/howto/howto_css_custom_checkbox.asp">link</a>)</li>
 	<li>JavaScript table sorting routine by W3Schools (<a target="_blank" href="https://www.w3schools.com/howto/howto_js_sort_table.asp">link</a>)</li>
 	<li>Recaptcha script from Stack Overflow (<a target="_blank" href="https://stackoverflow.com/questions/30006081/recaptcha-2-0-with-ajax">link</a>)</li>
+	<li>normalize.css by Nicolas Gallagher (<a target="_blank" href="github.com/necolas/normalize.css">link</a>)</li>
+	<li>jQuery JavaScript Library v1.4.2 by John Resig (<a target="_blank" href="http://jquery.com/">link</a>)</li>
 </ul>
 <h4 style="margin:0.5em;">Icon graphics</h4>
 <ul style="margin:0.5em;">
@@ -212,9 +263,8 @@
 	<li>"Plus" by P.J. Onori (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
 	<li>"Delete" by P.J. Onori (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
 </ul>
-<h2>Links to Further Reading</h2>
+<h3>Links to Further Reading</h3>
 <ul>
-
 	<li>ShortcutMapper (<a target="_blank" href="http://waldobronchart.github.io/ShortcutMapper/">link</a>)</li>
 	<li>Keyboard Layout Editor (<a target="_blank" href="http://www.keyboard-layout-editor.com/">link</a>)</li>
 	<li>KeyXL Keyboard Shortcuts (<a target="_blank" href="http://www.keyxl.com/">link</a>)</li>
@@ -226,4 +276,13 @@
 	<li>Virtual-Key Codes (<a target="_blank" href="http://msdn.microsoft.com/en-us/library/ms645540.aspx">link</a>)</li>
 	<li>Generate a Heatmap of your Keystrokes (<a target="_blank" href="http://www.blendedtechnologies.com/visualization-tricks-generate-a-heatmap-of-your-keystrokes/">link</a>)</li>
 </ul>
-<?php echo $page_bot; ?>
+<?php
+	echo
+"		</main>
+		<footer>\n";
+	include($path_lib1 . "keyboard-footer-2.php");
+	echo
+"		</footer>
+	</body>
+</html>\n";
+?>

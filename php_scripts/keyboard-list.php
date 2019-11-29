@@ -1,17 +1,4 @@
 <?php
-	header("Content-Type: text/html; charset=utf8");
-	$path_root	= "../";
-	$page_title	= "VGKD - Master List";
-	$page_onload	= "sortTableInit();Toggle_Waiting(false);";
-	$analytics	= true;
-	$is_short	= true;
-	$foot_array	= array("copyright","license_kbd");
-	$java_array	= ["./lib/keyboard-list.js",$path_root . "java/sort_table.js"];
-	$stys_array	= ["./lib/style_alphalist.css"];
-	include($path_root . "ssi/normalpage.php");
-	echo $page_top;
-?>
-<?php
 	// Video Game Keyboard Diagrams
 	// Copyright (C) 2018  Michael Horvath
         // 
@@ -31,9 +18,22 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
-	include($path_root . "ssi/keyboard-connection.php");
-	include("./lib/keyboard-common.php");
-	include("./lib/keyboard-queries.php");
+	header("Content-Type: text/html; charset=utf8");
+
+	$path_file		= "./keyboard-list.php";	// this file
+	$path_root1		= "../";		// for HTML and JS files
+	$path_lib1		= "./lib/";		// for HTML and JS files
+	$path_java1		= "../java/";		// for HTML and JS files
+	$path_ssi1		= "../ssi/";		// for HTML and JS files
+	$path_root2		= "../../";		// for PHP files
+	$path_lib2		= "./";			// for PHP files
+	$path_java2		= "../../java/";	// for PHP files
+	$path_ssi2		= "../../ssi/";		// for PHP files
+
+	include($path_ssi1	. "analyticstracking.php");
+	include($path_ssi1	. "keyboard-connection.php");
+	include($path_lib1	. "keyboard-common.php");
+	include($path_lib1	. "keyboard-queries.php");
 
 	$genre_array		= [];
 	$layout_array		= [];
@@ -63,7 +63,31 @@
 	mysqli_close($con);
 
 	echo
-"<img id=\"waiting\" src=\"./lib/animated_loading_icon.webp\" alt=\"loading\" style=\"position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;\"/>
+"<!DOCTYPE HTML>
+<html lang=\"en\">
+	<head>
+		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
+		<title>VGKD - Master List</title>
+		<link rel=\"canonical\" href=\"http://isometricland.net/keyboard/keyboard-list.php\"/>
+		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_masterlist.css\"/>
+		<script src=\"" . $path_lib1  . "keyboard-list.js\"></script>
+		<script src=\"" . $path_java1 . "sort_table.js\"></script>
+		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
+		<meta name=\"description\" content=\"\"/>
+		<meta name=\"keywords\" content=\"\"/>\n";
+	echo writeAnalyticsTracking();
+	echo
+"	</head>
+	<body onload=\"sortTableInit();Toggle_Waiting(false);\">
+		<header>
+			<h2>VGKD - Master List</h2>
+			<p>You can sort the table by clicking on the icons in the table headers.</p>
+		</header>
+		<main>
+<img id=\"waiting\" src=\"./lib/animated_loading_icon.webp\" alt=\"loading\" style=\"position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;\"/>
 <table id=\"tableToSort\" class=\"kbd_tab\">
 	<tr>
 		<th onclick=\"Wait_and_Sort(0);\">Name		<span id=\"arrw_u0\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d0\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n0\" class=\"arrw_n\">&#9674;</span></th>
@@ -129,6 +153,12 @@
 	}
 
 	echo
-"</table>\n";
+"</table>
+		</main>
+		<footer>";
+	include($path_lib1 . "keyboard-footer-2.php");
+	echo
+"		</footer>
+	</body>
+</html>\n";
 ?>
-<?php echo $page_bot; ?>

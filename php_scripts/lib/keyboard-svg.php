@@ -20,7 +20,7 @@
 
 	header("Content-type: image/svg+xml");
 
-	$path_file		= "./keyboard-svg.php";
+	$path_file		= "./keyboard-svg.php";		// this file
 	$context		= "svg";
 	$stylegroup_id		= 0;
 	$position_table		= [];
@@ -69,7 +69,7 @@
 	checkURLParameters();		// gather and validate URL parameters
 	selThisLanguageStrings();
 	selPlatformsFront();
-	selThisLayoutFront();
+	selLayoutsFront();
 	selAuthors();
 	selStyleGroups();
 	selStyles();

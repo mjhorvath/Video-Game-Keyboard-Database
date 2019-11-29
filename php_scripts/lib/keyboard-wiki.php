@@ -20,7 +20,7 @@
 
 	header("Content-Type: text/html; charset=utf8");
 
-	$path_file		= "./keyboard-wiki.php";	// should create a script to fill this variable in
+	$path_file		= "./keyboard-wiki.php";	// this file
 	$keys_number		= 118;		// hardcoded!
 	$actions_number		= 10;		// hardcoded!
 	$legend_number		= 12;		// hardcoded!
@@ -97,7 +97,7 @@
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
 		<title>" . cleantextHTML($page_title_a . $temp_separator . $page_title_b) . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
-		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root2 . "favicon.png\"/>
+		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root2 . "style_normalize.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_common.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_mediawiki.css\"/>
@@ -106,8 +106,9 @@
 		<meta name=\"keywords\" content=\""	. cleantextHTML($language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name)	. "\"/>
 ";
 	echo writeAnalyticsTracking();
+	echo
+"	</head>\n";
 ?>
-	</head>
 	<body style="margin:auto;width:80%;">
 		<header>
 			<h2><?php echo cleantextHTML($page_title_a . $temp_separator . $page_title_b); ?></h2>

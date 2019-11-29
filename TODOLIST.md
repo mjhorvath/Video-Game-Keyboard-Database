@@ -80,6 +80,8 @@
 * The tables "contribs_layouts", "contribs_games" and "contribs_styles" are 
   missing time and date stamps properly indicating when items were added or 
   updated.
+* See the notes at the bottom of "keyboard-footer.php" for my thoughts on how 
+  to improve the contributers list in the footer of each page.
 
 ### Database Schema
 * Right now it may only be incidental that bindings and positions match up with 
@@ -113,11 +115,10 @@
   I sort and re-index the "keygroups" tables without affecting any other tables 
   that might have foreign key constraints? What's the best method of specifying 
   a custom sort order?
-* The "commands" table could be split into multiple tables, one for each type 
-  of command. After doing this, the "commandtypes" table could be deleted.
 * The "mouse", "joystick", "cheat code", etc. commands are named and described 
   in both the "commandtypes" table and the "languages" table. Can one of these 
-  be eliminated?
+  be eliminated? See the notes I wrote around the "resThisLanguageStrings" and 
+  "resCommands" functions.
 
 ### Optimizations
 * Should maybe store the SVG patterns, filters and gradients in separate files 
@@ -210,18 +211,16 @@
 * Search the source code for instances of the word "hardcoded", since they 
   represent data that should really be put in/retrieved from the database.
 * Should the "non" color be added to the color tables too?
-* Tweak the "cleantext" functions and/or the query functions so that separate 
-  copies of every query function are required for HTML and SVG.
-* None of the pages in this project should use my website's style. They should 
-  all feature their own very minimal style without my site's branding. Needs to 
-  link back to the rest of my site at least.
 * Maybe create a new "cleantext" function for JS files? I want to always use 
   single quotes for strings inside JS code, versus double quotes in HTML files.
-* The "$path_file" variable should be assigned automatically using a script. 
-  OTOH, it's only used in one file. I could simply delete it.
 * The functions "leadingZeros2" and "leadingZeros3" should be made recursive so 
   only one function is required.
-* Maybe move the "print_key_html" function to the one file it was written for.
+* Maybe move the "print_key_html" function to the file it was written for. None 
+  of the other files need it.
+* The "Patterned Grayscale" style really sucks. I need to work on it.
+* The "seourl_table" JavaScript array on the frontend page could probably be 
+  replaced with a script that automatically generates the seourl strings.
+* Need to create a new favicon just for this project.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent page's title in the page headers 
@@ -254,6 +253,15 @@
   they should be able to do more. Or maybe add a "New" button to the submission 
   form that asks for some basic info and a desired layout, and then blanks 
   every field. [Ed. the latter would be much easier to do than the former.]
+
+### Rejected
+* Tweak the "cleantext" functions and/or the query functions so that separate 
+  copies of every query function are no longer required for HTML and SVG.
+  [Ed. That ended up adding more complexity than it eliminated.]
+* The "$path_file" variable should be assigned automatically using a script. 
+  OTOH, it's only used in one file. I could simply delete it. [Ed. since so 
+  many scripts are included, the "$path_file" variable was the best way to keep 
+  track of all the different files. Plus, it is needed in the footer.]
 
 ### Completed
 * In the submission form, selecting a colored OPTION element should change the 
@@ -348,3 +356,6 @@
   scheme.
 * The "entities" table should be renamed to "url_queries" or something similar. 
   The current name is too ambiguous.
+* None of the pages in this project should use my website's style. They should 
+  all feature their own very minimal style without my site's branding. Needs to 
+  link back to the rest of my site at least.

@@ -246,17 +246,16 @@
 		}
 		array_multisort($platform_order_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $platform_array, $layout_array);
 	}
-	function selThisLayoutFront()
+	function selLayoutsFront()
 	{
 		global $con;
 		$selectString = "SELECT l.platform_id, l.layout_id, l.layout_name FROM layouts AS l ORDER BY l.layout_name;";
-		selectQuery($con, $selectString, "resThisLayoutFront");
+		selectQuery($con, $selectString, "resLayoutsFront");
 	}
-	function resThisLayoutFront($in_result)
+	function resLayoutsFront($in_result)
 	{
 		global $layout_array;
-		$layout_row = mysqli_fetch_row($in_result);
-		if ($layout_row)
+		while ($layout_row = mysqli_fetch_row($in_result))
 		{
 			// platform_id, layout_id, layout_name
 			$platform_id = $layout_row[0];
@@ -522,6 +521,7 @@
 			$stylesrecord_id = $stylesrecord_row[0];
 		}
 	}
+	// make sure the columns are synced with the TSV page of the submission form
 	function selBindings()
 	{
 		global $con, $gamesrecord_id;
@@ -537,6 +537,7 @@
 			$binding_table[$temp_row[14]-1] = $temp_row;
 		}
 	}
+	// make sure the columns are synced with the TSV page of the submission form
 	function selLegends()
 	{
 		global $con, $gamesrecord_id;
@@ -552,15 +553,16 @@
 			$legend_table[] = [$temp_row[0], $temp_row[1]];
 		}
 	}
+	// make sure the columns are synced with the TSV page of the submission form
 	function selCommands()
 	{
 		global $con, $gamesrecord_id;
 		$selectString = "SELECT c.commandtype_id, c.command_text, c.command_description FROM commands AS c WHERE c.record_id = " . $gamesrecord_id . ";";
 		selectQuery($con, $selectString, "resCommands");
 	}
-	// it might be better to only have one table for all of these
-	// it might make it a little easier to expand the number of command types
-	// not sure if the counters are strictly necessary
+	// it might be better to only have one larger table for all of these commands
+	// it might make it a little easier to expand the number of command types in the future
+	// also not sure if the counters are strictly necessary since it's very easy to get the length of each table
 	function resCommands($in_result)
 	{
 		global	$combo_table, $mouse_table, $joystick_table, $note_table, $cheat_table, $console_table, $emote_table,
@@ -602,13 +604,17 @@
 			}
 		}
 	}
-	// the structure of the "languages" table makes it harder to add new command types
 	function selThisLanguageStrings()
 	{
 		global $con, $layout_language;
 		$selectString = "SELECT l.language_code, l.language_title, l.language_description, l.language_keywords, l.language_legend, l.language_mouse, l.language_joystick, l.language_keyboard, l.language_notes, l.language_cheats, l.language_console, l.language_emote FROM languages AS l WHERE l.language_id = " . $layout_language . ";";
 		selectQuery($con, $selectString, "resThisLanguageStrings");
 	}
+	// the structure of the "languages" table makes it harder to add new command types
+	// I could create a bridge table with "commandtype_id" and "language_id" as constraints
+	// should I name it "command_language" or "language_commmand"?
+	// note that the "commandtypes" table *also* has text descriptions in English
+	// there should really only be text descriptions in one place
 	function resThisLanguageStrings($in_result)
 	{
 		global $language_code, $language_title, $language_description, $language_keywords, $language_legend, $language_mouse, $language_joystick, $language_keyboard, $language_note, $language_cheat, $language_console, $language_emote;
