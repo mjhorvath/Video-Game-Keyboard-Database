@@ -72,10 +72,10 @@
 	selPlatformsFront();
 	selThisLayoutFront();
 	sortGames();			// not a query
-	selGamesAutoinc();
+	selThisGameAutoinc();
 	selThisLayoutAutoinc();
-	selStylesAutoinc();
-	selSeourl();
+	selThisStyleAutoinc();
+	selSeoUrl();
 	selGameRecords();
 	selStyleRecords();
 

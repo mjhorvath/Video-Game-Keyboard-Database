@@ -65,7 +65,7 @@
 	selURLQueries();		// gather and validate URL parameters
 	selDefaults();			// get default values for urlqueries if missing
 	checkURLParameters();		// gather and validate URL parameters
-	selLanguageStrings();
+	selThisLanguageStrings();
 	selAuthors();
 	selStyleGroups();
 	selStyles();
@@ -97,8 +97,8 @@
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
 		<title>" . cleantextHTML($page_title_a . $temp_separator . $page_title_b) . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
-		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
+		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root2 . "favicon.png\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root2 . "style_normalize.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_common.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_mediawiki.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>

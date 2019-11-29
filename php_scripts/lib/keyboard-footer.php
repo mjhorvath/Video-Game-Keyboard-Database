@@ -20,7 +20,7 @@
 	echo
 "			<script src=\"" . $path_lib1 . "keyboard-footer.js\"></script>
 			<div class=\"boxdiv\">
-				<p><a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\"><img alt=\"GNU LGPLv3 icon\" src=\"" . $path_root . "images/license_lgpl_88x31.png\" /></a><a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/3.0/\"><img alt=\"CC BY-SA 3.0 icon\" style=\"border-width:0;\" src=\"" . $path_root . "images/license_cc-by-sa_88x31.png\" /></a></p>
+				<p><a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\"><img alt=\"GNU LGPLv3 icon\" src=\"" . $path_root2 . "images/license_lgpl_88x31.png\" /></a><a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/3.0/\"><img alt=\"CC BY-SA 3.0 icon\" style=\"border-width:0;\" src=\"" . $path_root2 . "images/license_cc-by-sa_88x31.png\" /></a></p>
 				<p>&quot;Video Game Keyboard Diagrams&quot; software was created by Michael Horvath and is licensed under <a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\">GNU LGPLv3</a> or later license. Content is licensed under <a target=\"_blank\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CC BY-SA 3.0</a> or later license. You can find this project on <a target=\"_blank\" href=\"https://github.com/mjhorvath/vgkd\">GitHub</a>.</p>
 				<p>Return to <a href=\"./keyboard.php\">Video Game Keyboard Diagrams</a>. View the <a href=\"./keyboard-list.php\">master list</a>. Having trouble printing? Take a look at <a href=\"./keyboard.php#print_tips\">these printing tips</a>.</p>\n";
 	// display toggles
@@ -95,8 +95,12 @@
 				</form>
 				<p>Items marked with a star (&#10022;) are the &quot;default&quot; or most common options.</p>
 				<p>\n";
-	// having someone's name repeated here three times bothers me
-	// is there a way to have someone's name listed here only once?
+	// having someone's name repeated here three times bothers me. is there a way to have someone's name listed here only once?
+	// something like the following would be very easy to do if there were only one contributer
+	// "Binding scheme, keyboard layout and visual theme created by: Michael Horvath."
+	// something like this would be a little harder
+	// "Binding scheme created by Michael Horvath and John Smith. Keyboard layout and visual theme created by: Michael Horvath."
+
 	echo "Binding scheme created by: ";
 	$count_authors = count($gamesrecord_authors);
 	for ($i = 0; $i < $count_authors; $i++)
@@ -129,6 +133,6 @@
 	}
 	echo
 "				</p>
-				<p>" . getFileTime($path_lib2 . $path_file) . " GRID: " . $gamesrecord_id . "</p>
+				<p>" . getFileTime() . " GRID: " . $gamesrecord_id . "</p>
 			</div>\n";
 ?>

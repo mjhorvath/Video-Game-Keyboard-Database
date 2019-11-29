@@ -34,7 +34,7 @@
 	$default_format_name	= "";
 	$color_array		= [];
 	$class_array		= [];
-	$urlqueries_array		= [];
+	$urlqueries_array	= [];
 	$language_code		= "";
 	$language_title		= "";
 	$language_description	= "";
@@ -202,8 +202,8 @@
 	}
 	function pageTitle()
 	{
-		global	$temp_separator, $page_title_a, $page_title_b, $language_title,
-			$temp_game_name, $temp_platform_name, $temp_layout_name, $temp_style_name, $temp_format_name, $gamesrecord_id;
+		global	$page_title_a, $page_title_b, $language_title, $gamesrecord_id,
+			$temp_separator, $temp_game_name, $temp_platform_name, $temp_layout_name, $temp_style_name, $temp_format_name;
 		$temp_separator	= " - ";
 		$page_title_a	= $temp_game_name;
 		$page_title_b	= $language_title . $temp_separator . $temp_platform_name . $temp_separator . $temp_layout_name . $temp_separator . $temp_style_name . $temp_separator . $temp_format_name . $temp_separator . "GRID:" . $gamesrecord_id;
@@ -341,15 +341,30 @@
 		}
 		return $outstring;
 	}
-	function getFileTime($in_file)
+	function testPathInfo()
 	{
+		global $path_lib2, $path_file;
+//		$path_parts = pathinfo($_SERVER["REQUEST_URI"]);
+//		$path_parts = pathinfo(__FILE__);
+		$path_parts = pathinfo($path_lib2 . $path_file);
+		echo $path_parts["dirname"],	"<br>";
+		echo $path_parts["basename"],	"<br>";
+		echo $path_parts["extension"],	"<br>";
+		echo $path_parts["filename"],	"<br>";	// since PHP 5.2.0
+	}
+	function getFileTime()
+	{
+		global $path_lib2, $path_file;
+		$in_file = $path_lib2 . $path_file;
+		$path_parts = pathinfo($in_file);
+		$base_name = $path_parts["basename"];
 		if (file_exists($in_file))
 		{
-			return "Last modified: " . date ("F d Y H:i:s.", filemtime($in_file));
+			return "Page: " . $base_name . ". Last modified: " . date("F d Y H:i:s.", filemtime($in_file));
 		}
 		else
 		{
-			return "Last modified: File does not exist.";
+			return "Page: " . $base_name . ". Last modified: File does not exist.";
 		}
 	}
 	function sortGames()
@@ -370,7 +385,7 @@
 		$temp_game_name		= $game_name		? $game_name		: "Unrecognized Game";
 		$temp_platform_name	= $platform_name	? $platform_name	: "Unrecognized Platform";
 		$temp_layout_name	= $layout_name		? $layout_name		: "Unrecognized Layout";
-		$temp_style_name	= $style_name		? $style_name		: "Unrecognized Theme";
+		$temp_style_name	= $style_name		? $style_name		: "Unrecognized Style";
 		$temp_format_name	= $format_name		? $format_name		: "Unrecognized Format";
 		// checking for $game_id or $game_name  isn't working right now
 		// do we need to check for $format_id and $format_name too?
@@ -384,7 +399,7 @@
 		}
 		if (!$style_name)
 		{
-			$errors_table[] = "Theme with ID number " . $style_id . " not found.";
+			$errors_table[] = "Style with ID number " . $style_id . " not found.";
 		}
 		if (!$gamesrecord_id)
 		{
@@ -392,7 +407,7 @@
 		}
 		if (!$stylesrecord_id)
 		{
-			$errors_table[] = "No configurations found for theme \"" . $temp_style_name . "\" and layout \"" . $temp_layout_name . "\".";
+			$errors_table[] = "No configurations found for style \"" . $temp_style_name . "\" and layout \"" . $temp_layout_name . "\".";
 		}
 	}
 ?>

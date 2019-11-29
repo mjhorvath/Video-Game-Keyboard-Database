@@ -19,7 +19,7 @@
 	// <https://www.gnu.org/licenses/>.
 
 	header("Content-Type: text/html; charset=utf8");
-	include($path_root	. "ssi/recaptchakey.php");
+	include($path_root2	. "ssi/recaptchakey.php");
 
 	$path_file		= "./keyboard-submit.php";
 	$write_maximal_keys	= true;
@@ -87,7 +87,7 @@
 	selURLQueries();		// gather and validate URL parameters
 	selDefaults();			// get default values for urlqueries if missing
 	checkURLParameters();		// gather and validate URL parameters
-	selLanguageStrings();
+	selThisLanguageStrings();
 	selAuthors();
 	selStyleGroups();
 	selStyles();
@@ -145,8 +145,8 @@
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
 		<title>" . cleantextHTML($page_title_a . $temp_separator . $page_title_b) . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
-		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
+		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root2 . "favicon.png\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root2 . "style_normalize.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_common.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\""	. cleantextHTML($language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name)	. ")\"/>
@@ -159,7 +159,7 @@
 	echo
 "		</style>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_submit.css\"/>
-		<script src=\"" . $path_root . "java/jquery-3.3.1.min.js\"></script>
+		<script src=\"" . $path_root2 . "java/jquery-3.3.1.min.js\"></script>
 		<script src=\"" . $path_lib1 . "keyboard-submit.js\"></script>
 		<script src=\"https://www.google.com/recaptcha/api.js\"></script>
 		<script>

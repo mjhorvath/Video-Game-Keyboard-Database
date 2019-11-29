@@ -214,6 +214,9 @@
   single quotes for strings inside JS code, versus double quotes in HTML files.
 * The "$path_file" variable should be assigned automatically using a script. 
   OTOH, it's only used in one file. I could simply delete it.
+* The functions "leadingZeros2" and "leadingZeros3" should be made recursive so 
+  only one function is required.
+* Maybe move the "print_key_html" function to the one file it was written for.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent page's title in the page headers 

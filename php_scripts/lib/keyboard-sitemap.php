@@ -19,12 +19,12 @@
 	// <https://www.gnu.org/licenses/>.
 
 	$path_file		= "./keyboard-sitemap.php";
-	$path_root		= "../../";	// for PHP files
+	$path_root2		= "../../";	// for PHP files
 	$path_lib1		= "./lib/";	// for HTML and JS files
 	$path_lib2		= "./";		// for PHP files
 
-	include($path_root	. "ssi/analyticstracking.php");
-	include($path_root	. "ssi/keyboard-connection.php");
+	include($path_root2	. "ssi/analyticstracking.php");
+	include($path_root2	. "ssi/keyboard-connection.php");
 	include($path_lib2	. "keyboard-common.php");
 	include($path_lib2	. "keyboard-queries.php");
 
@@ -45,7 +45,7 @@
 
 	// MySQL queries
 	selGamesList();
-	selThisLayoutList();
+	selLayoutsList();
 	selGamesRecordsList();
 	selPlatformsList();
 

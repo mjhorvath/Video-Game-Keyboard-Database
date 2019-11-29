@@ -67,7 +67,7 @@
 	selURLQueries();		// gather and validate URL parameters
 	selDefaults();			// get default values for urlqueries if missing
 	checkURLParameters();		// gather and validate URL parameters
-	selLanguageStrings();
+	selThisLanguageStrings();
 	selPlatformsFront();
 	selThisLayoutFront();
 	selAuthors();
