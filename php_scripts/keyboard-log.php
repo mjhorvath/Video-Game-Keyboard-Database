@@ -58,18 +58,21 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2019/11/29: Added links to the change log as well as to my website to the page footers.</li>
+	<li>2019/11/29: Mouse, joystick, etc. commands are now displayed programmatically, making it much easier to add new command types.</li>
+	<li>2019/11/29: Created the &quot;commandlabels&quot; table. It contains localized labels for the various command types.</li>
 	<li>2019/11/29: Added more info about dependencies to this log.</li>
 	<li>2019/11/29: Divorced the project's visual style from that of my main website.</li>
 	<li>2019/11/29: Renamed several tables in the database. Deleted some tables I am not using right now.</li>
 	<li>2019/11/29: Text strings are no longer &quot;cleaned&quot; until the very last possible moment. Fixed a bug in the &quot;cleantextJS&quot; function in the process.</li>
 	<li>2019/11/29: Merged the HTML and SVG database queries together. Still need to check and compare the other queries.</li>
-	<li>2019/11/28: The dimensions of the keyboard pane on the submission form were not being calculated dynamically.</li>
+	<li>2019/11/28: The dimensions of the keyboard pane on the submission form are now being calculated dynamically.</li>
 	<li>2019/11/28: On the submission form, the selected key now has an animated border.</li>
 	<li>2019/11/28: Moved more shared code into &quot;keyboard-init.php&quot; and &quot;keyboard-common.php&quot;.</li>
 	<li>2019/11/27: Moved &quot;keyboard-init.php&quot; to &quot;lib&quot;. Updated &quot;htaccess&quot; accordingly.</li>
-	<li>2019/11/27: Language codes are now determined dynamically. Still require more of the text to be localized, however.</li>
+	<li>2019/11/27: Language codes are now determined programmatically. Still require more of the text to be localized, however.</li>
 	<li>2019/11/27: Fixed a bug when &quot;$game_seo&quot; is null.</li>
-	<li>2019/11/27: Color-related HTML code is now generated dynamically based on these tables.</li>
+	<li>2019/11/27: Color-related HTML code is now generated programmatically based on these tables.</li>
 	<li>2019/11/26: Style color/class names are now retrieved from the database.</li>
 	<li>2019/11/26: Renamed the &quot;legend_group&quot; column in the &quot;legends&quot; table to &quot;keygroup_id&quot; and created a foreign key constraint on that column.</li>
 	<li>2019/11/26: Tweaked the page heading area on the submission form.</li>

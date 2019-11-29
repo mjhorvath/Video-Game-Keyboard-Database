@@ -40,13 +40,6 @@
 	$language_description	= "";
 	$language_keywords	= "";
 	$language_legend	= "";
-	$language_mouse		= "";
-	$language_joystick	= "";
-	$language_keyboard	= "";
-	$language_note		= "";
-	$language_cheat		= "";
-	$language_console	= "";
-	$language_emote		= "";
 	$temp_game_seo		= "";
 	$temp_game_name		= "";
 	$temp_layout_name	= "";
@@ -282,12 +275,13 @@
 			}
 		}
 	}
-	// maybe move this to the file that requires it, as it is very specific
+	// need a version of this function for "keyboard-svg.php"
 	function print_key_html($in_id, $in_class, $in_color, $in_value)
 	{
 		echo
 "								<div id=\"" . $in_id . "\" class=\"" . $in_class . "\">" . cleantextHTML($in_value) . "</div>\n";
 	}
+	// there must be some easier way to do this using native PHP functions!
 	function cleantextHTML($instring)
 	{
 		return str_replace("\\t","\t",str_replace("\\r","",str_replace("\\n","<br/>",str_replace("\r","",str_replace("\n","",str_replace("<","&lt;",str_replace(">","&gt;",str_replace("\"","&quot;",str_replace("'","&#39;",str_replace("&","&amp;",$instring))))))))));

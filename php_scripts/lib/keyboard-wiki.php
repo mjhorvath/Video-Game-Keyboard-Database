@@ -104,7 +104,7 @@
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\""	. cleantextHTML($language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name)	. ")\"/>
 		<meta name=\"keywords\" content=\""	. cleantextHTML($language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name)	. "\"/>
-";
+		<script src=\"" . $path_lib1 . "keyboard-footer.js\"></script>\n";
 	echo writeAnalyticsTracking();
 	echo
 "	</head>\n";

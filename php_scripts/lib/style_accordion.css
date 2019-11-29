@@ -1,24 +1,6 @@
 h2.acc_lbl {
 }
 
-div.acc_check, div.acc_xmark {
-  float:right;
-  display:none;
-  font-size:xx-large;
-  padding:0em;
-  margin:0em;
-}
-
-div.acc_check {
-  color:#00a000;
-  margin-top:0.1em;
-}
-
-div.acc_xmark {
-  color:#c00000;
-  margin-top:0.1em;
-}
-
 div.acc_div {
   margin:0.5em;
   display:inline-block;
@@ -47,7 +29,7 @@ ul.acc_mnu ul {
 }
 
 ul.acc_mnu, ul.acc_mnu ul {
-  background:#444;
+  background:#505050;
   list-style-type:none;
   margin:0;
   padding:0;
@@ -63,53 +45,53 @@ ul.acc_mnu a {
 }
 
 ul.acc_mnu li {
-  border-top:0.1em solid #aaa;
+  border-top:0.1em solid #b0b0b0;
 }
 
 ul.acc_mnu li a {
-  background:#333;
-  color:#fff;	
+  background:#404040;
+  color:#ffffff;	
   padding:0.2em;
   padding-left:0.5em;
   cursor:default;
 }
 
 ul.acc_mnu li a:hover {
-  background:#000;
+  background:#000000;
 }
 
 ul.acc_mnu li ul {
-  background:#bbb;
+  background:#c0c0c0;
   height:15em;
   overflow:auto;
 }
 
 ul.acc_mnu li ul li a {
-  color:#000;
+  color:#000000;
   padding:0.2em;
   cursor:default;
   margin-right:1px;
 }
 
 ul.acc_mnu li ul li a.acc_nrm {
-  background:#ccc;
+  background:#d0d0d0;
   padding-left:2em;
 }
 
 ul.acc_mnu li ul li a.acc_dis {
-  color:#aaa;
-  background:#ccc;
+  color:#b0b0b0;
+  background:#d0d0d0;
   padding-left:2em;
 }
 
 ul.acc_mnu li ul li a.acc_sel {
-  background:#cc0;
-  border-left:0.5em #000 solid;
+  background:#d0d000;
+  border-left:0.5em #000000 solid;
   padding-left:1.5em;
 }
 
 ul.acc_mnu li ul li a.acc_nrm:hover {
-  background:#aaa;
-  border-left:0.5em #000 solid;
+  background:#b0b0b0;
+  border-left:0.5em #000000 solid;
   padding-left:1.5em;
 }

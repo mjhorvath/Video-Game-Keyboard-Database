@@ -22,6 +22,8 @@
 	include($path_ssi2 . "recaptchakey.php");
 
 	$path_file		= "./keyboard-submit.php";		// this file
+	$command_table		= [];
+	$commandlabels_table	= [];
 	$write_maximal_keys	= true;
 	$debug_text		= "";
 	$stylegroup_id		= 0;
@@ -29,14 +31,6 @@
 	$keystyle_table		= [];
 	$binding_table		= [];
 	$legend_table		= [];
-	$command_table		= [];
-	$combo_table		= [];
-	$mouse_table		= [];
-	$joystick_table		= [];
-	$note_table		= [];
-	$cheat_table		= [];
-	$console_table		= [];
-	$emote_table		= [];
 	$author_table		= [];
 	$style_table		= [];
 	$stylegroup_table	= [];
@@ -45,13 +39,6 @@
 	$gamesrecord_authors	= [];
 	$stylesrecord_id	= 0;
 	$stylesrecord_authors	= [];
-	$combo_count		= 0;
-	$mouse_count		= 0;
-	$joystick_count		= 0;
-	$note_count		= 0;
-	$cheat_count		= 0;
-	$console_count		= 0;
-	$emote_count		= 0;
 	$style_filename		= "";
 	$style_name		= "";
 	$game_name		= "";
@@ -107,6 +94,7 @@
 	selLegendColors();
 	selKeyStyles();
 	selKeyStyleClasses();
+	selCommandLabels();
 
 	// close MySQL connection
 	mysqli_close($con);
@@ -161,6 +149,7 @@
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_submit.css\"/>
 		<script src=\"" . $path_root2 . "java/jquery-3.3.1.min.js\"></script>
 		<script src=\"" . $path_lib1 . "keyboard-submit.js\"></script>
+		<script src=\"" . $path_lib1 . "keyboard-footer.js\"></script>
 		<script src=\"https://www.google.com/recaptcha/api.js\"></script>
 		<script>
 var record_id = " . $gamesrecord_id . ";
@@ -269,7 +258,7 @@ var binding_table =
 	}
 	echo
 "];
-</script>\n";
+		</script>\n";
 ?>
 	</head>
 	<body onload="init_submissions();">
@@ -373,26 +362,28 @@ var binding_table =
 		{
 			if (array_key_exists($i, $position_table))
 			{
-				// position_left, position_top, position_width, position_height, symbol_low, symbol_cap, symbol_altgr, key_number, lowkey_optional
+					// these get cleaned later by the print_key_html function
+				// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowcap_optional, numpad
 				$key_sty	= array_key_exists($i, $keystyle_table) ? getkeyclass($keystyle_table[$i][0]) : "";
 				$position_row	= $position_table[$i];
-				$pos_lft	= $position_row[0] + $layout_keygap/2;
-				$pos_top	= $position_row[1] + $layout_keygap/2;
-				$pos_wid	= $position_row[2] - $layout_keygap;		// 4
-				$pos_hgh	= $position_row[3] - $layout_keygap;
-				$low_nor	= cleantextHTML($position_row[4]);
-				$upp_nor	= cleantextHTML($position_row[5]);
-				$low_agr	= cleantextHTML($position_row[6]);
-				$upp_agr	= cleantextHTML($position_row[7]);
-				$key_num	= $position_row[8];
-				$key_opt	= $position_row[9];
+				$pos_lft	= $position_row[ 0] + $layout_keygap/2;
+				$pos_top	= $position_row[ 1] + $layout_keygap/2;
+				$pos_wid	= $position_row[ 2] - $layout_keygap;		// 4px
+				$pos_hgh	= $position_row[ 3] - $layout_keygap;		// 4px
+				$low_nor	= $position_row[ 4];
+				$upp_nor	= $position_row[ 5];
+				$low_agr	= $position_row[ 6];
+				$upp_agr	= $position_row[ 7];
+				$key_num	= $position_row[ 8];
+				$key_opt	= $position_row[ 9];
+				$key_ten	= $position_row[10];
 				$img_wid	= 48;
 				$img_hgh	= 48;
 				$img_pos_x	= $pos_wid/2 - $img_wid/2;
 				$img_pos_y	= $pos_hgh/2 - $img_hgh/2;
 				if (array_key_exists($i, $binding_table))
 				{
-					// should I use cleantextHTML here?
+					// these get cleaned later by the print_key_html function
 					// normal_group, normal_action, shift_group, shift_action, ctrl_group, ctrl_action, alt_group, alt_action, altgr_group, altgr_action, extra_group, extra_action, image_file, image_uri, key_number
 					$binding_row	= $binding_table[$i];
 					$bkg_nor = getkeycolor($binding_row[ 0]);
@@ -530,6 +521,7 @@ var binding_table =
 					</div>
 					<div id="table_legend" class="inbtop">
 <?php
+	// legend
 	for ($i = 0; $i < count($color_array); $i++)
 	{
 		$leg_value = "";
@@ -560,212 +552,44 @@ var binding_table =
 					</div>
 				</div>
 				<div id="flxdiv">
-					<div class="inbtop comdiv">
-						<h3><?php echo cleantextHTML($language_keyboard); ?></h3>
-						<div id="table_combo" class="nottbl">
 <?php
-		// combo
-		for ($i = 0; $i < $combo_count; $i++)
+	$command_type_count = count($command_table);
+	for ($i = 0; $i < $command_type_count; $i++)
+	{
+		$command_type_array = $command_table[$i];
+		$command_type_label = $commandlabels_table[$i][1];
+		$command_type_abbrv = $commandlabels_table[$i][2];
+		$command_count = count($command_type_array);
+		if ($command_count > 0)
 		{
-			$combo_row = $combo_table[$i];
-			if ($combo_row[0] || $combo_row[1])
+			echo
+"					<div class=\"inbtop comdiv\">
+						<h3>" . cleantextHTML($command_type_label) . "</h3>
+						<div id=\"table_" . $command_type_abbrv . "\" class=\"nottbl\">\n";
+
+			for ($j = 0; $j < $command_count; $j++)
 			{
-				$combo_com = cleantextHTML($combo_row[0]);
-				$combo_des = cleantextHTML($combo_row[1]);
+				$this_command = $command_type_array[$j];
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $combo_com . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . cleantextHTML($this_command[1]) . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $combo_des . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . cleantextHTML($this_command[2]) . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
-		}
-?>
-							<div class="notrow">
-								<div class="notcll cllone"></div>
-								<div class="notcll clltwo"></div>
-								<div class="notcll cllthr"></div>
-								<div class="notcll cllfor"><button class="butadd" type="button">+</button></div>
-							</div>
-						</div>
-					</div>
-					<div class="inbtop comdiv">
-						<h3><?php echo cleantextHTML($language_mouse); ?></h3>
-						<div id="table_mouse" class="nottbl">
-<?php
-		// mouse
-		for ($i = 0; $i < $mouse_count; $i++)
-		{
-			$mouse_row = $mouse_table[$i];
-			if ($mouse_row[0] || $mouse_row[1])
-			{
-				$mouse_com = cleantextHTML($mouse_row[0]);
-				$mouse_des = cleantextHTML($mouse_row[1]);
-				echo
+			echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $mouse_com . "\"/></div>
-								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $mouse_des . "\"/></div>
-								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
-							</div>\n";
-			}
-		}
-?>
-							<div class="notrow">
-								<div class="notcll cllone"></div>
-								<div class="notcll clltwo"></div>
-								<div class="notcll cllthr"></div>
-								<div class="notcll cllfor"><button class="butadd" type="button">+</button></div>
+								<div class=\"notcll cllone\"></div>
+								<div class=\"notcll clltwo\"></div>
+								<div class=\"notcll cllthr\"></div>
+								<div class=\"notcll cllfor\"><button class=\"butadd\" type=\"button\">+</button></div>
 							</div>
 						</div>
-					</div>
-					<div class="inbtop comdiv">
-						<h3><?php echo cleantextHTML($language_joystick); ?></h3>
-						<div id="table_joystick" class="nottbl">
-<?php
-		// joystick
-		for ($i = 0; $i < $joystick_count; $i++)
-		{
-			$joystick_row = $joystick_table[$i];
-			if ($joystick_row[0] || $joystick_row[1])
-			{
-				$joystick_com = cleantextHTML($joystick_row[0]);
-				$joystick_des = cleantextHTML($joystick_row[1]);
-				echo
-"							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $joystick_com . "\"/></div>
-								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $joystick_des . "\"/></div>
-								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
-							</div>\n";
-			}
+					</div>\n";
 		}
-?>
-							<div class="notrow">
-								<div class="notcll cllone"></div>
-								<div class="notcll clltwo"></div>
-								<div class="notcll cllthr"></div>
-								<div class="notcll cllfor"><button class="butadd" type="button">+</button></div>
-							</div>
-						</div>
-					</div>
-					<div class="inbtop comdiv">
-						<h3><?php echo cleantextHTML($language_note); ?></h3>
-						<div id="table_note" class="nottbl">
-<?php
-		// note
-		for ($i = 0; $i < $note_count; $i++)
-		{
-			$note_row = $note_table[$i];
-			if ($note_row[0] || $note_row[1])
-			{
-				$note_com = cleantextHTML($note_row[0]);
-				$note_des = cleantextHTML($note_row[1]);
-				echo
-"							<div class=\"notrow\">
-								<div class=\"notcll txtone\"><textarea onchange=\"flag_doc_dirty();\">" . $note_des . "</textarea></div>
-								<div class=\"notcll txttwo\"><button class=\"txtsub\" type=\"button\">-</button></div>
-							</div>\n";
-			}
-		}
-?>
-							<div class="notrow">
-								<div class="notcll txtone"></div>
-								<div class="notcll txttwo"><button class="txtadd" type="button">+</button></div>
-							</div>
-						</div>
-					</div>
-					<div class="inbtop comdiv">
-						<h3><?php echo cleantextHTML($language_cheat); ?></h3>
-						<div id="table_cheat" class="nottbl">
-<?php
-		// cheat
-		for ($i = 0; $i < $cheat_count; $i++)
-		{
-			$cheat_row = $cheat_table[$i];
-			if ($cheat_row[0] || $cheat_row[1])
-			{
-				$cheat_com = cleantextHTML($cheat_row[0]);
-				$cheat_des = cleantextHTML($cheat_row[1]);
-				echo
-"							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $cheat_com . "\"/></div>
-								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $cheat_des . "\"/></div>
-								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
-							</div>\n";
-			}
-		}
-?>
-							<div class="notrow">
-								<div class="notcll cllone"></div>
-								<div class="notcll clltwo"></div>
-								<div class="notcll cllthr"></div>
-								<div class="notcll cllfor"><button class="butadd" type="button">+</button></div>
-							</div>
-						</div>
-					</div>
-					<div class="inbtop comdiv">
-						<h3><?php echo cleantextHTML($language_console); ?></h3>
-						<div id="table_console" class="nottbl">
-<?php
-		// console
-		for ($i = 0; $i < $console_count; $i++)
-		{
-			$console_row = $console_table[$i];
-			if ($console_row[0] || $console_row[1])
-			{
-				$console_com = cleantextHTML($console_row[0]);
-				$console_des = cleantextHTML($console_row[1]);
-				echo
-"							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $console_com . "\"/></div>
-								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $console_des . "\"/></div>
-								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
-							</div>\n";
-			}
-		}
-?>
-							<div class="notrow">
-								<div class="notcll cllone"></div>
-								<div class="notcll clltwo"></div>
-								<div class="notcll cllthr"></div>
-								<div class="notcll cllfor"><button class="butadd" type="button">+</button></div>
-							</div>
-						</div>
-					</div>
-					<div class="inbtop comdiv">
-						<h3><?php echo cleantextHTML($language_emote); ?></h3>
-						<div id="table_emote" class="nottbl">
-<?php
-		// emote
-		for ($i = 0; $i < $emote_count; $i++)
-		{
-			$emote_row = $emote_table[$i];
-			if ($emote_row[0] || $emote_row[1])
-			{
-				$emote_com = cleantextHTML($emote_row[0]);
-				$emote_des = cleantextHTML($emote_row[1]);
-				echo
-"							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $emote_com . "\"/></div>
-								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $emote_des . "\"/></div>
-								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
-							</div>\n";
-			}
-		}
-?>
-							<div class="notrow">
-								<div class="notcll cllone"></div>
-								<div class="notcll clltwo"></div>
-								<div class="notcll cllthr"></div>
-								<div class="notcll cllfor"><button class="butadd" type="button">+</button></div>
-							</div>
-						</div>
-					</div>
+	}
+ ?>
 				</div>
 				<footer>
 <?php include($path_lib2 . "keyboard-footer.php"); ?>

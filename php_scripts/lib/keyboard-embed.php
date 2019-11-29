@@ -21,31 +21,21 @@
 	header("Content-Type: text/html; charset=utf8");
 
 	$path_file		= "./keyboard-embed.php";	// this file
-	$stylegroup_id		= 0;
 	$command_table		= [];
-	$combo_table		= [];
-	$joystick_table		= [];
-	$mouse_table		= [];
-	$note_table		= [];
+	$commandlabels_table	= [];
 	$author_table		= [];
 	$style_table		= [];
 	$gamesrecord_id		= 0;
 	$gamesrecord_authors	= [];
 	$stylesrecord_id	= 0;
 	$stylesrecord_authors	= [];
-	$combo_count		= 0;
-	$mouse_count		= 0;
-	$joystick_count		= 0;
-	$note_count		= 0;
-	$cheat_count		= 0;
-	$console_count		= 0;
-	$emote_count		= 0;
+	$stylegroup_id		= 0;
 	$style_filename		= "";
 	$style_name		= "";
-	$style_author		= "";
 	$game_name		= "";
 	$platform_name		= "";
 	$platform_id		= 0;
+	// layout params
 	$layout_name		= "";
 	$layout_authors		= [];
 	$layout_keysnum		= 0;
@@ -90,6 +80,7 @@
 	selContribsGames();
 	selContribsStyles();
 	selContribsLayouts();
+	selCommandLabels();
 
 	// close connection
 	mysqli_close($con);
@@ -127,7 +118,7 @@
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
 		<meta name=\"description\" content=\""	. $language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name	. ")\"/>
 		<meta name=\"keywords\" content=\""	. $language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
-";
+		<script src=\"" . $path_lib1 . "keyboard-footer.js\"></script>\n";
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";
@@ -149,7 +140,7 @@
 /*
 	echo
 "				<div style=\"position:absolute;left:600px;top:521.5px;width:728px;height:90px;padding:0;margin:0;z-index:10;\">\n";
-	include($path_root2 . "ssi/adsense_horz_large.php");
+	include($path_ssi2 . "adsense_horz_large.php");
 	echo
 "				</div>\n";
 */
@@ -157,158 +148,29 @@
 			</div>
 			<div id="flxdiv">
 <?php
-	// combo
-	if ($combo_count > 0)
+	// commands
+	$command_type_count = count($command_table);
+	for ($i = 0; $i < $command_type_count; $i++)
 	{
-		echo
-"			<div class=\"comdiv\">
-				<h3>" . $language_keyboard . "</h3>
-				<p>\n";
-		for ($i = 0; $i < $combo_count; $i++)
+		$command_type_array = $command_table[$i];
+		$command_type_label = $commandlabels_table[$i][1];
+		$command_type_abbrv = $commandlabels_table[$i][2];
+		$command_count = count($command_type_array);
+		if ($command_count > 0)
 		{
-			$combo_row = $combo_table[$i];
-			if ($combo_row[0] || $combo_row[1])
+			echo
+"				<div class=\"comdiv\">
+					<h3>" . cleantextHTML($command_type_label) . "</h3>
+					<p>\n";
+			for ($j = 0; $j < $command_count; $j++)
 			{
-				$combo_com = cleantextHTML($combo_row[0]);
-				$combo_des = cleantextHTML($combo_row[1]);
-				echo $combo_com . " = " . $combo_des . "<br>\n";
+				$this_command = $command_type_array[$j];
+				echo cleantextHTML($this_command[1]) . " = " . cleantextHTML($this_command[2]) . "<br>\n";
 			}
+			echo
+"					</p>
+				</div>\n";
 		}
-		echo
-"				</p>
-			</div>\n";
-	}
-
-	// mouse
-	if ($mouse_count > 0)
-	{
-		echo
-"			<div class=\"comdiv\">
-				<h3>" . $language_mouse . "</h3>
-				<p>\n";
-		for ($i = 0; $i < $mouse_count; $i++)
-		{
-			$mouse_row = $mouse_table[$i];
-			if ($mouse_row[0] || $mouse_row[1])
-			{
-				$mouse_com = cleantextHTML($mouse_row[0]);
-				$mouse_des = cleantextHTML($mouse_row[1]);
-				echo $mouse_com . " = " . $mouse_des . "<br>\n";
-			}
-		}
-		echo
-"				</p>
-			</div>\n";
-	}
-
-	// joystick
-	if ($joystick_count > 0)
-	{
-		echo
-"			<div class=\"comdiv\">
-				<h3>" . $language_joystick . "</h3>
-				<p>\n";
-		for ($i = 0; $i < $joystick_count; $i++)
-		{
-			$joystick_row = $joystick_table[$i];
-			if ($joystick_row[0] || $joystick_row[1])
-			{
-				$joystick_com = cleantextHTML($joystick_row[0]);
-				$joystick_des = cleantextHTML($joystick_row[1]);
-				echo $joystick_com . " = " . $joystick_des . "<br>\n";
-			}
-		}
-		echo
-"				</p>
-			</div>\n";
-	}
-
-	// note
-	if ($note_count > 0)
-	{
-		echo
-"			<div class=\"comdiv\">
-				<h3>" . $language_note . "</h3>
-				<p>\n";
-		for ($i = 0; $i < $note_count; $i++)
-		{
-			$note_row = $note_table[$i];
-			if ($note_row[0] || $note_row[1])
-			{
-				$note_com = cleantextHTML($note_row[0]);
-				$note_des = cleantextHTML($note_row[1]);
-				echo $note_des . "<br>\n";
-			}
-		}
-		echo
-"				</p>
-			</div>\n";
-	}
-
-	// cheat
-	if ($cheat_count > 0)
-	{
-		echo
-"			<div class=\"comdiv\">
-				<h3>" . $language_cheat . "</h3>
-				<p>\n";
-		for ($i = 0; $i < $cheat_count; $i++)
-		{
-			$cheat_row = $cheat_table[$i];
-			if ($cheat_row[0] || $cheat_row[1])
-			{
-				$cheat_com = cleantextHTML($cheat_row[0]);
-				$cheat_des = cleantextHTML($cheat_row[1]);
-				echo $cheat_com . " = " . $cheat_des . "<br>\n";
-			}
-		}
-		echo
-"				</p>
-			</div>\n";
-	}
-
-	// console
-	if ($console_count > 0)
-	{
-		echo
-"			<div class=\"comdiv\">
-				<h3>" . $language_console . "</h3>
-				<p>\n";
-		for ($i = 0; $i < $console_count; $i++)
-		{
-			$console_row = $console_table[$i];
-			if ($console_row[0] || $console_row[1])
-			{
-				$console_com = cleantextHTML($console_row[0]);
-				$console_des = cleantextHTML($console_row[1]);
-				echo $console_com . " = " . $console_des . "<br>\n";
-			}
-		}
-		echo
-"				</p>
-			</div>\n";
-	}
-
-	// emote
-	if ($emote_count > 0)
-	{
-		echo
-"			<div class=\"comdiv\">
-				<h3>" . $language_emote . "</h3>
-				<p>\n";
-		for ($i = 0; $i < $emote_count; $i++)
-		{
-			$emote_row = $emote_table[$i];
-			if ($emote_row[0] || $emote_row[1])
-			{
-				$emote_com = cleantextHTML($emote_row[0]);
-				$emote_des = cleantextHTML($emote_row[1]);
-				echo $emote_com . " = " . $emote_des . "<br>\n";
-			}
-		}
-		echo
-"				</p>
-			</div>\n";
 	}
 ?>
 			</div>

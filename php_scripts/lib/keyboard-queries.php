@@ -557,7 +557,7 @@
 	function selCommands()
 	{
 		global $con, $gamesrecord_id;
-		$selectString = "SELECT c.commandtype_id, c.command_text, c.command_description FROM commands AS c WHERE c.record_id = " . $gamesrecord_id . ";";
+		$selectString =	"SELECT c.commandtype_id, c.command_text, c.command_description FROM commands AS c WHERE c.record_id = " . $gamesrecord_id . ";";
 		selectQuery($con, $selectString, "resCommands");
 	}
 	// it might be better to only have one larger table for all of these commands
@@ -565,49 +565,35 @@
 	// also not sure if the counters are strictly necessary since it's very easy to get the length of each table
 	function resCommands($in_result)
 	{
-		global	$combo_table, $mouse_table, $joystick_table, $note_table, $cheat_table, $console_table, $emote_table,
-			$combo_count, $mouse_count, $joystick_count, $note_count, $cheat_count, $console_count, $emote_count;
+		global	$command_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
 			// commandtype_id, command_text, command_description
-			$temp_array = [$temp_row[1], $temp_row[2]];
-			switch ($temp_row[0])
-			{
-				case (1):
-					$combo_table[] = $temp_array;
-					$combo_count += 1;
-				break;
-				case (2):
-					$mouse_table[] = $temp_array;
-					$mouse_count += 1;
-				break;
-				case (3):
-					$joystick_table[] = $temp_array;
-					$joystick_count += 1;
-				break;
-				case (4):
-					$note_table[] = $temp_array;
-					$note_count += 1;
-				break;
-				case (5):
-					$cheat_table[] = $temp_array;
-					$cheat_count += 1;
-				break;
-				case (6):
-					$console_table[] = $temp_array;
-					$console_count += 1;
-				break;
-				case (7):
-					$emote_table[] = $temp_array;
-					$emote_count += 1;
-				break;
-			}
+			$command_table[$temp_row[0]-1][] = $temp_row;
+		}
+	}
+	function selCommandLabels()
+	{
+		global $con, $layout_language;
+		$selectString =	"SELECT l.commandtype_id, l.commandlabel_string, t.commandtype_abbrv
+				FROM commandlabels AS l, commandtypes AS t
+				WHERE l.language_id = " . $layout_language . "
+				AND l.commandtype_id = t.commandtype_id;";
+		selectQuery($con, $selectString, "resCommandLabels");
+	}
+	function resCommandLabels($in_result)
+	{
+		global $commandlabels_table;
+		while ($temp_row = mysqli_fetch_row($in_result))
+		{
+			// commandtype_id, commandlabel_string, commandtype_abbrv
+			$commandlabels_table[$temp_row[0]-1] = $temp_row;
 		}
 	}
 	function selThisLanguageStrings()
 	{
 		global $con, $layout_language;
-		$selectString = "SELECT l.language_code, l.language_title, l.language_description, l.language_keywords, l.language_legend, l.language_mouse, l.language_joystick, l.language_keyboard, l.language_notes, l.language_cheats, l.language_console, l.language_emote FROM languages AS l WHERE l.language_id = " . $layout_language . ";";
+		$selectString = "SELECT l.language_code, l.language_title, l.language_description, l.language_keywords, l.language_legend FROM languages AS l WHERE l.language_id = " . $layout_language . ";";
 		selectQuery($con, $selectString, "resThisLanguageStrings");
 	}
 	// the structure of the "languages" table makes it harder to add new command types
@@ -617,23 +603,16 @@
 	// there should really only be text descriptions in one place
 	function resThisLanguageStrings($in_result)
 	{
-		global $language_code, $language_title, $language_description, $language_keywords, $language_legend, $language_mouse, $language_joystick, $language_keyboard, $language_note, $language_cheat, $language_console, $language_emote;
+		global $language_code, $language_title, $language_description, $language_keywords, $language_legend;
 		$temp_row = mysqli_fetch_row($in_result);
 		if ($temp_row)
 		{
-			// language_code, language_title, language_description, language_keywords, language_legend, language_mouse, language_joystick, language_keyboard, language_notes, language_cheats, language_console, language_emote
+			// language_code, language_title, language_description, language_keywords, language_legend
 			$language_code		= $temp_row[ 0];
 			$language_title		= $temp_row[ 1];
 			$language_description	= $temp_row[ 2];
 			$language_keywords	= $temp_row[ 3];
 			$language_legend	= $temp_row[ 4];
-			$language_mouse		= $temp_row[ 5];
-			$language_joystick	= $temp_row[ 6];
-			$language_keyboard	= $temp_row[ 7];
-			$language_note		= $temp_row[ 8];
-			$language_cheat		= $temp_row[ 9];
-			$language_console	= $temp_row[10];
-			$language_emote		= $temp_row[11];
 		}
 	}
 

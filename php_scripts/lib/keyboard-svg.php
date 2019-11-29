@@ -21,7 +21,6 @@
 	header("Content-type: image/svg+xml");
 
 	$path_file		= "./keyboard-svg.php";		// this file
-	$context		= "svg";
 	$stylegroup_id		= 0;
 	$position_table		= [];
 	$keystyle_table		= [];
@@ -191,7 +190,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 				<dc:creator>
 					<rdf:Bag>
 <?php
-	// need to handle duplicate names somehow
+	// need to handle duplicate names better somehow
 	// or prefix each line with "Binding scheme created by..." or whatever
 	for ($i = 0; $i < count($gamesrecord_authors); $i++)
 	{
@@ -330,7 +329,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 				$upp_agr	= cleantextSVG($position_row[ 7]);
 				$key_num	= $position_row[ 8];
 				$key_opt	= $position_row[ 9];
-				$key_ten	= $position_row[ 10];		// to hide the numpad keys (and sometimes some adjacent function keys)
+				$key_ten	= $position_row[ 10];
 				$img_wid	= 48;
 				$img_hgh	= 48;
 				$img_pos_x	= $layout_keygap/2 + $pos_wid/2 - $img_wid/2 - 1/2;

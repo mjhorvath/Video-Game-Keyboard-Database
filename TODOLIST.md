@@ -46,14 +46,14 @@
   on just the animated border instead. Not sure if I should do the same for the 
   hover state as well.
 
-### MediaWiki Code
-* Generate MediaWiki code for layouts and styles in addition to games.
-* Add support in the MediaWiki template for toggling the numpad on/off. [Ed. it 
-  may actually be possible to do this already. Need to double check.]
+### MediaWiki
+* Should generate MediaWiki code for layouts and styles in addition to games.
+* Should add support in the MediaWiki templates for toggling the numpad on/off. 
+  [Ed. I may have actually done this already. Need to double check.]
 * Add support in the MediaWiki template for Shift/CTRL/Alt command colors, even 
   if it is not actually possible to display these colors properly at this time.
   [Ed. the reasoning being that it may become possible to display these colors 
-  properly at some point in the future.]
+  properly at some point in the future, once I figure out how they should work.]
 
 ### Auditing, Authors, Submissions, Etc.
 * Should create a table of authors/contributers that automatically pulls info 
@@ -119,8 +119,14 @@
   in both the "commandtypes" table and the "languages" table. Can one of these 
   be eliminated? See the notes I wrote around the "resThisLanguageStrings" and 
   "resCommands" functions.
+* Instead of having one genre per game, I could maybe create a tag cloud so 
+  that a game can be placed in multiple genres. What type of GUI would this 
+  necessitate? Is this even possible using MySQL? [Ed. it is possible but would 
+  require a lengthy bridge table.]
+* How granular should I get with respect to video game genres? Should I list 
+  sub-genres and sub-sub-genres? How many genres? Which ones?
 
-### Optimizations
+### Optimization
 * Should maybe store the SVG patterns, filters and gradients in separate files 
   to be included only when needed, rather than cluttering up "keyboard-svg.php".
 * Currently, all the SQL queries are very simple, and all processing of data is 
@@ -133,28 +139,41 @@
 * Not sure every table needs its own numerical index column. Using two or more 
   preexisting columns to form a composite key might suffice in many cases.
 
-### Miscellaneous
-* I would also like to create charts/diagrams for gamepads, mice and joysticks. 
-  But the sheer number of different devices will make this task very difficult.
-* Not sure whether the XML sitemap should list each game once for every 
-  platform/layout, or only once, period. Does it confuse search engines to have 
-  multiple diagrams for each game?
-* Should the accordion menus on the front-end page be sorted alphabetically, or 
-  should I add a "displayorder" column to each SQL table? If I can come up with 
-  an easy way to update a "displayorder" column using SQL commands, then I may 
-  add one to each of the tables. Updating such a column manually would be a 
-  PITA, however.
+### Presentation
+* Need to create a new favicon just for this project.
+* Use flexbox or grid for the accordion containers instead of float or inline 
+  display.
+* Maybe replace the "up", "down", "right" and "left" key captions with arrow 
+  icons? (Or Unicode arrow characters?)
+* Experiment again with scaling and rotating the diagrams so that they become 
+  easier to print. IIRC, last time I tried this it didn't work in every browser.
+* Need to create one or more styles that are accessible to people with color-
+  blindness.
+* The "Create New Diagram" button on the front-end page should have a flat gray 
+  style like the other form elements on the same page.
+* Since the main diagrams are now rendered in SVG instead of HTML, I could make 
+  it so that the Enter keys on the European ISO layouts have the correct "L" 
+  shape. I.e. a polygon with six vertices instead a rectangle with four 
+  vertices. However, the database currently only stores a key's XY position, 
+  width and height - not the coordinates of its four vertices.
 * Should the mouse, joystick, etc. commands be lined up neatly into pairs with 
   the left and right parts separated by an equal '=' sign? For instance using a 
   table? Or should I instead use a definition/description list? This should not 
   be too hard since I already store the left and right texts in separate fields 
   within the database itself.
-* Instead of having one genre per game, I could maybe create a tag cloud so 
-  that a game can be placed in multiple genres. What type of GUI would this 
-  necessitate? Is this even possible using MySQL? [Ed. it is possible but would 
-  require a lengthy bridge table.]
-* How granular should I get with respect to video game genres? Should I list 
-  sub-genres and sub-sub-genres? How many genres? Which ones?
+* Should the accordion menus on the front-end page be sorted alphabetically, or 
+  should I add a "displayorder" column to each SQL table? If I can come up with 
+  an easy way to update such a "displayorder" column using SQL commands, then I 
+  may add one to each of the tables. Updating such a column manually would be a 
+  PITA, however.
+* Add some breadcrumbs to the "plain" pages.
+
+### Miscellaneous
+* I would also like to create charts/diagrams for gamepads, mice and joysticks. 
+  But the sheer number of different devices will make this task very difficult.
+* Not sure whether the XML sitemap file should list each game once for every 
+  platform/layout, or only once, period. Does it confuse search engines to have 
+  multiple diagrams for each game?
 * I merged the HTML and SVG formats into one format. The diagrams are no longer 
   rendered using pure HTML code, and the SVG files are now once again embedded 
   within an HTML wrapper. (This is also how the old "embed" format worked.) Not 
@@ -163,8 +182,8 @@
   themselves embedded within HTML files?
 * Now that I have ditched the HTML format in favor of SVG for the principal 
   rendering method, should I update the submission editor to use SVG as well? 
-  This will require some cross-frame JavaScript, and may require some method of 
-  text input for the SVG files. Not sure this is going to be easy.
+  This would require some cross-frame JavaScript, and some method of text input 
+  for the SVG files. Not sure this is going to be easy.
 * Users should maybe be able to press the ALT modifier key and see the bindings 
   that make use of that modifier. There is another project on the Internet that 
   works in this manner. Need to check it out.
@@ -172,55 +191,42 @@
   using FileZilla. Is it a bug or setting in the software? I now have to fix 
   the permissions manually each time I upload a new file. I need to figure out 
   what is going on.
-* Since the main diagrams are now rendered in SVG instead of HTML, I could make 
-  it so that the Enter keys on the European ISO layouts have the correct "L" 
-  shape. I.e. a polygon with six vertices instead a rectangle with four 
-  vertices. However, the database currently only stores a key's XY position, 
-  width and height - not the coordinates of its four vertices.
 * I should be able to easily create "Typing Reference" schemes for every 
   keyboard layout. I would like to have the GUI strings translated into their 
   respective languages before I do this, however.
-* Experiment again with scaling and rotating the diagrams so that they become 
-  easier to print. IIRC, last time I tried this it didn't work in every browser.
-* Need to create one or more styles that are accessible to people with color-
-  blindness.
-* The "Create New Diagram" button on the front-end page should have a "hover" 
-  effect that changes the button's color.
-* Maybe replace the "up", "down", "right" and "left" key captions with arrow 
-  icons? (Or Unicode arrow characters?)
 * The PHP scripts get kind of flaky when both an SEO string *and* a game ID are 
-  provided in the URL. Not sure which of these should override the other.
+  provided in the URL. Not sure which of these should override the other. Need 
+  to investigate this more.
 * Not sure if the GUI string language should be a per-keyboard layout setting, 
   or something the user can configure manually. The latter would require yet 
   another URL query parameter.
-* Whether or not to show lower-case key caps should maybe be a per-game setting 
-  rather than a per-layout setting. Or, allow users toggle them on/off manually.
+* Whether or not to show lower-case key caps should be a per-game setting 
+  rather than a per-layout setting, maybe. Or, allow users toggle them on/off 
+  manually. Would this require more URL query parameters? How about cookies?
 * Maybe merge the "Completed" tasks on this page back into the other categories 
-  and use strike-through text to indicate whether the task has been completed. 
-  Or use GitHub's "Issues" interface. Can GitHub "Issues" be categorized?
+  and use strike-through text to indicate whether a task has been completed or 
+  not. Or use GitHub's "Issues" interface. Can GitHub "Issues" be categorized?
 * Formats are now listed in the database. I could use the database to generate 
   the format list in the page footer now if I wanted to. This is also true for 
   the default numpad state.
-* Make sure there are no more characters that are still escaped in the page 
-  title, since page titles do not benefit from having characters escaped.
+* Make sure there are no characters escaped in the HTML "title" tags, since 
+  page titles do not benefit from this.
 * Make sure I did not overlook any characters that need to be escaped. Is there 
   a library I can use to do this?
-* Need to add "header", "footer", "main" and other HTML5 semantic tags to every 
-  generated page.
-* All HTML code should be echo'd using PHP in order to be consistent, IMO.
+* Echo all HTML code using PHP in order to be consistent, maybe.
 * Search the source code for instances of the word "hardcoded", since they 
   represent data that should really be put in/retrieved from the database.
-* Should the "non" color be added to the color tables too?
-* Maybe create a new "cleantext" function for JS files? I want to always use 
-  single quotes for strings inside JS code, versus double quotes in HTML files.
+* Should the "non" color be added to the database too?
 * The functions "leadingZeros2" and "leadingZeros3" should be made recursive so 
   only one function is required.
 * Maybe move the "print_key_html" function to the file it was written for. None 
   of the other files need it.
 * The "Patterned Grayscale" style really sucks. I need to work on it.
 * The "seourl_table" JavaScript array on the frontend page could probably be 
-  replaced with a script that automatically generates the seourl strings.
-* Need to create a new favicon just for this project.
+  replaced with a script that automatically generates the needed seourl strings.
+* Rename "commandlabels" table to "commandtypelabels" or something similar.
+* Should use JS array shorthand in "keyboard-submit.js".
+* Need to create an SVG equivalent of the "print_key_html" function.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent page's title in the page headers 
@@ -263,7 +269,7 @@
   many scripts are included, the "$path_file" variable was the best way to keep 
   track of all the different files. Plus, it is needed in the footer.]
 
-### Completed
+### Done
 * In the submission form, selecting a colored OPTION element should change the 
   color of the corresponding parent SELECT element as well.
 * A warning should be thrown ONBEFOREUNLOAD if someone attempts to leave the 
@@ -359,3 +365,5 @@
 * None of the pages in this project should use my website's style. They should 
   all feature their own very minimal style without my site's branding. Needs to 
   link back to the rest of my site at least.
+* Need to add "header", "footer", "main" and other HTML5 semantic tags to every 
+  generated page.
