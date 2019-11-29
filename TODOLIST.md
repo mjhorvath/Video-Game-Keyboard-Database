@@ -3,10 +3,12 @@
 ### Submission Form
 * Continue developing the "Spreadsheet View" of the submission form, and permit 
   users to alter or update the keyboard bindings directly using it.
-* There needs to be additional indication on the submission page that there is 
-  a "Help Pane" as well as a "Spreadsheet View".
+* There needs to be additional indication on the submission page to the effect 
+  that there is a "Help Pane" as well as a "Spreadsheet View".
 * "Spreadsheet View" needs to be renamed to something else since I have not 
-  created an actual spreadsheet. Maybe "TSV View" would be a better name.
+  created an actual spreadsheet. Maybe "TSV View" would be a better name. 
+  Alternatively, make the "Spreadsheet View" behave more like an actual spread-
+  sheet.
 * Users should maybe be able to enter text directly onto the keyboard diagram 
   on the submission form. Have to think this through, as things could get very 
   messy.
@@ -17,21 +19,24 @@
 * Need to switch to using something other than JavaScript alert boxes for 
   providing users with feedback. Alert boxes can be disabled by users in some 
   browsers, which is bad. Custom alert boxes could also be made prettier.
-* On the submission form, replace the X icon in the tool bar with arrows 
+* On the submission form, replace the "X" icon in the tool bar with arrows 
   pointing left and right.
 * Need to add instructions to the effect that the SHIFT, ALT, etc. commands may 
   require colors assigned to them, but these colors will not necessarily be 
   displayed in the chart. (At least, in the current version of the chart.)
+  A popup warning does actually get spawned when this is the case. Is the popup 
+  sufficient?
 * I would like to change the text shown in the color selection boxes of the 
   submission form from "non" to "null" or something else. This might have an 
   adverse effect on some scripts, however. Also, the drop down list would take 
-  up more space.
+  up more space due to the added character.
 * Should make the size of the left pane adjustable and make the text input form 
   fields shrink or grow with the size of the pane.
 * Maybe add a checkbox to the submission form so that users can indicate to the 
   developers that bindings for a brand new game are being created. The 
   "record_id" field should then read as "\N" for each record instead of an 
-  existing game's ID.
+  existing game's ID. At the very least, a button to load the "Blank Sample" 
+  should be added to the frontend page.
 * Link to the Excel sheet directly from the submission form, so that those who 
   might prefer using it over the default methods will have easier access to it.
 * On the "spreadsheet view" of the submission form, add buttons to update the 
@@ -39,7 +44,7 @@
   the update feature is fully implemented.
 * On the submission form, should I use the "cleantextHTML" function to clean up 
   the form inputs? What about in the other direction? Should I "clean" the form 
-  inputs before saving them as well?
+  inputs before saving them as well? Can I "un-clean" the inputs?
 * On the submission form, since I now have animated borders around the selected 
   keys, I no longer need to change the background color of the selected keys to 
   indicate the key is selected. I can leave the background color alone and rely 
@@ -74,9 +79,9 @@
   additional pane showing the change history. The tab icon could be an image of 
   a clock face.
 * Hopefully, an update trigger will not be fired for every single row that gets 
-  altered. That would be too much data.
-* Fix the RDF stuff in SVG files so that author names are not duplicated 
-  multiple times.
+  added, removed or altered due to auditing. That would be way too much data.
+* Fix the RDF stuff in SVG files so that author names are not duplicated again 
+  and again and again.
 * The tables "contribs_layouts", "contribs_games" and "contribs_styles" are 
   missing time and date stamps properly indicating when items were added or 
   updated.
@@ -115,16 +120,15 @@
   I sort and re-index the "keygroups" tables without affecting any other tables 
   that might have foreign key constraints? What's the best method of specifying 
   a custom sort order?
-* The "mouse", "joystick", "cheat code", etc. commands are named and described 
-  in both the "commandtypes" table and the "languages" table. Can one of these 
-  be eliminated? See the notes I wrote around the "resThisLanguageStrings" and 
-  "resCommands" functions.
 * Instead of having one genre per game, I could maybe create a tag cloud so 
   that a game can be placed in multiple genres. What type of GUI would this 
   necessitate? Is this even possible using MySQL? [Ed. it is possible but would 
   require a lengthy bridge table.]
 * How granular should I get with respect to video game genres? Should I list 
   sub-genres and sub-sub-genres? How many genres? Which ones?
+* Rename "commandlabels" table to "commandtypelabels" or something similar.
+* The "non" color should be added to the database. Need to also create a 
+  "displayorder" column to ensure the colors are in the correct order.
 
 ### Optimization
 * Should maybe store the SVG patterns, filters and gradients in separate files 
@@ -138,6 +142,7 @@
   the two big files into several smaller ones?
 * Not sure every table needs its own numerical index column. Using two or more 
   preexisting columns to form a composite key might suffice in many cases.
+* Should use JS array shorthand in "keyboard-submit.js".
 
 ### Presentation
 * Need to create a new favicon just for this project.
@@ -166,7 +171,9 @@
   an easy way to update such a "displayorder" column using SQL commands, then I 
   may add one to each of the tables. Updating such a column manually would be a 
   PITA, however.
-* Add some breadcrumbs to the "plain" pages.
+* Maybe add some breadcrumbs to the "plain" pages.
+* The credits bylines in the footers at the bottom of each page are eventually 
+  going to need to be places each on their own line versus all on the same line.
 
 ### Miscellaneous
 * I would also like to create charts/diagrams for gamepads, mice and joysticks. 
@@ -199,7 +206,7 @@
   to investigate this more.
 * Not sure if the GUI string language should be a per-keyboard layout setting, 
   or something the user can configure manually. The latter would require yet 
-  another URL query parameter.
+  another URL query parameter or maybe a cookie.
 * Whether or not to show lower-case key caps should be a per-game setting 
   rather than a per-layout setting, maybe. Or, allow users toggle them on/off 
   manually. Would this require more URL query parameters? How about cookies?
@@ -216,7 +223,6 @@
 * Echo all HTML code using PHP in order to be consistent, maybe.
 * Search the source code for instances of the word "hardcoded", since they 
   represent data that should really be put in/retrieved from the database.
-* Should the "non" color be added to the database too?
 * The functions "leadingZeros2" and "leadingZeros3" should be made recursive so 
   only one function is required.
 * Maybe move the "print_key_html" function to the file it was written for. None 
@@ -224,8 +230,6 @@
 * The "Patterned Grayscale" style really sucks. I need to work on it.
 * The "seourl_table" JavaScript array on the frontend page could probably be 
   replaced with a script that automatically generates the needed seourl strings.
-* Rename "commandlabels" table to "commandtypelabels" or something similar.
-* Should use JS array shorthand in "keyboard-submit.js".
 * Need to create an SVG equivalent of the "print_key_html" function.
 
 ### Problematic
@@ -367,3 +371,7 @@
   link back to the rest of my site at least.
 * Need to add "header", "footer", "main" and other HTML5 semantic tags to every 
   generated page.
+* The "mouse", "joystick", "cheat code", etc. commands are named and described 
+  in both the "commandtypes" table and the "languages" table. Can one of these 
+  be eliminated? See the notes I wrote around the "resThisLanguageStrings" and 
+  "resCommands" functions.
