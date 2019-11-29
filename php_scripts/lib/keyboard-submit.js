@@ -1156,7 +1156,7 @@ function collect_legend_data()
 	// skip first array member
 	for (var i = 1; i < legend_count; i++)
 	{
-		var this_color = color_table[i+1];
+		var this_color = color_table[i];
 		var this_input = document.getElementById('form_cap' + this_color);
 		var this_value = this_input.value;
 		if (this_value != '')
