@@ -20,10 +20,10 @@
 
 	header("Content-Type: text/html; charset=utf8");
 
-	$path_file		= "./keyboard-wiki.php";
-	$keys_number		= 118;		// hardcoded
-	$actions_number		= 10;		// hardcoded
-	$legend_number		= 12;		// hardcoded
+	$path_file		= "./keyboard-wiki.php";	// should create a script to fill this variable in
+	$keys_number		= 118;		// hardcoded!
+	$actions_number		= 10;		// hardcoded!
+	$legend_number		= 12;		// hardcoded!
 	$position_table		= [];
 	$keystyle_table		= [];
 	$binding_table		= [];
@@ -61,30 +61,30 @@
 	}
 	mysqli_query($con, "SET NAMES 'utf8'");
 
-	// these also execute a few MySQL queries
-	getDefaults();			// get default values for entities if missing
-	checkURLParameters();		// gather and validate URL parameters
-
 	// MySQL queries
-	selLanguageStringsHTML();
-	selAuthorsHTML();
-	selStyleGroupsHTML();
-	selStylesHTML();
-	selThisStyleHTML();
-	selFormatsHTML();
-	selPositionsHTML();
-	selLayoutsHTML();
-	selPlatformsHTML();
-	selGamesRecordsHTML();
-	selStylesRecordsHTML();
-	selBindingsHTML();
-	selLegendsHTML();
-	selCommandsHTML();
-	selContribGamesHTML();
-	selContribStylesHTML();
-	selContribLayoutsHTML();
+	selURLQueries();		// gather and validate URL parameters
+	selDefaults();			// get default values for urlqueries if missing
+	checkURLParameters();		// gather and validate URL parameters
+	selLanguageStrings();
+	selAuthors();
+	selStyleGroups();
+	selStyles();
+	selThisStyle();
+	selThisFormat();
+	selPositions();
+	selThisLayout();
+	selThisPlatform();
+	selThisGamesRecord();
+	selThisStylesRecord();
+	selBindings();
+	selLegends();
+	selCommands();
+	selContribsGames();
+	selContribsStyles();
+	selContribsLayouts();
 	selKeystyles();
 
+	// close connection
 	mysqli_close($con);
 
 	checkForErrors();
@@ -95,26 +95,26 @@
 <html lang=\"" . $language_code . "\">
 	<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
-		<title>" . $page_title_a . $temp_separator . $page_title_b . "</title>
+		<title>" . cleantextHTML($page_title_a . $temp_separator . $page_title_b) . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_common.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_mediawiki.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
-		<meta name=\"description\" content=\""	. $language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name	. ")\"/>
-		<meta name=\"keywords\" content=\""	. $language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
+		<meta name=\"description\" content=\""	. cleantextHTML($language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name)	. ")\"/>
+		<meta name=\"keywords\" content=\""	. cleantextHTML($language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name)	. "\"/>
 ";
 	echo writeAnalyticsTracking();
 ?>
 	</head>
 	<body style="margin:auto;width:80%;">
 		<header>
-			<h2><?php echo $page_title_a . $temp_separator . $page_title_b; ?></h2>
+			<h2><?php echo cleantextHTML($page_title_a . $temp_separator . $page_title_b); ?></h2>
 		</header>
 		<main>
 			<p>I have created templates for MediaWiki that do basically the same thing as the other charts on this site. You can find the templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Fandom</a>. Below is the code you would use to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the generated chart is wider than a typical MediaWiki page.</p>
-			<textarea readonly="readonly" wrap="off" style="width:100%;height:30em;font-size:smaller;">
+			<textarea readonly="readonly" wrap="off" style="width:100%;height:30em;font-family:monospace;">
 {{kbdchart
 <?php
 	// keys
@@ -137,7 +137,7 @@
 			$bkg_xtr	= getkeycolor($binding_row[10]);
 			$key_xtr	= cleantextWiki($binding_row[11]);
 		}
-		// is the 'else' really needed here? or can these be skipped?
+		// is the 'else' really needed here? or can these be omitted?
 		else
 		{
 			$bkg_nor = "";

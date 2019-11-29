@@ -21,6 +21,7 @@
 	header("Content-type: image/svg+xml");
 
 	$path_file		= "./keyboard-svg.php";
+	$context		= "svg";
 	$stylegroup_id		= 0;
 	$position_table		= [];
 	$keystyle_table		= [];
@@ -48,8 +49,13 @@
 	$layout_tenkeyless_height	= 400;
 	$layout_legend_padding		= 36;
 	$layout_legend_height		= 72;
+	$layout_min_horizontal	= 0;
+	$layout_max_horizontal	= 0;
+	$layout_min_vertical	= 0;
+	$layout_max_vertical	= 0;
+	$layout_legend_top	= 0;
 
-	// MySQL connection
+	// open MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
 	if (mysqli_connect_errno())
 	{
@@ -57,33 +63,33 @@
 	}
 	mysqli_query($con, "SET NAMES 'utf8'");
 
-	// these also execute a few MySQL queries
-	getDefaults();			// get default values for entities if missing
-	checkURLParameters();		// gather and validate URL parameters
-
 	// MySQL queries
-	selLanguageStringsSVG();
+	selURLQueries();		// gather and validate URL parameters
+	selDefaults();			// get default values for urlqueries if missing
+	checkURLParameters();		// gather and validate URL parameters
+	selLanguageStrings();
 	selPlatformsFront();
-	selLayoutsFront();
-	selAuthorsSVG();
-	selStyleGroupsSVG();
-	selStylesSVG();
-	selThisStyleSVG();
-	selFormatsSVG();
-	selPositionsSVG();
-	selGamesRecordsSVG();
-	selStylesRecordsSVG();
-	selLayoutsSVG();
-	selPlatformsSVG();
-	selBindingsSVG();
-	selLegendsSVG();
-	selContribGamesSVG();
-	selContribStylesSVG();
-	selContribLayoutsSVG();
+	selThisLayoutFront();
+	selAuthors();
+	selStyleGroups();
+	selStyles();
+	selThisStyle();
+	selThisFormat();
+	selPositions();
+	selThisGamesRecord();
+	selThisStylesRecord();
+	selThisLayout();
+	selThisPlatform();
+	selBindings();
+	selLegends();
+	selContribsGames();
+	selContribsStyles();
+	selContribsLayouts();
 	selLegendColors();
 	selKeyStyles();
 	selKeyStyleClasses();
 
+	// close MySQL connection
 	mysqli_close($con);
 
 	checkForErrors();
@@ -155,8 +161,8 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	xmlns:ev="http://www.w3.org/2001/xml-events"
 	viewBox="<?php echo $layout_min_horizontal . " " . $layout_min_vertical . " " . $layout_max_horizontal . " " . $layout_max_vertical; ?>"
 	width="<?php echo $layout_max_horizontal; ?>" height="<?php echo $layout_max_vertical; ?>">
-	<title><?php echo $page_title_a . $temp_separator . $page_title_b; ?></title>
-	<desc>Keyboard diagram for <?php echo $temp_game_name; ?>.</desc>
+	<title><?php echo cleantextSVG($page_title_a . $temp_separator . $page_title_b); ?></title>
+	<desc><?php echo cleantextSVG("Keyboard diagram for " . $temp_game_name); ?>.</desc><!-- partially hardcoded -->
 	<metadata id="license"
 		xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 		xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -176,8 +182,8 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 				<cc:requires rdf:resource="http://creativecommons.org/ns#ShareAlike" />
 			</cc:License>
 			<rdf:Description about=""
-				dc:title="<?php echo $page_title_a . $temp_separator . $page_title_b; ?>"
-				dc:description="<?php echo $language_description . $temp_game_name . ". (" . $temp_style_name . ")"; ?>"
+				dc:title="<?php echo cleantextSVG($page_title_a . $temp_separator . $page_title_b); ?>"
+				dc:description="<?php echo cleantextSVG($language_description . $temp_game_name . ". (" . $temp_style_name . ")"); ?>"
 				dc:publisher="Video Game Keyboard Diagrams"
 				dc:date="<?php echo date("Y-m-d H:i:s"); ?>"
 				dc:format="image/svg+xml"
@@ -190,17 +196,17 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	for ($i = 0; $i < count($gamesrecord_authors); $i++)
 	{
 		echo
-"						<rdf:li>" . $gamesrecord_authors[$i] . "</rdf:li>\n";
+"						<rdf:li>" . cleantextSVG($gamesrecord_authors[$i]) . "</rdf:li>\n";
 	}
 	for ($i = 0; $i < count($layout_authors); $i++)
 	{
 		echo
-"						<rdf:li>" . $layout_authors[$i] . "</rdf:li>\n";
+"						<rdf:li>" . cleantextSVG($layout_authors[$i]) . "</rdf:li>\n";
 	}
 	for ($i = 0; $i < count($stylesrecord_authors); $i++)
 	{
 		echo
-"						<rdf:li>" . $stylesrecord_authors[$i] . "</rdf:li>\n";
+"						<rdf:li>" . cleantextSVG($stylesrecord_authors[$i]) . "</rdf:li>\n";
 	}
 ?>
 					</rdf:Bag>
@@ -302,7 +308,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	for ($i = 0; $i < count($errors_table); $i++)
 	{
 		echo
-"	<text y=\"" . ($i * 20) . "\">" . $errors_table[$i] . "</text>\n";
+"	<text y=\"" . ($i * 20) . "\">" . cleantextSVG($errors_table[$i]) . "</text>\n";
 	}
 	// keys
 	if (($gamesrecord_id > 0) && ($stylesrecord_id > 0))
@@ -314,16 +320,17 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 				// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowkey_optional, numpad
 				$key_sty	= array_key_exists($i, $keystyle_table) ? getkeyclass($keystyle_table[$i][0]) : "";
 				$position_row	= $position_table[$i];
-				$pos_lft	= $position_row[0] + $layout_keygap/2;
-				$pos_top	= $position_row[1] + $layout_keygap/2;
-				$pos_wid	= $position_row[2] - $layout_keygap;		//4
-				$pos_hgh	= $position_row[3] - $layout_keygap;
-				$low_nor	= cleantextSVG($position_row[4]);
-				$upp_nor	= cleantextSVG($position_row[5]);
-				$low_agr	= cleantextSVG($position_row[6]);
-				$upp_agr	= cleantextSVG($position_row[7]);
-				$key_opt	= $position_row[9];
-				$key_num	= $position_row[10];		// to hide the numpad keys (and sometimes some adjacent function keys)
+				$pos_lft	= $position_row[ 0] + $layout_keygap/2;
+				$pos_top	= $position_row[ 1] + $layout_keygap/2;
+				$pos_wid	= $position_row[ 2] - $layout_keygap;		//4
+				$pos_hgh	= $position_row[ 3] - $layout_keygap;
+				$low_nor	= cleantextSVG($position_row[ 4]);
+				$upp_nor	= cleantextSVG($position_row[ 5]);
+				$low_agr	= cleantextSVG($position_row[ 6]);
+				$upp_agr	= cleantextSVG($position_row[ 7]);
+				$key_num	= $position_row[ 8];
+				$key_opt	= $position_row[ 9];
+				$key_ten	= $position_row[ 10];		// to hide the numpad keys (and sometimes some adjacent function keys)
 				$img_wid	= 48;
 				$img_hgh	= 48;
 				$img_pos_x	= $layout_keygap/2 + $pos_wid/2 - $img_wid/2 - 1/2;
@@ -331,17 +338,18 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
 				if (array_key_exists($i, $binding_table))
 				{
+					// normal_group, normal_action, shift_group, shift_action, ctrl_group, ctrl_action, alt_group, alt_action, altgr_group, altgr_action, extra_group, extra_action, image_file, image_uri
 					$binding_row	= $binding_table[$i];
-					$bkg_nor = getkeycolor($binding_row[0]);
-					$cap_nor = splittext(cleantextSVG($binding_row[1]));
-					$bkg_shf = getkeycolor($binding_row[2]);
-					$cap_shf = splittext(cleantextSVG($binding_row[3]));
-					$bkg_ctl = getkeycolor($binding_row[4]);
-					$cap_ctl = splittext(cleantextSVG($binding_row[5]));
-					$bkg_alt = getkeycolor($binding_row[6]);
-					$cap_alt = splittext(cleantextSVG($binding_row[7]));
-					$bkg_agr = getkeycolor($binding_row[8]);
-					$cap_agr = splittext(cleantextSVG($binding_row[9]));
+					$bkg_nor = getkeycolor($binding_row[ 0]);
+					$cap_nor = splittext(cleantextSVG($binding_row[ 1]));
+					$bkg_shf = getkeycolor($binding_row[ 2]);
+					$cap_shf = splittext(cleantextSVG($binding_row[ 3]));
+					$bkg_ctl = getkeycolor($binding_row[ 4]);
+					$cap_ctl = splittext(cleantextSVG($binding_row[ 5]));
+					$bkg_alt = getkeycolor($binding_row[ 6]);
+					$cap_alt = splittext(cleantextSVG($binding_row[ 7]));
+					$bkg_agr = getkeycolor($binding_row[ 8]);
+					$cap_agr = splittext(cleantextSVG($binding_row[ 9]));
 					$bkg_xtr = getkeycolor($binding_row[10]);
 					$cap_xtr = splittext(cleantextSVG($binding_row[11]));
 					$img_fil = $binding_row[12];

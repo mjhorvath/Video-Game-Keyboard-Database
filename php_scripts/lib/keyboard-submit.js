@@ -559,7 +559,7 @@ function add_input_typing_events()
 	addListener(document.getElementById('sel_capxtr'), 'change', toggle_set_and_revert_buttons);
 }
 
-// add new escape entities as needed
+// add new escape urlqueries as needed
 function cleantextHTML(in_string)
 {
 	return in_string.replace(/\&/g,'&amp;').replace(/\>/g,'&gt;').replace(/\</g,'&lt;').replace(/\\n/g,'<br>');

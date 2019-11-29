@@ -11,7 +11,7 @@
 	$analytics	= true;
 	$is_short	= false;
 	include($path_root . "ssi/normalpage.php");
-	print($page_top);
+	echo $page_top;
 ?>
 <?php
 	// Video Game Keyboard Diagrams
@@ -54,7 +54,7 @@
 	$layouts_max		= 0;
 	$styles_max		= 0;
 
-	// MySQL connection
+	// open MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
  	if (mysqli_connect_errno())
 	{
@@ -63,21 +63,23 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	// MySQL queries
-	getDefaults();
+	selURLQueries();		// gather and validate URL parameters
+	selDefaults();		// get default values for urlqueries if missing
 	selGenresFront();
 	selGamesFront();
 	selStylegroupsFront();
 	selStylesFront();
 	selPlatformsFront();
-	selLayoutsFront();
-	sortGamesFront();
-	selGamesAutoincJS();
-	selLayoutsAutoincJS();
-	selStylesAutoincJS();
-	selSeourlJS();
-	selGameRecordsJS();
-	selStyleRecordsJS();
+	selThisLayoutFront();
+	sortGames();			// not a query
+	selGamesAutoinc();
+	selThisLayoutAutoinc();
+	selStylesAutoinc();
+	selSeourl();
+	selGameRecords();
+	selStyleRecords();
 
+	// close MySQL connection
 	mysqli_close($con);
 
 	for ($i = 0; $i < $games_max; $i++)
@@ -360,7 +362,7 @@ var seourl_table =
 <p>The vast majority of the bindings are for the <i>US 104 Key (ANSI)</i> keyboard at this time. If you would like to see more bindings for the other keyboards, you are welcome to contribute! (More on that, below.)</p>
 <h2>Licenses &amp; Submissions:</h2>
 <p>The source code for this project is licensed under the <a rel="license" target="_blank" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">GNU LGPLv3</a>. The content is licensed under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading. The <a href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/TODOLIST.md">&quot;to do&quot; list</a> outlines some of the tasks I've planned for the future.</p>
-<p>To submit a new set of bindings, you can fill out <a  target="_blank"href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/helper_tools/vgkd_bindings_template.xlsx">this spreadsheet</a> and <a href="http://isometricland.net/email/email.php">email</a> me the contents (copy and paste) when you are done. Note that any content you submit falls under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart.</p>
+<p>To submit a new set of bindings, you can fill out <a  target="_blank"href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/sql_scripts/vgkd_bindings_template.xlsx">this spreadsheet</a> and <a href="http://isometricland.net/email/email.php">email</a> me the contents (copy and paste) when you are done. Note that any content you submit falls under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart.</p>
 <p>I have also recently started developing a form-based submission page. You can use it to submit changes to existing bindings by selecting the &quot;Editor&quot; option in Step 4, above. Or, you can get started making a brand new set of bindings with the &quot;Blank Starter&quot; game in the &quot;Reference&quot; category. There exist &quot;Blank Starters&quot; for every keyboard, though I personally still prefer using the spreadsheet for this purpose.</p>
 <h2>MediaWiki, SVG &amp; PDF:</h2>
 <p>I have created templates for MediaWiki that do basically the same thing as the other charts available on this site. You can find the templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Wikia</a>. By selecting the &quot;MediaWiki&quot; format type, you can generate the code you will need to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the chart is wider than a typical browser window.</p>
@@ -377,4 +379,4 @@ var seourl_table =
 	<li>On Windows, some Web browers (Google Chrome for instance) use your desktop DPI scaling settings to adjust the size of on-screen HTML elements, resulting in a document that can appear larger or smaller than normal. I'm not 100% sure this affects the printed page output, however.</li>
 	<li>Note, that the darker themes will use up a lot of ink.</li>
 </ol>
-<?php print($page_bot); ?>
+<?php echo $page_bot; ?>

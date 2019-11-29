@@ -23,6 +23,7 @@
 
 	$path_file		= "./keyboard-submit.php";
 	$write_maximal_keys	= true;
+	$debug_text		= "";
 	$stylegroup_id		= 0;
 	$position_table		= [];
 	$keystyle_table		= [];
@@ -61,8 +62,20 @@
 	$layout_authors		= [];
 	$layout_keysnum		= 0;
 	$layout_keygap		= 4;
+	$layout_padding		= 18;
+	$layout_fullsize_width		= 1200;
+	$layout_fullsize_height		= 400;
+	$layout_tenkeyless_width	= 1200;
+	$layout_tenkeyless_height	= 400;
+	$layout_legend_padding		= 36;
+	$layout_legend_height		= 72;
+	$layout_min_horizontal	= 0;
+	$layout_max_horizontal	= 0;
+	$layout_min_vertical	= 0;
+	$layout_max_vertical	= 0;
+	$layout_legend_top	= 0;
 
-	// MySQL connection
+	// open MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
 	if (mysqli_connect_errno())
 	{
@@ -70,37 +83,54 @@
 	}
 	mysqli_query($con, "SET NAMES 'utf8'");
 
-	// these also execute a few MySQL queries
-	getDefaults();			// get default values for entities if missing
-	checkURLParameters();		// gather and validate URL parameters
-
 	// MySQL queries
-	selLanguageStringsHTML();
-	selAuthorsHTML();
-	selStyleGroupsHTML();
-	selStylesHTML();
-	selThisStyleHTML();
-	selFormatsHTML();
-	selPositionsHTML();
-	selLayoutsHTML();
-	selPlatformsHTML();
-	selGamesRecordsHTML();
-	selStylesRecordsHTML();
-	selBindingsHTML();
-	selLegendsHTML();
-	selCommandsHTML();
-	selContribGamesHTML();
-	selContribStylesHTML();
-	selContribLayoutsHTML();
+	selURLQueries();		// gather and validate URL parameters
+	selDefaults();			// get default values for urlqueries if missing
+	checkURLParameters();		// gather and validate URL parameters
+	selLanguageStrings();
+	selAuthors();
+	selStyleGroups();
+	selStyles();
+	selThisStyle();
+	selThisFormat();
+	selPositions();
+	selThisLayout();
+	selThisPlatform();
+	selThisGamesRecord();
+	selThisStylesRecord();
+	selBindings();
+	selLegends();
+	selCommands();
+	selContribsGames();
+	selContribsStyles();
+	selContribsLayouts();
 	selLegendColors();
 	selKeyStyles();
 	selKeyStyleClasses();
 
+	// close MySQL connection
 	mysqli_close($con);
 
 	checkForErrors();
 	pageTitle();
 
+	// layout outer bounds
+	if ($ten_bool == 0)
+	{
+		$layout_min_horizontal	= -$layout_padding;
+		$layout_max_horizontal	=  $layout_padding * 2 + $layout_tenkeyless_width;
+		$layout_min_vertical	= -$layout_padding;
+		$layout_max_vertical	=  $layout_padding * 2 + $layout_tenkeyless_height;
+	}
+	else if ($ten_bool == 1)
+	{
+		$layout_min_horizontal	= -$layout_padding;
+		$layout_max_horizontal	=  $layout_padding * 2 + $layout_fullsize_width;
+		$layout_min_vertical	= -$layout_padding;
+		$layout_max_vertical	=  $layout_padding * 2 + $layout_fullsize_height;
+	}
+
+	// color select options
 	$option_string = "<option class=\"optnon\">non</option>";
 	$color_count = count($color_array);
 	for ($i = 0; $i < $color_count; $i++)
@@ -113,14 +143,14 @@
 <html lang=\"" . $language_code . "\">
 	<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
-		<title>" . $page_title_a . $temp_separator . $page_title_b . "</title>
+		<title>" . cleantextHTML($page_title_a . $temp_separator . $page_title_b) . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_root . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root . "style_normalize.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_common.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
-		<meta name=\"description\" content=\""	. $language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name	. ")\"/>
-		<meta name=\"keywords\" content=\""	. $language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
+		<meta name=\"description\" content=\""	. cleantextHTML($language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name)	. ")\"/>
+		<meta name=\"keywords\" content=\""	. cleantextHTML($language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name)	. "\"/>
 ";
 	echo writeAnalyticsTracking();
 	echo
@@ -150,8 +180,7 @@ var color_table = ['non',";
 		if ($i < $color_count - 1)
 			echo ",";
 	}
-	echo
-"];
+	echo "];
 var class_table = [];
 var binding_table =
 [
@@ -163,21 +192,21 @@ var binding_table =
 			if (array_key_exists($i, $position_table))
 			{
 				$position_row	= $position_table[$i];
-				$low_nor	= "\"" . cleantextJS($position_row[ 4])	. "\"";
-				$upp_nor	= "\"" . cleantextJS($position_row[ 5])	. "\"";
-				$low_agr	= "\"" . cleantextJS($position_row[ 6])	. "\"";
-				$upp_agr	= "\"" . cleantextJS($position_row[ 7])	. "\"";
+				$low_nor	= "'" . cleantextJS($position_row[ 4])	. "'";
+				$upp_nor	= "'" . cleantextJS($position_row[ 5])	. "'";
+				$low_agr	= "'" . cleantextJS($position_row[ 6])	. "'";
+				$upp_agr	= "'" . cleantextJS($position_row[ 7])	. "'";
 				if (array_key_exists($i, $binding_table))
 				{
 					$binding_row = $binding_table[$i];
-					$cap_nor = "\"" . cleantextJS($binding_row[ 1])	. "\"";
-					$cap_shf = "\"" . cleantextJS($binding_row[ 3])	. "\"";
-					$cap_ctl = "\"" . cleantextJS($binding_row[ 5])	. "\"";
-					$cap_alt = "\"" . cleantextJS($binding_row[ 7])	. "\"";
-					$cap_agr = "\"" . cleantextJS($binding_row[ 9])	. "\"";
-					$cap_xtr = "\"" . cleantextJS($binding_row[11])	. "\"";
-					$img_fil = "\"" . $binding_row[12]		. "\"";
-					$img_uri = "\"" . $binding_row[13]		. "\"";
+					$cap_nor = "'" . cleantextJS($binding_row[ 1])	. "'";
+					$cap_shf = "'" . cleantextJS($binding_row[ 3])	. "'";
+					$cap_ctl = "'" . cleantextJS($binding_row[ 5])	. "'";
+					$cap_alt = "'" . cleantextJS($binding_row[ 7])	. "'";
+					$cap_agr = "'" . cleantextJS($binding_row[ 9])	. "'";
+					$cap_xtr = "'" . cleantextJS($binding_row[11])	. "'";
+					$img_fil = "'" . $binding_row[12]		. "'";
+					$img_uri = "'" . $binding_row[13]		. "'";
 					$bkg_nor = intval($binding_row[ 0]);
 					$bkg_shf = intval($binding_row[ 2]);
 					$bkg_ctl = intval($binding_row[ 4]);
@@ -187,14 +216,14 @@ var binding_table =
 				}
 				else
 				{
-					$cap_nor = "\"\"";
-					$cap_shf = "\"\"";
-					$cap_ctl = "\"\"";
-					$cap_alt = "\"\"";
-					$cap_agr = "\"\"";
-					$cap_xtr = "\"\"";
-					$img_fil = "\"\"";
-					$img_uri = "\"\"";
+					$cap_nor = "''";
+					$cap_shf = "''";
+					$cap_ctl = "''";
+					$cap_alt = "''";
+					$cap_agr = "''";
+					$cap_xtr = "''";
+					$img_fil = "''";
+					$img_uri = "''";
 					$bkg_nor = 0;
 					$bkg_shf = 0;
 					$bkg_ctl = 0;
@@ -253,6 +282,7 @@ var binding_table =
 				<div id="butt_hlp" class="tabs_butt" title="Toggle Info Panel"  onclick="switch_left_pane(1);"><img src="<?php echo $path_lib1; ?>icon_hlp.png"/></div>
 			</div>
 			<div id="pane_inp" style="display:block;">
+<?php echo $debug_text; ?>
 				<div id="table_inp" class="inptbl" style="margin:auto;">
 					<div class="inprow"><div class="inphed">Param</div><div class="inphed">Value</div><div class="inphed">Color</div></div>
 					<div class="inprow"><div class="inpcll"><label for="inp_keynum" title="Key ID#"			>keynum:</label></div><div class="inpcll"><input id="inp_keynum" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Key ID#"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
@@ -323,18 +353,18 @@ var binding_table =
 						<span>Game Title:</span>
 						<input style="font-size:x-large;" id="game_tit" type="text" size="25" maxlength="100" placeholder="Game Title" title="Game Title" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $page_title_a; ?>"/>
 						<input style="font-size:x-large;" id="game_url" type="text" size="25" maxlength="100" placeholder="URL String" title="URL String" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $game_seo; ?>" disabled="disabled"/>
-						<span style="float:right;"><?php echo $temp_layout_name; ?><br><?php echo $temp_style_name; ?></span>
+						<span style="float:right;"><?php echo cleantextHTML($temp_layout_name) . "<br>" . cleantextHTML($temp_style_name); ?></span>
 					</div>
 				</header>
-				<div class="boxdiv" style="position:relative;width:1660px;height:480px;">
-					<form enctype="multipart/form-data" accept-charset="UTF-8">
-						<div id="keydiv" style="position:relative;width:1660px;height:480px;">
+				<div class="boxdiv" style="position:relative;width:<?php echo $layout_max_horizontal; ?>px;height:<?php echo $layout_max_vertical; ?>px;padding:0;">
+					<form enctype="multipart/form-data" accept-charset="UTF-8" style="margin:0;padding:0;">
+						<div id="keydiv" style="position:relative;left:<?php echo $layout_padding; ?>px;top:<?php echo $layout_padding; ?>px;width:<?php echo $layout_max_horizontal; ?>px;height:<?php echo $layout_max_vertical; ?>px;padding:0;margin:0;">
 <?php
 	// print error messages
 	for ($i = 0; $i < count($errors_table); $i++)
 	{
 		echo
-"							<h3>" . $errors_table[$i] . "</h3>";
+"							<h3>" . cleantextHTML($errors_table[$i]) . "</h3>";
 	}
 	// keys
 	if ($gamesrecord_id && $stylesrecord_id)
@@ -350,10 +380,10 @@ var binding_table =
 				$pos_top	= $position_row[1] + $layout_keygap/2;
 				$pos_wid	= $position_row[2] - $layout_keygap;		// 4
 				$pos_hgh	= $position_row[3] - $layout_keygap;
-				$low_nor	= $position_row[4];
-				$upp_nor	= $position_row[5];
-				$low_agr	= $position_row[6];
-				$upp_agr	= $position_row[7];
+				$low_nor	= cleantextHTML($position_row[4]);
+				$upp_nor	= cleantextHTML($position_row[5]);
+				$low_agr	= cleantextHTML($position_row[6]);
+				$upp_agr	= cleantextHTML($position_row[7]);
 				$key_num	= $position_row[8];
 				$key_opt	= $position_row[9];
 				$img_wid	= 48;
@@ -362,18 +392,19 @@ var binding_table =
 				$img_pos_y	= $pos_hgh/2 - $img_hgh/2;
 				if (array_key_exists($i, $binding_table))
 				{
+					// should I use cleantextHTML here?
 					// normal_group, normal_action, shift_group, shift_action, ctrl_group, ctrl_action, alt_group, alt_action, altgr_group, altgr_action, extra_group, extra_action, image_file, image_uri, key_number
 					$binding_row	= $binding_table[$i];
-					$bkg_nor = getkeycolor($binding_row[0]);
-					$cap_nor = $binding_row[1];
-					$bkg_shf = getkeycolor($binding_row[2]);
-					$cap_shf = $binding_row[3];
-					$bkg_ctl = getkeycolor($binding_row[4]);
-					$cap_ctl = $binding_row[5];
-					$bkg_alt = getkeycolor($binding_row[6]);
-					$cap_alt = $binding_row[7];
-					$bkg_agr = getkeycolor($binding_row[8]);
-					$cap_agr = $binding_row[9];
+					$bkg_nor = getkeycolor($binding_row[ 0]);
+					$cap_nor = $binding_row[ 1];
+					$bkg_shf = getkeycolor($binding_row[ 2]);
+					$cap_shf = $binding_row[ 3];
+					$bkg_ctl = getkeycolor($binding_row[ 4]);
+					$cap_ctl = $binding_row[ 5];
+					$bkg_alt = getkeycolor($binding_row[ 6]);
+					$cap_alt = $binding_row[ 7];
+					$bkg_agr = getkeycolor($binding_row[ 8]);
+					$cap_agr = $binding_row[ 9];
 					$bkg_xtr = getkeycolor($binding_row[10]);
 					$cap_xtr = $binding_row[11];
 					$img_fil = $binding_row[12];
@@ -398,7 +429,7 @@ var binding_table =
 				}
 				// key outer container
 				echo
-"							<div id=\"keyout_" . $i . "\" class=\"keyout cap" . $bkg_nor . " " . $key_sty . "\" style=\"left:" . $pos_lft . "px;top:" . $pos_top . "px;width:" . $pos_wid . "px;height:" . $pos_hgh . "px;background-size:auto;\">\n";
+"							<div id=\"keyout_" . $i . "\" class=\"keyout cap" . $bkg_nor . " " . $key_sty . "\" style=\"left:" . $pos_lft . "px;top:" . $pos_top . "px;width:" . $pos_wid . "px;height:" . $pos_hgh . "px;\">\n";
 				// icon images
 				if (($img_uri != "") || ($write_maximal_keys == true))
 				{
@@ -530,7 +561,7 @@ var binding_table =
 				</div>
 				<div id="flxdiv">
 					<div class="inbtop comdiv">
-						<h3><?php echo $language_keyboard; ?></h3>
+						<h3><?php echo cleantextHTML($language_keyboard); ?></h3>
 						<div id="table_combo" class="nottbl">
 <?php
 		// combo
@@ -560,7 +591,7 @@ var binding_table =
 						</div>
 					</div>
 					<div class="inbtop comdiv">
-						<h3><?php echo $language_mouse; ?></h3>
+						<h3><?php echo cleantextHTML($language_mouse); ?></h3>
 						<div id="table_mouse" class="nottbl">
 <?php
 		// mouse
@@ -590,7 +621,7 @@ var binding_table =
 						</div>
 					</div>
 					<div class="inbtop comdiv">
-						<h3><?php echo $language_joystick; ?></h3>
+						<h3><?php echo cleantextHTML($language_joystick); ?></h3>
 						<div id="table_joystick" class="nottbl">
 <?php
 		// joystick
@@ -620,7 +651,7 @@ var binding_table =
 						</div>
 					</div>
 					<div class="inbtop comdiv">
-						<h3><?php echo $language_note; ?></h3>
+						<h3><?php echo cleantextHTML($language_note); ?></h3>
 						<div id="table_note" class="nottbl">
 <?php
 		// note
@@ -646,7 +677,7 @@ var binding_table =
 						</div>
 					</div>
 					<div class="inbtop comdiv">
-						<h3><?php echo $language_cheat; ?></h3>
+						<h3><?php echo cleantextHTML($language_cheat); ?></h3>
 						<div id="table_cheat" class="nottbl">
 <?php
 		// cheat
@@ -676,7 +707,7 @@ var binding_table =
 						</div>
 					</div>
 					<div class="inbtop comdiv">
-						<h3><?php echo $language_console; ?></h3>
+						<h3><?php echo cleantextHTML($language_console); ?></h3>
 						<div id="table_console" class="nottbl">
 <?php
 		// console
@@ -706,7 +737,7 @@ var binding_table =
 						</div>
 					</div>
 					<div class="inbtop comdiv">
-						<h3><?php echo $language_emote; ?></h3>
+						<h3><?php echo cleantextHTML($language_emote); ?></h3>
 						<div id="table_emote" class="nottbl">
 <?php
 		// emote

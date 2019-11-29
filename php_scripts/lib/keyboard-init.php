@@ -19,7 +19,7 @@
 	// <https://www.gnu.org/licenses/>.
 
 	$path_file		= "./keyboard-init.php";	// possibly unneeded
-	$path_root		= "../../";	// for PHP files
+	$path_root		= "../../";	// for PHP files, need another for HTML and JS
 	$path_lib1		= "./lib/";	// for HTML and JS files
 	$path_lib2		= "./";		// for PHP files
 

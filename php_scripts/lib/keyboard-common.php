@@ -34,7 +34,7 @@
 	$default_format_name	= "";
 	$color_array		= [];
 	$class_array		= [];
-	$entities_array		= [];
+	$urlqueries_array		= [];
 	$language_code		= "";
 	$language_title		= "";
 	$language_description	= "";
@@ -56,19 +56,15 @@
 	$temp_separator		= "";
 	$page_title_a		= "";
 	$page_title_b		= "";
-	$layout_language	= 1;	// temporary until I add language translations to the database
+	$layout_language	= 1;	// temporary until more text gets localized
 
+	// from https://www.php.net/manual/en/function.pathinfo.php
 	function extension($path)
 	{
 		$qpos = strpos($path, "?");
 		if ($qpos!==false) $path = substr($path, 0, $qpos);
 		$extension = pathinfo($path, PATHINFO_EXTENSION);
 		return $extension;
-	}
-	function getDefaults()
-	{
-		selEntities();
-		selDefaults();
 	}
 	function checkURLParameters()
 	{
@@ -113,10 +109,7 @@
 //			error_log("game_id is null", 0);
 			if ($game_seo !== null)
 			{
-				if ($url_ext == "php")
-					selGamesHTML_SEO();
-				else if ($url_ext == "svg")
-					selGamesSVG_SEO();
+				selThisGame_SEO();
 			}
 			else
 			{
@@ -132,10 +125,7 @@
 //			error_log("game_seo is null", 0);
 			if ($game_id !== null)
 			{
-				if ($url_ext == "php")
-					selGamesHTML_ID();
-				else if ($url_ext == "svg")
-					selGamesSVG_ID();
+				selThisGames_ID();
 			}
 			else
 			{
@@ -308,7 +298,7 @@
 	}
 	function cleantextJS($instring)
 	{
-		return str_replace("\"","\\\"",str_replace("\\","\\\\",$instring));
+		return str_replace("'","\\'",str_replace("\\","\\\\",$instring));
 	}
 	function cleantextWiki($instring)
 	{
@@ -362,13 +352,7 @@
 			return "Last modified: File does not exist.";
 		}
 	}
-	// no longer used
 	function sortGames()
-	{
-		global $genre_order_array, $genre_array, $game_array;
-		array_multisort($genre_order_array, $genre_array, $game_array);
-	}
-	function sortGamesFront()
 	{
 		global $genre_array, $game_array;
 		array_multisort($genre_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $game_array);

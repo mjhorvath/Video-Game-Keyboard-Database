@@ -44,7 +44,7 @@
 	$game_seourl_array	= [];
 	$game_genre_array	= [];
 
-	// MySQL connection
+	// open MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
  	if (mysqli_connect_errno())
 	{
@@ -55,10 +55,11 @@
 	// MySQL queries
 	selGenresList();
 	selGamesList();
-	selLayoutsList();
+	selThisLayoutList();
 	selGamesRecordsList();
 	selPlatformsList();
 
+	// close MySQL connection
 	mysqli_close($con);
 
 	echo
@@ -88,7 +89,7 @@
 		}
 
 		echo
-"	<tr><td>" . $game_name_gam . "</td><td>" . $game_genre_gam . "</td><td>" . $game_id_gam . "</td><td><dl>";
+"	<tr><td>" . cleantextHTML($game_name_gam) . "</td><td>" . cleantextHTML($game_genre_gam) . "</td><td>" . $game_id_gam . "</td><td><dl>";
 
 		for ($j = 0; $j < count($record_array); $j++)
 		{
@@ -119,7 +120,7 @@
 				{
 					$this_layout_id = $these_layout_ids[$k];
 					$this_layout_name = $these_layout_names[$k];
-					echo "<dd><a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout_id . "&fmt=0&ten=1\">" . $this_layout_name . "</a></dd>";
+					echo "<dd><a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout_id . "&fmt=0&ten=1\">" . cleantextHTML($this_layout_name) . "</a></dd>";
 				}
 			}
 		}

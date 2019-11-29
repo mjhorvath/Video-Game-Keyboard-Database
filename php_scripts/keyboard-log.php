@@ -6,21 +6,27 @@
 	$page_keywords	= "visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference";
 	$foot_array	= array("copyright","license_kbd");
 	$is_short	= false;
-	include($path_root . 'ssi/normalpage.php');
-	print($page_top);
+	include($path_root . "ssi/normalpage.php");
+	echo $page_top;
 ?>
 <h2>News &amp; Updates</h2>
 <ul>
-	<li>2019/11/27: Moved "keyboard-init.php" to "lib". Updated "htaccess" accordingly.</li>
+	<li>2019/11/29: Renamed several tables in the database. Deleted some tables I am not using right now.</li>
+	<li>2019/11/29: Text strings are no longer &quot;cleaned&quot; until the very last possible moment. Fixed a bug in the &quot;cleantextJS&quot; function in the process.</li>
+	<li>2019/11/29: Merged the HTML and SVG database queries together. Still need to check and compare the other queries.</li>
+	<li>2019/11/28: The dimensions of the keyboard pane on the submission form were not being calculated dynamically.</li>
+	<li>2019/11/28: On the submission form, the selected key now has an animated border.</li>
+	<li>2019/11/28: Moved more shared code into &quot;keyboard-init.php&quot; and &quot;keyboard-common.php&quot;.</li>
+	<li>2019/11/27: Moved &quot;keyboard-init.php&quot; to &quot;lib&quot;. Updated &quot;htaccess&quot; accordingly.</li>
 	<li>2019/11/27: Language codes are now determined dynamically. Still require more of the text to be localized, however.</li>
-	<li>2019/11/27: Fixed a bug when "$game_seo" is null.</li>
+	<li>2019/11/27: Fixed a bug when &quot;$game_seo&quot; is null.</li>
 	<li>2019/11/27: Color-related HTML code is now generated dynamically based on these tables.</li>
 	<li>2019/11/26: Style color/class names are now retrieved from the database.</li>
-	<li>2019/11/26: Renamed the "legend_group" column in the "legends" table to "keygroup_id" and created a foreign key constraint on that column.</li>
+	<li>2019/11/26: Renamed the &quot;legend_group&quot; column in the &quot;legends&quot; table to &quot;keygroup_id&quot; and created a foreign key constraint on that column.</li>
 	<li>2019/11/26: Tweaked the page heading area on the submission form.</li>
 	<li>2019/11/23: Added verbose page title to submission form.</li>
 	<li>2019/11/23: Sorted credits into categories.</li>
-	<li>2019/11/23: The displayed values for the "keynum" parameter in the submission form now correctly start at 1 instead of 0, as per the database itself.</li>
+	<li>2019/11/23: The displayed values for the &quot;keynum&quot; parameter in the submission form now correctly start at 1 instead of 0, as per the database itself.</li>
 	<li>2019/11/23: Default numpad/tenkey state is now stored in the database just like the other URL parameters.</li>
 	<li>2019/11/23: Added a &quot;formats&quot; table to the database. The name of each format, and whether or not a format is enabled by default, can now be retrieved from this table.</li>
 	<li>2019/11/23: The current &quot;format&quot; is now listed in the page titles and descriptions.</li>
@@ -220,4 +226,4 @@
 	<li>Virtual-Key Codes (<a target="_blank" href="http://msdn.microsoft.com/en-us/library/ms645540.aspx">link</a>)</li>
 	<li>Generate a Heatmap of your Keystrokes (<a target="_blank" href="http://www.blendedtechnologies.com/visualization-tricks-generate-a-heatmap-of-your-keystrokes/">link</a>)</li>
 </ul>
-<?php print($page_bot); ?>
+<?php echo $page_bot; ?>

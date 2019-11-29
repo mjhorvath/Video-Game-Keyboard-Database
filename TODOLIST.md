@@ -26,19 +26,20 @@
   submission form from "non" to "null" or something else. This might have an 
   adverse effect on some scripts, however. Also, the drop down list would take 
   up more space.
-* On the submission form, draw an animated dotted line around the border of the 
-  selected key. [See this example](https://stackoverflow.com/questions/28365839/dashed-border-animation-in-css3-animation).
 * Should make the size of the left pane adjustable and make the text input form 
   fields shrink or grow with the size of the pane.
 * Maybe add a checkbox to the submission form so that users can indicate to the 
-  admin that bindings for a brand new game are being created. The "record_id" 
-  field should then contain "\N" for each record instead of the existing game's 
-  "record_ID".
+  developers that bindings for a brand new game are being created. The 
+  "record_id" field should then read as "\N" for each record instead of an 
+  existing game's ID.
 * Link to the Excel sheet directly from the submission form, so that those who 
   might prefer using it over the default methods will have easier access to it.
 * On the "spreadsheet view" of the submission form, add buttons to update the 
   "keyboard view" using TSV in the text boxes. Leave the buttons disabled until 
   the update feature is fully implemented.
+* On the submission form, should I use the "cleantextHTML" function to clean up 
+  the form inputs? What about in the other direction? Should I clean the form 
+  inputs up after entering the values and saving them?
 
 ### MediaWiki Code
 * Generate MediaWiki code for layouts and styles in addition to games.
@@ -71,7 +72,7 @@
   altered. That would be too much data.
 * Fix the RDF stuff in SVG files so that author names are not duplicated 
   multiple times.
-* The tables "contrib_layouts", "contrib_games" and "contrib_styles" are 
+* The tables "contribs_layouts", "contribs_games" and "contribs_styles" are 
   missing time and date stamps properly indicating when items were added or 
   updated.
 
@@ -82,8 +83,9 @@
   "key_number" is referenced by the "bindings" and "keystyles" tables. Not sure 
   what else to put in the "keys" table besides the index, however.
 * The "record_id" column name is used in two different contexts within the 
-  database: once as a game record, once as a style record. Need to rename the 
-  columns in both contexts to prevent confusion.
+  database: once as a game record, once as a style record. Should rename each 
+  column to something different to prevent confusion. The same thing is true 
+  for the two "keygroup_id", "keygroup_class" and "contrib_id" columns.
 * Should calculate the correct key IDs dynamically based on what is in the 
   "bindings" table versus hard-coding the max key ID in the "layouts" table.
 * I thought the ID for each key in the "positions" table was based on the IBM 
@@ -93,25 +95,24 @@
   to NOT NULL. But I will have to come up with something else to put into that 
   column when adding "Additional Notes" to the table. Unlike the other command 
   types, the "Additional Notes" category usually leaves that column blank.
-* Not sure every table needs a single numerical index column. Using two or more 
-  existing columns to form a composite key might suffice in many cases.
-* In the two "keygroups" tables, make sure that the index of each group is not 
-  hardcoded. If possible, merge both tables into a single table.
 * I would like to re-index the "layouts" table since a gap exists between ID #1 
-  and ID #3. This would break links to many pages, however. Better to simply re-
-  use this ID in a future layout.
-* Rename the "contrib" tables to "contribs" in order to use a consistent naming 
-  scheme.
+  and ID #3. This would break many links on the Internet, however. Maybe better 
+  to simply reuse the ID number for a future layout.
 * On the submission form, the column names for the TSV data in the "Spreadsheet 
-  View" should be fetched from the database instead of hardcoded.
-* The "entities" table should be renamed to "url_queries" or something similar. 
-  The current name is too ambiguous.
+  View" should be fetched from the database instead of being hardcoded. OTOH, 
+  the scripts expect the columns to be in a particular order, and fetching from 
+  the database may result in the columns being in an inconsistent order.
 * The PHP and JS "color" and "class" tables are currently sorted by the index 
   columns of the "keygroups" tables in the database. But what happens if new 
   colors or classes are added, or the index columns somehow get corrupted? Can 
   I sort and re-index the "keygroups" tables without affecting any other tables 
   that might have foreign key constraints? What's the best method of specifying 
   a custom sort order?
+* The "commands" table could be split into multiple tables, one for each type 
+  of command. After doing this, the "commandtypes" table could be deleted.
+* The "mouse", "joystick", "cheat code", etc. commands are named and described 
+  in both the "commandtypes" table and the "languages" table. Can one of these 
+  be eliminated?
 
 ### Optimizations
 * Should maybe store the SVG patterns, filters and gradients in separate files 
@@ -123,6 +124,8 @@
   may be worse for performance since only a subset of the routines are needed 
   at any given time, yet the entire files are loaded each time. Should I split 
   the two big files into several smaller ones?
+* Not sure every table needs its own numerical index column. Using two or more 
+  preexisting columns to form a composite key might suffice in many cases.
 
 ### Miscellaneous
 * I would also like to create charts/diagrams for gamepads, mice and joysticks. 
@@ -204,6 +207,13 @@
 * Should the "non" color be added to the color tables too?
 * Tweak the "cleantext" functions and/or the query functions so that separate 
   copies of every query function are required for HTML and SVG.
+* None of the pages in this project should use my website's style. They should 
+  all feature their own very minimal style without my site's branding. Needs to 
+  link back to the rest of my site at least.
+* Maybe create a new "cleantext" function for JS files? I want to always use 
+  single quotes for strings inside JS code, versus double quotes in HTML files.
+* The "$path_file" variable should be assigned automatically using a script. 
+  OTOH, it's only used in one file. I could simply delete it.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent page's title in the page headers 
@@ -230,12 +240,12 @@
   English text in there without stretching the page or triggering a scroll bar.]
 * Maybe the red in the "Warm" styles can be made deeper? [Ed. I tried this, but 
   it didn't look very nice.]
-
-### Rejected
 * Users of the submission form should be able to specify a layout using a drop-
-  down list or whatever within the submission form itself. Users are already 
-  able to specify and edit a "Blank Sample" for every layout starting from the 
-  frontend page. But this is insufficient, IMO. [Ed. this is a bad idea.]
+  down list (or something similar) within the submission form itself. Users can 
+  already select a "Blank Sample" for every layout from the frontend page. But 
+  they should be able to do more. Or maybe add a "New" button to the submission 
+  form that asks for some basic info and a desired layout, and then blanks 
+  every field. [Ed. the latter would be much easier to do than the former.]
 
 ### Completed
 * In the submission form, selecting a colored OPTION element should change the 
@@ -322,3 +332,11 @@
 * Implement a "languages" table.
 * The value of the "html" tag's "lang" attribute should be a short two-letter 
   string instead of an integer as it is now. It should not be hardcoded either.
+* Some of the keyboard DIVs still have hardcoded inline styles. Search for 
+  "width:1660px;height:480px;" in the submission form.
+* On the submission form, I would like to draw an animated dotted line as the 
+  border of the selected key.
+* Rename the "contrib" tables to "contribs" in order to use a consistent naming 
+  scheme.
+* The "entities" table should be renamed to "url_queries" or something similar. 
+  The current name is too ambiguous.

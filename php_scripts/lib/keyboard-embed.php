@@ -57,6 +57,11 @@
 	$layout_tenkeyless_height	= 400;
 	$layout_legend_padding		= 36;
 	$layout_legend_height		= 72;
+	$layout_min_horizontal	= 0;
+	$layout_max_horizontal	= 0;
+	$layout_min_vertical	= 0;
+	$layout_max_vertical	= 0;
+	$layout_legend_top	= 0;
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -66,30 +71,27 @@
 	}
 	mysqli_query($con, "SET NAMES 'utf8'");
 
-	// these also execute a few MySQL queries
-	getDefaults();			// get default values for entities if missing
-	checkURLParameters();		// gather and validate URL parameters
-
 	// MySQL queries
-	selLanguageStringsHTML();
-	selAuthorsHTML();
-	selStyleGroupsHTML();
-	selStylesHTML();
-	selThisStyleHTML();
-	selFormatsHTML();
-//	selPositionsHTML();
-	selGamesRecordsHTML();
-	selStylesRecordsHTML();
-	selLayoutsHTML();
-	selPlatformsHTML();
-//	selKeystylesHTML();
-//	selBindingsHTML();
-	selLegendsHTML();
-	selCommandsHTML();
-	selContribGamesHTML();
-	selContribStylesHTML();
-	selContribLayoutsHTML();
+	selURLQueries();		// gather and validate URL parameters
+	selDefaults();			// get default values for urlqueries if missing
+	checkURLParameters();		// gather and validate URL parameters
+	selLanguageStrings();
+	selAuthors();
+	selStyleGroups();
+	selStyles();
+	selThisStyle();
+	selThisFormat();
+	selThisGamesRecord();
+	selThisStylesRecord();
+	selThisLayout();
+	selThisPlatform();
+	selLegends();
+	selCommands();
+	selContribsGames();
+	selContribsStyles();
+	selContribsLayouts();
 
+	// close connection
 	mysqli_close($con);
 
 	checkForErrors();

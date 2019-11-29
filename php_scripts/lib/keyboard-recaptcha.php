@@ -19,8 +19,10 @@
 	// <https://www.gnu.org/licenses/>.
 
 	// https://stackoverflow.com/questions/30006081/recaptcha-2-0-with-ajax
-	$path_root = "../../";
+
 	header("Content-Type: text/html; charset=utf8");
+
+	$path_root = "../../";
 	include($path_root . 'ssi/recaptchakey.php');
 
 	// assemble the message from the POST fields
