@@ -1,12 +1,12 @@
 <?php
 	header('Content-Type: text/html; charset=utf8');
-	$path_root2	= "../";
+	$path_root	= "../";
 	$page_title	= "VGKD - Change Log";
 	$page_desc	= "Visual keyboard hotkey & binding diagrams for video games and other software.";
 	$page_keywords	= "visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference";
 	$foot_array	= array("copyright","license_kbd");
 	$is_short	= false;
-	include($path_root2 . "ssi/normalpage.php");
+	include($path_root . "ssi/normalpage.php");
 	echo $page_top;
 ?>
 <h2>News &amp; Updates</h2>

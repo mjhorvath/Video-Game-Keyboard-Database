@@ -38,8 +38,13 @@
   "keyboard view" using TSV in the text boxes. Leave the buttons disabled until 
   the update feature is fully implemented.
 * On the submission form, should I use the "cleantextHTML" function to clean up 
-  the form inputs? What about in the other direction? Should I clean the form 
-  inputs up after entering the values and saving them?
+  the form inputs? What about in the other direction? Should I "clean" the form 
+  inputs before saving them as well?
+* On the submission form, since I now have animated borders around the selected 
+  keys, I no longer need to change the background color of the selected keys to 
+  indicate the key is selected. I can leave the background color alone and rely 
+  on just the animated border instead. Not sure if I should do the same for the 
+  hover state as well.
 
 ### MediaWiki Code
 * Generate MediaWiki code for layouts and styles in addition to games.

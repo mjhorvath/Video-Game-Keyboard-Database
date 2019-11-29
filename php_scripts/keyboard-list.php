@@ -1,14 +1,14 @@
 <?php
 	header("Content-Type: text/html; charset=utf8");
-	$path_root2 = "../";
-	$page_title = "VGKD - Master List";
+	$path_root	= "../";
+	$page_title	= "VGKD - Master List";
 	$page_onload	= "sortTableInit();Toggle_Waiting(false);";
 	$analytics	= true;
 	$is_short	= true;
 	$foot_array	= array("copyright","license_kbd");
-	$java_array	= ["./lib/keyboard-list.js",$path_root2 . "java/sort_table.js"];
+	$java_array	= ["./lib/keyboard-list.js",$path_root . "java/sort_table.js"];
 	$stys_array	= ["./lib/style_alphalist.css"];
-	include($path_root2 . "ssi/normalpage.php");
+	include($path_root . "ssi/normalpage.php");
 	echo $page_top;
 ?>
 <?php
@@ -31,7 +31,7 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
-	include($path_root2. "ssi/keyboard-connection.php");
+	include($path_root . "ssi/keyboard-connection.php");
 	include("./lib/keyboard-common.php");
 	include("./lib/keyboard-queries.php");
 
