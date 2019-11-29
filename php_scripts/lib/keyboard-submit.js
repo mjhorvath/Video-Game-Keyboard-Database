@@ -947,7 +947,7 @@ function do_recaptcha()
 		$.ajax
 		({
 			type: "POST",
-			url: path_lib + "keyboard-recaptcha.php",
+			url: path_lib1 + "keyboard-recaptcha.php",
 			data:
 			{
 				name:		name.val(),
