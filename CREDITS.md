@@ -1,8 +1,8 @@
-##Credits
+## Credits
 
 If you have submitted layouts, bindings or styles, then your name will also appear at the bottom of each diagram.
 
-###Binding schemes
+### Binding schemes
 * Agnes Beste
 * Taz
 * Josiah Stearns
@@ -13,14 +13,14 @@ If you have submitted layouts, bindings or styles, then your name will also appe
 * Hunter Mansanas
 * Lucas
 
-###Visual themes
+### Visual themes
 * Kozierok style: Keyboard Key Groupings by Charles M. Kozierok ([link](http://www.pcguide.com/ref/kb/group-c.html))
 * Savard style: Scan Codes Demystified by John J. G. Savard ([link](http://www.quadibloc.com/comp/scan.htm))
 * Hello Kitty style: Hello Kitty Keyboard by DreamKitty.com ([link](http://www.dreamkitty.com/Merchant2/merchant.mv?Screen=PROD&Store_Code=DK2000&Product_Code=K-FB109141&Category_Code=HK))
 * Doraemon style: Doraemon Keyboard by DreamKitty.com ([link](http://www.dreamkitty.com/Merchant5/merchant.mvc?Screen=PROD&Store_Code=DK2000&Product_Code=O-FB761011&Category_Code=))
 * FunKeyBoard style: FunKeyBoard by Chester Creek Technologies ([link](http://www.venturaes.com/index_new.asp?http://www.venturaes.com/chestercreek/index.html))
 
-###Scripts
+### Scripts
 * &quot;Simple JQuery Accordion Menu&quot; by Marco van Hylckama Vlieg ([link](http://www.i-marco.nl/weblog/))
 * CSS checkbox code by W3Schools ([link](https://www.w3schools.com/howto/howto_css_custom_checkbox.asp))
 * JavaScript table sorting routine by W3Schools ([link](https://www.w3schools.com/howto/howto_js_sort_table.asp))
@@ -28,7 +28,7 @@ If you have submitted layouts, bindings or styles, then your name will also appe
 * &quot;normalize.css&quot; by Nicolas Gallagher ([link](http://localhost/keyboard/github.com/necolas/normalize.css))
 * jQuery JavaScript Library v1.4.2 by John Resig ([link](http://jquery.com/))
 
-###Icon graphics
+### Icon graphics
 * &quot;Spreadsheet&quot; by Arthur Shlain ([link](https://thenounproject.com/ArtZ91/collection/useful-icons-user-interface/?i=360259))
 * &quot;Keyboard&quot; by Alexey Ivanov ([link](https://thenounproject.com/search/?q=keyboard&creator=17566&i=17427))
 * &quot;Information&quot; by AnsteyDesign ([link](https://thenounproject.com/))
@@ -38,7 +38,7 @@ If you have submitted layouts, bindings or styles, then your name will also appe
 * &quot;CC BY-SA 3.0&quot; icon ([link](https://commons.wikimedia.org/wiki/File:CC-BY-SA_icon_white.svg))
 * &quot;GNU LGPLv3&quot; icon ([link](https://commons.wikimedia.org/wiki/File:License_icon-lgpl-88x31.png))
 
-###Further reading
+### Further reading
 * ShortcutMapper ([link](http://waldobronchart.github.io/ShortcutMapper/))
 * Keyboard Layout Editor ([link](http://www.keyboard-layout-editor.com/))
 * KeyXL Keyboard Shortcuts ([link](http://www.keyxl.com/))
