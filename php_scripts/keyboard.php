@@ -166,22 +166,24 @@
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"Visual keyboard hotkey & binding diagrams for video games and other software.\"/>
 		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference\"/>
-		<script src=\"" . $path_lib1 . "keyboard-front.js\"></script>
+		<script src=\"" . $path_lib1  . "keyboard-frontend.js\"></script>
 		<script src=\"" . $path_java1 . "jquery-1.4.2.min.js\"></script>
 		<script src=\"" . $path_java1 . "jquery-accordionmenu.js\"></script>\n";
 	echo writeAnalyticsTracking();
 	echo
 "		<script>
+var layout_count = " . 	$layouts_max . ";
+var game_count = " . $games_max . ";
 var game_table =
 [
 " . $game_string .
 "]
-
+var style_count = " . $styles_max . ";
 var style_table =
 [
 " . $style_string . 
 "]
-
+// could replace this with a conversion script
 var seourl_table =
 [
 " . $seourl_string . 
@@ -202,9 +204,11 @@ var seourl_table =
 	<input type="hidden" name="seo" value=""/>
 	<div style="margin:auto;">
 		<div class="acc_div">
-			<div id="lay_check" class="acc_check">&#x2714;</div>
-			<div id="lay_xmark" class="acc_xmark">&#x2718;</div>
-			<h3>1. Select a Keyboard:</h3>
+			<div class="acc_wrap">
+				<h3 class="acc_head">1. Select a Keyboard:</h3>
+				<div id="lay_check" class="acc_check">&#x2714;</div>
+				<div id="lay_xmark" class="acc_xmark">&#x2718;</div>
+			</div>
 			<ul id="lay_menu" class="acc_mnu">
 <?php
 	foreach ($platform_array as $i => $platform_value)
@@ -245,9 +249,11 @@ var seourl_table =
 			</ul>
 		</div>
 		<div class="acc_div">
-			<div id="sty_check" class="acc_check">&#x2714;</div>
-			<div id="sty_xmark" class="acc_xmark">&#x2718;</div>
-			<h3>2. Select a Theme:</h3>
+			<div class="acc_wrap">
+				<h3 class="acc_head">2. Select a Theme:</h3>
+				<div id="sty_check" class="acc_check">&#x2714;</div>
+				<div id="sty_xmark" class="acc_xmark">&#x2718;</div>
+			</div>
 			<ul id="sty_menu" class="acc_mnu">
 <?php
 	foreach ($stylegroup_array as $i => $stylegroup_value)
@@ -288,9 +294,11 @@ var seourl_table =
 			</ul>
 		</div>
 		<div class="acc_div">
-			<div id="gam_check" class="acc_check">&#x2714;</div>
-			<div id="gam_xmark" class="acc_xmark">&#x2718;</div>
-			<h3>3. Select a Game:</h3>
+			<div class="acc_wrap">
+				<h3 class="acc_head">3. Select a Game:</h3>
+				<div id="gam_check" class="acc_check">&#x2714;</div>
+				<div id="gam_xmark" class="acc_xmark">&#x2718;</div>
+			</div>
 			<ul id="gam_menu" class="acc_mnu">
 <?php
 	foreach ($genre_array as $i => $genre_value)
@@ -333,50 +341,57 @@ var seourl_table =
 			</ul>
 		</div>
 		<div class="acc_div">
-			<div id="fmt_check" class="acc_check">&#x2714;</div>
-			<div id="fmt_xmark" class="acc_xmark">&#x2718;</div>
-			<h3>4. Select a Format:</h3>
+			<div class="acc_wrap">
+				<h3 class="acc_head">4. Select a Format:</h3>
+				<div id="fmt_check" class="acc_check">&#x2714;</div>
+				<div id="fmt_xmark" class="acc_xmark">&#x2718;</div>
+			</div>
 			<label for="fmtrad0" class="container">HTML/SVG
-				<input id="fmtrad0" type="radio" name="fmtradio" value="0" checked="checked"/>
+				<input id="fmtrad0" type="radio" name="fmt_radio" value="0" onchange="enableResetButton();" checked="checked"/>
 				<span class="checkmark"></span>
 			</label>
 			<label for="fmtrad1" class="container">SVG only
-				<input id="fmtrad1" type="radio" name="fmtradio" value="1"/>
+				<input id="fmtrad1" type="radio" name="fmt_radio" value="1" onchange="enableResetButton();"/>
 				<span class="checkmark"></span>
 			</label>
 			<label for="fmtrad2" class="container">MediaWiki
-				<input id="fmtrad2" type="radio" name="fmtradio" value="2"/>
+				<input id="fmtrad2" type="radio" name="fmt_radio" value="2" onchange="enableResetButton();"/>
 				<span class="checkmark"></span>
 			</label>
 			<label for="fmtrad3" class="container">Editor
-				<input id="fmtrad3" type="radio" name="fmtradio" value="3"/>
+				<input id="fmtrad3" type="radio" name="fmt_radio" value="3" onchange="enableResetButton();"/>
 				<span class="checkmark"></span>
 			</label>
 			<label for="fmtrad4" class="container"><s>PDF</s>
-				<input id="fmtrad4" type="radio" name="fmtradio" value="4" disabled="disabled"/>
+				<input id="fmtrad4" type="radio" name="fmt_radio" value="4" onchange="enableResetButton();" disabled="disabled"/>
 				<span class="checkmark"></span>
 			</label>
 		</div>
 		<div class="acc_div">
-			<div id="ten_check" class="acc_check">&#x2714;</div>
-			<div id="ten_xmark" class="acc_xmark">&#x2718;</div>
-			<h3>5. Numeric keypad:</h3>
+			<div class="acc_wrap">
+				<h3 class="acc_head">5. Numeric keypad:</h3>
+				<div id="ten_check" class="acc_check">&#x2714;</div>
+				<div id="ten_xmark" class="acc_xmark">&#x2718;</div>
+			</div>
 			<label for="tenrad1" class="container">Show
-				<input id="tenrad1" type="radio" name="tenradio" value="1" checked="checked"/>
+				<input id="tenrad1" type="radio" name="ten_radio" value="1" onchange="enableResetButton();" checked="checked"/>
 				<span class="checkmark"></span>
 			</label>
 			<label for="tenrad0" class="container">Hide
-				<input id="tenrad0" type="radio" name="tenradio" value="0"/>
+				<input id="tenrad0" type="radio" name="ten_radio" value="0" onchange="enableResetButton();"/>
 				<span class="checkmark"></span>
 			</label>
 		</div>
 		<div class="acc_div">
-			<div id="but_check" class="acc_check">&#x2714;</div>
-			<div id="but_xmark" class="acc_xmark">&#x2718;</div>
-			<h3>6. Create the Diagram:</h3>
-			<input id="butspawn" type="button" value="Create New Diagram" onclick="Check_Values_and_Spawn()"/>
-			<p id="butready">All set! Now click the &quot;Create New Diagram&quot; button, above. This will spawn a new browser window containing the keyboard diagram.</p>
-			<p id="buterror">Try selecting a keyboard, theme, game and format, and generate the diagram again!</p>
+			<div class="acc_wrap">
+				<h3 class="acc_head">6. Create the Diagram:</h3>
+				<div id="but_check" class="acc_check">&#x2714;</div>
+				<div id="but_xmark" class="acc_xmark">&#x2718;</div>
+			</div>
+			<input id="but_spawn" type="button" value="Create New Diagram" onclick="Check_Values_and_Spawn();"/>
+			<input id="but_reset" type="button" value="Reset" disabled="disabled" onclick="Reset_Page();"/>
+			<p id="but_ready">All set! Now click the &quot;Create New Diagram&quot; button, above. This will spawn a new browser window containing the keyboard diagram.</p>
+			<p id="but_error">Try selecting a keyboard, theme, game and format, and generate the diagram again!</p>
 		</div>
 	</div>
 </form>
@@ -402,7 +417,7 @@ var seourl_table =
 <h3>MediaWiki, SVG &amp; PDF:</h3>
 <p>I have created templates for MediaWiki that do basically the same thing as the other charts available on this site. You can find the templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Wikia</a>. By selecting the &quot;MediaWiki&quot; format type, you can generate the code you will need to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the chart is wider than a typical browser window.</p>
 <p>I have also created SVG versions of the charts, which you can select in the &quot;Format&quot; menu above. I have not migrated over to using SVG for everything yet, since SVG is less compatible with older browsers, and I have not decided how I want to implement the mouse and joystick controls listings. (Also, I have not yet figured out how to create containers that expand, wrap and scale automatically as the amount of text inside them increases.)</p>
-<p>PDF versions of the charts will hopefully be added at some point in the future. Right now the PDF option is still disabled in the menu.</p>
+<p>PDF versions of the charts will hopefully be added at some point in the future. Right now the PDF option is still disabled in the menu. That being said, there are virtual printer drivers such as &quot;Microsoft Print to PDF&quot; or &quot;Adobe Print to PDF&quot; that will allow you to print any file to PDF, even from your Web browser.</p>
 <a name="print_tips"></a>
 <h3>Printing Tips:</h3>
 <ol>

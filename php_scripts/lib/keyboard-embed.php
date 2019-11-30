@@ -137,6 +137,7 @@
 				</iframe>
 <?php
 /*
+	// advertisement
 	echo
 "				<div style=\"position:absolute;left:600px;top:521.5px;width:728px;height:90px;padding:0;margin:0;z-index:10;\">\n";
 	include($path_ssi2 . "adsense_horz_large.php");

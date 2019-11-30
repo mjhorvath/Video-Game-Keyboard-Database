@@ -112,8 +112,10 @@
   to simply reuse the ID number for a future layout.
 * On the submission form, the column names for the TSV data in the "Spreadsheet 
   View" should be fetched from the database instead of being hardcoded. OTOH, 
-  the scripts expect the columns to be in a particular order, and fetching from 
-  the database may result in the columns being in an inconsistent order.
+  the scripts expect the columns to be sorted in a particular order, and I'm 
+  not sure when fetching data from the database that the result will be in a 
+  consistent order. (Maybe in MySQL column names are always in the same order. 
+  I dunno.)
 * The PHP and JS "color" and "class" tables are currently sorted by the index 
   columns of the "keygroups" tables in the database. But what happens if new 
   colors or classes are added, or the index columns somehow get corrupted? Can 
@@ -128,7 +130,9 @@
   sub-genres and sub-sub-genres? How many genres? Which ones?
 * Rename "commandlabels" table to "commandtypelabels" or something similar.
 * The "non" color should be added to the database. Need to also create a 
-  "displayorder" column to ensure the colors are in the correct order.
+  "sort_order" column to ensure the colors are in the correct order.
+* Need someone to look over the code and determine whether it is susceptible to 
+  SQL injection.
 
 ### Optimization
 * Should maybe store the SVG patterns, filters and gradients in separate files 
@@ -143,6 +147,9 @@
 * Not sure every table needs its own numerical index column. Using two or more 
   preexisting columns to form a composite key might suffice in many cases.
 * Should use JS array shorthand in "keyboard-submit.js".
+* The HTML and JS output could be "minified" to save bandwidth. I dislike the 
+  practice and hate working with minified code, however. Plus, I am not exactly 
+  hurting for bandwidth at this time.
 
 ### Presentation
 * Need to create a new favicon just for this project.
@@ -154,8 +161,6 @@
   easier to print. IIRC, last time I tried this it didn't work in every browser.
 * Need to create one or more styles that are accessible to people with color-
   blindness.
-* The "Create New Diagram" button on the front-end page should have a flat gray 
-  style like the other form elements on the same page.
 * Since the main diagrams are now rendered in SVG instead of HTML, I could make 
   it so that the Enter keys on the European ISO layouts have the correct "L" 
   shape. I.e. a polygon with six vertices instead a rectangle with four 
@@ -230,7 +235,8 @@
 * The "Patterned Grayscale" style really sucks. I need to work on it.
 * The "seourl_table" JavaScript array on the frontend page could probably be 
   replaced with a script that automatically generates the needed seourl strings.
-* Need to create an SVG equivalent of the "print_key_html" function.
+* Need to create an SVG equivalent of the "print_key_html" function so that I 
+  can control where output strings are cleaned.
 * Just for fun, run a script that counts and logs the number of lines of code.
 
 ### Problematic
@@ -376,3 +382,6 @@
   in both the "commandtypes" table and the "languages" table. Can one of these 
   be eliminated? See the notes I wrote around the "resThisLanguageStrings" and 
   "resCommands" functions.
+* Add a "Reset" button to the frontend page that resets the state of the forms.
+* The "Create New Diagram" button on the front-end page should have a flat gray 
+  style like the other form elements on the same page.

@@ -10,19 +10,15 @@ div.acc_div {
   width:15em;
 }
 
-div.war_div {
-  margin-top:0.5em;
-  margin-bottom:0.5em;
-  margin-left:auto;
-  margin-right:auto;
-  text-align:left;
-  overflow:hidden;
-  vertical-align:top;
-  width:15em;
+div.acc_head {
+  display:inline-block;
 }
 
 ul.acc_mnu {
+  margin:0;
+  padding:0;
   height:32em;
+  width:15em;
 }
 
 ul.acc_mnu ul {
@@ -33,7 +29,6 @@ ul.acc_mnu, ul.acc_mnu ul {
   list-style-type:none;
   margin:0;
   padding:0;
-  width:15em;
   display:block;
 }
 

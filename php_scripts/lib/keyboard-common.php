@@ -382,7 +382,8 @@
 		$temp_style_name	= $style_name		? $style_name		: "Unrecognized Style";
 		$temp_format_name	= $format_name		? $format_name		: "Unrecognized Format";
 		// checking for $game_id or $game_name  isn't working right now
-		// do we need to check for $format_id and $format_name too?
+		// should check for $format_id and $format_name too
+		// should check that $ten_bool is in the correct range too
 		if (!$game_name)
 		{
 			$errors_table[] = "Game with ID number " . $game_id . " not found.";

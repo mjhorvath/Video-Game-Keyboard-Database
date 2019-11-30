@@ -1,23 +1,17 @@
 *		{font-family:DejaVu Sans Condensed,Sans-Serif;}
 body		{background-color:#c0c0c0;background-image:url("isometric_grid.png");background-attachment:fixed;color:#000000;font-size:11pt;margin:auto;width:80%;max-width:60em;}
 footer		{font-size:smaller;}
-p#butready {width:12em;height:8em;white-space:normal;text-align:left;padding:0.75em;color:#ffffff;background-color:#20a020;border-radius:7px;border:3px double #208020;display:none;}
-p#buterror {width:12em;height:8em;white-space:normal;text-align:left;padding:0.75em;color:#ffffff;background-color:#a02020;border-radius:7px;border:3px double #802020;display:none;}
-input#butspawn {padding:0.75em;}
-div.acc_check {
-  color:#00a000;
-  margin-top:0.1em;
-}
-
-div.acc_xmark {
-  color:#c00000;
-  margin-top:0.1em;
-}
-
-div.acc_check, div.acc_xmark {
-  float:right;
-  display:none;
-  font-size:xx-large;
-  padding:0em;
-  margin:0em;
-}
+p#but_ready	{background-color:#20a020;border:3px double #208020;}
+p#but_error	{background-color:#a02020;border:3px double #802020;}
+p#but_ready,
+p#but_error	{width:12em;height:8em;white-space:normal;text-align:left;padding:0.75em;color:#ffffff;border-radius:7px;display:none;}
+input[type="button"]			{padding:0.5em;background-color:#e0e0e0;border:1px solid #a0a0a0;}
+input[type="button"][disabled]		{padding:0.5em;background-color:#d0d0d0;border:1px solid #c0c0c0;}
+input[type="button"]:hover		{background-color:#d0d000;}
+input[type="button"][disabled]:hover	{background-color:#d0d0d0;}
+h3.acc_head	{position:absolute;bottom:0px;left:0px;display:inline-block;margin:0;background:transparent;}
+div.acc_wrap	{position:relative;height:2em;margin-bottom:0.5em;}
+div.acc_check	{color:#00a000;}
+div.acc_xmark	{color:#c00000;}
+div.acc_check,
+div.acc_xmark	{position:absolute;bottom:0px;right:0px;display:none;font-size:xx-large;padding:0;margin:0;background:transparent;}
