@@ -26,7 +26,7 @@ If you have submitted layouts, bindings or styles, then your name will also appe
 * JavaScript table sorting routine by W3Schools ([link](https://www.w3schools.com/howto/howto_js_sort_table.asp))
 * Recaptcha script from Stack Overflow ([link](https://stackoverflow.com/questions/30006081/recaptcha-2-0-with-ajax))
 * &quot;normalize.css&quot; by Nicolas Gallagher ([link](http://localhost/keyboard/github.com/necolas/normalize.css))
-* jQuery JavaScript Library v1.4.2 by John Resig ([link](http://jquery.com/))
+* &quot;jQuery JavaScript Library v1.4.2&quot; by John Resig ([link](http://jquery.com/))
 
 ### Icon graphics
 * &quot;Spreadsheet&quot; by Arthur Shlain ([link](https://thenounproject.com/ArtZ91/collection/useful-icons-user-interface/?i=360259))
