@@ -1,5 +1,3 @@
-var lastClicked = {}
-
 function Toggle_Waiting(thisBool)
 {
 	document.getElementById('waiting').style.display = thisBool ? 'block' : 'none';
@@ -39,6 +37,7 @@ function Reset_Page()
 		lastClicked['lay'].className = 'acc_nrm';
 
 	lastClicked = {}
+	// these three are hidden inputs
 	document.forms['keyboard_select'].lay.value = '';
 	document.forms['keyboard_select'].sty.value = '';
 	document.forms['keyboard_select'].gam.value = '';

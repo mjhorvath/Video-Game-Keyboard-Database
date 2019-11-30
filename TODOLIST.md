@@ -238,6 +238,8 @@
 * Need to create an SVG equivalent of the "print_key_html" function so that I 
   can control where output strings are cleaned.
 * Just for fun, run a script that counts and logs the number of lines of code.
+* Investigate the various different backlit keyboards and see whether I can 
+  support some of them too.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent page's title in the page headers 

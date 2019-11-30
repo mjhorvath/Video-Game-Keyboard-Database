@@ -598,7 +598,7 @@ var binding_table =
  ?>
 				</div>
 				<footer>
-<?php include($path_lib2 . "keyboard-footer.php"); ?>
+<?php include($path_lib2 . "keyboard-footer-1.php"); ?>
 				</footer>
 			</div>
 			<div id="pane_tsv" style="display:none;">

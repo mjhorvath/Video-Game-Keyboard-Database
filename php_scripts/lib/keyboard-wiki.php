@@ -186,7 +186,7 @@
 			</textarea>
 		</main>
 		<footer>
-<?php include($path_lib2 . "keyboard-footer.php"); ?>
+<?php include($path_lib2 . "keyboard-footer-1.php"); ?>
 		</footer>
 	</body>
 </html>

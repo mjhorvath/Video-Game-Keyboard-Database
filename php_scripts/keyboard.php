@@ -172,6 +172,7 @@
 	echo writeAnalyticsTracking();
 	echo
 "		<script>
+var lastClicked = {}
 var layout_count = " . 	$layouts_max . ";
 var game_count = " . $games_max . ";
 var game_table =
@@ -201,7 +202,6 @@ var seourl_table =
 	<input type="hidden" name="lay" value=""/>
 	<input type="hidden" name="gam" value=""/>
 	<input type="hidden" name="sty" value=""/>
-	<input type="hidden" name="seo" value=""/>
 	<div style="margin:auto;">
 		<div class="acc_div">
 			<div class="acc_wrap">
@@ -391,7 +391,7 @@ var seourl_table =
 			<input id="but_spawn" type="button" value="Create New Diagram" onclick="Check_Values_and_Spawn();"/>
 			<input id="but_reset" type="button" value="Reset" disabled="disabled" onclick="Reset_Page();"/>
 			<p id="but_ready">All set! Now click the &quot;Create New Diagram&quot; button, above. This will spawn a new browser window containing the keyboard diagram.</p>
-			<p id="but_error">Try selecting a keyboard, theme, game and format, and generate the diagram again!</p>
+			<p id="but_error">Try again to select a keyboard, theme and game, then click the &quot;Create New Diagram&quot; button once more!</p>
 		</div>
 	</div>
 </form>
