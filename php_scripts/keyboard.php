@@ -352,7 +352,7 @@ var seourl_table =
 				<input id="fmtrad3" type="radio" name="fmtradio" value="3"/>
 				<span class="checkmark"></span>
 			</label>
-			<label for="fmtrad4" class="container"><s>PDF</s> [TBD]
+			<label for="fmtrad4" class="container"><s>PDF</s>
 				<input id="fmtrad4" type="radio" name="fmtradio" value="4" disabled="disabled"/>
 				<span class="checkmark"></span>
 			</label>
