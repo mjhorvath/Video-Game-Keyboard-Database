@@ -57,7 +57,9 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
-	<li>2019/11/30: Added a "Reset" button to the front page of the project.</li>
+	<li>2019/11/30: Moved footer-specific styles to &quot;style_footer.css&quot;. Updated other stylesheets accordingly.</li>
+	<li>2019/11/30: Created a <a href="./keyboard-links.php">list of links</a> relevant to this project.</li>
+	<li>2019/11/30: Added a &quot;Reset&quot; button to the front page of the project.</li>
 	<li>2019/11/29: Added links to the change log as well as to my website to the page footers.</li>
 	<li>2019/11/29: Mouse, joystick, etc. commands are now displayed programmatically, making it much easier to add new command types.</li>
 	<li>2019/11/29: Created the &quot;commandlabels&quot; table. It contains localized labels for the various command types.</li>
