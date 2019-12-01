@@ -57,6 +57,7 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2019/12/01: Added a &quot;Treat this as a brand new game&quot; checkbox to the submission form.</li>
 	<li>2019/11/30: Renamed &quot;master list&quot; to &quot;master table&quot;.</li>
 	<li>2019/11/30: Moved footer-specific styles to &quot;style_footer.css&quot;. Updated other stylesheets accordingly.</li>
 	<li>2019/11/30: Created a <a href="./keyboard-links.php">list of links</a> relevant to this project.</li>

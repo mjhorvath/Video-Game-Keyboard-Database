@@ -49,6 +49,7 @@
 	$binding	= $_POST["binding"];
 	$layout		= $_POST["layout"];
 	$record		= $_POST["record"];
+	$newsub		= $_POST["newsub"];
 	$timeraw	= time();
 	$timeform	= date("l jS \of F Y h:i:s A", $timeraw);
 	$at		= "@";
@@ -72,6 +73,7 @@
 			"GAME URL:\t"	. $titleurl	. "\r\n" .
 			"LAYOUT:\t\t"	. $layout	. "\r\n" .
 			"RECORD:\t\t"	. $record	. "\r\n" .
+			"NEWSUB:\t\t"	. $newsub	. "\r\n" .
 			"TIMERAW:\t"	. $timeraw	. "\r\n" .
 			"TIMEFORM:\t"	. $timeform	. "\r\n\r\n" .
 			"LEGENDS:\r\n"	. $legend	. "\r\n\r\n" .
@@ -94,6 +96,7 @@
 			"GAME URL:\t"	. $titleurl	. "\r\n" .
 			"LAYOUT:\t\t"	. $layout	. "\r\n" .
 			"RECORD:\t\t"	. $record	. "\r\n" .
+			"NEWSUB:\t\t"	. $newsub	. "\r\n" .
 			"TIMERAW:\t"	. $timeraw	. "\r\n" .
 			"TIMEFORM:\t"	. $timeform	. "\r\n\r\n" .
 			"LEGENDS:\r\n"	. $legend	. "\r\n\r\n" .

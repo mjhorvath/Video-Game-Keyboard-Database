@@ -1,13 +1,12 @@
 div.keyout
 {
-/*	background-size:auto;		/* Can't remember what I was using this for. */
+/*	background-size:auto;			/* Can't remember what I was using this for. */
 	-webkit-transition-duration:0.05s;
 	transition-duration:0.05s;
-
 }
 div.keyout:hover
 {
-/*	filter:brightness(150%);	*/
+/*	filter:brightness(150%);		/* Can't remember what I was using this for. */
 	background-color:#e0e0e0;
 	color:#000000;
 	filter:drop-shadow(0px 0px 10px #e0e0e0);
