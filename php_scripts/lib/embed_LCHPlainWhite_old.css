@@ -2,13 +2,9 @@
 body		{background:#ffffff;color:#000000;font-size:11pt;padding:6px;font-family:DejaVu Sans Condensed,Sans-Serif;}
 select		{background:#ffffff;color:#000000;}
 option		{background:#ffffff;color:#000000;}
-footer		{font-size:smaller;clear:both;margin:0;}
-table#footswitch th	{font-weight:bold;text-align:right;}
-input[type="radio"]	{margin-left:0.5em;vertical-align:middle;}
-input[type="button"]	{margin-left:0.5em;}
-select.stylechange	{margin-left:0.5em;}
 header		{margin:0;}
 main		{margin:0;}
+footer		{font-size:smaller;}
 div.boxdiv	{position:relative;margin:6px;padding:18px;border:solid 1px #c0c0c0;}
 div.svgdiv	{position:relative;margin:6px;padding: 0px;border:solid 1px #c0c0c0;}
 div.combox	{width:22em;float:left;}

@@ -13,3 +13,4 @@ The data content is licensed under the [Creative Commons Attribution-Share Alike
 * A list of credits/dependencies can be found [here](CREDITS.md).
 * Notes about export formats can be found [here](FORMATS.md).
 * A list of possible future tasks can be found [here](TODOLIST.md).
+* A list of links useful to this project can be found [here](DISCUSSION.md).

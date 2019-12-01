@@ -1,4 +1,10 @@
-.stylechange	{margin-left:0.5em;}
+*		{font-family:DejaVu Sans Condensed,Sans-Serif;}
+body		{background-color:#c0c0c0;background-image:url("isometric_grid.png");background-attachment:fixed;color:#000000;font-size:11pt;margin:auto;width:80%;max-width:60em;}
+footer		{font-size:smaller;}
+input[type="button"]			{padding:0.5em;background-color:#e0e0e0;border:1px solid #a0a0a0;}
+input[type="button"][disabled]		{padding:0.5em;background-color:#d0d0d0;border:1px solid #c0c0c0;}
+input[type="button"]:hover		{background-color:#d0d000;}
+input[type="button"][disabled]:hover	{background-color:#d0d0d0;}
 
 @media print
 {

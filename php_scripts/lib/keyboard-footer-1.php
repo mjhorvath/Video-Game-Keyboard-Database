@@ -1,9 +1,12 @@
 <?php
+	// should maybe link to "style_footer.css" from in here too instead of from the main pages
 	switch ($format_id)
 	{
 		case 0:
 			$display_style = "table-row";
 			$display_tenkey = "table-row";
+			$display_format = "table-row";
+			$display_button = "table-row";
 		break;
 		case 1:
 			// this format does not display a footer
@@ -11,17 +14,21 @@
 		case 2:
 			$display_style = "none";
 			$display_tenkey = "none";
+			$display_format = "table-row";
+			$display_button = "table-row";
 		break;
 		case 3:
 			$display_style = "table-row";
 			$display_tenkey = "none";
+			$display_format = "table-row";
+			$display_button = "table-row";
 		break;
 	}
 	echo
 "<div class=\"boxdiv\">
 	<p><a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\"><img alt=\"GNU LGPLv3 icon\" src=\"" . $path_lib1 . "license_lgpl_88x31.png\" /></a><a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/3.0/\"><img alt=\"CC BY-SA 3.0 icon\" style=\"border-width:0;\" src=\"" . $path_lib1 . "license_cc-by-sa_88x31.png\" /></a></p>
-	<p>&quot;Video Game Keyboard Diagrams&quot; software was created by <a target=\"_blank\" href=\"http://isometricland.net\">Michael Horvath</a> and is licensed under <a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\">GNU LGPLv3</a> or later license. Content is licensed under <a target=\"_blank\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CC BY-SA 3.0</a> or later license. You can find this project on <a target=\"_blank\" href=\"https://github.com/mjhorvath/vgkd\">GitHub</a>.</p>
-	<p>Return to <a href=\"./keyboard.php\">Video Game Keyboard Diagrams</a>. View the <a href=\"./keyboard-list.php\">master list</a> or <a href=\"./keyboard-log.php\">change log</a>. Having trouble printing? Take a look at <a href=\"./keyboard.php#print_tips\">these printing tips</a>.</p>\n";
+	<p>&quot;Video Game Keyboard Diagrams&quot; software was created by <a target=\"_blank\" href=\"http://isometricland.net\">Michael Horvath</a> and is licensed under <a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\">GNU LGPLv3</a> or later. Content is licensed under <a target=\"_blank\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CC BY-SA 3.0</a> or later. You can find this project on <a target=\"_blank\" href=\"https://github.com/mjhorvath/vgkd\">GitHub</a>.</p>
+	<p>Return to <a href=\"./keyboard.php\">Video Game Keyboard Diagrams</a>. View the <a href=\"./keyboard-list.php\">master list</a> or <a href=\"./keyboard-log.php\">change log</a>. Here is a <a href=\"./keyboard-links.php\">list of links</a>. Having trouble printing? Take a look at <a href=\"./keyboard.php#print_tips\">these printing tips</a>.</p>\n";
 	// display toggles
 	// need to replace table with non-table markup
 	echo
@@ -67,7 +74,7 @@
 				</td>
 			</tr>\n";
 	echo
-"			<tr>
+"			<tr style=\"display:" . $display_format . ";\">
 				<th>Format:</th>
 				<td>
 					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"formrad0\" value=\"0\"" . ($format_id == 0 ? " checked" : "") . ">&nbsp;<label for=\"formrad0\">HTML/SVG</label>
@@ -84,7 +91,7 @@
 					<input class=\"stylechange\" type=\"radio\" name=\"tkey\" id=\"tkeyrad0\" value=\"0\"" . ($ten_bool == 0 ? " checked" : "") . ">&nbsp;<label for=\"tkeyrad0\">Hide</label>
 				</td>
 			</tr>
-			<tr>
+			<tr style=\"display:" . $display_button . ";\">
 				<th>Submit:</th>
 				<td>
 					<input class=\"stylechange\" type=\"button\" value=\"Update\" onclick=\"reloadThisPage('" . $game_id . "', '" . $layout_id . "', '" . $game_seo . "');\" />

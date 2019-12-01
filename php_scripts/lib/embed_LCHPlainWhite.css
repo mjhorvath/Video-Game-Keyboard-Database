@@ -6,10 +6,6 @@ optgroup	{background:#f0f0f0;color:#000000;padding:0.2em;font-weight:bold;}
 footer		{margin:0;padding:0;font-size:smaller;}
 header		{margin:0;padding:0;}
 main		{margin:0;padding:0;}
-table#footswitch th	{font-weight:bold;text-align:right;}
-input[type="radio"]	{margin-left:0.5em;vertical-align:middle;}
-input[type="button"]	{margin-left:0.5em;}
-select.stylechange	{margin-left:0.5em;}
 label		{}
 div.boxdiv	{margin:6px;padding:18px;position:relative;border:solid 1px #c0c0c0;}
 div.svgdiv	{margin:6px;padding:   0;position:relative;border:solid 1px #c0c0c0;}

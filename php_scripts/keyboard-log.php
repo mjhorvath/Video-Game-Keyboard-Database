@@ -43,7 +43,6 @@
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_common.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_changelog.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"\"/>
 		<meta name=\"keywords\" content=\"\"/>\n";
@@ -58,6 +57,7 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2019/11/30: Added a "Reset" button to the front page of the project.</li>
 	<li>2019/11/29: Added links to the change log as well as to my website to the page footers.</li>
 	<li>2019/11/29: Mouse, joystick, etc. commands are now displayed programmatically, making it much easier to add new command types.</li>
 	<li>2019/11/29: Created the &quot;commandlabels&quot; table. It contains localized labels for the various command types.</li>
@@ -128,7 +128,7 @@
 	<li>2019/03/24: Discovered and documented an issue related to the bit(1) datatype and importing of CSV files.</li>
 	<li>2019/03/24: Added bindings for <i>Kenshi</i>.</li>
 	<li>2019/03/24: Reversed the order of the &quot;Game&quot; and &quot;Theme&quot; selection dialogs.</li>
-	<li>2019/03/24: Made changes to the &quot;Spawn New Diagram&quot; button in the frontend.</li>
+	<li>2019/03/24: Made changes to the &quot;Spawn New Diagram&quot; button on the front page.</li>
 	<li>2019/03/24: Moved several stylesheets from the website's main directory to the local keyboard directory.</li>
 	<li>2019/03/23: Added OBS Production Profile bindings by Josiah Stearns.</li>
 	<li>2019/03/22: Fixed key ID less by 1 when making a submission.</li>
@@ -228,8 +228,8 @@
 </ul>
 <h3>Credits</h3>
 <p>If you have submitted layouts, bindings or styles, then your name will also appear at the bottom of each diagram.</p>
-<h4 style="margin:0.5em;">Binding schemes</h4>
-<ul style="margin:0.5em;">
+<h4>Binding schemes</h4>
+<ul>
 	<li>Agnes Beste</li>
 	<li>Taz</li>
 	<li>Josiah Stearns</li>
@@ -240,44 +240,33 @@
 	<li>Hunter Mansanas</li>
 	<li>Lucas</li>
 </ul>
-<h4 style="margin:0.5em;">Visual themes</h4>
-<ul style="margin:0.5em;">
+<h4>Visual themes</h4>
+<ul>
 	<li>Kozierok style: <i>Keyboard Key Groupings</i> by Charles M. Kozierok (<a target="_blank" href="http://www.pcguide.com/ref/kb/group-c.html">link</a>)</li>
 	<li>Savard style: <i>Scan Codes Demystified</i> by John J. G. Savard (<a target="_blank" href="http://www.quadibloc.com/comp/scan.htm">link</a>)</li>
 	<li>Hello Kitty style: <i>Hello Kitty Keyboard</i> by DreamKitty.com (<a target="_blank" href="http://www.dreamkitty.com/Merchant2/merchant.mv?Screen=PROD&Store_Code=DK2000&Product_Code=K-FB109141&Category_Code=HK">link</a>)</li>
 	<li>Doraemon style: <i>Doraemon Keyboard</i> by DreamKitty.com (<a target="_blank" href="http://www.dreamkitty.com/Merchant5/merchant.mvc?Screen=PROD&Store_Code=DK2000&Product_Code=O-FB761011&Category_Code=">link</a>)</li>
 	<li>FunKeyBoard style: <i>FunKeyBoard</i> by Chester Creek Technologies (<a target="_blank" href="http://www.venturaes.com/index_new.asp?http://www.venturaes.com/chestercreek/index.html">link</a>)</li>
 </ul>
-<h4 style="margin:0.5em;">Scripts</h4>
-<ul style="margin:0.5em;">
-	<li>"Simple JQuery Accordion Menu" by Marco van Hylckama Vlieg (<a target="_blank" href="http://www.i-marco.nl/weblog/">link</a>)</li>
+<h4>Scripts</h4>
+<ul>
+	<li>&quot;Simple JQuery Accordion Menu&quot; by Marco van Hylckama Vlieg (<a target="_blank" href="http://www.i-marco.nl/weblog/">link</a>)</li>
 	<li>CSS checkbox code by W3Schools (<a target="_blank" href="https://www.w3schools.com/howto/howto_css_custom_checkbox.asp">link</a>)</li>
 	<li>JavaScript table sorting routine by W3Schools (<a target="_blank" href="https://www.w3schools.com/howto/howto_js_sort_table.asp">link</a>)</li>
 	<li>Recaptcha script from Stack Overflow (<a target="_blank" href="https://stackoverflow.com/questions/30006081/recaptcha-2-0-with-ajax">link</a>)</li>
-	<li>normalize.css by Nicolas Gallagher (<a target="_blank" href="github.com/necolas/normalize.css">link</a>)</li>
-	<li>jQuery JavaScript Library v1.4.2 by John Resig (<a target="_blank" href="http://jquery.com/">link</a>)</li>
+	<li>&quot;normalize.css&quot; by Nicolas Gallagher (<a target="_blank" href="github.com/necolas/normalize.css">link</a>)</li>
+	<li>&quot;jQuery JavaScript Library v1.4.2&quot; by John Resig (<a target="_blank" href="http://jquery.com/">link</a>)</li>
 </ul>
-<h4 style="margin:0.5em;">Icon graphics</h4>
-<ul style="margin:0.5em;">
-	<li>"Spreadsheet" by Arthur Shlain (<a href="https://thenounproject.com/ArtZ91/collection/useful-icons-user-interface/?i=360259">link</a>)</li>
-	<li>"Keyboard" by Alexey Ivanov (<a href="https://thenounproject.com/search/?q=keyboard&creator=17566&i=17427">link</a>)</li>
-	<li>"Information" by AnsteyDesign (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
-	<li>"Edit" by Garrett Knoll (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
-	<li>"Plus" by P.J. Onori (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
-	<li>"Delete" by P.J. Onori (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
-</ul>
-<h3>Links to Further Reading</h3>
+<h4>Icon graphics</h4>
 <ul>
-	<li>ShortcutMapper (<a target="_blank" href="http://waldobronchart.github.io/ShortcutMapper/">link</a>)</li>
-	<li>Keyboard Layout Editor (<a target="_blank" href="http://www.keyboard-layout-editor.com/">link</a>)</li>
-	<li>KeyXL Keyboard Shortcuts (<a target="_blank" href="http://www.keyxl.com/">link</a>)</li>
-	<li>AllHotkeys.com (<a target="_blank" href="http://allhotkeys.com/">link</a>)</li>
-	<li>replacementdocs (<a target="_blank" href="http://www.replacementdocs.com/">link</a>)</li>
-	<li>Character sets (<a target="_blank" href="http://www.alanwood.net/demos/wgl4.html">link</a>)</li>
-	<li>REALDev - The Keyboard (<a target="_blank" href="http://classicteck.com/rbarticles/mackeyboard.php">link</a>)</li>
-	<li>Key Support, Keyboard Scan Codes, and Windows (<a href="http://www.microsoft.com/whdc/archive/scancode.mspx">link</a>)</li>
-	<li>Virtual-Key Codes (<a target="_blank" href="http://msdn.microsoft.com/en-us/library/ms645540.aspx">link</a>)</li>
-	<li>Generate a Heatmap of your Keystrokes (<a target="_blank" href="http://www.blendedtechnologies.com/visualization-tricks-generate-a-heatmap-of-your-keystrokes/">link</a>)</li>
+	<li>&quot;Spreadsheet&quot; by Arthur Shlain (<a href="https://thenounproject.com/ArtZ91/collection/useful-icons-user-interface/?i=360259">link</a>)</li>
+	<li>&quot;Keyboard&quot; by Alexey Ivanov (<a href="https://thenounproject.com/search/?q=keyboard&creator=17566&i=17427">link</a>)</li>
+	<li>&quot;Information&quot; by AnsteyDesign (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
+	<li>&quot;Edit&quot; by Garrett Knoll (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
+	<li>&quot;Plus&quot; by P.J. Onori (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
+	<li>&quot;Delete&quot; by P.J. Onori (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
+	<li>&quot;CC BY-SA 3.0&quot; icon (<a target="_blank" href="https://commons.wikimedia.org/wiki/File:CC-BY-SA_icon_white.svg">link</a>)</li>
+	<li>&quot;GNU LGPLv3&quot; icon (<a target="_blank" href="https://commons.wikimedia.org/wiki/File:License_icon-lgpl-88x31.png">link</a>)</li>
 </ul>
 <?php
 	echo
