@@ -3,12 +3,8 @@
 ### Submission Form
 * Continue developing the "Spreadsheet View" of the submission form, and permit 
   users to alter or update the keyboard bindings directly using it.
-* There needs to be additional indication on the submission page to the effect 
-  that there is a "Help Pane" as well as a "Spreadsheet View".
-* "Spreadsheet View" needs to be renamed to something else since I have not 
-  created an actual spreadsheet. Maybe "TSV View" would be a better name. 
-  Alternatively, make the "Spreadsheet View" behave more like an actual spread-
-  sheet.
+* There needs to be more indication on the submission page that there is a 
+  "Help Pane" as well as a "Spreadsheet View".
 * Users should maybe be able to enter text directly onto the keyboard diagram 
   on the submission form. Have to think this through, as things could get very 
   messy.
@@ -18,30 +14,24 @@
   write a desktop application for this.
 * Need to switch to using something other than JavaScript alert boxes for 
   providing users with feedback. Alert boxes can be disabled by users in some 
-  browsers, which is bad. Custom alert boxes could also be made prettier.
+  browsers, which will break the form. Custom alert boxes could also be made 
+  prettier than the typical JavaScript alert box. (Thought this varies from 
+  browser to browser.)
 * On the submission form, replace the "X" icon in the tool bar with arrows 
   pointing left and right.
 * Need to add instructions to the effect that the SHIFT, ALT, etc. commands may 
   require colors assigned to them, but these colors will not necessarily be 
-  displayed in the chart. (At least, in the current version of the chart.)
-  A popup warning does actually get spawned when this is the case. Is the popup 
-  sufficient?
-* I would like to change the text shown in the color selection boxes of the 
-  submission form from "non" to "null" or something else. This might have an 
-  adverse effect on some scripts, however. Also, the drop down list would take 
-  up more space due to the added character.
+  displayed in the chart. (At least, in the current version of the chart.) 
+  [Ed. A pop-up warning does actually get spawned when this happens. Is the 
+  single pop-up sufficient warning?]
 * Should make the size of the left pane adjustable and make the text input form 
-  fields shrink or grow with the size of the pane.
-* Maybe add a checkbox to the submission form so that users can indicate to the 
-  developers that bindings for a brand new game are being created. The 
-  "record_id" field should then read as "\N" for each record instead of an 
-  existing game's ID. At the very least, a button to load the "Blank Sample" 
-  should be added to the frontend page.
+  fields shrink and grow with the size of the pane.
 * Link to the Excel sheet directly from the submission form, so that those who 
-  might prefer using it over the default methods will have easier access to it.
+  might prefer using it over the default methods will have easier access to it. 
+  [Ed. should I put the link in the help pane? Should I link to the GitHub page 
+  or to MediaFire?]
 * On the "spreadsheet view" of the submission form, add buttons to update the 
-  "keyboard view" using TSV in the text boxes. Leave the buttons disabled until 
-  the update feature is fully implemented.
+  "keyboard view" using the TSV code entered in the textarea boxes.
 * On the submission form, should I use the "cleantextHTML" function to clean up 
   the form inputs? What about in the other direction? Should I "clean" the form 
   inputs before saving them as well? Can I "un-clean" the inputs?
@@ -50,9 +40,13 @@
   indicate the key is selected. I can leave the background color alone and rely 
   on just the animated border instead. Not sure if I should do the same for the 
   hover state as well.
+* If the "new game" box is checked, make sure the game title is different from 
+  all the other game titles (or at least the current title) before allowing the 
+  user to submit the bindings. Enforce this using JavaScript.
 
 ### MediaWiki
-* Should generate MediaWiki code for layouts and styles in addition to games.
+* Should generate MediaWiki code for different layouts and styles in addition 
+  to games.
 * Should add support in the MediaWiki templates for toggling the numpad on/off. 
   [Ed. I may have actually done this already. Need to double check.]
 * Add support in the MediaWiki template for Shift/CTRL/Alt command colors, even 
@@ -152,7 +146,7 @@
 * Should use JS array shorthand in "keyboard-submit.js".
 * The HTML and JS output could be "minified" to save bandwidth. I dislike the 
   practice and hate working with minified code, however. Plus, I am not exactly 
-  hurting for bandwidth at this time.
+  hurting for bandwidth at this time, and page loads are fast.
 
 ### Presentation
 * Need to create a new favicon just for this project.
@@ -241,9 +235,10 @@
   replaced with a script that automatically generates the needed seourl strings.
 * Need to create an SVG equivalent of the "print_key_html" function so that I 
   can control where output strings are cleaned.
-* Just for fun, run a script that counts and logs the number of lines of code.
 * Investigate the various different backlit keyboards and see whether I can 
   support some of them too.
+* Need to remember to test in other browsers periodically! BrowserStack has a 
+  free service for open source projects supposedly. Sign up for that.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent page's title in the page headers 
@@ -276,15 +271,27 @@
   they should be able to do more. Or maybe add a "New" button to the submission 
   form that asks for some basic info and a desired layout, and then blanks 
   every field. [Ed. the latter would be much easier to do than the former.]
+* Maybe add a checkbox to the submission form so that users can indicate to the 
+  developers that bindings for a brand new game are being created. The 
+  "record_id" field should then read as "\N" for each record instead of an 
+  existing game's ID. At the very least, a button to load the "Blank Sample" 
+  should be added to the frontend page. [Ed. I added the checkbox, but it has 
+  no effect until the user tries to submit the schema via the email form and 
+  captcha. It is not reflected in the TSV output in the "Spreadsheet View".]
 
 ### Rejected
 * Tweak the "cleantext" functions and/or the query functions so that separate 
   copies of every query function are no longer required for HTML and SVG.
-  [Ed. That ended up adding more complexity than it eliminated.]
+  [Ed. after some testing, this ended up adding more complexity than it 
+  eliminated.]
 * The "$path_file" variable should be assigned automatically using a script. 
-  OTOH, it's only used in one file. I could simply delete it. [Ed. since so 
-  many scripts are included, the "$path_file" variable was the best way to keep 
-  track of all the different files. Plus, it is needed in the footer.]
+  [Ed. since so many PHP scripts are "included" inside the wrapper file, the 
+  "$path_file" variable is the most reliable way to keep track of which is the 
+  current file. It is needed in the footer time and date stamp for instance.]
+* I would like to change the text shown in the color selection boxes of the 
+  submission form from "non" to "null" or something else. [Ed. this might have 
+  an adverse effect on some scripts. Also, the drop down list would take up 
+  more space to accommodate the additional character.]
 
 ### Done
 * In the submission form, selecting a colored OPTION element should change the 
@@ -391,3 +398,11 @@
 * Add a "Reset" button to the frontend page that resets the state of the forms.
 * The "Create New Diagram" button on the front-end page should have a flat gray 
   style like the other form elements on the same page.
+* "Spreadsheet View" needs to be renamed to something else since I have not 
+  created an actual spreadsheet. Maybe "TSV View" would be a better name. 
+  Alternatively, make the "Spreadsheet View" behave more like an actual spread-
+  sheet. [Ed. officially the term "spreadsheet" has been removed from the page. 
+  The button is labeled "Toggle TSV Panel" for now.]
+* Just for fun, run a script that counts and logs the number of lines of code.
+  [Ed. I installed a Windows program called LocMetrics to accomplish this. It 
+  is a very easy tool to use.]
