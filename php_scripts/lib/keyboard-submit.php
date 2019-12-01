@@ -536,7 +536,7 @@ var binding_table =
 			$leg_group = $legend_table[$j][0];
 			if (($leg_group-1) == $i)
 			{
-				$leg_value = cleantextHTML($legend_table[$j][1]);
+				$leg_value = $legend_table[$j][1];
 				break;
 			}
 		}
@@ -578,9 +578,9 @@ var binding_table =
 				$this_command = $command_type_array[$j];
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . cleantextHTML($this_command[1]) . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $this_command[1] . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . cleantextHTML($this_command[2]) . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $this_command[2] . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}

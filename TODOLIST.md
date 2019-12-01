@@ -106,7 +106,10 @@
 * I would like for the "command_text" column in the "commands" table to be set 
   to NOT NULL. But I will have to come up with something else to put into that 
   column when adding "Additional Notes" to the table. Unlike the other command 
-  types, the "Additional Notes" category usually leaves that column blank.
+  types, the "Additional Notes" category usually leaves the left column blank.
+  [Ed. when I overhauled the "commands" code I forgot to re-implement this 
+  special case. I think that earlier I was using a textarea tag instead of a 
+  regular input tag for the "Additional Notes" on the submissions form.]
 * I would like to re-index the "layouts" table since a gap exists between ID #1 
   and ID #3. This would break many links on the Internet, however. Maybe better 
   to simply reuse the ID number for a future layout.
@@ -170,7 +173,8 @@
   the left and right parts separated by an equal '=' sign? For instance using a 
   table? Or should I instead use a definition/description list? This should not 
   be too hard since I already store the left and right texts in separate fields 
-  within the database itself.
+  within the database itself. [Ed. using a table would be perfectly okay 
+  semantically since it is tabular data.]
 * Should the accordion menus on the front-end page be sorted alphabetically, or 
   should I add a "displayorder" column to each SQL table? If I can come up with 
   an easy way to update such a "displayorder" column using SQL commands, then I 
