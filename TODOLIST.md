@@ -1,10 +1,10 @@
 ## To Do List
 
 ### Submission Form
-* Continue developing the "Spreadsheet View" of the submission form, and permit 
+* Continue developing the "TSV Pane" of the submission form, and permit 
   users to alter or update the keyboard bindings directly using it.
 * There needs to be more indication on the submission page that there is a 
-  "Help Pane" as well as a "Spreadsheet View".
+  "Help Pane" as well as a "TSV Pane".
 * Users should maybe be able to enter text directly onto the keyboard diagram 
   on the submission form. Have to think this through, as things could get very 
   messy.
@@ -30,7 +30,7 @@
   might prefer using it over the default methods will have easier access to it. 
   [Ed. should I put the link in the help pane? Should I link to the GitHub page 
   or to MediaFire?]
-* On the "spreadsheet view" of the submission form, add buttons to update the 
+* On the "TSV Pane" of the submission form, add buttons to update the 
   "keyboard view" using the TSV code entered in the textarea boxes.
 * On the submission form, should I use the "cleantextHTML" function to clean up 
   the form inputs? What about in the other direction? Should I "clean" the form 
@@ -45,7 +45,7 @@
   user to submit the bindings. Enforce this using JavaScript.
 
 ### MediaWiki
-* Should generate MediaWiki code for different layouts and styles in addition 
+* I should generate MediaWiki code for different layouts and styles in addition 
   to games.
 * Should add support in the MediaWiki templates for toggling the numpad on/off. 
   [Ed. I may have actually done this already. Need to double check.]
@@ -83,20 +83,17 @@
   to improve the contributers list in the footer of each page.
 
 ### Database Schema
-* Right now it may only be incidental that bindings and positions match up with 
-  each other properly. Need to make sure I am not relying on hard-coded values.
-* Maybe add a new "keys" table and have "key_number" be the index column. The 
-  "key_number" is referenced by the "bindings" and "keystyles" tables. Not sure 
-  what else to put in the "keys" table besides the index, however.
+* Right now it may only be coincidental that the "bindings" and "positions" 
+  match up with each other properly. Need to make sure I am not relying on 
+  hardcoded values, and that the order of the records in the database will not 
+  affect the behavior of the code. [Ed. maybe add a new "keys" table and have 
+  "key_number" be the index column. Not sure what else to put in the "keys" 
+  table besides the index column, however. The "key_number" is also referenced 
+  by the "keystyles" table.]
 * The "record_id" column name is used in two different contexts within the 
-  database: once as a game record, once as a style record. Should rename each 
-  column to something different to prevent confusion. The same thing is true 
-  for the two "keygroup_id", "keygroup_class" and "contrib_id" columns.
-* Should calculate the correct key IDs dynamically based on what is in the 
-  "bindings" table versus hard-coding the max key ID in the "layouts" table.
-* I thought the ID for each key in the "positions" table was based on the IBM 
-  position codes. However, apparently this is not the case. Should I edit the 
-  position table so that they *are* based on the IBM position codes?
+  database: once as a game record, and once as a style record. Should rename 
+  each column to something different to prevent confusion. [Ed. this is true 
+  for the "keygroup_id", "keygroup_class" and "contrib_id" columns as well.]
 * I would like for the "command_text" column in the "commands" table to be set 
   to NOT NULL. But I will have to come up with something else to put into that 
   column when adding "Additional Notes" to the table. Unlike the other command 
@@ -177,68 +174,80 @@
 * Maybe add some breadcrumbs to the "plain" pages.
 * The credits bylines in the footers at the bottom of each page are eventually 
   going to need to be places each on their own line versus all on the same line.
+* The "Patterned Grayscale" style really sucks. I need to work on it.
 
 ### Miscellaneous
-* I would also like to create charts/diagrams for gamepads, mice and joysticks. 
-  But the sheer number of different devices will make this task very difficult.
+* I would like to also create charts/diagrams for gamepads, mice and joysticks. 
+  But the sheer number of different devices may make this task too difficult.
 * Not sure whether the XML sitemap file should list each game once for every 
-  platform/layout, or only once, period. Does it confuse search engines to have 
-  multiple diagrams for each game?
+  game/platform/layout combination, or only once, period. Will it confuse 
+  search engines if I have have multiple diagrams for each game?
 * I merged the HTML and SVG formats into one format. The diagrams are no longer 
   rendered using pure HTML code, and the SVG files are now once again embedded 
   within an HTML wrapper. (This is also how the old "embed" format worked.) Not 
   sure what effect using SVG will have on search engines, however. Do search 
   engines parse text embedded within SVG files? What if those SVG files are 
-  themselves embedded within HTML files?
+  also embedded within HTML files?
 * Now that I have ditched the HTML format in favor of SVG for the principal 
   rendering method, should I update the submission editor to use SVG as well? 
-  This would require some cross-frame JavaScript, and some method of text input 
-  for the SVG files. Not sure this is going to be easy.
+  This would require some cross-frame JavaScript, as well as some manner of 
+  text input for the SVG files. Not sure this is going to be easy.
 * Users should maybe be able to press the ALT modifier key and see the bindings 
-  that make use of that modifier. There is another project on the Internet that 
-  works in this manner. Need to check it out.
+  that make use of that modifier highlighted somehow. There is another project 
+  on the Internet that works in this manner. Need to check it out.
 * File permissions recently started getting messed up when uploading new files 
-  using FileZilla. Is it a bug or setting in the software? I now have to fix 
-  the permissions manually each time I upload a new file. I need to figure out 
-  what is going on.
+  to the server using FileZilla. Is it a bug or setting in the FTP software, or 
+  configuration setting in the server? I now have to fix the permissions 
+  manually each time I upload a brand new file. I need to figure out what is 
+  going on.
 * I should be able to easily create "Typing Reference" schemes for every 
   keyboard layout. I would like to have the GUI strings translated into their 
   respective languages before I do this, however.
 * The PHP scripts get kind of flaky when both an SEO string *and* a game ID are 
-  provided in the URL. Not sure which of these should override the other. Need 
-  to investigate this more.
-* Not sure if the GUI string language should be a per-keyboard layout setting, 
-  or something the user can configure manually. The latter would require yet 
-  another URL query parameter or maybe a cookie.
-* Whether or not to show lower-case key caps should be a per-game setting 
-  rather than a per-layout setting, maybe. Or, allow users toggle them on/off 
-  manually. Would this require more URL query parameters? How about cookies?
-* Maybe merge the "Completed" tasks on this page back into the other categories 
-  and use strike-through text to indicate whether a task has been completed or 
-  not. Or use GitHub's "Issues" interface. Can GitHub "Issues" be categorized?
-* Formats are now listed in the database. I could use the database to generate 
-  the format list in the page footer now if I wanted to. This is also true for 
-  the default numpad state.
-* Make sure there are no characters escaped in the HTML "title" tags, since 
-  page titles do not benefit from this.
-* Make sure I did not overlook any characters that need to be escaped. Is there 
-  a library I can use to do this?
-* Echo all HTML code using PHP in order to be consistent, maybe.
-* Search the source code for instances of the word "hardcoded", since they 
-  represent data that should really be put in/retrieved from the database.
-* The functions "leadingZeros2" and "leadingZeros3" should be made recursive so 
-  only one function is required.
-* Maybe move the "print_key_html" function to the file it was written for. None 
-  of the other files need it.
-* The "Patterned Grayscale" style really sucks. I need to work on it.
-* The "seourl_table" JavaScript array on the frontend page could probably be 
-  replaced with a script that automatically generates the needed seourl strings.
+  specified in the URL. Not sure which should override the other. Need to 
+  investigate further.
+* Not sure if the GUI string language should be a per-layout setting, or 
+  something the user can configure for his or herself manually. The latter 
+  would require yet another URL query parameter or even a cookie.
+* Whether or not to show lower-case key caps should maybe be a per-game setting 
+  rather than a per-layout setting. Or, allow users toggle them on/off 
+  manually. Would this require more URL query parameters? What about cookies?
+* Maybe merge the "Done" tasks on this page back into the other categories and 
+  use strike-through text to indicate whether a task has been completed or not. 
+  Or, I could duplicate the sub-headings in the "Done" section, and retain the 
+  original categorization. Lastly, I could use GitHub's built-in "Issues" 
+  interface. Can GitHub "Issues" be categorized?
+* Formats are now listed in the database. I could now use the database to 
+  generate the format list in the page footer if I wanted to. This is also true 
+  for the default numpad state.
+* Make sure there are no characters escaped in the HTML "title" tags since page 
+  titles do not benefit from escaping characters. [Ed. currently I "clean" all 
+  text strings of characters that can be escaped regardless of where they are 
+  printed. I need to investigate exactly which HTML tags do and do not benefit 
+  from "cleaning". This goes for SVG tags as well. Also, is there a library I 
+  can utilize to do the cleaning versus coding everything myself?]
+* Echo all HTML code using PHP in order to be consistent. [Ed. this way will be 
+  completely blank if a person navigates to the web page and the PHP code does 
+  not execute for whatever reason.]
+* Search the source code for instances of the word "hardcoded". They represent 
+  values that should really be moved to the database or calculated dynamically.]
+* The functions "leadingZeros2" and "leadingZeros3" should be turned into a 
+  single recursive function.
+* Maybe move the "print_key_html" function to "keyboard-embed.php". This is the 
+  file it was written for. None of the other files need it.
+* The "seourl" arrays and column could probably be replaced with a script that 
+  automatically generates the needed strings. [Ed. need to make sure the output 
+  in both cases is exactly the same.]
 * Need to create an SVG equivalent of the "print_key_html" function so that I 
-  can control where output strings are cleaned.
-* Investigate the various different backlit keyboards and see whether I can 
-  support some of them too.
-* Need to remember to test in other browsers periodically! BrowserStack has a 
-  free service for open source projects supposedly. Sign up for that.
+  can better control where exactly output strings are "cleaned".
+* Investigate the various different backlit keyboards to see whether I can 
+  support them as well. Maybe create an "Export" format that provides users 
+  with a number of conversion tools.
+* Need to remember to test all the pages in other browsers periodically! 
+  BrowserStack offers a free service for open source projects, apparently. I 
+  need to sign up for that.
+* Should I refer to the "frontend page" as the "front page" instead from now 
+  on? Which name is more appropriate? Should I rename the files too?
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent page's title in the page headers 
@@ -277,7 +286,12 @@
   existing game's ID. At the very least, a button to load the "Blank Sample" 
   should be added to the frontend page. [Ed. I added the checkbox, but it has 
   no effect until the user tries to submit the schema via the email form and 
-  captcha. It is not reflected in the TSV output in the "Spreadsheet View".]
+  captcha. It is not reflected in the TSV output in the "TSV Pane".]
+* I thought the ID for each key in the "positions" table was based on the IBM 
+  position codes. However, apparently this is not the case. Should I edit the 
+  position table so that they *are* based on the IBM position codes? [Ed. I 
+  think the IBM position codes only go up to a certain number. IIRC, they don't 
+  include a lot of the newer keys such as "Windows" or "Super" among others.]
 
 ### Rejected
 * Tweak the "cleantext" functions and/or the query functions so that separate 
@@ -364,7 +378,7 @@
   of changing the page location instead.
 * The file "keyboard-sitemap.php" is a tool and does not need to use the site's 
   styling. It should also be moved into the "lib" directory.
-* The TSV code on the "Spreadsheet View" of the submission form is not always 
+* The TSV code on the "TSV Pane" of the submission form is not always 
   lining up neatly. Need to set the container to overflow instead of wrap.
 * On the submission form the displayed value for "inp_keynum" should start at 
   one instead of zero like in the database. In JavaScript the number should 
@@ -400,9 +414,11 @@
   style like the other form elements on the same page.
 * "Spreadsheet View" needs to be renamed to something else since I have not 
   created an actual spreadsheet. Maybe "TSV View" would be a better name. 
-  Alternatively, make the "Spreadsheet View" behave more like an actual spread-
+  Alternatively, make the "TSV Pane" behave more like an actual spread-
   sheet. [Ed. officially the term "spreadsheet" has been removed from the page. 
   The button is labeled "Toggle TSV Panel" for now.]
 * Just for fun, run a script that counts and logs the number of lines of code.
-  [Ed. I installed a Windows program called LocMetrics to accomplish this. It 
-  is a very easy tool to use.]
+  [Ed. I installed a Windows program called LocMetrics to accomplish this, and 
+  It is a very easy tool to use. I am not sure how well it "understands" HTML, 
+  JS and PHP code, however. The website says "C#, C++, Java, and SQL". I also 
+  did not point the tool at the database dumps or these wiki documents.]
