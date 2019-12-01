@@ -1154,31 +1154,34 @@ function disable_doc_controls()
 function collect_legend_data()
 {
 	legend_table = [];
-	legend_count = color_table.length;
-
-	// skip first array member
-	for (var i = 1; i < legend_count; i++)
+	legend_count = 0;
+	// skip the first array member since it only contains "non", and there is no box for "non"
+	for (var i = 1; i < color_count; i++)
 	{
 		var this_color = color_table[i];
 		var this_input = document.getElementById('form_cap' + this_color);
 		var this_value = this_input.value;
 		if (this_value != '')
 		{
-			legend_table.push([i+1, this_value]);
+			legend_table.push([i, this_value]);
+			legend_count += 1;
 		}
 	}
 }
 
 function collect_command_data()
 {
-	command_table = [];
-	for (var j = 0, o = commandlabels_table.length; j < o; j++)
+	commandouter_table = [];
+	commandouter_count = 0;
+	for (var j = 0; j < commandlabels_count; j++)
 	{
-		command_table[j] = [];
+		commandouter_table.push([]);
+		commandouter_count += 1;
 		var this_label = commandlabels_table[j];
 		var this_parent = document.getElementById('table_' + this_label);
-		// ignore the last child
-		for (var i = 0, n = this_parent.children.length - 1; i < n; i++)
+		// ignore the last child since it only contains the button
+		var max_children = this_parent.children.length - 1;
+		for (var i = 0; i < max_children; i++)
 		{
 			var this_child = this_parent.children[i];
 			var this_input_1 = this_child.children[0].children[0];
@@ -1187,7 +1190,7 @@ function collect_command_data()
 			var this_value_2 = this_input_2.value;
 			if ((this_value_1 != '') && (this_value_2 != ''))
 			{
-				command_table[j].push([this_value_1, this_value_2]);
+				commandouter_table[j].push([this_value_1, this_value_2]);
 			}
 		}
 	}
@@ -1195,6 +1198,7 @@ function collect_command_data()
 
 function process_legend_data()
 {
+	// cleaning!
 	// should fetch column names from database instead
 	var legend_string = 'legend_id\trecord_id\tkeygroup_id\tlegend_description\n';
 	for (var i = 0, n = legend_table.length; i < n; i++)
@@ -1207,15 +1211,16 @@ function process_legend_data()
 
 function process_command_data()
 {
+	// cleaning!
 	// should fetch column names from database instead
 	var command_string = 'command_id\trecord_id\tcommandtype_id\tcommand_text\tcommand_description\n';
-	for (var j = 0, o = command_table.length; j < o; j++)
+	for (var j = 0, o = commandouter_table.length; j < o; j++)
 	{
-		var this_table = command_table[j];
+		var this_table = commandouter_table[j];
 		for (var i = 0, n = this_table.length; i < n; i++)
 		{
 			var command_item = this_table[i];
-			command_string += '\\N\t' + record_id + '\t1\t' + cleantextTSV(command_item[0]) + '\t' + cleantextTSV(command_item[1]) + '\n';
+			command_string += '\\N\t' + record_id + '\t' + (j+1) + '\t' + cleantextTSV(command_item[0]) + '\t' + cleantextTSV(command_item[1]) + '\n';
 		}
 	}
 	return command_string;
@@ -1223,6 +1228,7 @@ function process_command_data()
 
 function process_binding_data()
 {
+	// cleaning!
 	// should fetch column names from database instead
 	var binding_string = 'binding_id\trecord_id\tkey_number\tnormal_action\tnormal_group\tshift_action\tshift_group\tctrl_action\tctrl_group\talt_action\talt_group\taltgr_action\taltgr_group\textra_action\textra_group\timage_file\timage_uri\n';
 	for (var i = 0, n = binding_table.length; i < n; i++)

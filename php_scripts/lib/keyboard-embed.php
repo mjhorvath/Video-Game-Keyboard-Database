@@ -21,8 +21,10 @@
 	header("Content-Type: text/html; charset=utf8");
 
 	$path_file		= "./keyboard-embed.php";	// this file
-	$command_table		= [];
+	$commandouter_table	= [];
+	$commandouter_count	= 0;
 	$commandlabels_table	= [];
+	$commandlabels_count	= 0;
 	$author_table		= [];
 	$style_table		= [];
 	$gamesrecord_id		= 0;
@@ -150,22 +152,22 @@
 			<div id="flxdiv">
 <?php
 	// commands
-	$command_type_count = count($command_table);
-	for ($i = 0; $i < $command_type_count; $i++)
+	// keep in mind that the "additional notes" are a special case
+	for ($i = 0; $i < $commandlabels_count; $i++)
 	{
-		$command_type_array = $command_table[$i];
-		$command_type_label = $commandlabels_table[$i][1];
-		$command_type_abbrv = $commandlabels_table[$i][2];
-		$command_count = count($command_type_array);
-		if ($command_count > 0)
+		if (array_key_exists($i, $commandouter_table))
 		{
+			$commandinner_table = $commandouter_table[$i];
+			$commandlabels_label = $commandlabels_table[$i][1];
+			$commandlabels_abbrv = $commandlabels_table[$i][2];
+			$commandinner_count = count($commandinner_table);
 			echo
 "				<div class=\"comdiv\">
-					<h3>" . cleantextHTML($command_type_label) . "</h3>
+					<h3>" . cleantextHTML($commandlabels_label) . "</h3>
 					<p>\n";
-			for ($j = 0; $j < $command_count; $j++)
+			for ($j = 0; $j < $commandinner_count; $j++)
 			{
-				$this_command = $command_type_array[$j];
+				$this_command = $commandinner_table[$j];
 				echo cleantextHTML($this_command[1]) . " = " . cleantextHTML($this_command[2]) . "<br>\n";
 			}
 			echo

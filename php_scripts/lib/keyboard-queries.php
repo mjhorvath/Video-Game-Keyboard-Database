@@ -110,12 +110,13 @@
 	}
 	function resLegendColors($in_result)
 	{
-		global $color_array;
+		global $color_array, $color_count;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
 			// keygroup_id, keygroup_class
 			$colorid_array[] = $temp_row[0];
 			$color_array[] = $temp_row[1];
+			$color_count += 1;
 		}
 		array_multisort($colorid_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $color_array);
 	}
@@ -546,11 +547,13 @@
 	}
 	function resLegends($in_result)
 	{
-		global $legend_table;
+		global $legend_table, $legend_count;
+		$legend_count = 0;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
 			// keygroup_id, legend_description
 			$legend_table[] = [$temp_row[0], $temp_row[1]];
+			$legend_count += 1;
 		}
 	}
 	// make sure the columns are synced with the TSV page of the submission form
@@ -565,11 +568,13 @@
 	// also not sure if the counters are strictly necessary since it's very easy to get the length of each table
 	function resCommands($in_result)
 	{
-		global	$command_table;
+		global	$commandouter_table, $commandouter_count;
+		$commandouter_count = 0;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
 			// commandtype_id, command_text, command_description
-			$command_table[$temp_row[0]-1][] = $temp_row;
+			$commandouter_table[$temp_row[0]-1][] = $temp_row;
+			$commandouter_count += 1;
 		}
 	}
 	function selCommandLabels()
@@ -583,11 +588,12 @@
 	}
 	function resCommandLabels($in_result)
 	{
-		global $commandlabels_table;
+		global $commandlabels_table, $commandlabels_count;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
 			// commandtype_id, commandlabel_string, commandtype_abbrv
 			$commandlabels_table[$temp_row[0]-1] = $temp_row;
+			$commandlabels_count += 1;
 		}
 	}
 	function selThisLanguageStrings()

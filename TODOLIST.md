@@ -248,6 +248,13 @@
   need to sign up for that.
 * Should I refer to the "frontend page" as the "front page" instead from now 
   on? Which name is more appropriate? Should I rename the files too?
+* Several routines rely very heavily on the database tables not having gaps in 
+  their index columns. In my PHP code I need to switch to using "foreach" loops 
+  instead of numerical "for" loops. Or, start using the "array_key_exists" 
+  function a lot more often to test if the index exists. Ditto for JavaScript 
+  code.
+* Put a little note next to each query function indicating which parameters 
+  need to exist before the query function can be called.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent page's title in the page headers 

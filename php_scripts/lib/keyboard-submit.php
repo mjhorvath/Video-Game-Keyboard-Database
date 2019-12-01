@@ -22,8 +22,10 @@
 	include($path_ssi2 . "recaptchakey.php");
 
 	$path_file		= "./keyboard-submit.php";		// this file
-	$command_table		= [];
+	$commandouter_table	= [];
+	$commandouter_count	= 0;
 	$commandlabels_table	= [];
+	$commandlabels_count	= 0;
 	$write_maximal_keys	= true;
 	$debug_text		= "";
 	$stylegroup_id		= 0;
@@ -120,7 +122,6 @@
 
 	// color select options
 	$option_string = "<option class=\"optnon\">non</option>";
-	$color_count = count($color_array);
 	for ($i = 0; $i < $color_count; $i++)
 	{
 		$option_string .= "<option class=\"opt" . $color_array[$i] . "\">" . $color_array[$i] . "</option>";
@@ -153,10 +154,12 @@
 		<script src=\"https://www.google.com/recaptcha/api.js\"></script>
 		<script>
 var record_id = " . $gamesrecord_id . ";
+var legend_count = 0;
 var legend_table = [];
-var command_table = [];
+var commandouter_count = 0;
+var commandouter_table = [];
+var color_count = " . ($color_count+1) . ";
 var color_table = ['non',";
-	$color_count = count($color_array);
 	for ($i = 0; $i < $color_count; $i++)
 	{
 		echo "'" . $color_array[$i] . "'";
@@ -164,15 +167,14 @@ var color_table = ['non',";
 			echo ",";
 	}
 	echo "];
+var class_count = 0;
 var class_table = [];
+var commandlabels_count = " . $commandlabels_count . ";
 var commandlabels_table = [";
-
-
-	$command_type_count = count($command_table);
-	for ($i = 0; $i < $command_type_count; $i++)
+	for ($i = 0; $i < $commandlabels_count; $i++)
 	{
 		echo "'" . $commandlabels_table[$i][2] . "'";
-		if ($i < $command_type_count - 1)
+		if ($i < $commandlabels_count - 1)
 			echo ",";
 	}
 	echo "];
@@ -305,7 +307,7 @@ var binding_table =
 						<div class="emlrow"><div class="emlcll"><label for="email_3">Messg:</label></div><div class="emlcll"><textarea class="email_textarea"        name="email_3" id="email_3" onchange="flag_eml_dirty();" placeholder="Message to admin"     required="required" autocomplete="off"></textarea></div></div>
 					</div>
 					<div class="emltbl inbtop" style="margin:auto;">
-						<div class="emlrow"><div class="emlcll"><input type="checkbox" name="email_11" id="email_11"/><label for="email_11">Treat this as a brand new game</label></div></div>
+						<div class="emlrow"><div class="emlcll"><input type="checkbox" name="email_11" id="email_11" style="margin:0.2em;"/></div><div class="emlcll"><label for="email_11">Flag this as a brand new schema versus an update to an existing schema</label></div></div>
 					</div>
 					<div id="email_recaptcha" class="g-recaptcha" data-callback="flag_cap_dirty" data-sitekey="<?php echo writeRecaptchaKey(); ?>"></div>
 					<p style="text-align:left;">For human verification purposes, please click the checkbox labeled "I'm not a robot".</p>
@@ -340,8 +342,8 @@ var binding_table =
 		</div>
 		<div id="pane_rgt">
 			<div id="tbar_rgt">
-				<div id="butt_kbd" class="tabs_butt" title="Toggle Keyboard Panel"    onclick="switch_right_pane(0);"><img src="<?php echo $path_lib1; ?>icon_kbd.png"/></div>
-				<div id="butt_csv" class="tabs_butt" title="Toggle Spreadsheet Panel" onclick="switch_right_pane(1);"><img src="<?php echo $path_lib1; ?>icon_spd.png"/></div>
+				<div id="butt_kbd" class="tabs_butt" title="Toggle Keyboard Panel" onclick="switch_right_pane(0);"><img src="<?php echo $path_lib1; ?>icon_kbd.png"/></div>
+				<div id="butt_csv" class="tabs_butt" title="Toggle TSV Panel"      onclick="switch_right_pane(1);"><img src="<?php echo $path_lib1; ?>icon_spd.png"/></div>
 			</div>
 			<div id="pane_kbd" style="display:block;">
 				<header>
@@ -530,6 +532,7 @@ var binding_table =
 					<div id="table_legend" class="inbtop">
 <?php
 	// legend
+	// should I skip $i=1 and subtract 1 from the other vars?
 	for ($i = 0; $i < count($color_array); $i++)
 	{
 		$leg_value = "";
@@ -562,32 +565,33 @@ var binding_table =
 				<div id="flxdiv">
 <?php
 	// commands
-	$command_type_count = count($command_table);
-	for ($i = 0; $i < $command_type_count; $i++)
+	// keep in mind that the "additional notes" are a special case
+	for ($i = 0; $i < $commandlabels_count; $i++)
 	{
-		$command_type_array = $command_table[$i];
-		$command_type_label = $commandlabels_table[$i][1];
-		$command_type_abbrv = $commandlabels_table[$i][2];
-		$command_count = count($command_type_array);
-		if ($command_count > 0)
-		{
-			echo
+		if (array_key_exists($i, $commandouter_table))
+			$commandinner_table = $commandouter_table[$i];
+		else
+			$commandinner_table = [];
+		$commandlabels_label = $commandlabels_table[$i][1];
+		$commandlabels_abbrv = $commandlabels_table[$i][2];
+		$commandinner_count = count($commandinner_table);
+		echo
 "					<div class=\"inbtop comdiv\">
-						<h3>" . cleantextHTML($command_type_label) . "</h3>
-						<div id=\"table_" . $command_type_abbrv . "\" class=\"nottbl\">\n";
+						<h3>" . cleantextHTML($commandlabels_label) . "</h3>
+						<div id=\"table_" . $commandlabels_abbrv . "\" class=\"nottbl\">\n";
 
-			for ($j = 0; $j < $command_count; $j++)
-			{
-				$this_command = $command_type_array[$j];
-				echo
+		for ($j = 0; $j < $commandinner_count; $j++)
+		{
+			$this_command = $commandinner_table[$j];
+			echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $this_command[1] . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" placeholder=\"blah\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $this_command[1] . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $this_command[2] . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" placeholder=\"blah\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $this_command[2] . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
-			}
-			echo
+		}
+		echo
 "							<div class=\"notrow\">
 								<div class=\"notcll cllone\"></div>
 								<div class=\"notcll clltwo\"></div>
@@ -596,7 +600,6 @@ var binding_table =
 							</div>
 						</div>
 					</div>\n";
-		}
 	}
  ?>
 				</div>

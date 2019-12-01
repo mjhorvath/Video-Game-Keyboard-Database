@@ -28,7 +28,7 @@
 	$keystyle_table		= [];
 	$binding_table		= [];
 	$legend_table		= [];
-	$command_table		= [];
+	$commandouter_table		= [];
 	$combo_table		= [];
 	$joystick_table		= [];
 	$mouse_table		= [];
