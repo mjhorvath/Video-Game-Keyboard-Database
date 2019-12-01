@@ -531,11 +531,13 @@
 	}
 	function resBindings($in_result)
 	{
-		global $binding_table;
+		global $binding_table, $binding_count;
+		$binding_count = 0;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
 			// normal_group, normal_action, shift_group, shift_action, ctrl_group, ctrl_action, alt_group, alt_action, altgr_group, altgr_action, extra_group, extra_action, image_file, image_uri, key_number
 			$binding_table[$temp_row[14]-1] = $temp_row;
+			$binding_count += 1;
 		}
 	}
 	// make sure the columns are synced with the TSV page of the submission form
@@ -602,11 +604,6 @@
 		$selectString = "SELECT l.language_code, l.language_title, l.language_description, l.language_keywords, l.language_legend FROM languages AS l WHERE l.language_id = " . $layout_language . ";";
 		selectQuery($con, $selectString, "resThisLanguageStrings");
 	}
-	// the structure of the "languages" table makes it harder to add new command types
-	// I could create a bridge table with "commandtype_id" and "language_id" as constraints
-	// should I name it "command_language" or "language_commmand"?
-	// note that the "commandtypes" table *also* has text descriptions in English
-	// there should really only be text descriptions in one place
 	function resThisLanguageStrings($in_result)
 	{
 		global $language_code, $language_title, $language_description, $language_keywords, $language_legend;

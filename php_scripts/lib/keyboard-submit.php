@@ -167,8 +167,6 @@ var color_table = ['non',";
 			echo ",";
 	}
 	echo "];
-var class_count = 0;
-var class_table = [];
 var commandlabels_count = " . $commandlabels_count . ";
 var commandlabels_table = [";
 	for ($i = 0; $i < $commandlabels_count; $i++)
@@ -178,6 +176,7 @@ var commandlabels_table = [";
 			echo ",";
 	}
 	echo "];
+var binding_count = " . $binding_count . ";
 var binding_table =
 [
 ";

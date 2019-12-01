@@ -168,7 +168,8 @@
 		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference\"/>
 		<script src=\"" . $path_lib1  . "keyboard-frontend.js\"></script>
 		<script src=\"" . $path_java1 . "jquery-1.4.2.min.js\"></script>
-		<script src=\"" . $path_java1 . "jquery-accordionmenu.js\"></script>\n";
+		<script src=\"" . $path_java1 . "jquery-accordionmenu.js\"></script>
+		<script src=\"" . $path_lib1  . "cubescatter.js\"></script>\n";
 	echo writeAnalyticsTracking();
 	echo
 "		<script>
@@ -191,7 +192,7 @@ var seourl_table =
 "]
 		</script>
 	</head>
-	<body onload=\"Select_Init();\">
+	<body onload=\"Select_Init();cube_scatter();\">
 		<header>
 			<h2>Video Game Keyboard Diagrams</h2>
 		</header>
