@@ -27,11 +27,12 @@ var atom_dim = [97,56];
 var units_dim = [atom_dim[0] / 8, atom_dim[1] / 8];
 var sprites_dat =
 [
+	// pixel w, pixel h, file path, 3D dimensions, likelihood/odds
 	[97, 112, './lib/isometric_sprite_cube_sml.png', [1,1,1], 0.5],
 	[97, 112, './lib/isometric_sprite_pyrd_sml.png', [1,1,1], 0.6],
-//	[97, 112, './lib/isometric_sprite_sphr_med.png', [2,2,2], 0.7],
-	[97, 112, './lib/isometric_sprite_cube_med.png', [2,2,2], 0.8],
-	[97, 112, './lib/isometric_sprite_cube_lrg.png', [3,3,3], 0.9]
+//	[97, 112, './lib/isometric_sprite_sphr_med.png', [2,2,2], 0.8],
+	[97, 112, './lib/isometric_sprite_cube_med.png', [2,2,2], 0.9],
+	[97, 112, './lib/isometric_sprite_cube_lrg.png', [3,3,3], 1.0]
 ];
 
 // need to double check if these parameters are still correct after so many years
@@ -274,7 +275,18 @@ function snake_position(temp_dir, flag)
 	var new_cll = grid_location(new_pos);
 	var new_cll_i = new_cll[0];
 	var new_cll_j = new_cll[1];
-	var new_grid = grid_table[new_cll_i][new_cll_j];
+	// this shouldn't happen, but it might anyway due to some bug
+	if
+	(
+		(new_cll_i >= grid_size) ||
+		(new_cll_j >= grid_size) ||
+		(new_cll_i < 0) ||
+		(new_cll_j < 0) ||
+		(true == false)
+	)
+		var new_grid = 1;		// should this be 1 or 0? was 1
+	else
+		var new_grid = grid_table[new_cll_i][new_cll_j];
 	if (new_grid == 0)
 	{
 		snake_seg -= 1;

@@ -57,6 +57,7 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2019/12/01: Added a snake cube animation to the front page.</li>
 	<li>2019/12/01: Commands weren't working properly, especially in the editor. Hopefully they are working now! (Fingers crossed.)</li>
 	<li>2019/12/01: Added a &quot;Treat this as a brand new game&quot; checkbox to the submission form.</li>
 	<li>2019/11/30: Renamed &quot;master list&quot; to &quot;master table&quot;.</li>
