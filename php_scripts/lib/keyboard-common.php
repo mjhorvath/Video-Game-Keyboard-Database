@@ -361,11 +361,6 @@
 			return "Page: " . $base_name . ". Last modified: File does not exist.";
 		}
 	}
-	function sortGames()
-	{
-		global $genre_array, $game_array;
-		array_multisort($genre_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $game_array);
-	}
 	function checkForErrors()
 	{
 		global	$errors_table, $gamesrecord_id, $stylesrecord_id,
@@ -404,5 +399,17 @@
 		{
 			$errors_table[] = "No configurations found for style \"" . $temp_style_name . "\" and layout \"" . $temp_layout_name . "\".";
 		}
+	}
+	function sortByGameName($a, $b)
+	{
+		return strnatcmp($a[2], $b[2]);
+	}
+	function sortByStyleName($a, $b)
+	{
+		return strnatcmp($a[2], $b[2]);
+	}
+	function sortByLayoutName($a, $b)
+	{
+		return strnatcmp($a[2], $b[2]);
 	}
 ?>

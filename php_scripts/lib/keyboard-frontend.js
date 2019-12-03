@@ -1,3 +1,26 @@
+// Video Game Keyboard Diagrams
+// Copyright (C) 2018  Michael Horvath
+// 
+// This file is part of Video Game Keyboard Diagrams.
+// 
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as 
+// published by the Free Software Foundation, either version 3 of the 
+// License, or (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful, but 
+// WITHOUT ANY WARRANTY; without even the implied warranty of 
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU 
+// Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public 
+// License along with this program.  If not, see 
+// <https://www.gnu.org/licenses/>.
+
+var lastClicked = {};
+var accordions = ['gam','sty','lay'];		// possibly useful in the future if more accordion lists are added
+var radios = ['fmt','ten'];			// ditto
+
 function Toggle_Waiting(thisBool)
 {
 	document.getElementById('waiting').style.display = thisBool ? 'block' : 'none';
@@ -21,26 +44,27 @@ function Reset_Page()
 	document.getElementById('but_ready').style.display = 'none';
 	document.getElementById('but_error').style.display = 'none';
 
-	for (var i = 0; i < style_count; i++)
-	{
-		var thisselect = document.getElementById('sty_' + i);
-		if (thisselect)
-			thisselect.className = 'acc_dis';
-	}
-	for (var i = 0; i < game_count; i++)
+	for (var i in game_table)
 	{
 		var thisselect = document.getElementById('gam_' + i);
-		if (thisselect)
-			thisselect.className = 'acc_dis';
+		thisselect.className = 'acc_dis';
 	}
+	for (var i in style_table)
+	{
+		var thisselect = document.getElementById('sty_' + i);
+		thisselect.className = 'acc_dis';
+	}
+
 	if (lastClicked['lay'])
 		lastClicked['lay'].className = 'acc_nrm';
 
 	lastClicked = {}
+
 	// these three are hidden inputs
 	document.forms['keyboard_select'].lay.value = '';
 	document.forms['keyboard_select'].sty.value = '';
 	document.forms['keyboard_select'].gam.value = '';
+
 	resetRadioButtons("fmt_radio");
 	resetRadioButtons("ten_radio");
 	disableResetButton();
@@ -53,38 +77,35 @@ function Set_Game(thisindex, thiselement)
 		return;
 	}
 	var hasSelect = false;
-	var gametable = game_table[thisindex];
+	var gametable = layout_game_table[thisindex];
 	var lastselect = lastClicked['gam'];
-	for (var i = 0; i < game_count; i++)
+	for (var i in game_table)
 	{
 		var thisselect = document.getElementById('gam_' + i);
-		if (thisselect)
+		if (gametable[i] == 1)
 		{
-			if (gametable[i] == 1)
+			if (thisselect == lastselect)
 			{
-				if (thisselect == lastselect)
-				{
-					thisselect.className = 'acc_sel';
-					hasSelect = true;
-				}
-				else
-				{
-					thisselect.className = 'acc_nrm';
-				}
+				thisselect.className = 'acc_sel';
+				hasSelect = true;
 			}
 			else
 			{
-				thisselect.className = 'acc_dis';
-				if (thisselect == lastselect)
-				{
-					document.getElementById('gam_check').style.display = 'none';
-					document.getElementById('but_check').style.display = 'none';
-					document.getElementById('gam_xmark').style.display = 'inline-block';
-					document.getElementById('but_xmark').style.display = 'inline-block';
-					document.getElementById('but_ready').style.display = 'none';
-					document.getElementById('but_error').style.display = 'block';
-					lastClicked['gam'] = null;
-				}
+				thisselect.className = 'acc_nrm';
+			}
+		}
+		else
+		{
+			thisselect.className = 'acc_dis';
+			if (thisselect == lastselect)
+			{
+				document.getElementById('gam_check').style.display = 'none';
+				document.getElementById('but_check').style.display = 'none';
+				document.getElementById('gam_xmark').style.display = 'inline-block';
+				document.getElementById('but_xmark').style.display = 'inline-block';
+				document.getElementById('but_ready').style.display = 'none';
+				document.getElementById('but_error').style.display = 'block';
+				lastClicked['gam'] = null;
 			}
 		}
 	}
@@ -101,38 +122,35 @@ function Set_Style(thisindex, thiselement)
 		return;
 	}
 	var hasSelect = false;
-	var styletable = style_table[thisindex];
+	var styletable = layout_style_table[thisindex];
 	var lastselect = lastClicked['sty'];
-	for (var i = 0; i < style_count; i++)
+	for (var i in style_table)
 	{
 		var thisselect = document.getElementById('sty_' + i);
-		if (thisselect)
+		if (styletable[i] == 1)
 		{
-			if (styletable[i] == 1)
+			if (thisselect == lastselect)
 			{
-				if (thisselect == lastselect)
-				{
-					thisselect.className = 'acc_sel';
-					hasSelect = true;
-				}
-				else
-				{
-					thisselect.className = 'acc_nrm';
-				}
+				thisselect.className = 'acc_sel';
+				hasSelect = true;
 			}
 			else
 			{
-				thisselect.className = 'acc_dis';
-				if (thisselect == lastselect)
-				{
-					document.getElementById('sty_check').style.display = 'none';
-					document.getElementById('but_check').style.display = 'none';
-					document.getElementById('sty_xmark').style.display = 'inline-block';
-					document.getElementById('but_xmark').style.display = 'inline-block';
-					document.getElementById('but_ready').style.display = 'none';
-					document.getElementById('but_error').style.display = 'block';
-					lastClicked['sty'] = null;
-				}
+				thisselect.className = 'acc_nrm';
+			}
+		}
+		else
+		{
+			thisselect.className = 'acc_dis';
+			if (thisselect == lastselect)
+			{
+				document.getElementById('sty_check').style.display = 'none';
+				document.getElementById('but_check').style.display = 'none';
+				document.getElementById('sty_xmark').style.display = 'inline-block';
+				document.getElementById('but_xmark').style.display = 'inline-block';
+				document.getElementById('but_ready').style.display = 'none';
+				document.getElementById('but_error').style.display = 'block';
+				lastClicked['sty'] = null;
 			}
 		}
 	}
@@ -181,11 +199,10 @@ function Set_Select_Value(thisElement)
 
 function Select_Init()
 {
-	var SelectList = ['gam','sty','lay']		// possibly more useful in the future if additional accordion lists are created
 	var SelectForm = document.forms['keyboard_select'];
-	for (var i = 0, n = SelectList.length; i < n; i++)
+	for (var i in accordions)
 	{
-		var thisSelect = SelectList[i];
+		var thisSelect = accordions[i];
 		initMenu(thisSelect);
 		SelectForm[thisSelect].value = '';
 	}

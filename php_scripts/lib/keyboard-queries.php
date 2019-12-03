@@ -165,13 +165,13 @@
 	}
 	function resGenresFront($in_result)
 	{
-		global $genre_array, $genre_order_array, $game_array;
+		global $genre_array, $genre_game_array;
 		while ($genre_row = mysqli_fetch_row($in_result))
 		{
 			// genre_id, genre_name
 			$genre_id = $genre_row[0];
 			$genre_array[$genre_id-1] = $genre_row[1];
-			$game_array[$genre_id-1] = [[],[]];
+			$genre_game_array[$genre_id-1] = [];
 		}
 	}
 	function selGamesFront()
@@ -182,14 +182,15 @@
 	}
 	function resGamesFront($in_result)
 	{
-		global $game_array;
+		global $genre_game_array, $game_table;
 		while ($game_row = mysqli_fetch_row($in_result))
 		{
 			// genre_id, game_id, game_name, game_friendlyurl
 			$genre_id = $game_row[0];
-			$game_array[$genre_id-1][0][] = $game_row[1];
-			$game_array[$genre_id-1][1][] = $game_row[2];
-			$game_array[$genre_id-1][2][] = $game_row[3];
+			$game_id = $game_row[1];
+			$game_name = $game_row[2];
+			$genre_game_array[$genre_id-1][] = $game_row;
+			$game_table[$game_id-1] = 1;
 		}
 	}
 	function selStylegroupsFront()
@@ -200,30 +201,32 @@
 	}
 	function resStylegroupsFront($in_result)
 	{
-		global $stylegroup_array, $style_array;
+		global $stylegroup_array, $stylegroup_style_array;
 		while ($stylegroup_row = mysqli_fetch_row($in_result))
 		{
 			// stylegroup_id, stylegroup_name
 			$stylegroup_id = $stylegroup_row[0];
 			$stylegroup_array[$stylegroup_id-1] = $stylegroup_row[1];
-			$style_array[$stylegroup_id-1] = [[],[]];
+			$stylegroup_style_array[$stylegroup_id-1] = [];
 		}
 	}
 	function selStylesFront()
 	{
 		global $con;
-		$selectString = "SELECT s.stylegroup_id, s.style_id, s.style_name FROM styles AS s ORDER BY s.style_name;";
+		$selectString = "SELECT s.stylegroup_id, s.style_id, s.style_name FROM styles AS s;";
 		selectQuery($con, $selectString, "resStylesFront");
 	}
 	function resStylesFront($in_result)
 	{
-		global $style_array;
+		global $stylegroup_style_array, $style_table;
 		while ($style_row = mysqli_fetch_row($in_result))
 		{
 			// stylegroup_id, style_id, style_name
 			$stylegroup_id = $style_row[0];
-			$style_array[$stylegroup_id-1][0][] = $style_row[1];
-			$style_array[$stylegroup_id-1][1][] = $style_row[2];
+			$style_id = $style_row[1];
+			$style_name = $style_row[2];
+			$stylegroup_style_array[$stylegroup_id-1][] = $style_row;
+			$style_table[$style_id-1] = 1;
 		}
 	}
 	function selPlatformsFront()
@@ -234,34 +237,34 @@
 	}
 	function resPlatformsFront($in_result)
 	{
-		global $platform_array, $layout_array;
+		global $platform_array, $platform_layout_array;
 		while ($platform_row = mysqli_fetch_row($in_result))
 		{
 			// platform_id, platform_name, platform_displayorder
 			$platform_id = $platform_row[0];
-			$platform_name = $platform_row[1];
-			$platform_displayorder = $platform_row[2];
-			$platform_array[$platform_id-1] = $platform_name;
-			$layout_array[$platform_id-1] = [[],[]];
-			$platform_order_array[$platform_id-1] = $platform_displayorder;
+			$platform_array[$platform_id-1] = $platform_row[1];
+			$platform_layout_array[$platform_id-1] = [];
+			$platform_order_array[$platform_id-1] = $platform_row[2];
 		}
-		array_multisort($platform_order_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $platform_array, $layout_array);
+		array_multisort($platform_order_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $platform_array, $platform_layout_array);
 	}
 	function selLayoutsFront()
 	{
 		global $con;
-		$selectString = "SELECT l.platform_id, l.layout_id, l.layout_name FROM layouts AS l ORDER BY l.layout_name;";
+		$selectString = "SELECT l.platform_id, l.layout_id, l.layout_name FROM layouts AS l;";
 		selectQuery($con, $selectString, "resLayoutsFront");
 	}
 	function resLayoutsFront($in_result)
 	{
-		global $layout_array;
+		global $platform_layout_array, $layout_table;
 		while ($layout_row = mysqli_fetch_row($in_result))
 		{
 			// platform_id, layout_id, layout_name
 			$platform_id = $layout_row[0];
-			$layout_array[$platform_id-1][0][] = $layout_row[1];
-			$layout_array[$platform_id-1][1][] = $layout_row[2];
+			$layout_id = $layout_row[1];
+			$layout_name = $layout_row[2];
+			$platform_layout_array[$platform_id-1][] = $layout_row;
+			$layout_table[$layout_id-1] = 1;
 		}
 	}
 
@@ -345,7 +348,7 @@
 		{
 			// game_name, game_id
 			$game_name = $game_row[0];
-			$game_id = intval($game_row[1]);
+			$game_id = $game_row[1];
 		}
 	}
 	function selAuthors()
@@ -360,7 +363,7 @@
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
 			// author_id, author_name
-			$author_table[] = [$temp_row[0],$temp_row[1]];
+			$author_table[$temp_row[0]-1] = $temp_row;
 		}
 	}
 	function selStyleGroups()
@@ -374,9 +377,9 @@
 		global $style_table, $stylegroup_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
-			$style_table[] = [];
 			// stylegroup_id, stylegroup_name
-			$stylegroup_table[] = [$temp_row[0],$temp_row[1]];
+			$style_table[$temp_row[0]-1] = [];
+			$stylegroup_table[$temp_row[0]-1] = $temp_row;
 		}
 	}
 	function selStyles()
@@ -392,12 +395,12 @@
 		{
 			// style_id, style_name, style_whiteonblack, stylegroup_id
 			$style_group_1 = $temp_row[3];
-			for ($i = 0; $i < count($stylegroup_table); $i++)
+			foreach ($stylegroup_table as $i => $stylegroup_value)
 			{
-				$style_group_2 = $stylegroup_table[$i][0];
+				$style_group_2 = $stylegroup_value[0];
 				if ($style_group_1 == $style_group_2)
 				{
-					$style_table[$i][] = [$temp_row[0],$temp_row[1],$temp_row[2],$temp_row[3]];
+					$style_table[$i][] = $temp_row;
 					break;
 				}
 			}
@@ -756,21 +759,20 @@
 			$styles_max = $style_row[0];
 		}
 	}
-	function selSeoUrl()
+	function selSeoUrls()
 	{
 		global $con;
-		$selectString = "SELECT g.game_id, g.game_friendlyurl FROM games AS g;";
-		selectQuery($con, $selectString, "resSeoUrl");
+		$selectString = "SELECT g.game_id, g.game_friendlyurl FROM games AS g ORDER BY g.game_id;";
+		selectQuery($con, $selectString, "resSeoUrls");
 	}
-	function resSeoUrl($in_result)
+	function resSeoUrls($in_result)
 	{
 		global $seourl_table;
 		while ($game_row = mysqli_fetch_row($in_result))
 		{
 			// game_id, game_friendlyurl
 			$game_id = $game_row[0];
-			$game_seo = $game_row[1];
-			$seourl_table[$game_id-1] = $game_seo;
+			$seourl_table[$game_id-1] = $game_row[1];
 		}
 	}
 	function selGameRecords()
@@ -781,14 +783,14 @@
 	}
 	function resGameRecords($in_result)
 	{
-		global $game_table;
+		global $layout_game_table;
 		while ($gamesrecord_row = mysqli_fetch_row($in_result))
 		{
 			// record_id, game_id, layout_id
 //			$gamesrecord_id = $gamesrecord_row[0];
 			$game_id = $gamesrecord_row[1];
 			$layout_id = $gamesrecord_row[2];
-			$game_table[$layout_id-1][$game_id-1] = true;
+			$layout_game_table[$layout_id-1][$game_id-1] = true;
 		}
 	}
 	function selStyleRecords()
@@ -799,14 +801,14 @@
 	}
 	function resStyleRecords($in_result)
 	{
-		global $style_table;
+		global $layout_style_table;
 		while ($stylesrecord_row = mysqli_fetch_row($in_result))
 		{
 			// record_id, style_id, layout_id
 //			$stylesrecord_id = $stylesrecord_row[0];
 			$style_id = $stylesrecord_row[1];
 			$layout_id = $stylesrecord_row[2];
-			$style_table[$layout_id-1][$style_id-1] = true;
+			$layout_style_table[$layout_id-1][$style_id-1] = true;
 		}
 	}
 ?>

@@ -35,22 +35,28 @@
 	include($path_lib1	. "keyboard-common.php");
 	include($path_lib1	. "keyboard-queries.php");
 
+	// accordion lists - I want to rename "_array" to "_table", but there are a few naming conflicts currently
 	$genre_array		= [];
-	$game_array		= [];
+	$genre_game_array	= [];
 	$stylegroup_array	= [];
-	$style_array		= [];
-	$layout_array		= [];
+	$stylegroup_style_array	= [];
 	$platform_array		= [];
+	$platform_layout_array	= [];
 	$platform_order_array	= [];
-	$game_table		= [];
-	$game_string		= "";
+
+	// javascript output
 	$seourl_table		= [];
 	$seourl_string		= "";
+	$layout_game_table	= [];
+	$layout_game_string	= "";
+	$layout_style_table	= [];
+	$layout_style_string	= "";
+	$game_table		= [];
+	$game_string		= "";
 	$style_table		= [];
 	$style_string		= "";
-	$games_max		= 0;
-	$layouts_max		= 0;
-	$styles_max		= 0;
+	$layout_table		= [];
+	$layout_string		= "";
 
 	// open MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -62,92 +68,114 @@
 
 	// MySQL queries
 	selURLQueries();		// gather and validate URL parameters
-	selDefaults();		// get default values for urlqueries if missing
+	selDefaults();			// get default values for urlqueries if missing
 	selGenresFront();
 	selGamesFront();
 	selStylegroupsFront();
 	selStylesFront();
 	selPlatformsFront();
 	selLayoutsFront();
-	sortGames();			// not a query
 	selThisGameAutoinc();
 	selThisLayoutAutoinc();
 	selThisStyleAutoinc();
-	selSeoUrl();
+	selSeoUrls();
 	selGameRecords();
 	selStyleRecords();
 
 	// close MySQL connection
 	mysqli_close($con);
 
-	for ($i = 0; $i < $games_max; $i++)
+	// SEO URLs
+	$seourl_count = 0;
+	$seourl_total = count($seourl_table);
+	foreach ($seourl_table as $i => $seourl_value)
 	{
-		if (isset($seourl_table[$i]))
-		{
-			$seourl_string .= "\t'" . $seourl_table[$i] . "'";
-		}
-		else
-		{
-			$seourl_string .= "\tnull";
-		}
-		if ($i != $games_max - 1)
+		$seourl_string .= "\t" . $i . ":\t'" . $seourl_value . "'";
+		if ($seourl_count < $seourl_total - 1)
 		{
 			$seourl_string .= ",";
 		}
-		else
-		{
-			$seourl_string .= " ";
-		}
-		$seourl_string .= "//" . ($i+1) . "\n";
+		$seourl_string .= "\n";
+		$seourl_count += 1;
 	}
-	for ($i = 0; $i < $layouts_max; $i++)
+
+	// games
+	$game_count = 0;
+	$game_total = count($game_table);
+	foreach ($game_table as $i => $game_value)
 	{
-		if (isset($style_table[$i]))
+		$game_string .= $i . ":1";
+		if ($game_count < $game_total - 1)
 		{
-			$style_string .= "\t[";
-			for ($j = 0; $j < $styles_max; $j++)
+			$game_string .= ",";
+		}
+		$game_count += 1;
+	}
+
+	// styles
+	$style_count = 0;
+	$style_total = count($style_table);
+	foreach ($style_table as $i => $style_value)
+	{
+		$style_string .= $i . ":1";
+		if ($style_count < $style_total - 1)
+		{
+			$style_string .= ",";
+		}
+		$style_count += 1;
+	}
+
+	// layouts and sub-tables
+	$layout_count = 0;
+	$layout_total = count($layout_table);
+	foreach ($layout_table as $i => $layout_value)
+	{
+		$layout_string .= $i . ":" . $layout_value;
+		if (array_key_exists($i, $layout_style_table))
+		{
+			$style_inner_table = $layout_style_table[$i];
+			$style_inner_count = 0;
+			$style_inner_total = count($style_inner_table);
+			$layout_style_string .= "\t" . $i . ":\t{";
+			ksort($style_inner_table);
+			foreach ($style_inner_table as $j => $style_inner_value)
 			{
-				$style_string .= isset($style_table[$i][$j]) ? 1 : 0;
-				if ($j != $styles_max - 1)
+				$layout_style_string .= $j . ":1";
+				if ($style_inner_count < $style_inner_total - 1)
 				{
-					$style_string .= ",";
+					$layout_style_string .= ",";
 				}
+				$style_inner_count += 1;
 			}
-			$style_string .= "]";
+			$layout_style_string .= "}";
 		}
-		else
+		if (array_key_exists($i, $layout_game_table))
 		{
-			$style_string .= "\tnull";
-		}
-		if (isset($game_table[$i]))
-		{
-			$game_string .= "\t[";
-			for ($j = 0; $j < $games_max; $j++)
+			$game_inner_table = $layout_game_table[$i];
+			$game_inner_count = 0;
+			$game_inner_total = count($game_inner_table);
+			$layout_game_string .= "\t" . $i . ":\t{";
+			ksort($game_inner_table);
+			foreach ($game_inner_table as $j => $game_inner_value)
 			{
-				$game_string .= isset($game_table[$i][$j]) ? 1 : 0;
-				if ($j != $games_max - 1)
+				$layout_game_string .= $j . ":1";
+				if ($game_inner_count < $game_inner_total - 1)
 				{
-					$game_string .= ",";
+					$layout_game_string .= ",";
 				}
+				$game_inner_count += 1;
 			}
-			$game_string .= "]";
+			$layout_game_string .= "}";
 		}
-		else
+		if ($layout_count < $layout_total - 1)
 		{
-			$game_string .= "\tnull";
+			$layout_string		.= ",";
+			$layout_style_string	.= ",";
+			$layout_game_string	.= ",";
 		}
-		if ($i != $layouts_max - 1)
-		{
-			$style_string	.= ",";
-			$game_string	.= ",";
-		}
-		else
-		{
-			$style_string	.= " ";
-			$game_string	.= " ";
-		}
-		$style_string	.= "//" . ($i+1) . "\n";
-		$game_string	.= "//" . ($i+1) . "\n";
+		$layout_style_string	.= "\n";
+		$layout_game_string	.= "\n";
+		$layout_count += 1;
 	}
 
 	echo
@@ -173,23 +201,23 @@
 	echo writeAnalyticsTracking();
 	echo
 "		<script>
-var lastClicked = {}
-var layout_count = " . 	$layouts_max . ";
-var game_count = " . $games_max . ";
-var game_table =
-[
-" . $game_string .
-"]
-var style_count = " . $styles_max . ";
-var style_table =
-[
-" . $style_string . 
-"]
-// could replace this with a conversion script
+var game_table = {" . $game_string . "};
+var style_table = {" . $style_string . "};
+var layout_table = {" . $layout_string . "};
+var layout_game_table =
+{
+" . $layout_game_string .
+"};
+var layout_style_table =
+{
+" . $layout_style_string . 
+"};
+// could replace this with a string conversion script
+// though such a script would still require the original titles as input
 var seourl_table =
-[
+{
 " . $seourl_string . 
-"]
+"};
 		</script>
 	</head>
 	<body onload=\"Select_Init();/*cube_scatter();*/\">
@@ -220,27 +248,26 @@ var seourl_table =
 		{
 			echo
 "					<a menu=\"lay\"><span class=\"arrw_a\" style=\"display:none;\">&#9658;</span><span class=\"arrw_b\" style=\"display:inline;\">&#9660;</span> " . $platform_value . "</a>
-					<ul style=\"height:21.6em;display:block;\">\n";
+					<ul style=\"height:22em;display:block;\">\n";
 		}
 		else
 		{
 			echo
 "					<a menu=\"lay\"><span class=\"arrw_a\" style=\"display:inline;\">&#9658;</span><span class=\"arrw_b\" style=\"display:none;\">&#9660;</span> " . $platform_value . "</a>
-					<ul style=\"height:21.6em;display:none;\">\n";
+					<ul style=\"height:22em;display:none;\">\n";
 		}
-		$id_array	= $layout_array[$i][0];
-		$name_array	= $layout_array[$i][1];
-//		array_multisort($name_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $id_array);
-		for ($j = 0; $j < count($id_array); $j++)
+		$inner_array = $platform_layout_array[$i];
+		usort($inner_array, "sortByLayoutName");
+		foreach ($inner_array as $j => $inner_value)
 		{
-			$this_id = $id_array[$j];
-			$this_name = $name_array[$j];
-			if ($this_id == $default_layout_id)
+			$this_layout_id		= $inner_value[1];
+			$this_layout_name	= $inner_value[2];
+			if ($this_layout_id == $default_layout_id)
 			{
-				$this_name .= " &#10022;";
+				$this_layout_name .= " &#10022;";
 			}
 			echo
-"						<li><a id=\"lay_" . ($this_id-1) . "\" menu=\"lay\" value=\"" . $this_id . "\" class=\"acc_nrm\" onclick=\"Set_Select_Value(this);Set_Game(" . ($this_id-1) . ",this);Set_Style(" . ($this_id-1) . ",this);\">" . $this_name . "</a></li>\n";
+"						<li><a id=\"lay_" . ($this_layout_id-1) . "\" menu=\"lay\" value=\"" . $this_layout_id . "\" class=\"acc_nrm\" onclick=\"Set_Select_Value(this);Set_Game(" . ($this_layout_id-1) . ",this);Set_Style(" . ($this_layout_id-1) . ",this);\">" . $this_layout_name . "</a></li>\n";
 		}
 		echo
 "					</ul>
@@ -261,31 +288,30 @@ var seourl_table =
 	{
 		echo
 "				<li>\n";
-		if ($i == 0)
+		if ($i == 0)		// need to count instead, no guarantee this will be zero
 		{
 			echo
 "					<a menu=\"sty\"><span class=\"arrw_a\" style=\"display:none;\">&#9658;</span><span class=\"arrw_b\" style=\"display:inline;\">&#9660;</span> " . $stylegroup_value . "</a>
-					<ul style=\"height:21.6em;display:block;\">\n";
+					<ul style=\"height:22em;display:block;\">\n";
 		}
 		else
 		{
 			echo
 "					<a menu=\"sty\"><span class=\"arrw_a\" style=\"display:inline;\">&#9658;</span><span class=\"arrw_b\" style=\"display:none;\">&#9660;</span> " . $stylegroup_value . "</a>
-					<ul style=\"height:21.6em;display:none;\">\n";
+					<ul style=\"height:22em;display:none;\">\n";
 		}
-		$id_array	= $style_array[$i][0];
-		$name_array	= $style_array[$i][1];
-//		array_multisort($name_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $id_array);
-		for ($j = 0; $j < count($id_array); $j++)
+		$inner_array = $stylegroup_style_array[$i];
+		usort($inner_array, "sortByStyleName");
+		foreach ($inner_array as $j => $inner_value)
 		{
-			$this_id = $id_array[$j];
-			$this_name = $name_array[$j];
-			if ($this_id == $default_style_id)
+			$this_style_id		= $inner_value[1];
+			$this_style_name	= $inner_value[2];
+			if ($this_style_id == $default_style_id)
 			{
-				$this_name .= " &#10022;";
+				$this_style_name .= " &#10022;";
 			}
 			echo
-"						<li><a id=\"sty_" . ($this_id-1) . "\" menu=\"sty\" value=\"" . $this_id . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);\">" . $this_name . "</a></li>\n";
+"						<li><a id=\"sty_" . ($this_style_id-1) . "\" menu=\"sty\" value=\"" . $this_style_id . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);\">" . $this_style_name . "</a></li>\n";
 		}
 		echo
 "					</ul>
@@ -306,7 +332,7 @@ var seourl_table =
 	{
 		echo
 "				<li>\n";
-		if ($i == 0)
+		if ($i == 0)		// need to count instead, no guarantee this will be zero
 		{
 			echo
 "					<a menu=\"gam\"><span class=\"arrw_a\" style=\"display:none;\">&#9658;</span><span class=\"arrw_b\" style=\"display:inline;\">&#9660;</span> " . $genre_value . "</a>
@@ -318,21 +344,18 @@ var seourl_table =
 "					<a menu=\"gam\"><span class=\"arrw_a\" style=\"display:inline;\">&#9658;</span><span class=\"arrw_b\" style=\"display:none;\">&#9660;</span> " . $genre_value . "</a>
 					<ul style=\"height:15em;display:none;\">\n";
 		}
-		$id_array	= $game_array[$i][0];
-		$name_array	= $game_array[$i][1];
-		$seourl_array	= $game_array[$i][2];	// not actually used here
-		// should these be sorted elsewhere in the code, like the other two categories?
-		array_multisort($name_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $id_array, $seourl_array);
-		for ($j = 0; $j < count($id_array); $j++)
+		$inner_array = $genre_game_array[$i];
+		usort($inner_array, "sortByGameName");
+		foreach ($inner_array as $j => $inner_value)
 		{
-			$this_id = $id_array[$j];
-			$this_name = $name_array[$j];
-			if ($this_id == $default_game_id)
+			$this_game_id	= $inner_value[1];
+			$this_game_name	= $inner_value[2];
+			if ($this_game_id == $default_game_id)
 			{
-				$this_name .= " &#10022;";
+				$this_game_name .= " &#10022;";
 			}
 			echo
-"						<li><a id=\"gam_" . ($this_id-1) . "\" menu=\"gam\" value=\"" . $this_id . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);\">" . $this_name . "</a></li>\n";
+"						<li><a id=\"gam_" . ($this_game_id-1) . "\" menu=\"gam\" value=\"" . $this_game_id . "\" class=\"acc_dis\" onclick=\"Set_Select_Value(this);\">" . $this_game_name . "</a></li>\n";
 		}
 		echo
 "					</ul>
