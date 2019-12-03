@@ -591,6 +591,7 @@
 	function resCommandLabels($in_result)
 	{
 		global $commandlabels_table, $commandlabels_count;
+		$commandlabels_count = 0;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
 			// commandtype_id, commandlabel_string, commandtype_abbrv
@@ -611,11 +612,11 @@
 		if ($temp_row)
 		{
 			// language_code, language_title, language_description, language_keywords, language_legend
-			$language_code		= $temp_row[ 0];
-			$language_title		= $temp_row[ 1];
-			$language_description	= $temp_row[ 2];
-			$language_keywords	= $temp_row[ 3];
-			$language_legend	= $temp_row[ 4];
+			$language_code		= $temp_row[0];
+			$language_title		= $temp_row[1];
+			$language_description	= $temp_row[2];
+			$language_keywords	= $temp_row[3];
+			$language_legend	= $temp_row[4];
 		}
 	}
 

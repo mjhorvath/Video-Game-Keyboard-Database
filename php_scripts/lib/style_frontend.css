@@ -2,9 +2,9 @@ p#but_ready	{background-color:#20a020;border:3px double #208020;}
 p#but_error	{background-color:#a02020;border:3px double #802020;}
 p#but_ready,
 p#but_error	{width:12em;height:8em;white-space:normal;text-align:left;padding:0.75em;color:#ffffff;border-radius:7px;display:none;}
-h3.acc_head	{position:absolute;bottom:0px;left:0px;display:inline-block;margin:0;background:transparent;}
 div.acc_wrap	{position:relative;height:2em;margin-bottom:0.5em;}
+h3.acc_head	{position:absolute;bottom:0px;left:0px;margin:0;background:transparent;}
 div.acc_check	{color:#00a000;}
 div.acc_xmark	{color:#c00000;}
 div.acc_check,
-div.acc_xmark	{position:absolute;bottom:0px;right:0px;display:none;font-size:xx-large;padding:0;margin:0;background:transparent;}
+div.acc_xmark	{position:absolute;height:1.25em;bottom:0px;right:0px;display:none;font-size:xx-large;padding:0;margin:0;}

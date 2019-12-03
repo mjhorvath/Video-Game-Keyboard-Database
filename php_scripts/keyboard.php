@@ -169,7 +169,7 @@
 		<script src=\"" . $path_lib1  . "keyboard-frontend.js\"></script>
 		<script src=\"" . $path_java1 . "jquery-1.4.2.min.js\"></script>
 		<script src=\"" . $path_java1 . "jquery-accordionmenu.js\"></script>
-		<script src=\"" . $path_lib1  . "cubescatter.js\"></script>\n";
+<!--		<script src=\"" . $path_lib1  . "cubescatter.js\"></script>-->\n";
 	echo writeAnalyticsTracking();
 	echo
 "		<script>
@@ -192,7 +192,7 @@ var seourl_table =
 "]
 		</script>
 	</head>
-	<body onload=\"Select_Init();cube_scatter();\">
+	<body onload=\"Select_Init();/*cube_scatter();*/\">
 		<header>
 			<h2>Video Game Keyboard Diagrams</h2>
 		</header>
@@ -347,26 +347,31 @@ var seourl_table =
 				<div id="fmt_check" class="acc_check">&#x2714;</div>
 				<div id="fmt_xmark" class="acc_xmark">&#x2718;</div>
 			</div>
-			<label for="fmtrad0" class="container">HTML/SVG
+			<div class="container">
 				<input id="fmtrad0" type="radio" name="fmt_radio" value="0" onchange="enableResetButton();" checked="checked"/>
+				<label for="fmtrad0">HTML/SVG</label>
 				<span class="checkmark"></span>
-			</label>
-			<label for="fmtrad1" class="container">SVG only
+			</div>
+			<div class="container">
 				<input id="fmtrad1" type="radio" name="fmt_radio" value="1" onchange="enableResetButton();"/>
+				<label for="fmtrad1">SVG only</label>
 				<span class="checkmark"></span>
-			</label>
-			<label for="fmtrad2" class="container">MediaWiki
+			</div>
+			<div class="container">
 				<input id="fmtrad2" type="radio" name="fmt_radio" value="2" onchange="enableResetButton();"/>
+				<label for="fmtrad2">MediaWiki</label>
 				<span class="checkmark"></span>
-			</label>
-			<label for="fmtrad3" class="container">Editor
+			</div>
+			<div class="container">
 				<input id="fmtrad3" type="radio" name="fmt_radio" value="3" onchange="enableResetButton();"/>
+				<label for="fmtrad3">Editor</label>
 				<span class="checkmark"></span>
-			</label>
-			<label for="fmtrad4" class="container"><s>PDF</s>
+			</div>
+			<div class="container">
 				<input id="fmtrad4" type="radio" name="fmt_radio" value="4" onchange="enableResetButton();" disabled="disabled"/>
+				<label for="fmtrad4"><s>PDF</s></label>
 				<span class="checkmark"></span>
-			</label>
+			</div>
 		</div>
 		<div class="acc_div">
 			<div class="acc_wrap">
@@ -374,14 +379,16 @@ var seourl_table =
 				<div id="ten_check" class="acc_check">&#x2714;</div>
 				<div id="ten_xmark" class="acc_xmark">&#x2718;</div>
 			</div>
-			<label for="tenrad1" class="container">Show
+			<div class="container">
 				<input id="tenrad1" type="radio" name="ten_radio" value="1" onchange="enableResetButton();" checked="checked"/>
+				<label for="tenrad1">Show</label>
 				<span class="checkmark"></span>
-			</label>
-			<label for="tenrad0" class="container">Hide
+			</div>
+			<div class="container">
 				<input id="tenrad0" type="radio" name="ten_radio" value="0" onchange="enableResetButton();"/>
+				<label for="tenrad0">Hide</label>
 				<span class="checkmark"></span>
-			</label>
+			</div>
 		</div>
 		<div class="acc_div">
 			<div class="acc_wrap">

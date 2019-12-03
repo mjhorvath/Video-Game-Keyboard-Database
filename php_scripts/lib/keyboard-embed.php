@@ -116,7 +116,7 @@
 		<link rel=\"canonical\" href=\"" . $can_url . "\">
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\">
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root2 . "style_normalize.css\">
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_footer.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_footer.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
 		<meta name=\"description\" content=\""	. $language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name	. ")\"/>
 		<meta name=\"keywords\" content=\""	. $language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
@@ -152,28 +152,24 @@
 			<div id="flxdiv">
 <?php
 	// commands
-	// keep in mind that the "additional notes" are a special case
-	for ($i = 0; $i < $commandlabels_count; $i++)
+	// keep in mind that the "additional notes" are supposed to be a special case
+	foreach ($commandouter_table as $i => $commandouter_value)
 	{
-		if (array_key_exists($i, $commandouter_table))
-		{
-			$commandinner_table = $commandouter_table[$i];
-			$commandlabels_label = $commandlabels_table[$i][1];
-			$commandlabels_abbrv = $commandlabels_table[$i][2];
-			$commandinner_count = count($commandinner_table);
-			echo
+		$commandlabels_value = $commandlabels_table[$i];
+		$commandlabels_label = $commandlabels_value[1];
+		$commandlabels_abbrv = $commandlabels_value[2];
+		echo
 "				<div class=\"comdiv\">
 					<h3>" . cleantextHTML($commandlabels_label) . "</h3>
-					<p>\n";
-			for ($j = 0; $j < $commandinner_count; $j++)
-			{
-				$this_command = $commandinner_table[$j];
-				echo cleantextHTML($this_command[1]) . " = " . cleantextHTML($this_command[2]) . "<br>\n";
-			}
+					<table>\n";
+		foreach ($commandouter_value as $j => $commandinner_value)
+		{
 			echo
-"					</p>
-				</div>\n";
+"						<tr><td>" . cleantextHTML($commandinner_value[1]) . "</td><td>=</td><td>" . cleantextHTML($commandinner_value[2]) . "</td></tr>\n";
 		}
+		echo
+"					</table>
+				</div>\n";
 	}
 ?>
 			</div>

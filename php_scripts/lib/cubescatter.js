@@ -30,7 +30,7 @@ var sprites_dat =
 	// pixel w, pixel h, file path, 3D dimensions, likelihood/odds
 	[97, 112, './lib/isometric_sprite_cube_sml.png', [1,1,1], 0.5],
 	[97, 112, './lib/isometric_sprite_pyrd_sml.png', [1,1,1], 0.6],
-//	[97, 112, './lib/isometric_sprite_sphr_med.png', [2,2,2], 0.8],
+	[97, 112, './lib/isometric_sprite_sphr_med.png', [2,2,2], 0.8],
 	[97, 112, './lib/isometric_sprite_cube_med.png', [2,2,2], 0.9],
 	[97, 112, './lib/isometric_sprite_cube_lrg.png', [3,3,3], 1.0]
 ];

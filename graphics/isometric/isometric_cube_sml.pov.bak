@@ -19,68 +19,58 @@
 global_settings
 {
 	assumed_gamma 1.0
-	ambient_light 0.3
+	ambient_light 1.0		// was 0.3
 //	radiosity {brightness 0.3}
 }
 
-background {rgb 0}
+//background {rgb 0}
 
 union
 {
 	light_source
 	{
-		x*-100
-		color rgb 2/4
+		-x*100
+		color rgb 4/4		// was 2/4
 		shadowless
 		parallel
+		point_at <0,0,0>	// was not specified
 	}
-/*
-	cylinder
-	{
-		0, x*-100, 0.01
-		pigment {color rgb y}
-	}
-*/
-	rotate		z*-60
-	rotate		y*-30
+	rotate		-z*60
+	rotate		-y*30
+	rotate		-y*90
 }
 
 union
 {
 	light_source
 	{
-		x*-100
-		color rgb 2/4
+		-x*100
+		color rgb 4/4		// was 2/4
 		shadowless
 		parallel
+		point_at <0,0,0>	// was not specified
 	}
-/*
-	cylinder
-	{
-		0, x*-100, 0.01
-		pigment {color rgb y}
-	}
-*/
-	rotate		z*-60
-	rotate		y*+60
+	rotate		-z*60
+	rotate		+y*60
+	rotate		-y*90
 }
 
 camera
 {
-	#local CameraDistance = 10;
-//	#local ScreenArea = sqrt(2*pow(1,2)) * 4/10 * 1;
-//	#local AspectRatio = 2*cos(2*pi/12) * 1/1;
-	#local ScreenArea = sqrt(2*pow(1,2)) * 4/10 * 1;
-	#local AspectRatio = 2*cos(2*pi/12) * 1/2;
+	#local CameraDistance	= 1000;			// was 10
+//	#local ScreenArea	= sqrt(2*pow(1,2)) * 4/10 * 1;
+//	#local AspectRatio	= 2*cos(2*pi/12) * 1/1;
+	#local ScreenArea	= sqrt(2*pow(1,2)) * 4/10 * 1;
+	#local AspectRatio	= 2*cos(2*pi/12) * 1/2;
 	orthographic
-	location -z*CameraDistance
-	direction z*CameraDistance
-	right     x*ScreenArea
-	up        y*ScreenArea/AspectRatio
-//	rotate x*90
-	rotate x*asind(tand(30))
-//	rotate x*30
-	rotate y*45
+	location	-z*CameraDistance
+	direction	+z*CameraDistance
+	right		+x*ScreenArea
+	up			+y*ScreenArea/AspectRatio
+//	rotate +x*90
+	rotate +x*asind(tand(30))
+//	rotate +x*30
+	rotate +y*45
 }
 
 //------------------------------
@@ -121,11 +111,12 @@ camera
 
 #declare BasicObject_Pigment = texture
 {
-	pigment {color rgb <4/4,4/4,4/4,>}
+	pigment {color srgb <4/4,4/4,4/4,>}
 	finish
 	{
 //		Phong_Glossy
-		ambient 2/4
+		ambient 1/3			// was 2/4
+//		diffuse albedo 1	// was not specified
 	}
 }
 
@@ -135,9 +126,9 @@ camera
 
 difference
 {
-	box {0, 1}
+	box {-1/2, +1/2}	// was box {0,1}
 	texture {BasicObject_Pigment}
-	rotate y * 180
-	scale 2/10
+//	rotate	+y * 180
+	scale	1/10
 //	no_reflection
 }

@@ -1,10 +1,16 @@
-*		{font-family:DejaVu Sans Condensed,Sans-Serif;}
-body		{background-color:#c0c0c0;background-image:url("isometric_grid.png");background-attachment:fixed;color:#000000;font-size:11pt;margin:auto;width:80%;max-width:60em;}
+*		{font-family:DejaVu Sans Condensed,Sans-Serif;line-height:150%;}
+p		{}
+body		{background-color:#c0c0c0;background-image:url("isometric_grid.png");background-attachment:fixed;color:#000000;font-size:medium;margin:auto;width:80%;max-width:50em;}
 footer		{font-size:smaller;}
+label		{font-size:medium;}
 input[type="button"]			{padding:0.5em;background-color:#e0e0e0;border:1px solid #a0a0a0;}
 input[type="button"][disabled]		{padding:0.5em;background-color:#d0d0d0;border:1px solid #c0c0c0;}
 input[type="button"]:hover		{background-color:#d0d000;}
 input[type="button"][disabled]:hover	{background-color:#d0d0d0;}
+a:link		{text-decoration:underline;color:hsla(60,75%,30%,1);}
+a:visited	{text-decoration:underline;color:hsla(60, 0%,30%,1);}
+a:hover		{text-decoration:underline;color:hsla(60,75%,40%,1);}
+a:active	{text-decoration:underline;color:hsla(60,75%,50%,1);}
 
 @media print
 {

@@ -564,29 +564,27 @@ var binding_table =
 				<div id="flxdiv">
 <?php
 	// commands
-	// keep in mind that the "additional notes" are a special case
-	for ($i = 0; $i < $commandlabels_count; $i++)
+	// keep in mind that the "additional notes" are supposed to be a special case
+	foreach ($commandlabels_table as $i => $commandlabels_value)
 	{
 		if (array_key_exists($i, $commandouter_table))
 			$commandinner_table = $commandouter_table[$i];
 		else
 			$commandinner_table = [];
-		$commandlabels_label = $commandlabels_table[$i][1];
-		$commandlabels_abbrv = $commandlabels_table[$i][2];
-		$commandinner_count = count($commandinner_table);
+		$commandlabels_label = $commandlabels_value[1];
+		$commandlabels_abbrv = $commandlabels_value[2];
 		echo
 "					<div class=\"inbtop comdiv\">
 						<h3>" . cleantextHTML($commandlabels_label) . "</h3>
 						<div id=\"table_" . $commandlabels_abbrv . "\" class=\"nottbl\">\n";
 
-		for ($j = 0; $j < $commandinner_count; $j++)
+		foreach ($commandinner_table as $j => $commandinner_value)
 		{
-			$this_command = $commandinner_table[$j];
 			echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" placeholder=\"blah\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $this_command[1] . "\"/></div>
+								<div class=\"notcll cllone\"><input type=\"text\" placeholder=\"blah\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[1] . "\"/></div>
 								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" placeholder=\"blah\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $this_command[2] . "\"/></div>
+								<div class=\"notcll cllthr\"><input type=\"text\" placeholder=\"blah\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[2] . "\"/></div>
 								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
 							</div>\n";
 		}

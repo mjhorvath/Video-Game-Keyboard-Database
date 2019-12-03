@@ -1,9 +1,11 @@
-// Title: Shape grid macro v1.00
-// Author: Michael Horvath
-// Homepage: http://www.geocities.com/Area51/Quadrant/3864/povray.htm
+// Caption: Isometric Shapes
+// Version: 1.1.0
+// Authors: Michael Horvath
+// Website: http://isometricland.net/
 // Created: 2008-06-22
-// Last Updated: 2008-06-22
+// Updated: 2019-12-02
 // This file is licensed under the terms of the CC-LGPL.
+// Render this scene at 97x112px.
 
 #include "ShapeGrid_macro.inc"
 #include "functions.inc"
@@ -67,7 +69,7 @@ union
 camera
 {
 	#local CameraDistance = 10;
-	#local ScreenArea = sqrt(2*pow(1,2)) * 4/10 * 7;
+	#local ScreenArea = sqrt(2*pow(1,2)) * 4/10 * 1;
 	#local AspectRatio = 2*cos(2*pi/12)/1;
 	orthographic
 	location -z*CameraDistance
@@ -99,39 +101,5 @@ object
 {
 	Axes_Object
 	translate 0.000001
-	no_reflection
-}
-
-//------------------------------
-// CSG objects
-
-#declare SphereObject_Object = sphere {0, 1}
-
-#declare SphereObject_Intersection = intersection
-{
-	plane {+z, 0 rotate y * 0}
-	plane {-y, 0 rotate z * 0}
-	plane {+x, 0 rotate y * 0}
-}
-
-#declare BasicObject_Pigment = texture
-{
-	pigment {color rgb <4/4,4/4,4/4,>}
-	finish {ambient 2/4}
-}
-
-
-//------------------------------
-// Example in an intersection
-
-difference
-{
-	intersection
-	{
-		object {SGrid_Sphere_Macro(6,12,6,1,0,0.01,on,off,)}
-		object {SphereObject_Object}
-	}
-	object {SphereObject_Intersection}
-	texture {BasicObject_Pigment}
 	no_reflection
 }
