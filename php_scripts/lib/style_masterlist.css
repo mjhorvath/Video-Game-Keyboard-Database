@@ -1,4 +1,4 @@
-table.kbd_tab		{border:solid 1px #000000;width:100%;border-spacing:0;padding:0;}
+table.kbd_tab		{border:solid 1px #000000;width:100%;border-spacing:0;border-collapse:separate;padding:0;}
 table.kbd_tab th	{border:solid 1px #000000;padding:0.25em;color:#c0c0c0;background:#000000;}
 table.kbd_tab td	{border:solid 1px #000000;padding:0.25em;color:#000000;background:transparent;}
 span.arrw_u	{float:right;cursor:pointer;display:none;}

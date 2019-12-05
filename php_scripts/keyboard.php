@@ -35,14 +35,14 @@
 	include($path_lib1	. "keyboard-common.php");
 	include($path_lib1	. "keyboard-queries.php");
 
-	// accordion lists - I want to rename "_array" to "_table", but there are a few naming conflicts currently
-	$genre_array		= [];
-	$genre_game_array	= [];
-	$stylegroup_array	= [];
-	$stylegroup_style_array	= [];
-	$platform_array		= [];
-	$platform_layout_array	= [];
-	$platform_order_array	= [];
+	// accordion lists
+	$genre_table		= [];
+	$genre_game_table	= [];
+	$stylegroup_table	= [];
+	$stylegroup_style_table	= [];
+	$platform_table		= [];
+	$platform_layout_table	= [];
+	$platform_order_table	= [];
 
 	// javascript output
 	$seourl_table		= [];
@@ -240,15 +240,17 @@ var seourl_table =
 			</div>
 			<ul id="lay_menu" class="acc_mnu">
 <?php
-	foreach ($platform_array as $i => $platform_value)
+	$platform_first = true;
+	foreach ($platform_table as $i => $platform_value)
 	{
 		echo
 "				<li>\n";
-		if ($i == 0)
+		if ($platform_first)
 		{
 			echo
 "					<a menu=\"lay\"><span class=\"arrw_a\" style=\"display:none;\">&#9658;</span><span class=\"arrw_b\" style=\"display:inline;\">&#9660;</span> " . $platform_value . "</a>
 					<ul style=\"height:22em;display:block;\">\n";
+			$platform_first = false;
 		}
 		else
 		{
@@ -256,8 +258,8 @@ var seourl_table =
 "					<a menu=\"lay\"><span class=\"arrw_a\" style=\"display:inline;\">&#9658;</span><span class=\"arrw_b\" style=\"display:none;\">&#9660;</span> " . $platform_value . "</a>
 					<ul style=\"height:22em;display:none;\">\n";
 		}
-		$inner_array = $platform_layout_array[$i];
-		usort($inner_array, "sortByLayoutName");
+		$inner_array = $platform_layout_table[$i];
+		usort($inner_array, "usortByMember2");
 		foreach ($inner_array as $j => $inner_value)
 		{
 			$this_layout_id		= $inner_value[1];
@@ -284,15 +286,17 @@ var seourl_table =
 			</div>
 			<ul id="sty_menu" class="acc_mnu">
 <?php
-	foreach ($stylegroup_array as $i => $stylegroup_value)
+	$stylegroup_first = true;
+	foreach ($stylegroup_table as $i => $stylegroup_value)
 	{
 		echo
 "				<li>\n";
-		if ($i == 0)		// need to count instead, no guarantee this will be zero
+		if ($stylegroup_first)
 		{
 			echo
 "					<a menu=\"sty\"><span class=\"arrw_a\" style=\"display:none;\">&#9658;</span><span class=\"arrw_b\" style=\"display:inline;\">&#9660;</span> " . $stylegroup_value . "</a>
 					<ul style=\"height:22em;display:block;\">\n";
+			$stylegroup_first = false;
 		}
 		else
 		{
@@ -300,8 +304,8 @@ var seourl_table =
 "					<a menu=\"sty\"><span class=\"arrw_a\" style=\"display:inline;\">&#9658;</span><span class=\"arrw_b\" style=\"display:none;\">&#9660;</span> " . $stylegroup_value . "</a>
 					<ul style=\"height:22em;display:none;\">\n";
 		}
-		$inner_array = $stylegroup_style_array[$i];
-		usort($inner_array, "sortByStyleName");
+		$inner_array = $stylegroup_style_table[$i];
+		usort($inner_array, "usortByMember2");
 		foreach ($inner_array as $j => $inner_value)
 		{
 			$this_style_id		= $inner_value[1];
@@ -328,15 +332,17 @@ var seourl_table =
 			</div>
 			<ul id="gam_menu" class="acc_mnu">
 <?php
-	foreach ($genre_array as $i => $genre_value)
+	$genre_first = true;
+	foreach ($genre_table as $i => $genre_value)
 	{
 		echo
 "				<li>\n";
-		if ($i == 0)		// need to count instead, no guarantee this will be zero
+		if ($genre_first)
 		{
 			echo
 "					<a menu=\"gam\"><span class=\"arrw_a\" style=\"display:none;\">&#9658;</span><span class=\"arrw_b\" style=\"display:inline;\">&#9660;</span> " . $genre_value . "</a>
 					<ul style=\"height:15em;display:block;\">\n";
+			$genre_first = false;
 		}
 		else
 		{
@@ -344,8 +350,8 @@ var seourl_table =
 "					<a menu=\"gam\"><span class=\"arrw_a\" style=\"display:inline;\">&#9658;</span><span class=\"arrw_b\" style=\"display:none;\">&#9660;</span> " . $genre_value . "</a>
 					<ul style=\"height:15em;display:none;\">\n";
 		}
-		$inner_array = $genre_game_array[$i];
-		usort($inner_array, "sortByGameName");
+		$inner_array = $genre_game_table[$i];
+		usort($inner_array, "usortByMember2");
 		foreach ($inner_array as $j => $inner_value)
 		{
 			$this_game_id	= $inner_value[1];

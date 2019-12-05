@@ -35,14 +35,10 @@
 	include($path_lib1	. "keyboard-common.php");
 	include($path_lib1	. "keyboard-queries.php");
 
-	$genre_array		= [];
-	$layout_array		= [];
-	$record_array		= [];
-	$platform_array		= [];
-	$game_name_array	= [];
-	$game_index_array	= [];
-	$game_seourl_array	= [];
-	$game_genre_array	= [];
+	$genre_table		= [];
+	$layout_table		= [];
+	$record_table		= [];
+	$platform_table		= [];
 
 	// open MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -84,66 +80,66 @@
 	<body onload=\"sortTableInit();Toggle_Waiting(false);\">
 		<header>
 			<h2>VGKD - Master Table</h2>
-			<p>You can sort the table by clicking on the icons in the table headers.</p>
+			<p>You can sort the table by clicking on the arrow icons in the table header.</p>
 		</header>
 		<main>
 <img id=\"waiting\" src=\"./lib/animated_loading_icon.webp\" alt=\"loading\" style=\"position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;\"/>
 <table id=\"tableToSort\" class=\"kbd_tab\">
-	<tr>
-		<th onclick=\"Wait_and_Sort(0);\">Name		<span id=\"arrw_u0\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d0\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n0\" class=\"arrw_n\">&#9674;</span></th>
-		<th onclick=\"Wait_and_Sort(1);\">Genre		<span id=\"arrw_u1\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d1\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n1\" class=\"arrw_n\">&#9674;</span></th>
-		<th onclick=\"Wait_and_Sort(2);\">#ID		<span id=\"arrw_u2\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d2\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n2\" class=\"arrw_n\">&#9674;</span></th>
-		<th onclick=\"Wait_and_Sort(3);\">Records	<span id=\"arrw_u3\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d3\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n3\" class=\"arrw_n\">&#9674;</span></th>
-	</tr>\n";
+	<thead>
+		<tr>
+			<th onclick=\"Wait_and_Sort(0);\">Game Title	<span id=\"arrw_u0\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d0\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n0\" class=\"arrw_n\">&#9674;</span></th>
+			<th onclick=\"Wait_and_Sort(1);\">Genre		<span id=\"arrw_u1\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d1\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n1\" class=\"arrw_n\">&#9674;</span></th>
+			<th onclick=\"Wait_and_Sort(2);\">#ID		<span id=\"arrw_u2\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d2\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n2\" class=\"arrw_n\">&#9674;</span></th>
+			<th onclick=\"Wait_and_Sort(3);\">Records	<span id=\"arrw_u3\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d3\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n3\" class=\"arrw_n\">&#9674;</span></th>
+		</tr>
+	</thead>
+	<tbody>\n";
 
-	// using 'count()' here may be a bad idea in case there ever appear gaps in the table indexes due to deletions
-	for ($i = 0; $i < count($game_name_array); $i++)
+	foreach ($game_table as $i => $game_value)
 	{
-		$game_id_gam = $game_index_array[$i];
-		$game_seo_gam = $game_seourl_array[$i];
-		$game_name_gam = $game_name_array[$i];
-//		$game_genre_gam = $game_genre_array[$i];
-		$game_genre_gam = $genre_array[$game_genre_array[$i]-1];
-
-		$platform_layout_array = [];
-		for ($j = 0; $j < count($platform_array); $j++)
-		{
-			$platform_id_pla = $platform_array[$j][0];
-			$platform_layout_array[$platform_id_pla] = [[],[]];
-		}
+		$game_genre_gam	= getGenreName($game_value[0]);
+		$game_id_gam	= $game_value[1];
+		$game_name_gam	= $game_value[2];
+		$game_seo_gam	= $game_value[3];
+		$game_pad_gam	= leadingZeros($game_id_gam, 3);
 
 		echo
-"	<tr><td>" . cleantextHTML($game_name_gam) . "</td><td>" . cleantextHTML($game_genre_gam) . "</td><td>" . $game_id_gam . "</td><td><dl>";
+"		<tr><td>" . cleantextHTML($game_name_gam) . "</td><td>" . cleantextHTML($game_genre_gam) . "</td><td>" . $game_pad_gam . "</td><td><dl>";
 
-		for ($j = 0; $j < count($record_array); $j++)
+		$platform_layout_table = [];
+		foreach ($platform_table as $j => $platform_value)
 		{
-			$game_id_rec = $record_array[$j][0];
-			$layout_id_rec = $record_array[$j][1];
-			$layout_name = getLayoutName($layout_id_rec);
-			$platform_id_rec = getPlatformID($layout_id_rec);
+			$platform_id_pla = $platform_value[0];
+			$platform_layout_table[$platform_id_pla] = [];
+		}
 
+		foreach ($record_table as $j => $record_value)
+		{
+			$game_id_rec	= $record_value[1];
+			$layout_id_rec	= $record_value[2];
+			$layout_name_rec = getLayoutName($layout_id_rec);
+			$platform_id_rec = getPlatformID($layout_id_rec);
 			if ($game_id_rec == $game_id_gam)
 			{
-				$platform_layout_array[$platform_id_rec][0][] = $layout_id_rec;
-				$platform_layout_array[$platform_id_rec][1][] = $layout_name;
+				error_log($game_id_rec, 0);
+				$platform_layout_table[$platform_id_rec][] = [$layout_id_rec, $layout_name_rec];
 			}
 		}
 
-		for ($j = 0; $j < count($platform_array); $j++)
+		usort($platform_table, "usortByMember1");
+		foreach ($platform_table as $j => $platform_value)
 		{
-			$platform_id_pla = $platform_array[$j][0];
-			$platform_abbv_pla = $platform_array[$j][2];
-			$these_layout_ids = $platform_layout_array[$platform_id_pla][0];
-			$these_layout_names = $platform_layout_array[$platform_id_pla][1];
-			array_multisort($these_layout_names, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $these_layout_ids);
-			if (count($these_layout_ids) > 0)
+			$platform_id_pla	= $platform_value[0];
+			$platform_abbv_pla	= $platform_value[2];
+			$platform_layouts_pla	= $platform_layout_table[$platform_id_pla];
+			if (count($platform_layouts_pla) > 0)
 			{
 				echo "<dt>" . $platform_abbv_pla . "</dt>";
-
-				for ($k = 0; $k < count($these_layout_ids); $k++)
+				usort($platform_layouts_pla, "usortByMember1");
+				foreach ($platform_layouts_pla as $k => $this_layout)
 				{
-					$this_layout_id = $these_layout_ids[$k];
-					$this_layout_name = $these_layout_names[$k];
+					$this_layout_id   = $this_layout[0];
+					$this_layout_name = $this_layout[1];
 					echo "<dd><a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout_id . "&fmt=0&ten=1\">" . cleantextHTML($this_layout_name) . "</a></dd>";
 				}
 			}
@@ -153,7 +149,8 @@
 	}
 
 	echo
-"</table>
+"	</tbody>
+</table>
 		</main>
 		<footer>";
 	include($path_lib1 . "keyboard-footer-2.php");

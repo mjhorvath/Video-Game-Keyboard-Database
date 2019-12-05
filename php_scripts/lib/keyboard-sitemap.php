@@ -33,12 +33,12 @@
 	include($path_lib2	. "keyboard-common.php");
 	include($path_lib2	. "keyboard-queries.php");
 
-	$layout_array		= [];
-	$record_array		= [];
-	$platform_array		= [];
-	$game_name_array	= [];
-	$game_index_array	= [];
-	$game_seourl_array	= [];
+	$layout_table		= [];
+	$record_table		= [];
+	$platform_table		= [];
+	$game_name_table	= [];
+	$game_index_table	= [];
+	$game_seourl_table	= [];
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -67,37 +67,37 @@
 		<textarea readonly=\"readonly\" wrap=\"off\" style=\"width:100%;height:30em;\">\n";
 
 	// using 'count()' here may be a bad idea in case there are ever any gaps in the table indexes due to records deletions
-	for ($i = 0; $i < count($game_name_array); $i++)
+	for ($i = 0; $i < count($game_name_table); $i++)
 	{
-		$game_id_gam = $game_index_array[$i];
-		$game_seo_gam = $game_seourl_array[$i];
-		$game_name_gam = $game_name_array[$i];
+		$game_id_gam = $game_index_table[$i];
+		$game_seo_gam = $game_seourl_table[$i];
+		$game_name_gam = $game_name_table[$i];
 
-		$platform_layout_array = [];
-		for ($j = 0; $j < count($platform_array); $j++)
+		$platform_layout_table = [];
+		for ($j = 0; $j < count($platform_table); $j++)
 		{
-			$platform_id_pla = $platform_array[$j][0];
-			$platform_layout_array[$platform_id_pla] = [];
+			$platform_id_pla = $platform_table[$j][0];
+			$platform_layout_table[$platform_id_pla] = [];
 		}
 
-		for ($j = 0; $j < count($record_array); $j++)
+		for ($j = 0; $j < count($record_table); $j++)
 		{
-			$game_id_rec = $record_array[$j][0];
-			$layout_id_rec = $record_array[$j][1];
+			$game_id_rec = $record_table[$j][0];
+			$layout_id_rec = $record_table[$j][1];
 			$platform_id_rec = getPlatformID($layout_id_rec);
 
 			if ($game_id_rec == $game_id_gam)
 			{
-				$platform_layout_array[$platform_id_rec][] = $layout_id_rec;
+				$platform_layout_table[$platform_id_rec][] = $layout_id_rec;
 			}
 		}
 
 		// Maybe not a good idea to list one page for every game/layout combination.
-		for ($j = 0; $j < count($platform_array); $j++)
+		for ($j = 0; $j < count($platform_table); $j++)
 		{
-			$platform_id_pla = $platform_array[$j][0];
-			$platform_abbv_pla = $platform_array[$j][2];
-			$this_platform = $platform_layout_array[$platform_id_pla];
+			$platform_id_pla = $platform_table[$j][0];
+			$platform_abbv_pla = $platform_table[$j][2];
+			$this_platform = $platform_layout_table[$platform_id_pla];
 			if (count($this_platform) > 0)
 			{
 				for ($k = 0; $k < count($this_platform); $k++)

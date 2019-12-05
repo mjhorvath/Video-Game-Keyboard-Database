@@ -102,7 +102,7 @@
 //			error_log("game_id is null", 0);
 			if ($game_seo !== null)
 			{
-				selThisGame_SEO();
+				selThisGameSEOChart();
 			}
 			else
 			{
@@ -118,7 +118,7 @@
 //			error_log("game_seo is null", 0);
 			if ($game_id !== null)
 			{
-				selThisGames_ID();
+				selThisGamesIDChart();
 			}
 			else
 			{
@@ -214,12 +214,12 @@
 	}
 	function getPlatformID($in_layout_id)
 	{
-		global $layout_array;
-		for ($i = 0; $i < count($layout_array); $i++)
+		global $layout_table;
+		foreach ($layout_table as $i => $layout_value)
 		{
 			// note these are local variables
-			$layout_id = $layout_array[$i][0];
-			$platform_id = $layout_array[$i][2];
+			$layout_id   = $layout_value[0];
+			$platform_id = $layout_value[2];
 			if ($layout_id == $in_layout_id)
 			{
 				return $platform_id;
@@ -228,15 +228,29 @@
 	}
 	function getLayoutName($in_layout_id)
 	{
-		global $layout_array;
-		for ($i = 0; $i < count($layout_array); $i++)
+		global $layout_table;
+		foreach ($layout_table as $i => $layout_value)
 		{
 			// note these are local variables
-			$layout_id = $layout_array[$i][0];
-			$layout_name = $layout_array[$i][1];
+			$layout_id	= $layout_value[0];
+			$layout_name	= $layout_value[1];
 			if ($layout_id == $in_layout_id)
 			{
 				return $layout_name;
+			}
+		}
+	}
+	function getGenreName($in_genre_id)
+	{
+		global $genre_table;
+		foreach ($genre_table as $i => $genre_value)
+		{
+			// note these are local variables
+			$genre_id	= $genre_value[0];
+			$genre_name	= $genre_value[1];
+			if ($genre_id == $in_genre_id)
+			{
+				return $genre_name;
 			}
 		}
 	}
@@ -312,28 +326,9 @@
 		global $class_array;
 		return array_key_exists($group-1, $class_array) ? $class_array[$group-1] : "";
 	}
-	// should be made recursive so only a single procedure is required
-	function leadingZeros3($innumber)
+	function leadingZeros($innumber, $level)
 	{
-		$outstring = strval($innumber);
-		if ($innumber < 10)
-		{
-			$outstring = "0" . $outstring;
-		}
-		if ($innumber < 100)
-		{
-			$outstring = "0" . $outstring;
-		}
-		return $outstring;
-	}
-	function leadingZeros2($innumber)
-	{
-		$outstring = strval($innumber);
-		if ($innumber < 10)
-		{
-			$outstring = "0" . $outstring;
-		}
-		return $outstring;
+		return str_pad($innumber, $level, "0", STR_PAD_LEFT);
 	}
 	function testPathInfo()
 	{
@@ -400,15 +395,11 @@
 			$errors_table[] = "No configurations found for style \"" . $temp_style_name . "\" and layout \"" . $temp_layout_name . "\".";
 		}
 	}
-	function sortByGameName($a, $b)
+	function usortByMember1($a, $b)
 	{
-		return strnatcmp($a[2], $b[2]);
+		return strnatcmp($a[1], $b[1]);
 	}
-	function sortByStyleName($a, $b)
-	{
-		return strnatcmp($a[2], $b[2]);
-	}
-	function sortByLayoutName($a, $b)
+	function usortByMember2($a, $b)
 	{
 		return strnatcmp($a[2], $b[2]);
 	}

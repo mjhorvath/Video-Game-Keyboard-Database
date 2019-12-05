@@ -57,6 +57,11 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2019/12/04: Tweaked the style of HTML tables and their sub-elements in &quot;keyboard-list.php&quot;.</li>
+	<li>2019/12/04: Continued the ongoing switch to associative arrays in &quot;keyboard-list.php&quot;.</li>
+	<li>2019/12/04: Merged the &quot;leadingZeros2&quot; and &quot;leadingZeros3&quot; functions into one function.</li>
+	<li>2019/12/03: Renamed the functions for the HTML and SVG charts in &quot;keyboard-queries.php&quot;.</li>
+	<li>2019/12/03: Tweaked the code determining which sub-list is expanded by default on the front page.</li>
 	<li>2019/12/03: Disabled snake animation. Can be re-enabled easily.</li>
 	<li>2019/12/03: Started switching over to using associative arrays instead of numerical arrays. Only the front page is done so far.</li>
 	<li>2019/12/01: Added a snake cube animation to the front page.</li>

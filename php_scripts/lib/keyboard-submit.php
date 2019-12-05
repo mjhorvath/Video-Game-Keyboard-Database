@@ -76,27 +76,27 @@
 	selURLQueries();		// gather and validate URL parameters
 	selDefaults();			// get default values for urlqueries if missing
 	checkURLParameters();		// gather and validate URL parameters
-	selThisLanguageStrings();
-	selAuthors();
-	selStyleGroups();
-	selStyles();
-	selThisStyle();
-	selThisFormat();
-	selPositions();
-	selThisLayout();
-	selThisPlatform();
-	selThisGamesRecord();
-	selThisStylesRecord();
-	selBindings();
-	selLegends();
-	selCommands();
-	selContribsGames();
-	selContribsStyles();
-	selContribsLayouts();
+	selThisLanguageStringsChart();
+	selAuthorsChart();
+	selStyleGroupsChart();
+	selStylesChart();
+	selThisStyleChart();
+	selThisFormatChart();
+	selPositionsChart();
+	selThisLayoutChart();
+	selThisPlatformChart();
+	selThisGamesRecordChart();
+	selThisStylesRecordChart();
+	selBindingsChart();
+	selLegendsChart();
+	selCommandsChart();
+	selContribsGamesChart();
+	selContribsStylesChart();
+	selContribsLayoutsChart();
 	selLegendColors();
 	selKeyStyles();
 	selKeyStyleClasses();
-	selCommandLabels();
+	selCommandLabelsChart();
 
 	// close MySQL connection
 	mysqli_close($con);

@@ -65,23 +65,23 @@
 	selURLQueries();		// gather and validate URL parameters
 	selDefaults();			// get default values for urlqueries if missing
 	checkURLParameters();		// gather and validate URL parameters
-	selThisLanguageStrings();
-	selAuthors();
-	selStyleGroups();
-	selStyles();
-	selThisStyle();
-	selThisFormat();
-	selPositions();
-	selThisLayout();
-	selThisPlatform();
-	selThisGamesRecord();
-	selThisStylesRecord();
-	selBindings();
-	selLegends();
-	selCommands();
-	selContribsGames();
-	selContribsStyles();
-	selContribsLayouts();
+	selThisLanguageStringsChart();
+	selAuthorsChart();
+	selStyleGroupsChart();
+	selStylesChart();
+	selThisStyleChart();
+	selThisFormatChart();
+	selPositionsChart();
+	selThisLayoutChart();
+	selThisPlatformChart();
+	selThisGamesRecordChart();
+	selThisStylesRecordChart();
+	selBindingsChart();
+	selLegendsChart();
+	selCommandsChart();
+	selContribsGamesChart();
+	selContribsStylesChart();
+	selContribsLayoutsChart();
 	selKeystyles();
 
 	// close connection
@@ -122,7 +122,7 @@
 	// keys
 	for ($i = 0; $i < $keys_number; $i++)
 	{
-		$leadZ		= leadingZeros3($i);
+		$leadZ		= leadingZeros($i, 3);
 		if (array_key_exists($i, $binding_table))
 		{
 			$binding_row	= $binding_table[$i];
@@ -166,7 +166,7 @@
 	// legend
 	for ($i = 0; $i < 12; $i++)
 	{
-		$leadZ = leadingZeros2($i);
+		$leadZ = leadingZeros($i, 2);
 		if (isset($legend_table[$i]))
 		{
 			$legend_row = $legend_table[$i];

@@ -24,5 +24,7 @@ function Toggle_Waiting(thisBool)
 
 function Wait_and_Sort(colNum)
 {
+	Toggle_Waiting(true);
 	sortTable(colNum);
+	Toggle_Waiting(false);
 }

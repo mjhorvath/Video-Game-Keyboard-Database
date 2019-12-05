@@ -66,24 +66,24 @@
 	selURLQueries();		// gather and validate URL parameters
 	selDefaults();			// get default values for urlqueries if missing
 	checkURLParameters();		// gather and validate URL parameters
-	selThisLanguageStrings();
+	selThisLanguageStringsChart();
 	selPlatformsFront();
 	selLayoutsFront();
-	selAuthors();
-	selStyleGroups();
-	selStyles();
-	selThisStyle();
-	selThisFormat();
-	selPositions();
-	selThisGamesRecord();
-	selThisStylesRecord();
-	selThisLayout();
-	selThisPlatform();
-	selBindings();
-	selLegends();
-	selContribsGames();
-	selContribsStyles();
-	selContribsLayouts();
+	selAuthorsChart();
+	selStyleGroupsChart();
+	selStylesChart();
+	selThisStyleChart();
+	selThisFormatChart();
+	selPositionsChart();
+	selThisGamesRecordChart();
+	selThisStylesRecordChart();
+	selThisLayoutChart();
+	selThisPlatformChart();
+	selBindingsChart();
+	selLegendsChart();
+	selContribsGamesChart();
+	selContribsStylesChart();
+	selContribsLayoutsChart();
 	selLegendColors();
 	selKeyStyles();
 	selKeyStyleClasses();

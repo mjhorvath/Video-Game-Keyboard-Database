@@ -165,13 +165,14 @@
 	}
 	function resGenresFront($in_result)
 	{
-		global $genre_array, $genre_game_array;
+		global $genre_table, $genre_game_table;
 		while ($genre_row = mysqli_fetch_row($in_result))
 		{
 			// genre_id, genre_name
-			$genre_id = $genre_row[0];
-			$genre_array[$genre_id-1] = $genre_row[1];
-			$genre_game_array[$genre_id-1] = [];
+			$genre_id	= $genre_row[0];
+			$genre_name	= $genre_row[1];
+			$genre_table[$genre_id-1] = $genre_name;
+			$genre_game_table[$genre_id-1] = [];
 		}
 	}
 	function selGamesFront()
@@ -182,14 +183,15 @@
 	}
 	function resGamesFront($in_result)
 	{
-		global $genre_game_array, $game_table;
+		global $genre_game_table, $game_table;
 		while ($game_row = mysqli_fetch_row($in_result))
 		{
 			// genre_id, game_id, game_name, game_friendlyurl
-			$genre_id = $game_row[0];
-			$game_id = $game_row[1];
-			$game_name = $game_row[2];
-			$genre_game_array[$genre_id-1][] = $game_row;
+			$genre_id	= $game_row[0];
+			$game_id	= $game_row[1];
+			$game_name	= $game_row[2];
+			$game_seourl	= $game_row[3];
+			$genre_game_table[$genre_id-1][] = $game_row;
 			$game_table[$game_id-1] = 1;
 		}
 	}
@@ -201,13 +203,14 @@
 	}
 	function resStylegroupsFront($in_result)
 	{
-		global $stylegroup_array, $stylegroup_style_array;
+		global $stylegroup_table, $stylegroup_style_table;
 		while ($stylegroup_row = mysqli_fetch_row($in_result))
 		{
 			// stylegroup_id, stylegroup_name
-			$stylegroup_id = $stylegroup_row[0];
-			$stylegroup_array[$stylegroup_id-1] = $stylegroup_row[1];
-			$stylegroup_style_array[$stylegroup_id-1] = [];
+			$stylegroup_id		= $stylegroup_row[0];
+			$stylegroup_name	= $stylegroup_row[1];
+			$stylegroup_table[$stylegroup_id-1] = $stylegroup_name;
+			$stylegroup_style_table[$stylegroup_id-1] = [];
 		}
 	}
 	function selStylesFront()
@@ -218,14 +221,14 @@
 	}
 	function resStylesFront($in_result)
 	{
-		global $stylegroup_style_array, $style_table;
+		global $stylegroup_style_table, $style_table;
 		while ($style_row = mysqli_fetch_row($in_result))
 		{
 			// stylegroup_id, style_id, style_name
-			$stylegroup_id = $style_row[0];
-			$style_id = $style_row[1];
-			$style_name = $style_row[2];
-			$stylegroup_style_array[$stylegroup_id-1][] = $style_row;
+			$stylegroup_id	= $style_row[0];
+			$style_id	= $style_row[1];
+			$style_name	= $style_row[2];
+			$stylegroup_style_table[$stylegroup_id-1][] = $style_row;
 			$style_table[$style_id-1] = 1;
 		}
 	}
@@ -237,16 +240,18 @@
 	}
 	function resPlatformsFront($in_result)
 	{
-		global $platform_array, $platform_layout_array;
+		global $platform_table, $platform_layout_table;
 		while ($platform_row = mysqli_fetch_row($in_result))
 		{
 			// platform_id, platform_name, platform_displayorder
-			$platform_id = $platform_row[0];
-			$platform_array[$platform_id-1] = $platform_row[1];
-			$platform_layout_array[$platform_id-1] = [];
-			$platform_order_array[$platform_id-1] = $platform_row[2];
+			$platform_id	= $platform_row[0];
+			$platform_name	= $platform_row[1];
+			$platform_order	= $platform_row[2];
+			$platform_table[$platform_id-1] = $platform_name;
+			$platform_layout_table[$platform_id-1] = [];
+			$platform_order_table[$platform_id-1] = $platform_order;
 		}
-		array_multisort($platform_order_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $platform_array, $platform_layout_array);
+		array_multisort($platform_order_table, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $platform_table, $platform_layout_table);
 	}
 	function selLayoutsFront()
 	{
@@ -256,14 +261,14 @@
 	}
 	function resLayoutsFront($in_result)
 	{
-		global $platform_layout_array, $layout_table;
+		global $platform_layout_table, $layout_table;
 		while ($layout_row = mysqli_fetch_row($in_result))
 		{
 			// platform_id, layout_id, layout_name
-			$platform_id = $layout_row[0];
-			$layout_id = $layout_row[1];
-			$layout_name = $layout_row[2];
-			$platform_layout_array[$platform_id-1][] = $layout_row;
+			$platform_id	= $layout_row[0];
+			$layout_id	= $layout_row[1];
+			$layout_name	= $layout_row[2];
+			$platform_layout_table[$platform_id-1][] = $layout_row;
 			$layout_table[$layout_id-1] = 1;
 		}
 	}
@@ -272,13 +277,13 @@
 	// ---------------------------------------------------------------------
 	// HTML and SVG
 
-	function selContribsGames()
+	function selContribsGamesChart()
 	{
 		global $con, $gamesrecord_id;
 		$selectString = "SELECT c.author_id FROM contribs_games AS c WHERE c.record_id = " . $gamesrecord_id . ";";
-		selectQuery($con, $selectString, "resContribsGames");
+		selectQuery($con, $selectString, "resContribsGamesChart");
 	}
-	function resContribsGames($in_result)
+	function resContribsGamesChart($in_result)
 	{
 		global $gamesrecord_authors;
 		while ($temp_row = mysqli_fetch_row($in_result))
@@ -287,13 +292,13 @@
 			$gamesrecord_authors[] = getAuthorName($temp_row[0]);
 		}
 	}
-	function selContribsStyles()
+	function selContribsStylesChart()
 	{
 		global $con, $stylesrecord_id;
 		$selectString = "SELECT c.author_id FROM contribs_styles AS c WHERE c.record_id = " . $stylesrecord_id . ";";
-		selectQuery($con, $selectString, "resContribsStyles");
+		selectQuery($con, $selectString, "resContribsStylesChart");
 	}
-	function resContribsStyles($in_result)
+	function resContribsStylesChart($in_result)
 	{
 		global $stylesrecord_authors;
 		while ($temp_row = mysqli_fetch_row($in_result))
@@ -302,13 +307,13 @@
 			$stylesrecord_authors[] = getAuthorName($temp_row[0]);
 		}
 	}
-	function selContribsLayouts()
+	function selContribsLayoutsChart()
 	{
 		global $con, $layout_id;
 		$selectString = "SELECT c.author_id FROM contribs_layouts AS c WHERE c.layout_id = " . $layout_id . ";";
-		selectQuery($con, $selectString, "resContribsLayouts");
+		selectQuery($con, $selectString, "resContribsLayoutsChart");
 	}
-	function resContribsLayouts($in_result)
+	function resContribsLayoutsChart($in_result)
 	{
 		global $layout_authors;
 		while ($temp_row = mysqli_fetch_row($in_result))
@@ -317,13 +322,13 @@
 			$layout_authors[] = getAuthorName($temp_row[0]);
 		}
 	}
-	function selThisGames_ID()
+	function selThisGamesIDChart()
 	{
 		global $con, $game_id;
 		$selectString = "SELECT g.game_name, g.game_friendlyurl FROM games AS g WHERE g.game_id = " . $game_id . ";";
-		selectQuery($con, $selectString, "resThisGames_ID");
+		selectQuery($con, $selectString, "resThisGamesIDChart");
 	}
-	function resThisGames_ID($in_result)
+	function resThisGamesIDChart($in_result)
 	{
 		global $game_name, $game_seo;
 		$game_row = mysqli_fetch_row($in_result);
@@ -334,13 +339,13 @@
 			$game_seo = $game_row[1];
 		}
 	}
-	function selThisGame_SEO()
+	function selThisGameSEOChart()
 	{
 		global $con, $game_seo;
 		$selectString = "SELECT g.game_name, g.game_id FROM games AS g WHERE g.game_friendlyurl = \"" . $game_seo . "\";";
-		selectQuery($con, $selectString, "resThisGame_SEO");
+		selectQuery($con, $selectString, "resThisGameSEOChart");
 	}
-	function resThisGame_SEO($in_result)
+	function resThisGameSEOChart($in_result)
 	{
 		global $game_name, $game_id;
 		$game_row = mysqli_fetch_row($in_result);
@@ -351,13 +356,13 @@
 			$game_id = $game_row[1];
 		}
 	}
-	function selAuthors()
+	function selAuthorsChart()
 	{
 		global $con;
 		$selectString = "SELECT a.author_id, a.author_name FROM authors AS a;";
-		selectQuery($con, $selectString, "resAuthors");
+		selectQuery($con, $selectString, "resAuthorsChart");
 	}
-	function resAuthors($in_result)
+	function resAuthorsChart($in_result)
 	{
 		global $author_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
@@ -366,13 +371,13 @@
 			$author_table[$temp_row[0]-1] = $temp_row;
 		}
 	}
-	function selStyleGroups()
+	function selStyleGroupsChart()
 	{
 		global $con;
 		$selectString = "SELECT s.stylegroup_id, s.stylegroup_name FROM stylegroups AS s;";
-		selectQuery($con, $selectString, "resStyleGroups");
+		selectQuery($con, $selectString, "resStyleGroupsChart");
 	}
-	function resStyleGroups($in_result)
+	function resStyleGroupsChart($in_result)
 	{
 		global $style_table, $stylegroup_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
@@ -382,13 +387,13 @@
 			$stylegroup_table[$temp_row[0]-1] = $temp_row;
 		}
 	}
-	function selStyles()
+	function selStylesChart()
 	{
 		global $con;
 		$selectString = "SELECT s.style_id, s.style_name, s.style_whiteonblack, s.stylegroup_id FROM styles AS s ORDER BY s.stylegroup_id, s.style_name;";
-		selectQuery($con, $selectString, "resStyles");
+		selectQuery($con, $selectString, "resStylesChart");
 	}
-	function resStyles($in_result)
+	function resStylesChart($in_result)
 	{
 		global $style_table, $stylegroup_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
@@ -406,13 +411,13 @@
 			}
 		}
 	}
-	function selThisStyle()
+	function selThisStyleChart()
 	{
 		global $con, $style_id;
 		$selectString = "SELECT s.style_filename, s.style_name, s.stylegroup_id FROM styles AS s WHERE s.style_id = " . $style_id . " ORDER BY s.stylegroup_id, s.style_name;";
-		selectQuery($con, $selectString, "resThisStyle");
+		selectQuery($con, $selectString, "resThisStyleChart");
 	}
-	function resThisStyle($in_result)
+	function resThisStyleChart($in_result)
 	{
 		global $style_filename, $style_name, $stylegroup_id;
 		$style_row = mysqli_fetch_row($in_result);
@@ -424,13 +429,13 @@
 			$stylegroup_id	= $style_row[2];
 		}
 	}
-	function selThisFormat()
+	function selThisFormatChart()
 	{
 		global $con, $format_id;
 		$selectString = "SELECT f.format_name, f.format_enabled FROM formats AS f WHERE f.format_id = " . ($format_id + 1) . ";";
-		selectQuery($con, $selectString, "resThisFormat");
+		selectQuery($con, $selectString, "resThisFormatChart");
 	}
-	function resThisFormat($in_result)
+	function resThisFormatChart($in_result)
 	{
 		global $format_name;
 		$format_row = mysqli_fetch_row($in_result);
@@ -440,13 +445,13 @@
 			$format_name = $format_row[0];
 		}
 	}
-	function selPositions()
+	function selPositionsChart()
 	{
 		global $con, $layout_id;
 		$selectString = "SELECT p.position_left, p.position_top, p.position_width, p.position_height, p.symbol_norm_low, p.symbol_norm_cap, p.symbol_altgr_low, p.symbol_altgr_cap, p.key_number, p.lowcap_optional, p.numpad FROM positions AS p WHERE p.layout_id = " . $layout_id . ";";
-		selectQuery($con, $selectString, "resPositions");
+		selectQuery($con, $selectString, "resPositionsChart");
 	}
-	function resPositions($in_result)
+	function resPositionsChart($in_result)
 	{
 		global $position_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
@@ -455,13 +460,13 @@
 			$position_table[$temp_row[8]-1] = $temp_row;
 		}
 	}
-	function selThisLayout()
+	function selThisLayoutChart()
 	{
 		global $con, $layout_id;
 		$selectString = "SELECT l.platform_id, l.layout_name, l.layout_keysnum, l.layout_fullsize_width, l.layout_fullsize_height, l.layout_tenkeyless_width, l.layout_tenkeyless_height FROM layouts AS l WHERE l.layout_id = " . $layout_id . ";";
-		selectQuery($con, $selectString, "resThisLayout");
+		selectQuery($con, $selectString, "resThisLayoutChart");
 	}
-	function resThisLayout($in_result)
+	function resThisLayoutChart($in_result)
 	{
 		global $platform_id, $layout_name, $layout_keysnum, $layout_fullsize_width, $layout_fullsize_height, $layout_tenkeyless_width, $layout_tenkeyless_height;
 		$layout_row = mysqli_fetch_row($in_result);
@@ -477,13 +482,13 @@
 			$layout_tenkeyless_height	= $layout_row[6];
 		}
 	}
-	function selThisPlatform()
+	function selThisPlatformChart()
 	{
 		global $con, $platform_id;
 		$selectString = "SELECT p.platform_name FROM platforms AS p WHERE p.platform_id = " . $platform_id . ";";
-		selectQuery($con, $selectString, "resThisPlatform");
+		selectQuery($con, $selectString, "resThisPlatformChart");
 	}
-	function resThisPlatform($in_result)
+	function resThisPlatformChart($in_result)
 	{
 		global $platform_name;
 		$platform_row = mysqli_fetch_row($in_result);
@@ -493,13 +498,13 @@
 			$platform_name = $platform_row[0];
 		}
 	}
-	function selThisGamesRecord()
+	function selThisGamesRecordChart()
 	{
 		global $con, $layout_id, $game_id;
 		$selectString = "SELECT r.record_id FROM records_games AS r WHERE r.layout_id = " . $layout_id . " AND r.game_id = " . $game_id . ";";
-		selectQuery($con, $selectString, "resThisGamesRecord");
+		selectQuery($con, $selectString, "resThisGamesRecordChart");
 	}
-	function resThisGamesRecord($in_result)
+	function resThisGamesRecordChart($in_result)
 	{
 		global $gamesrecord_id;
 		$gamesrecord_row = mysqli_fetch_row($in_result);
@@ -509,13 +514,13 @@
 			$gamesrecord_id = $gamesrecord_row[0];
 		}
 	}
-	function selThisStylesRecord()
+	function selThisStylesRecordChart()
 	{
 		global $con, $layout_id, $style_id;
 		$selectString = "SELECT r.record_id FROM records_styles AS r WHERE r.layout_id = " . $layout_id . " AND r.style_id = " . $style_id . ";";
-		selectQuery($con, $selectString, "resThisStylesRecord");
+		selectQuery($con, $selectString, "resThisStylesRecordChart");
 	}
-	function resThisStylesRecord($in_result)
+	function resThisStylesRecordChart($in_result)
 	{
 		global $stylesrecord_id;
 		$stylesrecord_row = mysqli_fetch_row($in_result);
@@ -526,13 +531,13 @@
 		}
 	}
 	// make sure the columns are synced with the TSV page of the submission form
-	function selBindings()
+	function selBindingsChart()
 	{
 		global $con, $gamesrecord_id;
 		$selectString = "SELECT b.normal_group, b.normal_action, b.shift_group, b.shift_action, b.ctrl_group, b.ctrl_action, b.alt_group, b.alt_action, b.altgr_group, b.altgr_action, b.extra_group, b.extra_action, b.image_file, b.image_uri, b.key_number FROM bindings AS b WHERE b.record_id = " . $gamesrecord_id . ";";
-		selectQuery($con, $selectString, "resBindings");
+		selectQuery($con, $selectString, "resBindingsChart");
 	}
-	function resBindings($in_result)
+	function resBindingsChart($in_result)
 	{
 		global $binding_table, $binding_count;
 		$binding_count = 0;
@@ -544,13 +549,13 @@
 		}
 	}
 	// make sure the columns are synced with the TSV page of the submission form
-	function selLegends()
+	function selLegendsChart()
 	{
 		global $con, $gamesrecord_id;
 		$selectString = "SELECT l.keygroup_id, l.legend_description FROM legends AS l WHERE l.record_id = " . $gamesrecord_id . " ORDER BY l.keygroup_id;";
-		selectQuery($con, $selectString, "resLegends");
+		selectQuery($con, $selectString, "resLegendsChart");
 	}
-	function resLegends($in_result)
+	function resLegendsChart($in_result)
 	{
 		global $legend_table, $legend_count;
 		$legend_count = 0;
@@ -562,16 +567,16 @@
 		}
 	}
 	// make sure the columns are synced with the TSV page of the submission form
-	function selCommands()
+	function selCommandsChart()
 	{
 		global $con, $gamesrecord_id;
 		$selectString =	"SELECT c.commandtype_id, c.command_text, c.command_description FROM commands AS c WHERE c.record_id = " . $gamesrecord_id . ";";
-		selectQuery($con, $selectString, "resCommands");
+		selectQuery($con, $selectString, "resCommandsChart");
 	}
 	// it might be better to only have one larger table for all of these commands
 	// it might make it a little easier to expand the number of command types in the future
 	// also not sure if the counters are strictly necessary since it's very easy to get the length of each table
-	function resCommands($in_result)
+	function resCommandsChart($in_result)
 	{
 		global	$commandouter_table, $commandouter_count;
 		$commandouter_count = 0;
@@ -582,16 +587,16 @@
 			$commandouter_count += 1;
 		}
 	}
-	function selCommandLabels()
+	function selCommandLabelsChart()
 	{
 		global $con, $layout_language;
 		$selectString =	"SELECT l.commandtype_id, l.commandlabel_string, t.commandtype_abbrv
 				FROM commandlabels AS l, commandtypes AS t
 				WHERE l.language_id = " . $layout_language . "
 				AND l.commandtype_id = t.commandtype_id;";
-		selectQuery($con, $selectString, "resCommandLabels");
+		selectQuery($con, $selectString, "resCommandLabelsChart");
 	}
-	function resCommandLabels($in_result)
+	function resCommandLabelsChart($in_result)
 	{
 		global $commandlabels_table, $commandlabels_count;
 		$commandlabels_count = 0;
@@ -602,13 +607,13 @@
 			$commandlabels_count += 1;
 		}
 	}
-	function selThisLanguageStrings()
+	function selThisLanguageStringsChart()
 	{
 		global $con, $layout_language;
 		$selectString = "SELECT l.language_code, l.language_title, l.language_description, l.language_keywords, l.language_legend FROM languages AS l WHERE l.language_id = " . $layout_language . ";";
-		selectQuery($con, $selectString, "resThisLanguageStrings");
+		selectQuery($con, $selectString, "resThisLanguageStringsChart");
 	}
-	function resThisLanguageStrings($in_result)
+	function resThisLanguageStringsChart($in_result)
 	{
 		global $language_code, $language_title, $language_description, $language_keywords, $language_legend;
 		$temp_row = mysqli_fetch_row($in_result);
@@ -635,11 +640,12 @@
 	}
 	function resGenresList($in_result)
 	{
-		global $genre_array;
+		global $genre_table;
 		while ($genre_row = mysqli_fetch_row($in_result))
 		{
-			// genre_id, genre_name, genre_displayorder
-			$genre_array[] = $genre_row[1];
+			// genre_id, genre_name
+			$genre_id = $genre_row[0];
+			$genre_table[$genre_id-1] = $genre_row;
 		}
 	}
 	function selGamesList()
@@ -650,16 +656,13 @@
 	}
 	function resGamesList($in_result)
 	{
-		global $game_genre_array, $game_index_array, $game_name_array, $game_seourl_array;
+		global $game_table;
 		while ($game_row = mysqli_fetch_row($in_result))
 		{
 			// genre_id, game_id, game_name, game_friendlyurl
-			$game_genre_array[] = $game_row[0];
-			$game_index_array[] = str_pad($game_row[1], 3, '0', STR_PAD_LEFT);
-			$game_name_array[] = $game_row[2];
-			$game_seourl_array[] = $game_row[3];
+			$game_id = $game_row[1];
+			$game_table[$game_id-1] = $game_row;
 		}
-		array_multisort($game_name_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $game_genre_array, $game_index_array, $game_seourl_array);
 	}
 	function selLayoutsList()
 	{
@@ -669,26 +672,28 @@
 	}
 	function resLayoutsList($in_result)
 	{
-		global $layout_array;
+		global $layout_table;
 		while ($layout_row = mysqli_fetch_row($in_result))
 		{
 			// layout_id, layout_name, platform_id
-			$layout_array[] = $layout_row;
+			$layout_id = $layout_row[0];
+			$layout_table[$layout_id-1] = $layout_row;
 		}
 	}
 	function selGamesRecordsList()
 	{
 		global $con;
-		$selectString = "SELECT r.game_id, r.layout_id FROM records_games AS r;";
+		$selectString = "SELECT r.record_id, r.game_id, r.layout_id FROM records_games AS r;";
 		selectQuery($con, $selectString, "resGamesRecordsList");
 	}
 	function resGamesRecordsList($in_result)
 	{
-		global $record_array;
+		global $record_table;
 		while ($record_row = mysqli_fetch_row($in_result))
 		{
-			// game_id, layout_id
-			$record_array[] = $record_row;
+			// record_id, game_id, layout_id
+			$record_id = $record_row[0];
+			$record_table[$record_id-1] = $record_row;
 		}
 	}
 	function selPlatformsList()
@@ -699,11 +704,12 @@
 	}
 	function resPlatformsList($in_result)
 	{
-		global $platform_array;
+		global $platform_table;
 		while ($platform_row = mysqli_fetch_row($in_result))
 		{
 			// platform_id, platform_name, platform_abbv
-			$platform_array[] = $platform_row;
+			$platform_id = $platform_row[0];
+			$platform_table[$platform_id-1] = $platform_row;
 		}
 	}
 

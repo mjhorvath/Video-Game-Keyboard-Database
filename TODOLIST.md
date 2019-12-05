@@ -113,10 +113,10 @@
   I dunno.)
 * The PHP and JS "color" and "class" tables are currently sorted by the index 
   columns of the "keygroups" tables in the database. But what happens if new 
-  colors or classes are added, or the index columns somehow get corrupted? Can 
-  I sort and re-index the "keygroups" tables without affecting any other tables 
-  that might have foreign key constraints? What's the best method of specifying 
-  a custom sort order?
+  colors or classes are added, or if the index columns somehow get corrupted? 
+  Can I sort and re-index the "keygroups" tables without affecting tables that 
+  might have foreign key constraints? What's the best method of specifying a 
+  custom sort order?
 * Instead of having one genre per game, I could maybe create a tag cloud so 
   that a game can be placed in multiple genres. What type of GUI would this 
   necessitate? Is this even possible using MySQL? [Ed. it is possible but would 
@@ -130,6 +130,10 @@
   SQL injection.
 * Rename the "game_friendlyurl" column to "game_seourl" in order to 
   consistently use the same term and not confuse anybody.
+* Make sure the SQL result sets are ordered properly. Set the sort order in SQL 
+  wherever possible.
+* Double check whether I can replace any instances of PHP sorting with SQL 
+  sorting, since the latter is likely the faster method.
 
 ### Optimization
 * Should maybe store the SVG patterns, filters and gradients in separate files 
@@ -272,7 +276,13 @@
   will be some conflicts.
 * Make sure the JavaScript arrays line up prettily.
 * Rename "stylegroup" to just "group" in PHP and JS?
-
+* Can I shorten "foreach ($topic_array as $i => $topic_value)" to not include 
+  the "$topic_value" part?
+* In "keyboard.php", maybe replace "$platform_first", "$stylegroup_first" and 
+  "$genre_first" with some "default" number for each table? Do I only want the 
+  first category to always be open when the page loads? Also, keep in mind that 
+  I may create "sort_order" columns for several tables in the future.
+* Create a separate "credits" page since the log is getting too long.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent page's title in the page headers 
