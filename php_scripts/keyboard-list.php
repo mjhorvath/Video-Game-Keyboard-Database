@@ -94,7 +94,6 @@
 		</tr>
 	</thead>
 	<tbody>\n";
-
 	foreach ($game_table as $i => $game_value)
 	{
 		$game_genre_gam	= getGenreName($game_value[0]);
@@ -110,7 +109,7 @@
 		foreach ($platform_table as $j => $platform_value)
 		{
 			$platform_id_pla = $platform_value[0];
-			$platform_layout_table[$platform_id_pla] = [];
+			$platform_layout_table[$platform_id_pla-1] = [];
 		}
 
 		foreach ($record_table as $j => $record_value)
@@ -121,8 +120,7 @@
 			$platform_id_rec = getPlatformID($layout_id_rec);
 			if ($game_id_rec == $game_id_gam)
 			{
-				error_log($game_id_rec, 0);
-				$platform_layout_table[$platform_id_rec][] = [$layout_id_rec, $layout_name_rec];
+				$platform_layout_table[$platform_id_rec-1][$layout_id_rec-1] = [$layout_id_rec, $layout_name_rec];
 			}
 		}
 
@@ -131,7 +129,7 @@
 		{
 			$platform_id_pla	= $platform_value[0];
 			$platform_abbv_pla	= $platform_value[2];
-			$platform_layouts_pla	= $platform_layout_table[$platform_id_pla];
+			$platform_layouts_pla	= $platform_layout_table[$platform_id_pla-1];
 			if (count($platform_layouts_pla) > 0)
 			{
 				echo "<dt>" . $platform_abbv_pla . "</dt>";
@@ -147,12 +145,11 @@
 
 		echo "</dl></td></tr>\n";
 	}
-
 	echo
 "	</tbody>
 </table>
 		</main>
-		<footer>";
+		<footer>\n";
 	include($path_lib1 . "keyboard-footer-2.php");
 	echo
 "		</footer>
