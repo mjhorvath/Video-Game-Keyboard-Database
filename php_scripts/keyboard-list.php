@@ -32,8 +32,9 @@
 
 	include($path_ssi1	. "analyticstracking.php");
 	include($path_ssi1	. "keyboard-connection.php");
-	include($path_lib1	. "keyboard-common.php");
-	include($path_lib1	. "keyboard-queries.php");
+	include($path_lib1	. "scripts-all.php");
+	include($path_lib1	. "queries-all.php");
+	include($path_lib1	. "queries-list.php");
 
 	$genre_table		= [];
 	$layout_table		= [];
@@ -69,7 +70,7 @@
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_common.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_masterlist.css\"/>
-		<script src=\"" . $path_lib1  . "keyboard-list.js\"></script>
+		<script src=\"" . $path_lib1  . "java-list.js\"></script>
 		<script src=\"" . $path_java1 . "sort_table.js\"></script>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"\"/>

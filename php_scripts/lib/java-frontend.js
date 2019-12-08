@@ -18,7 +18,7 @@
 // <https://www.gnu.org/licenses/>.
 
 var lastClicked = {};
-var accordions = ['gam','sty','lay'];		// possibly useful in the future if more accordion lists are added
+var accordions = ['gam','sty','lay'];		// possibly useful in the future if more accordion lists are created
 var radios = ['fmt','ten'];			// ditto
 
 function Toggle_Waiting(thisBool)

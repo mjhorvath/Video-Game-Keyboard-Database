@@ -1,0 +1,8 @@
+File Types
+	*.js;*.pov;*.html;*.css;*.php
+Source Code Directory
+	C:\xampp\htdocs\keyboard
+Output Directory
+	C:\Users\mikh2\Desktop\Temp
+
+Make sure you manually create the output directory first!

@@ -20,8 +20,10 @@
 var path_lib1 = './lib/';
 new Image().src = path_lib1 + 'animated_loading_icon.webp';
 
-var layout_id = 1;
-var record_id = 1;
+var layout_id = 0;
+var record_id = 0;
+var commandouter_table = {};
+var legend_table = {};
 var is_key_dirty = false;
 var is_doc_dirty = false;
 var is_eml_dirty = false;
@@ -357,6 +359,7 @@ function push_values_from_form_into_cache()
 	current_values.col_capxtr = get_form_color(document.getElementById('sel_capxtr'));
 }
 
+// cleaning!
 function push_values_from_cache_into_array()
 {
 	if (current_id == null)
@@ -484,24 +487,21 @@ function are_captions_in_groups()
 // I have not tested yet whether this produces false positives. No real harm done if it does, though.
 function check_all_caption_groups()
 {
-	for (var i = 0, n = binding_table.length; i < n; i++)
+	for (var i in binding_table)
 	{
 		var this_binding = binding_table[i];
-		if (this_binding)
+		if
+		(
+			((this_binding[ 4] != '') && (this_binding[12] == 0)) ||
+			((this_binding[ 5] != '') && (this_binding[13] == 0)) ||
+			((this_binding[ 6] != '') && (this_binding[14] == 0)) ||
+			((this_binding[ 7] != '') && (this_binding[15] == 0)) ||
+			((this_binding[ 8] != '') && (this_binding[16] == 0)) ||
+			((this_binding[ 9] != '') && (this_binding[17] == 0)) ||
+			(true === false)
+		)
 		{
-			if
-			(
-				((this_binding[ 4] != '') && (this_binding[12] == 0)) ||
-				((this_binding[ 5] != '') && (this_binding[13] == 0)) ||
-				((this_binding[ 6] != '') && (this_binding[14] == 0)) ||
-				((this_binding[ 7] != '') && (this_binding[15] == 0)) ||
-				((this_binding[ 8] != '') && (this_binding[16] == 0)) ||
-				((this_binding[ 9] != '') && (this_binding[17] == 0)) ||
-				(true === false)
-			)
-			{
-				return false;
-			}
+			return false;
 		}
 	}
 	return true;
@@ -557,47 +557,6 @@ function add_input_typing_events()
 	addListener(document.getElementById('sel_capalt'), 'change', toggle_set_and_revert_buttons);
 	addListener(document.getElementById('sel_capagr'), 'change', toggle_set_and_revert_buttons);
 	addListener(document.getElementById('sel_capxtr'), 'change', toggle_set_and_revert_buttons);
-}
-
-// add new escape urlqueries as needed
-function cleantextHTML(in_string)
-{
-	return in_string.replace(/\&/g,'&amp;').replace(/\>/g,'&gt;').replace(/\</g,'&lt;').replace(/\\n/g,'<br>');
-}
-
-function cleantextTSV(in_string)
-{
-	in_string = in_string.replace(/\\/g,'\\\\');
-	if (in_string == '')
-	{
-		in_string = '\\N';
-	}
-	return in_string;
-}
-
-function cleannumTSV(in_number)
-{
-	if (in_number == '0')
-	{
-		in_number = '\\N';
-	}
-	return in_number;
-}
-
-// needs work
-//function cleantextJS(in_string)
-//{
-//	return in_string.replace('\'','\\\'');
-//}
-
-function does_not_work_yet()
-{
-	alert('This feature does not work yet.');
-}
-
-function test_function()
-{
-	alert('Hello world!');
 }
 
 function remove_input_table_row(button_node)
@@ -845,9 +804,9 @@ function key_change_warning(elm, letter)
 
 function key_legend_warning_single(letter)
 {
-	// Is this message too annoying? We'll have to wait and see.
+	// is this message too annoying?
 	return confirm('A caption for this key has been set, but its color has not also been set. Please make sure every key caption has a corresponding color, even if the color is not displayed in the chart. Do you wish to proceed anyway? (' + letter + ')');
-	// If it is too annoying, do this instead.
+	// if it is too annoying, do this instead.
 //	return 1;
 }
 
@@ -1024,7 +983,7 @@ function document_change_style(game_id, layout_id, game_seo)
 	}
 }
 
-// there is an analogous function written in PHP in "./lib/keyboard-common.php"
+// there is an analogous function written in PHP in "./lib/scripts-all.php"
 // need to keep the two functions synced
 function seo_url(input)
 {
@@ -1151,43 +1110,42 @@ function disable_doc_controls()
 	document.getElementById('unset_doc_button').disabled = true;
 }
 
+// non!
 function collect_legend_data()
 {
-	legend_table = [];
-	legend_count = 0;
-	// skip the first array member since it only contains "non", and there is no box for "non"
-	for (var i = 1; i < color_count; i++)
+	legend_table = {};
+	// skip 'non' since there is no box for 'non'
+	// need to put 'non' into the database too at some point
+	for (var i in color_table)
 	{
 		var this_color = color_table[i];
-		var this_input = document.getElementById('form_cap' + this_color);
-		var this_value = this_input.value;
-		if (this_value != '')
+		if (this_color != 'non')
 		{
-			legend_table.push([i, this_value]);
-			legend_count += 1;
+			var this_input = document.getElementById('form_cap' + this_color);
+			var this_value = this_input.value;
+			if (this_value != '')
+			{
+				legend_table[i] = this_value;
+			}
 		}
 	}
 }
 
 function collect_command_data()
 {
-	commandouter_table = [];
-	commandouter_count = 0;
-	for (var j = 0; j < commandlabels_count; j++)
+	commandouter_table = {};
+	for (var j in commandlabel_table)
 	{
-		commandouter_table.push([]);
-		commandouter_count += 1;
-		var this_label = commandlabels_table[j];
+		commandouter_table[j] = [];
+		var this_label = commandlabel_table[j];
 		var this_parent = document.getElementById('table_' + this_label);
+		var max_children = this_parent.children.length;
 		// ignore the last child since it only contains the button
-		var max_children = this_parent.children.length - 1;
-		for (var i = 0; i < max_children; i++)
+		for (var i = 0; i < max_children - 1; i++)
 		{
 			var this_child = this_parent.children[i];
-			var this_input_1 = this_child.children[0].children[0];
-			var this_input_2 = this_child.children[2].children[0];
-			var this_value_1 = this_input_1.value;
-			var this_value_2 = this_input_2.value;
+			var this_value_1 = this_child.children[0].children[0].value;
+			var this_value_2 = this_child.children[2].children[0].value;
 			if ((this_value_1 != '') && (this_value_2 != ''))
 			{
 				commandouter_table[j].push([this_value_1, this_value_2]);
@@ -1196,75 +1154,76 @@ function collect_command_data()
 	}
 }
 
+// cleaning!
+// non!
 function process_legend_data()
 {
-	// cleaning!
-	// should fetch column names from database instead
+	// should fetch column names from the database instead
 	var legend_string = 'legend_id\trecord_id\tkeygroup_id\tlegend_description\n';
-	for (var i = 0, n = legend_table.length; i < n; i++)
+	for (var i in legend_table)
 	{
 		var legend_item = legend_table[i];
-		legend_string += '\\N\t' + record_id + '\t' + legend_item[0] + '\t' + cleantextTSV(legend_item[1]) + '\n';
+		var legend_num = i;	// because of 'non' the index already starts at 1 instead of 0
+		legend_string += '\\N\t' + record_id + '\t' + legend_num + '\t' + cleantextTSV(legend_item) + '\n';
 	}
 	return legend_string;
 }
 
+// cleaning!
 function process_command_data()
 {
-	// cleaning!
-	// should fetch column names from database instead
+	// should fetch column names from the database instead
 	var command_string = 'command_id\trecord_id\tcommandtype_id\tcommand_text\tcommand_description\n';
-	for (var j = 0, o = commandouter_table.length; j < o; j++)
+	for (var j in commandouter_table)
 	{
+		var command_num = parseInt(j,10) + 1;
 		var this_table = commandouter_table[j];
-		for (var i = 0, n = this_table.length; i < n; i++)
+		for (var i in this_table)
 		{
 			var command_item = this_table[i];
-			command_string += '\\N\t' + record_id + '\t' + (j+1) + '\t' + cleantextTSV(command_item[0]) + '\t' + cleantextTSV(command_item[1]) + '\n';
+			command_string += '\\N\t' + record_id + '\t' + command_num + '\t' + cleantextTSV(command_item[0]) + '\t' + cleantextTSV(command_item[1]) + '\n';
 		}
 	}
 	return command_string;
 }
 
+// cleaning!
 function process_binding_data()
 {
-	// cleaning!
-	// should fetch column names from database instead
+	// should fetch column names from the database instead
 	var binding_string = 'binding_id\trecord_id\tkey_number\tnormal_action\tnormal_group\tshift_action\tshift_group\tctrl_action\tctrl_group\talt_action\talt_group\taltgr_action\taltgr_group\textra_action\textra_group\timage_file\timage_uri\n';
-	for (var i = 0, n = binding_table.length; i < n; i++)
+	for (var i in binding_table)
 	{
-		// need to eliminate empty bindings
+		var binding_num = parseInt(i,10) + 1;
 		var binding_item = binding_table[i];
-		if (binding_item)
+		var binding_concat =	binding_item[ 4] +
+					binding_item[ 5] +
+					binding_item[ 6] +
+					binding_item[ 7] +
+					binding_item[ 8] +
+					binding_item[ 9] +
+					binding_item[10] +
+					binding_item[11];
+		// need to eliminate empty bindings
+		if (binding_concat != '')
 		{
-			var binding_concat =	binding_item[ 4] +
-						binding_item[ 5] +
-						binding_item[ 6] +
-						binding_item[ 7] +
-						binding_item[ 8] +
-						binding_item[ 9] +
-						binding_item[10] +
-						binding_item[11];
-			if (binding_concat != '')
-			{
-				binding_string +=	'\\N'				+ '\t' +
-							record_id			+ '\t' +
-							(i+1)				+ '\t' +
-							cleantextTSV(binding_item[ 4])	+ '\t' +
-							 cleannumTSV(binding_item[12])	+ '\t' +
-							cleantextTSV(binding_item[ 5])	+ '\t' +
-							 cleannumTSV(binding_item[13])	+ '\t' +
-							cleantextTSV(binding_item[ 6])	+ '\t' +
-							 cleannumTSV(binding_item[14])	+ '\t' +
-							cleantextTSV(binding_item[ 7])	+ '\t' +
-							 cleannumTSV(binding_item[15])	+ '\t' +
-							cleantextTSV(binding_item[ 8])	+ '\t' +
-							 cleannumTSV(binding_item[16])	+ '\t' +
-							cleantextTSV(binding_item[ 9])	+ '\t' +
-							 cleannumTSV(binding_item[17])	+ '\t' +
-							cleantextTSV(binding_item[10])	+ '\t' +
-							cleantextTSV(binding_item[11])	+ '\n';
-			}
+			binding_string +=	'\\N'					+ '\t' +
+						record_id				+ '\t' +
+						binding_num				+ '\t' +
+						cleantextTSV(binding_item[ 4])		+ '\t' +
+						cleannumberTSV(binding_item[12])	+ '\t' +
+						cleantextTSV(binding_item[ 5])		+ '\t' +
+						cleannumberTSV(binding_item[13])	+ '\t' +
+						cleantextTSV(binding_item[ 6])		+ '\t' +
+						cleannumberTSV(binding_item[14])	+ '\t' +
+						cleantextTSV(binding_item[ 7])		+ '\t' +
+						cleannumberTSV(binding_item[15])	+ '\t' +
+						cleantextTSV(binding_item[ 8])		+ '\t' +
+						cleannumberTSV(binding_item[16])	+ '\t' +
+						cleantextTSV(binding_item[ 9])		+ '\t' +
+						cleannumberTSV(binding_item[17])	+ '\t' +
+						cleantextTSV(binding_item[10])		+ '\t' +
+						cleantextTSV(binding_item[11])		+ '\n';
 		}
 	}
 	return binding_string;

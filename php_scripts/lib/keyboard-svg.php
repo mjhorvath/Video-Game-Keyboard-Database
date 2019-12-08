@@ -19,40 +19,50 @@
 	// <https://www.gnu.org/licenses/>.
 
 	header("Content-type: image/svg+xml");
+	include($path_lib2 . "queries-chart.php");
 
 	$path_file		= "./keyboard-svg.php";		// this file
-	$stylegroup_id		= 0;
-	$position_table		= [];
-	$keystyle_table		= [];
-	$binding_table		= [];
-	$legend_table		= [];
-	$author_table		= [];
-	$errors_table		= [];
-	$style_filename		= "";
-	$style_name		= "";
-	$gamesrecord_id		= 0;
-	$gamesrecord_authors	= [];
-	$stylesrecord_id	= 0;
-	$stylesrecord_authors	= [];
-	$game_name		= "";
-	$platform_name		= "";
-	$platform_id		= 0;
-	$layout_name		= "";
-	$layout_authors		= [];
-	$layout_keysnum		= 0;
-	$layout_keygap		= 4;
-	$layout_padding		= 18;
-	$layout_fullsize_width		= 1200;
-	$layout_fullsize_height		= 400;
-	$layout_tenkeyless_width	= 1200;
-	$layout_tenkeyless_height	= 400;
-	$layout_legend_padding		= 36;
-	$layout_legend_height		= 72;
-	$layout_min_horizontal	= 0;
-	$layout_max_horizontal	= 0;
-	$layout_min_vertical	= 0;
-	$layout_max_vertical	= 0;
-	$layout_legend_top	= 0;
+	$stylegroup_id		= 0;		// set by selThisStyleChart(), also contained inside $stylegroup_table
+//	$stylegroup_table	= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "keyboard-footer.php"
+//	$style_table		= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "keyboard-footer.php"
+	$position_table		= [];		// populated by selPositionsChart()
+	$keystyle_table		= [];		// populated by selKeyStylesChart()
+	$binding_table		= [];		// populated by selBindingsChart()
+	$legend_table		= [];		// populated by selLegendsChart()
+	$author_table		= [];		// populated by selAuthorsChart()
+	$gamesrecord_id		= 0;		// set by selThisGamesRecordChart()
+	$gamesrecord_authors	= [];		// populated by selContribsGamesChart(), utilized by "keyboard-footer.php"
+	$stylesrecord_id	= 0;		// set by selThisStylesRecordChart()
+	$stylesrecord_authors	= [];		// populated by selContribsStylesChart(), utilized by "keyboard-footer.php"
+	$layout_authors		= [];		// populated by selContribsLayoutsChart(), utilized by "keyboard-footer.php"
+	$layout_keysnum		= 0;		// reset by selThisLayoutChart()
+	$layout_keygap		= 4;		// reset by selThisLayoutChart()
+	$layout_padding		= 18;		// reset by selThisLayoutChart()
+	$layout_fullsize_width		= 1200;		// reset by selThisLayoutChart()
+	$layout_fullsize_height		= 400;		// reset by selThisLayoutChart()
+	$layout_tenkeyless_width	= 1200;		// reset by selThisLayoutChart()
+	$layout_tenkeyless_height	= 400;		// reset by selThisLayoutChart()
+	$layout_legend_padding		= 36;		// reset by selThisLayoutChart()
+	$layout_legend_height		= 72;		// reset by selThisLayoutChart()
+	$layout_legend_top	= 0;		// reset by selThisLayoutChart()
+	$layout_min_horizontal	= 0;		// reset by selThisLayoutChart()
+	$layout_max_horizontal	= 0;		// reset by selThisLayoutChart()
+	$layout_min_vertical	= 0;		// reset by selThisLayoutChart()
+	$layout_max_vertical	= 0;		// reset by selThisLayoutChart()
+	$game_seo		= "";		// set by checkURLParameters(), utilized by checkForErrors()
+	$game_name		= "";		// set by checkURLParameters(), utilized by checkForErrors()
+	$game_id		= 0;		// set by checkURLParameters(), utilized by checkForErrors()
+	$platform_name		= "";		// set by checkURLParameters(), utilized by checkForErrors()
+	$platform_id		= 0;		// set by checkURLParameters(), utilized by checkForErrors()
+	$layout_name		= "";		// set by checkURLParameters(), utilized by checkForErrors()
+	$layout_id		= 0;		// set by checkURLParameters(), utilized by checkForErrors()
+	$style_filename		= "";		// set by selThisStyleChart()
+	$style_name		= "";		// set by selThisStyleChart() and checkURLParameters(), utilized by checkForErrors()
+	$style_id		= 0;		// set by checkURLParameters(), utilized by checkForErrors()
+	$format_name		= "";		// set by checkURLParameters(), utilized by checkForErrors()
+//	$format_id		= 0;		// should not be set again here since it has already been set in "keyboard-init.php"
+//	$svg_bool		= 0;		// should not be set again here since it has already been set in "keyboard-init.php"
+	$ten_bool		= 0;		// set by checkURLParameters()
 
 	// open MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -63,15 +73,13 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	// MySQL queries
-	selURLQueries();		// gather and validate URL parameters
-	selDefaults();			// get default values for urlqueries if missing
+	selURLQueriesAll();		// gather and validate URL parameters
+	selDefaultsAll();			// get default values for urlqueries if missing
 	checkURLParameters();		// gather and validate URL parameters
 	selThisLanguageStringsChart();
-	selPlatformsFront();
-	selLayoutsFront();
 	selAuthorsChart();
-	selStyleGroupsChart();
-	selStylesChart();
+//	selStyleGroupsChart();		// utilized by footer
+//	selStylesChart();		// utilized by footer
 	selThisStyleChart();
 	selThisFormatChart();
 	selPositionsChart();
@@ -84,9 +92,9 @@
 	selContribsGamesChart();
 	selContribsStylesChart();
 	selContribsLayoutsChart();
-	selLegendColors();
-	selKeyStyles();
-	selKeyStyleClasses();
+	selLegendColorsChart();
+	selKeyStylesChart();
+	selKeyStyleClassesChart();
 
 	// close MySQL connection
 	mysqli_close($con);
@@ -312,196 +320,192 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	// keys
 	if (($gamesrecord_id > 0) && ($stylesrecord_id > 0))
 	{
-		for ($i = 0; $i < $layout_keysnum; $i++)
+		foreach ($position_table as $i => $position_row)
 		{
-			if (array_key_exists($i, $position_table))
+			// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowkey_optional, numpad
+			$key_sty	= array_key_exists($i, $keystyle_table) ? getkeyclass($keystyle_table[$i][0]) : "";
+			$pos_lft	= $position_row[ 0] + $layout_keygap/2;
+			$pos_top	= $position_row[ 1] + $layout_keygap/2;
+			$pos_wid	= $position_row[ 2] - $layout_keygap;		//4
+			$pos_hgh	= $position_row[ 3] - $layout_keygap;
+			$low_nor	= cleantextSVG($position_row[ 4]);
+			$upp_nor	= cleantextSVG($position_row[ 5]);
+			$low_agr	= cleantextSVG($position_row[ 6]);
+			$upp_agr	= cleantextSVG($position_row[ 7]);
+			$key_num	= $position_row[ 8];
+			$key_opt	= $position_row[ 9];
+			$key_ten	= $position_row[ 10];
+			$img_wid	= 48;
+			$img_hgh	= 48;
+			$img_pos_x	= $layout_keygap/2 + $pos_wid/2 - $img_wid/2 - 1/2;
+			$img_pos_y	= $layout_keygap/2 + $pos_hgh/2 - $img_hgh/2 - 1/2;
+
+			if (array_key_exists($i, $binding_table))
 			{
-				// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowkey_optional, numpad
-				$key_sty	= array_key_exists($i, $keystyle_table) ? getkeyclass($keystyle_table[$i][0]) : "";
-				$position_row	= $position_table[$i];
-				$pos_lft	= $position_row[ 0] + $layout_keygap/2;
-				$pos_top	= $position_row[ 1] + $layout_keygap/2;
-				$pos_wid	= $position_row[ 2] - $layout_keygap;		//4
-				$pos_hgh	= $position_row[ 3] - $layout_keygap;
-				$low_nor	= cleantextSVG($position_row[ 4]);
-				$upp_nor	= cleantextSVG($position_row[ 5]);
-				$low_agr	= cleantextSVG($position_row[ 6]);
-				$upp_agr	= cleantextSVG($position_row[ 7]);
-				$key_num	= $position_row[ 8];
-				$key_opt	= $position_row[ 9];
-				$key_ten	= $position_row[ 10];
-				$img_wid	= 48;
-				$img_hgh	= 48;
-				$img_pos_x	= $layout_keygap/2 + $pos_wid/2 - $img_wid/2 - 1/2;
-				$img_pos_y	= $layout_keygap/2 + $pos_hgh/2 - $img_hgh/2 - 1/2;
+				// normal_group, normal_action, shift_group, shift_action, ctrl_group, ctrl_action, alt_group, alt_action, altgr_group, altgr_action, extra_group, extra_action, image_file, image_uri
+				$binding_row	= $binding_table[$i];
+				$bkg_nor = getkeycolor($binding_row[ 0]);
+				$cap_nor = splittext(cleantextSVG($binding_row[ 1]));
+				$bkg_shf = getkeycolor($binding_row[ 2]);
+				$cap_shf = splittext(cleantextSVG($binding_row[ 3]));
+				$bkg_ctl = getkeycolor($binding_row[ 4]);
+				$cap_ctl = splittext(cleantextSVG($binding_row[ 5]));
+				$bkg_alt = getkeycolor($binding_row[ 6]);
+				$cap_alt = splittext(cleantextSVG($binding_row[ 7]));
+				$bkg_agr = getkeycolor($binding_row[ 8]);
+				$cap_agr = splittext(cleantextSVG($binding_row[ 9]));
+				$bkg_xtr = getkeycolor($binding_row[10]);
+				$cap_xtr = splittext(cleantextSVG($binding_row[11]));
+				$img_fil = $binding_row[12];
+				$img_uri = $binding_row[13];
+			}
+			else
+			{
+				$bkg_nor = "non";
+				$cap_nor = [];
+				$bkg_shf = "non";
+				$cap_shf = [];
+				$bkg_ctl = "non";
+				$cap_ctl = [];
+				$bkg_alt = "non";
+				$cap_alt = [];
+				$bkg_agr = "non";
+				$cap_agr = [];
+				$bkg_xtr = "non";
+				$cap_xtr = [];
+				$img_fil = null;
+				$img_uri = null;
+			}
 
-				if (array_key_exists($i, $binding_table))
-				{
-					// normal_group, normal_action, shift_group, shift_action, ctrl_group, ctrl_action, alt_group, alt_action, altgr_group, altgr_action, extra_group, extra_action, image_file, image_uri
-					$binding_row	= $binding_table[$i];
-					$bkg_nor = getkeycolor($binding_row[ 0]);
-					$cap_nor = splittext(cleantextSVG($binding_row[ 1]));
-					$bkg_shf = getkeycolor($binding_row[ 2]);
-					$cap_shf = splittext(cleantextSVG($binding_row[ 3]));
-					$bkg_ctl = getkeycolor($binding_row[ 4]);
-					$cap_ctl = splittext(cleantextSVG($binding_row[ 5]));
-					$bkg_alt = getkeycolor($binding_row[ 6]);
-					$cap_alt = splittext(cleantextSVG($binding_row[ 7]));
-					$bkg_agr = getkeycolor($binding_row[ 8]);
-					$cap_agr = splittext(cleantextSVG($binding_row[ 9]));
-					$bkg_xtr = getkeycolor($binding_row[10]);
-					$cap_xtr = splittext(cleantextSVG($binding_row[11]));
-					$img_fil = $binding_row[12];
-					$img_uri = $binding_row[13];
-				}
-				else
-				{
-					$bkg_nor = "non";
-					$cap_nor = [];
-					$bkg_shf = "non";
-					$cap_shf = [];
-					$bkg_ctl = "non";
-					$cap_ctl = [];
-					$bkg_alt = "non";
-					$cap_alt = [];
-					$bkg_agr = "non";
-					$cap_agr = [];
-					$bkg_xtr = "non";
-					$cap_xtr = [];
-					$img_fil = null;
-					$img_uri = null;
-				}
+			$top_nor = $pos_hgh - 4;
+			if ($key_opt == true)
+			{
+				$top_nor += 14;
+			}
 
-				$top_nor = $pos_hgh - 4;
-				if ($key_opt == true)
-				{
-					$top_nor += 14;
-				}
-
-				// mask
-				if (($style_id == 5) || ($style_id == 6))	// Dark Gradient & Light Gradient
-				{
-					echo
+			// mask
+			if (($style_id == 5) || ($style_id == 6))	// Dark Gradient & Light Gradient
+			{
+				echo
 "	<mask id=\"mask_" . $i . "\">\n" .
 "		<rect x=\"0\" y=\"0\" width=\"" . ($pos_wid+1) . "\" height=\"" . ($pos_hgh+1) . "\" fill=\"url(#grad_1)\"/>\n" .
 "	</mask>\n";
-				}
+			}
 
-				echo
+			echo
 "	<svg class=\"keyout\" x=\"" . ($pos_lft-0.5) . "\" y=\"" . ($pos_top-0.5) . "\" width=\"" . ($pos_wid+1) . "\" height=\"" . ($pos_hgh+1) . "\">\n";
 
-				// rects & image
-				if (($style_id == 5) || ($style_id == 6))	// Dark Gradient & Light Gradient
-				{
-					echo
+			// rects & image
+			if (($style_id == 5) || ($style_id == 6))	// Dark Gradient & Light Gradient
+			{
+				echo
 "		<rect class=\"keyrec rec" . $bkg_nor . "\" x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"" . ($pos_wid) . "\" height=\"" . ($pos_hgh) . "\" mask=\"url(#mask_" . $i . ")\"/>\n";
-				}
-				else
-				{
-					echo
+			}
+			else
+			{
+				echo
 "		<rect class=\"keyrec rec" . $bkg_nor . " rec" . $key_sty . "\" x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"" . ($pos_wid) . "\" height=\"" . ($pos_hgh) . "\"/>\n";
-				}
-				if ($img_fil)
-				{
-					echo
+			}
+			if ($img_fil)
+			{
+				echo
 "		<image x=\"" . $img_pos_x . "\" y=\"" . $img_pos_y . "\" width=\"" . $img_wid . "\" height=\"" . $img_hgh . "\" xlink:href=\"" . $img_uri . "\"/>\n";
-				}
-				if (($style_id == 16) || ($style_id == 18))	// CIELCh Shiny
-				{
-					echo
+			}
+			if (($style_id == 16) || ($style_id == 18))	// CIELCh Shiny
+			{
+				echo
 "		<rect x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"" . ($pos_wid) . "\" height=\"" . ($pos_hgh) . "\" fill=\"url(#grad_2)\"/>\n";
-				}
+			}
 
-				// bindings backgrounds
-				if ($style_id == 9)
-				{
-					$jcount		= 0;
-					for ($j = 0; $j < count($cap_shf); $j++)
-					{
-						echo
-"		<rect class=\"bakshf\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
-					}
-					for ($j = 0; $j < count($cap_ctl); $j++)
-					{
-						echo
-"		<rect class=\"bakctl\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
-					}
-					for ($j = 0; $j < count($cap_alt); $j++)
-					{
-						echo
-"		<rect class=\"bakalt\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
-					}
-					for ($j = 0; $j < count($cap_agr); $j++)
-					{
-						echo
-"		<rect class=\"bakagr\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
-					}
-					for ($j = 0; $j < count($cap_xtr); $j++)
-					{
-						echo
-"		<rect class=\"bakxtr\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
-					}
-				}
-
-				// labels text
-				if (($key_opt == false) && ($low_nor != ""))
-				{
-					echo
-"		<text class=\"lownor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"" . ($pos_hgh-3.5) . "\">" . $low_nor . "</text>\n";
-				}
-				if ($upp_nor != "")
-				{
-					echo
-"		<text class=\"uppnor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"13.5\">" . $upp_nor . "</text>\n";
-				}
-				// altgr
-				if (($key_opt == false) && ($low_agr != ""))
-				{
-					echo
-"		<text class=\"lownor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"" . ($pos_hgh-3.5) . "\">" . $low_agr . "</text>\n";
-				}
-				if ($upp_agr != "")
-				{
-					echo
-"		<text class=\"uppagr txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($pos_wid-2.5) . "\" y=\"13.5\">" . $upp_agr . "</text>\n";
-				}
-				// captions text
-				for ($j = 0; $j < count($cap_nor); $j++)
-				{
-					echo
-"		<text class=\"capnor txt" . $bkg_nor . " txt" . $key_sty . " ideo\" x=\"2.5\" y=\"" . ($top_nor+0.5) . "\" dy=\"" . (($j+1) * -14) . "\">" . $cap_nor[count($cap_nor)-($j+1)] . "</text>\n";
-				}
+			// bindings backgrounds
+			if ($style_id == 9)
+			{
 				$jcount		= 0;
 				for ($j = 0; $j < count($cap_shf); $j++)
 				{
 					echo
-"		<text class=\"capshf hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_shf[$j] . "</text>\n";
-
+"		<rect class=\"bakshf\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
 				}
 				for ($j = 0; $j < count($cap_ctl); $j++)
 				{
 					echo
-"		<text class=\"capctl hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_ctl[$j] . "</text>\n";
+"		<rect class=\"bakctl\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
 				}
 				for ($j = 0; $j < count($cap_alt); $j++)
 				{
 					echo
-"		<text class=\"capalt hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_alt[$j] . "</text>\n";
+"		<rect class=\"bakalt\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
 				}
 				for ($j = 0; $j < count($cap_agr); $j++)
 				{
 					echo
-"		<text class=\"capagr hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_agr[$j] . "</text>\n";
+"		<rect class=\"bakagr\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
 				}
 				for ($j = 0; $j < count($cap_xtr); $j++)
 				{
 					echo
-"		<text class=\"capxtr hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_xtr[$j] . "</text>\n";
+"		<rect class=\"bakxtr\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
 				}
-
-				echo
-"	</svg>\n";
 			}
+
+			// labels text
+			if (($key_opt == false) && ($low_nor != ""))
+			{
+				echo
+"		<text class=\"lownor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"" . ($pos_hgh-3.5) . "\">" . $low_nor . "</text>\n";
+			}
+			if ($upp_nor != "")
+			{
+				echo
+"		<text class=\"uppnor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"13.5\">" . $upp_nor . "</text>\n";
+			}
+			// altgr
+			if (($key_opt == false) && ($low_agr != ""))
+			{
+				echo
+"		<text class=\"lownor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"" . ($pos_hgh-3.5) . "\">" . $low_agr . "</text>\n";
+			}
+			if ($upp_agr != "")
+			{
+				echo
+"		<text class=\"uppagr txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($pos_wid-2.5) . "\" y=\"13.5\">" . $upp_agr . "</text>\n";
+			}
+			// captions text
+			for ($j = 0; $j < count($cap_nor); $j++)
+			{
+				echo
+"		<text class=\"capnor txt" . $bkg_nor . " txt" . $key_sty . " ideo\" x=\"2.5\" y=\"" . ($top_nor+0.5) . "\" dy=\"" . (($j+1) * -14) . "\">" . $cap_nor[count($cap_nor)-($j+1)] . "</text>\n";
+			}
+			$jcount		= 0;
+			for ($j = 0; $j < count($cap_shf); $j++)
+			{
+				echo
+"		<text class=\"capshf hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_shf[$j] . "</text>\n";
+
+			}
+			for ($j = 0; $j < count($cap_ctl); $j++)
+			{
+				echo
+"		<text class=\"capctl hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_ctl[$j] . "</text>\n";
+			}
+			for ($j = 0; $j < count($cap_alt); $j++)
+			{
+				echo
+"		<text class=\"capalt hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_alt[$j] . "</text>\n";
+			}
+			for ($j = 0; $j < count($cap_agr); $j++)
+			{
+				echo
+"		<text class=\"capagr hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_agr[$j] . "</text>\n";
+			}
+			for ($j = 0; $j < count($cap_xtr); $j++)
+			{
+				echo
+"		<text class=\"capxtr hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_xtr[$j] . "</text>\n";
+			}
+
+			echo
+"	</svg>\n";
 		}
 		// legend key
 		echo
@@ -529,12 +533,12 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 				if (isset($legend_row[0]))
 				{
 					$leg_grp = getkeycolor($legend_row[0]);
-					$leg_dsc = cleantextSVG($legend_row[1]);
+					$leg_dsc = $legend_row[1];
 					$row_div = floor($row_count/3);
 					$row_mod = $row_count % 3;
 					echo
 "		<rect class=\"keyrec rec" . $leg_grp . "\" x=\"" . ($row_div*200+0.5) . "\" y=\"" . ($row_mod*20+0.5) . "\" width=\"16\" height=\"16\"/>
-		<text class=\"legtxt\" x=\"" . ($row_div*200+20.5) . "\" y=\"" . ($row_mod*20+14.5) . "\">" . $leg_dsc . "</text>\n";
+		<text class=\"legtxt\" x=\"" . ($row_div*200+20.5) . "\" y=\"" . ($row_mod*20+14.5) . "\">" . cleantextSVG($leg_dsc) . "</text>\n";
 					$row_count += 1;
 				}
 			}

@@ -31,7 +31,7 @@
 	$path_ssi2		= "../../ssi/";		// for PHP files
 
 	include($path_ssi1	. "analyticstracking.php");
-	include($path_lib1	. "keyboard-common.php");
+	include($path_lib1	. "scripts-all.php");
 
 	echo
 "<!DOCTYPE HTML>

@@ -23,9 +23,8 @@ function reloadThisPage(gameID, layoutID, gameSeo)
 	var styleID = getValueFromDropDownList("VisualStyleSwitch", "style");
 	var formatID = getValueFromRadioButton("tech");
 	var tenkeyBool = getValueFromRadioButton("tkey");
-	// should ideally lead to SVG or PHP depending
 	if (formatID == 1)
-		window.location.href = "keyboard-diagram-" + gameSeo + ".php?sty=" + styleID + "&lay=" + layoutID + "&fmt=" + formatID + "&ten=" + tenkeyBool;
+		window.location.href = "keyboard-diagram-" + gameSeo + ".svg?sty=" + styleID + "&lay=" + layoutID + "&fmt=" + formatID + "&ten=" + tenkeyBool;
 	else
 		window.location.href = "keyboard-diagram-" + gameSeo + ".php?sty=" + styleID + "&lay=" + layoutID + "&fmt=" + formatID + "&ten=" + tenkeyBool;
 }
@@ -39,18 +38,14 @@ function getValueFromDropDownList(formname, listname)
 
 function getValueFromRadioButton(buttonsname)
 {
-	//Get all elements with the name
 	var buttons = document.getElementsByName(buttonsname);
 	for (var i = 0, n = buttons.length; i < n; i++)
 	{
-		//Check if button is checked
-		var button = buttons[i];
-		if (button.checked)
+		var this_button = buttons[i];
+		if (this_button.checked)
 		{
-			//Return value
-			return button.value;
+			return this_button.value;
 		}
 	}
-	//No radio button is selected
 	return null;
 }

@@ -54,7 +54,9 @@
 	$timeform	= date("l jS \of F Y h:i:s A", $timeraw);
 	$at		= "@";
 	$dot		= ".";
-	$admin		= "mikh2161" . $at . "gmail" . $dot . "com";
+	$gap		= "";
+	$admin		= "mikh" . $gap . "2161" . $at . "gmail" . $dot . "com";
+	$newsub		= $newsub == "on" ? "true" : "false";
 
 	// handling the captcha and checking if it's ok
 	$secret = writeRecaptchaSecret();
@@ -81,8 +83,8 @@
 			"BINDINGS:\r\n"	. $binding	. "\r\n\r\n";
 		$head = "MIME-Version: 1.0\r\n" .
 			"Content-type:text/plain;charset=UTF-8\r\n" .
-			"From: " . $email . "\r\n" .
-			"Reply-To: " . $email . "\r\n";
+			"From: "	. $email . "\r\n" .
+			"Reply-To: "	. $email . "\r\n";
 		mail($mail, $subj, $body, $head);
 
 		// Send to submitter
@@ -104,8 +106,8 @@
 			"BINDINGS:\r\n"	. $binding	. "\r\n\r\n";
 		$head = "MIME-Version: 1.0\r\n" .
 			"Content-type:text/plain;charset=UTF-8\r\n" .
-			"From: " . $admin . "\r\n" .
-			"Reply-To: " . $admin . "\r\n";
+			"From: "	. $admin . "\r\n" .
+			"Reply-To: "	. $admin . "\r\n";
 		mail($mail, $subj, $body, $head);
 
 		// the echo goes back to the ajax, so the user can know if everything is ok

@@ -30,8 +30,8 @@
 
 	include($path_ssi2	. "analyticstracking.php");
 	include($path_ssi2	. "keyboard-connection.php");
-	include($path_lib2	. "keyboard-common.php");
-	include($path_lib2	. "keyboard-queries.php");
+	include($path_lib2	. "scripts-all.php");
+	include($path_lib2	. "queries-all.php");
 
 	// gather URL queries
 	$format_id	= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0"))	: null;

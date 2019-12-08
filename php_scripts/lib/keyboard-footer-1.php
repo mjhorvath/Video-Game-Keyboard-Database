@@ -40,17 +40,16 @@
 					<select class=\"stylechange\" id=\"stylesel\" name=\"style\">\n";
 	// do a tiny bit of validity checking so that I get my preferred default style if a style ID is missing or out of bounds
 	$selected_style_id = $style_name ? $style_id : $default_style_id;
-	for ($i = 0; $i < count($style_table); $i++)
+	foreach ($style_table as $i => $style_value)
 	{
 		$stylegroup_box = $style_table[$i];
-		$stylegroup_nam = cleantextHTML($stylegroup_table[$i][1]);
+		$stylegroup_nam = $stylegroup_table[$i][1];
 		echo
-"						<optgroup label=\"" . $stylegroup_nam . "\">\n";
-		for ($j = 0; $j < count($stylegroup_box); $j++)
+"						<optgroup label=\"" . cleantextHTML($stylegroup_nam) . "\">\n";
+		foreach ($stylegroup_box as $j => $stylegroup_val)
 		{
-			$style_row = $stylegroup_box[$j];
-			$style_idx = $style_row[0];
-			$style_nam = cleantextHTML($style_row[1]);
+			$style_idx = $stylegroup_val[0];
+			$style_nam = $stylegroup_val[1];
 			if ($style_idx == $default_style_id)
 			{
 				$style_nam .= " &#10022;";
@@ -58,12 +57,12 @@
 			if ($style_idx == $selected_style_id)
 			{
 				echo
-"							<option value=\"" . $style_idx . "\" selected>" . $style_nam . "</option>\n";
+"							<option value=\"" . $style_idx . "\" selected>" . cleantextHTML($style_nam) . "</option>\n";
 			}
 			else
 			{
 				echo
-"							<option value=\"" . $style_idx . "\">" . $style_nam . "</option>\n";
+"							<option value=\"" . $style_idx . "\">" . cleantextHTML($style_nam) . "</option>\n";
 			}
 		}
 		echo
@@ -107,36 +106,42 @@
 	// something like this would be a little harder
 	// "Binding scheme created by Michael Horvath and John Smith. Keyboard layout and visual theme created by: Michael Horvath."
 	// it may only be worthwhile to pursue this if the number of contributers remains very small
-
+	// duplicated code here could be converted into a function
 	echo "Binding scheme created by: ";
-	$count_authors = count($gamesrecord_authors);
-	for ($i = 0; $i < $count_authors; $i++)
+	$count_authors = 0;
+	$total_authors = count($gamesrecord_authors);
+	foreach ($gamesrecord_authors as $i => $gamesrecord_value)
 	{
-		echo $gamesrecord_authors[$i];
-		if ($i < $count_authors - 1)
+		echo $gamesrecord_value;
+		if ($count_authors < $total_authors - 1)
 			echo ", ";
 		else
 			echo ".\n";
+		$count_authors += 1;
 	}
 	echo "Keyboard layout created by: ";
-	$count_authors = count($layout_authors);
-	for ($i = 0; $i < $count_authors; $i++)
+	$count_authors = 0;
+	$total_authors = count($layout_authors);
+	foreach ($layout_authors as $i => $layout_value)
 	{
-		echo $layout_authors[$i];
-		if ($i < $count_authors - 1)
+		echo $layout_value;
+		if ($count_authors < $total_authors - 1)
 			echo ", ";
 		else
 			echo ".\n";
+		$count_authors += 1;
 	}
 	echo "Visual theme created by: ";
-	$count_authors = count($stylesrecord_authors);
-	for ($i = 0; $i < $count_authors; $i++)
+	$count_authors = 0;
+	$total_authors = count($stylesrecord_authors);
+	foreach ($stylesrecord_authors as $i => $stylesrecords_value)
 	{
-		echo $stylesrecord_authors[$i];
-		if ($i < $count_authors - 1)
+		echo $stylesrecords_value;
+		if ($count_authors < $total_authors - 1)
 			echo ", ";
 		else
 			echo ".\n";
+		$count_authors += 1;
 	}
 	echo
 "	</p>

@@ -54,6 +54,8 @@
   if it is not actually possible to display these colors properly at this time.
   [Ed. the reasoning being that it may become possible to display these colors 
   properly at some point in the future, once I figure out how they should work.]
+* Currently, the MediaWiki format generates lines of code for keys that are not 
+  used by a particular game. Should I not generate these lines of code?
 
 ### Auditing, Authors, Submissions, Etc.
 * Should create a table of authors/contributers that automatically pulls info 
@@ -128,8 +130,8 @@
   "sort_order" column to ensure the colors are in the correct order.
 * Need someone to look over the code and determine whether it is susceptible to 
   SQL injection.
-* Rename the "game_friendlyurl" column to "game_seourl" in order to 
-  consistently use the same term and not confuse anybody.
+* Rename the "game_friendlyurl" column to "game_seourl" in order to be 
+  consistent and not confuse anybody.
 * Make sure the SQL result sets are ordered properly. Set the sort order in SQL 
   wherever possible.
 * Double check whether I can replace any instances of PHP sorting with SQL 
@@ -167,29 +169,27 @@
   shape. I.e. a polygon with six vertices instead a rectangle with four 
   vertices. However, the database currently only stores a key's XY position, 
   width and height - not the coordinates of its four vertices.
-* Should the mouse, joystick, etc. commands be lined up neatly into pairs with 
-  the left and right parts separated by an equal '=' sign? For instance using a 
-  table? Or should I instead use a definition/description list? This should not 
-  be too hard since I already store the left and right texts in separate fields 
-  within the database itself. [Ed. using a table would be perfectly okay 
-  semantically since it is tabular data. OTOH, a table would use up more space.]
 * Should the accordion menus on the front-end page be sorted alphabetically, or 
   should I add a "display_order" column to each SQL table? If I can come up 
   with an easy way to update such a "display_order" column using SQL commands, 
   then I may add one to each of the tables. Updating such a column manually 
   would be a PITA, however.
-* Maybe add some breadcrumbs to the "plain" pages.
+* Maybe add some breadcrumbs to the "plain" pages?
 * The credits bylines in the footers at the bottom of each page are eventually 
   going to need to be places each on their own line versus all on the same line.
 * The "Patterned Grayscale" style really sucks. I need to work on it.
-* I think the "cubescatter.js" script is using decimal values for screen pixel 
-  dimensions and coordinates. Need to re-do all the sprites in POV-Ray to use 
-  integer values if possible. May need to switch to dimetric projection instead 
-  of isometric projection, however, since regular hexagons cannot be tiled 
-  precisely using integer pixel dimensions.
 * Radio buttons on the front page should be based on "em" dimensions instead of 
   pixel dimensions. [Ed. need to figure out how to set the size of the the "X" 
   icon using "em" values.]
+
+### Non-coding related
+* File permissions recently started getting messed up when uploading new files 
+  to the server using FileZilla. Is it a bug or setting in the FTP software, or 
+  configuration setting in the server? I now have to fix the permissions 
+  manually each time I upload a brand new file. I need to figure out what is 
+  going on.
+* Set the correct time zone for the development server.
+* Set the correct time zone for the live server.
 
 ### Miscellaneous
 * I would like to also create charts/diagrams for gamepads, mice and joysticks. 
@@ -210,11 +210,6 @@
 * Users should maybe be able to press the ALT modifier key and see the bindings 
   that make use of that modifier highlighted somehow. There is another project 
   on the Internet that works in this manner. Need to check it out.
-* File permissions recently started getting messed up when uploading new files 
-  to the server using FileZilla. Is it a bug or setting in the FTP software, or 
-  configuration setting in the server? I now have to fix the permissions 
-  manually each time I upload a brand new file. I need to figure out what is 
-  going on.
 * I should be able to easily create "Typing Reference" schemes for every 
   keyboard layout. I would like to have the GUI strings translated into their 
   respective languages before I do this, however.
@@ -241,17 +236,12 @@
   printed. I need to investigate exactly which HTML tags do and do not benefit 
   from "cleaning". This goes for SVG tags as well. Also, is there a library I 
   can utilize to do the cleaning versus coding everything myself?]
-* Echo all HTML code using PHP in order to be consistent. [Ed. this way will be 
-  completely blank if a person navigates to the web page and the PHP code does 
-  not execute for whatever reason.]
-* Search the source code for instances of the word "hardcoded". They represent 
-  values that should really be moved to the database or calculated dynamically.]
-* The functions "leadingZeros2" and "leadingZeros3" should be turned into a 
-  single recursive function.
+* Echo all HTML code using PHP in order to be consistent. [Ed. this way the 
+  pages will be completely blank if a person navigates to them and the PHP code 
+  does not execute for whatever reason.]
 * Maybe move the "print_key_html" function to "keyboard-embed.php". This is the 
   file it was written for. None of the other files need it.
-* Need to create an SVG equivalent of the "print_key_html" function so that I 
-  can better control where exactly output strings are "cleaned".
+* Need to create an SVG equivalent of the "print_key_html" function.
 * Investigate the various different backlit keyboards to see whether I can 
   support them as well. Maybe create an "Export" format that provides users 
   with a number of conversion tools.
@@ -260,29 +250,24 @@
   need to sign up for that.
 * Should I refer to the "frontend page" as the "front page" instead from now 
   on? Which name is more appropriate? Should I rename the files too?
-* Put a little note next to each query function indicating which parameters 
-  need to exist before the query function can be called.
+* Put a little comment note next to each query function listing which 
+  parameters need to exist before the query function can be called.
 * Why am I not using the "class_table" array? It was supposed to hold all the 
   class names for the "static" keygroups. What have I been doing instead? Maybe 
   I did not create it because I have only one use for the "static" class names, 
   whereas I have used the "color_table" array repeatedly.
-* I don't think the Google Analytics code is working properly. I will have to 
-  take a note of the error message next time I see it.
-* Get rid of as many "count" variables like "$binding_count" as possible, and 
-  replace them with "max" variables, and only use "max" variables sparingly.
+* I don't think the Google Analytics code is working properly. It is spawning 
+  errors in the browser console. I will have to take a note of the error 
+  message next time I see it.
 * Should tables like "$layout_authors" use the author ID as the index? Does it 
-  matter in this case?
-* Rename PHP arrays from "xxxx_array" to "xxxx_table" wherever possible. There 
-  will be some conflicts.
-* Make sure the JavaScript arrays line up prettily.
-* Rename "stylegroup" to just "group" in PHP and JS?
-* Can I shorten "foreach ($topic_array as $i => $topic_value)" to not include 
-  the "$topic_value" part?
+  matter?
+* Maybe rename "stylegroup" to just "group" in PHP and JS?
 * In "keyboard.php", maybe replace "$platform_first", "$stylegroup_first" and 
   "$genre_first" with some "default" number for each table? Do I only want the 
   first category to always be open when the page loads? Also, keep in mind that 
   I may create "sort_order" columns for several tables in the future.
 * Create a separate "credits" page since the log is getting too long.
+* Maybe I can squeeze some object-oriented design into this project?
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent page's title in the page headers 
@@ -327,29 +312,6 @@
   position table so that they *are* based on the IBM position codes? [Ed. I 
   think the IBM position codes only go up to a certain number. IIRC, they don't 
   include a lot of the newer keys such as "Windows" or "Super" among others.]
-* Several routines rely very heavily on the database tables not having gaps in 
-  them. I need to either switch to using "foreach" and "forr...in" loops 
-  instead of numerical "for" loops, or start using "isset" and 
-  "array_key_exists" a lot more often than I have been. Ditto for the 
-  JavaScript code.
-* I need to start relying more on the database's index values instead of the 
-  index values generated by PHP's numerical "for" loops. Ideally, the project 
-  should still function as intended even if I have re-indexed the database! In 
-  the case of the "commands" series of PHP tables, the table indices are the 
-  same as the ones in the database (including any gaps in the series) and I 
-  have switched to using "foreach" to iterate over them instead of "for. I'm 
-  not sure yet which of the other PHP tables also need to be updated, and I 
-  have not looked very long at the JavaScript code.
-* I have done some experimenting, and using "foreach" and "for...in" all the 
-  time is a huge PITA! The indices of all the tables are integer-based, anyway, 
-  so I don't really even need "foreach" and "for...in". Ultimately, it may be 
-  easier to simply continue using "isset" and "array_key_exists" when there 
-  is a possibility that the indices are going to have gaps. The deciding factor 
-  is going to be which of the two methods is more efficient computationally, as 
-  well as which of the two is going to require more extra work on my part. Off 
-  the top of my head, the "foreach" method may be more efficient if there are 
-  many, many records as well as many gaps in the tables. But otherwise, it can 
-  mean lots of extra code.
 
 ### Rejected
 * Tweak the "cleantext" functions and/or the query functions so that separate 
@@ -371,6 +333,27 @@
 * I would like to re-index the "layouts" table since a gap exists between ID #1 
   and ID #3. [Ed. this would break many links on the Internet, however. Maybe 
   better to simply reuse the ID number for a new layout.]
+* Can I shorten "foreach ($topic_array as $i => $topic_value)" to not include 
+  the "$topic_value" part? [Ed. does not seem to be possible.]
+* I think the "cubescatter.js" script is using decimal values for screen pixel 
+  dimensions and coordinates. Need to re-do all the sprites in POV-Ray to use 
+  integer values if possible. May need to switch to dimetric projection instead 
+  of isometric projection, however, since regular hexagons cannot be tiled 
+  precisely using integer pixel dimensions. [Ed. the cubes are never going to 
+  line up exactly unless I switch to 2:1 dimetric projection.]
+
+### Ongoing
+* Double check all PHP and JS code for instances of the strings "counting!", 
+  "cleaning!", "hardcoded" and "non!". Problems might exist at these locations.
+* Make sure JavaScript arrays line up prettily.
+* Just for fun, run a script that counts and logs the number of lines of code.
+  [Ed. I installed a Windows program called LocMetrics to accomplish this, and 
+  It is a very easy tool to use. I am not sure how well it "understands" HTML, 
+  JS and PHP code, however. The website says "C#, C++, Java, and SQL". I also 
+  did not point the tool at the database dumps or these wiki documents.]
+* Ideally, the project should still function as intended even if I have re-
+  indexed the database! Make sure the PHP and JS tables are using the same 
+  indexes as in the database. (Remember to subtract 1 however.)
 
 ### Done
 * In the submission form, selecting a colored OPTION element should change the 
@@ -452,8 +435,6 @@
   selected.
 * Need to fetch the contents of the "colors" JavaScript array from the database 
   instead of hardcoding the values.
-* The "$legend_count" PHP variable is hardcoded. Maybe needs to be calculated 
-  based on size of "$color_array".
 * Implement a "languages" table.
 * The value of the "html" tag's "lang" attribute should be a short two-letter 
   string instead of an integer as it is now. It should not be hardcoded either.
@@ -482,10 +463,25 @@
   Alternatively, make the "TSV Pane" behave more like an actual spread-
   sheet. [Ed. officially the term "spreadsheet" has been removed from the page. 
   The button is labeled "Toggle TSV Panel" for now.]
-* Just for fun, run a script that counts and logs the number of lines of code.
-  [Ed. I installed a Windows program called LocMetrics to accomplish this, and 
-  It is a very easy tool to use. I am not sure how well it "understands" HTML, 
-  JS and PHP code, however. The website says "C#, C++, Java, and SQL". I also 
-  did not point the tool at the database dumps or these wiki documents.]
 * In "keyboard.php" the "sortGames()" function could be moved inside the actual 
   query function.
+* Rename PHP and JS arrays from "xxxx_array" to "xxxx_table" wherever possible. 
+  There may be some naming conflicts.
+* Get rid of as many "count" variables like "$binding_count" as possible, and 
+  replace them with "max" variables, and only use "max" variables sparingly.
+* The functions "leadingZeros2" and "leadingZeros3" should be turned into a 
+  single recursive function. [Ed. instead of making the function recursive, I 
+  switched to using a native PHP function that serves the same purpose.
+* The "$legend_count" PHP variable is hardcoded. Maybe needs to be calculated 
+  based on size of "$color_array".
+* Should the mouse, joystick, etc. commands be lined up neatly into pairs with 
+  the left and right parts separated by an equal '=' sign? For instance using a 
+  table? Or should I instead use a definition/description list? This should not 
+  be too hard since I already store the left and right texts in separate fields 
+  within the database itself. [Ed. using a table would be perfectly okay 
+  semantically since it is tabular data. OTOH, a table would use up more space.]
+* Several routines rely very heavily on the database tables not having gaps in 
+  them. I need to either switch to using "foreach" and "for...in" loops instead 
+  of numerical "for" loops, or start using "isset" and "array_key_exists" a lot 
+  more often than I have been. Ditto for the JavaScript code. [Ed. I have 
+  switched to using "foreach" and "for...in" wherever possible.]

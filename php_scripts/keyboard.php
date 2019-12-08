@@ -32,8 +32,10 @@
 
 	include($path_ssi1	. "analyticstracking.php");
 	include($path_ssi1	. "keyboard-connection.php");
-	include($path_lib1	. "keyboard-common.php");
-	include($path_lib1	. "keyboard-queries.php");
+	include($path_lib1	. "scripts-all.php");
+	include($path_lib1	. "queries-all.php");
+	include($path_lib1	. "queries-frontend.php");
+	include($path_lib1	. "queries-js.php");
 
 	// accordion lists
 	$genre_table		= [];
@@ -67,8 +69,8 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	// MySQL queries
-	selURLQueries();		// gather and validate URL parameters
-	selDefaults();			// get default values for urlqueries if missing
+	selURLQueriesAll();		// gather and validate URL parameters
+	selDefaultsAll();			// get default values for urlqueries if missing
 	selGenresFront();
 	selGamesFront();
 	selStylegroupsFront();
@@ -194,10 +196,11 @@
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"Visual keyboard hotkey & binding diagrams for video games and other software.\"/>
 		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference\"/>
-		<script src=\"" . $path_lib1  . "keyboard-frontend.js\"></script>
+		<script src=\"" . $path_lib1  . "java-all.js\"></script>
+		<script src=\"" . $path_lib1  . "java-frontend.js\"></script>
 		<script src=\"" . $path_java1 . "jquery-1.4.2.min.js\"></script>
 		<script src=\"" . $path_java1 . "jquery-accordionmenu.js\"></script>
-<!--		<script src=\"" . $path_lib1  . "cubescatter.js\"></script>-->\n";
+<!--		<script src=\"" . $path_lib1  . "java-cubescatter.js\"></script>-->\n";
 	echo writeAnalyticsTracking();
 	echo
 "		<script>
@@ -231,7 +234,7 @@ var seourl_table =
 	<input type="hidden" name="lay" value=""/>
 	<input type="hidden" name="gam" value=""/>
 	<input type="hidden" name="sty" value=""/>
-	<div style="margin:auto;">
+	<div>
 		<div class="acc_div">
 			<div class="acc_wrap">
 				<h3 class="acc_head">1. Select a Keyboard:</h3>

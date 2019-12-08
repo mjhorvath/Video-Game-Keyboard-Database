@@ -19,39 +19,35 @@
 	// <https://www.gnu.org/licenses/>.
 
 	header("Content-Type: text/html; charset=utf8");
+	include($path_lib2 . "queries-chart.php");
 
 	$path_file		= "./keyboard-wiki.php";	// this file
-	$keys_number		= 118;		// hardcoded!
-	$actions_number		= 10;		// hardcoded!
-	$legend_number		= 12;		// hardcoded!
-	$position_table		= [];
-	$keystyle_table		= [];
+	$keys_number		= 118;		// hardcoded, but probably necessary
+	$commands_number	= 10;		// hardcoded, but probably necessary, not implemented yet
+	$legend_number		= 12;		// hardcoded, but probably necessary
 	$binding_table		= [];
 	$legend_table		= [];
-	$commandouter_table		= [];
-	$combo_table		= [];
-	$joystick_table		= [];
-	$mouse_table		= [];
-	$note_table		= [];
-	$author_table		= [];
-	$style_table		= [];
-	$stylegroup_table	= [];
-	$errors_table		= [];
-	$gamesrecord_id		= 0;
-	$gamesrecord_authors	= [];
-	$stylesrecord_id	= 0;
-	$stylesrecord_authors	= [];
-	$combo_count		= 0;
-	$joystick_count		= 0;
-	$mouse_count		= 0;
-	$note_count		= 0;
-	$style_filename		= "";
-	$style_name		= "";
-	$game_name		= "";
-	$platform_name		= "";
-	$platform_id		= 0;
-	$layout_name		= "";
-	$layout_authors		= [];
+	$command_table		= [];		// not implemented yet
+	$author_table		= [];		// utilized by footer
+	$style_table		= [];		// utilized by footer
+	$stylegroup_table	= [];		// utilized by footer
+	$gamesrecord_id		= 0;		// utilized by footer
+	$gamesrecord_authors	= [];		// utilized by footer
+	$stylesrecord_id	= 0;		// utilized by footer
+	$stylesrecord_authors	= [];		// utilized by footer
+	$layout_authors		= [];		// utilized by footer
+	$game_seo		= "";		// utilized by checkForErrors() and checkURLParameters()
+	$game_name		= "";		// utilized by checkForErrors() and checkURLParameters()
+	$game_id		= 0;		// utilized by checkForErrors() and checkURLParameters()
+	$platform_name		= "";		// utilized by checkForErrors() and checkURLParameters()
+	$platform_id		= 0;		// utilized by checkForErrors() and checkURLParameters()
+	$layout_name		= "";		// utilized by checkForErrors() and checkURLParameters()
+	$layout_id		= 0;		// utilized by checkForErrors() and checkURLParameters()
+	$style_name		= "";		// utilized by checkForErrors() and checkURLParameters()
+	$style_id		= 0;		// utilized by checkForErrors() and checkURLParameters()
+	$format_name		= "";		// utilized by checkForErrors() and checkURLParameters()
+//	$format_id		= 0;		// should not be set here since it has already been set in "keyboard-init.php"
+//	$svg_bool		= 0;		// should not be set here since it has already been set in "keyboard-init.php"
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -62,27 +58,27 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	// MySQL queries
-	selURLQueries();		// gather and validate URL parameters
-	selDefaults();			// get default values for urlqueries if missing
-	checkURLParameters();		// gather and validate URL parameters
+	selURLQueriesAll();		// gather and validate URL parameters
+	selDefaultsAll();			// get default values for urlqueries if missing
+	checkURLParameters();		// gather and validate URL parameters, not a query
 	selThisLanguageStringsChart();
 	selAuthorsChart();
 	selStyleGroupsChart();
 	selStylesChart();
 	selThisStyleChart();
 	selThisFormatChart();
-	selPositionsChart();
-	selThisLayoutChart();
-	selThisPlatformChart();
 	selThisGamesRecordChart();
 	selThisStylesRecordChart();
+	selThisLayoutChart();
+	selThisPlatformChart();
 	selBindingsChart();
 	selLegendsChart();
-	selCommandsChart();
+//	selCommandsChart();		// not implemented yet
+	selLegendColorsChart();
 	selContribsGamesChart();
 	selContribsStylesChart();
 	selContribsLayoutsChart();
-	selKeystyles();
+	selKeyStylesChart();
 
 	// close connection
 	mysqli_close($con);
@@ -99,13 +95,13 @@
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root2 . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_common.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_mediawiki.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_footer.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_mediawiki.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_footer.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
-		<meta name=\"description\" content=\""	. cleantextHTML($language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name)	. ")\"/>
-		<meta name=\"keywords\" content=\""	. cleantextHTML($language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name)	. "\"/>
-		<script src=\"" . $path_lib1 . "keyboard-footer.js\"></script>\n";
+		<meta name=\"description\" content=\"" . cleantextHTML($language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name)	. ")\"/>
+		<meta name=\"keywords\" content=\""    . cleantextHTML($language_keywords	. ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name)	. "\"/>
+		<script src=\"" . $path_lib1 . "java-footer.js\"></script>\n";
 	echo writeAnalyticsTracking();
 	echo
 "	</head>\n";
@@ -122,24 +118,23 @@
 	// keys
 	for ($i = 0; $i < $keys_number; $i++)
 	{
-		$leadZ		= leadingZeros($i, 3);
+		$leadZ = leadingZeros($i, 3);
 		if (array_key_exists($i, $binding_table))
 		{
 			$binding_row	= $binding_table[$i];
 			$bkg_nor	= getkeycolor($binding_row[0]);
-			$key_nor	= cleantextWiki($binding_row[1]);
+			$key_nor	= $binding_row[1];
 			$bkg_shf	= getkeycolor($binding_row[2]);
-			$key_shf	= cleantextWiki($binding_row[3]);
+			$key_shf	= $binding_row[3];
 			$bkg_ctl	= getkeycolor($binding_row[4]);
-			$key_ctl	= cleantextWiki($binding_row[5]);
+			$key_ctl	= $binding_row[5];
 			$bkg_alt	= getkeycolor($binding_row[6]);
-			$key_alt	= cleantextWiki($binding_row[7]);
+			$key_alt	= $binding_row[7];
 			$bkg_agr	= getkeycolor($binding_row[8]);
-			$key_agr	= cleantextWiki($binding_row[9]);
+			$key_agr	= $binding_row[9];
 			$bkg_xtr	= getkeycolor($binding_row[10]);
-			$key_xtr	= cleantextWiki($binding_row[11]);
+			$key_xtr	= $binding_row[11];
 		}
-		// is the 'else' really needed here? or can these be omitted?
 		else
 		{
 			$bkg_nor = "";
@@ -156,7 +151,7 @@
 			$key_xtr = "";
 		}
 		echo
-"|" . $leadZ . "b=" . $bkg_nor . "|". $leadZ . "t=" . $key_nor . "|" . $leadZ . "s=" . $key_shf . "|" . $leadZ . "c=" . $key_ctl . "|" . $leadZ . "a=" . $key_alt . "\n";
+"|" . $leadZ . "b=" . $bkg_nor . "|". $leadZ . "t=" . cleantextWiki($key_nor) . "|" . $leadZ . "s=" . cleantextWiki($key_shf) . "|" . $leadZ . "c=" . cleantextWiki($key_ctl) . "|" . $leadZ . "a=" . cleantextWiki($key_alt) . "\n";
 	}
 ?>
 }}
@@ -164,23 +159,22 @@
 {{kbdlegend
 <?php
 	// legend
-	for ($i = 0; $i < 12; $i++)
+	for ($i = 0; $i < $legend_number; $i++)
 	{
 		$leadZ = leadingZeros($i, 2);
-		if (isset($legend_table[$i]))
+		if (array_key_exists($i, $legend_table))
 		{
 			$legend_row = $legend_table[$i];
 			$leg_grp = getkeycolor($legend_row[0]);
-			$leg_dsc = cleantextWiki($legend_row[1]);
+			$leg_dsc = $legend_row[1];
 		}
-		// is the 'else' really needed here? or can these be skipped?
 		else
 		{
 			$leg_grp = "";
 			$leg_dsc = "";
 		}
 		echo
-"|" . $leadZ. "lgb=" . $leg_grp . "|" . $leadZ . "lgt=" . $leg_dsc . "\n";
+"|" . $leadZ. "lgb=" . $leg_grp . "|" . $leadZ . "lgt=" . cleantextWiki($leg_dsc) . "\n";
 	}
 ?>
 }}

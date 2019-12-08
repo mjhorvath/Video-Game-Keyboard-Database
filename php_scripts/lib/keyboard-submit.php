@@ -19,50 +19,48 @@
 	// <https://www.gnu.org/licenses/>.
 
 	header("Content-Type: text/html; charset=utf8");
+	include($path_lib2 . "queries-chart.php");
 	include($path_ssi2 . "recaptchakey.php");
 
 	$path_file		= "./keyboard-submit.php";		// this file
 	$commandouter_table	= [];
 	$commandouter_count	= 0;
-	$commandlabels_table	= [];
-	$commandlabels_count	= 0;
-	$write_maximal_keys	= true;
-	$debug_text		= "";
-	$stylegroup_id		= 0;
-	$position_table		= [];
-	$keystyle_table		= [];
-	$binding_table		= [];
-	$legend_table		= [];
-	$author_table		= [];
-	$style_table		= [];
-	$stylegroup_table	= [];
-	$errors_table		= [];
-	$gamesrecord_id		= 0;
-	$gamesrecord_authors	= [];
-	$stylesrecord_id	= 0;
-	$stylesrecord_authors	= [];
-	$style_filename		= "";
-	$style_name		= "";
-	$game_name		= "";
-	$platform_name		= "";
-	$platform_id		= 0;
-	$format_name		= "";
-	$layout_name		= "";
-	$layout_authors		= [];
-	$layout_keysnum		= 0;
-	$layout_keygap		= 4;
-	$layout_padding		= 18;
-	$layout_fullsize_width		= 1200;
-	$layout_fullsize_height		= 400;
-	$layout_tenkeyless_width	= 1200;
-	$layout_tenkeyless_height	= 400;
-	$layout_legend_padding		= 36;
-	$layout_legend_height		= 72;
-	$layout_min_horizontal	= 0;
-	$layout_max_horizontal	= 0;
-	$layout_min_vertical	= 0;
-	$layout_max_vertical	= 0;
-	$layout_legend_top	= 0;
+	$commandlabel_table	= [];
+	$commandlabel_count	= 0;
+	$write_maximal_keys	= true;			// should make this user-configurable
+	$position_table		= [];			// populated by selPositionsChart()
+	$keystyle_table		= [];			// populated by selKeyStylesChart()
+	$binding_table		= [];			// populated by selBindingsChart()
+	$legend_table		= [];			// populated by selLegendsChart()
+	$author_table		= [];			// populated by selAuthorsChart()
+	$style_table		= [];			// utilized by "keyboard-footer-1.php"
+	$stylegroup_table	= [];			// utilized by "keyboard-footer-1.php"
+	$gamesrecord_id		= 0;			// set by selThisGamesRecordChart()
+	$gamesrecord_authors	= [];			// populated by selContribsGamesChart(), utilized by "keyboard-footer-1.php"
+	$stylesrecord_id	= 0;			// set by selThisStylesRecordChart()
+	$stylesrecord_authors	= [];			// populated by selContribsStylesChart(), utilized by "keyboard-footer-1.php"
+	$style_filename		= "";			// set by selThisStyleChart()
+	$style_name		= "";			// set by selThisStyleChart() and checkURLParameters(), utilized by checkForErrors()
+	$game_name		= "";			// set by checkURLParameters(), utilized by checkForErrors()
+	$platform_name		= "";			// set by checkURLParameters(), utilized by checkForErrors()
+	$platform_id		= 0;			// set by checkURLParameters(), utilized by checkForErrors()
+	$format_name		= "";			// set by checkURLParameters(), utilized by checkForErrors()
+	$layout_name		= "";			// set by checkURLParameters(), utilized by checkForErrors()
+	$layout_authors		= [];			// populated by selContribsLayoutsChart(), utilized by "keyboard-footer-1.php"
+	$layout_keysnum		= 0;			// reset by selThisLayoutChart(), hopefully obsolete
+	$layout_keygap		= 4;			// reset by selThisLayoutChart()
+	$layout_padding		= 18;			// reset by selThisLayoutChart()
+	$layout_fullsize_width		= 1200;		// reset by selThisLayoutChart()
+	$layout_fullsize_height		= 400;		// reset by selThisLayoutChart()
+	$layout_tenkeyless_width	= 1200;		// reset by selThisLayoutChart()
+	$layout_tenkeyless_height	= 400;		// reset by selThisLayoutChart()
+	$layout_legend_padding		= 36;		// reset by selThisLayoutChart()
+	$layout_legend_height		= 72;		// reset by selThisLayoutChart()
+	$layout_min_horizontal	= 0;			// reset by selThisLayoutChart()
+	$layout_max_horizontal	= 0;			// reset by selThisLayoutChart()
+	$layout_min_vertical	= 0;			// reset by selThisLayoutChart()
+	$layout_max_vertical	= 0;			// reset by selThisLayoutChart()
+	$layout_legend_top	= 0;			// reset by selThisLayoutChart()
 
 	// open MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -73,9 +71,9 @@
 	mysqli_query($con, "SET NAMES 'utf8'");
 
 	// MySQL queries
-	selURLQueries();		// gather and validate URL parameters
-	selDefaults();			// get default values for urlqueries if missing
-	checkURLParameters();		// gather and validate URL parameters
+	selURLQueriesAll();		// gather and validate URL parameters
+	selDefaultsAll();		// get default values for urlqueries if missing
+	checkURLParameters();		// gather and validate URL parameters, not a query
 	selThisLanguageStringsChart();
 	selAuthorsChart();
 	selStyleGroupsChart();
@@ -93,9 +91,9 @@
 	selContribsGamesChart();
 	selContribsStylesChart();
 	selContribsLayoutsChart();
-	selLegendColors();
-	selKeyStyles();
-	selKeyStyleClasses();
+	selLegendColorsChart();
+	selKeyStylesChart();
+	selKeyStyleClassesChart();
 	selCommandLabelsChart();
 
 	// close MySQL connection
@@ -120,11 +118,91 @@
 		$layout_max_vertical	=  $layout_padding * 2 + $layout_fullsize_height;
 	}
 
-	// color select options
+	// non!
+	// need to put 'non' into the database too at some point
 	$option_string = "<option class=\"optnon\">non</option>";
-	for ($i = 0; $i < $color_count; $i++)
+	$color_string = "0:'non',";
+	foreach ($binding_color_array as $i => $binding_color_value)
 	{
-		$option_string .= "<option class=\"opt" . $color_array[$i] . "\">" . $color_array[$i] . "</option>";
+		$option_string .= "<option class=\"opt" . $binding_color_value . "\">" . $binding_color_value . "</option>";
+		$color_string .= ($i+1) . ":'" . $binding_color_value . "',";
+	}
+	$color_string = rtrim($color_string, ",");
+
+	$commandlabel_string = "";
+	foreach ($commandlabel_table as $i => $commandlabel_value)
+	{
+		$commandlabel_string .= $i . ":'" . $commandlabel_value[2] . "',";
+	}
+	$commandlabel_string = rtrim($commandlabel_string, ",");
+
+	$binding_string = "";
+	if (($gamesrecord_id > 0) && ($stylesrecord_id > 0))
+	{
+		foreach ($position_table as $i => $position_row)
+		{
+			$low_nor	= "'" . cleantextJS($position_row[ 4])	. "'";
+			$upp_nor	= "'" . cleantextJS($position_row[ 5])	. "'";
+			$low_agr	= "'" . cleantextJS($position_row[ 6])	. "'";
+			$upp_agr	= "'" . cleantextJS($position_row[ 7])	. "'";
+			if (array_key_exists($i, $binding_table))
+			{
+				$binding_row = $binding_table[$i];
+				$cap_nor = "'" . cleantextJS($binding_row[ 1])	. "'";
+				$cap_shf = "'" . cleantextJS($binding_row[ 3])	. "'";
+				$cap_ctl = "'" . cleantextJS($binding_row[ 5])	. "'";
+				$cap_alt = "'" . cleantextJS($binding_row[ 7])	. "'";
+				$cap_agr = "'" . cleantextJS($binding_row[ 9])	. "'";
+				$cap_xtr = "'" . cleantextJS($binding_row[11])	. "'";
+				$img_fil = "'" . $binding_row[12]		. "'";
+				$img_uri = "'" . $binding_row[13]		. "'";
+				$bkg_nor = $binding_row[ 0];
+				$bkg_shf = $binding_row[ 2];
+				$bkg_ctl = $binding_row[ 4];
+				$bkg_alt = $binding_row[ 6];
+				$bkg_agr = $binding_row[ 8];
+				$bkg_xtr = $binding_row[10];
+			}
+			else
+			{
+				$cap_nor = "''";
+				$cap_shf = "''";
+				$cap_ctl = "''";
+				$cap_alt = "''";
+				$cap_agr = "''";
+				$cap_xtr = "''";
+				$img_fil = "''";
+				$img_uri = "''";
+				$bkg_nor = 0;
+				$bkg_shf = 0;
+				$bkg_ctl = 0;
+				$bkg_alt = 0;
+				$bkg_agr = 0;
+				$bkg_xtr = 0;
+			}
+			$binding_string .=
+			"\t" . $i . ":[" .
+			$low_nor . "," .
+			$upp_nor . "," .
+			$low_agr . "," .
+			$upp_agr . "," .
+			$cap_nor . "," .
+			$cap_shf . "," .
+			$cap_ctl . "," .
+			$cap_alt . "," .
+			$cap_agr . "," .
+			$cap_xtr . "," .
+			$img_fil . "," .
+			$img_uri . "," .
+			$bkg_nor . "," .
+			$bkg_shf . "," .
+			$bkg_ctl . "," .
+			$bkg_alt . "," .
+			$bkg_agr . "," .
+			$bkg_xtr . "],\n";
+		}
+		$binding_string = rtrim($binding_string, ",\n");
+		$binding_string .= "\n";
 	}
 
 	echo
@@ -136,11 +214,10 @@
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root2 . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_footer.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_footer.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\""	. cleantextHTML($language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name)	. ")\"/>
-		<meta name=\"keywords\" content=\""	. cleantextHTML($language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name)	. "\"/>
-";
+		<meta name=\"keywords\" content=\""	. cleantextHTML($language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name)	. "\"/>\n";
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";
@@ -149,124 +226,18 @@
 "		</style>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_submit.css\"/>
 		<script src=\"" . $path_root2 . "java/jquery-3.3.1.min.js\"></script>
-		<script src=\"" . $path_lib1 . "keyboard-submit.js\"></script>
-		<script src=\"" . $path_lib1 . "keyboard-footer.js\"></script>
+		<script src=\"" . $path_lib1 . "java-all.js\"></script>
+		<script src=\"" . $path_lib1 . "java-submit.js\"></script>
+		<script src=\"" . $path_lib1 . "java-footer.js\"></script>
 		<script src=\"https://www.google.com/recaptcha/api.js\"></script>
 		<script>
 var record_id = " . $gamesrecord_id . ";
-var legend_count = 0;
-var legend_table = [];
-var commandouter_count = 0;
-var commandouter_table = [];
-var color_count = " . ($color_count+1) . ";
-var color_table = ['non',";
-	for ($i = 0; $i < $color_count; $i++)
-	{
-		echo "'" . $color_array[$i] . "'";
-		if ($i < $color_count - 1)
-			echo ",";
-	}
-	echo "];
-var commandlabels_count = " . $commandlabels_count . ";
-var commandlabels_table = [";
-	for ($i = 0; $i < $commandlabels_count; $i++)
-	{
-		echo "'" . $commandlabels_table[$i][2] . "'";
-		if ($i < $commandlabels_count - 1)
-			echo ",";
-	}
-	echo "];
-var binding_count = " . $binding_count . ";
-var binding_table =
-[
-";
-	if ($gamesrecord_id && $stylesrecord_id)
-	{
-		for ($i = 0; $i < $layout_keysnum; $i++)
-		{
-			if (array_key_exists($i, $position_table))
-			{
-				$position_row	= $position_table[$i];
-				$low_nor	= "'" . cleantextJS($position_row[ 4])	. "'";
-				$upp_nor	= "'" . cleantextJS($position_row[ 5])	. "'";
-				$low_agr	= "'" . cleantextJS($position_row[ 6])	. "'";
-				$upp_agr	= "'" . cleantextJS($position_row[ 7])	. "'";
-				if (array_key_exists($i, $binding_table))
-				{
-					$binding_row = $binding_table[$i];
-					$cap_nor = "'" . cleantextJS($binding_row[ 1])	. "'";
-					$cap_shf = "'" . cleantextJS($binding_row[ 3])	. "'";
-					$cap_ctl = "'" . cleantextJS($binding_row[ 5])	. "'";
-					$cap_alt = "'" . cleantextJS($binding_row[ 7])	. "'";
-					$cap_agr = "'" . cleantextJS($binding_row[ 9])	. "'";
-					$cap_xtr = "'" . cleantextJS($binding_row[11])	. "'";
-					$img_fil = "'" . $binding_row[12]		. "'";
-					$img_uri = "'" . $binding_row[13]		. "'";
-					$bkg_nor = intval($binding_row[ 0]);
-					$bkg_shf = intval($binding_row[ 2]);
-					$bkg_ctl = intval($binding_row[ 4]);
-					$bkg_alt = intval($binding_row[ 6]);
-					$bkg_agr = intval($binding_row[ 8]);
-					$bkg_xtr = intval($binding_row[10]);
-				}
-				else
-				{
-					$cap_nor = "''";
-					$cap_shf = "''";
-					$cap_ctl = "''";
-					$cap_alt = "''";
-					$cap_agr = "''";
-					$cap_xtr = "''";
-					$img_fil = "''";
-					$img_uri = "''";
-					$bkg_nor = 0;
-					$bkg_shf = 0;
-					$bkg_ctl = 0;
-					$bkg_alt = 0;
-					$bkg_agr = 0;
-					$bkg_xtr = 0;
-				}
-				echo
-				"	[" .
-				$low_nor . ", " .
-				$upp_nor . ", " .
-				$low_agr . ", " .
-				$upp_agr . ", " .
-				$cap_nor . ", " .
-				$cap_shf . ", " .
-				$cap_ctl . ", " .
-				$cap_alt . ", " .
-				$cap_agr . ", " .
-				$cap_xtr . ", " .
-				$img_fil . ", " .
-				$img_uri . ", " .
-				$bkg_nor . ", " .
-				$bkg_shf . ", " .
-				$bkg_ctl . ", " .
-				$bkg_alt . ", " .
-				$bkg_agr . ", " .
-				$bkg_xtr . "]";
-			}
-			else
-			{
-				echo
-"	null";
-			}
-			if ($i < $layout_keysnum - 1)
-			{
-				echo ",\n";
-			}
-			else
-			{
-				echo "\n";
-			}
-		}
-	}
-	echo
-"];
-		</script>\n";
+var color_table = {" . $color_string . "};
+var commandlabel_table = {" . $commandlabel_string . "};
+var binding_table =\n{\n" . $binding_string . "};
+		</script>
+	</head>\n";
 ?>
-	</head>
 	<body onload="init_submissions();">
 		<img id="waiting" src="<?php echo $path_lib1; ?>animated_loading_icon.webp" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
 		<div id="butt_min" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(0);"><img src="<?php echo $path_lib1; ?>icon_min.png"/></div>
@@ -277,7 +248,6 @@ var binding_table =
 				<div id="butt_hlp" class="tabs_butt" title="Toggle Info Panel"  onclick="switch_left_pane(1);"><img src="<?php echo $path_lib1; ?>icon_hlp.png"/></div>
 			</div>
 			<div id="pane_inp" style="display:block;">
-<?php echo $debug_text; ?>
 				<div id="table_inp" class="inptbl" style="margin:auto;">
 					<div class="inprow"><div class="inphed">Param</div><div class="inphed">Value</div><div class="inphed">Color</div></div>
 					<div class="inprow"><div class="inpcll"><label for="inp_keynum" title="Key ID#"			>keynum:</label></div><div class="inpcll"><input id="inp_keynum" class="inplft" type="text" size="11" maxlength="100" autocomplete="off" title="Key ID#"	disabled="disabled"/></div><div class="inpcll">n/a</div></div>
@@ -362,155 +332,151 @@ var binding_table =
 	for ($i = 0; $i < count($errors_table); $i++)
 	{
 		echo
-"							<h3>" . cleantextHTML($errors_table[$i]) . "</h3>";
+"							<h3>" . cleantextHTML($errors_table[$i]) . "</h3>\n";
 	}
 	// keys
-	if ($gamesrecord_id && $stylesrecord_id)
+	if (($gamesrecord_id > 0) && ($stylesrecord_id > 0))
 	{
-		for ($i = 0; $i < $layout_keysnum; $i++)
+		foreach ($position_table as $i => $position_row)
 		{
-			if (array_key_exists($i, $position_table))
+			// these get cleaned later by the print_key_html function
+			// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowcap_optional, numpad
+			$key_sty	= array_key_exists($i, $keystyle_table) ? getkeyclass($keystyle_table[$i][0]) : "";
+			$pos_lft	= $position_row[ 0] + $layout_keygap/2;
+			$pos_top	= $position_row[ 1] + $layout_keygap/2;
+			$pos_wid	= $position_row[ 2] - $layout_keygap;		// 4px
+			$pos_hgh	= $position_row[ 3] - $layout_keygap;		// 4px
+			$low_nor	= $position_row[ 4];
+			$upp_nor	= $position_row[ 5];
+			$low_agr	= $position_row[ 6];
+			$upp_agr	= $position_row[ 7];
+			$key_num	= $position_row[ 8];
+			$key_opt	= $position_row[ 9];
+			$key_ten	= $position_row[10];
+			$img_wid	= 48;
+			$img_hgh	= 48;
+			$img_pos_x	= $pos_wid/2 - $img_wid/2;
+			$img_pos_y	= $pos_hgh/2 - $img_hgh/2;
+			if (array_key_exists($i, $binding_table))
 			{
-					// these get cleaned later by the print_key_html function
-				// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowcap_optional, numpad
-				$key_sty	= array_key_exists($i, $keystyle_table) ? getkeyclass($keystyle_table[$i][0]) : "";
-				$position_row	= $position_table[$i];
-				$pos_lft	= $position_row[ 0] + $layout_keygap/2;
-				$pos_top	= $position_row[ 1] + $layout_keygap/2;
-				$pos_wid	= $position_row[ 2] - $layout_keygap;		// 4px
-				$pos_hgh	= $position_row[ 3] - $layout_keygap;		// 4px
-				$low_nor	= $position_row[ 4];
-				$upp_nor	= $position_row[ 5];
-				$low_agr	= $position_row[ 6];
-				$upp_agr	= $position_row[ 7];
-				$key_num	= $position_row[ 8];
-				$key_opt	= $position_row[ 9];
-				$key_ten	= $position_row[10];
-				$img_wid	= 48;
-				$img_hgh	= 48;
-				$img_pos_x	= $pos_wid/2 - $img_wid/2;
-				$img_pos_y	= $pos_hgh/2 - $img_hgh/2;
-				if (array_key_exists($i, $binding_table))
+				// these get cleaned later by the print_key_html function
+				// normal_group, normal_action, shift_group, shift_action, ctrl_group, ctrl_action, alt_group, alt_action, altgr_group, altgr_action, extra_group, extra_action, image_file, image_uri, key_number
+				$binding_row	= $binding_table[$i];
+				$bkg_nor = getkeycolor($binding_row[ 0]);
+				$cap_nor = $binding_row[ 1];
+				$bkg_shf = getkeycolor($binding_row[ 2]);
+				$cap_shf = $binding_row[ 3];
+				$bkg_ctl = getkeycolor($binding_row[ 4]);
+				$cap_ctl = $binding_row[ 5];
+				$bkg_alt = getkeycolor($binding_row[ 6]);
+				$cap_alt = $binding_row[ 7];
+				$bkg_agr = getkeycolor($binding_row[ 8]);
+				$cap_agr = $binding_row[ 9];
+				$bkg_xtr = getkeycolor($binding_row[10]);
+				$cap_xtr = $binding_row[11];
+				$img_fil = $binding_row[12];
+				$img_uri = $binding_row[13];
+			}
+			else
+			{
+				$bkg_nor = "non";
+				$cap_nor = "";
+				$bkg_shf = "non";
+				$cap_shf = "";
+				$bkg_ctl = "non";
+				$cap_ctl = "";
+				$bkg_alt = "non";
+				$cap_alt = "";
+				$bkg_agr = "non";
+				$cap_agr = "";
+				$bkg_xtr = "non";
+				$cap_xtr = "";
+				$img_fil = "";
+				$img_uri = "";
+			}
+			// key outer container
+			echo
+"							<div id=\"keyout_" . $i . "\" class=\"keyout cap" . $bkg_nor . " " . $key_sty . "\" style=\"left:" . $pos_lft . "px;top:" . $pos_top . "px;width:" . $pos_wid . "px;height:" . $pos_hgh . "px;\">\n";
+			// icon images
+			if (($img_uri != "") || ($write_maximal_keys == true))
+			{
+				if ($img_uri == "")
 				{
-					// these get cleaned later by the print_key_html function
-					// normal_group, normal_action, shift_group, shift_action, ctrl_group, ctrl_action, alt_group, alt_action, altgr_group, altgr_action, extra_group, extra_action, image_file, image_uri, key_number
-					$binding_row	= $binding_table[$i];
-					$bkg_nor = getkeycolor($binding_row[ 0]);
-					$cap_nor = $binding_row[ 1];
-					$bkg_shf = getkeycolor($binding_row[ 2]);
-					$cap_shf = $binding_row[ 3];
-					$bkg_ctl = getkeycolor($binding_row[ 4]);
-					$cap_ctl = $binding_row[ 5];
-					$bkg_alt = getkeycolor($binding_row[ 6]);
-					$cap_alt = $binding_row[ 7];
-					$bkg_agr = getkeycolor($binding_row[ 8]);
-					$cap_agr = $binding_row[ 9];
-					$bkg_xtr = getkeycolor($binding_row[10]);
-					$cap_xtr = $binding_row[11];
-					$img_fil = $binding_row[12];
-					$img_uri = $binding_row[13];
+					$img_display = "none";
 				}
 				else
 				{
-					$bkg_nor = "non";
-					$cap_nor = "";
-					$bkg_shf = "non";
-					$cap_shf = "";
-					$bkg_ctl = "non";
-					$cap_ctl = "";
-					$bkg_alt = "non";
-					$cap_alt = "";
-					$bkg_agr = "non";
-					$cap_agr = "";
-					$bkg_xtr = "non";
-					$cap_xtr = "";
-					$img_fil = "";
-					$img_uri = "";
-				}
-				// key outer container
-				echo
-"							<div id=\"keyout_" . $i . "\" class=\"keyout cap" . $bkg_nor . " " . $key_sty . "\" style=\"left:" . $pos_lft . "px;top:" . $pos_top . "px;width:" . $pos_wid . "px;height:" . $pos_hgh . "px;\">\n";
-				// icon images
-				if (($img_uri != "") || ($write_maximal_keys == true))
-				{
-					if ($img_uri == "")
-					{
-						$display = "none";
-					}
-					else
-					{
-						$display = "block";
-					}
-					echo
-"								<img id=\"capimg_" . $i . "\" class=\"capimg\" style=\"left:" . $img_pos_x . "px;top:" . $img_pos_y . "px;width:" . $img_wid . "px;height:" . $img_hgh . "px;display:" . $display . ";\" src=\"" . $img_uri . "\"/>\n";
-				}
-				// key captions
-				if (($cap_shf != "") || ($write_maximal_keys == true))
-				{
-					print_key_html("capshf_" . $i, "capshf", $bkg_shf, $cap_shf);
-				}
-				if (($cap_ctl != "") || ($write_maximal_keys == true))
-				{
-					print_key_html("capctl_" . $i, "capctl", $bkg_ctl, $cap_ctl);
-				}
-				if (($cap_alt != "") || ($write_maximal_keys == true))
-				{
-					print_key_html("capalt_" . $i, "capalt", $bkg_alt, $cap_alt);
-				}
-				if (($cap_agr != "") || ($write_maximal_keys == true))
-				{
-					print_key_html("capagr_" . $i, "capagr", $bkg_agr, $cap_agr);
-				}
-				if (($cap_xtr != "") || ($write_maximal_keys == true))
-				{
-					print_key_html("capxtr_" . $i, "capxtr", $bkg_xtr, $cap_xtr);
-				}
-				if (($cap_nor != "") || ($write_maximal_keys == true))
-				{
-					if ($key_opt == false)
-					{
-						print_key_html("capnor_" . $i, "capopf", $bkg_nor, $cap_nor);
-					}
-					else
-					{
-						print_key_html("capnor_" . $i, "capopt", $bkg_nor, $cap_nor);
-					}
-				}
-				// normal key labels
-				if (($upp_nor != "") || ($write_maximal_keys == true))
-				{
-					print_key_html("uppnor_" . $i, "uppnor", null, $upp_nor);
-				}
-				if (($low_nor != "") || ($write_maximal_keys == true))
-				{
-					if ($key_opt == false)
-					{
-						print_key_html("lownor_" . $i, "lownor", null, $low_nor);
-					}
-					else
-					{
-						print_key_html("lownor_" . $i, "keynon", null, $low_nor);
-					}
-				}
-				// altgr key labels
-				if (($upp_agr != "") || ($write_maximal_keys == true))
-				{
-					print_key_html("uppagr_" . $i, "uppagr", null, $upp_agr);
-				}
-				if (($low_agr != "") || ($write_maximal_keys == true))
-				{
-					if ($key_opt == false)
-					{
-						print_key_html("lowagr_" . $i, "lownor", null, $low_agr);
-					}
-					else
-					{
-						print_key_html("lowagr_" . $i, "keynon", null, $low_agr);
-					}
+					$img_display = "block";
 				}
 				echo
-"							</div>\n";
+"								<img id=\"capimg_" . $i . "\" class=\"capimg\" style=\"left:" . $img_pos_x . "px;top:" . $img_pos_y . "px;width:" . $img_wid . "px;height:" . $img_hgh . "px;display:" . $img_display . ";\" src=\"" . $img_uri . "\"/>\n";
 			}
+			// key captions
+			if (($cap_shf != "") || ($write_maximal_keys == true))
+			{
+				print_key_html("capshf_" . $i, "capshf", $bkg_shf, $cap_shf);
+			}
+			if (($cap_ctl != "") || ($write_maximal_keys == true))
+			{
+				print_key_html("capctl_" . $i, "capctl", $bkg_ctl, $cap_ctl);
+			}
+			if (($cap_alt != "") || ($write_maximal_keys == true))
+			{
+				print_key_html("capalt_" . $i, "capalt", $bkg_alt, $cap_alt);
+			}
+			if (($cap_agr != "") || ($write_maximal_keys == true))
+			{
+				print_key_html("capagr_" . $i, "capagr", $bkg_agr, $cap_agr);
+			}
+			if (($cap_xtr != "") || ($write_maximal_keys == true))
+			{
+				print_key_html("capxtr_" . $i, "capxtr", $bkg_xtr, $cap_xtr);
+			}
+			if (($cap_nor != "") || ($write_maximal_keys == true))
+			{
+				if ($key_opt == false)
+				{
+					print_key_html("capnor_" . $i, "capopf", $bkg_nor, $cap_nor);
+				}
+				else
+				{
+					print_key_html("capnor_" . $i, "capopt", $bkg_nor, $cap_nor);
+				}
+			}
+			// normal key labels
+			if (($upp_nor != "") || ($write_maximal_keys == true))
+			{
+				print_key_html("uppnor_" . $i, "uppnor", null, $upp_nor);
+			}
+			if (($low_nor != "") || ($write_maximal_keys == true))
+			{
+				if ($key_opt == false)
+				{
+					print_key_html("lownor_" . $i, "lownor", null, $low_nor);
+				}
+				else
+				{
+					print_key_html("lownor_" . $i, "keynon", null, $low_nor);
+				}
+			}
+			// altgr key labels
+			if (($upp_agr != "") || ($write_maximal_keys == true))
+			{
+				print_key_html("uppagr_" . $i, "uppagr", null, $upp_agr);
+			}
+			if (($low_agr != "") || ($write_maximal_keys == true))
+			{
+				if ($key_opt == false)
+				{
+					print_key_html("lowagr_" . $i, "lownor", null, $low_agr);
+				}
+				else
+				{
+					print_key_html("lowagr_" . $i, "keynon", null, $low_agr);
+				}
+			}
+			echo
+"							</div>\n";
 		}
 	}
 ?>
@@ -532,16 +498,16 @@ var binding_table =
 <?php
 	// legend
 	// should I skip $i=1 and subtract 1 from the other vars?
-	for ($i = 0; $i < count($color_array); $i++)
+	foreach ($binding_color_array as $i => $binding_color_value)
 	{
 		$leg_value = "";
 		$leg_color = getkeycolor($i+1);
-		for ($j = 0; $j < count($legend_table); $j++)
+		foreach ($legend_table as $j => $legend_value)
 		{
-			$leg_group = $legend_table[$j][0];
+			$leg_group = $legend_value[0];
 			if (($leg_group-1) == $i)
 			{
-				$leg_value = $legend_table[$j][1];
+				$leg_value = $legend_value[1];
 				break;
 			}
 		}
@@ -565,18 +531,18 @@ var binding_table =
 <?php
 	// commands
 	// keep in mind that the "additional notes" are supposed to be a special case
-	foreach ($commandlabels_table as $i => $commandlabels_value)
+	foreach ($commandlabel_table as $i => $commandlabel_value)
 	{
 		if (array_key_exists($i, $commandouter_table))
 			$commandinner_table = $commandouter_table[$i];
 		else
 			$commandinner_table = [];
-		$commandlabels_label = $commandlabels_value[1];
-		$commandlabels_abbrv = $commandlabels_value[2];
+		$commandlabel_label = $commandlabel_value[1];
+		$commandlabel_abbrv = $commandlabel_value[2];
 		echo
 "					<div class=\"inbtop comdiv\">
-						<h3>" . cleantextHTML($commandlabels_label) . "</h3>
-						<div id=\"table_" . $commandlabels_abbrv . "\" class=\"nottbl\">\n";
+						<h3>" . cleantextHTML($commandlabel_label) . "</h3>
+						<div id=\"table_" . $commandlabel_abbrv . "\" class=\"nottbl\">\n";
 
 		foreach ($commandinner_table as $j => $commandinner_value)
 		{
