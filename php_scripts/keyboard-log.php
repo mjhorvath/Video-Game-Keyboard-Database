@@ -57,6 +57,11 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2019/12/08: Tweaked some miscellaneous CSS.</li>
+	<li>2019/12/08: Moved &quot;keyboard-sitemap.php&quot;, applied some stylesheets to it, and added some JavaScript behaviors to it.</li>
+	<li>2019/12/08: Renamed several files and scripts.</li>
+	<li>2019/12/08: Split queries scripts into multiple files depending on where they were needed.</li>
+	<li>2019/12/08: Completed the switch to associative arrays except for &quot;keyboard-wiki.php&quot;.</li>
 	<li>2019/12/04: Tweaked the style of HTML tables and their sub-elements in &quot;keyboard-list.php&quot;.</li>
 	<li>2019/12/04: Continued the ongoing switch to associative arrays in &quot;keyboard-list.php&quot;.</li>
 	<li>2019/12/04: Merged the &quot;leadingZeros2&quot; and &quot;leadingZeros3&quot; functions into one function.</li>
