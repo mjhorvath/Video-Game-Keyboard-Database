@@ -98,6 +98,7 @@
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"" . cleantextHTML($language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name)	. ")\"/>
 		<meta name=\"keywords\" content=\""    . cleantextHTML($language_keywords	. ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name)	. "\"/>
+		<script src=\"" . $path_lib1 . "java-sitemap.js\"></script>
 		<script src=\"" . $path_lib1 . "java-footer.js\"></script>\n";
 	echo writeAnalyticsTracking();
 	echo
@@ -109,7 +110,7 @@
 		</header>
 		<main>
 			<p>I have created templates for MediaWiki that do basically the same thing as the other charts on this site. You can find the templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Fandom</a>. There is a test case <a target="_blank" href="https://templates.fandom.com/wiki/User:Mikali_Homeworld/Kbdchart_example">located here</a>. Below is the code you would use to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the generated chart is wider than a typical MediaWiki page.</p>
-			<textarea readonly="readonly" wrap="off" style="width:100%;height:30em;font-family:monospace;">
+			<textarea id="site_out" readonly="readonly" wrap="off" style="width:100%;height:30em;font-family:monospace;">
 {{kbdchart
 <?php
 	// keys
@@ -128,8 +129,17 @@
 		$key_agr	= $binding_row[9];
 		$bkg_xtr	= getkeycolor($binding_row[10]);
 		$key_xtr	= $binding_row[11];
-		echo
-"|" . $leadZ . "b=" . $bkg_nor . "|". $leadZ . "t=" . cleantextWiki($key_nor) . "|" . $leadZ . "s=" . cleantextWiki($key_shf) . "|" . $leadZ . "c=" . cleantextWiki($key_ctl) . "|" . $leadZ . "a=" . cleantextWiki($key_alt) . "\n";
+		if ($bkg_nor != "")
+			echo "|" . $leadZ . "b=" . $bkg_nor;
+		if ($key_nor != "")
+			echo "|" . $leadZ . "t=" . cleantextWiki($key_nor);
+		if ($key_shf != "")
+			echo "|" . $leadZ . "s=" . cleantextWiki($key_shf);
+		if ($key_ctl != "")
+			echo "|" . $leadZ . "c=" . cleantextWiki($key_ctl);
+		if ($key_alt != "")
+			echo "|" . $leadZ . "a=" . cleantextWiki($key_alt);
+		echo "\n";
 	}
 ?>
 }}
@@ -148,6 +158,11 @@
 ?>
 }}
 			</textarea>
+			<button onclick="select_and_copy_all();">Select All &amp; Copy</button>
+<!--
+			<button onclick="clear_all();">Clear</button>
+			<button onclick="" disabled="disabled">Reset</button>
+-->
 		</main>
 		<footer>
 <?php include($path_lib2 . "keyboard-footer-1.php"); ?>

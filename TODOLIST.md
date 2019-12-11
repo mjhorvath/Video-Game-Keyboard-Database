@@ -54,6 +54,8 @@
   if it is not actually possible to display these colors properly at this time.
   [Ed. the reasoning being that it may become possible to display these colors 
   properly at some point in the future, once I figure out how they should work.]
+* Currently, MediaWiki output is limited to commands that have bindings. Should 
+  there be a setting that tells the script to output every key and key modifier?
 
 ### Auditing, Authors, Submissions, Etc.
 * Should create a table of authors/contributers that automatically pulls info 

@@ -114,8 +114,10 @@
 	echo
 "			</textarea>
 			<button onclick=\"select_and_copy_all();\">Select All &amp; Copy</button>
+<!--
 			<button onclick=\"clear_all();\">Clear</button>
 			<button onclick=\"\" disabled=\"disabled\">Reset</button>
+-->
 		</main>
 		<footer>\n";
 	include($path_lib1 . "keyboard-footer-2.php");
