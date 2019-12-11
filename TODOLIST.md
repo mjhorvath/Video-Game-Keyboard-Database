@@ -54,8 +54,6 @@
   if it is not actually possible to display these colors properly at this time.
   [Ed. the reasoning being that it may become possible to display these colors 
   properly at some point in the future, once I figure out how they should work.]
-* Currently, the MediaWiki format generates lines of code for keys that are not 
-  used by a particular game. Should I not generate these lines of code?
 
 ### Auditing, Authors, Submissions, Etc.
 * Should create a table of authors/contributers that automatically pulls info 
@@ -312,6 +310,17 @@
   position table so that they *are* based on the IBM position codes? [Ed. I 
   think the IBM position codes only go up to a certain number. IIRC, they don't 
   include a lot of the newer keys such as "Windows" or "Super" among others.]
+* The background and sprite images used in "java-cubescatter.js" are based on a 
+  hexagonal grid. However, the width-to-height ratio of a hexagon is 1:sqrt(3), 
+  which is not a ratio of integers. Is there a way to alter the sprites somehow 
+  to achieve greater precision? Can I scale and position sprites using decimal 
+  values? [Ed. most browsers do in fact support fractional pixel dimensions. 
+  However, I do not know if this is also true for an HTML element's background 
+  property--especially a background composed of bitmap images. One alternative 
+  might be to switch to 2:1 dimetric projection, in which case the width-to-
+  height ratio becomes one of integers. Quite possibly I could also switch from 
+  using bitmap images to using SVG images. But these would likely not work very 
+  well in every Web browser.]
 
 ### Rejected
 * Tweak the "cleantext" functions and/or the query functions so that separate 
@@ -335,22 +344,16 @@
   better to simply reuse the ID number for a new layout.]
 * Can I shorten "foreach ($topic_array as $i => $topic_value)" to not include 
   the "$topic_value" part? [Ed. does not seem to be possible.]
-* I think the "cubescatter.js" script is using decimal values for screen pixel 
-  dimensions and coordinates. Need to re-do all the sprites in POV-Ray to use 
-  integer values if possible. May need to switch to dimetric projection instead 
-  of isometric projection, however, since regular hexagons cannot be tiled 
-  precisely using integer pixel dimensions. [Ed. the cubes are never going to 
-  line up exactly unless I switch to 2:1 dimetric projection.]
 
 ### Ongoing
 * Double check all PHP and JS code for instances of the strings "counting!", 
-  "cleaning!", "hardcoded" and "non!". Problems might exist at these locations.
+  "cleaning!", "hardcoded!" and "non!". Problems might exist at these locations.
 * Make sure JavaScript arrays line up prettily.
 * Just for fun, run a script that counts and logs the number of lines of code.
-  [Ed. I installed a Windows program called LocMetrics to accomplish this, and 
+  [Ed. I installed a freeware Windows tool called LocMetrics for this purpose. 
   It is a very easy tool to use. I am not sure how well it "understands" HTML, 
-  JS and PHP code, however. The website says "C#, C++, Java, and SQL". I also 
-  did not point the tool at the database dumps or these wiki documents.]
+  JS and PHP code, however. The website says it supports "C#, C++, Java, and 
+  SQL". I did not point the tool at the database dumps or these wiki documents.]
 * Ideally, the project should still function as intended even if I have re-
   indexed the database! Make sure the PHP and JS tables are using the same 
   indexes as in the database. (Remember to subtract 1 however.)
@@ -485,3 +488,6 @@
   of numerical "for" loops, or start using "isset" and "array_key_exists" a lot 
   more often than I have been. Ditto for the JavaScript code. [Ed. I have 
   switched to using "foreach" and "for...in" wherever possible.]
+* Currently, the MediaWiki format generates lines of code for keys that are not 
+  used by a particular game. Should I not generate these lines of code? [Ed. I 
+  edited the script to omit keys with no actions bound to them.]

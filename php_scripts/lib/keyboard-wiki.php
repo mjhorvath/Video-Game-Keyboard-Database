@@ -22,9 +22,6 @@
 	include($path_lib2 . "queries-chart.php");
 
 	$path_file		= "./keyboard-wiki.php";	// this file
-	$keys_number		= 118;		// hardcoded, but probably necessary
-	$commands_number	= 10;		// hardcoded, but probably necessary, not implemented yet
-	$legend_number		= 12;		// hardcoded, but probably necessary
 	$binding_table		= [];
 	$legend_table		= [];
 	$command_table		= [];		// not implemented yet
@@ -111,45 +108,26 @@
 			<h2><?php echo cleantextHTML($page_title_a . $temp_separator . $page_title_b); ?></h2>
 		</header>
 		<main>
-			<p>I have created templates for MediaWiki that do basically the same thing as the other charts on this site. You can find the templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Fandom</a>. Below is the code you would use to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the generated chart is wider than a typical MediaWiki page.</p>
+			<p>I have created templates for MediaWiki that do basically the same thing as the other charts on this site. You can find the templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Fandom</a>. There is a test case <a target="_blank" href="https://templates.fandom.com/wiki/User:Mikali_Homeworld/Kbdchart_example">located here</a>. Below is the code you would use to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the generated chart is wider than a typical MediaWiki page.</p>
 			<textarea readonly="readonly" wrap="off" style="width:100%;height:30em;font-family:monospace;">
 {{kbdchart
 <?php
 	// keys
-	for ($i = 0; $i < $keys_number; $i++)
+	foreach ($binding_table as $i => $binding_row)
 	{
-		$leadZ = leadingZeros($i, 3);
-		if (array_key_exists($i, $binding_table))
-		{
-			$binding_row	= $binding_table[$i];
-			$bkg_nor	= getkeycolor($binding_row[0]);
-			$key_nor	= $binding_row[1];
-			$bkg_shf	= getkeycolor($binding_row[2]);
-			$key_shf	= $binding_row[3];
-			$bkg_ctl	= getkeycolor($binding_row[4]);
-			$key_ctl	= $binding_row[5];
-			$bkg_alt	= getkeycolor($binding_row[6]);
-			$key_alt	= $binding_row[7];
-			$bkg_agr	= getkeycolor($binding_row[8]);
-			$key_agr	= $binding_row[9];
-			$bkg_xtr	= getkeycolor($binding_row[10]);
-			$key_xtr	= $binding_row[11];
-		}
-		else
-		{
-			$bkg_nor = "";
-			$key_nor = "";
-			$bkg_shf = "";
-			$key_shf = "";
-			$bkg_ctl = "";
-			$key_ctl = "";
-			$bkg_alt = "";
-			$key_alt = "";
-			$bkg_agr = "";
-			$key_agr = "";
-			$bkg_xtr = "";
-			$key_xtr = "";
-		}
+		$leadZ		= leadingZeros($i, 3);
+		$bkg_nor	= getkeycolor($binding_row[0]);
+		$key_nor	= $binding_row[1];
+		$bkg_shf	= getkeycolor($binding_row[2]);
+		$key_shf	= $binding_row[3];
+		$bkg_ctl	= getkeycolor($binding_row[4]);
+		$key_ctl	= $binding_row[5];
+		$bkg_alt	= getkeycolor($binding_row[6]);
+		$key_alt	= $binding_row[7];
+		$bkg_agr	= getkeycolor($binding_row[8]);
+		$key_agr	= $binding_row[9];
+		$bkg_xtr	= getkeycolor($binding_row[10]);
+		$key_xtr	= $binding_row[11];
 		echo
 "|" . $leadZ . "b=" . $bkg_nor . "|". $leadZ . "t=" . cleantextWiki($key_nor) . "|" . $leadZ . "s=" . cleantextWiki($key_shf) . "|" . $leadZ . "c=" . cleantextWiki($key_ctl) . "|" . $leadZ . "a=" . cleantextWiki($key_alt) . "\n";
 	}
@@ -159,20 +137,11 @@
 {{kbdlegend
 <?php
 	// legend
-	for ($i = 0; $i < $legend_number; $i++)
+	foreach ($legend_table as $i => $legend_row)
 	{
-		$leadZ = leadingZeros($i, 2);
-		if (array_key_exists($i, $legend_table))
-		{
-			$legend_row = $legend_table[$i];
-			$leg_grp = getkeycolor($legend_row[0]);
-			$leg_dsc = $legend_row[1];
-		}
-		else
-		{
-			$leg_grp = "";
-			$leg_dsc = "";
-		}
+		$leadZ		= leadingZeros($i, 2);
+		$leg_grp	= getkeycolor($legend_row[0]);
+		$leg_dsc	= $legend_row[1];
 		echo
 "|" . $leadZ. "lgb=" . $leg_grp . "|" . $leadZ . "lgt=" . cleantextWiki($leg_dsc) . "\n";
 	}

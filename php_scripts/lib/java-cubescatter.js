@@ -22,9 +22,10 @@
 // then divide by screen_mul. Not necessary if they stay at 
 // their current values, though.
 
-var start_idx = -100000;
+var start_idx = -10000;		// should really calculated dynamically based on vertical screen resolution
 var atom_dim = [97,56];
 var units_dim = [atom_dim[0] / 8, atom_dim[1] / 8];
+var screen_dim = [];
 var sprites_dat =
 [
 	// pixel w, pixel h, file path, 3D dimensions, likelihood/odds
@@ -38,27 +39,29 @@ var sprites_dat =
 // need to double check if these parameters are still correct after so many years
 if (window.innerWidth)
 {
-	var screen_wid = window.innerWidth;
-	var screen_hgh = window.innerHeight;
+	screen_dim[0] = window.innerWidth;
+	screen_dim[1] = window.innerHeight;
 }
 else if (document.documentElement.clientWidth)
 {
-	var screen_wid = document.documentElement.clientWidth;
-	var screen_hgh = document.documentElement.clientHeight;
+	screen_dim[0] = document.documentElement.clientWidth;
+	screen_dim[1] = document.documentElement.clientHeight;
 }
 else if (document.body.clientWidth)
 {
-	var screen_wid = document.body.clientWidth;
-	var screen_hgh = document.body.clientHeight;
+	screen_dim[0] = document.body.clientWidth;
+	screen_dim[1] = document.body.clientHeight;
 }
 
-var screen_dim = [screen_wid - atom_dim[0], screen_hgh - atom_dim[1]];
-var screen_mul = screen_wid * screen_hgh / 1024 / 768;
+var screen_dim = [screen_dim[0] - atom_dim[0], screen_dim[1] - atom_dim[1]];
+var screen_mul = screen_dim[0] * screen_dim[1] / 1024 / 768;
+
+//console.log('screen_dim[0]:' + screen_dim[0] + ';screen_dim[1]:' + screen_dim[1] + ';');
 
 var grid_table = [];
 var grid_padding = 8;
-var grid_dim_x = Math.ceil(screen_wid / units_dim[0] / 2);
-var grid_dim_y = Math.ceil(screen_hgh / units_dim[1] / 2);
+var grid_dim_x = Math.ceil(screen_dim[0] / units_dim[0] / 2);
+var grid_dim_y = Math.ceil(screen_dim[1] / units_dim[1] / 2);
 var grid_size = grid_dim_x + grid_dim_y + grid_padding * 2;
 
 var cube_pos = [];
@@ -157,6 +160,8 @@ function cube_init()
 			}
 		}
 		var img_dim = img_this[3];
+		var img_dim_i = img_dim[0];
+		var img_dim_j = img_dim[1];
 		var img_buf = Math.max(img_dim[0], img_dim[1]) - 1;
 		img_new.src = img_this[2];
 		img_new.style.width  = img_this[0] + 'px';
@@ -169,8 +174,6 @@ function cube_init()
 		var grid_cll = grid_location(coo_this);
 		var grid_cll_i = grid_cll[0];
 		var grid_cll_j = grid_cll[1];
-		var img_dim_i = img_dim[0];
-		var img_dim_j = img_dim[1];
 		for (var i = 0; i < img_dim_i; i++)
 		{
 			for (var j = 0; j < img_dim_j; j++)
@@ -208,7 +211,7 @@ function snake_init()
 		document.body.appendChild(img_new);
 		snake_cll[i] = [0,0];
 	}
-	window.setInterval(snake_move, 250);
+	window.setInterval(snake_move, 500);
 }
 
 function snake_move()
@@ -301,6 +304,7 @@ function snake_position(temp_dir, flag)
 		snake_cll[snake_seg] = new_cll;
 		snake_idx += new_dir[1];
 		var snake_image = document.getElementById('snake' + snake_seg);
+//		console.log('left:' + snake_pos[0] + ';top:' + snake_pos[1] + ';');
 		snake_image.style.left = snake_pos[0] + 'px';
 		snake_image.style.top  = snake_pos[1] + 'px';
 		snake_image.style.zIndex = snake_idx;
