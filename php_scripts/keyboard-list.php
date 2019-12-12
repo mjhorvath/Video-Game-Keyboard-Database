@@ -33,7 +33,7 @@
 	include($path_ssi1	. "analyticstracking.php");
 	include($path_ssi1	. "keyboard-connection.php");
 	include($path_lib1	. "scripts-all.php");
-	include($path_lib1	. "queries-all.php");
+	include($path_lib1	. "queries-common.php");
 	include($path_lib1	. "queries-list.php");
 
 	$genre_table		= [];
@@ -68,8 +68,8 @@
 		<link rel=\"canonical\" href=\"http://isometricland.net/keyboard/keyboard-list.php\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_common.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_masterlist.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-list.css\"/>
 		<script src=\"" . $path_lib1  . "java-list.js\"></script>
 		<script src=\"" . $path_java1 . "sort_table.js\"></script>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
@@ -84,7 +84,7 @@
 			<p>You can sort the table by clicking on the arrow icons in the table header.</p>
 		</header>
 		<main>
-<img id=\"waiting\" src=\"./lib/animated_loading_icon.webp\" alt=\"loading\" style=\"position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;\"/>
+<img id=\"waiting\" src=\"./lib/animated-loading-icon.webp\" alt=\"loading\" style=\"position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;\"/>
 <table id=\"tableToSort\" class=\"kbd_tab\">
 	<thead>
 		<tr>
@@ -151,7 +151,7 @@
 </table>
 		</main>
 		<footer>\n";
-	include($path_lib1 . "keyboard-footer-2.php");
+	include($path_lib1 . "footer-common.php");
 	echo
 "		</footer>
 	</body>

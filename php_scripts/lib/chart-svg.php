@@ -21,7 +21,7 @@
 	header("Content-type: image/svg+xml");
 	include($path_lib2 . "queries-chart.php");
 
-	$path_file		= "./keyboard-svg.php";		// this file
+	$path_file		= "./chart-svg.php";		// this file
 	$stylegroup_id		= 0;		// set by selThisStyleChart(), also contained inside $stylegroup_table
 //	$stylegroup_table	= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "keyboard-footer.php"
 //	$style_table		= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "keyboard-footer.php"
@@ -223,7 +223,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	</metadata>
 	<style type="text/css">
 /* <![CDATA[ */
-<?php include($path_lib2 . "svg_" . $style_filename . ".css"); ?>
+<?php include($path_lib2 . "svg-" . $style_filename . ".css"); ?>
 /* ]]> */
 	</style>
 	<defs>

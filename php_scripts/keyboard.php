@@ -33,7 +33,7 @@
 	include($path_ssi1	. "analyticstracking.php");
 	include($path_ssi1	. "keyboard-connection.php");
 	include($path_lib1	. "scripts-all.php");
-	include($path_lib1	. "queries-all.php");
+	include($path_lib1	. "queries-common.php");
 	include($path_lib1	. "queries-frontend.php");
 	include($path_lib1	. "queries-js.php");
 
@@ -189,18 +189,18 @@
 		<link rel=\"canonical\" href=\"http://isometricland.net/keyboard/keyboard.php\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_common.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_accordion.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_radio.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_frontend.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-accordion.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-radio.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-frontend.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"Visual keyboard hotkey & binding diagrams for video games and other software.\"/>
 		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference\"/>
-		<script src=\"" . $path_lib1  . "java-all.js\"></script>
+		<script src=\"" . $path_lib1  . "java-common.js\"></script>
 		<script src=\"" . $path_lib1  . "java-frontend.js\"></script>
 		<script src=\"" . $path_java1 . "jquery-1.4.2.min.js\"></script>
 		<script src=\"" . $path_java1 . "jquery-accordionmenu.js\"></script>
-		<script src=\"" . $path_lib1  . "java-cubescatter.js\"></script>\n";
+		<script src=\"" . $path_lib1  . "java-cubesnake.js\"></script>\n";
 	echo writeAnalyticsTracking();
 	echo
 "		<script>
@@ -223,13 +223,14 @@ var seourl_table =
 "};
 		</script>
 	</head>
-	<body onload=\"Select_Init();/*cube_scatter();*/\">
+	<body onload=\"Select_Init();cube_snake_init();\">
 		<header>
 			<h2>Video Game Keyboard Diagrams</h2>
 		</header>
 		<main>\n";
 ?>
-<img id="waiting" src="<?php echo $path_lib1; ?>animated_loading_icon.webp" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
+<div id="snake_pane"></div>
+<img id="waiting" src="<?php echo $path_lib1; ?>animated-loading-icon.webp" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
 <form name="keyboard_select">
 	<input type="hidden" name="lay" value=""/>
 	<input type="hidden" name="gam" value=""/>
@@ -473,7 +474,7 @@ var seourl_table =
 	echo
 "		</main>
 		<footer>\n";
-	include($path_lib1 . "keyboard-footer-2.php");
+	include($path_lib1 . "footer-common.php");
 	echo
 "		</footer>
 	</body>

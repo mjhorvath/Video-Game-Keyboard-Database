@@ -42,7 +42,7 @@
 		<link rel=\"canonical\" href=\"http://isometricland.net/keyboard/keyboard-log.php\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-common.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"\"/>
 		<meta name=\"keywords\" content=\"\"/>\n";
@@ -57,11 +57,14 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2019/12/12: Tweaks to &quot;cube snake&quot; script.</li>
+	<li>2019/12/12: MediaWiki output now only contains code that is absolutely needed.</li>
+	<li>2019/12/12: Renamed many files to be more consistent.</li>
 	<li>2019/12/08: Tweaked some miscellaneous CSS.</li>
 	<li>2019/12/08: Moved &quot;keyboard-sitemap.php&quot;, applied some stylesheets to it, and added some JavaScript behaviors to it.</li>
 	<li>2019/12/08: Renamed several files and scripts.</li>
 	<li>2019/12/08: Split queries scripts into multiple files depending on where they were needed.</li>
-	<li>2019/12/08: Completed the switch to associative arrays except for &quot;keyboard-wiki.php&quot;.</li>
+	<li>2019/12/08: Completed the switch to associative arrays except for &quot;chart-wiki.php&quot;.</li>
 	<li>2019/12/04: Tweaked the style of HTML tables and their sub-elements in &quot;keyboard-list.php&quot;.</li>
 	<li>2019/12/04: Continued the ongoing switch to associative arrays in &quot;keyboard-list.php&quot;.</li>
 	<li>2019/12/04: Merged the &quot;leadingZeros2&quot; and &quot;leadingZeros3&quot; functions into one function.</li>
@@ -290,7 +293,7 @@
 	echo
 "		</main>
 		<footer>\n";
-	include($path_lib1 . "keyboard-footer-2.php");
+	include($path_lib1 . "footer-common.php");
 	echo
 "		</footer>
 	</body>

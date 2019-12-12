@@ -44,7 +44,7 @@
 	{
 		global $con, $urlqueries_table;
 		// array indices are hardcoded here, should get them from database instead
-		$selectString =	"SELECT g.game_name, g.game_friendlyurl, l.layout_name, s.style_name, f.format_name
+		$selectString =	"SELECT g.game_name, g.game_seourl, l.layout_name, s.style_name, f.format_name
 				FROM games AS g, layouts AS l, styles AS s, formats AS f
 				WHERE g.game_id = "	. $urlqueries_table[0][2] . "
 				AND l.layout_id = "	. $urlqueries_table[1][2] . "

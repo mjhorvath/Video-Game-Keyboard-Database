@@ -1,6 +1,6 @@
 *		{font-family:DejaVu Sans Condensed,Sans-Serif;line-height:150%;}
 p		{}
-body		{background-color:#c0c0c0;background-image:url("isometric_grid.png");background-attachment:fixed;color:#000000;font-size:medium;margin:auto;width:80%;max-width:50em;}
+body		{background-color:#c0c0c0;background-image:url("isometric-grid.png");background-attachment:fixed;color:#000000;font-size:medium;margin:auto;width:80%;max-width:50em;}
 footer		{font-size:smaller;margin-top:3em;}
 input[type="button"],
 button			{padding:0.5em;background-color:#e0e0e0;border:1px solid #a0a0a0;}

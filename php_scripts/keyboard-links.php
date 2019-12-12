@@ -42,7 +42,7 @@
 		<link rel=\"canonical\" href=\"http://isometricland.net/keyboard/keyboard-links.php\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-common.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"\"/>
 		<meta name=\"keywords\" content=\"\"/>\n";
@@ -80,7 +80,7 @@
 	echo
 "		</main>
 		<footer>\n";
-	include($path_lib1 . "keyboard-footer-2.php");
+	include($path_lib1 . "footer-common.php");
 	echo
 "		</footer>
 	</body>

@@ -311,7 +311,7 @@
 		}
 	}
 	// cleaning!
-	// this function is for "keyboard-submit.php", need to create a version of this function for "keyboard-svg.php" as well
+	// this function is for "chart-submit.php", need to create a version of this function for "chart-svg.php" as well
 	function print_key_html($in_id, $in_class, $in_color, $in_value)
 	{
 		echo

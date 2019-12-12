@@ -18,7 +18,7 @@
 // <https://www.gnu.org/licenses/>.
 
 var path_lib1 = './lib/';
-new Image().src = path_lib1 + 'animated_loading_icon.webp';
+new Image().src = path_lib1 + 'animated-loading-icon.webp';
 
 var layout_id = 0;
 var record_id = 0;
@@ -907,7 +907,7 @@ function do_recaptcha()
 		$.ajax
 		({
 			type: "POST",
-			url: path_lib1 + "keyboard-recaptcha.php",
+			url: path_lib1 + "recaptcha.php",
 			data:
 			{
 				name:		name.val(),

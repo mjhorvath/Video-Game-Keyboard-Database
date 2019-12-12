@@ -130,8 +130,6 @@
   "sort_order" column to ensure the colors are in the correct order.
 * Need someone to look over the code and determine whether it is susceptible to 
   SQL injection.
-* ~~Rename the "game_friendlyurl" column to "game_seourl" in order to be 
-  consistent and not confuse anybody.~~
 * Make sure the SQL result sets are ordered properly. Set the sort order in SQL 
   wherever possible.
 * Double check whether I can replace any instances of PHP sorting with SQL 
@@ -493,3 +491,5 @@
 * Currently, the MediaWiki format generates lines of code for keys that are not 
   used by a particular game. Should I not generate these lines of code? [Ed. I 
   edited the script to omit keys with no actions bound to them.]
+* Rename the "game_friendlyurl" column to "game_seourl" in order to be 
+  consistent and not confuse anybody.

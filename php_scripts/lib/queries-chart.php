@@ -73,7 +73,7 @@
 	function selThisGamesIDChart()
 	{
 		global $con, $game_id;
-		$selectString = "SELECT g.game_name, g.game_friendlyurl FROM games AS g WHERE g.game_id = " . $game_id . ";";
+		$selectString = "SELECT g.game_name, g.game_seourl FROM games AS g WHERE g.game_id = " . $game_id . ";";
 		selectQuery($con, $selectString, "resThisGamesIDChart");
 	}
 	function resThisGamesIDChart($in_result)
@@ -82,7 +82,7 @@
 		$game_row = mysqli_fetch_row($in_result);
 		if ($game_row)
 		{
-			// game_name, game_friendlyurl
+			// game_name, game_seourl
 			$game_name = $game_row[0];
 			$game_seo = $game_row[1];
 		}
@@ -90,7 +90,7 @@
 	function selThisGameSEOChart()
 	{
 		global $con, $game_seo;
-		$selectString = "SELECT g.game_name, g.game_id FROM games AS g WHERE g.game_friendlyurl = \"" . $game_seo . "\";";
+		$selectString = "SELECT g.game_name, g.game_id FROM games AS g WHERE g.game_seourl = \"" . $game_seo . "\";";
 		selectQuery($con, $selectString, "resThisGameSEOChart");
 	}
 	function resThisGameSEOChart($in_result)

@@ -75,7 +75,7 @@
 	function selSeoUrls()
 	{
 		global $con;
-		$selectString = "SELECT g.game_id, g.game_friendlyurl FROM games AS g ORDER BY g.game_id;";
+		$selectString = "SELECT g.game_id, g.game_seourl FROM games AS g ORDER BY g.game_id;";
 		selectQuery($con, $selectString, "resSeoUrls");
 	}
 	function resSeoUrls($in_result)
@@ -83,7 +83,7 @@
 		global $seourl_table;
 		while ($game_row = mysqli_fetch_row($in_result))
 		{
-			// game_id, game_friendlyurl
+			// game_id, game_seourl
 			$game_id = $game_row[0];
 			$seourl_table[$game_id-1] = $game_row[1];
 		}

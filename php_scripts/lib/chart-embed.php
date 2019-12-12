@@ -21,7 +21,7 @@
 	header("Content-Type: text/html; charset=utf8");
 	include($path_lib2 . "queries-chart.php");
 
-	$path_file		= "./keyboard-embed.php";	// this file
+	$path_file		= "./chart-embed.php";	// this file
 	$commandouter_table	= [];
 	$commandouter_count	= 0;
 	$commandlabel_table	= [];
@@ -117,7 +117,7 @@
 		<link rel=\"canonical\" href=\"" . $can_url . "\">
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\">
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root2 . "style_normalize.css\">
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_footer.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-footer.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
 		<meta name=\"description\" content=\""	. $language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name	. ")\"/>
 		<meta name=\"keywords\" content=\""	. $language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
@@ -125,7 +125,7 @@
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";
-	include($path_lib2 . "embed_" . $style_filename . ".css");
+	include($path_lib2 . "embed-" . $style_filename . ".css");
 	echo
 "		</style>\n";
 ?>
@@ -176,7 +176,7 @@
 			</div>
 		</main>
 		<footer>
-<?php include($path_lib2 . "keyboard-footer-1.php"); ?>
+<?php include($path_lib2 . "footer-chart.php"); ?>
 		</footer>
 	</body>
 </html>

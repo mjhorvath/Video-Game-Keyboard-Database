@@ -21,7 +21,7 @@
 	header("Content-Type: text/html; charset=utf8");
 	include($path_lib2 . "queries-chart.php");
 
-	$path_file		= "./keyboard-wiki.php";	// this file
+	$path_file		= "./chart-wiki.php";	// this file
 	$binding_table		= [];
 	$legend_table		= [];
 	$command_table		= [];		// not implemented yet
@@ -92,13 +92,13 @@
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root2 . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_common.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_mediawiki.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_footer.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-wiki.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-footer.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"" . cleantextHTML($language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name)	. ")\"/>
 		<meta name=\"keywords\" content=\""    . cleantextHTML($language_keywords	. ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name)	. "\"/>
-		<script src=\"" . $path_lib1 . "java-sitemap.js\"></script>
+		<script src=\"" . $path_lib1 . "java-wiki.js\"></script>
 		<script src=\"" . $path_lib1 . "java-footer.js\"></script>\n";
 	echo writeAnalyticsTracking();
 	echo
@@ -165,7 +165,7 @@
 -->
 		</main>
 		<footer>
-<?php include($path_lib2 . "keyboard-footer-1.php"); ?>
+<?php include($path_lib2 . "footer-chart.php"); ?>
 		</footer>
 	</body>
 </html>

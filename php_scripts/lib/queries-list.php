@@ -43,7 +43,7 @@
 	function selGamesList()
 	{
 		global $con;
-		$selectString = "SELECT g.genre_id, g.game_id, g.game_name, g.game_friendlyurl FROM games AS g ORDER BY g.game_name;";
+		$selectString = "SELECT g.genre_id, g.game_id, g.game_name, g.game_seourl FROM games AS g ORDER BY g.game_name;";
 		selectQuery($con, $selectString, "resGamesList");
 	}
 	function resGamesList($in_result)
@@ -51,7 +51,7 @@
 		global $game_table;
 		while ($game_row = mysqli_fetch_row($in_result))
 		{
-			// genre_id, game_id, game_name, game_friendlyurl
+			// genre_id, game_id, game_name, game_seourl
 			$game_id = $game_row[1];
 			$game_table[$game_id-1] = $game_row;
 		}

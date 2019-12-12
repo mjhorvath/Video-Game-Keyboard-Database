@@ -31,7 +31,7 @@
 	include($path_ssi2	. "analyticstracking.php");
 	include($path_ssi2	. "keyboard-connection.php");
 	include($path_lib2	. "scripts-all.php");
-	include($path_lib2	. "queries-all.php");
+	include($path_lib2	. "queries-common.php");
 
 	// gather URL queries
 	$format_id	= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0"))	: null;
@@ -51,16 +51,16 @@
 	switch ($format_id)
 	{
 		case 0:
-			include($path_lib2 . "keyboard-embed.php");
+			include($path_lib2 . "chart-embed.php");
 		break;
 		case 1:
-			include($path_lib2 . "keyboard-svg.php");
+			include($path_lib2 . "chart-svg.php");
 		break;
 		case 2:
-			include($path_lib2 . "keyboard-wiki.php");
+			include($path_lib2 . "chart-wiki.php");
 		break;
 		case 3:
-			include($path_lib2 . "keyboard-submit.php");
+			include($path_lib2 . "chart-submit.php");
 		break;
 		case 4:
 			echo "PDF format not implemented yet.\n";

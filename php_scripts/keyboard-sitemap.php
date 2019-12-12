@@ -31,7 +31,7 @@
 	include($path_ssi1	. "analyticstracking.php");
 	include($path_ssi1	. "keyboard-connection.php");
 	include($path_lib1	. "scripts-all.php");
-	include($path_lib1	. "queries-all.php");
+	include($path_lib1	. "queries-common.php");
 	include($path_lib1	. "queries-list.php");
 
 	$game_table		= [];
@@ -59,8 +59,8 @@
 "<!DOCTYPE HTML>
 <html>
 	<head>
-		<script src=\"" . $path_lib1 . "java-sitemap.js\"></script>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_common.css\"/>
+		<script src=\"" . $path_lib1 . "java-wiki.js\"></script>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-common.css\"/>
 		<title>VGKD - Sitemap Code</title>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 	</head>
@@ -120,7 +120,7 @@
 -->
 		</main>
 		<footer>\n";
-	include($path_lib1 . "keyboard-footer-2.php");
+	include($path_lib1 . "footer-common.php");
 	echo
 "		</footer>
 	</body>

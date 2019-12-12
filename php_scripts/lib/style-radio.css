@@ -50,7 +50,7 @@ div.container input:checked ~ span.checkmark
 /* When the radio button is disabled, add a gray background */
 div.container input:disabled ~ span.checkmark
 {
-	background-image: url("icon_x_disabled.png");
+	background-image: url("icon-x-disabled.png");
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */

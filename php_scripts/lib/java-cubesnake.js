@@ -17,26 +17,47 @@
 // License along with this program.  If not, see 
 // <https://www.gnu.org/licenses/>.
 
-// To make min/max cube positions scale with screen dimensions, 
-// need to change the code to subtract or add min and max to 1/2
-// then divide by screen_mul. Not necessary if they stay at 
-// their current values, though.
 
-var start_idx = -10000;		// should really calculated dynamically based on vertical screen resolution
-var atom_dim = [97,56];
-var units_dim = [atom_dim[0] / 8, atom_dim[1] / 8];
-var screen_dim = [];
+// NOTES
+
+// To make min/max cube positions scale with screen dimensions, need to change 
+// the code to subtract or add min and max to 1/2 then divide by screen_mul. 
+// Not necessary if they stay at their current values, though.
+
+// I've tested in various browsers, and the screen DPI needs to be 1:1 in order 
+// for the script to look good. Zooming in/out makes the script look like crap.
+
+/*
+//var hex_scale = 2/1.7320508075688772935274463415059;		// make the grid based on regular hexagons, doesn't work for the cubes yet
+var hex_scale = 1;
+var atom_dim = [96,48*hex_scale];
 var sprites_dat =
 [
 	// pixel w, pixel h, file path, 3D dimensions, likelihood/odds
-	[97, 112, './lib/isometric_sprite_cube_sml.png', [1,1,1], 0.5],
-	[97, 112, './lib/isometric_sprite_pyrd_sml.png', [1,1,1], 0.6],
-	[97, 112, './lib/isometric_sprite_sphr_med.png', [2,2,2], 0.8],
-	[97, 112, './lib/isometric_sprite_cube_med.png', [2,2,2], 0.9],
-	[97, 112, './lib/isometric_sprite_cube_lrg.png', [3,3,3], 1.0]
+	[96, 96*hex_scale, './lib/dimetric-cube-sml.png', [1,1,1], 0.5],
+	[96, 96*hex_scale, './lib/dimetric-pyrd-sml.png', [1,1,1], 0.6],
+	[96, 96*hex_scale, './lib/dimetric-sphr-med.png', [2,2,2], 0.8],
+	[96, 96*hex_scale, './lib/dimetric-cube-med.png', [2,2,2], 0.9],
+	[96, 96*hex_scale, './lib/dimetric-cube-lrg.png', [3,3,3], 1.0]
+];
+*/
+
+var atom_dim = [97,56];
+var sprites_dat =
+[
+	// pixel w, pixel h, file path, 3D dimensions, likelihood/odds
+	[97, 112, './lib/isometric-sprite-cube-sml.png', [1,1,1], 0.5],
+	[97, 112, './lib/isometric-sprite-pyrd-sml.png', [1,1,1], 0.6],
+	[97, 112, './lib/isometric-sprite-sphr-med.png', [2,2,2], 0.8],
+	[97, 112, './lib/isometric-sprite-cube-med.png', [2,2,2], 0.9],
+	[97, 112, './lib/isometric-sprite-cube-lrg.png', [3,3,3], 1.0]
 ];
 
+var start_idx = -10000;						// should really calculated dynamically based on vertical screen resolution
+var units_dim = [atom_dim[0] / 8, atom_dim[1] / 8];
+
 // need to double check if these parameters are still correct after so many years
+var screen_dim = [];
 if (window.innerWidth)
 {
 	screen_dim[0] = window.innerWidth;
@@ -53,7 +74,7 @@ else if (document.body.clientWidth)
 	screen_dim[1] = document.body.clientHeight;
 }
 
-var screen_dim = [screen_dim[0] - atom_dim[0], screen_dim[1] - atom_dim[1]];
+var screen_dim = [screen_dim[0] - atom_dim[0], screen_dim[1] - atom_dim[1]];		// why do I need this?
 var screen_mul = screen_dim[0] * screen_dim[1] / 1024 / 768;
 
 //console.log('screen_dim[0]:' + screen_dim[0] + ';screen_dim[1]:' + screen_dim[1] + ';');
@@ -68,8 +89,8 @@ var cube_pos = [];
 var cube_num = 0;	// was 8
 var cube_tot = Math.round(screen_mul) * cube_num;
 /*
-var cube_min_lft = 1/6;
-var cube_max_lft = 2/6;
+var cube_min_lft = 0/6;
+var cube_max_lft = 1/6;
 var cube_min_rgt = 5/6;
 var cube_max_rgt = 6/6;
 
@@ -85,7 +106,12 @@ var cube_max_rgt = 4/4;
 
 var snake_seg = 0;
 var snake_len = 10;
-var snake_pos = [97,112];
+var snake_pos =
+[
+	Math.round(Math.random() * screen_dim[0] / atom_dim[0]) * atom_dim[0],
+	Math.round(Math.random() * screen_dim[1] / atom_dim[1]) * atom_dim[1]
+];
+
 var snake_idx = start_idx + snake_pos[1] / units_dim[1];
 var snake_dir = 0;
 var snake_cll = [];
@@ -128,8 +154,6 @@ function cube_init()
 		else
 			var rand_x = Math.random() * (cube_max_rgt - cube_min_rgt) + cube_min_rgt;
 		var rand_y = Math.random();
-		var coo_x = Math.round(rand_x * screen_dim[0] / atom_dim[0]) * atom_dim[0];
-		var coo_y = Math.round(rand_y * screen_dim[1] / atom_dim[1]) * atom_dim[1];
 		for (var jCount = 0; jCount < iCount; jCount++)
 		{
 			if ((coo_x == cube_pos[jCount][0]) && (coo_y == cube_pos[jCount][1]))
@@ -141,7 +165,7 @@ function cube_init()
 		if (pass_bool == true)
 		{
 			cube_pos[iCount] = [coo_x, coo_y];
-			iCount += 1;
+			iCount++;
 		}
 	}
 	cube_pos.sort(cube_sort);
@@ -170,7 +194,7 @@ function cube_init()
 		img_new.style.zIndex = start_idx + coo_this[1] / units_dim[1] + img_buf;
 		img_new.style.left = coo_this[0] + 'px';
 		img_new.style.top  = coo_this[1] + 'px';
-		document.body.appendChild(img_new);
+		this_body.appendChild(img_new);
 		var grid_cll = grid_location(coo_this);
 		var grid_cll_i = grid_cll[0];
 		var grid_cll_j = grid_cll[1];
@@ -198,7 +222,6 @@ function snake_init()
 	for (var i = 0; i < snake_len; i++)
 	{
 		var img_new = document.createElement('img');
-//		var img_this = [97,112,'images/isometric_test' + i + '_01.png',	[1,1,1]];
 		var img_this = sprites_dat[0];
 		img_new.src = img_this[2];
 		img_new.id = 'snake' + i;
@@ -208,10 +231,9 @@ function snake_init()
 		img_new.style.zIndex = snake_idx;
 		img_new.style.left = snake_pos[0] + 'px';
 		img_new.style.top  = snake_pos[1] + 'px';
-		document.body.appendChild(img_new);
+		this_body.appendChild(img_new);
 		snake_cll[i] = [0,0];
 	}
-	window.setInterval(snake_move, 500);
 }
 
 function snake_move()
@@ -249,14 +271,21 @@ function snake_move()
 			var temp_dir = snake_dir;
 			if (temp_dir == 0)
 				temp_dir = 4;
-			if (i == 0)
-				temp_dir += rand_sgn;
-			else if (i == 1)
-				temp_dir -= rand_sgn;
-			else if (i == 2)
-				temp_dir += 0;
-			else if (i == 3)
-				temp_dir += 2;
+			switch (i)
+			{
+				case 0:
+					temp_dir += rand_sgn;
+				break;
+				case 1:
+					temp_dir -= rand_sgn;
+				break;
+				case 2:
+					temp_dir += 0;
+				break;
+				case 3:
+					temp_dir += 2;
+				break;
+			}
 			temp_dir %= 4;
 			if (allow_dir[temp_dir] == 0)
 				continue;
@@ -278,15 +307,8 @@ function snake_position(temp_dir, flag)
 	var new_cll = grid_location(new_pos);
 	var new_cll_i = new_cll[0];
 	var new_cll_j = new_cll[1];
-	// this shouldn't happen, but it might anyway due to some bug
-	if
-	(
-		(new_cll_i >= grid_size) ||
-		(new_cll_j >= grid_size) ||
-		(new_cll_i < 0) ||
-		(new_cll_j < 0) ||
-		(true == false)
-	)
+	// this shouldn't happen, but it might happen anyway as a result of a bug
+	if ((new_cll_i >= grid_size) || (new_cll_j >= grid_size) || (new_cll_i < 0) || (new_cll_j < 0))
 		var new_grid = 1;		// should this be 1 or 0? was 1
 	else
 		var new_grid = grid_table[new_cll_i][new_cll_j];
@@ -313,9 +335,38 @@ function snake_position(temp_dir, flag)
 	snake_move();
 }
 
-function cube_scatter()
+function anim_init()
 {
+	window.setInterval(snake_move, 500);
+}
+
+// this works until the user zooms in or out or changes the size of the browser without refreshing
+// there is no way to detect if/when a browser is zoomed
+function screen_init()
+{
+	var pixel_ratio = window.devicePixelRatio;
+	this_body.style.backgroundColor = '#d0d0d0';
+	this_body.style.backgroundImage = 'url(./lib/isometric-grid.png)';
+	this_body.style.backgroundSize = atom_dim[0] + 'px ' + atom_dim[1] + 'px';
+//	this_body.style.border = '2px solid yellow';
+//	this_body.style.boxSizing = 'border-box';
+	this_body.style.position = 'fixed';
+	this_body.style.left = 0;
+	this_body.style.top = 0;
+	this_body.style.width = (100 * pixel_ratio) + '%';
+	this_body.style.height = (100 * pixel_ratio) + '%';
+	this_body.style.zIndex = -10000;
+	this_body.style.margin = 0;
+	this_body.style.transformOrigin = 'top left';
+	this_body.style.transform = 'scale(' + (1/pixel_ratio) + ')';
+}
+
+function cube_snake_init()
+{
+	this_body = document.getElementById('snake_pane');
+	screen_init();
 	grid_init();
 	cube_init();
 	snake_init();
+	anim_init();
 }

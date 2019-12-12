@@ -22,7 +22,7 @@
 	include($path_lib2 . "queries-chart.php");
 	include($path_ssi2 . "recaptchakey.php");
 
-	$path_file		= "./keyboard-submit.php";		// this file
+	$path_file		= "./chart-submit.php";		// this file
 	$commandouter_table	= [];
 	$commandouter_count	= 0;
 	$commandlabel_table	= [];
@@ -33,12 +33,12 @@
 	$binding_table		= [];			// populated by selBindingsChart()
 	$legend_table		= [];			// populated by selLegendsChart()
 	$author_table		= [];			// populated by selAuthorsChart()
-	$style_table		= [];			// utilized by "keyboard-footer-1.php"
-	$stylegroup_table	= [];			// utilized by "keyboard-footer-1.php"
+	$style_table		= [];			// utilized by "footer-chart.php"
+	$stylegroup_table	= [];			// utilized by "footer-chart.php"
 	$gamesrecord_id		= 0;			// set by selThisGamesRecordChart()
-	$gamesrecord_authors	= [];			// populated by selContribsGamesChart(), utilized by "keyboard-footer-1.php"
+	$gamesrecord_authors	= [];			// populated by selContribsGamesChart(), utilized by "footer-chart.php"
 	$stylesrecord_id	= 0;			// set by selThisStylesRecordChart()
-	$stylesrecord_authors	= [];			// populated by selContribsStylesChart(), utilized by "keyboard-footer-1.php"
+	$stylesrecord_authors	= [];			// populated by selContribsStylesChart(), utilized by "footer-chart.php"
 	$style_filename		= "";			// set by selThisStyleChart()
 	$style_name		= "";			// set by selThisStyleChart() and checkURLParameters(), utilized by checkForErrors()
 	$game_name		= "";			// set by checkURLParameters(), utilized by checkForErrors()
@@ -46,7 +46,7 @@
 	$platform_id		= 0;			// set by checkURLParameters(), utilized by checkForErrors()
 	$format_name		= "";			// set by checkURLParameters(), utilized by checkForErrors()
 	$layout_name		= "";			// set by checkURLParameters(), utilized by checkForErrors()
-	$layout_authors		= [];			// populated by selContribsLayoutsChart(), utilized by "keyboard-footer-1.php"
+	$layout_authors		= [];			// populated by selContribsLayoutsChart(), utilized by "footer-chart.php"
 	$layout_keysnum		= 0;			// reset by selThisLayoutChart(), hopefully obsolete
 	$layout_keygap		= 4;			// reset by selThisLayoutChart()
 	$layout_padding		= 18;			// reset by selThisLayoutChart()
@@ -214,21 +214,21 @@
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root2 . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style_footer.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-footer.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-submit.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\""	. cleantextHTML($language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name)	. ")\"/>
 		<meta name=\"keywords\" content=\""	. cleantextHTML($language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name)	. "\"/>\n";
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";
-	include($path_lib2 . "submit_" . $style_filename . ".css");
+	include($path_lib2 . "submit-" . $style_filename . ".css");
 	echo
 "		</style>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style_submit.css\"/>
 		<script src=\"" . $path_root2 . "java/jquery-3.3.1.min.js\"></script>
-		<script src=\"" . $path_lib1 . "java-all.js\"></script>
-		<script src=\"" . $path_lib1 . "java-submit.js\"></script>
-		<script src=\"" . $path_lib1 . "java-footer.js\"></script>
+		<script src=\"" . $path_lib1  . "java-common.js\"></script>
+		<script src=\"" . $path_lib1  . "java-submit.js\"></script>
+		<script src=\"" . $path_lib1  . "java-footer.js\"></script>
 		<script src=\"https://www.google.com/recaptcha/api.js\"></script>
 		<script>
 var record_id = " . $gamesrecord_id . ";
@@ -239,13 +239,13 @@ var binding_table =\n{\n" . $binding_string . "};
 	</head>\n";
 ?>
 	<body onload="init_submissions();">
-		<img id="waiting" src="<?php echo $path_lib1; ?>animated_loading_icon.webp" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
-		<div id="butt_min" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(0);"><img src="<?php echo $path_lib1; ?>icon_min.png"/></div>
-		<div id="butt_max" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(1);"><img src="<?php echo $path_lib1; ?>icon_max.png"/></div>
+		<img id="waiting" src="<?php echo $path_lib1; ?>animated-loading-icon.webp" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
+		<div id="butt_min" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(0);"><img src="<?php echo $path_lib1; ?>icon-min.png"/></div>
+		<div id="butt_max" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(1);"><img src="<?php echo $path_lib1; ?>icon-max.png"/></div>
 		<div id="pane_lft">
 			<div id="tbar_lft">
-				<div id="butt_inp" class="tabs_butt" title="Toggle Input Panel" onclick="switch_left_pane(0);"><img src="<?php echo $path_lib1; ?>icon_inp.png"/></div>
-				<div id="butt_hlp" class="tabs_butt" title="Toggle Info Panel"  onclick="switch_left_pane(1);"><img src="<?php echo $path_lib1; ?>icon_hlp.png"/></div>
+				<div id="butt_inp" class="tabs_butt" title="Toggle Input Panel" onclick="switch_left_pane(0);"><img src="<?php echo $path_lib1; ?>icon-inp.png"/></div>
+				<div id="butt_hlp" class="tabs_butt" title="Toggle Info Panel"  onclick="switch_left_pane(1);"><img src="<?php echo $path_lib1; ?>icon-hlp.png"/></div>
 			</div>
 			<div id="pane_inp" style="display:block;">
 				<div id="table_inp" class="inptbl" style="margin:auto;">
@@ -311,8 +311,8 @@ var binding_table =\n{\n" . $binding_string . "};
 		</div>
 		<div id="pane_rgt">
 			<div id="tbar_rgt">
-				<div id="butt_kbd" class="tabs_butt" title="Toggle Keyboard Panel" onclick="switch_right_pane(0);"><img src="<?php echo $path_lib1; ?>icon_kbd.png"/></div>
-				<div id="butt_csv" class="tabs_butt" title="Toggle TSV Panel"      onclick="switch_right_pane(1);"><img src="<?php echo $path_lib1; ?>icon_spd.png"/></div>
+				<div id="butt_kbd" class="tabs_butt" title="Toggle Keyboard Panel" onclick="switch_right_pane(0);"><img src="<?php echo $path_lib1; ?>icon-kbd.png"/></div>
+				<div id="butt_csv" class="tabs_butt" title="Toggle TSV Panel"      onclick="switch_right_pane(1);"><img src="<?php echo $path_lib1; ?>icon-spd.png"/></div>
 			</div>
 			<div id="pane_kbd" style="display:block;">
 				<header>
@@ -567,7 +567,7 @@ var binding_table =\n{\n" . $binding_string . "};
  ?>
 				</div>
 				<footer>
-<?php include($path_lib2 . "keyboard-footer-1.php"); ?>
+<?php include($path_lib2 . "footer-chart.php"); ?>
 				</footer>
 			</div>
 			<div id="pane_tsv" style="display:none;">
