@@ -35,11 +35,6 @@
 * On the submission form, should I use the "cleantextHTML" function to clean up 
   the form inputs? What about in the other direction? Should I "clean" the form 
   inputs before saving them as well? Can I "un-clean" the inputs?
-* On the submission form, since I now have animated borders around the selected 
-  keys, I no longer need to change the background color of the selected keys to 
-  indicate the key is selected. I can leave the background color alone and rely 
-  on just the animated border instead. Not sure if I should do the same for the 
-  hover state as well.
 * If the "new game" box is checked, make sure the game title is different from 
   all the other game titles (or at least the current title) before allowing the 
   user to submit the bindings. Enforce this using JavaScript.
@@ -86,6 +81,10 @@
   to improve the contributers list in the footer of each page.
 
 ### Database Schema
+* Make sure the "sort order" or "display order" columns are named the same (or 
+  based on the same pattern) everywhere in the database. Currently, the 
+  following tables have such a column: "platform", "keygroups_dynamic". Future 
+  candidate tables include "stylegroups", "genres", "urlqueries", "formats".
 * Right now it may be merely coincidental that the "bindings" and "positions" 
   match up with each other properly. Need to make sure I am not relying on 
   hardcoded values, and that the order of the records in the database will not 
@@ -96,7 +95,8 @@
 * The "record_id" column name is used in two different contexts within the 
   database: once as a game record, and once as a style record. Should rename 
   each column to something different to prevent confusion. [Ed. this is true 
-  for the "keygroup_id", "keygroup_class" and "contrib_id" columns as well.]
+  for the "keygroup_id", "keygroup_class" and "contrib_id" columns belonging to 
+  various tables as well.]
 * I would like for the "command_text" column in the "commands" table to be set 
   to NOT NULL. But I will have to come up with something else to put into that 
   column when adding new "Additional Notes". Unlike the other command types, 
@@ -119,7 +119,8 @@
   colors or classes are added, or if the index columns somehow get corrupted? 
   Can I re-index the "keygroups" tables without affecting other tables that 
   might have foreign key constraints? What's the best method of implementing a 
-  custom sort order for a table and its output?
+  custom sort order for a table and its output? [Ed. I have added a 
+  "sort order" column to one of the "keygroups" tables, but not the other.]
 * Instead of having one genre per game, I could maybe create a tag cloud so 
   that a game can be placed in multiple genres. What type of GUI would this 
   necessitate? Is this even possible using MySQL? How granular should I get 
@@ -173,7 +174,9 @@
   would be a PITA, however.
 * Maybe add some breadcrumbs to the "plain" pages?
 * The credits bylines in the footers at the bottom of each page are eventually 
-  going to need to be places each on their own line versus all on the same line.
+  going to need to be placed each on their own line versus all on the same 
+  line. For the time being, there are not enough contributers to warrant this 
+  modification.
 * The "Patterned Grayscale" style really sucks. I need to work on it.
 * Radio buttons on the front page should be based on "em" dimensions instead of 
   pixel dimensions. [Ed. need to figure out how to set the size of the the "X" 
@@ -182,9 +185,15 @@
   other than the monitor's native PPI. This is true even after size correction. 
   [Ed. it looks okay in Firefox, though.]
 * I would prefer it if the "snake cube" script operated upon the page's BODY 
-  element instead of a DIV element, since the pages flicker a bit when the site 
-  first loads. However, the CSS scaling would then affect every object on the 
-  page instead of just the background.
+  element instead of a DIV element since the pages flicker a bit when they 
+  first load. However, the CSS scaling would then affect every object on the 
+  page instead of just the background area. [Ed. need to check whether this 
+  script is working correctly in other browsers, regardless.]
+* On the submission form, since I now have animated borders around the selected 
+  keys, I no longer need to change the background color of the selected keys to 
+  indicate the key is selected. I can leave the background color alone and rely 
+  on just the animated border instead. Not sure if I should do the same for the 
+  hover state as well.
 
 ### Non-coding related
 * File permissions recently started getting messed up when uploading new files 
@@ -220,9 +229,9 @@
 * The PHP scripts get kind of flaky when both an SEO string *and* a game ID are 
   specified in the URL. Not sure which should override the other. Need to 
   investigate further.
-* Not sure if the GUI string language should be a per-layout setting, or 
-  something the user can configure for his or herself manually. The latter 
-  would require yet another URL query parameter or even a cookie.
+* Not sure if the GUI language should be a per-layout setting, or something the 
+  user can configure for his or herself manually. The latter would require yet 
+  another URL query parameter or even a cookie.
 * Whether or not to show lower-case key caps should maybe be a per-game setting 
   rather than a per-layout setting. Or, allow users toggle them on/off 
   manually. Would this require more URL query parameters? What about cookies?
@@ -231,9 +240,9 @@
   Or, I could duplicate the sub-headings in the "Done" section, and retain the 
   original categorization. Lastly, I could use GitHub's built-in "Issues" 
   interface. Can GitHub "Issues" be categorized?
-* Formats are now listed in the database. I could now use the database to 
-  generate the format list in the page footer if I wanted to. This is also true 
-  for the default numpad state.
+* "Formats" are now listed in the database. I could now use the database to 
+  generate the format list in the page footer if I wanted to. The same is true 
+  for the "urlqueries" table.
 * Make sure there are no characters escaped in the HTML "title" tags since page 
   titles do not benefit from escaping characters. [Ed. currently I "clean" all 
   text strings of characters that can be escaped regardless of where they are 
@@ -266,10 +275,6 @@
 * Should tables like "$layout_authors" use the author ID as the index? Does it 
   matter?
 * Maybe rename "stylegroup" to just "group" in PHP and JS?
-* In "keyboard.php", maybe replace "$platform_first", "$stylegroup_first" and 
-  "$genre_first" with some "default" number for each table? Do I only want the 
-  first category to always be open when the page loads? Also, keep in mind that 
-  I may create "sort_order" columns for several tables in the future.
 * Create a separate "credits" page since the log is getting too long.
 * Maybe I can squeeze some object-oriented design into this project?
 
@@ -350,7 +355,8 @@
   and ID #3. [Ed. this would break many links on the Internet, however. Maybe 
   better to simply reuse the ID number for a new layout.]
 * Can I shorten "foreach ($topic_array as $i => $topic_value)" to not include 
-  the "$topic_value" part? [Ed. does not seem to be possible.]
+  the "$topic_value" part? [Ed. does not seem to be possible. Regardless, I now 
+  find the "$topic_value" part useful.]
 
 ### Ongoing
 * Double check all PHP and JS code for instances of the strings "counting!", 
@@ -503,3 +509,16 @@
   consistent and not confuse anybody.
 * The "non" color should be added to the database. Need to also create a 
   "sort_order" column to ensure the colors are in the correct order.
+* In "keyboard.php", maybe replace "$platform_first", "$stylegroup_first" and 
+  "$genre_first" with some "default" value for each of the related tables? Do I 
+  only want the first categories of the accordion menus to always be open when 
+  the page loads? Also, keep in mind that I may create "sort_order" columns for 
+  several tables in the future. [Ed. renamed the "urlqueries" database table 
+  back to "entities" and added the default platform, stylegroup, genre and 
+  language IDs to it.]
+
+### Latest items
+* "Browserstack.com" allows FOSS projects free access to their services. I need 
+  to create an account there and periodically check for problems.
+* Double check and make sure whether stored procedures are still disabled on 
+  the web server.

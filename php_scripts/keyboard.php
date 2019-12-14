@@ -70,7 +70,7 @@
 
 	// MySQL queries
 	selURLQueriesAll();		// gather and validate URL parameters
-	selDefaultsAll();			// get default values for urlqueries if missing
+	selDefaultsAll();			// get default values for entities if missing
 	selGenresFront();
 	selGamesFront();
 	selStylegroupsFront();
@@ -244,17 +244,15 @@ var seourl_table =
 			</div>
 			<ul id="lay_menu" class="acc_mnu">
 <?php
-	$platform_first = true;
 	foreach ($platform_table as $i => $platform_value)
 	{
 		echo
 "				<li>\n";
-		if ($platform_first)
+		if ($i == ($default_platform_id-1))
 		{
 			echo
 "					<a menu=\"lay\"><span class=\"arrw_a\" style=\"display:none;\">&#9658;</span><span class=\"arrw_b\" style=\"display:inline;\">&#9660;</span> " . $platform_value . "</a>
 					<ul style=\"height:22em;display:block;\">\n";
-			$platform_first = false;
 		}
 		else
 		{
@@ -290,17 +288,15 @@ var seourl_table =
 			</div>
 			<ul id="sty_menu" class="acc_mnu">
 <?php
-	$stylegroup_first = true;
 	foreach ($stylegroup_table as $i => $stylegroup_value)
 	{
 		echo
 "				<li>\n";
-		if ($stylegroup_first)
+		if ($i == ($default_stylegroup_id-1))
 		{
 			echo
 "					<a menu=\"sty\"><span class=\"arrw_a\" style=\"display:none;\">&#9658;</span><span class=\"arrw_b\" style=\"display:inline;\">&#9660;</span> " . $stylegroup_value . "</a>
 					<ul style=\"height:22em;display:block;\">\n";
-			$stylegroup_first = false;
 		}
 		else
 		{
@@ -336,17 +332,15 @@ var seourl_table =
 			</div>
 			<ul id="gam_menu" class="acc_mnu">
 <?php
-	$genre_first = true;
 	foreach ($genre_table as $i => $genre_value)
 	{
 		echo
 "				<li>\n";
-		if ($genre_first)
+		if ($i == ($default_genre_id-1))
 		{
 			echo
 "					<a menu=\"gam\"><span class=\"arrw_a\" style=\"display:none;\">&#9658;</span><span class=\"arrw_b\" style=\"display:inline;\">&#9660;</span> " . $genre_value . "</a>
 					<ul style=\"height:15em;display:block;\">\n";
-			$genre_first = false;
 		}
 		else
 		{

@@ -374,7 +374,7 @@
 	function selPlatformsChart()
 	{
 		global $con;
-		$selectString = "SELECT p.platform_id, p.platform_name, p.platform_displayorder FROM platforms AS p;";
+		$selectString = "SELECT p.platform_id, p.platform_name, p.sortorder_id FROM platforms AS p;";
 		selectQuery($con, $selectString, "resPlatformsChart");
 	}
 	function resPlatformsChart($in_result)
@@ -382,7 +382,7 @@
 		global $platform_table;
 		while ($platform_row = mysqli_fetch_row($in_result))
 		{
-			// platform_id, platform_name, platform_displayorder
+			// platform_id, platform_name, sortorder_id
 			$platform_id = $platform_row[0];
 			$platform_table[$platform_id-1] = $platform_row;
 		}

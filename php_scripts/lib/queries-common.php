@@ -25,10 +25,11 @@
 	// ---------------------------------------------------------------------
 	// All
 
+	// hardcoded!
 	function selURLQueriesAll()
 	{
 		global $con;
-		$selectString =	"SELECT u.entity_id, u.entity_name, u.entity_default FROM urlqueries AS u;";
+		$selectString =	"SELECT u.entity_id, u.entity_name, u.entity_default FROM entities AS u;";
 		selectQuery($con, $selectString, "resURLQueriesAll");
 	}
 	function resURLQueriesAll($in_result)
@@ -40,16 +41,21 @@
 			$urlqueries_table[] = $query_row;
 		}
 	}
+	// hardcoded!
 	function selDefaultsAll()
 	{
 		global $con, $urlqueries_table;
 		// array indices are hardcoded here, should get them from database instead
-		$selectString =	"SELECT g.game_name, g.game_seourl, l.layout_name, s.style_name, f.format_name
-				FROM games AS g, layouts AS l, styles AS s, formats AS f
+		$selectString =	"SELECT g.game_name, g.game_seourl, l.layout_name, s.style_name, f.format_name, p.platform_name, y.stylegroup_name, r.genre_name, a.language_code
+				FROM games AS g, layouts AS l, styles AS s, formats AS f, platforms AS p, stylegroups as y, genres as r, languages as a
 				WHERE g.game_id = "	. $urlqueries_table[0][2] . "
 				AND l.layout_id = "	. $urlqueries_table[1][2] . "
 				AND s.style_id = "	. $urlqueries_table[2][2] . "
-				AND f.format_id = "	. $urlqueries_table[3][2] . ";";
+				AND f.format_id = "	. $urlqueries_table[3][2] . "
+				AND p.platform_id = "	. $urlqueries_table[5][2] . "
+				AND y.stylegroup_id = "	. $urlqueries_table[6][2] . "
+				AND r.genre_id = "	. $urlqueries_table[7][2] . "
+				AND a.language_id = "	. $urlqueries_table[8][2] . ";";
 		selectQuery($con, $selectString, "resDefaultsAll");
 	}
 	function resDefaultsAll($in_result)
@@ -59,7 +65,13 @@
 			$default_layout_id,	$default_layout_name,
 			$default_style_id,	$default_style_name,
 			$default_format_id,	$default_format_name,
-			$default_ten_bool;
+			$default_ten_bool,
+			$default_platform_id,	$default_platform_name,
+			$default_stylegroup_id,	$default_stylegroup_name,
+			$default_genre_id,	$default_genre_name,
+			$default_language_id,	$default_language_name;
+
+		// game_name, game_seourl, layout_name, style_name, format_name, platform_name, stylegroup_name, genre_name, language_code
 		$game_row = mysqli_fetch_row($in_result);
 		$default_game_id	= $urlqueries_table[0][2];
 		$default_game_name	= $game_row[0];
@@ -71,5 +83,13 @@
 		$default_format_id	= $urlqueries_table[3][2];		// starts at 0 instead of 1
 		$default_format_name	= $game_row[4];
 		$default_ten_bool	= $urlqueries_table[4][2];		// note that in the database this is stored as an integer and not boolean
+		$default_platform_id	= $urlqueries_table[5][2];
+		$default_platform_name	= $game_row[5];
+		$default_stylegroup_id	= $urlqueries_table[6][2];
+		$default_stylegroup_name	= $game_row[6];
+		$default_genre_id	= $urlqueries_table[7][2];
+		$default_genre_name	= $game_row[7];
+		$default_language_id	= $urlqueries_table[8][2];
+		$default_language_code	= $game_row[8];
 	}
 ?>

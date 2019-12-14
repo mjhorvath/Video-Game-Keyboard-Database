@@ -76,7 +76,7 @@
 
 	// MySQL queries
 	selURLQueriesAll();		// gather and validate URL parameters
-	selDefaultsAll();		// get default values for urlqueries if missing
+	selDefaultsAll();		// get default values for entities if missing
 	checkURLParameters();		// gather and validate URL parameters, not a query
 	selThisLanguageStringsChart();
 	selAuthorsChart();
