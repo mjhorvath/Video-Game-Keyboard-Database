@@ -419,6 +419,7 @@
 			$keystyle_table[$temp_row[1]-1] = $temp_row;
 		}
 	}
+	// non!
 	function selKeyStyleClassesChart()
 	{
 		global $con;
@@ -427,30 +428,27 @@
 	}
 	function resKeyStyleClassesChart($in_result)
 	{
-		global $binding_class_array;
+		global $binding_class_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
 			// keygroup_id, keygroup_class
-			$class_id_array[] = $temp_row[0];
-			$binding_class_array[] = $temp_row[1];
+			$binding_class_table[] = $temp_row;
 		}
-		array_multisort($class_id_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $binding_class_array);
 	}
+	// non! order!
 	function selLegendColorsChart()
 	{
 		global $con;
-		$selectString = "SELECT k.keygroup_id, k.keygroup_class FROM keygroups_dynamic AS k;";
+		$selectString = "SELECT k.keygroup_id, k.keygroup_class, k.sortorder_id FROM keygroups_dynamic AS k ORDER BY k.sortorder_id;";
 		selectQuery($con, $selectString, "resLegendColorsChart");
 	}
 	function resLegendColorsChart($in_result)
 	{
-		global $binding_color_array;
+		global $binding_color_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
-			// keygroup_id, keygroup_class
-			$color_id_array[] = $temp_row[0];
-			$binding_color_array[] = $temp_row[1];
+			// keygroup_id, keygroup_class, sortorder_id
+			$binding_color_table[] = $temp_row;
 		}
-		array_multisort($color_id_array, SORT_ASC|SORT_NATURAL|SORT_FLAG_CASE, $binding_color_array);
 	}
 ?>

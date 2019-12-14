@@ -32,8 +32,8 @@
 	$default_style_name	= "";		// set by selDefaultsAll(), utilized by checkURLParameters()
 	$default_layout_name	= "";		// set by selDefaultsAll(), utilized by checkURLParameters()
 	$default_format_name	= "";		// set by selDefaultsAll(), utilized by checkURLParameters()
-	$binding_color_array	= [];
-	$binding_class_array	= [];
+	$binding_color_table	= [];
+	$binding_class_table	= [];
 	$errors_table		= [];		// populated by checkForErrors()
 	$urlqueries_table	= [];		// populated by selURLQueriesAll(), utilized by selDefaultsAll()
 	$language_code		= "";		// set by selThisLanguageStringsChart()
@@ -340,18 +340,32 @@
 		return array_filter(explode("\n", $instring));
 	}
 	// non!
-	// need to fix this once I have added the "non" color to "$binding_color_array"
 	function getkeycolor($group)
 	{
-		global $binding_color_array;
-		return array_key_exists($group-1, $binding_color_array) ? $binding_color_array[$group-1] : "non";
+		global $binding_color_table;
+		foreach ($binding_color_table as $i => $binding_color_value)
+		{
+			if ($binding_color_value[0] == $group)
+			{
+				return $binding_color_value[1];
+				break;
+			}
+		}
+		return "non";
 	}
-	// non!
-	// need to fix this once I have added the "non" color to "$binding_class_array"
+	// non! actually not needed here, but anyway...
 	function getkeyclass($group)
 	{
-		global $binding_class_array;
-		return array_key_exists($group-1, $binding_class_array) ? $binding_class_array[$group-1] : "non";
+		global $binding_class_table;
+		foreach ($binding_class_table as $i => $binding_class_value)
+		{
+			if ($binding_class_value[0] == $group)
+			{
+				return $binding_class_value[1];
+				break;
+			}
+		}
+		return "";
 	}
 	function leadingZeros($innumber, $level)
 	{

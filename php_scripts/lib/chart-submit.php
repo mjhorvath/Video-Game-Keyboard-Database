@@ -61,6 +61,10 @@
 	$layout_min_vertical	= 0;			// reset by selThisLayoutChart()
 	$layout_max_vertical	= 0;			// reset by selThisLayoutChart()
 	$layout_legend_top	= 0;			// reset by selThisLayoutChart()
+	$option_string		= "";
+	$color_string		= "";
+	$commandlabel_string	= "";
+	$binding_string		= "";
 
 	// open MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -119,24 +123,22 @@
 	}
 
 	// non!
-	// need to put 'non' into the database too at some point
-	$option_string = "<option class=\"optnon\">non</option>";
-	$color_string = "0:'non',";
-	foreach ($binding_color_array as $i => $binding_color_value)
+	foreach ($binding_color_table as $i => $binding_color_value)
 	{
-		$option_string .= "<option class=\"opt" . $binding_color_value . "\">" . $binding_color_value . "</option>";
-		$color_string .= ($i+1) . ":'" . $binding_color_value . "',";
+		$color_id = $binding_color_value[0];
+		$color_class = $binding_color_value[1];
+		$color_sort = $binding_color_value[2];
+		$option_string .= "<option class=\"opt" . $color_class . "\">" . $color_class . "</option>";
+		$color_string .= $color_id . ":'" . $color_class . "',";
 	}
 	$color_string = rtrim($color_string, ",");
 
-	$commandlabel_string = "";
 	foreach ($commandlabel_table as $i => $commandlabel_value)
 	{
 		$commandlabel_string .= $i . ":'" . $commandlabel_value[2] . "',";
 	}
 	$commandlabel_string = rtrim($commandlabel_string, ",");
 
-	$binding_string = "";
 	if (($gamesrecord_id > 0) && ($stylesrecord_id > 0))
 	{
 		foreach ($position_table as $i => $position_row)
@@ -341,7 +343,7 @@ var binding_table =\n{\n" . $binding_string . "};
 		{
 			// these get cleaned later by the print_key_html function
 			// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowcap_optional, numpad
-			$key_sty	= array_key_exists($i, $keystyle_table) ? getkeyclass($keystyle_table[$i][0]) : "";
+			$key_sty	= array_key_exists($i, $keystyle_table) ? getkeyclass($keystyle_table[$i][0]) : "";		// non!
 			$pos_lft	= $position_row[ 0] + $layout_keygap/2;
 			$pos_top	= $position_row[ 1] + $layout_keygap/2;
 			$pos_wid	= $position_row[ 2] - $layout_keygap;		// 4px
@@ -359,6 +361,7 @@ var binding_table =\n{\n" . $binding_string . "};
 			$img_pos_y	= $pos_hgh/2 - $img_hgh/2;
 			if (array_key_exists($i, $binding_table))
 			{
+				// cleaning!
 				// these get cleaned later by the print_key_html function
 				// normal_group, normal_action, shift_group, shift_action, ctrl_group, ctrl_action, alt_group, alt_action, altgr_group, altgr_action, extra_group, extra_action, image_file, image_uri, key_number
 				$binding_row	= $binding_table[$i];
@@ -498,7 +501,7 @@ var binding_table =\n{\n" . $binding_string . "};
 <?php
 	// legend
 	// should I skip $i=1 and subtract 1 from the other vars?
-	foreach ($binding_color_array as $i => $binding_color_value)
+	foreach ($binding_color_table as $i => $binding_color_value)
 	{
 		$leg_value = "";
 		$leg_color = getkeycolor($i+1);

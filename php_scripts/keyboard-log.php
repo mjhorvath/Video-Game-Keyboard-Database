@@ -57,6 +57,7 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2019/12/14: Added the &quot;non&quot; or &quot;null&quot; color to the database. The color tables are now sorted by a new &quot;sortorder_id&quot; column.</li>
 	<li>2019/12/14: More tweaks to the &quot;cube snake&quot;. I can now easily switch back and forth between an isometric grid and snake, and a dimetric grid and snake.</li>
 	<li>2019/12/12: Tweaks to the &quot;cube snake&quot; script to make it look the same at any PPI setting. Still looks awful in Google Chrome, however.</li>
 	<li>2019/12/12: MediaWiki output now only contains code that is absolutely necessary to produce the diagram.</li>

@@ -31,7 +31,7 @@
   [Ed. should I put the link in the help pane? Should I link to the GitHub page 
   or to MediaFire?]
 * On the "TSV Pane" of the submission form, add buttons to update the 
-  "keyboard view" using the TSV code entered in the textarea boxes.
+  "keyboard view" using the TSV code entered in the TEXTAREA boxes.
 * On the submission form, should I use the "cleantextHTML" function to clean up 
   the form inputs? What about in the other direction? Should I "clean" the form 
   inputs before saving them as well? Can I "un-clean" the inputs?
@@ -86,13 +86,13 @@
   to improve the contributers list in the footer of each page.
 
 ### Database Schema
-* Right now it may only be coincidental that the "bindings" and "positions" 
+* Right now it may be merely coincidental that the "bindings" and "positions" 
   match up with each other properly. Need to make sure I am not relying on 
   hardcoded values, and that the order of the records in the database will not 
-  affect the behavior of the code. [Ed. maybe add a new "keys" table and have 
-  "key_number" be the index column. Not sure what else to put in the "keys" 
-  table besides the index column, however. The "key_number" is also referenced 
-  by the "keystyles" table.]
+  affect the behavior of the code. [Ed. maybe create a new "keys" table and 
+  have the "key_number" be the index column. Not sure what else to put into the 
+  "keys" table besides the index column, however. Note that the "key_number" is 
+  also referenced within the "keystyles" table.]
 * The "record_id" column name is used in two different contexts within the 
   database: once as a game record, and once as a style record. Should rename 
   each column to something different to prevent confusion. [Ed. this is true 
@@ -102,36 +102,35 @@
   column when adding new "Additional Notes". Unlike the other command types, 
   the "Additional Notes" category is supposed to leave the left column blank. 
   When I overhauled the "commands" code I forgot to re-implement this special 
-  case. I think that before the overhaul I was using an HTML "textarea" element 
-  instead of the more usual "input" element for the "Additional Notes" sections 
+  case. I think that before the overhaul I was using an HTML TEXTAREA element 
+  instead of the more usual INPUT element for the "Additional Notes" sections 
   of the submissions form. Not sure how I want to flag to the various scripts 
   which sets of "commands" are the special cases and which are not. I may need 
-  an additional binary column on the "commandtypes" table in the database.]
+  to add an additional binary column to the "commandtypes" table for this very 
+  purpose.]
 * On the submission form, the column names for the TSV data in the "Spreadsheet 
   View" should be fetched from the database instead of being hardcoded. OTOH, 
   the scripts expect the columns to be sorted in a particular order, and I'm 
   not sure when fetching data from the database that the result will be in a 
-  consistent order. (Maybe in MySQL column names are always in the same order. 
-  I dunno.)
+  consistent order. [Ed. maybe the column names in MySQL are always retrieved 
+  and outputted in the same order. I dunno.]
 * The PHP and JS "color" and "class" tables are currently sorted by the index 
   columns of the "keygroups" tables in the database. But what happens if new 
   colors or classes are added, or if the index columns somehow get corrupted? 
-  Can I sort and re-index the "keygroups" tables without affecting tables that 
-  might have foreign key constraints? What's the best method of specifying a 
-  custom sort order?
+  Can I re-index the "keygroups" tables without affecting other tables that 
+  might have foreign key constraints? What's the best method of implementing a 
+  custom sort order for a table and its output?
 * Instead of having one genre per game, I could maybe create a tag cloud so 
   that a game can be placed in multiple genres. What type of GUI would this 
-  necessitate? Is this even possible using MySQL? [Ed. it is possible but would 
-  require a lengthy bridge table.]
-* How granular should I get with respect to video game genres? Should I list 
-  sub-genres and sub-sub-genres? How many genres? Which ones?
+  necessitate? Is this even possible using MySQL? How granular should I get 
+  with the video game genres? Should I list sub-genres and sub-sub-genres? How 
+  many genres? Which ones? [Ed. this is possible, but would require a lengthy 
+  bridge table.]
 * Rename the "commandlabels" table to "commandtypelabels" or something similar.
-* The "non" color should be added to the database. Need to also create a 
-  "sort_order" column to ensure the colors are in the correct order.
-* Need someone to look over the code and determine whether it is susceptible to 
-  SQL injection.
+* Need someone to look over the PHP code and help determine whether the code is 
+  susceptible to SQL injection.
 * Make sure the SQL result sets are ordered properly. Set the sort order in SQL 
-  wherever possible.
+  wherever possible since it's faster than sorting in PHP.
 * Double check whether I can replace any instances of PHP sorting with SQL 
   sorting, since the latter is likely the faster method.
 
@@ -182,6 +181,10 @@
 * "Cube Snake" script looks awful in Google Chrome when displayed at anything 
   other than the monitor's native PPI. This is true even after size correction. 
   [Ed. it looks okay in Firefox, though.]
+* I would prefer it if the "snake cube" script operated upon the page's BODY 
+  element instead of a DIV element, since the pages flicker a bit when the site 
+  first loads. However, the CSS scaling would then affect every object on the 
+  page instead of just the background.
 
 ### Non-coding related
 * File permissions recently started getting messed up when uploading new files 
@@ -336,8 +339,9 @@
   current file. It is needed in the footer time and date stamp for instance.]
 * I would like to change the text shown in the color selection boxes of the 
   submission form from "non" to "null" or something else. [Ed. this might have 
-  an adverse effect on some scripts. Also, the drop down list would take up 
-  more space to accommodate the additional character.]
+  adverse effects on some scripts. Also, if I were to do this, then the drop-
+  down list would take up additional space in order to accommodate the 
+  additional characters.]
 * The "seourl" arrays and column could probably be replaced with a script that 
   automatically generates the needed strings. [Ed. need to make sure the output 
   in both cases is exactly the same.] [Ed. on second thought, I do reverse look-
@@ -350,7 +354,8 @@
 
 ### Ongoing
 * Double check all PHP and JS code for instances of the strings "counting!", 
-  "cleaning!", "hardcoded!" and "non!". Problems might exist at these locations.
+  "cleaning!", "hardcoded!", "order!" and "non!". Problems may crop up at these 
+  locations.
 * Make sure JavaScript arrays line up prettily.
 * Just for fun, run a script that counts and logs the number of lines of code.
   [Ed. I installed a freeware Windows tool called LocMetrics for this purpose. 
@@ -496,3 +501,5 @@
   edited the script to omit keys with no actions bound to them.]
 * Rename the "game_friendlyurl" column to "game_seourl" in order to be 
   consistent and not confuse anybody.
+* The "non" color should be added to the database. Need to also create a 
+  "sort_order" column to ensure the colors are in the correct order.
