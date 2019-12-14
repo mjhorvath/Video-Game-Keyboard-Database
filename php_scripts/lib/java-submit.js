@@ -907,7 +907,7 @@ function do_recaptcha()
 		$.ajax
 		({
 			type: "POST",
-			url: path_lib1 + "recaptcha.php",
+			url: path_lib1 + "scripts-recaptcha.php",
 			data:
 			{
 				name:		name.val(),

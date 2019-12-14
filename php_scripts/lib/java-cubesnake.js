@@ -18,42 +18,75 @@
 // <https://www.gnu.org/licenses/>.
 
 
-// NOTES
+// should split the first line of "sprites_data" off into a new "snake_sprite" variable
 
-// To make min/max cube positions scale with screen dimensions, need to change 
-// the code to subtract or add min and max to 1/2 then divide by screen_mul. 
-// Not necessary if they stay at their current values, though.
+var code_mode = 1;		// 0 = dimetric, 1 = near isometric, 2 = isometric stretch
 
-// I've tested in various browsers, and the screen DPI needs to be 1:1 in order 
-// for the script to look good. Zooming in/out makes the script look like crap.
+switch (code_mode)
+{
+	// dimetric
+	// projection very common in video games
+	// most likely to work correctly
+	// there should not be any artifacts in the end result if the browser and desktop PPI are both set to 100%
+	case 0:
+		// pixel w, pixel h
+		var atom_dim = [96,48];
+		var path_prefix = './lib/';
+		var grid_file = path_prefix + 'dimetric-grid.png';
+		var sprites_data =
+		[
+			// the first item is used inside the snake
+			// pixel w, pixel h, file path, 3D dimensions, likelihood/odds
+			[96, 96, path_prefix + 'dimetric-sprite-cube-sml.png', [1,1,1], 0.5],
+			[96, 96, path_prefix + 'dimetric-sprite-pyrd-sml.png', [1,1,1], 0.6],
+			[96, 96, path_prefix + 'dimetric-sprite-sphr-med.png', [2,2,2], 0.8],
+			[96, 96, path_prefix + 'dimetric-sprite-cube-med.png', [2,2,2], 0.9],
+			[96, 96, path_prefix + 'dimetric-sprite-cube-lrg.png', [3,3,3], 1.0]
+		];
+	break;
+	// near isometric
+	// very near true isometric, but deviates by tiny amounts
+	// take a look at "isometric_aspect_ratios.txt" to see how far off the mark it is
+	// the number 97 is not evenly divisible by 8, so there are going to be noticeable artifacts
+	case 1:
+		// pixel w, pixel h
+		var atom_dim = [97,56];
+		var path_prefix = './lib/';
+		var grid_file = path_prefix + 'isometric-grid.png';
+		var sprites_data =
+		[
+			// the first item is used inside the snake
+			// pixel w, pixel h, file path, 3D dimensions, likelihood/odds
+			[97, 112, path_prefix + 'isometric-sprite-cube-sml.png', [1,1,1], 0.5],
+			[97, 112, path_prefix + 'isometric-sprite-pyrd-sml.png', [1,1,1], 0.6],
+			[97, 112, path_prefix + 'isometric-sprite-sphr-med.png', [2,2,2], 0.8],
+			[97, 112, path_prefix + 'isometric-sprite-cube-med.png', [2,2,2], 0.9],
+			[97, 112, path_prefix + 'isometric-sprite-cube-lrg.png', [3,3,3], 1.0]
+		];
+	break;
+	// isometric stretch
+	// creates a regular hexagon from a non-regular hexagon by stretching the non-hexagon sprite
+	// does not yet work with sprites of 3D shapes such as spheres and pyramids at this time however
+	// the vertical resolution is not evenly divisible by 8, so there are going to be noticeable artifacts
+	case 2:
+		var hex_scale = 2/Math.sqrt(3);
+		// pixel w, pixel h
+		var atom_dim = [96,48*hex_scale];
+		var path_prefix = './lib/';
+		var grid_file = path_prefix + 'still-to-do.png';
+		var sprites_data =
+		[
+			// the first item is used inside the snake
+			// pixel w, pixel h, file path, 3D dimensions, likelihood/odds
+			[96, 96*hex_scale, path_prefix + 'still-to-do.png', [1,1,1], 0.5],
+			[96, 96*hex_scale, path_prefix + 'still-to-do.png', [1,1,1], 0.6],
+			[96, 96*hex_scale, path_prefix + 'still-to-do.png', [2,2,2], 0.8],
+			[96, 96*hex_scale, path_prefix + 'still-to-do.png', [2,2,2], 0.9],
+			[96, 96*hex_scale, path_prefix + 'still-to-do.png', [3,3,3], 1.0]
+		];
+	break;
+}
 
-/*
-//var hex_scale = 2/1.7320508075688772935274463415059;		// make the grid based on regular hexagons, doesn't work for the cubes yet
-var hex_scale = 1;
-var atom_dim = [96,48*hex_scale];
-var sprites_dat =
-[
-	// pixel w, pixel h, file path, 3D dimensions, likelihood/odds
-	[96, 96*hex_scale, './lib/dimetric-cube-sml.png', [1,1,1], 0.5],
-	[96, 96*hex_scale, './lib/dimetric-pyrd-sml.png', [1,1,1], 0.6],
-	[96, 96*hex_scale, './lib/dimetric-sphr-med.png', [2,2,2], 0.8],
-	[96, 96*hex_scale, './lib/dimetric-cube-med.png', [2,2,2], 0.9],
-	[96, 96*hex_scale, './lib/dimetric-cube-lrg.png', [3,3,3], 1.0]
-];
-*/
-
-var atom_dim = [97,56];
-var sprites_dat =
-[
-	// pixel w, pixel h, file path, 3D dimensions, likelihood/odds
-	[97, 112, './lib/isometric-sprite-cube-sml.png', [1,1,1], 0.5],
-	[97, 112, './lib/isometric-sprite-pyrd-sml.png', [1,1,1], 0.6],
-	[97, 112, './lib/isometric-sprite-sphr-med.png', [2,2,2], 0.8],
-	[97, 112, './lib/isometric-sprite-cube-med.png', [2,2,2], 0.9],
-	[97, 112, './lib/isometric-sprite-cube-lrg.png', [3,3,3], 1.0]
-];
-
-var start_idx = -10000;						// should really calculated dynamically based on vertical screen resolution
 var units_dim = [atom_dim[0] / 8, atom_dim[1] / 8];
 
 // need to double check if these parameters are still correct after so many years
@@ -112,7 +145,7 @@ var snake_pos =
 	Math.round(Math.random() * screen_dim[1] / atom_dim[1]) * atom_dim[1]
 ];
 
-var snake_idx = start_idx + snake_pos[1] / units_dim[1];
+var snake_idx = snake_pos[1] / units_dim[1];
 var snake_dir = 0;
 var snake_cll = [];
 var dir_table =
@@ -135,6 +168,7 @@ function grid_init()
 	}
 }
 
+// not sure anymore what is going on here
 function grid_location(in_coo)
 {
 	var grid_cll_i = in_coo[0] / units_dim[0];
@@ -174,12 +208,12 @@ function cube_init()
 		var coo_this = cube_pos[iCount];
 		var img_new = document.createElement('img');
 		var img_rand = Math.random();
-		var img_this = sprites_dat[0];
-		for (var tCount = 0; tCount < sprites_dat.length; tCount++)
+		var img_this = sprites_data[0];
+		for (var tCount = 0, tLength = sprites_data.length; tCount < tLength; tCount++)
 		{
-			if (img_rand < sprites_dat[tCount][4])
+			if (img_rand < sprites_data[tCount][4])
 			{
-				img_this = sprites_dat[tCount];
+				img_this = sprites_data[tCount];
 				break;
 			}
 		}
@@ -191,7 +225,7 @@ function cube_init()
 		img_new.style.width  = img_this[0] + 'px';
 		img_new.style.height = img_this[1] + 'px';
 		img_new.style.position = 'fixed';
-		img_new.style.zIndex = start_idx + coo_this[1] / units_dim[1] + img_buf;
+		img_new.style.zIndex = coo_this[1] / units_dim[1] + img_buf;
 		img_new.style.left = coo_this[0] + 'px';
 		img_new.style.top  = coo_this[1] + 'px';
 		this_body.appendChild(img_new);
@@ -222,7 +256,7 @@ function snake_init()
 	for (var i = 0; i < snake_len; i++)
 	{
 		var img_new = document.createElement('img');
-		var img_this = sprites_dat[0];
+		var img_this = sprites_data[0];
 		img_new.src = img_this[2];
 		img_new.id = 'snake' + i;
 		img_new.style.width  = img_this[0] + 'px';
@@ -332,7 +366,11 @@ function snake_position(temp_dir, flag)
 		snake_image.style.zIndex = snake_idx;
 		return true;
 	}
-	snake_move();
+	else if (new_grid == 1)
+	{
+		snake_move();
+		return false;
+	}
 }
 
 function anim_init()
@@ -340,23 +378,23 @@ function anim_init()
 	window.setInterval(snake_move, 500);
 }
 
-// this works until the user zooms in or out or changes the size of the browser without refreshing
-// there is no way to detect if/when a browser is zoomed
+// this works until the user zooms in or out or changes the size of the browser window without refreshing
+// then the user needs to manually refresh the page to reset the sprites, as there is no way to detect if/when a browser has been "zoomed"
 function screen_init()
 {
 	var pixel_ratio = window.devicePixelRatio;
-	this_body.style.backgroundColor = '#d0d0d0';
-	this_body.style.backgroundImage = 'url(./lib/isometric-grid.png)';
+	this_body.style.backgroundImage = 'url(' + grid_file + ')';
+	this_body.style.backgroundColor = '#e0e0e0';
 	this_body.style.backgroundSize = atom_dim[0] + 'px ' + atom_dim[1] + 'px';
 //	this_body.style.border = '2px solid yellow';
 //	this_body.style.boxSizing = 'border-box';
 	this_body.style.position = 'fixed';
-	this_body.style.left = 0;
-	this_body.style.top = 0;
+	this_body.style.left = '0px';
+	this_body.style.top = '0px';
 	this_body.style.width = (100 * pixel_ratio) + '%';
 	this_body.style.height = (100 * pixel_ratio) + '%';
 	this_body.style.zIndex = -10000;
-	this_body.style.margin = 0;
+	this_body.style.margin = '0px';
 	this_body.style.transformOrigin = 'top left';
 	this_body.style.transform = 'scale(' + (1/pixel_ratio) + ')';
 }

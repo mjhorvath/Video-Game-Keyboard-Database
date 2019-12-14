@@ -179,6 +179,9 @@
 * Radio buttons on the front page should be based on "em" dimensions instead of 
   pixel dimensions. [Ed. need to figure out how to set the size of the the "X" 
   icon using "em" values.]
+* "Cube Snake" script looks awful in Google Chrome when displayed at anything 
+  other than the monitor's native PPI. This is true even after size correction. 
+  [Ed. it looks okay in Firefox, though.]
 
 ### Non-coding related
 * File permissions recently started getting messed up when uploading new files 

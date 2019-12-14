@@ -80,7 +80,7 @@
 	echo
 "		</main>
 		<footer>\n";
-	include($path_lib1 . "footer-common.php");
+	include($path_lib1 . "footer-normal.php");
 	echo
 "		</footer>
 	</body>
