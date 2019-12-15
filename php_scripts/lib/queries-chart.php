@@ -335,7 +335,7 @@
 	function selCommandLabelsChart()
 	{
 		global $con, $layout_language;
-		$selectString =	"SELECT l.commandtype_id, l.commandlabel_string, t.commandtype_abbrv
+		$selectString =	"SELECT l.commandtype_id, l.commandlabel_string, t.commandtype_abbrv, t.commandtype_input
 				FROM commandlabels AS l, commandtypes AS t
 				WHERE l.language_id = " . $layout_language . "
 				AND l.commandtype_id = t.commandtype_id;";
@@ -346,7 +346,7 @@
 		global $commandlabel_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
-			// commandtype_id, commandlabel_string, commandtype_abbrv
+			// commandtype_id, commandlabel_string, commandtype_abbrv, commandtype_input
 			$commandlabel_table[$temp_row[0]-1] = $temp_row;
 		}
 	}

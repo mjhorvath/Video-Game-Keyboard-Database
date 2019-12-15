@@ -497,43 +497,42 @@ var binding_table =\n{\n" . $binding_string . "};
 							<div class="capopf">Caption</div>
 						</div>
 					</div>
-					<div id="table_legend" class="inbtop">
+					<div class="inbtop legflx">
 <?php
 	// legend
-	// should I skip $i=1 and subtract 1 from the other vars?
+	// non!
+	$count_rows = 0;
+	$total_rows = count($binding_color_table);
 	foreach ($binding_color_table as $i => $binding_color_value)
 	{
 		$leg_value = "";
 		$leg_color = getkeycolor($i+1);
-		foreach ($legend_table as $j => $legend_value)
+		if ($leg_color != "non")
 		{
-			$leg_group = $legend_value[0];
-			if (($leg_group-1) == $i)
+			if (array_key_exists($i, $legend_table))
+				$leg_value = $legend_table[$i][1];
+			if ($count_rows % 3 == 0)
 			{
-				$leg_value = $legend_value[1];
-				break;
+				echo
+"						<div class=\"inbtop legtbl\">\n";
 			}
-		}
-		if ($i % 3 == 0)
-		{
 			echo
-"						<div class=\"legtbl inbtop\">\n";
-		}
-		echo
 "							<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
-		if ($i % 3 == 2)
-		{
-			echo
+			// the math here may be off by one row, need to test
+			if (($count_rows % 3 == 2) || ($total_rows - $count_rows < 3))
+			{
+				echo
 "						</div>\n";
+			}
+			$count_rows += 1;
 		}
 	}
 ?>
 					</div>
 				</div>
-				<div id="flxdiv">
+				<div class="comflx">
 <?php
 	// commands
-	// keep in mind that the "additional notes" are supposed to be a special case
 	foreach ($commandlabel_table as $i => $commandlabel_value)
 	{
 		if (array_key_exists($i, $commandouter_table))
@@ -542,29 +541,57 @@ var binding_table =\n{\n" . $binding_string . "};
 			$commandinner_table = [];
 		$commandlabel_label = $commandlabel_value[1];
 		$commandlabel_abbrv = $commandlabel_value[2];
+		$commandlabel_input = $commandlabel_value[3];
 		echo
 "					<div class=\"inbtop comdiv\">
 						<h3>" . cleantextHTML($commandlabel_label) . "</h3>
 						<div id=\"table_" . $commandlabel_abbrv . "\" class=\"nottbl\">\n";
-
 		foreach ($commandinner_table as $j => $commandinner_value)
+		{
+			// "additional notes" are a special case requiring a textarea instead of input
+			if ($commandlabel_input == 1)
+			{
+				echo
+"							<div class=\"notrow\">
+								<div class=\"notcll inpone\"><input type=\"text\" placeholder=\"blah\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[1] . "\"/></div>
+								<div class=\"notcll inptwo\">=</div>
+								<div class=\"notcll inpthr\"><input type=\"text\" placeholder=\"blah\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[2] . "\"/></div>
+								<div class=\"notcll inpfor\"><button class=\"inpsub\" type=\"button\">-</button></div>
+							</div>\n";
+			}
+			else
+			{
+				echo
+"							<div class=\"notrow\">
+								<div class=\"notcll txtone\"><input type=\"hidden\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"\"/></div>
+								<div class=\"notcll txttwo\"></div>
+								<div class=\"notcll txtthr\"><textarea placeholder=\"blah\" maxlength=\"1024\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\">" . $commandinner_value[2] . "</textarea></div>
+								<div class=\"notcll txtfor\"><button class=\"txtsub\" type=\"button\">-</button></div>
+							</div>\n";
+			}
+		}
+		if ($commandlabel_input == 1)
 		{
 			echo
 "							<div class=\"notrow\">
-								<div class=\"notcll cllone\"><input type=\"text\" placeholder=\"blah\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[1] . "\"/></div>
-								<div class=\"notcll clltwo\">=</div>
-								<div class=\"notcll cllthr\"><input type=\"text\" placeholder=\"blah\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[2] . "\"/></div>
-								<div class=\"notcll cllfor\"><button class=\"butsub\" type=\"button\">-</button></div>
+								<div class=\"notcll inpone\"></div>
+								<div class=\"notcll inptwo\"></div>
+								<div class=\"notcll inpthr\"></div>
+								<div class=\"notcll inpfor\"><button class=\"inpadd\" type=\"button\">+</button></div>
+							</div>\n";
+		}
+		else
+		{
+			echo
+"							<div class=\"notrow\">
+								<div class=\"notcll txtone\"></div>
+								<div class=\"notcll txttwo\"></div>
+								<div class=\"notcll txtthr\"></div>
+								<div class=\"notcll txtfor\"><button class=\"txtadd\" type=\"button\">+</button></div>
 							</div>\n";
 		}
 		echo
-"							<div class=\"notrow\">
-								<div class=\"notcll cllone\"></div>
-								<div class=\"notcll clltwo\"></div>
-								<div class=\"notcll cllthr\"></div>
-								<div class=\"notcll cllfor\"><button class=\"butadd\" type=\"button\">+</button></div>
-							</div>
-						</div>
+"						</div>
 					</div>\n";
 	}
  ?>

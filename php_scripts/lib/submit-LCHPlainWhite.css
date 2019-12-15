@@ -9,7 +9,9 @@ a:hover,a:active
 	{color:#00f;text-decoration:underline;}
 div.boxdiv	{position:relative;margin:6px;padding:18px;border:solid 1px #c0c0c0;}
 div.comdiv	{position:relative;margin:3px;padding:18px;border:solid 1px #c0c0c0;}
-div#flxdiv	{position:relative;margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
+div.comflx	{position:relative;margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
+div.legflx	{margin:0;padding:0;display:flex;flex-direction:row;flex-wrap:wrap;}
+div.combox	{width:22em;}
 div.keyout	{position:absolute;overflow:hidden;font-size:smaller;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
 div.uppnor,div.lownor,div.uppagr,div.lowagr,div.capopt,div.capopf
 		{position:absolute;overflow:hidden;padding:2px;white-space:pre;}
@@ -30,14 +32,13 @@ div.capalt	{color:#ED0631;}	/* ( 50, 88, 30)	red	*/
 div.capagr	{color:#D403CB;}	/* ( 50, 97,330)	magenta	*/
 div.capxtr	{color:#0B848F;}	/* ( 50, 29,210)	cyan	*/
 img.capimg	{position:absolute;}
-div.legtbl	{display:table;border-collapse:separate;border-spacing:2px;}
-div.legrow	{display:table-row;}
-div.legcll	{display:table-cell;padding:1px;vertical-align:middle;}
-div.legtxt	{width:12em;}
-div.legbox	{text-align:center;width:1.25em;height:1.25em;}
+div.legtbl	{display:table;border-collapse:separate;border-spacing:1px;border:none;margin:0px;padding:0px;margin-bottom:1em;}
+div.legrow	{display:table-row;vertical-align:middle;}
+div.legcll	{display:table-cell;padding:1px;}
+div.legtxt	{width:12em;height:1.25em;text-align:left;}
+div.legbox	{width:2em;height:1.25em;text-align:center;}
 div.inbtop	{display:inline-block;vertical-align:top;}
 div.inbmid	{display:inline-block;vertical-align:middle;}
-div.combox	{width:22em;}
 /* http://www.easyrgb.com/index.php?X=CALC */
 /* CIE-L*Ch(ab) D65/2° */
 div.capred,div.legred,select.selred,option.optred	{background:#FC9C93;color:#000000;}	/* ( 74, 40, 30) */
@@ -51,7 +52,6 @@ div.capgry,div.leggry,select.selgry,option.optgry	{background:#808080;color:#fff
 div.capblk,div.legblk,select.selblk,option.optblk	{background:#404040;color:#ffffff;}
 div.caporg,div.legorg,select.selorg,option.optorg	{background:#ECA777;color:#000000;}	/* ( 74, 40, 60) */
 div.capolv,div.legolv,select.selolv,option.optolv	{background:#A8BF75;color:#000000;}	/* ( 74, 40,120) */
-/*div.capbrn,div.legbrn,select.selbrn,option.optbrn	{background:#49C9B5;color:#000000;}*/	/* ( 74, 40,180) */
 div.capbrn,div.legbrn,select.selbrn,option.optbrn	{background:#685510;color:#000000;}	/* ( 37, 40, 90) */
 div.capnon,div.legnon,select.selnon,option.optnon	{background:#B6B6B6;color:#000000;}	/* ( 74,  0,  0) */
 div.capred,div.legred	{border:1px solid #ffffff;}

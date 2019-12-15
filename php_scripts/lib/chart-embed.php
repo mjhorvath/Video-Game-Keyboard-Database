@@ -150,23 +150,32 @@
 */
 ?>
 			</div>
-			<div id="flxdiv">
+			<div class="comflx">
 <?php
 	// commands
-	// keep in mind that the "additional notes" are supposed to be a special case
 	foreach ($commandouter_table as $i => $commandouter_value)
 	{
 		$commandlabel_value = $commandlabel_table[$i];
 		$commandlabel_label = $commandlabel_value[1];
 		$commandlabel_abbrv = $commandlabel_value[2];
+		$commandlabel_input = $commandlabel_value[3];
 		echo
 "				<div class=\"comdiv\">
 					<h3>" . cleantextHTML($commandlabel_label) . "</h3>
 					<table>\n";
 		foreach ($commandouter_value as $j => $commandinner_value)
 		{
-			echo
+			// "additional notes" are a special case with only the second value containing text
+			if ($commandlabel_input == 1)
+			{
+				echo
 "						<tr><td>" . cleantextHTML($commandinner_value[1]) . "</td><td>=</td><td>" . cleantextHTML($commandinner_value[2]) . "</td></tr>\n";
+			}
+			else
+			{
+				echo
+"						<tr><td>" . cleantextHTML($commandinner_value[2]) . "</td></tr>\n";
+			}
 		}
 		echo
 "					</table>

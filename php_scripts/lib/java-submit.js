@@ -152,13 +152,13 @@ function click_document_body(event)
 				key_change_warning(elm, 'A');
 				return;
 			}
-			else if (elm.matches('.butsub'))
+			else if (elm.matches('.inpsub'))
 			{
 				remove_input_table_row(elm);
 				flag_doc_dirty();
 				return;
 			}
-			else if (elm.matches('.butadd'))
+			else if (elm.matches('.inpadd'))
 			{
 				add_input_table_row(elm);
 				flag_doc_dirty();
@@ -581,7 +581,7 @@ function create_input_table_row()
 	var new_row = document.createElement('div');
 	new_row.className = 'notrow';
 	var new_cll_1 = document.createElement('div');
-	new_cll_1.className = 'notcll cllone';
+	new_cll_1.className = 'notcll inpone';
 	var new_inp_1 = document.createElement('input');
 	new_inp_1.setAttribute('type','text');
 	new_inp_1.setAttribute('maxlength','100');
@@ -591,12 +591,12 @@ function create_input_table_row()
 	new_cll_1.appendChild(new_inp_1);
 	new_row.appendChild(new_cll_1);
 	var new_cll_2 = document.createElement('div');
-	new_cll_2.className = 'notcll clltwo';
+	new_cll_2.className = 'notcll inptwo';
 	var new_txt_2 = document.createTextNode('=');
 	new_cll_2.appendChild(new_txt_2);
 	new_row.appendChild(new_cll_2);
 	var new_cll_3 = document.createElement('div');
-	new_cll_3.className = 'notcll cllthr';
+	new_cll_3.className = 'notcll inpthr';
 	var new_inp_3 = document.createElement('input');
 	new_inp_3.setAttribute('type','text');
 	new_inp_3.setAttribute('maxlength','100');
@@ -606,9 +606,9 @@ function create_input_table_row()
 	new_cll_3.appendChild(new_inp_3);
 	new_row.appendChild(new_cll_3);
 	var new_cll_4 = document.createElement('div');
-	new_cll_4.className = 'notcll cllfor';
+	new_cll_4.className = 'notcll inpfor';
 	var new_but_4 = document.createElement('button');
-	new_but_4.className = 'butsub';
+	new_but_4.className = 'inpsub';
 	new_but_4.setAttribute('type','button');
 	var new_txt_4 = document.createTextNode('-');
 	new_but_4.appendChild(new_txt_4);
@@ -640,20 +640,35 @@ function create_textarea_table_row()
 	new_row.className = 'notrow';
 	var new_cll_1 = document.createElement('div');
 	new_cll_1.className = 'notcll txtone';
-	var new_txt_1 = document.createElement('textarea');
-	new_txt_1.setAttribute('placeholder','blah');
-	new_txt_1.onchange = flag_doc_dirty;
-	new_cll_1.appendChild(new_txt_1);
+	var new_inp_1 = document.createElement('input');
+	new_inp_1.setAttribute('type','hidden');
+	new_inp_1.setAttribute('placeholder','');	// probably not needed
+	new_inp_1.setAttribute('autocomplete','off');	// probably not needed
+	new_inp_1.setAttribute('maxlength','0');	// probably not needed
+	new_inp_1.onchange = flag_doc_dirty;		// should never happen
+	new_cll_1.appendChild(new_inp_1);
 	new_row.appendChild(new_cll_1);
 	var new_cll_2 = document.createElement('div');
 	new_cll_2.className = 'notcll txttwo';
-	var new_but_2 = document.createElement('button');
-	new_but_2.className = 'txtsub';
-	new_but_2.setAttribute('type','button');
-	var new_txt_2 = document.createTextNode('-');
-	new_but_2.appendChild(new_txt_2);
-	new_cll_2.appendChild(new_but_2);
 	new_row.appendChild(new_cll_2);
+	var new_cll_3 = document.createElement('div');
+	new_cll_3.className = 'notcll txtthr';
+	var new_inp_3 = document.createElement('textarea');
+	new_inp_3.setAttribute('placeholder','blah');
+	new_inp_3.setAttribute('autocomplete','off');
+	new_inp_3.setAttribute('maxlength','1024');
+	new_inp_3.onchange = flag_doc_dirty;
+	new_cll_3.appendChild(new_inp_3);
+	new_row.appendChild(new_cll_3);
+	var new_cll_4 = document.createElement('div');
+	new_cll_4.className = 'notcll txtfor';
+	var new_but_4 = document.createElement('button');
+	new_but_4.className = 'txtsub';
+	new_but_4.setAttribute('type','button');
+	var new_txt_4 = document.createTextNode('-');
+	new_but_4.appendChild(new_txt_4);
+	new_cll_4.appendChild(new_but_4);
+	new_row.appendChild(new_cll_4);
 	return new_row;
 }
 
@@ -983,7 +998,7 @@ function document_change_style(game_id, layout_id, game_seo)
 	}
 }
 
-// there is an analogous function written in PHP in "./lib/scripts-all.php"
+// there is an analogous function written in PHP in "./lib/scripts-common.php"
 // need to keep the two functions synced
 function seo_url(input)
 {
@@ -1115,7 +1130,6 @@ function collect_legend_data()
 {
 	legend_table = {};
 	// skip 'non' since there is no box for 'non'
-	// need to put 'non' into the database too at some point
 	for (var i in color_table)
 	{
 		var this_color = color_table[i];
@@ -1141,7 +1155,7 @@ function collect_command_data()
 		var this_parent = document.getElementById('table_' + this_label);
 		var max_children = this_parent.children.length;
 		// ignore the last child since it only contains the button
-		for (var i = 0; i < max_children - 1; i++)
+		for (var i = 0, n = max_children - 1; i < n; i++)
 		{
 			var this_child = this_parent.children[i];
 			var this_value_1 = this_child.children[0].children[0].value;
@@ -1159,12 +1173,12 @@ function collect_command_data()
 function process_legend_data()
 {
 	// should fetch column names from the database instead
+	// skip 'non' since there is no box for 'non'
 	var legend_string = 'legend_id\trecord_id\tkeygroup_id\tlegend_description\n';
 	for (var i in legend_table)
 	{
 		var legend_item = legend_table[i];
-		var legend_num = i;	// because of 'non' the index already starts at 1 instead of 0
-		legend_string += '\\N\t' + record_id + '\t' + legend_num + '\t' + cleantextTSV(legend_item) + '\n';
+		legend_string += '\\N\t' + record_id + '\t' + i + '\t' + cleantextTSV(legend_item) + '\n';
 	}
 	return legend_string;
 }
@@ -1177,10 +1191,10 @@ function process_command_data()
 	for (var j in commandouter_table)
 	{
 		var command_num = parseInt(j,10) + 1;
-		var this_table = commandouter_table[j];
-		for (var i in this_table)
+		var commandinner_table = commandouter_table[j];
+		for (var i in commandinner_table)
 		{
-			var command_item = this_table[i];
+			var command_item = commandinner_table[i];
 			command_string += '\\N\t' + record_id + '\t' + command_num + '\t' + cleantextTSV(command_item[0]) + '\t' + cleantextTSV(command_item[1]) + '\n';
 		}
 	}

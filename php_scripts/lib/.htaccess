@@ -5,11 +5,7 @@ Deny from all
 </FilesMatch>
 
 # Allow specific PHP files
-<FilesMatch "^keyboard-recaptcha\.php$">
-Order deny,allow
-Allow from all
-</FilesMatch>
-<FilesMatch "^keyboard-sitemap\.php$">
+<FilesMatch "^scripts-recaptcha\.php$">
 Order deny,allow
 Allow from all
 </FilesMatch>

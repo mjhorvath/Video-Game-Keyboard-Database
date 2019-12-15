@@ -30,7 +30,7 @@
 
 	include($path_ssi2	. "analyticstracking.php");
 	include($path_ssi2	. "keyboard-connection.php");
-	include($path_lib2	. "scripts-all.php");
+	include($path_lib2	. "scripts-common.php");
 	include($path_lib2	. "queries-common.php");
 
 	// gather URL queries

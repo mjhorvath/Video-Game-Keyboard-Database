@@ -41,16 +41,16 @@
 * The "Reset" button should maybe do its job without reloading the whole page.
 
 ### MediaWiki
-* I should generate MediaWiki code for different layouts and styles in addition 
-  to games.
+* I should generate MediaWiki code for layouts and styles in addition to games.
 * Should add support in the MediaWiki templates for toggling the numpad on/off. 
   [Ed. I may have actually done this already. Need to double check.]
 * Add support in the MediaWiki template for Shift/CTRL/Alt command colors, even 
   if it is not actually possible to display these colors properly at this time.
   [Ed. the reasoning being that it may become possible to display these colors 
   properly at some point in the future, once I figure out how they should work.]
-* Currently, MediaWiki output is limited to commands that have bindings. Should 
-  there be a setting that tells the script to output every key and key modifier?
+* Currently, the MediaWiki output is limited to keys that have commands bound 
+  to them. Should there be a setting that tells the script to output every key 
+  and key modifier? [Ed. This would require some JavaScript.]
 
 ### Auditing, Authors, Submissions, Etc.
 * Should create a table of authors/contributers that automatically pulls info 
@@ -107,7 +107,7 @@
   of the submissions form. Not sure how I want to flag to the various scripts 
   which sets of "commands" are the special cases and which are not. I may need 
   to add an additional binary column to the "commandtypes" table for this very 
-  purpose.]
+  purpose.
 * On the submission form, the column names for the TSV data in the "Spreadsheet 
   View" should be fetched from the database instead of being hardcoded. OTOH, 
   the scripts expect the columns to be sorted in a particular order, and I'm 
@@ -117,10 +117,8 @@
 * The PHP and JS "color" and "class" tables are currently sorted by the index 
   columns of the "keygroups" tables in the database. But what happens if new 
   colors or classes are added, or if the index columns somehow get corrupted? 
-  Can I re-index the "keygroups" tables without affecting other tables that 
-  might have foreign key constraints? What's the best method of implementing a 
-  custom sort order for a table and its output? [Ed. I have added a 
-  "sort order" column to one of the "keygroups" tables, but not the other.]
+  Can I re-index the "keygroups" tables without affecting the other tables that 
+  may have foreign key constraints?
 * Instead of having one genre per game, I could maybe create a tag cloud so 
   that a game can be placed in multiple genres. What type of GUI would this 
   necessitate? Is this even possible using MySQL? How granular should I get 
@@ -203,6 +201,10 @@
   going on.
 * Set the correct time zone for the development server.
 * Set the correct time zone for the live server.
+* "Browserstack.com" allows FOSS projects free access to their services. I need 
+  to create an account there and periodically check for problems.
+* Double check and make sure whether stored procedures are still disabled on 
+  the web server.
 
 ### Miscellaneous
 * I would like to also create charts/diagrams for gamepads, mice and joysticks. 
@@ -518,7 +520,6 @@
   language IDs to it.]
 
 ### Latest items
-* "Browserstack.com" allows FOSS projects free access to their services. I need 
-  to create an account there and periodically check for problems.
-* Double check and make sure whether stored procedures are still disabled on 
-  the web server.
+* Just rediscovered there is a new HTML5 element called "code". Could be useful.
+* The "non" color needs to once again be removed from the database. Adding it 
+  to the database was a mistake.

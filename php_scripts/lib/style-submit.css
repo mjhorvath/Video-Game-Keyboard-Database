@@ -60,12 +60,14 @@ div.emlcll	{display:table-cell;padding:1px;text-align:left;vertical-align:top;bo
 div.notcll input	{width:100%;box-sizing:border-box;}
 div.notcll button	{width:100%;box-sizing:border-box;}
 div.notcll textarea	{width:100%;box-sizing:border-box;}
-div.cllone	{width:8em;}
-div.clltwo	{width:1em;}
-div.cllthr	{width:12em;}
-div.cllfor	{width:2em;}
-div.txtone	{width:21em;}
-div.txttwo	{width:2em;vertical-align:top;}
+div.inpone	{width:8em;}
+div.inptwo	{width:1em;}
+div.inpthr	{width:12em;}
+div.inpfor	{width:2em;}
+div.txtone	{width:0em;}
+div.txttwo	{width:0em;}
+div.txtthr	{width:21em;}
+div.txtfor	{width:2em;vertical-align:top;}
 input#email_1,input#email_2
 		{width:13em;box-sizing:border-box;}
 textarea#email_3
@@ -78,7 +80,6 @@ div#table_inp input
 		{width:8em;}
 code		{font-family:monospace;}
 hr		{margin:1em 0.1em;}
-div.legbox	{text-align:center;width:2.25em;height:1.25em;}
 div#pane_lft	{position:absolute;width:             20em;height:100%;left: 0px;top: 0em;margin:0em;padding:0em;z-index:0;overflow:  hidden;box-sizing:border-box;}
 div#pane_rgt	{position:absolute;width:calc(100% - 20em);height:100%;left:20em;top: 0em;margin:0em;padding:0em;z-index:0;overflow:  hidden;box-sizing:border-box;}
 div#pane_inp	{position:absolute;width:100%;height:calc(100% - 24px);left: 0px;top:24px;margin:0em;padding:1em;z-index:0;overflow-y:scroll;box-sizing:border-box;text-align:center;}

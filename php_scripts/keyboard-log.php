@@ -31,7 +31,7 @@
 	$path_ssi2		= "../../ssi/";		// for PHP files
 
 	include($path_ssi1	. "analyticstracking.php");
-	include($path_lib1	. "scripts-all.php");
+	include($path_lib1	. "scripts-common.php");
 
 	echo
 "<!DOCTYPE HTML>
@@ -92,7 +92,7 @@
 	<li>2019/11/29: Merged the HTML and SVG database queries together. Still need to check and compare the other queries.</li>
 	<li>2019/11/28: The dimensions of the keyboard pane on the submission form are now being calculated dynamically.</li>
 	<li>2019/11/28: On the submission form, the selected key now has an animated border.</li>
-	<li>2019/11/28: Moved more shared code into &quot;keyboard-init.php&quot; and &quot;scripts-all.php&quot;.</li>
+	<li>2019/11/28: Moved more shared code into &quot;keyboard-init.php&quot; and &quot;scripts-common.php&quot;.</li>
 	<li>2019/11/27: Moved &quot;keyboard-init.php&quot; to &quot;lib&quot;. Updated &quot;htaccess&quot; accordingly.</li>
 	<li>2019/11/27: Language codes are now determined programmatically. Still require more of the text to be localized, however.</li>
 	<li>2019/11/27: Fixed a bug when &quot;$game_seo&quot; is null.</li>
