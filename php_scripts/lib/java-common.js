@@ -27,20 +27,12 @@ function cleantextHTML(in_string)
 function cleantextTSV(in_string)
 {
 	in_string = in_string.replace(/\\/g,'\\\\');
-	if (in_string == '')
-	{
-		in_string = '\\N';
-	}
-	return in_string;
+	return in_string == '' ? '\\N' : in_string;
 }
 
 function cleannumberTSV(in_number)
 {
-	if (in_number == '0')
-	{
-		in_number = '\\N';
-	}
-	return in_number;
+	return !in_number ? '\\N' : in_number;
 }
 
 // needs work

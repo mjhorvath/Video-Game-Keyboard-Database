@@ -128,21 +128,16 @@
 * Rename the "commandlabels" table to "commandtypelabels" or something similar.
 * Need someone to look over the PHP code and help determine whether the code is 
   susceptible to SQL injection.
-* Make sure the SQL result sets are ordered properly. Set the sort order in SQL 
-  wherever possible since it's faster than sorting in PHP.
+* Make sure the SQL result sets are ordered properly.
 * Double check whether I can replace any instances of PHP sorting with SQL 
   sorting, since the latter is likely the faster method.
 
 ### Optimization
 * Should maybe store the SVG patterns, filters and gradients in separate files 
-  to be included only when needed, rather than cluttering up "keyboard-svg.php".
+  to be included only when needed, rather than cluttering up "chart-svg.php".
 * Currently, all the SQL queries are very simple, and all processing of data is 
   done using PHP scripts. A lot of these tasks could probably be performed more 
-  efficiently using SQL and joins.
-* I moved most PHP routines and SQL statements to two dedicated files. But this 
-  may be worse for performance since only a subset of the routines are needed 
-  at any given time, yet the entire files are loaded each time. Should I split 
-  the two big files into several smaller ones?
+  efficiently using SQL joins.
 * Not sure every table needs its own numerical index column. Using two or more 
   preexisting columns to form a composite key might suffice in many cases.
 * Should use JS array shorthand in "keyboard-submit.js".
@@ -153,7 +148,7 @@
 ### Presentation
 * Need to create a new favicon just for this project.
 * Use flexbox or grid for the accordion containers instead of float or inline 
-  display.
+  box display.
 * Maybe replace the "up", "down", "right" and "left" key captions with arrow 
   icons? (Or Unicode arrow characters?)
 * Experiment again with scaling and rotating the diagrams so that they become 
@@ -182,11 +177,11 @@
 * "Cube Snake" script looks awful in Google Chrome when displayed at anything 
   other than the monitor's native PPI. This is true even after size correction. 
   [Ed. it looks okay in Firefox, though.]
-* I would prefer it if the "snake cube" script operated upon the page's BODY 
-  element instead of a DIV element since the pages flicker a bit when they 
-  first load. However, the CSS scaling would then affect every object on the 
-  page instead of just the background area. [Ed. need to check whether this 
-  script is working correctly in other browsers, regardless.]
+* I would prefer it if the "Cube Snake" script operated upon the page's BODY 
+  element instead of a DIV element since the pages flicker a bit on first load. 
+  However, the CSS scaling would then affect every object on the page instead 
+  of just the background area. [Ed. need to check whether this script is 
+  working correctly in other browsers, regardless.]
 * On the submission form, since I now have animated borders around the selected 
   keys, I no longer need to change the background color of the selected keys to 
   indicate the key is selected. I can leave the background color alone and rely 
@@ -201,10 +196,6 @@
   going on.
 * Set the correct time zone for the development server.
 * Set the correct time zone for the live server.
-* "Browserstack.com" allows FOSS projects free access to their services. I need 
-  to create an account there and periodically check for problems.
-* Double check and make sure whether stored procedures are still disabled on 
-  the web server.
 
 ### Miscellaneous
 * I would like to also create charts/diagrams for gamepads, mice and joysticks. 
@@ -518,8 +509,17 @@
   several tables in the future. [Ed. renamed the "urlqueries" database table 
   back to "entities" and added the default platform, stylegroup, genre and 
   language IDs to it.]
+* I moved most PHP routines and SQL statements to two dedicated files. But this 
+  may be worse for performance since only a subset of the routines are needed 
+  at any given time, yet the entire files are loaded each time. Should I split 
+  the two big files into several smaller ones? [Ed. scripts and queries have 
+  been split into multiple smaller files.]
 
 ### Latest items
 * Just rediscovered there is a new HTML5 element called "code". Could be useful.
 * The "non" color needs to once again be removed from the database. Adding it 
   to the database was a mistake.
+* "Browserstack.com" allows FOSS projects free access to their services. I need 
+  to create an account there and periodically check for problems.
+* Double check and make sure whether stored procedures are still disabled on 
+  the web server.
