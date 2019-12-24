@@ -131,6 +131,9 @@
 * Make sure the SQL result sets are ordered properly.
 * Double check whether I can replace any instances of PHP sorting with SQL 
   sorting, since the latter is likely the faster method.
+* Commands should have "keygroup_id" applied to them as well, even if I do not 
+  display the colors. [Ed. this will be an important but time-consuming thing 
+  to retroactively fix.]
 
 ### Optimization
 * Should maybe store the SVG patterns, filters and gradients in separate files 
@@ -270,6 +273,9 @@
 * Maybe rename "stylegroup" to just "group" in PHP and JS?
 * Create a separate "credits" page since the log is getting too long.
 * Maybe I can squeeze some object-oriented design into this project?
+* When I have more than one command for a particular key, I usually separate 
+  them with a forward slash. Should I do this differently? Should I use a dash, 
+  semicolon or comma? Should I use a bulleted or numbered list?
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent page's title in the page headers 

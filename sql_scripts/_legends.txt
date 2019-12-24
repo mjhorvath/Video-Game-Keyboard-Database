@@ -1,4 +1,7 @@
-\N	247	1	Actions/Combat
-\N	247	4	Dialogue Choices
-\N	247	5	Camera
-\N	247	6	Menus
+legend_id	record_id	keygroup_id	legend_description
+\N	248	1	Combat/Actions
+\N	248	2	Weapon Change
+\N	248	3	Movement
+\N	248	4	Chat
+\N	248	6	Game Menus/Maps
+\N	248	7	Screenshot

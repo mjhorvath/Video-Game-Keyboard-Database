@@ -30,7 +30,7 @@
 	$path_java2		= "../../java/";	// for PHP files
 	$path_ssi2		= "../../ssi/";		// for PHP files
 
-	include($path_ssi1	. "analyticstracking.php");
+	include($path_ssi1	. "plugin-analyticstracking.php");
 	include($path_lib1	. "scripts-common.php");
 
 	echo
@@ -57,6 +57,12 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2019/12/24: Added bindings for <i>Frontlines: Fuel of War</i> thanks to Abel Cloots who submitted them.</li>
+	<li>2019/12/15: The legend on the submission form now utilizes flexbox.</li>
+	<li>2019/12/15: Renamed some CSS classes. Renamed &quot;scripts-all.php&quot; to &quot;scripts-common.php&quot;.</li>
+	<li>2019/12/15: Fixed bug in &quot;htaccess&quot; preventing visitors from submitting new bindings!</li>
+	<li>2019/12/15: Fixed error in submission form where a DIV would not close properly if the number of &quot;legend&quot; items was not evenly divisible by 3.</li>
+	<li>2019/12/15: The &quot;Additional Notes&quot; box once again only tries to display the text and not the non-existent commands.</li>
 	<li>2019/12/14: Renamed the &quot;urlqueries&quot; database table back to &quot;entities&quot; and added the default hardware platform, style group, genre and language IDs to it.</li>
 	<li>2019/12/14: Added the &quot;non&quot; or &quot;null&quot; color to the database. The color tables are now sorted by a new &quot;sortorder_id&quot; column.</li>
 	<li>2019/12/14: More tweaks to the &quot;cube snake&quot;. I can now easily switch back and forth between an isometric grid and snake, and a dimetric grid and snake.</li>
@@ -263,6 +269,7 @@
 	<li>Luke Fanning</li>
 	<li>Hunter Mansanas</li>
 	<li>Lucas</li>
+	<li>Abel Cloots</li>
 </ul>
 <h4>Visual themes</h4>
 <ul>

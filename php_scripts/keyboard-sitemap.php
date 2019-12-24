@@ -28,7 +28,7 @@
 	$path_java2		= "../../java/";	// for PHP files
 	$path_ssi2		= "../../ssi/";		// for PHP files
 
-	include($path_ssi1	. "analyticstracking.php");
+	include($path_ssi1	. "plugin-analyticstracking.php");
 	include($path_ssi1	. "keyboard-connection.php");
 	include($path_lib1	. "scripts-common.php");
 	include($path_lib1	. "queries-common.php");

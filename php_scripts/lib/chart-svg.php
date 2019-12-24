@@ -23,18 +23,18 @@
 
 	$path_file		= "./chart-svg.php";		// this file
 	$stylegroup_id		= 0;		// set by selThisStyleChart(), also contained inside $stylegroup_table
-//	$stylegroup_table	= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "keyboard-footer.php"
-//	$style_table		= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "keyboard-footer.php"
+//	$stylegroup_table	= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "keyboard-page-footer.php"
+//	$style_table		= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "keyboard-page-footer.php"
 	$position_table		= [];		// populated by selPositionsChart()
 	$keystyle_table		= [];		// populated by selKeyStylesChart()
 	$binding_table		= [];		// populated by selBindingsChart()
 	$legend_table		= [];		// populated by selLegendsChart()
 	$author_table		= [];		// populated by selAuthorsChart()
 	$gamesrecord_id		= 0;		// set by selThisGamesRecordChart()
-	$gamesrecord_authors	= [];		// populated by selContribsGamesChart(), utilized by "keyboard-footer.php"
+	$gamesrecord_authors	= [];		// populated by selContribsGamesChart(), utilized by "keyboard-page-footer.php"
 	$stylesrecord_id	= 0;		// set by selThisStylesRecordChart()
-	$stylesrecord_authors	= [];		// populated by selContribsStylesChart(), utilized by "keyboard-footer.php"
-	$layout_authors		= [];		// populated by selContribsLayoutsChart(), utilized by "keyboard-footer.php"
+	$stylesrecord_authors	= [];		// populated by selContribsStylesChart(), utilized by "keyboard-page-footer.php"
+	$layout_authors		= [];		// populated by selContribsLayoutsChart(), utilized by "keyboard-page-footer.php"
 	$layout_keysnum		= 0;		// reset by selThisLayoutChart()
 	$layout_keygap		= 4;		// reset by selThisLayoutChart()
 	$layout_padding		= 18;		// reset by selThisLayoutChart()

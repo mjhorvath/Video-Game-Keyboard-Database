@@ -1,4 +1,5 @@
---VOLATILE!!!
+-- VOLATILE!!!
+-- See: https://stackoverflow.com/questions/59473548/comments-in-imported-text-file
 
 SET FOREIGN_KEY_CHECKS = 0;
 LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\_bindings.txt' INTO TABLE isometr1_keyboard.bindings
