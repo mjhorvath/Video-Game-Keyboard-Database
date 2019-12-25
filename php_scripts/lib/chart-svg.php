@@ -23,18 +23,18 @@
 
 	$path_file		= "./chart-svg.php";		// this file
 	$stylegroup_id		= 0;		// set by selThisStyleChart(), also contained inside $stylegroup_table
-//	$stylegroup_table	= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "keyboard-page-footer.php"
-//	$style_table		= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "keyboard-page-footer.php"
+//	$stylegroup_table	= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
+//	$style_table		= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
 	$position_table		= [];		// populated by selPositionsChart()
 	$keystyle_table		= [];		// populated by selKeyStylesChart()
 	$binding_table		= [];		// populated by selBindingsChart()
 	$legend_table		= [];		// populated by selLegendsChart()
 	$author_table		= [];		// populated by selAuthorsChart()
 	$gamesrecord_id		= 0;		// set by selThisGamesRecordChart()
-	$gamesrecord_authors	= [];		// populated by selContribsGamesChart(), utilized by "keyboard-page-footer.php"
+	$gamesrecord_authors	= [];		// populated by selContribsGamesChart(), utilized by "footer-chart.php"
 	$stylesrecord_id	= 0;		// set by selThisStylesRecordChart()
-	$stylesrecord_authors	= [];		// populated by selContribsStylesChart(), utilized by "keyboard-page-footer.php"
-	$layout_authors		= [];		// populated by selContribsLayoutsChart(), utilized by "keyboard-page-footer.php"
+	$stylesrecord_authors	= [];		// populated by selContribsStylesChart(), utilized by "footer-chart.php"
+	$layout_authors		= [];		// populated by selContribsLayoutsChart(), utilized by "footer-chart.php"
 	$layout_keysnum		= 0;		// reset by selThisLayoutChart()
 	$layout_keygap		= 4;		// reset by selThisLayoutChart()
 	$layout_padding		= 18;		// reset by selThisLayoutChart()
@@ -119,15 +119,14 @@
 		$layout_max_vertical	=  $layout_padding * 2 + $layout_fullsize_height + $layout_legend_padding + $layout_legend_height;
 		$layout_legend_top	=  $layout_fullsize_height + $layout_legend_padding;
 	}
-?>
-<!--
+	echo
+"<!--
 This file was generated using Video Game Keyboard Diagrams by Michael Horvath.
 http://isometricland.net/keyboard/keyboard.php
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
 United States License. To view a copy of this license, visit
 http://creativecommons.org/licenses/by-sa/3.0/us/ or send a letter to Creative
-Commons, PO Box 1866, Mountain View, CA 94042, USA.
-<?php
+Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 	echo "Binding scheme created by: ";
 	$count_authors = count($gamesrecord_authors);
 	for ($i = 0; $i < $count_authors; $i++)
@@ -158,8 +157,9 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		else
 			echo ".\n";
 	}
+	echo
+"-->\n";
 ?>
--->
 <svg
 	version="1.1"
 	baseProfile="full"

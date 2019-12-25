@@ -276,6 +276,7 @@
 * When I have more than one command for a particular key, I usually separate 
   them with a forward slash. Should I do this differently? Should I use a dash, 
   semicolon or comma? Should I use a bulleted or numbered list?
+* Ampersand escape sequences not working properly in the SVG output.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent page's title in the page headers 

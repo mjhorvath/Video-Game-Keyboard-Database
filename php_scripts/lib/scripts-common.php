@@ -331,9 +331,7 @@
 	}
 	function cleantextSVG($instring)
 	{
-		// htmlentities function not working here
-//		return str_replace("\\t","\t",str_replace("\\r","",str_replace("\\n","\n",str_replace("\r","",str_replace("\n","",htmlentities($instring,ENT_QUOTES|ENT_HTML401,"UTF-8",false))))));
-		return str_replace("\\t","\t",str_replace("\\r","",str_replace("\\n","\n",str_replace("\r","",str_replace("\n","",str_replace(">","&gt;",str_replace("<","&lt;",str_replace("&","&amp;",$instring))))))));
+		return str_replace("\\t","\t",str_replace("\\r","",str_replace("\\n","\n",str_replace("\r","",str_replace("\n","",htmlentities($instring,ENT_QUOTES|ENT_XML1,"UTF-8",false))))));
 	}
 	function cleantextJS($instring)
 	{
