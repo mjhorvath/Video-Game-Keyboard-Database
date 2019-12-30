@@ -131,9 +131,6 @@
 * Make sure the SQL result sets are ordered properly.
 * Double check whether I can replace any instances of PHP sorting with SQL 
   sorting, since the latter is likely the faster method.
-* Commands should have "keygroup_id" applied to them as well, even if I do not 
-  display the colors. [Ed. this will be an important but time-consuming thing 
-  to retroactively fix.]
 
 ### Optimization
 * Should maybe store the SVG patterns, filters and gradients in separate files 
@@ -276,7 +273,6 @@
 * When I have more than one command for a particular key, I usually separate 
   them with a forward slash. Should I do this differently? Should I use a dash, 
   semicolon or comma? Should I use a bulleted or numbered list?
-* Ampersand escape sequences not working properly in the SVG output.
 
 ### Problematic
 * Sub-pages should maybe not repeat the parent page's title in the page headers 
@@ -357,6 +353,9 @@
 * Can I shorten "foreach ($topic_array as $i => $topic_value)" to not include 
   the "$topic_value" part? [Ed. does not seem to be possible. Regardless, I now 
   find the "$topic_value" part useful.]
+* Just rediscovered there is a new HTML5 element called "code". Could be 
+  useful. [Ed. apparently the "code" and other phrase tags are not new, and are 
+  sort of being deprecated.]
 
 ### Ongoing
 * Double check all PHP and JS code for instances of the strings "counting!", 
@@ -521,12 +520,15 @@
   at any given time, yet the entire files are loaded each time. Should I split 
   the two big files into several smaller ones? [Ed. scripts and queries have 
   been split into multiple smaller files.]
+* Escape sequences not working properly in the SVG output.
 
 ### Latest items
-* Just rediscovered there is a new HTML5 element called "code". Could be useful.
 * The "non" color needs to once again be removed from the database. Adding it 
   to the database was a mistake.
 * "Browserstack.com" allows FOSS projects free access to their services. I need 
   to create an account there and periodically check for problems.
-* Double check and make sure whether stored procedures are still disabled on 
-  the web server.
+* Double check and make sure whether stored procedures are still disabled on my 
+  web host server.
+* Commands should have "keygroup_id" applied to them as well, even if I do not 
+  display the colors. [Ed. this will be an important but time-consuming thing 
+  to retroactively fix.]

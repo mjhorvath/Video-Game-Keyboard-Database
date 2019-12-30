@@ -2,40 +2,40 @@
 -- See: https://stackoverflow.com/questions/59473548/comments-in-imported-text-file
 
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\_bindings.txt' INTO TABLE isometr1_keyboard.bindings
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\input_bindings.txt' INTO TABLE isometr1_keyboard.bindings
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n'
 (binding_id, record_id, key_number, normal_action, normal_group, shift_action, shift_group, ctrl_action, ctrl_group, alt_action, alt_group, altgr_action, altgr_group, extra_action, extra_group, image_file, image_uri);
 
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\_commands.txt' INTO TABLE isometr1_keyboard.commands
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\input_commands.txt' INTO TABLE isometr1_keyboard.commands
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n'
 (command_id, record_id, commandtype_id, command_text, command_description);
 
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\_legends.txt' INTO TABLE isometr1_keyboard.legends
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\input_legends.txt' INTO TABLE isometr1_keyboard.legends
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n'
 (legend_id, record_id, keygroup_id, legend_description);
 
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\_contrib_games.txt' INTO TABLE isometr1_keyboard.contrib_games
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\input_contrib_games.txt' INTO TABLE isometr1_keyboard.contrib_games
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n';
 
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\_contrib_styles.txt' INTO TABLE isometr1_keyboard.contrib_styles
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\input_contrib_styles.txt' INTO TABLE isometr1_keyboard.contrib_styles
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n';
 
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\_contrib_layouts.txt' INTO TABLE isometr1_keyboard.contrib_layouts
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\input_contrib_layouts.txt' INTO TABLE isometr1_keyboard.contrib_layouts
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n';
@@ -43,7 +43,7 @@ LINES TERMINATED BY '\r\n';
 -- note that the "lowcap_optional" column has a bit data type and requires special handling
 -- see: https://stackoverflow.com/questions/15683809/load-data-from-csv-inside-bit-field-in-mysql
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\_positions.txt' INTO TABLE isometr1_keyboard.positions
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\input_positions.txt' INTO TABLE isometr1_keyboard.positions
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n'
@@ -53,7 +53,7 @@ set numpad=cast(@numpad as signed)
 SHOW WARNINGS;
 
 SET FOREIGN_KEY_CHECKS = 0;
-LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\_records_styles.txt' INTO TABLE isometr1_keyboard.records_styles
+LOAD DATA LOCAL INFILE 'C:\\Users\\mikh2\\Documents\\GitHub\\Video-Game-Keyboard-Diagrams\\sql_scripts\\input_records_styles.txt' INTO TABLE isometr1_keyboard.records_styles
 CHARACTER SET 'utf8'
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\r\n';
