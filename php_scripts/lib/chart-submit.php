@@ -278,7 +278,7 @@ var binding_table =\n{\n" . $binding_string . "};
 						<div class="emlrow"><div class="emlcll"><label for="email_3">Messg:</label></div><div class="emlcll"><textarea class="email_textarea"        name="email_3" id="email_3" onchange="flag_eml_dirty();" placeholder="Message to admin"     required="required" autocomplete="off"></textarea></div></div>
 					</div>
 					<div class="emltbl inbtop" style="margin:auto;">
-						<div class="emlrow"><div class="emlcll"><input type="checkbox" name="email_11" id="email_11" style="margin:0.2em;"/></div><div class="emlcll"><label for="email_11">Flag this as a brand new schema versus an update to an existing schema</label></div></div>
+						<div class="emlrow"><div class="emlcll"><input type="checkbox" name="email_11" id="email_11" style="margin:0.2em;"/></div><div class="emlcll"><label for="email_11">This is a brand new schema versus an update to an existing schema</label></div></div>
 					</div>
 					<div id="email_recaptcha" class="g-recaptcha" data-callback="flag_cap_dirty" data-sitekey="<?php echo writeRecaptchaKey(); ?>"></div>
 					<p style="text-align:left;">For human verification purposes, please click the checkbox labeled "I'm not a robot".</p>
@@ -320,9 +320,10 @@ var binding_table =\n{\n" . $binding_string . "};
 				<header>
 					<div class="boxdiv">
 						<!-- I don't like how these float/stack when the window size is very small. -->
-						<span>Game Title:</span>
+						<span style="font-size:large;">Game Title:</span>
 						<input style="font-size:x-large;" id="game_tit" type="text" size="25" maxlength="100" placeholder="Game Title" title="Game Title" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $page_title_a; ?>"/>
 						<input style="font-size:x-large;" id="game_url" type="text" size="25" maxlength="100" placeholder="URL String" title="URL String" autocomplete="off" onchange="flag_doc_dirty();" value="<?php echo $game_seo; ?>" disabled="disabled"/>
+						<span style="font-size:large;">GRID:<?php echo $gamesrecord_id; ?></span>
 						<span style="float:right;"><?php echo cleantextHTML($temp_layout_name) . "<br>" . cleantextHTML($temp_style_name); ?></span>
 					</div>
 				</header>

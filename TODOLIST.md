@@ -1,5 +1,18 @@
 ## To Do List
 
+### Highest Priority
+* The "non" color needs to once again be removed from the database. Adding it 
+  to the database was a mistake in the first place.
+* "Browserstack.com" allows FOSS projects free access to their services. I need 
+  to create an account there and periodically check the site for problems.
+* Double check and make sure whether stored procedures have been enabled on my 
+  hosted Web server after the hosting company's update over the Winter holidays.
+* Commands should have "keygroup_id" applied to them as well, even if I do not 
+  display the colors. [Ed. this will be a time-consuming thing to retroactively 
+  fix.]
+* There are still missing "group" IDs for many SHIFT, CTRL, ALT, etc. bindings. 
+  [Ed. this will be a time-consuming thing to retroactively fix.]
+
 ### Submission Form
 * Continue developing the "TSV Pane" of the submission form, and permit 
   users to alter or update the keyboard bindings directly using it.
@@ -39,6 +52,9 @@
   all the other game titles (or at least the current title) before allowing the 
   user to submit the bindings. Enforce this using JavaScript.
 * The "Reset" button should maybe do its job without reloading the whole page.
+* The submission form should remember which bindings were gotten straight from 
+  the database (and therefore should retain their primary key IDs) and which 
+  were newly added by the visitor (and therefore require NULL primary key IDs).
 
 ### MediaWiki
 * I should generate MediaWiki code for layouts and styles in addition to games.
@@ -521,14 +537,5 @@
   the two big files into several smaller ones? [Ed. scripts and queries have 
   been split into multiple smaller files.]
 * Escape sequences not working properly in the SVG output.
-
-### Latest items
-* The "non" color needs to once again be removed from the database. Adding it 
-  to the database was a mistake.
-* "Browserstack.com" allows FOSS projects free access to their services. I need 
-  to create an account there and periodically check for problems.
-* Double check and make sure whether stored procedures are still disabled on my 
-  web host server.
-* Commands should have "keygroup_id" applied to them as well, even if I do not 
-  display the colors. [Ed. this will be an important but time-consuming thing 
-  to retroactively fix.]
+* Create a new "GRID" URL parameter so that I can override all the other URL 
+  parameters in a pinch if I need to.

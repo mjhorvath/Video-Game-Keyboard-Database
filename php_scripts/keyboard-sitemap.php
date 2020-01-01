@@ -59,7 +59,7 @@
 "<!DOCTYPE HTML>
 <html>
 	<head>
-		<script src=\"" . $path_lib1 . "java-wiki.js\"></script>
+		<script src=\"" . $path_lib1 . "java-common.js\"></script>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-common.css\"/>
 		<title>VGKD - Sitemap Code</title>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
@@ -113,9 +113,9 @@
 
 	echo
 "			</textarea>
-			<button onclick=\"select_and_copy_all();\">Select All &amp; Copy</button>
+			<button onclick=\"select_and_copy_textarea();\">Select All &amp; Copy</button>
 <!--
-			<button onclick=\"clear_all();\">Clear</button>
+			<button onclick=\"clear_textarea();\">Clear</button>
 			<button onclick=\"\" disabled=\"disabled\">Reset</button>
 -->
 		</main>

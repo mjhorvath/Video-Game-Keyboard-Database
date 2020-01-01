@@ -50,3 +50,14 @@ function test_function()
 {
 	alert('Hello world!');
 }
+
+function clear_textarea()
+{
+	document.getElementById('site_out').value = '';
+}
+
+function select_and_copy_textarea()
+{
+	document.getElementById('site_out').select();
+	document.execCommand('copy');
+}

@@ -527,9 +527,8 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 			echo
 "	<svg class=\"leg\" x=\"109.5\" y=\"" . ($layout_legend_top + 1.5) . "\" width=\"1000\" height=\"300\">\n";
 			$row_count = 0;
-			for ($i = 0; $i < count($legend_table); $i++)
+			foreach ($legend_table as $i => $legend_row)
 			{
-				$legend_row = $legend_table[$i];
 				if (isset($legend_row[0]))
 				{
 					$leg_grp = getkeycolor($legend_row[0]);

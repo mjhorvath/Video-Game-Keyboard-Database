@@ -1,15 +1,15 @@
-# Deny all PHP files
+# Deny all PHP files en masse
 <FilesMatch "\.php$">
-Order deny,allow
-Deny from all
+    Order deny,allow
+    Deny from all
 </FilesMatch>
 
 # Allow specific PHP files
 <FilesMatch "^scripts-recaptcha\.php$">
-Order deny,allow
-Allow from all
+    Order deny,allow
+    Allow from all
 </FilesMatch>
 <FilesMatch "^keyboard-init\.php$">
-Order deny,allow
-Allow from all
+    Order deny,allow
+    Allow from all
 </FilesMatch>

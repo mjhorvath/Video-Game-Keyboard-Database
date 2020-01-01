@@ -281,6 +281,23 @@
 			$stylesrecord_id = $stylesrecord_row[0];
 		}
 	}
+	function selThisGameLayoutChart()
+	{
+		global $con, $gamesrecord_id;
+		$selectString = "SELECT r.game_id, r.layout_id FROM records_games AS r WHERE r.record_id = " . $gamesrecord_id . ";";
+		selectQuery($con, $selectString, "resThisGameLayoutChart");
+	}
+	function resThisGameLayoutChart($in_result)
+	{
+		global $game_id, $layout_id;
+		$gamesrecord_row = mysqli_fetch_row($in_result);
+		if ($gamesrecord_row)
+		{
+			// game_id, layout_id
+			$game_id	= $gamesrecord_row[0];
+			$layout_id	= $gamesrecord_row[1];
+		}
+	}
 	// make sure the columns are synced with the TSV page of the submission form
 	function selBindingsChart()
 	{

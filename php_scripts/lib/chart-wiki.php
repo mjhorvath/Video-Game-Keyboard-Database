@@ -98,7 +98,7 @@
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"" . cleantextHTML($language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name)	. ")\"/>
 		<meta name=\"keywords\" content=\""    . cleantextHTML($language_keywords	. ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name)	. "\"/>
-		<script src=\"" . $path_lib1 . "java-wiki.js\"></script>
+		<script src=\"" . $path_lib1 . "java-common.js\"></script>
 		<script src=\"" . $path_lib1 . "java-footer.js\"></script>\n";
 	echo writeAnalyticsTracking();
 	echo
@@ -158,9 +158,9 @@
 ?>
 }}
 			</textarea>
-			<button onclick="select_and_copy_all();">Select All &amp; Copy</button>
+			<button onclick="select_and_copy_textarea();">Select All &amp; Copy</button>
 <!--
-			<button onclick="clear_all();">Clear</button>
+			<button onclick="clear_textarea();">Clear</button>
 			<button onclick="" disabled="disabled">Reset</button>
 -->
 		</main>

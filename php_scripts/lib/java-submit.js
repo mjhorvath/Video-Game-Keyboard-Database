@@ -18,7 +18,6 @@
 // <https://www.gnu.org/licenses/>.
 
 var path_lib1 = './lib/';
-new Image().src = path_lib1 + 'animated-loading-icon.webp';
 
 var layout_id = 0;
 var record_id = 0;
