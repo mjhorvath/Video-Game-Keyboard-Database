@@ -57,6 +57,7 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2020/01/01: Added a new "grid" URL parameter as a shortcut to override the other URL parameters.</li>
 	<li>2019/12/24: Added bindings for <i>Frontlines: Fuel of War</i> thanks to Abel Cloots who submitted them.</li>
 	<li>2019/12/15: The legend on the submission form now utilizes flexbox.</li>
 	<li>2019/12/15: Renamed some CSS classes. Renamed &quot;scripts-all.php&quot; to &quot;scripts-common.php&quot;.</li>

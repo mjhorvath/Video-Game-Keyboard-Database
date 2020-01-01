@@ -2,20 +2,20 @@
 p		{}
 body		{background-image:url("isometric-grid.png");background-position:fixed;background-color:#e0e0e0;color:#000000;font-size:medium;margin:auto;width:80%;max-width:50em;}
 footer		{font-size:smaller;margin-top:3em;}
-input,select,button
+input,select,button,label,textarea
 		{font-size:95%;}
-input[type="button"],
-button			{padding:0.5em;background-color:#e0e0e0;border:1px solid #a0a0a0;}
-input[type="button"][disabled],
-button[disabled]	{padding:0.5em;background-color:#d0d0d0;border:1px solid #c0c0c0;}
-input[type="button"]:hover,
-button:hover		{background-color:#d0d000;}
-input[type="button"][disabled]:hover,
-button[disabled]:hover	{background-color:#d0d0d0;}
+input[type="button"],button
+		{padding:0.5em;background-color:#e0e0e0;border:1px solid #a0a0a0;}
+input[type="button"][disabled],button[disabled]
+		{padding:0.5em;background-color:#d0d0d0;border:1px solid #c0c0c0;}
+input[type="button"]:hover,button:hover
+		{background-color:#d0d000;}
+input[type="button"][disabled]:hover,button[disabled]:hover
+		{background-color:#d0d0d0;}
 input[type="text"]
-			{border:1px solid #a0a0a0;}
+		{border:1px solid #a0a0a0;}
 input[type="text"][disabled]
-			{border:1px solid #c0c0c0;}
+		{border:1px solid #c0c0c0;}
 a:link		{text-decoration:underline;color:hsla(60,75%,30%,1);}
 a:visited	{text-decoration:underline;color:hsla(60, 0%,30%,1);}
 a:hover		{text-decoration:underline;color:hsla(60,75%,40%,1);}
