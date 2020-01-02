@@ -336,12 +336,12 @@ function push_values_from_array_into_cache()
 	current_values.val_capxtr = binding_table[current_id][ 9];
 	current_values.val_imgfil = binding_table[current_id][10];
 	current_values.val_imguri = binding_table[current_id][11];
-	current_values.col_capnor = !binding_table[current_id][12] ? 0 : binding_table[current_id][12];
-	current_values.col_capshf = !binding_table[current_id][13] ? 0 : binding_table[current_id][13];
-	current_values.col_capctl = !binding_table[current_id][14] ? 0 : binding_table[current_id][14];
-	current_values.col_capalt = !binding_table[current_id][15] ? 0 : binding_table[current_id][15];
-	current_values.col_capagr = !binding_table[current_id][16] ? 0 : binding_table[current_id][16];
-	current_values.col_capxtr = !binding_table[current_id][17] ? 0 : binding_table[current_id][17];
+	current_values.col_capnor = binding_table[current_id][12];
+	current_values.col_capshf = binding_table[current_id][13];
+	current_values.col_capctl = binding_table[current_id][14];
+	current_values.col_capalt = binding_table[current_id][15];
+	current_values.col_capagr = binding_table[current_id][16];
+	current_values.col_capxtr = binding_table[current_id][17];
 }
 
 function push_values_from_form_into_cache()
@@ -436,12 +436,12 @@ function push_values_from_cache_into_form()
 	document.getElementById('inp_capxtr').value = current_values.val_capxtr;
 	document.getElementById('inp_imgfil').value = current_values.val_imgfil;
 	document.getElementById('inp_imguri').value = current_values.val_imguri;
-	set_form_color(document.getElementById('sel_capnor'), current_values.col_capnor);
-	set_form_color(document.getElementById('sel_capshf'), current_values.col_capshf);
-	set_form_color(document.getElementById('sel_capctl'), current_values.col_capctl);
-	set_form_color(document.getElementById('sel_capalt'), current_values.col_capalt);
-	set_form_color(document.getElementById('sel_capagr'), current_values.col_capagr);
-	set_form_color(document.getElementById('sel_capxtr'), current_values.col_capxtr);
+alert(current_values.col_capnor);	set_form_color(document.getElementById('sel_capnor'), current_values.col_capnor);
+alert(current_values.col_capshf);	set_form_color(document.getElementById('sel_capshf'), current_values.col_capshf);
+alert(current_values.col_capctl);	set_form_color(document.getElementById('sel_capctl'), current_values.col_capctl);
+alert(current_values.col_capalt);	set_form_color(document.getElementById('sel_capalt'), current_values.col_capalt);
+alert(current_values.col_capagr);	set_form_color(document.getElementById('sel_capagr'), current_values.col_capagr);
+alert(current_values.col_capxtr);	set_form_color(document.getElementById('sel_capxtr'), current_values.col_capxtr);
 }
 
 function have_input_key_values_changed()
@@ -613,7 +613,7 @@ function create_group_table_row()
 	var new_inp_2 = document.createElement('input');
 	new_inp_2.setAttribute('type','text');
 	new_inp_2.setAttribute('maxlength','100');
-//	new_inp_2.setAttribute('placeholder','blah');
+	new_inp_2.setAttribute('placeholder','blah');
 	new_inp_2.setAttribute('autocomplete','off');
 	new_inp_2.onchange = flag_doc_dirty;
 	new_cll_2.appendChild(new_inp_2);
@@ -628,7 +628,7 @@ function create_group_table_row()
 	var new_inp_4 = document.createElement('input');
 	new_inp_4.setAttribute('type','text');
 	new_inp_4.setAttribute('maxlength','100');
-//	new_inp_4.setAttribute('placeholder','blah');
+	new_inp_4.setAttribute('placeholder','blah');
 	new_inp_4.setAttribute('autocomplete','off');
 	new_inp_4.onchange = flag_doc_dirty;
 	new_cll_4.appendChild(new_inp_4);
@@ -671,7 +671,7 @@ function create_input_table_row()
 	var new_inp_1 = document.createElement('input');
 	new_inp_1.setAttribute('type','text');
 	new_inp_1.setAttribute('maxlength','100');
-//	new_inp_1.setAttribute('placeholder','blah');
+	new_inp_1.setAttribute('placeholder','blah');
 	new_inp_1.setAttribute('autocomplete','off');
 	new_inp_1.onchange = flag_doc_dirty;
 	new_cll_1.appendChild(new_inp_1);
@@ -686,7 +686,7 @@ function create_input_table_row()
 	var new_inp_3 = document.createElement('input');
 	new_inp_3.setAttribute('type','text');
 	new_inp_3.setAttribute('maxlength','100');
-//	new_inp_3.setAttribute('placeholder','blah');
+	new_inp_3.setAttribute('placeholder','blah');
 	new_inp_3.setAttribute('autocomplete','off');
 	new_inp_3.onchange = flag_doc_dirty;
 	new_cll_3.appendChild(new_inp_3);
@@ -727,7 +727,7 @@ function create_texts_table_row()
 	var new_cll_1 = document.createElement('div');
 	new_cll_1.className = 'notcll txtone';
 	var new_inp_1 = document.createElement('textarea');
-//	new_inp_1.setAttribute('placeholder','blah');
+	new_inp_1.setAttribute('placeholder','blah');
 	new_inp_1.setAttribute('autocomplete','off');
 	new_inp_1.setAttribute('maxlength','1024');
 	new_inp_1.onchange = flag_doc_dirty;
@@ -1218,51 +1218,24 @@ function collect_legend_data()
 	}
 }
 
-// to do: keygroup_id
 function collect_command_data()
 {
 	commandouter_table = {};
 	for (var j in commandlabel_table)
 	{
 		commandouter_table[j] = [];
-		var this_abbrv = commandlabel_table[j][1];
-		var this_input = commandlabel_table[j][2];
-		var this_group = commandlabel_table[j][3];
-		var this_parent = document.getElementById('table_' + this_abbrv);
-		var this_children = this_parent.children;
+		var this_label = commandlabel_table[j];
+		var this_parent = document.getElementById('table_' + this_label);
+		var max_children = this_parent.children.length;
 		// ignore the last child since it only contains the button
-		for (var i = 0, n = this_children.length - 1; i < n; i++)
+		for (var i = 0, n = max_children - 1; i < n; i++)
 		{
-			var this_child = this_children[i];
-			if (this_group == 1)
+			var this_child = this_parent.children[i];
+			var this_value_1 = this_child.children[0].children[0].value;
+			var this_value_2 = this_child.children[2].children[0].value;
+			if ((this_value_1 != '') && (this_value_2 != ''))
 			{
-				var this_value_1 = this_child.children[0].children[0].selectedIndex;
-				var this_value_2 = this_child.children[1].children[0].value;
-				var this_value_3 = this_child.children[3].children[0].value;
-				if ((this_value_2 != '') && (this_value_3 != ''))
-				{
-					commandouter_table[j].push([this_value_2, this_value_3]);
-				}
-			}
-			else if (this_input == 1)
-			{
-				var this_value_1 = null;
-				var this_value_2 = this_child.children[0].children[0].value;
-				var this_value_3 = this_child.children[2].children[0].value;
-				if ((this_value_2 != '') && (this_value_3 != ''))
-				{
-					commandouter_table[j].push([this_value_2, this_value_3]);
-				}
-			}
-			else
-			{
-				var this_value_1 = null;
-				var this_value_2 = null;
-				var this_value_3 = this_child.children[0].children[0].value;
-				if (this_value_3 != '')
-				{
-					commandouter_table[j].push([this_value_2, this_value_3]);
-				}
+				commandouter_table[j].push([this_value_1, this_value_2]);
 			}
 		}
 	}
@@ -1273,6 +1246,7 @@ function collect_command_data()
 function process_legend_data()
 {
 	// should fetch column names from the database instead
+	// skip 'non' since there is no box for 'non'
 	var legend_string = 'legend_id\trecord_id\tkeygroup_id\tlegend_description\n';
 	for (var i in legend_table)
 	{
@@ -1283,7 +1257,6 @@ function process_legend_data()
 }
 
 // cleaning!
-// to do: keygroup_id
 function process_command_data()
 {
 	// should fetch column names from the database instead
@@ -1295,9 +1268,7 @@ function process_command_data()
 		for (var i in commandinner_table)
 		{
 			var command_item = commandinner_table[i];
-			var command_value_2 = !command_item[0] ? '\\N' : cleantextTSV(command_item[0]);
-			var command_value_3 = !command_item[1] ? '\\N' : cleantextTSV(command_item[1]);
-			command_string += '\\N\t' + record_id + '\t' + command_num + '\t' + command_value_2 + '\t' + command_value_3 + '\n';
+			command_string += '\\N\t' + record_id + '\t' + command_num + '\t' + cleantextTSV(command_item[0]) + '\t' + cleantextTSV(command_item[1]) + '\n';
 		}
 	}
 	return command_string;

@@ -1,20 +1,20 @@
 ## To Do List
 
 ### Highest Priority
-* The "non" color needs to once again be removed from the database. Adding it 
-  to the database was a mistake in the first place.
 * "Browserstack.com" allows FOSS projects free access to their services. I need 
   to create an account there and periodically check the site for problems.
 * Double-check to make sure whether stored procedures have been (re-)enabled on 
   my hosted Web server following the hosting company's Winter holiday update.
 * Commands should have "keygroup_id" applied to them as well, even if I do not 
   display the colors. [Ed. this will be a time-consuming thing to retroactively 
-  fix.]
+  fix. Haven't decided yet whether the submission form should complain or not.]
 * There are still missing "group" IDs for many SHIFT, CTRL, ALT, etc. bindings. 
-  [Ed. this will be a time-consuming thing to retroactively fix.]
-* The submission form should remember which bindings were gotten straight from 
-  the database (and therefore should retain their primary key IDs) and which 
-  were newly added by the visitor (and therefore require NULL primary key IDs).
+  [Ed. this will be a time-consuming thing to retroactively fix. The submission 
+  form does complain about this in some instances.]
+* The submission form needs to remember which bindings were gotten straight 
+  from the database (and therefore should retain their original primary key 
+  IDs) and which bindings were newly added by users (and therefore require NULL 
+  primary key IDs). This applies to regular key bindings as well as combos/mice.
 
 ### Submission Form
 * Continue developing the "TSV Pane" of the submission form, and permit 
@@ -149,6 +149,9 @@
 * Make sure the SQL result sets are ordered properly.
 * Double check whether I can replace any instances of PHP sorting with SQL 
   sorting, since the latter is likely the faster method.
+* The "XXXX_group" columns of the "bindings" table are partially dependent on 
+  the "XXXX_action" columns, and vice versa. So I guess this table breaks some 
+  normal forms.
 
 ### Optimization
 * Should maybe store the SVG patterns, filters and gradients in separate files 
@@ -541,3 +544,5 @@
 * Escape sequences not working properly in the SVG output.
 * Create a new "GRID" URL parameter so that I can override all the other URL 
   parameters in a pinch if I need to.
+* The "non" color needs to once again be removed from the database. Adding it 
+  to the database was a mistake in the first place.

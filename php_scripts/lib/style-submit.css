@@ -48,7 +48,7 @@ div.keysel
 	100%	{background-position: right top, right bottom, left bottom, left top;}
 }
 
-div.comdiv	{width:25em;}
+div.comdiv	{width:32em;}
 div.nottbl,div.inptbl,div.emltbl
 		{display:table;border-collapse:separate;border-spacing:2px;}
 div.notrow,div.inprow,div.emlrow
@@ -60,14 +60,17 @@ div.emlcll	{display:table-cell;padding:1px;text-align:left;vertical-align:top;bo
 div.notcll input	{width:100%;box-sizing:border-box;}
 div.notcll button	{width:100%;box-sizing:border-box;}
 div.notcll textarea	{width:100%;box-sizing:border-box;}
+div.grpone	{width:2em;display:none;}
+div.grptwo	{width:8em;}
+div.grpthr	{width:1em;}
+div.grpfor	{width:18em;}
+div.grpfiv	{width:2em;}
 div.inpone	{width:8em;}
 div.inptwo	{width:1em;}
-div.inpthr	{width:12em;}
+div.inpthr	{width:18em;}
 div.inpfor	{width:2em;}
-div.txtone	{width:0em;}
-div.txttwo	{width:0em;}
-div.txtthr	{width:21em;}
-div.txtfor	{width:2em;vertical-align:top;}
+div.txtone	{width:28em;}
+div.txttwo	{width:2em;vertical-align:top;}
 input#email_1,input#email_2
 		{width:13em;box-sizing:border-box;}
 textarea#email_3

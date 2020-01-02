@@ -521,6 +521,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 		<text class=\"lownor txtnon\" x=\"2.5\" y=\"64.5\">Lowcase</text>
 		<text class=\"uppnor txtnon\" x=\"2.5\" y=\"13.5\">Upcase</text>
 	</svg>\n";
+		// non!
 		// legend descriptions
 		if ($stylegroup_id == 1)
 		{
@@ -529,17 +530,14 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 			$row_count = 0;
 			foreach ($legend_table as $i => $legend_row)
 			{
-				if (isset($legend_row[0]))
-				{
-					$leg_grp = getkeycolor($legend_row[0]);
-					$leg_dsc = $legend_row[1];
-					$row_div = floor($row_count/3);
-					$row_mod = $row_count % 3;
-					echo
+				$leg_grp = getkeycolor($legend_row[0]);
+				$leg_dsc = $legend_row[1];
+				$row_div = floor($row_count/3);
+				$row_mod = $row_count % 3;
+				echo
 "		<rect class=\"keyrec rec" . $leg_grp . "\" x=\"" . ($row_div*200+0.5) . "\" y=\"" . ($row_mod*20+0.5) . "\" width=\"16\" height=\"16\"/>
 		<text class=\"legtxt\" x=\"" . ($row_div*200+20.5) . "\" y=\"" . ($row_mod*20+14.5) . "\">" . cleantextSVG($leg_dsc) . "</text>\n";
-					$row_count += 1;
-				}
+				$row_count += 1;
 			}
 			echo
 "	</svg>\n";

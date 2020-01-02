@@ -20,18 +20,3 @@ a:link		{text-decoration:underline;color:hsla(60,75%,30%,1);}
 a:visited	{text-decoration:underline;color:hsla(60, 0%,30%,1);}
 a:hover		{text-decoration:underline;color:hsla(60,75%,40%,1);}
 a:active	{text-decoration:underline;color:hsla(60,75%,50%,1);}
-
-@media print
-{
-/*	html	{zoom: 85%;}	*/
-/*	html	{transform: scale(0.85);transform-origin: 0 0;}	*/
-	@page
-	{
-		/* landscape */
-/*		size: 297mm 210mm;	*/
-		/* you can also specify margins here: */
-/*		margin: 25mm;	*/
-		/* for compatibility with both A4 and Letter */
-/*		margin-right: 45mm;	*/
-	}
-}

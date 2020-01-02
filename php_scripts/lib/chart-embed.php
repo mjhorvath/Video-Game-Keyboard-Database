@@ -126,6 +126,9 @@
 	echo
 "		<style type=\"text/css\">\n";
 	include($path_lib2 . "embed-" . $style_filename . ".css");
+	// delete this when the problem goes away
+	if ($style_filename == "")
+		error_log("Error: Something is wrong with style. " . $can_url, 0);
 	echo
 "		</style>\n";
 ?>

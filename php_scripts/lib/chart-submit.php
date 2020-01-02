@@ -123,21 +123,30 @@
 	}
 
 	// non!
+	$option_string .= "<option class=\"optnon\">non</option>";
+	$color_string .= "\t0:[0,'non',0],\n";
 	foreach ($binding_color_table as $i => $binding_color_value)
 	{
-		$color_id = $binding_color_value[0];
-		$color_class = $binding_color_value[1];
-		$color_sort = $binding_color_value[2];
+		$color_id	= $binding_color_value[0];
+		$color_class	= $binding_color_value[1];
+		$color_sort	= $binding_color_value[2];	// not used right now
 		$option_string .= "<option class=\"opt" . $color_class . "\">" . $color_class . "</option>";
-		$color_string .= $color_id . ":'" . $color_class . "',";
+		$color_string .= "\t" . ($i+1) . ":[" . $color_id . ",'" . $color_class . "'," . $color_sort. "],\n";
 	}
-	$color_string = rtrim($color_string, ",");
+	$color_string = rtrim($color_string, ",\n");
+	$color_string .= "\n";
 
 	foreach ($commandlabel_table as $i => $commandlabel_value)
 	{
-		$commandlabel_string .= $i . ":'" . $commandlabel_value[2] . "',";
+		// commandtype_id, commandlabel_string, commandtype_abbrv, commandtype_input, commandtype_keygroup
+		$commandtype_id		= $commandlabel_value[0];
+		$commandtype_abbrv	= $commandlabel_value[2];
+		$commandtype_input	= $commandlabel_value[3];
+		$commandtype_keygroup	= $commandlabel_value[4];
+		$commandlabel_string .= "\t" . $i . ":[" . $commandtype_id . ",'" . $commandtype_abbrv . "'," . $commandtype_input . "," . $commandtype_keygroup . "],\n";
 	}
-	$commandlabel_string = rtrim($commandlabel_string, ",");
+	$commandlabel_string = rtrim($commandlabel_string, ",\n");
+	$commandlabel_string .= "\n";
 
 	if (($gamesrecord_id > 0) && ($stylesrecord_id > 0))
 	{
@@ -234,8 +243,8 @@
 		<script src=\"https://www.google.com/recaptcha/api.js\"></script>
 		<script>
 var record_id = " . $gamesrecord_id . ";
-var color_table = {" . $color_string . "};
-var commandlabel_table = {" . $commandlabel_string . "};
+var color_table =\n{\n" . $color_string . "};
+var commandlabel_table =\n{\n" . $commandlabel_string . "};
 var binding_table =\n{\n" . $binding_string . "};
 		</script>
 	</head>\n";
@@ -278,7 +287,7 @@ var binding_table =\n{\n" . $binding_string . "};
 						<div class="emlrow"><div class="emlcll"><label for="email_3">Messg:</label></div><div class="emlcll"><textarea class="email_textarea"        name="email_3" id="email_3" onchange="flag_eml_dirty();" placeholder="Message to admin"     required="required" autocomplete="off"></textarea></div></div>
 					</div>
 					<div class="emltbl inbtop" style="margin:auto;">
-						<div class="emlrow"><div class="emlcll"><input type="checkbox" name="email_11" id="email_11" style="margin:0.2em;"/></div><div class="emlcll"><label for="email_11">This is a brand new schema as opposed to an update to an existing schema</label></div></div>
+						<div class="emlrow"><div class="emlcll"><input type="checkbox" name="email_11" id="email_11" style="margin:0.2em;"/></div><div class="emlcll"><label for="email_11">This is a brand new schema versus an update to an existing schema</label></div></div>
 					</div>
 					<div id="email_recaptcha" class="g-recaptcha" data-callback="flag_cap_dirty" data-sitekey="<?php echo writeRecaptchaKey(); ?>"></div>
 					<p style="text-align:left;">For human verification purposes, please click the checkbox labeled "I'm not a robot".</p>
@@ -502,31 +511,28 @@ var binding_table =\n{\n" . $binding_string . "};
 <?php
 	// legend
 	// non!
+	// check if this would be less complicated with flexbox
+	// the math here is only correct if the number of colors is a multiple of 3
 	$count_rows = 0;
-	$total_rows = count($binding_color_table);
 	foreach ($binding_color_table as $i => $binding_color_value)
 	{
 		$leg_value = "";
 		$leg_color = getkeycolor($i+1);
-		if ($leg_color != "non")
+		if (array_key_exists($i, $legend_table))
+			$leg_value = $legend_table[$i][1];
+		if ($count_rows % 3 == 0)
 		{
-			if (array_key_exists($i, $legend_table))
-				$leg_value = $legend_table[$i][1];
-			if ($count_rows % 3 == 0)
-			{
-				echo
-"						<div class=\"inbtop legtbl\">\n";
-			}
 			echo
-"							<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
-			// the math here may be off by one row, need to test
-			if (($count_rows % 3 == 2) || ($total_rows - $count_rows < 3))
-			{
-				echo
-"						</div>\n";
-			}
-			$count_rows += 1;
+"						<div class=\"inbtop legtbl\">\n";
 		}
+		echo
+"							<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
+		if ($count_rows % 3 == 2)
+		{
+			echo
+"						</div>\n";
+		}
+		$count_rows += 1;
 	}
 ?>
 					</div>
@@ -543,6 +549,7 @@ var binding_table =\n{\n" . $binding_string . "};
 		$commandlabel_label = $commandlabel_value[1];
 		$commandlabel_abbrv = $commandlabel_value[2];
 		$commandlabel_input = $commandlabel_value[3];
+		$commandlabel_group = $commandlabel_value[4];
 		echo
 "					<div class=\"inbtop comdiv\">
 						<h3>" . cleantextHTML($commandlabel_label) . "</h3>
@@ -550,13 +557,24 @@ var binding_table =\n{\n" . $binding_string . "};
 		foreach ($commandinner_table as $j => $commandinner_value)
 		{
 			// "additional notes" are a special case requiring a textarea instead of input
-			if ($commandlabel_input == 1)
+			if ($commandlabel_group == 1)
 			{
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll inpone\"><input type=\"text\" placeholder=\"blah\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[1] . "\"/></div>
+								<div class=\"notcll grpone\"><select class=\"selnon\" size=\"1\" autocomplete=\"off\">" . $option_string . "</select></div>
+								<div class=\"notcll grptwo\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[1] . "\"/></div>
+								<div class=\"notcll grpthr\">=</div>
+								<div class=\"notcll grpfor\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[2] . "\"/></div>
+								<div class=\"notcll grpfiv\"><button class=\"grpsub\" type=\"button\">-</button></div>
+							</div>\n";
+			}
+			elseif ($commandlabel_input == 1)
+			{
+				echo
+"							<div class=\"notrow\">
+								<div class=\"notcll inpone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[1] . "\"/></div>
 								<div class=\"notcll inptwo\">=</div>
-								<div class=\"notcll inpthr\"><input type=\"text\" placeholder=\"blah\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[2] . "\"/></div>
+								<div class=\"notcll inpthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[2] . "\"/></div>
 								<div class=\"notcll inpfor\"><button class=\"inpsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
@@ -564,14 +582,23 @@ var binding_table =\n{\n" . $binding_string . "};
 			{
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll txtone\"><input type=\"hidden\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"\"/></div>
-								<div class=\"notcll txttwo\"></div>
-								<div class=\"notcll txtthr\"><textarea placeholder=\"blah\" maxlength=\"1024\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\">" . $commandinner_value[2] . "</textarea></div>
-								<div class=\"notcll txtfor\"><button class=\"txtsub\" type=\"button\">-</button></div>
+								<div class=\"notcll txtone\"><textarea maxlength=\"1024\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\">" . $commandinner_value[2] . "</textarea></div>
+								<div class=\"notcll txttwo\"><button class=\"txtsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
 		}
-		if ($commandlabel_input == 1)
+		if ($commandlabel_group == 1)
+		{
+			echo
+"							<div class=\"notrow\">
+								<div class=\"notcll grpone\"></div>
+								<div class=\"notcll grptwo\"></div>
+								<div class=\"notcll grpthr\"></div>
+								<div class=\"notcll grpfor\"></div>
+								<div class=\"notcll grpfiv\"><button class=\"grpadd\" type=\"button\">+</button></div>
+							</div>\n";
+		}
+		elseif ($commandlabel_input == 1)
 		{
 			echo
 "							<div class=\"notrow\">
@@ -586,9 +613,7 @@ var binding_table =\n{\n" . $binding_string . "};
 			echo
 "							<div class=\"notrow\">
 								<div class=\"notcll txtone\"></div>
-								<div class=\"notcll txttwo\"></div>
-								<div class=\"notcll txtthr\"></div>
-								<div class=\"notcll txtfor\"><button class=\"txtadd\" type=\"button\">+</button></div>
+								<div class=\"notcll txttwo\"><button class=\"txtadd\" type=\"button\">+</button></div>
 							</div>\n";
 		}
 		echo

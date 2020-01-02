@@ -57,7 +57,10 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
-	<li>2020/01/01: Added a new "grid" URL parameter as a shortcut to override the other URL parameters.</li>
+	<li>2020/01/01: The &quot;bindings&quot; table now has foreign key constraints (duh!) on the &quot;XXXX_group&quot; columns.</li>
+	<li>2020/01/01: Removed the &quot;non&quot; color once again from the database.</li>
+	<li>2020/01/01: Overhauled commands code on submission form.</li>
+	<li>2020/01/01: Added a new &quot;grid&quot; URL parameter as a shortcut to override the other URL parameters when needed.</li>
 	<li>2019/12/24: Added bindings for <i>Frontlines: Fuel of War</i> thanks to Abel Cloots who submitted them.</li>
 	<li>2019/12/15: The legend on the submission form now utilizes flexbox.</li>
 	<li>2019/12/15: Renamed some CSS classes. Renamed &quot;scripts-all.php&quot; to &quot;scripts-common.php&quot;.</li>
