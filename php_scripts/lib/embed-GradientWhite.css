@@ -5,3 +5,17 @@ div.boxdiv	{margin:6px;padding:18px;position:relative;}
 div.svgdiv	{margin:6px;padding:   0;position:relative;}
 div.comdiv	{margin:3px;padding:18px;position:relative;width:22em;}
 div.comflx	{margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
+div.legbox	{width:1em;height:1em;}
+div.legred	{background-image:-webkit-linear-gradient(#ffffff,#FC9C93);background-image:-moz-linear-gradient(#ffffff,#FC9C93);background-image:linear-gradient(#ffffff,#FC9C93);}	/* CIE-L*ch ( 74, 40, 30) */
+div.legyel	{background-image:-webkit-linear-gradient(#ffffff,#CEB46C);background-image:-moz-linear-gradient(#ffffff,#CEB46C);background-image:linear-gradient(#ffffff,#CEB46C);}	/* CIE-L*ch ( 74, 40, 90) */
+div.leggrn	{background-image:-webkit-linear-gradient(#ffffff,#7CC690);background-image:-moz-linear-gradient(#ffffff,#7CC690);background-image:linear-gradient(#ffffff,#7CC690);}	/* CIE-L*ch ( 74, 40,150) */
+div.legcyn	{background-image:-webkit-linear-gradient(#ffffff,#0CC9D9);background-image:-moz-linear-gradient(#ffffff,#0CC9D9);background-image:linear-gradient(#ffffff,#0CC9D9);}	/* CIE-L*ch ( 74, 40,210) */
+div.legblu	{background-image:-webkit-linear-gradient(#ffffff,#80B9FF);background-image:-moz-linear-gradient(#ffffff,#80B9FF);background-image:linear-gradient(#ffffff,#80B9FF);}	/* CIE-L*ch ( 74, 40,270) */
+div.legmag	{background-image:-webkit-linear-gradient(#ffffff,#E4A0DB);background-image:-moz-linear-gradient(#ffffff,#E4A0DB);background-image:linear-gradient(#ffffff,#E4A0DB);}	/* CIE-L*ch ( 74, 40,330) */
+div.legwht	{background-image:-webkit-linear-gradient(#ffffff,#ffffff);background-image:-moz-linear-gradient(#ffffff,#ffffff);background-image:linear-gradient(#ffffff,#ffffff);}	/* CIE-L*ch (100,  0,  0) */
+div.leggry	{background-image:-webkit-linear-gradient(#ffffff,#B6B6B6);background-image:-moz-linear-gradient(#ffffff,#B6B6B6);background-image:linear-gradient(#ffffff,#B6B6B6);}	/* CIE-L*ch ( 74,  0,  0) */
+div.legblk	{background-image:-webkit-linear-gradient(#ffffff,#000000);background-image:-moz-linear-gradient(#ffffff,#000000);background-image:linear-gradient(#ffffff,#000000);}	/* CIE-L*ch (  0,  0,  0) */
+div.legorg	{background-image:-webkit-linear-gradient(#ffffff,#ECA777);background-image:-moz-linear-gradient(#ffffff,#ECA777);background-image:linear-gradient(#ffffff,#ECA777);}	/* CIE-L*ch ( 74, 40, 60) */
+div.legolv	{background-image:-webkit-linear-gradient(#ffffff,#A8BF75);background-image:-moz-linear-gradient(#ffffff,#A8BF75);background-image:linear-gradient(#ffffff,#A8BF75);}	/* CIE-L*ch ( 74, 40,120) */
+div.legbrn	{background-image:-webkit-linear-gradient(#ffffff,#685510);background-image:-moz-linear-gradient(#ffffff,#685510);background-image:linear-gradient(#ffffff,#685510);}	/* CIE-L*ch ( 37, 40, 90) */
+div.legnon	{background-image:-webkit-linear-gradient(#ffffff,#404040);background-image:-moz-linear-gradient(#ffffff,#404040);background-image:linear-gradient(#ffffff,#404040);}

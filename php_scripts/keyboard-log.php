@@ -57,6 +57,7 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2020/02/16: Finished implementing &quot;keygroups&quot; for joystick/mouse/etc. commands.</li>
 	<li>2020/01/01: The &quot;bindings&quot; table now has foreign key constraints (duh!) on the &quot;XXXX_group&quot; columns.</li>
 	<li>2020/01/01: Removed the &quot;non&quot; color once again from the database.</li>
 	<li>2020/01/01: Overhauled commands code on submission form.</li>

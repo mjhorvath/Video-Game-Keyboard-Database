@@ -376,7 +376,7 @@ var seourl_table =
 			</div>
 			<div class="container">
 				<input id="fmtrad0" type="radio" name="fmt_radio" value="0" onchange="enableResetButton();" checked="checked"/>
-				<label for="fmtrad0">HTML/SVG</label>
+				<label for="fmtrad0">HTML/SVG &#10022;</label>
 				<span class="checkmark"></span>
 			</div>
 			<div class="container">
@@ -408,7 +408,7 @@ var seourl_table =
 			</div>
 			<div class="container">
 				<input id="tenrad1" type="radio" name="ten_radio" value="1" onchange="enableResetButton();" checked="checked"/>
-				<label for="tenrad1">Show</label>
+				<label for="tenrad1">Show &#10022;</label>
 				<span class="checkmark"></span>
 			</div>
 			<div class="container">

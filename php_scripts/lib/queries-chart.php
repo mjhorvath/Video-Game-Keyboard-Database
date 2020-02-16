@@ -334,7 +334,7 @@
 	function selCommandsChart()
 	{
 		global $con, $gamesrecord_id;
-		$selectString =	"SELECT c.commandtype_id, c.command_text, c.command_description FROM commands AS c WHERE c.record_id = " . $gamesrecord_id . ";";
+		$selectString =	"SELECT c.commandtype_id, c.command_text, c.command_description, c.keygroup_id FROM commands AS c WHERE c.record_id = " . $gamesrecord_id . ";";
 		selectQuery($con, $selectString, "resCommandsChart");
 	}
 	// it might be better to only have one larger table for all of these commands
@@ -345,7 +345,7 @@
 		global	$commandouter_table;
 		while ($temp_row = mysqli_fetch_row($in_result))
 		{
-			// commandtype_id, command_text, command_description
+			// commandtype_id, command_text, command_description, keygroup_id
 			$commandouter_table[$temp_row[0]-1][] = $temp_row;
 		}
 	}
@@ -452,7 +452,8 @@
 			$binding_class_table[] = $temp_row;
 		}
 	}
-	// non! order!
+	// non!
+	// order!
 	function selLegendColorsChart()
 	{
 		global $con;

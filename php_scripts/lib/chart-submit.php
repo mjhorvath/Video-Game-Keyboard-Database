@@ -148,6 +148,7 @@
 	$commandlabel_string = rtrim($commandlabel_string, ",\n");
 	$commandlabel_string .= "\n";
 
+	// cleaning!
 	if (($gamesrecord_id > 0) && ($stylesrecord_id > 0))
 	{
 		foreach ($position_table as $i => $position_row)
@@ -216,6 +217,7 @@
 		$binding_string .= "\n";
 	}
 
+	// cleaning!
 	echo
 "<!DOCTYPE HTML>
 <html lang=\"" . $language_code . "\">
@@ -340,6 +342,7 @@ var binding_table =\n{\n" . $binding_string . "};
 					<form enctype="multipart/form-data" accept-charset="UTF-8" style="margin:0;padding:0;">
 						<div id="keydiv" style="position:relative;left:<?php echo $layout_padding; ?>px;top:<?php echo $layout_padding; ?>px;width:<?php echo $layout_max_horizontal; ?>px;height:<?php echo $layout_max_vertical; ?>px;padding:0;margin:0;">
 <?php
+	// cleaning!
 	// print error messages
 	for ($i = 0; $i < count($errors_table); $i++)
 	{
@@ -351,6 +354,7 @@ var binding_table =\n{\n" . $binding_string . "};
 	{
 		foreach ($position_table as $i => $position_row)
 		{
+			// cleaning!
 			// these get cleaned later by the print_key_html function
 			// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowcap_optional, numpad
 			$key_sty	= array_key_exists($i, $keystyle_table) ? getkeyclass($keystyle_table[$i][0]) : "";		// non!
@@ -509,8 +513,8 @@ var binding_table =\n{\n" . $binding_string . "};
 					</div>
 					<div class="inbtop legflx">
 <?php
-	// legend
 	// non!
+	// legend
 	// check if this would be less complicated with flexbox
 	// the math here is only correct if the number of colors is a multiple of 3
 	$count_rows = 0;
@@ -550,39 +554,63 @@ var binding_table =\n{\n" . $binding_string . "};
 		$commandlabel_abbrv = $commandlabel_value[2];
 		$commandlabel_input = $commandlabel_value[3];
 		$commandlabel_group = $commandlabel_value[4];
+		// cleaning!
 		echo
 "					<div class=\"inbtop comdiv\">
 						<h3>" . cleantextHTML($commandlabel_label) . "</h3>
 						<div id=\"table_" . $commandlabel_abbrv . "\" class=\"nottbl\">\n";
 		foreach ($commandinner_table as $j => $commandinner_value)
 		{
-			// "additional notes" are a special case requiring a textarea instead of input
+			$commandinner_input = $commandinner_value[1];
+			$commandinner_combo = $commandinner_value[2];
+			$commandinner_group = $commandinner_value[3];
+			// does the command have a keygroup?
 			if ($commandlabel_group == 1)
 			{
+				// non!
+				$select_class = "selnon";
+				$commandoption_string = "<option class=\"optnon\">non</option>";
+				foreach ($binding_color_table as $i => $binding_color_value)
+				{
+					$color_id	= $binding_color_value[0];
+					$color_class	= $binding_color_value[1];
+					$color_sort	= $binding_color_value[2];	// not used right now
+					if ($color_id == $commandinner_group)
+					{
+						$commandoption_string .= "<option class=\"opt" . $color_class . "\" selected=\"selected\">" . $color_class . "</option>";
+						$select_class = "sel" . $color_class;
+					}
+					else
+					{
+						$commandoption_string .= "<option class=\"opt" . $color_class . "\">" . $color_class . "</option>";
+					}
+				}
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll grpone\"><select class=\"selnon\" size=\"1\" autocomplete=\"off\">" . $option_string . "</select></div>
-								<div class=\"notcll grptwo\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[1] . "\"/></div>
+								<div class=\"notcll grpone\"><select class=\"" . $select_class . "\" size=\"1\" autocomplete=\"off\" onchange=\"flag_doc_dirty();update_select_style(this);\">" . $commandoption_string . "</select></div>
+								<div class=\"notcll grptwo\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_input . "\"/></div>
 								<div class=\"notcll grpthr\">=</div>
-								<div class=\"notcll grpfor\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[2] . "\"/></div>
+								<div class=\"notcll grpfor\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_combo . "\"/></div>
 								<div class=\"notcll grpfiv\"><button class=\"grpsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
+			// does the command at least have two parts?
 			elseif ($commandlabel_input == 1)
 			{
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll inpone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[1] . "\"/></div>
+								<div class=\"notcll inpone\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_input . "\"/></div>
 								<div class=\"notcll inptwo\">=</div>
-								<div class=\"notcll inpthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_value[2] . "\"/></div>
+								<div class=\"notcll inpthr\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_combo . "\"/></div>
 								<div class=\"notcll inpfor\"><button class=\"inpsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}
+			// "additional notes" are a special case requiring a textarea instead of input
 			else
 			{
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll txtone\"><textarea maxlength=\"1024\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\">" . $commandinner_value[2] . "</textarea></div>
+								<div class=\"notcll txtone\"><textarea maxlength=\"1024\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\">" . $commandinner_combo . "</textarea></div>
 								<div class=\"notcll txttwo\"><button class=\"txtsub\" type=\"button\">-</button></div>
 							</div>\n";
 			}

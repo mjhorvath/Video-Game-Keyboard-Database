@@ -82,6 +82,7 @@
 	selContribsGamesChart();
 	selContribsStylesChart();
 	selContribsLayoutsChart();
+	selLegendColorsChart();
 	selCommandLabelsChart();
 
 	// close connection
@@ -155,6 +156,7 @@
 			</div>
 			<div class="comflx">
 <?php
+	// cleaning!
 	// commands
 	foreach ($commandouter_table as $i => $commandouter_value)
 	{
@@ -162,22 +164,35 @@
 		$commandlabel_label = $commandlabel_value[1];
 		$commandlabel_abbrv = $commandlabel_value[2];
 		$commandlabel_input = $commandlabel_value[3];
+		$commandlabel_group = $commandlabel_value[4];
 		echo
 "				<div class=\"comdiv\">
 					<h3>" . cleantextHTML($commandlabel_label) . "</h3>
 					<table>\n";
 		foreach ($commandouter_value as $j => $commandinner_value)
 		{
-			// "additional notes" are a special case with only the second value containing text
-			if ($commandlabel_input == 1)
+			$commandinner_input = $commandinner_value[1];
+			$commandinner_combo = $commandinner_value[2];
+			$commandinner_group = $commandinner_value[3];
+			$leg_color = getkeycolor($commandinner_group);
+//			$leg_color = $commandinner_group;
+			// does the command have a keygroup?
+			if ($commandlabel_group == 1)
 			{
 				echo
-"						<tr><td>" . cleantextHTML($commandinner_value[1]) . "</td><td>=</td><td>" . cleantextHTML($commandinner_value[2]) . "</td></tr>\n";
+"						<tr><td><div class=\"legbox leg" . $leg_color . "\">&nbsp;</div></td><td>" . cleantextHTML($commandinner_input) . "</td><td>=</td><td>" . cleantextHTML($commandinner_combo) . "</td></tr>\n";
 			}
+			// does the command have a keygroup?
+			elseif ($commandlabel_input == 1)
+			{
+				echo
+"						<tr><td>" . cleantextHTML($commandinner_input) . "</td><td>=</td><td>" . cleantextHTML($commandinner_combo) . "</td></tr>\n";
+			}
+			// "additional notes" are a special case with only the second value containing text
 			else
 			{
 				echo
-"						<tr><td>" . cleantextHTML($commandinner_value[2]) . "</td></tr>\n";
+"						<tr><td>" . cleantextHTML($commandinner_combo) . "</td></tr>\n";
 			}
 		}
 		echo

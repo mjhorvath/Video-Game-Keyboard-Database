@@ -356,6 +356,7 @@
 		return array_filter(explode("\n", $instring));
 	}
 	// non!
+	// order!
 	function getkeycolor($group)
 	{
 		global $binding_color_table;

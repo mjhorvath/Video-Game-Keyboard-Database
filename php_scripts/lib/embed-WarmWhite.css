@@ -5,3 +5,17 @@ div.boxdiv	{margin:6px;padding:18px;position:relative;}
 div.svgdiv	{margin:6px;padding:   0;position:relative;}
 div.comdiv	{margin:3px;padding:18px;position:relative;width:22em;}
 div.comflx	{margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
+div.legbox	{width:1em;height:1em;}
+div.legred	{background:#ff6600;color:#000000;border:1px solid #ffffff;}
+div.legyel	{background:#ffcc00;color:#000000;border:1px solid #ffffff;}
+div.leggrn	{background:#99cc00;color:#000000;border:1px solid #ffffff;}
+div.legcyn	{background:#00ffcc;color:#000000;border:1px solid #ffffff;}
+div.legblu	{background:#3366ff;color:#000000;border:1px solid #ffffff;}
+div.legmag	{background:#ff99cc;color:#000000;border:1px solid #ffffff;}
+div.legwht	{background:#ffffff;color:#000000;border:1px solid #cccccc;}
+div.leggry	{background:#999999;color:#000000;border:1px solid #ffffff;}
+div.legblk	{background:#333333;color:#ffffff;border:1px solid #ffffff;}
+div.legorg	{background:#cc9900;color:#000000;border:1px solid #ffffff;}
+div.legolv	{background:#999900;color:#000000;border:1px solid #ffffff;}
+div.legbrn	{background:#996600;color:#000000;border:1px solid #ffffff;}
+div.legnon	{background:#cccccc;color:#000000;border:1px solid #ffffff;}

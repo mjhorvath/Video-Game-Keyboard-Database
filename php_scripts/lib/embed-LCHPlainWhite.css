@@ -13,6 +13,22 @@ div.comdiv		{margin:3px;padding:18px;position:relative;border:solid 1px #c0c0c0;
 div.comdiv table	{border-spacing:0;}
 div.comdiv tr		{vertical-align:top;}
 div.comdiv td		{text-align:left;padding:0.2em;}
-div.comflx		{margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
+div.comflx		{margin:3px;padding:0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
+div.legbox		{width:1em;height:1em;}
 a:link,a:visited	{text-decoration:none;}
 a:hover,a:active	{text-decoration:underline;}
+/* http://www.easyrgb.com/index.php?X=CALC */
+/* CIE-L*Ch(ab) D65/2° */
+div.legred	{background:#FC9C93;color:#000000;border:1px solid #ffffff;}	/* ( 74, 40, 30) */
+div.legyel	{background:#CEB46C;color:#000000;border:1px solid #ffffff;}	/* ( 74, 40, 90) */
+div.leggrn	{background:#7CC690;color:#000000;border:1px solid #ffffff;}	/* ( 74, 40,150) */
+div.legcyn	{background:#0DC9D9;color:#000000;border:1px solid #ffffff;}	/* ( 74, 40,210) */
+div.legblu	{background:#80B9FF;color:#000000;border:1px solid #ffffff;}	/* ( 74, 40,270) */
+div.legmag	{background:#E4A0DB;color:#000000;border:1px solid #ffffff;}	/* ( 74, 40,330) */
+div.legwht	{background:#ffffff;color:#000000;border:1px solid #c0c0c0;}
+div.leggry	{background:#808080;color:#ffffff;border:1px solid #ffffff;}
+div.legblk	{background:#404040;color:#ffffff;border:1px solid #ffffff;}
+div.legorg	{background:#ECA777;color:#000000;border:1px solid #ffffff;}	/* ( 74, 40, 60) */
+div.legolv	{background:#A8BF75;color:#000000;border:1px solid #ffffff;}	/* ( 74, 40,120) */
+div.legbrn	{background:#685510;color:#000000;border:1px solid #ffffff;}	/* ( 37, 40, 90) */
+div.legnon	{background:#B6B6B6;color:#000000;border:1px solid #ffffff;}	/* ( 74,  0,  0) */

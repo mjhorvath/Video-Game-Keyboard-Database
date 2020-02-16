@@ -60,7 +60,7 @@ div.emlcll	{display:table-cell;padding:1px;text-align:left;vertical-align:top;bo
 div.notcll input	{width:100%;box-sizing:border-box;}
 div.notcll button	{width:100%;box-sizing:border-box;}
 div.notcll textarea	{width:100%;box-sizing:border-box;}
-div.grpone	{width:2em;display:none;}
+div.grpone	{width:2em;}
 div.grptwo	{width:8em;}
 div.grpthr	{width:1em;}
 div.grpfor	{width:18em;}

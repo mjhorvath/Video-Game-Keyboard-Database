@@ -1241,7 +1241,7 @@ function collect_command_data()
 				var this_value_3 = this_child.children[3].children[0].value;
 				if ((this_value_2 != '') && (this_value_3 != ''))
 				{
-					commandouter_table[j].push([this_value_2, this_value_3]);
+					commandouter_table[j].push([this_value_1, this_value_2, this_value_3]);
 				}
 			}
 			else if (this_input == 1)
@@ -1251,7 +1251,7 @@ function collect_command_data()
 				var this_value_3 = this_child.children[2].children[0].value;
 				if ((this_value_2 != '') && (this_value_3 != ''))
 				{
-					commandouter_table[j].push([this_value_2, this_value_3]);
+					commandouter_table[j].push([this_value_1, this_value_2, this_value_3]);
 				}
 			}
 			else
@@ -1261,7 +1261,7 @@ function collect_command_data()
 				var this_value_3 = this_child.children[0].children[0].value;
 				if (this_value_3 != '')
 				{
-					commandouter_table[j].push([this_value_2, this_value_3]);
+					commandouter_table[j].push([this_value_1, this_value_2, this_value_3]);
 				}
 			}
 		}
@@ -1272,7 +1272,7 @@ function collect_command_data()
 // non!
 function process_legend_data()
 {
-	// should fetch column names from the database instead
+	// should really fetch column names from the database instead
 	var legend_string = 'legend_id\trecord_id\tkeygroup_id\tlegend_description\n';
 	for (var i in legend_table)
 	{
@@ -1286,8 +1286,8 @@ function process_legend_data()
 // to do: keygroup_id
 function process_command_data()
 {
-	// should fetch column names from the database instead
-	var command_string = 'command_id\trecord_id\tcommandtype_id\tcommand_text\tcommand_description\n';
+	// should really fetch column names from the database instead
+	var command_string = 'command_id\trecord_id\tcommandtype_id\tcommand_text\tcommand_description\tkeygroup_id\n';
 	for (var j in commandouter_table)
 	{
 		var command_num = parseInt(j,10) + 1;
@@ -1295,9 +1295,10 @@ function process_command_data()
 		for (var i in commandinner_table)
 		{
 			var command_item = commandinner_table[i];
-			var command_value_2 = !command_item[0] ? '\\N' : cleantextTSV(command_item[0]);
-			var command_value_3 = !command_item[1] ? '\\N' : cleantextTSV(command_item[1]);
-			command_string += '\\N\t' + record_id + '\t' + command_num + '\t' + command_value_2 + '\t' + command_value_3 + '\n';
+			var command_value_1 = !command_item[0] ? '\\N' : parseInt(command_item[0],10);
+			var command_value_2 = !command_item[1] ? '\\N' : cleantextTSV(command_item[1]);
+			var command_value_3 = !command_item[2] ? '\\N' : cleantextTSV(command_item[2]);
+			command_string += '\\N\t' + record_id + '\t' + command_num + '\t' + command_value_2 + '\t' + command_value_3 + '\t' + command_value_1 +'\n';
 		}
 	}
 	return command_string;
@@ -1306,7 +1307,7 @@ function process_command_data()
 // cleaning!
 function process_binding_data()
 {
-	// should fetch column names from the database instead
+	// should really fetch column names from the database instead
 	var binding_string = 'binding_id\trecord_id\tkey_number\tnormal_action\tnormal_group\tshift_action\tshift_group\tctrl_action\tctrl_group\talt_action\talt_group\taltgr_action\taltgr_group\textra_action\textra_group\timage_file\timage_uri\n';
 	for (var i in binding_table)
 	{
@@ -1387,4 +1388,10 @@ function getParameterByName(name, url)
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function update_select_style(this_select)
+{
+	var target_value = this_select.selectedIndex;
+	this_select.className = 'sel' + color_table[target_value][1];
 }
