@@ -57,6 +57,7 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2020/02/16: Split the credits off of the log and into its own page.</li>
 	<li>2020/02/16: Finished implementing &quot;keygroups&quot; for joystick/mouse/etc. commands.</li>
 	<li>2020/01/01: The &quot;bindings&quot; table now has foreign key constraints (duh!) on the &quot;XXXX_group&quot; columns.</li>
 	<li>2020/01/01: Removed the &quot;non&quot; color once again from the database.</li>
@@ -260,49 +261,6 @@
 	<li>2009/05/16: Added over a dozen new bindings as well as French and German PC keyboard layouts. The new layouts are not compatible with most games, however, until someone contacts me with a list of corresponding French and German bindings.</li>
 	<li>2009/05/11: After several years of neglect, I've done a major overhaul of the project's scripts. Please forgive (and report) any errors! Also, feel free to submit new bindings, layouts or styles.</li>
 	<li>This project was initially started circa 2004 when my site was still hosted at GeoCities. Back then it was mostly pure JavaScript and HTML. (Free GeoCities accounts were not permitted to use PHP or MySQL.) It has come a long way since then. ;)</li>
-</ul>
-<h3>Credits</h3>
-<p>If you have submitted layouts, bindings or styles, then your name will also appear at the bottom of each diagram.</p>
-<h4>Binding schemes</h4>
-<ul>
-	<li>Agnes Beste</li>
-	<li>Taz</li>
-	<li>Josiah Stearns</li>
-	<li>Cris</li>
-	<li>Daniel</li>
-	<li>etejam</li>
-	<li>Luke Fanning</li>
-	<li>Hunter Mansanas</li>
-	<li>Lucas</li>
-	<li>Abel Cloots</li>
-</ul>
-<h4>Visual themes</h4>
-<ul>
-	<li>Kozierok style: <i>Keyboard Key Groupings</i> by Charles M. Kozierok (<a target="_blank" href="http://www.pcguide.com/ref/kb/group-c.html">link</a>)</li>
-	<li>Savard style: <i>Scan Codes Demystified</i> by John J. G. Savard (<a target="_blank" href="http://www.quadibloc.com/comp/scan.htm">link</a>)</li>
-	<li>Hello Kitty style: <i>Hello Kitty Keyboard</i> by DreamKitty.com (<a target="_blank" href="http://www.dreamkitty.com/Merchant2/merchant.mv?Screen=PROD&Store_Code=DK2000&Product_Code=K-FB109141&Category_Code=HK">link</a>)</li>
-	<li>Doraemon style: <i>Doraemon Keyboard</i> by DreamKitty.com (<a target="_blank" href="http://www.dreamkitty.com/Merchant5/merchant.mvc?Screen=PROD&Store_Code=DK2000&Product_Code=O-FB761011&Category_Code=">link</a>)</li>
-	<li>FunKeyBoard style: <i>FunKeyBoard</i> by Chester Creek Technologies (<a target="_blank" href="http://www.venturaes.com/index_new.asp?http://www.venturaes.com/chestercreek/index.html">link</a>)</li>
-</ul>
-<h4>Scripts</h4>
-<ul>
-	<li>&quot;Simple JQuery Accordion Menu&quot; by Marco van Hylckama Vlieg (<a target="_blank" href="http://www.i-marco.nl/weblog/">link</a>)</li>
-	<li>CSS checkbox code by W3Schools (<a target="_blank" href="https://www.w3schools.com/howto/howto_css_custom_checkbox.asp">link</a>)</li>
-	<li>JavaScript table sorting routine by W3Schools (<a target="_blank" href="https://www.w3schools.com/howto/howto_js_sort_table.asp">link</a>)</li>
-	<li>Recaptcha script from Stack Overflow (<a target="_blank" href="https://stackoverflow.com/questions/30006081/recaptcha-2-0-with-ajax">link</a>)</li>
-	<li>&quot;normalize.css&quot; by Nicolas Gallagher (<a target="_blank" href="github.com/necolas/normalize.css">link</a>)</li>
-	<li>&quot;jQuery JavaScript Library v1.4.2&quot; by John Resig (<a target="_blank" href="http://jquery.com/">link</a>)</li>
-</ul>
-<h4>Icon graphics</h4>
-<ul>
-	<li>&quot;Spreadsheet&quot; by Arthur Shlain (<a href="https://thenounproject.com/ArtZ91/collection/useful-icons-user-interface/?i=360259">link</a>)</li>
-	<li>&quot;Keyboard&quot; by Alexey Ivanov (<a href="https://thenounproject.com/search/?q=keyboard&creator=17566&i=17427">link</a>)</li>
-	<li>&quot;Information&quot; by AnsteyDesign (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
-	<li>&quot;Edit&quot; by Garrett Knoll (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
-	<li>&quot;Plus&quot; by P.J. Onori (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
-	<li>&quot;Delete&quot; by P.J. Onori (<a target="_blank" href="https://thenounproject.com/">link</a>)</li>
-	<li>&quot;CC BY-SA 3.0&quot; icon (<a target="_blank" href="https://commons.wikimedia.org/wiki/File:CC-BY-SA_icon_white.svg">link</a>)</li>
-	<li>&quot;GNU LGPLv3&quot; icon (<a target="_blank" href="https://commons.wikimedia.org/wiki/File:License_icon-lgpl-88x31.png">link</a>)</li>
 </ul>
 <?php
 	echo
