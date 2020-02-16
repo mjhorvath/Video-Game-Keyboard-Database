@@ -393,7 +393,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 			}
 
 			echo
-"	<svg class=\"keyout\" x=\"" . ($pos_lft-0.5) . "\" y=\"" . ($pos_top-0.5) . "\" width=\"" . ($pos_wid+1) . "\" height=\"" . ($pos_hgh+1) . "\">\n";
+"	<g transform=\"translate(" . ($pos_lft-0.5) . " " . ($pos_top-0.5) . ")\">\n";
 
 			// rects & image
 			if (($style_id == 5) || ($style_id == 6))	// Dark Gradient & Light Gradient
@@ -505,11 +505,11 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 			}
 
 			echo
-"	</svg>\n";
+"	</g>\n";
 		}
 		// legend key
 		echo
-"	<svg class=\"keyout legkey\" x=\"1.5\" y=\"" . ($layout_legend_top + 1.5) . "\" width=\"69\" height=\"69\">
+"	<g class=\"legkey\" transform=\"translate(1.5 " . ($layout_legend_top + 1.5) . ")\">
 		<rect class=\"keyrec recnon\" x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"68\" height=\"68\"/>
 		<rect class=\"bakshf\" x=\"1.0\" y=\"3\" width=\"67\" height=\"12\" rx=\"1\" ry=\"1\"></rect>
 		<text class=\"capshf hang\" x=\"65.5\" y=\"13\">Shift</text>
@@ -520,13 +520,13 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 		<text class=\"capnor txtnon ideo\" x=\"2.5\" y=\"50.5\">Caption</text>
 		<text class=\"lownor txtnon\" x=\"2.5\" y=\"64.5\">Lowcase</text>
 		<text class=\"uppnor txtnon\" x=\"2.5\" y=\"13.5\">Upcase</text>
-	</svg>\n";
+	</g>\n";
 		// non!
 		// legend descriptions
 		if ($stylegroup_id == 1)
 		{
 			echo
-"	<svg class=\"leg\" x=\"109.5\" y=\"" . ($layout_legend_top + 1.5) . "\" width=\"1000\" height=\"300\">\n";
+"	<g transform=\"translate(109.5 " . ($layout_legend_top + 1.5) . ")\">\n";
 			$row_count = 0;
 			foreach ($legend_table as $i => $legend_row)
 			{
@@ -540,7 +540,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 				$row_count += 1;
 			}
 			echo
-"	</svg>\n";
+"	</g>\n";
 		}
 	}
 	echo
