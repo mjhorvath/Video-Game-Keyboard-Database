@@ -792,14 +792,14 @@ function switch_right_pane(side_tab)
 	if (side_tab == 0)
 	{
 		document.getElementById('butt_kbd').style.backgroundColor = '#eee';
-		document.getElementById('butt_csv').style.backgroundColor = '#ccc';
+		document.getElementById('butt_sql').style.backgroundColor = '#ccc';
 		document.getElementById('pane_kbd').style.display = 'block';
 		document.getElementById('pane_tsv').style.display = 'none';
 	}
 	else if (side_tab == 1)
 	{
 		document.getElementById('butt_kbd').style.backgroundColor = '#ccc';
-		document.getElementById('butt_csv').style.backgroundColor = '#eee';
+		document.getElementById('butt_sql').style.backgroundColor = '#eee';
 		document.getElementById('pane_kbd').style.display = 'none';
 		document.getElementById('pane_tsv').style.display = 'block';
 	}
@@ -1272,78 +1272,98 @@ function collect_command_data()
 // non!
 function process_legend_data()
 {
-	// should really fetch column names from the database instead
-	var legend_string = 'legend_id\trecord_id\tkeygroup_id\tlegend_description\n';
-	for (var i in legend_table)
+	if (Object.keys(legend_table).length > 0)
 	{
-		var legend_item = legend_table[i];
-		legend_string += '\\N\t' + record_id + '\t' + i + '\t' + cleantextTSV(legend_item) + '\n';
+		// should really fetch column names from the database instead
+		var legend_string = 'insert into legends (legend_id,record_id,keygroup_id,legend_description) values\n';
+		for (var i in legend_table)
+		{
+			var legend_item = legend_table[i];
+			legend_string += '(NULL,' + record_id + ',' + i + ',' + cleantextTSV(legend_item) + '),\n';
+		}
+		return legend_string.slice(0, -2) + ';\n';
 	}
-	return legend_string;
+	else
+		return '';
 }
 
 // cleaning!
 // to do: keygroup_id
 function process_command_data()
 {
-	// should really fetch column names from the database instead
-	var command_string = 'command_id\trecord_id\tcommandtype_id\tcommand_text\tcommand_description\tkeygroup_id\n';
+	var temp_length = 0;
 	for (var j in commandouter_table)
 	{
-		var command_num = parseInt(j,10) + 1;
-		var commandinner_table = commandouter_table[j];
-		for (var i in commandinner_table)
-		{
-			var command_item = commandinner_table[i];
-			var command_value_1 = !command_item[0] ? '\\N' : parseInt(command_item[0],10);
-			var command_value_2 = !command_item[1] ? '\\N' : cleantextTSV(command_item[1]);
-			var command_value_3 = !command_item[2] ? '\\N' : cleantextTSV(command_item[2]);
-			command_string += '\\N\t' + record_id + '\t' + command_num + '\t' + command_value_2 + '\t' + command_value_3 + '\t' + command_value_1 +'\n';
-		}
+		temp_length += Object.keys(commandouter_table[j]).length;
 	}
-	return command_string;
+	if (temp_length > 0)
+	{
+		// should really fetch column names from the database instead
+		var command_string = 'insert into commands (command_id,record_id,commandtype_id,command_text,command_description,keygroup_id) values\n';
+		for (var j in commandouter_table)
+		{
+			var command_num = parseInt(j,10) + 1;
+			var commandinner_table = commandouter_table[j];
+			for (var i in commandinner_table)
+			{
+				var command_item = commandinner_table[i];
+				var command_value_1 = !command_item[0] ? 'NULL' : parseInt(command_item[0],10);
+				var command_value_2 = !command_item[1] ? 'NULL' : cleantextTSV(command_item[1]);
+				var command_value_3 = !command_item[2] ? 'NULL' : cleantextTSV(command_item[2]);
+				command_string += '(NULL,' + record_id + ',' + command_num + ',' + command_value_2 + ',' + command_value_3 + ',' + command_value_1 +'),\n';
+			}
+		}
+		return command_string.slice(0, -2) + ';\n';
+	}
+	else
+		return '';
 }
 
 // cleaning!
 function process_binding_data()
 {
-	// should really fetch column names from the database instead
-	var binding_string = 'binding_id\trecord_id\tkey_number\tnormal_action\tnormal_group\tshift_action\tshift_group\tctrl_action\tctrl_group\talt_action\talt_group\taltgr_action\taltgr_group\textra_action\textra_group\timage_file\timage_uri\n';
-	for (var i in binding_table)
+	if (Object.keys(binding_table).length > 0)
 	{
-		var binding_num = parseInt(i,10) + 1;
-		var binding_item = binding_table[i];
-		var binding_concat =	binding_item[ 4] +
-					binding_item[ 5] +
-					binding_item[ 6] +
-					binding_item[ 7] +
-					binding_item[ 8] +
-					binding_item[ 9] +
-					binding_item[10] +
-					binding_item[11];
-		// need to eliminate empty bindings
-		if (binding_concat != '')
+		// should really fetch column names from the database instead
+		var binding_string = 'insert into bindings (binding_id,record_id,key_number,normal_action,normal_group,shift_action,shift_group,ctrl_action,ctrl_group,alt_action,alt_group,altgr_action,altgr_group,extra_action,extra_group,image_file,image_uri) values\n';
+		for (var i in binding_table)
 		{
-			binding_string +=	'\\N'					+ '\t' +
-						record_id				+ '\t' +
-						binding_num				+ '\t' +
-						cleantextTSV(binding_item[ 4])		+ '\t' +
-						cleannumberTSV(binding_item[12])	+ '\t' +
-						cleantextTSV(binding_item[ 5])		+ '\t' +
-						cleannumberTSV(binding_item[13])	+ '\t' +
-						cleantextTSV(binding_item[ 6])		+ '\t' +
-						cleannumberTSV(binding_item[14])	+ '\t' +
-						cleantextTSV(binding_item[ 7])		+ '\t' +
-						cleannumberTSV(binding_item[15])	+ '\t' +
-						cleantextTSV(binding_item[ 8])		+ '\t' +
-						cleannumberTSV(binding_item[16])	+ '\t' +
-						cleantextTSV(binding_item[ 9])		+ '\t' +
-						cleannumberTSV(binding_item[17])	+ '\t' +
-						cleantextTSV(binding_item[10])		+ '\t' +
-						cleantextTSV(binding_item[11])		+ '\n';
+			var binding_num = parseInt(i,10) + 1;
+			var binding_item = binding_table[i];
+			var binding_concat =	binding_item[ 4] +
+						binding_item[ 5] +
+						binding_item[ 6] +
+						binding_item[ 7] +
+						binding_item[ 8] +
+						binding_item[ 9] +
+						binding_item[10] +
+						binding_item[11];
+			// need to eliminate empty bindings
+			if (binding_concat != '')
+			{
+				binding_string +=	'(NULL'					+ ',' +
+							record_id				+ ',' +
+							binding_num				+ ',' +
+							cleantextTSV(binding_item[ 4])		+ ',' +
+							cleannumberTSV(binding_item[12])	+ ',' +
+							cleantextTSV(binding_item[ 5])		+ ',' +
+							cleannumberTSV(binding_item[13])	+ ',' +
+							cleantextTSV(binding_item[ 6])		+ ',' +
+							cleannumberTSV(binding_item[14])	+ ',' +
+							cleantextTSV(binding_item[ 7])		+ ',' +
+							cleannumberTSV(binding_item[15])	+ ',' +
+							cleantextTSV(binding_item[ 8])		+ ',' +
+							cleannumberTSV(binding_item[16])	+ ',' +
+							cleantextTSV(binding_item[ 9])		+ ',' +
+							cleannumberTSV(binding_item[17])	+ ',' +
+							cleantextTSV(binding_item[10])		+ ',' +
+							cleantextTSV(binding_item[11])		+ '),\n';
+			}
 		}
+		return binding_string.slice(0, -2) + ';\n';
 	}
-	return binding_string;
+	else
+		return '';
 }
 
 function fill_legend(in_id)

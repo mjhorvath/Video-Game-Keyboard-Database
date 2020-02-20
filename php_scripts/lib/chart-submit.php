@@ -325,7 +325,7 @@ var binding_table =\n{\n" . $binding_string . "};
 		<div id="pane_rgt">
 			<div id="tbar_rgt">
 				<div id="butt_kbd" class="tabs_butt" title="Toggle Keyboard Panel" onclick="switch_right_pane(0);"><img src="<?php echo $path_lib1; ?>icon-kbd.png"/></div>
-				<div id="butt_csv" class="tabs_butt" title="Toggle TSV Panel"      onclick="switch_right_pane(1);"><img src="<?php echo $path_lib1; ?>icon-spd.png"/></div>
+				<div id="butt_sql" class="tabs_butt" title="Toggle SQL Panel"      onclick="switch_right_pane(1);"><img src="<?php echo $path_lib1; ?>icon-sql.png"/></div>
 			</div>
 			<div id="pane_kbd" style="display:block;">
 				<header>
@@ -655,9 +655,9 @@ var binding_table =\n{\n" . $binding_string . "};
 				</footer>
 			</div>
 			<div id="pane_tsv" style="display:none;">
-				<h2>Tab-Separated Values (TSV)</h2>
-				<p style="max-width:60em;">You should be able to copy and paste the following tab-separated values (TSV) into MS Excel or some other spreadsheet program and continue to edit the values from there. Alternatively, you could import the values directly into a SQL database using the <code>LOAD DATA</code> SQL command. (Make sure to delete the header row first, however.)</p>
-				<p style="max-width:60em;">The string <code>\N</code> (with an upper-case &quot;n&quot; and one backslash) indicates a value of null, and may represent an auto-increment field in SQL. The string <code>\\n</code> (with a lower-case &quot;n&quot; and two backslashes) indicates a newline character.</p>
+				<h2>SQL Code</h2>
+				<p style="max-width:60em;">You should be able to copy and paste the following SQL code into a text file and execute the resulting script.</p>
+				<p style="max-width:60em;">The string <code>\\n</code> (with a lower-case &quot;n&quot; and two backslashes) indicates a newline character.</p>
 				<p style="max-width:60em;">If you run out of space, the text areas below can be resized by dragging on the bottom-right corners.</p>
 				<h4>Legend</h4>
 				<textarea id="legend_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>

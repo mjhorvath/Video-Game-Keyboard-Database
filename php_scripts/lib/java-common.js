@@ -26,13 +26,13 @@ function cleantextHTML(in_string)
 
 function cleantextTSV(in_string)
 {
-	in_string = in_string.replace(/\\/g,'\\\\');
-	return in_string == '' ? '\\N' : in_string;
+	in_string = in_string.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'');
+	return in_string == '' ? 'NULL' : '\'' + in_string + '\'';
 }
 
 function cleannumberTSV(in_number)
 {
-	return !in_number ? '\\N' : in_number;
+	return !in_number ? 'NULL' : in_number;
 }
 
 // needs work
