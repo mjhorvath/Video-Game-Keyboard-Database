@@ -374,31 +374,26 @@ var seourl_table =
 				<div id="fmt_check" class="acc_check">&#x2714;</div>
 				<div id="fmt_xmark" class="acc_xmark">&#x2718;</div>
 			</div>
-			<div class="container">
+			<label class="container">HTML/SVG&nbsp;&#10022;
 				<input id="fmtrad0" type="radio" name="fmt_radio" value="0" onchange="enableResetButton();" checked="checked"/>
-				<label for="fmtrad0">HTML/SVG &#10022;</label>
 				<span class="checkmark"></span>
-			</div>
-			<div class="container">
+			</label>
+			<label class="container">SVG only
 				<input id="fmtrad1" type="radio" name="fmt_radio" value="1" onchange="enableResetButton();"/>
-				<label for="fmtrad1">SVG only</label>
 				<span class="checkmark"></span>
-			</div>
-			<div class="container">
+			</label>
+			<label class="container">MediaWiki
 				<input id="fmtrad2" type="radio" name="fmt_radio" value="2" onchange="enableResetButton();"/>
-				<label for="fmtrad2">MediaWiki</label>
 				<span class="checkmark"></span>
-			</div>
-			<div class="container">
+			</label>
+			<label class="container">Editor
 				<input id="fmtrad3" type="radio" name="fmt_radio" value="3" onchange="enableResetButton();"/>
-				<label for="fmtrad3">Editor</label>
 				<span class="checkmark"></span>
-			</div>
-			<div class="container">
+			</label>
+			<label class="container"><s>PDF</s>
 				<input id="fmtrad4" type="radio" name="fmt_radio" value="4" onchange="enableResetButton();" disabled="disabled"/>
-				<label for="fmtrad4"><s>PDF</s></label>
 				<span class="checkmark"></span>
-			</div>
+			</label>
 		</div>
 		<div class="acc_div">
 			<div class="acc_wrap">
@@ -406,16 +401,14 @@ var seourl_table =
 				<div id="ten_check" class="acc_check">&#x2714;</div>
 				<div id="ten_xmark" class="acc_xmark">&#x2718;</div>
 			</div>
-			<div class="container">
+			<label class="container">Show&nbsp;&#10022;
 				<input id="tenrad1" type="radio" name="ten_radio" value="1" onchange="enableResetButton();" checked="checked"/>
-				<label for="tenrad1">Show &#10022;</label>
 				<span class="checkmark"></span>
-			</div>
-			<div class="container">
+			</label>
+			<label class="container">Hide
 				<input id="tenrad0" type="radio" name="ten_radio" value="0" onchange="enableResetButton();"/>
-				<label for="tenrad0">Hide</label>
 				<span class="checkmark"></span>
-			</div>
+			</label>
 		</div>
 		<div class="acc_div">
 			<div class="acc_wrap">
