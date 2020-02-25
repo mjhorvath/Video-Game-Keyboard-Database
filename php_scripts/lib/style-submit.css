@@ -1,53 +1,19 @@
 div.keyout
 {
-/*	background-size:auto;			/* Can't remember what I was using this for. */
-	-webkit-transition-duration:0.05s;
-	transition-duration:0.05s;
+/*	background-size:auto;			*/	/* Can't remember what I was using this for. */
+/*	-webkit-transition-duration:0.05s;	*/
+/*	transition-duration:0.05s;		*/
 }
 div.keyout:hover
 {
-/*	filter:brightness(150%);		/* Can't remember what I was using this for. */
-	background-color:#e0e0e0;
-	color:#000000;
+/*	filter:brightness(150%);		*/	/* Can't remember what I was using this for. */
+	background-image:url(white-trans-128.png);
 	filter:drop-shadow(0px 0px 10px #e0e0e0);
 }
 div#butt_min:hover,div#butt_max:hover,div#butt_inp:hover,div#butt_hlp:hover,div#butt_kbd:hover,div#butt_sql:hover
 		{background-color:#ffffff !important;}
 /* https://stackoverflow.com/questions/28365839/dashed-border-animation-in-css3-animation */
-div.keysel
-{
-	filter:
-		drop-shadow(0px 0px 10px #e0e0e0);
-	border:
-		1px solid #e0e0e0;
-	color:
-		#000000;
-	z-index:
-		1;
-	background: 
-		linear-gradient(90deg, #ff0000 50%, #e0e0e0 50%),
-		linear-gradient( 0deg, #ff0000 50%, #e0e0e0 50%),
-		linear-gradient(90deg, #ff0000 50%, #e0e0e0 50%),
-		linear-gradient( 0deg, #ff0000 50%, #e0e0e0 50%);
-	background-repeat:
-		repeat-x, repeat-y, repeat-x, repeat-y;
-	background-size:
-		8px 2px, 2px 8px, 8px 2px, 2px 8px;
-	background-position:
-		left top, right top, left bottom, left top;
-	padding:
-		0px;
-	animation:
-		border-dance 4s infinite linear;
-	background-color:
-		#e0e0e0;
-}
-@keyframes border-dance 
-{
-	0%	{background-position: left top, right top, right bottom, left bottom;}
-	100%	{background-position: right top, right bottom, left bottom, left top;}
-}
-
+div.keysel		{z-index:4;transform:scale(1.5);}
 div.comdiv	{width:32em;}
 div.nottbl,div.inptbl,div.emltbl
 		{display:table;border-collapse:separate;border-spacing:2px;}

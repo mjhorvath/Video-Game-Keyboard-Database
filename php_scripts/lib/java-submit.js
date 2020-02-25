@@ -17,7 +17,7 @@
 // License along with this program.  If not, see 
 // <https://www.gnu.org/licenses/>.
 
-var path_lib1 = './lib/';
+const path_lib1 = './lib/';
 
 var layout_id = 0;
 var record_id = 0;
@@ -218,7 +218,7 @@ function click_on_chart_key(elm)
 		document.getElementById('keyout_' + last_id).className = last_class;
 	}
 	last_class = document.getElementById('keyout_' + current_id).className;
-	document.getElementById('keyout_' + current_id).className = 'keyout keysel';
+	document.getElementById('keyout_' + current_id).className += ' keysel';
 }
 
 function click_off_chart_key(elm)
@@ -280,6 +280,15 @@ function key_save_changes()
 	document.getElementById('unset_key_button').disabled = true;
 	flag_key_clean();
 	flag_doc_dirty();
+	if (current_id != null)
+	{
+		const regex = RegExp('keysel');
+		const sel_match = regex.test(document.getElementById('keyout_' + current_id).className);
+		if (sel_match)
+			document.getElementById('keyout_' + current_id).className = last_class + ' keysel';
+		else
+			document.getElementById('keyout_' + current_id).className = last_class;
+	}
 }
 
 function key_revert_changes()
@@ -293,8 +302,8 @@ function key_revert_changes()
 
 function is_embedded_image_okay()
 {
-	var img_filename = document.getElementById('inp_imgfil').value;
-	var img_datauri = document.getElementById('inp_imguri').value;
+	const img_filename = document.getElementById('inp_imgfil').value;
+	const img_datauri = document.getElementById('inp_imguri').value;
 	if
 	(
 		((img_filename == '') && (img_datauri != '')) ||
@@ -407,16 +416,12 @@ function push_values_from_cache_into_array()
 	document.getElementById('capxtr_' + current_id).innerHTML = cleantextHTML(current_values.val_capxtr);
 
 	// Need to make certain that both a filename *and* a data URI are present!!
-	var this_image = document.getElementById('capimg_' + current_id);
+	const this_image = document.getElementById('capimg_' + current_id);
 	this_image.src = current_values.val_imguri;
 	if (current_values.val_imguri != '')
-	{
 		this_image.style.display = 'block';
-	}
 	else
-	{
 		this_image.style.display = 'none';
-	}
 
 	last_class = 'keyout cap' + color_table[current_values.col_capnor][1];
 }
@@ -500,7 +505,7 @@ function check_all_caption_groups()
 {
 	for (var i in binding_table)
 	{
-		var this_binding = binding_table[i];
+		const this_binding = binding_table[i];
 		if
 		(
 			((this_binding[ 4] != '') && (this_binding[12] == 0)) ||
@@ -534,12 +539,9 @@ function toggle_set_and_revert_buttons(event)
 		flag_key_clean();
 	}
 
-	var elm = event.target;
+	const elm = event.target;
 	if (elm.tagName.toUpperCase() == 'SELECT')
-	{
-		var this_index = elm.selectedIndex;
-		elm.className = 'sel' + color_table[this_index][1];
-	}
+		elm.className = 'sel' + color_table[elm.selectedIndex][1];
 }
 
 function add_window_exit_event()
@@ -572,16 +574,16 @@ function add_input_typing_events()
 
 function remove_group_table_row(button_node)
 {
-	var parent_node = button_node.parentNode.parentNode;
-	var ancest_node = parent_node.parentNode;
+	const parent_node = button_node.parentNode.parentNode;
+	const ancest_node = parent_node.parentNode;
 	ancest_node.removeChild(parent_node);
 }
 
 function add_group_table_row(button_node)
 {
-	var parent_node = button_node.parentNode.parentNode;
-	var ancest_node = parent_node.parentNode;
-	var new_node = create_group_table_row();
+	const parent_node = button_node.parentNode.parentNode;
+	const ancest_node = parent_node.parentNode;
+	const new_node = create_group_table_row();
 	ancest_node.removeChild(parent_node);
 	ancest_node.appendChild(new_node);
 	ancest_node.appendChild(parent_node);
@@ -589,28 +591,29 @@ function add_group_table_row(button_node)
 
 function create_group_table_row()
 {
-	var new_row = document.createElement('div');
+	const new_row = document.createElement('div');
 	new_row.className = 'notrow';
-	var new_cll_1 = document.createElement('div');
+	const new_cll_1 = document.createElement('div');
 	new_cll_1.className = 'notcll grpone';
-	var new_sel_1 = document.createElement('select');
+	const new_sel_1 = document.createElement('select');
 	new_sel_1.className = 'selnon';
 	new_sel_1.setAttribute('size',1);
 	new_sel_1.setAttribute('autocomplete','off');
+	new_sel_1.onchange = update_group_column;
 	for (var i in color_table)
 	{
-		var new_opt_1 = document.createElement('option');
-		var color_class	= color_table[i][1];
+		const new_opt_1 = document.createElement('option');
+		const color_class	= color_table[i][1];
 		new_opt_1.className = 'opt' + color_class;
-		var new_txt_1 = document.createTextNode(color_class);
+		const new_txt_1 = document.createTextNode(color_class);
 		new_opt_1.appendChild(new_txt_1);
 		new_sel_1.appendChild(new_opt_1);
 	}
 	new_cll_1.appendChild(new_sel_1);
 	new_row.appendChild(new_cll_1);
-	var new_cll_2 = document.createElement('div');
+	const new_cll_2 = document.createElement('div');
 	new_cll_2.className = 'notcll grptwo';
-	var new_inp_2 = document.createElement('input');
+	const new_inp_2 = document.createElement('input');
 	new_inp_2.setAttribute('type','text');
 	new_inp_2.setAttribute('maxlength','100');
 //	new_inp_2.setAttribute('placeholder','blah');
@@ -618,14 +621,14 @@ function create_group_table_row()
 	new_inp_2.onchange = flag_doc_dirty;
 	new_cll_2.appendChild(new_inp_2);
 	new_row.appendChild(new_cll_2);
-	var new_cll_3 = document.createElement('div');
+	const new_cll_3 = document.createElement('div');
 	new_cll_3.className = 'notcll grpthr';
-	var new_txt_3 = document.createTextNode('=');
+	const new_txt_3 = document.createTextNode('=');
 	new_cll_3.appendChild(new_txt_3);
 	new_row.appendChild(new_cll_3);
-	var new_cll_4 = document.createElement('div');
+	const new_cll_4 = document.createElement('div');
 	new_cll_4.className = 'notcll grpfor';
-	var new_inp_4 = document.createElement('input');
+	const new_inp_4 = document.createElement('input');
 	new_inp_4.setAttribute('type','text');
 	new_inp_4.setAttribute('maxlength','100');
 //	new_inp_4.setAttribute('placeholder','blah');
@@ -633,12 +636,12 @@ function create_group_table_row()
 	new_inp_4.onchange = flag_doc_dirty;
 	new_cll_4.appendChild(new_inp_4);
 	new_row.appendChild(new_cll_4);
-	var new_cll_5 = document.createElement('div');
+	const new_cll_5 = document.createElement('div');
 	new_cll_5.className = 'notcll grpfiv';
-	var new_but_5 = document.createElement('button');
+	const new_but_5 = document.createElement('button');
 	new_but_5.className = 'grpsub';
 	new_but_5.setAttribute('type','button');
-	var new_txt_5 = document.createTextNode('-');
+	const new_txt_5 = document.createTextNode('-');
 	new_but_5.appendChild(new_txt_5);
 	new_cll_5.appendChild(new_but_5);
 	new_row.appendChild(new_cll_5);
@@ -647,16 +650,16 @@ function create_group_table_row()
 
 function remove_input_table_row(button_node)
 {
-	var parent_node = button_node.parentNode.parentNode;
-	var ancest_node = parent_node.parentNode;
+	const parent_node = button_node.parentNode.parentNode;
+	const ancest_node = parent_node.parentNode;
 	ancest_node.removeChild(parent_node);
 }
 
 function add_input_table_row(button_node)
 {
-	var parent_node = button_node.parentNode.parentNode;
-	var ancest_node = parent_node.parentNode;
-	var new_node = create_input_table_row();
+	const parent_node = button_node.parentNode.parentNode;
+	const ancest_node = parent_node.parentNode;
+	const new_node = create_input_table_row();
 	ancest_node.removeChild(parent_node);
 	ancest_node.appendChild(new_node);
 	ancest_node.appendChild(parent_node);
@@ -664,11 +667,11 @@ function add_input_table_row(button_node)
 
 function create_input_table_row()
 {
-	var new_row = document.createElement('div');
+	const new_row = document.createElement('div');
 	new_row.className = 'notrow';
-	var new_cll_1 = document.createElement('div');
+	const new_cll_1 = document.createElement('div');
 	new_cll_1.className = 'notcll inpone';
-	var new_inp_1 = document.createElement('input');
+	const new_inp_1 = document.createElement('input');
 	new_inp_1.setAttribute('type','text');
 	new_inp_1.setAttribute('maxlength','100');
 //	new_inp_1.setAttribute('placeholder','blah');
@@ -676,14 +679,14 @@ function create_input_table_row()
 	new_inp_1.onchange = flag_doc_dirty;
 	new_cll_1.appendChild(new_inp_1);
 	new_row.appendChild(new_cll_1);
-	var new_cll_2 = document.createElement('div');
+	const new_cll_2 = document.createElement('div');
 	new_cll_2.className = 'notcll inptwo';
-	var new_txt_2 = document.createTextNode('=');
+	const new_txt_2 = document.createTextNode('=');
 	new_cll_2.appendChild(new_txt_2);
 	new_row.appendChild(new_cll_2);
-	var new_cll_3 = document.createElement('div');
+	const new_cll_3 = document.createElement('div');
 	new_cll_3.className = 'notcll inpthr';
-	var new_inp_3 = document.createElement('input');
+	const new_inp_3 = document.createElement('input');
 	new_inp_3.setAttribute('type','text');
 	new_inp_3.setAttribute('maxlength','100');
 //	new_inp_3.setAttribute('placeholder','blah');
@@ -691,12 +694,12 @@ function create_input_table_row()
 	new_inp_3.onchange = flag_doc_dirty;
 	new_cll_3.appendChild(new_inp_3);
 	new_row.appendChild(new_cll_3);
-	var new_cll_4 = document.createElement('div');
+	const new_cll_4 = document.createElement('div');
 	new_cll_4.className = 'notcll inpfor';
-	var new_but_4 = document.createElement('button');
+	const new_but_4 = document.createElement('button');
 	new_but_4.className = 'inpsub';
 	new_but_4.setAttribute('type','button');
-	var new_txt_4 = document.createTextNode('-');
+	const new_txt_4 = document.createTextNode('-');
 	new_but_4.appendChild(new_txt_4);
 	new_cll_4.appendChild(new_but_4);
 	new_row.appendChild(new_cll_4);
@@ -705,16 +708,16 @@ function create_input_table_row()
 
 function remove_texts_table_row(button_node)
 {
-	var parent_node = button_node.parentNode.parentNode;
-	var ancest_node = parent_node.parentNode;
+	const parent_node = button_node.parentNode.parentNode;
+	const ancest_node = parent_node.parentNode;
 	ancest_node.removeChild(parent_node);
 }
 
 function add_texts_table_row(button_node)
 {
-	var parent_node = button_node.parentNode.parentNode;
-	var ancest_node = parent_node.parentNode;
-	var new_node = create_texts_table_row();
+	const parent_node = button_node.parentNode.parentNode;
+	const ancest_node = parent_node.parentNode;
+	const new_node = create_texts_table_row();
 	ancest_node.removeChild(parent_node);
 	ancest_node.appendChild(new_node);
 	ancest_node.appendChild(parent_node);
@@ -722,23 +725,23 @@ function add_texts_table_row(button_node)
 
 function create_texts_table_row()
 {
-	var new_row = document.createElement('div');
+	const new_row = document.createElement('div');
 	new_row.className = 'notrow';
-	var new_cll_1 = document.createElement('div');
+	const new_cll_1 = document.createElement('div');
 	new_cll_1.className = 'notcll txtone';
-	var new_inp_1 = document.createElement('textarea');
+	const new_inp_1 = document.createElement('textarea');
 //	new_inp_1.setAttribute('placeholder','blah');
 	new_inp_1.setAttribute('autocomplete','off');
 	new_inp_1.setAttribute('maxlength','1024');
 	new_inp_1.onchange = flag_doc_dirty;
 	new_cll_1.appendChild(new_inp_1);
 	new_row.appendChild(new_cll_1);
-	var new_cll_2 = document.createElement('div');
+	const new_cll_2 = document.createElement('div');
 	new_cll_2.className = 'notcll txttwo';
-	var new_but_2 = document.createElement('button');
+	const new_but_2 = document.createElement('button');
 	new_but_2.className = 'txtsub';
 	new_but_2.setAttribute('type','button');
-	var new_txt_2 = document.createTextNode('-');
+	const new_txt_2 = document.createTextNode('-');
 	new_but_2.appendChild(new_txt_2);
 	new_cll_2.appendChild(new_but_2);
 	new_row.appendChild(new_cll_2);
@@ -855,32 +858,20 @@ if (!Element.prototype.matches)
 function addListener(element, eventName, handler)
 {
 	if (element.addEventListener)
-	{
 		element.addEventListener(eventName, handler, false);
-	}
 	else if (element.attachEvent)
-	{
 		element.attachEvent('on' + eventName, handler);
-	}
 	else
-	{
 		element['on' + eventName] = handler;
-	}
 }
 
 function removeListener(element, eventName, handler) {
 	if (element.addEventListener)
-	{
 		element.removeEventListener(eventName, handler, false);
-	}
 	else if (element.detachEvent)
-	{
 		element.detachEvent('on' + eventName, handler);
-	}
 	else
-	{
 		element['on' + eventName] = null;
-	}
 }
 
 function key_change_warning(elm, letter)
@@ -967,18 +958,18 @@ function do_recaptcha()
 	var valid	= true;
 	var errors	= '';
 	var issues	= '';
-	var name	= $('#email_1');
-	var email	= $('#email_2');
-	var message	= $('#email_3');
-	var titletxt	= $('#email_4');
-	var titleurl	= $('#email_5');
-	var legend	= $('#email_6');
-	var command	= $('#email_7');
-	var binding	= $('#email_8');
-	var layout	= $('#email_9');
-	var record	= $('#email_10');
-	var newsub	= $('#email_11');
-	var captcha	= grecaptcha.getResponse();		// THIS WILL TELL THE FORM IF THE USER IS CAPTCHA VERIFIED.
+	const name	= $('#email_1');
+	const email	= $('#email_2');
+	const message	= $('#email_3');
+	const titletxt	= $('#email_4');
+	const titleurl	= $('#email_5');
+	const legend	= $('#email_6');
+	const command	= $('#email_7');
+	const binding	= $('#email_8');
+	const layout	= $('#email_9');
+	const record	= $('#email_10');
+	const newsub	= $('#email_11');
+	const captcha	= grecaptcha.getResponse();		// THIS WILL TELL THE FORM IF THE USER IS CAPTCHA VERIFIED.
 
 	if (!name.get(0).validity.valid || !email.get(0).validity.valid || !message.get(0).validity.valid)
 	{
@@ -1029,9 +1020,7 @@ function do_recaptcha()
 //				$('#email_10').val('');
 //				$('#email_11').val('');
 				if (is_doc_dirty == true)
-				{
 					flag_doc_clean();
-				}
 				console.log('RECAPTCHA: mail was sent');
 				hide_loading_image();
 			}
@@ -1055,20 +1044,16 @@ function do_recaptcha()
 
 function document_revert_changes()
 {
-	var okay = document_change_warning('A');
+	const okay = document_change_warning('A');
 	if (okay == true)
-	{
 		location.reload();
-	}
 }
 
 function document_change_style(game_id, layout_id, game_seo)
 {
-	var okay = document_change_warning('B');
+	const okay = document_change_warning('B');
 	if (okay == true)
-	{
 		reloadThisPage(game_id, layout_id, game_seo);
-	}
 }
 
 // there is an analogous function written in PHP in "./lib/scripts-common.php"
@@ -1085,9 +1070,9 @@ function seo_url(input)
 
 function convert_title_to_seo(event)
 {
-	var elm = event.target;
-	var left_value = elm.value;
-	var right_value = seo_url(left_value);
+	const elm = event.target;
+	const left_value = elm.value;
+	const right_value = seo_url(left_value);
 	document.getElementById('game_url').value = right_value;
 }
 
@@ -1127,9 +1112,9 @@ function flag_cap_clean()
 
 function flag_eml_dirty()
 {
-	var name	= $('#email_1');
-	var email	= $('#email_2');
-	var message	= $('#email_3');
+	const name	= $('#email_1');
+	const email	= $('#email_2');
+	const message	= $('#email_3');
 	if
 	(
 		name.val() != ''	||
@@ -1149,9 +1134,9 @@ function flag_eml_dirty()
 
 function check_eml_valid()
 {
-	var name	= $('#email_1');
-	var email	= $('#email_2');
-	var message	= $('#email_3');
+	const name	= $('#email_1');
+	const email	= $('#email_2');
+	const message	= $('#email_3');
 	if
 	(
 		name.get(0).validity.valid	&&
@@ -1205,11 +1190,11 @@ function collect_legend_data()
 	// skip 'non' since there is no box for 'non'
 	for (var i in color_table)
 	{
-		var this_color = color_table[i][1];
+		const this_color = color_table[i][1];
 		if (this_color != 'non')
 		{
-			var this_input = document.getElementById('form_cap' + this_color);
-			var this_value = this_input.value;
+			const this_input = document.getElementById('form_cap' + this_color);
+			const this_value = this_input.value;
 			if (this_value != '')
 			{
 				legend_table[i] = this_value;
@@ -1225,20 +1210,20 @@ function collect_command_data()
 	for (var j in commandlabel_table)
 	{
 		commandouter_table[j] = [];
-		var this_abbrv = commandlabel_table[j][1];
-		var this_input = commandlabel_table[j][2];
-		var this_group = commandlabel_table[j][3];
-		var this_parent = document.getElementById('table_' + this_abbrv);
-		var this_children = this_parent.children;
+		const this_abbrv = commandlabel_table[j][1];
+		const this_input = commandlabel_table[j][2];
+		const this_group = commandlabel_table[j][3];
+		const this_parent = document.getElementById('table_' + this_abbrv);
+		const this_children = this_parent.children;
 		// ignore the last child since it only contains the button
 		for (var i = 0, n = this_children.length - 1; i < n; i++)
 		{
-			var this_child = this_children[i];
+			const this_child = this_children[i];
 			if (this_group == 1)
 			{
-				var this_value_1 = this_child.children[0].children[0].selectedIndex;
-				var this_value_2 = this_child.children[1].children[0].value;
-				var this_value_3 = this_child.children[3].children[0].value;
+				const this_value_1 = this_child.children[0].children[0].selectedIndex;
+				const this_value_2 = this_child.children[1].children[0].value;
+				const this_value_3 = this_child.children[3].children[0].value;
 				if ((this_value_2 != '') && (this_value_3 != ''))
 				{
 					commandouter_table[j].push([this_value_1, this_value_2, this_value_3]);
@@ -1246,9 +1231,9 @@ function collect_command_data()
 			}
 			else if (this_input == 1)
 			{
-				var this_value_1 = null;
-				var this_value_2 = this_child.children[0].children[0].value;
-				var this_value_3 = this_child.children[2].children[0].value;
+				const this_value_1 = null;
+				const this_value_2 = this_child.children[0].children[0].value;
+				const this_value_3 = this_child.children[2].children[0].value;
 				if ((this_value_2 != '') && (this_value_3 != ''))
 				{
 					commandouter_table[j].push([this_value_1, this_value_2, this_value_3]);
@@ -1256,9 +1241,9 @@ function collect_command_data()
 			}
 			else
 			{
-				var this_value_1 = null;
-				var this_value_2 = null;
-				var this_value_3 = this_child.children[0].children[0].value;
+				const this_value_1 = null;
+				const this_value_2 = null;
+				const this_value_3 = this_child.children[0].children[0].value;
 				if (this_value_3 != '')
 				{
 					commandouter_table[j].push([this_value_1, this_value_2, this_value_3]);
@@ -1278,7 +1263,7 @@ function process_legend_data()
 		var legend_string = 'insert into legends (legend_id,record_id,keygroup_id,legend_description) values\n';
 		for (var i in legend_table)
 		{
-			var legend_item = legend_table[i];
+			const legend_item = legend_table[i];
 			legend_string += '(NULL,' + record_id + ',' + i + ',' + cleantextTSV(legend_item) + '),\n';
 		}
 		return legend_string.slice(0, -2) + ';\n';
@@ -1302,8 +1287,8 @@ function process_command_data()
 		var command_string = 'insert into commands (command_id,record_id,commandtype_id,command_text,command_description,keygroup_id) values\n';
 		for (var j in commandouter_table)
 		{
-			var command_num = parseInt(j,10) + 1;
-			var commandinner_table = commandouter_table[j];
+			const command_num = parseInt(j,10) + 1;
+			const commandinner_table = commandouter_table[j];
 			for (var i in commandinner_table)
 			{
 				var command_item = commandinner_table[i];
@@ -1328,9 +1313,9 @@ function process_binding_data()
 		var binding_string = 'insert into bindings (binding_id,record_id,key_number,normal_action,normal_group,shift_action,shift_group,ctrl_action,ctrl_group,alt_action,alt_group,altgr_action,altgr_group,extra_action,extra_group,image_file,image_uri) values\n';
 		for (var i in binding_table)
 		{
-			var binding_num = parseInt(i,10) + 1;
-			var binding_item = binding_table[i];
-			var binding_concat =	binding_item[ 4] +
+			const binding_num = parseInt(i,10) + 1;
+			const binding_item = binding_table[i];
+			const binding_concat =	binding_item[ 4] +
 						binding_item[ 5] +
 						binding_item[ 6] +
 						binding_item[ 7] +
@@ -1403,7 +1388,7 @@ function getParameterByName(name, url)
 {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
@@ -1412,6 +1397,12 @@ function getParameterByName(name, url)
 
 function update_select_style(this_select)
 {
-	var target_value = this_select.selectedIndex;
+	const target_value = this_select.selectedIndex;
 	this_select.className = 'sel' + color_table[target_value][1];
+}
+
+function update_group_column()
+{
+	flag_doc_dirty();
+	update_select_style(this);
 }

@@ -278,7 +278,7 @@ var binding_table =\n{\n" . $binding_string . "};
 					<div class="inprow"><div class="inpcll"><label for="inp_imguri" title="Image data-URI"		>imguri:</label></div><div class="inpcll"><input id="inp_imguri" class="inplft" type="text" size="11"                 autocomplete="off" title="Image data-URI"	/></div><div class="inpcll">n/a</div></div>
 				</div>
 				<div id="button_inp" style="margin:1em;">
-					<button id="set_key_button" type="button" style="padding:0.3em 1em;" autocomplete="off" disabled="disabled" onclick="key_save_changes();" title="Save changes to key">Set Key</button><button id="unset_key_button" type="button" style="padding:0.3em 1em;" autocomplete="off" disabled="disabled" onclick="key_revert_changes();" title="Revert changes to key">Revert</button>
+					<button id="set_key_button" type="button" style="padding:0.3em 1em;" autocomplete="off" disabled="disabled" onclick="key_save_changes();" title="Save changes to key">Set Key</button><button id="unset_key_button" type="button" style="padding:0.3em 1em;" autocomplete="off" disabled="disabled" onclick="key_revert_changes();" title="Revert changes to key">Revert Key</button>
 				</div>
 				<p>Enter new lines by typing <code>\n</code>.</p>
 				<hr/>
@@ -300,7 +300,7 @@ var binding_table =\n{\n" . $binding_string . "};
 					<input name="email_8"  id="email_8"  type="hidden" value=""/>
 					<input name="email_9"  id="email_9"  type="hidden" value=""/>
 					<input name="email_10" id="email_10" type="hidden" value=""/>
-					<div><button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit changes to data" data-callback="recaptchaCallback">Submit Data</button><button id="unset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state" data-callback="recaptchaCallback">Reset</button></div>
+					<div><button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit changes to data" data-callback="recaptchaCallback">Submit Data</button><button id="unset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state" data-callback="recaptchaCallback">Reset Data</button></div>
 				</form>
 			</div>
 			<div id="pane_hlp" style="display:none;">
