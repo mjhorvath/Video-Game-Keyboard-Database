@@ -3,7 +3,7 @@ body		{color:#ffffff;background:#000000;font-family:"DejaVu Sans Condensed",Helv
 footer		{font-size:smaller;}
 div.boxdiv	{margin:6px;padding:18px;position:relative;}
 div.svgdiv	{margin:6px;padding:   0;position:relative;}
-div.comdiv	{margin:3px;padding:18px;position:relative;width:22em;}
+div.comdiv	{margin:3px;padding:18px;position:relative;width:25em;}
 div.comflx	{margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
 div.legbox	{width:1em;height:1em;}
 div.legred	{background-image:-webkit-linear-gradient(#000000,#FC9C93);background-image:-moz-linear-gradient(#000000,#FC9C93);background-image:linear-gradient(#000000,#FC9C93);}	/* CIE-L*ch ( 74, 40, 30) */

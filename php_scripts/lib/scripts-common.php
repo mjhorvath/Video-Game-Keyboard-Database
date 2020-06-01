@@ -395,9 +395,10 @@
 		$in_file = $path_lib2 . $path_file;
 		$path_parts = pathinfo($in_file);
 		$base_name = $path_parts["basename"];
+		date_default_timezone_set("UTC");
 		if (file_exists($in_file))
 		{
-			return "Page: " . $base_name . ". Last modified: " . date("F d Y H:i:s.", filemtime($in_file));
+			return "Page: " . $base_name . ". Last modified: " . date("Y-m-d H:i:s T.", filemtime($in_file));
 		}
 		else
 		{

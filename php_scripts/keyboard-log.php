@@ -57,6 +57,13 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2020/05/31: Set time and date in submission form and emails to UTC/GMT.</li>
+	<li>2020/05/27: Added bindings for <i>Troubleshooter: Abandoned Children</i>.</li>
+	<li>2020/03/15: Added bindings for <i>MLCad</i>, <i>LDCad</i>, <i>Life is Strange</i> and <i>Pillars of Eternity II: Deadfire</i>.</li>
+	<li>2020/02/25: Changed the behavior when a key is pressed in the submission form. A zoomed-in key now pops up instead of the animated border.</li>
+	<li>2020/02/25: Steve Martin submitted alternate bindings for <i>Ark: Survival Evolved</i>. I also added bindings for the video game <i>Hard West</i>.</li>
+	<li>2020/02/20: Fixed a bug preventing the radio buttons on the main page from being pressed.</li>
+	<li>2020/02/20: Since my web host disabled LOAD DATA INFILE in MySQL, I switched from generating TSV data on the submission form to generating SQL commands.</li>
 	<li>2020/02/16: Finished implementing &quot;keygroups&quot; for joystick/mouse/etc. commands.</li>
 	<li>2020/01/01: The &quot;bindings&quot; table now has foreign key constraints (duh!) on the &quot;XXXX_group&quot; columns.</li>
 	<li>2020/01/01: Removed the &quot;non&quot; color once again from the database.</li>
@@ -259,7 +266,7 @@
 	<li>2009/05/21: Fixed the measurements for most of the other layouts which were off by some fractions of an inch.</li>
 	<li>2009/05/16: Added over a dozen new bindings as well as French and German PC keyboard layouts. The new layouts are not compatible with most games, however, until someone contacts me with a list of corresponding French and German bindings.</li>
 	<li>2009/05/11: After several years of neglect, I've done a major overhaul of the project's scripts. Please forgive (and report) any errors! Also, feel free to submit new bindings, layouts or styles.</li>
-	<li>This project was initially started circa 2004 when my site was still hosted at GeoCities. Back then it was mostly pure JavaScript and HTML. (Free GeoCities accounts were not permitted to use PHP or MySQL.) It has come a long way since then. ;)</li>
+	<li>This project was initially started c. 2004 when my site was hosted at GeoCities. Back then it was mostly pure JavaScript and HTML. (Free GeoCities accounts were not permitted to use PHP or MySQL.) It has come a long way since then. ;)</li>
 </ul>
 <h3>Credits</h3>
 <p>If you have submitted layouts, bindings or styles, then your name will also appear at the bottom of each diagram.</p>
@@ -275,6 +282,7 @@
 	<li>Hunter Mansanas</li>
 	<li>Lucas</li>
 	<li>Abel Cloots</li>
+	<li>Steve Martin</li>
 </ul>
 <h4>Visual themes</h4>
 <ul>

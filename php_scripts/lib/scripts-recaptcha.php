@@ -39,6 +39,8 @@
 		return;
 	}
 
+	date_default_timezone_set("UTC");
+
 	$name		= $_POST["name"];
 	$email		= $_POST["email"];
 	$message	= $_POST["message"];
@@ -51,7 +53,7 @@
 	$record		= $_POST["record"];
 	$newsub		= $_POST["newsub"];
 	$timeraw	= time();
-	$timeform	= date("l jS \of F Y h:i:s A", $timeraw);
+	$timeform	= date("Y-m-d H:i:s T", $timeraw);
 	$at		= "@";
 	$dot		= ".";
 	$gap		= "";

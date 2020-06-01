@@ -3,7 +3,7 @@ body		{background:#404040;color:#ffffff;font-family:"DejaVu Sans Condensed",Sans
 footer		{font-size:smaller;}
 div.boxdiv	{margin:6px;padding:18px;position:relative;}
 div.svgdiv	{margin:6px;padding:   0;position:relative;}
-div.comdiv	{margin:3px;padding:18px;position:relative;width:22em;}
+div.comdiv	{margin:3px;padding:18px;position:relative;width:25em;}
 div.comflx	{margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
 div.legbox	{width:1em;height:1em;}
 a:link,a:visited	{color:#ffff00;text-decoration:none;}

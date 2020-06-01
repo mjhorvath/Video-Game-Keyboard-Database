@@ -145,6 +145,6 @@
 	}
 	echo
 "	</p>
-	<p>" . getFileTime() . " GRID:" . $gamesrecord_id . "</p>
+	<p>" . getFileTime() . " GRID:" . $gamesrecord_id . ".</p>
 </div>\n";
 ?>

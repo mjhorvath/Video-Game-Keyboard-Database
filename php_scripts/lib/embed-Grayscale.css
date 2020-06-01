@@ -3,7 +3,7 @@ body		{color:#000000;background:#ffffff;font-family:Verdana,Sans-Serif;font-size
 footer		{font-size:smaller;}
 div.boxdiv	{margin:6px;padding:18px;position:relative;border:solid 1px #c0c0c0;}
 div.svgdiv	{margin:6px;padding:   0;position:relative;border:solid 1px #c0c0c0;}
-div.comdiv	{margin:3px;padding:18px;position:relative;border:solid 1px #c0c0c0;width:22em;}
+div.comdiv	{margin:3px;padding:18px;position:relative;border:solid 1px #c0c0c0;width:25em;}
 div.comflx	{margin:3px;padding:   0;margin-top:-3px;margin-bottom:-3px;display:flex;flex-direction:row;flex-wrap:wrap;}
 div.legbox	{width:1em;height:1em;}
 div.legred	{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAAAAADhZOFXAAAACXBIWXMAAAsSAAALEgHS3X78AAAAE0lEQVQImWP4vx8CGaD0fwayRADXsTfBHa7CGAAAAABJRU5ErkJggg==');}					/* 1*/

@@ -9,7 +9,7 @@ main			{margin:0;padding:0;}
 label			{}
 div.boxdiv		{margin:6px;padding:18px;position:relative;border:solid 1px #c0c0c0;}
 div.svgdiv		{margin:6px;padding:   0;position:relative;border:solid 1px #c0c0c0;}
-div.comdiv		{margin:3px;padding:18px;position:relative;border:solid 1px #c0c0c0;width:22em;}
+div.comdiv		{margin:3px;padding:18px;position:relative;border:solid 1px #c0c0c0;width:25em;}
 div.comdiv table	{border-spacing:0;}
 div.comdiv tr		{vertical-align:top;}
 div.comdiv td		{text-align:left;padding:0.2em;}
