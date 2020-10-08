@@ -57,6 +57,7 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2020/05/31: Updated bindings for <i>X4: Foundations</i>.</li>
 	<li>2020/05/31: Set time and date in submission form and emails to UTC/GMT.</li>
 	<li>2020/05/27: Added bindings for <i>Troubleshooter: Abandoned Children</i>.</li>
 	<li>2020/03/15: Added bindings for <i>MLCad</i>, <i>LDCad</i>, <i>Life is Strange</i> and <i>Pillars of Eternity II: Deadfire</i>.</li>
