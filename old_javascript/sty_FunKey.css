@@ -1,0 +1,37 @@
+*	{font-family:Verdana,sans-serif;color:#000000;}
+.title	{font-size:small;font-weight:bold;}
+.text	{font-size:small;}
+.cut	{position:absolute;border:1px dashed #000000;}
+.leg	{padding:2;display:none;}
+.legimg	{width:20;height:20;margin-right:2px;border:1px solid #000000;vertical-align:middle;}
+.legtxt	{font-size:small;vertical-align:middle;}
+.key	{position:absolute;white-space:pre;overflow:hidden;}
+.keytop	{position:absolute;left:0px;top:0px;margin:2px;}
+.keybot	{position:absolute;left:0px;bottom:0px;margin:2px;}
+.keyrgt	{position:absolute;right:0px;bottom:0px;margin:2px;font-size:small;font-weight:bold;}
+.keyadd	{position:absolute;top:0px;right:0px;margin:2px;text-align:right;width:75%;}
+.keyimg	{position:absolute;bottom:0px;right:0px;width:32px;height:32px;}
+.keycap	{font-size:small;font-weight:bold;}
+.keydes	{font-size:x-small;}
+.addxtr	{font-size:xx-small;font-weight:bold;color:#a0a0e0;}
+.addagr	{font-size:xx-small;font-weight:bold;color:#e0e0a0;}
+.addalt	{font-size:xx-small;font-weight:bold;color:#e0a0a0;}
+.addctr	{font-size:xx-small;font-weight:bold;color:#a0e0a0;}
+.addshf	{font-size:xx-small;font-weight:bold;color:#a0a0e0;}
+.cssA	{background:#c04040;border:2px outset #ff0000;}
+.cssB	{background:#c0c040;border:2px outset #ffff00;}
+.cssC	{background:#40c040;border:2px outset #00ff00;}
+.cssD	{background:#40c0c0;border:2px outset #00ffff;}
+.cssE	{background:#4040c0;border:2px outset #0000ff;}
+.cssF	{background:#c040c0;border:2px outset #ff00ff;}
+.red	{}
+.yel	{}
+.grn	{}
+.cyn	{}
+.blu	{}
+.mag	{}
+.wht	{}
+.gry	{}
+.blk	{}
+.org	{}
+.olv	{}

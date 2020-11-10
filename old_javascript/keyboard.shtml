@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Isometricland > Video Game Keyboard Charts</title>
+		<meta name="description" content="Keyboard diagrams showing keyboard bindings for a variety of video games and software."/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script language="javascript" type="text/javascript" src="../java/cubescatter.js"></script>
+		<script type="text/javascript" src="key_controls.js"></script>
+		<link type="text/css" rel="stylesheet" href="../style.css"/>
+	</head>
+	<body class="cen" onload="Init_Options();cube_scatter();">
+		<div class="pge lft">
+			<div class="hed">
+				<table cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="nav"><a href="../index.shtml">Isometricland</a> &raquo; <a href="../stuff.shtml">Stuff</a> &raquo; <a href="../html/html.shtml">HTML Projects</a> &raquo; Video Game Keyboard Charts</td>
+						<td class="eml"><a href="../email/email.shtml">Email</a></td><td class="eml"><a href="../blog">Blog</a></td>
+					</tr>
+				</table>
+			</div>
+			<div class="bod">
+				<h2 class="cen">Video Game Keyboard Charts</h2>
+				<table>
+					<tr>
+						<td style="width:250px;">
+							<h4>Select a Scheme:</h4>
+							<select id="sch_select" size="10" style="width:17em;"></select>
+						</td>
+						<td style="width:250px;">
+							<h4>Select a Style:</h4>
+							<select id="sty_select" size="10" style="width:17em;"></select>
+						</td>
+						<td style="width:250px;">
+							<h4>Select a Layout:</h4>
+							<select id="lay_select" size="10" style="width:17em;"></select>
+						</td>
+					</tr><tr>
+						<td>
+							<h4>Select an Effect<sup style="font-size:xx-small;">[1]</sup>:</h4>
+							<div id="eff_select"></div>
+						</td>
+					</tr><tr>
+						<td>
+							<input type="submit" value="Create Diagram" onclick="Spawn_Layout()"/>
+						</td>
+					</tr>
+				</table>
+				<h4>Description:</h4>
+				<p>This form generates a printable keyboard diagram in a new window, depicting keyboard bindings for various video games and other software.</p>
+				<h4>Instructions:</h4>
+				<ol>
+					<li>Select a scheme (key text &amp; captions), style (visual formatting), effect (even more visual formatting), and layout (key positions) using the forms, above. Once you've made your selection, click on the 'Create Diagram' button. A new window will appear.<sup style="font-size:xx-small;">[2]</sup><sup style="font-size:xx-small;">[3]</sup></li>
+					<li>Print the page in the new window at 96dpi (dots-per-inch).<sup style="font-size:xx-small;">[4][5]</sup></li>
+					<li>Optionally, cut along the dotted lines and lay over the top of your keyboard.</li>
+				</ol>
+				<h4>Submissions:</h4>
+				<p>Fill out this <a href="keysubmissions.shtml">online form</a> to submit a scheme for a new game. Note that you will have to abide by the <a target="_blank" href="http://creativecommons.org/licenses/LGPL/2.1/">LGPL license</a> as per the project as a whole.</p>
+				<p>Alternately, you can view and edit the following sample files: schemes (<a href="sch_Sample.js">here</a> and <a href="sch_VStrike.js">here</a>), layouts (<a href="lay_ATUS104.js">here</a> and <a href="lay_ATDE105.js">here</a>), styles (<a href="sty_SatWhite.js">here</a> and <a href="sty_SatWhite.css">here</a>). To submit the modified file, contact me via <a href="../email/email.shtml">this form</a>, and I will reply to you with further instructions.</p>
+				<h4>Footnotes:</h4>
+				<ol>
+					<li>Microsoft Internet Explorer is required for 'Effects'.</li>
+					<li>JavaScript must be enabled in the browser. If JavaScript is not enabled, then the selection boxes above should appear empty.</li>
+					<li>Not all layouts are currently compatible with all games (schemes). In Mozilla Firefox, incompatible layouts should automatically be disabled.</li>
+					<li>Printing doesn't work properly, at the moment. You could try capturing your screen at high resolution and using a paint program to print the image. Or, if you're browsing using Internet Explorer, you can select the 'Rotate 90&deg;' effect to display the chart in a vertical orientation (which will print properly). Newer browsers have an 'shrink to fit' option when printing and a 'zoom' feature when browsing, but these don't always help. I am interested in hearing feedback from those who have experience with printing to adhesive paper.</li>
+					<li>Remember to enable the printing of background colors and images in 'Internet Options' (Internet Explorer) or 'Page Setup' (Firefox) when printing.</li>
+				</ol>
+				<h4>Credits:</h4>
+				<ul>
+					<li>Kozierok style: <a target="_blank" href="http://www.pcguide.com/ref/kb/group-c.html">http://www.pcguide.com/ref/kb/group-c.html</a></li>
+					<li>Savard style: <a target="_blank" href="http://home.ecn.ab.ca/~jsavard/comp/scan.htm">http://home.ecn.ab.ca/~jsavard/comp/scan.htm</a></li>
+					<li>Hello Kitty style: <i>Hello Kitty Keyboard</i> by DreamKitty.com (<a target="_blank" href="http://www.dreamkitty.com/Merchant2/merchant.mv?Screen=PROD&Store_Code=DK2000&Product_Code=K-FB109141&Category_Code=HK">Purchase</a>)</li>
+					<li>Doraemon style: <i>Doraemon Keyboard</i> by DreamKitty.com (<a target="_blank" href="http://www.dreamkitty.com/Merchant5/merchant.mvc?Screen=PROD&Store_Code=DK2000&Product_Code=O-FB761011&Category_Code=">Purchase</a>)</li>
+					<li>FunKeyBoard style: <i>FunKeyBoard</i> by Chester Creek Technologies (<a target="_blank" href="http://www.venturaes.com/index_new.asp?http://www.venturaes.com/chestercreek/index.html">Purchase</a>)</li>
+					<li>Updated <i>Vega Strike</i> scheme: Agnes Beste</li>
+				</ul>
+				<h4>Links (Further Reading):</h4>
+				<ul>
+					<li>http://www.keyxl.com/</li>
+					<li>http://allhotkeys.com/</li>
+					<li>http://www.replacementdocs.com/</li>
+					<li>http://www.alanwood.net/demos/wgl4.html</li>
+					<li>http://classicteck.com/rbarticles/mackeyboard.php</li>
+					<li>http://www.microsoft.com/whdc/archive/scancode.mspx</li>
+					<li>http://msdn.microsoft.com/en-us/library/ms645540.aspx</li>
+					<li>http://www.blendedtechnologies.com/visualization-tricks-generate-a-heatmap-of-your-keystrokes/</li>
+				</ul>
+				<h4>Updates:</h4>
+				<ul>
+					<li>2009/06/06: Added several new games, three new styles, and updated the Printer-Friendly style.</li>
+					<li>2009/05/31: I did another overhaul of the scripts, as well as added the newly created online submission form.</li>
+					<li>2009/05/24: Added a bunch of new schemes. Also, another minor overhaul involving the renaming of a lot of variables. Hopefully, there are no bugs...</li>
+					<li>2009/05/21: I added several Macintosh layouts, including one for the new Aluminium iMac keyboard. Also, the measurements for most of the layouts were off by several fractions of an inch, so I updated those as well.</li>
+					<li>2009/05/16: Also this week, I've added over a dozen new schemes and the French and German keyboard layouts. The new layouts are not compatible with most games, however, until someone contacts me with a list of proper bindings.</li>
+					<li>2009/05/11: After several years of neglect, I've done a major overhaul of the project's scripts. Please report (and forgive) any bugs! Also, feel free to submit schemes, layouts or styles!</li>
+				</ul>
+			</div>
+		</div>
+		<p class="tny"><!--#include virtual="../ssi/license_soft.txt"--></p>
+		<p class="tny"><!--#include virtual="../ssi/footer.txt"--><!--#echo var="LAST_MODIFIED"--></p>
+		<p class="tny">Keywords: ASCII ANSI Unicode scan code Microsoft Windows Apple Macintosh Mac iMac virtual key keyboard diagram keyboard chart keyboard overlay keyboard keyboard shortcuts keyboard bindings keyboard mapping keyboard controls keyboard hotkeys keyboard presets database print printable printing printout video game software JavaScript United States US UK English German French Dvorak Doraemon Hello Kitty FunKeyBoard first-person shooter strategy role-playing simulation Action Script 3.0 ActionScript 3 AS3 Alien vs. Predator Alien versus Predator Allegience American McGee's Alice AquaNox Aqua Nox Baldur's Gate II: Shadows of Amn Baldur's Gate II: Throne of Bhaal Battle for Wesnoth Battlecruiser Millenium Battlecruiser ME BetaBlocker Beta Blocker Brigade E5: New Jagged Union DOOM DOOM II: Hell on Earth Elite Escape Velcoity: Nova EV: Nova Divine Divinity Fallout Fallout 2 FarCry Far Cry FATE: Undiscovered Realms Flight Sim Toolkit FST FreeLancer Free Lancer Descent FreeSpace 2 Descent Free Space 2 Freedom Force Galactic Civilizations II: Dread Lords GalCiv II: Dread Lords GearHead Gothic 2 Gothic 3 Homeworld: Cataclysm Homeworld 2 Independence War Deluxe IWar Deluxe Independence War 2: Edge of Chaos IWar 2: Edge of Chaos Jagged Alliance 2 1.13 JA2 1.13 Jane's USAF Laser Squad Nemesis LDView Lords of Magic Mount & Blade Mount&Blade Myth: The Fallen Lords Myth: TFL NetHack Nexus: The Jupiter Incident Privateer Project Earth: Starmageddon Railroad Tycoon II Railroad Tycoon 2 Rome: Total War Silent Hunter 2 Silent Storm: Sentinels SimCity 2000 SC2K SimCity 3000 Unlimited SC3KU SimCity 4 SimuTrans Space Rangers 2: Dominators StarLancer Star Lancer StarShatter Star Shatter Star Wars: X-Wing X-Wing StarWolves Star Wolves System Shock System Shock 2 Tachyon: The Fringe Temple of Elemental Evil ToEE Thief: The Dark Project Thief: TDP Thief 2: The Metal Age Titans of Steel: Warring Suns Total Annihilation: Kingdoms TA: Kingdoms TRON 2.0 Tropico 2: Pirate Cove UFO: Alien Invasion UFO: AI VegaStrike Vega Strike Winamp X-COM: Apocalypse Xconq X-Tension</p>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+*	{font-family:Verdana,sans-serif;color:#ffffff;}
+body	{background:#000000;}
+.title	{font-size:small;font-weight:bold;}
+.text	{font-size:small;}
+.cut	{position:absolute;border:1px dashed #a08080;}
+.leg	{padding:2px;display:none;}
+.legimg	{width:20px;height:20px;margin-right:2px;border:2px solid #202020;vertical-align:middle;}
+.legtxt	{font-size:small;vertical-align:middle;}
+.key	{position:absolute;border:1px solid #000000;background:#202020;white-space:pre;overflow:hidden;}
+.keytop	{position:absolute;left:0px;top:0px;margin:2px;}
+.keybot	{position:absolute;left:0px;bottom:0px;margin:2px;}
+.keyrgt	{position:absolute;right:0px;bottom:0px;margin:2px;font-size:small;font-weight:bold;}
+.keyadd	{position:absolute;top:0px;right:0px;margin:2px;text-align:right;}
+.keyimg	{position:absolute;bottom:0px;right:0px;width:32px;height:32px;filter:progid:DXImageTransform.Microsoft.BasicImage(Invert=1);}
+.keycap	{font-size:small;font-weight:bold;}
+.keydes	{font-size:x-small;}
+.addxtr	{font-size:xx-small;color:#a0ffff;}
+.addagr	{font-size:xx-small;color:#ffffa0;}
+.addalt	{font-size:xx-small;color:#ffa0a0;}
+.addctr	{font-size:xx-small;color:#a0ffa0;}
+.addshf	{font-size:xx-small;color:#a0a0ff;}
+.red	{background:url(bckg_gra_red.png);}
+.yel	{background:url(bckg_gra_yel.png);}
+.grn	{background:url(bckg_gra_grn.png);}
+.cyn	{background:url(bckg_gra_cyn.png);}
+.blu	{background:url(bckg_gra_blu.png);}
+.mag	{background:url(bckg_gra_mag.png);}
+.wht	{background:url(bckg_gra_wht.png);}
+.gry	{background:url(bckg_gra_gry.png);}
+.blk	{background:url(bckg_gra_blk.png);}
+.org	{background:url(bckg_gra_org.png);}
+.olv	{background:url(bckg_gra_olv.png);}

@@ -1,0 +1,31 @@
+*	{font-family:Verdana,sans-serif;color:#000000;}
+.title	{font-size:small;font-weight:bold;}
+.text	{font-size:small;}
+.cut	{position:absolute;border:1px dashed #000000;}
+.leg	{padding:2px;display:none;}
+.legimg	{width:20px;height:20px;margin-right:2px;vertical-align:middle;}
+.legtxt	{font-size:small;vertical-align:middle;}
+.key	{position:absolute;border:2px outset #ffffff;white-space:pre;overflow:hidden;}
+.keytop	{position:absolute;left:0px;top:0px;margin:2px;}
+.keybot	{position:absolute;left:0px;bottom:0px;margin:2px;}
+.keyrgt	{position:absolute;right:0px;bottom:0px;margin:2px;font-size:small;font-weight:bold;}
+.keyadd	{position:absolute;top:0px;right:0px;margin:2px;text-align:right;}
+.keyimg	{position:absolute;bottom:0px;right:0px;width:32px;height:32px;}
+.keycap	{font-size:small;font-weight:bold;}
+.keydes	{font-size:x-small;}
+.addxtr	{font-size:xx-small;color:#00ffff;}
+.addagr	{font-size:xx-small;color:#ffff00;}
+.addalt	{font-size:xx-small;color:#ff0000;}
+.addctr	{font-size:xx-small;color:#00ff00;}
+.addshf	{font-size:xx-small;color:#0000ff;}
+.red	{background:#ff6600;border:2px outset #ff6600;}
+.yel	{background:#ffcc00;border:2px outset #ffcc00;}
+.grn	{background:#99cc00;border:2px outset #99cc00;}
+.cyn	{background:#00ffcc;border:2px outset #00ffcc;}
+.blu	{background:#3366ff;border:2px outset #3366ff;}
+.mag	{background:#ff99cc;border:2px outset #ff99cc;}
+.wht	{background:#cccccc;border:2px outset #cccccc;}
+.gry	{background:#999999;border:2px outset #999999;}
+.blk	{background:#333333;border:2px outset #333333;color:#ffffff;}
+.org	{background:#996600;border:2px outset #996600;}
+.olv	{background:#999900;border:2px outset #999900;}

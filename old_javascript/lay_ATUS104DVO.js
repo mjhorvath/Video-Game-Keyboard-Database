@@ -3,7 +3,6 @@ Lay_Table['nam'] = 'PC/AT US 104 Key Dvorak'
 Lay_Table['uni'] = 'px'
 Lay_Table['key'] =
 [
-
 [,,,,'UKey','LKey',],
 
 [0	,105	,72	,72	,'~'	,'`'		,],

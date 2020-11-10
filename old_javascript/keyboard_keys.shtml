@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head id="head_div">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript" src="key_controls.js"></script>
+		<script type="text/javascript">Set_Defaults();Write_Includes();</script>
+	</head>
+	<body onload="Set_Units();Test_Scheme();Load_Scheme();Load_Layout();Load_Style();Load_Effects();">
+		<div id="layout" style="position:absolute;left:0px;top:0px;margin:8px;width:1800px;height:480px;">
+			<div id="cut_div" style="position:absolute;left:0px;top:0px;width:100%;height:100%;"></div>
+			<div id="key_div" style="position:absolute;left:0px;top:0px;width:100%;height:100%;"></div>
+		</div>
+		<div id="spacer" style="width:1800px;height:480px;"></div>
+		<div style="float:left;">
+			<div id="mou_div" style="margin:20px;display:none;">
+				<h4 id="mou_title" class="title"></h4>
+				<div id="mou_list"></div>
+			</div>
+			<div id="joy_div" style="margin:20px;display:none;">
+				<h4 id="joy_title" class="title"></h4>
+				<div id="joy_list"></div>
+			</div>
+			<div id="com_div" style="margin:20px;display:none;">
+				<h4 id="com_title" class="title"></h4>
+				<div id="com_list"></div>
+			</div>
+			<div id="add_div" style="margin:20px;display:none;">
+				<h4 id="add_title" class="title"></h4>
+				<div id="add_list"></div>
+			</div>
+		</div>
+		<div style="float:right;">
+			<div id="leg_div" style="margin:20px;">
+				<h4 id="leg_title" class="title" style="text-align:right;"></h4>
+				<div id="leg_list" style="float:right;width:12em;"></div>
+				<div id="key_0" class="key" style="float:right;position:relative;width:72px;height:72px;margin-right:20px;"></div>
+			</div>
+		</div>
+		<div style="clear:both;">
+			<div id="foo_div" style="margin:20px;font-size:x-small;">
+				<p><!--#include virtual="../ssi/license_soft.txt"--></p>
+				<p><!--#include virtual="../ssi/footer.txt"--><!--#echo var="LAST_MODIFIED"--></p>
+				<p id="aut_div" style="display:none;"><span id="aut_title"></span>&nbsp;<span id="aut_text"></span></p>
+				<p><span id="ret_title"></span>&nbsp;<a href="keydiagram.shtml">Video Game Keyboard Charts</a></p>
+			</div>
+		</div>
+	</body>
+</html>

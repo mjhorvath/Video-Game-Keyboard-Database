@@ -134,23 +134,7 @@ sLay
 [,,,,,,]	// Eject
 ]
 
-Sch_Table['gam'][sLay] = 'Apple Virtual Key Codes'
-Sch_Table['aut'][sLay] = ''
-Sch_Table['leg'][sLay] = []
-Sch_Table['com'][sLay] = []
-Sch_Table['mou'][sLay] = []
-Sch_Table['joy'][sLay] = []
-Sch_Table['add'][sLay] = []
-sLay = 'MACUS109NEW'
-Sch_Table['gam'][sLay] = 'Apple Virtual Key Codes'
-Sch_Table['aut'][sLay] = ''
-Sch_Table['key'][sLay] = Sch_Table['key']['MACUS109OLD']
-Sch_Table['leg'][sLay] = []
-Sch_Table['com'][sLay] = []
-Sch_Table['mou'][sLay] = []
-Sch_Table['joy'][sLay] = []
-Sch_Table['add'][sLay] = []
-sLay = 'MACUK110OLD'
+sLay = 'ATUS104'
 Sch_Table['gam'][sLay] = 'Apple Virtual Key Codes'
 Sch_Table['aut'][sLay] = ''
 Sch_Table['key'][sLay] = Sch_Table['key']['MACUS109OLD']
