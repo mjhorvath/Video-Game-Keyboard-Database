@@ -57,6 +57,8 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2020/11/11: Added Turkish-Q and Italian layouts. Added some games.</li>
+	<li>2020/11/11: Updated the template spreadsheets.</li>
 	<li>2020/05/31: Updated bindings for <i>X4: Foundations</i>.</li>
 	<li>2020/05/31: Set time and date in submission form and emails to UTC/GMT.</li>
 	<li>2020/05/27: Added bindings for <i>Troubleshooter: Abandoned Children</i>.</li>
