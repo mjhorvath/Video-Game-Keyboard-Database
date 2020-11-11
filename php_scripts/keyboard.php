@@ -133,12 +133,12 @@
 	foreach ($layout_table as $i => $layout_value)
 	{
 		$layout_string .= $i . ":" . $layout_value;
+		$layout_style_string .= "\t" . $i . ":\t{";
 		if (array_key_exists($i, $layout_style_table))
 		{
 			$style_inner_table = $layout_style_table[$i];
 			$style_inner_count = 0;
 			$style_inner_total = count($style_inner_table);
-			$layout_style_string .= "\t" . $i . ":\t{";
 			ksort($style_inner_table);
 			foreach ($style_inner_table as $j => $style_inner_value)
 			{
@@ -149,14 +149,14 @@
 				}
 				$style_inner_count += 1;
 			}
-			$layout_style_string .= "}";
 		}
+		$layout_style_string .= "}";
+		$layout_game_string .= "\t" . $i . ":\t{";
 		if (array_key_exists($i, $layout_game_table))
 		{
 			$game_inner_table = $layout_game_table[$i];
 			$game_inner_count = 0;
 			$game_inner_total = count($game_inner_table);
-			$layout_game_string .= "\t" . $i . ":\t{";
 			ksort($game_inner_table);
 			foreach ($game_inner_table as $j => $game_inner_value)
 			{
@@ -167,8 +167,8 @@
 				}
 				$game_inner_count += 1;
 			}
-			$layout_game_string .= "}";
 		}
+		$layout_game_string .= "}";
 		if ($layout_count < $layout_total - 1)
 		{
 			$layout_string		.= ",";
@@ -440,7 +440,7 @@ var seourl_table =
 <p>The vast majority of the bindings are for the <i>US 104 Key (ANSI)</i> keyboard at this time. If you would like to see more bindings for the other keyboards, you are welcome to contribute! (More on that, below.)</p>
 <h3>Licenses &amp; Submissions:</h3>
 <p>The source code for this project is licensed under the <a rel="license" target="_blank" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">GNU LGPLv3</a>. The content is licensed under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading. The <a href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki/To-Do-List">&quot;to do&quot; list</a> outlines some of the tasks I've planned for the future.</p>
-<p>To submit a new set of bindings, you can fill out <a  target="_blank"href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/sql_scripts/vgkd_bindings_template.xlsx">this spreadsheet</a> and <a href="http://isometricland.net/email/email.php">email</a> me the contents by copying and pasting. Note that any content you submit falls under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart you contributed to.</p>
+<p>To submit a new set of bindings, you can fill out <a  target="_blank"href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/sql_scripts/vgkd_bindings_template_insert_into_new.xlsx">this spreadsheet</a> and <a href="http://isometricland.net/email/email.php">email</a> me the contents by copying and pasting the data into the email form. Note that any content you submit falls under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart you contributed to.</p>
 <p>I have also developed a form-based submission page. You can use it by selecting the &quot;Editor&quot; option in Step 4, above. To update a game's binding simply select it from the &quot;Games&quot; menu above. To start a brand new submission, select the &quot;Blank Starter&quot; item in the &quot;Reference&quot; category of the &quot;Games&quot; menu. (<a href="keyboard-diagram-blank-starter.php?sty=15&lay=1&fmt=3&ten=1">Here is a direct link</a>.) There are &quot;Blank Starters&quot; for every keyboard. All that being said, I personally still prefer using the spreadsheet for new submissions.</p>
 <h3>MediaWiki, SVG &amp; PDF:</h3>
 <p>I have created templates for MediaWiki wikis that do basically the same thing as the charts available on this site. You can find templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Fandom</a>. There is a test case <a target="_blank" href="https://templates.fandom.com/wiki/User:Mikali_Homeworld/Kbdchart_example">located here</a>. By selecting the &quot;MediaWiki&quot; format type in the menu above, you can generate the code you will need in order to populate this template with data. Note that on the destination wiki page, you may also want to wrap the charts in scrollable DIV elements, since the charts are typically wider than a browser window.</p>

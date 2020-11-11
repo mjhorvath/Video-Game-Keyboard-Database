@@ -267,11 +267,16 @@
 	<li>2009/05/21: Fixed the measurements for most of the other layouts which were off by some fractions of an inch.</li>
 	<li>2009/05/16: Added over a dozen new bindings as well as French and German PC keyboard layouts. The new layouts are not compatible with most games, however, until someone contacts me with a list of corresponding French and German bindings.</li>
 	<li>2009/05/11: After several years of neglect, I've done a major overhaul of the project's scripts. Please forgive (and report) any errors! Also, feel free to submit new bindings, layouts or styles.</li>
-	<li>This project was initially started c. 2004 when my site was hosted at GeoCities. Back then it was mostly pure JavaScript and HTML. (Free GeoCities accounts were not permitted to use PHP or MySQL.) It has come a long way since then. ;)</li>
+	<li>This project was initially started c. 2004 when my site was still hosted at GeoCities.com. Back then it was mostly pure JavaScript and HTML, as free GeoCities accounts were not permitted to use CGI, PHP or MySQL. The site has come a long way since then. ;)</li>
 </ul>
 <h3>Credits</h3>
 <p>If you have submitted layouts, bindings or styles, then your name will also appear at the bottom of each diagram.</p>
-<h4>Binding schemes</h4>
+<h4>Layouts</h4>
+<ul>
+	<li>Thanks to <a target="_blank" href="http://kbdlayout.info/">Keyboard Layout Info</a> for help when I couldn't figure stuff out.</li>
+	<li>Also thanks to Wikipedia.</li>
+</ul>
+<h4>Bindings</h4>
 <ul>
 	<li>Agnes Beste</li>
 	<li>Taz</li>
@@ -284,6 +289,8 @@
 	<li>Lucas</li>
 	<li>Abel Cloots</li>
 	<li>Steve Martin</li>
+	<li>Tom</li>
+	<li>Mustafa</li>
 </ul>
 <h4>Visual themes</h4>
 <ul>

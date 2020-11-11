@@ -483,14 +483,7 @@ var binding_table =\n{\n" . $binding_string . "};
 			}
 			if (($low_agr != "") || ($write_maximal_keys == true))
 			{
-				if ($key_opt == false)
-				{
-					print_key_html("lowagr_" . $i, "lownor", null, $low_agr);
-				}
-				else
-				{
-					print_key_html("lowagr_" . $i, "keynon", null, $low_agr);
-				}
+				print_key_html("lowagr_" . $i, "lowagr", null, $low_agr);
 			}
 			echo
 "							</div>\n";

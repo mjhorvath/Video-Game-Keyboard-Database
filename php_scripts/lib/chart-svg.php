@@ -448,8 +448,8 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 				}
 			}
 
-			// labels text
-			if (($key_opt == false) && ($low_nor != ""))
+			// normal labels text
+			if (($low_nor != "") && ($key_opt == false))
 			{
 				echo
 "		<text class=\"lownor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"" . ($pos_hgh-3.5) . "\">" . $low_nor . "</text>\n";
@@ -459,11 +459,11 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 				echo
 "		<text class=\"uppnor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"13.5\">" . $upp_nor . "</text>\n";
 			}
-			// altgr
-			if (($key_opt == false) && ($low_agr != ""))
+			// altgr labels text
+			if ($low_agr != "")
 			{
 				echo
-"		<text class=\"lownor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"" . ($pos_hgh-3.5) . "\">" . $low_agr . "</text>\n";
+"		<text class=\"lowagr txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($pos_hgh-3.5) . "\">" . $low_agr . "</text>\n";
 			}
 			if ($upp_agr != "")
 			{
