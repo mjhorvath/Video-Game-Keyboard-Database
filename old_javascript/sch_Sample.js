@@ -1,9 +1,11 @@
+//-------------------------------------English
+
 sLay = 'ATUS104'
 Sch_Table['gam'][sLay] = 'Blank Sample (default)'
 Sch_Table['aut'][sLay] = ''
 Sch_Table['key'][sLay] =
 [
-// class, caption, shift, ctrl, alt, altgr, extra, image
+// class, caption, shift, ctrl, alt, altgr, extra, image file, image URI
 // legend
 ,
 // row 1

@@ -1,0 +1,30 @@
+*			{font-family:DejaVu Sans Condensed,Sans-Serif;line-height:150%;font-size:small;}
+body		{margin:2em;background-color:#e0e0e0;background-image:url("isometric-grid.png");background-position:fixed;}
+table		{border:solid 0.1em #000000;border-spacing:0;border-collapse:separate;}
+tr			{vertical-align:middle;}
+th			{text-align:left;color:#ffffff;margin:0;border:solid 0.1em #000000;padding:0.3em;background:#000000;}
+td			{text-align:left;color:#000000;margin:0;border:solid 0.1em #000000;padding:0.0em;background:transparent;}
+textarea	{text-align:left;color:#000000;margin:0;border:solid 0.0em #000000;padding:0.1em;background:transparent;}
+/*input[type=text]	{margin:0;border:none;padding:0.1em;height:1.6em;background:#ffc0c0;}*/
+input[type=text]	{margin:0;border:none;padding:0.1em;height:1.6em;background:transparent;}
+select				{margin:0;border:none;padding:0.1em;             background:transparent;}
+option				{margin:0;border:none;padding:0.1em;             background:transparent;}
+optgroup			{margin:0;border:none;padding:0.1em;             background:transparent;font-weight:bold;}
+#keysub_div	input[type=text]	{width:10em;}
+#keysub_div	select				{width:5.0em;height:1.6em;}
+#keysub_div	option				{width:4.8em;height:1.4em;}		/* seems to not have any effect in Chrome */
+#hednav		{border:none;}
+#hednav td	{border:none;padding-right:0.5em;}
+.non	{background-color:#ffffff;}
+.red	{background-color:#e02020;}
+.yel	{background-color:#e0e020;}
+.grn	{background-color:#20e020;}
+.cyn	{background-color:#20e0e0;}
+.blu	{background-color:#2020e0;color:#ffffff;}
+.mag	{background-color:#e020e0;}
+.wht	{background-color:#ffffff;color:#000000;}
+.gry	{background-color:#808080;}
+.blk	{background-color:#000000;color:#ffffff;}
+.org	{background-color:#ff8000;}
+.olv	{background-color:#808000;}
+.brn	{background-color:#804000;color:#ffffff;}

@@ -6,7 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<script language="javascript" type="text/javascript" src="../java/cubescatter.js"></script>
 		<script type="text/javascript" src="key_controls.js"></script>
-		<link type="text/css" rel="stylesheet" href="../style.css"/>
+		<link type="text/css" rel="stylesheet" href="frontend.css"/>
 	</head>
 	<body class="cen" onload="Init_Options();cube_scatter();">
 		<div class="pge lft">
