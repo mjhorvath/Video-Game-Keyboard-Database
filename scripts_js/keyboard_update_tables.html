@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>VGKC - Table Updater</title>
+		<style>
+*			{font-family:DejaVu Sans Condensed,Sans-Serif;line-height:150%;font-size:small;}
+body		{margin:2em;background-color:#e0e0e0;background-image:url("isometric-grid.png");background-position:fixed;}
+#outputarea_bin,
+#outputarea_lay
+			{margin:1em;font-family:monospace;overflow:scroll;white-space:pre;}
+#hednav		{margin:0;border:none;border-spacing:0;border-collapse:separate;}
+#hednav tr	{vertical-align:middle;}
+#hednav th	{text-align:left;color:#000000;margin:0;border:none;padding:0;}
+#hednav td	{text-align:left;color:#000000;margin:0;border:none;padding:0;padding-right:0.5em;}
+		</style>
+		<script type="text/javascript" src="controls_data.js"></script>
+		<script type="text/javascript" src="controls_updater.js"></script>
+	</head>
+	<body>
+		<table id="hednav">
+			<tr>
+				<td class="nav"><a href="http://isometricland.net">Isometricland</a> &raquo; <a href="keydiagram.shtml">Video Game Keyboard Charts</a> &raquo; Table Updater</td>
+				<td class="eml"><a href="http://isometricland.net/email/email.php">Email</a></td>
+				<td class="eml"><a href="http://isometricland.net/blog">Blog</a></td>
+			</tr>
+		</table>
+		<h2>Bindings</h2>
+		<table>
+			<tr>
+				<td>Filename:</td>
+				<td><input id="input_binding_bin" type="text" value="gam_VStrike.js"/></td>
+				<td>&#129144; change this to whatever file you want to work on</td>
+			</tr>
+			<tr>
+				<td>Target Layout:</td>
+				<td><input id="input_layout_bin" type="text" value="lay_ATUS104.js"/></td>
+				<td>&#129144; change this to whatever file you want to work on</td>
+			</tr>
+		</table>
+		<textarea id="outputarea_bin" rows="32" cols="128" readonly></textarea>
+		<br><input id="button06_bin" type="button" value="Load"/><input id="button04_bin" type="button" value="Clear"/><input id="button05_bin" type="button" value="Select &amp; Copy"/>&nbsp;&nbsp;<input id="button01_bin" type="button" value="Update Format"/><input id="button02_bin" type="button" value="Export to TSV"/><input id="button03_bin" type="button" value="Export to SQL"/>
+		<hr>
+		<h2>Layouts</h2>
+		<table>
+			<tr>
+				<td>Filename:</td>
+				<td><input id="input_layout_lay" type="text" value="lay_ATUS104.js"/></td>
+				<td>&#129144; change this to whatever file you want to work on</td>
+			</tr>
+		</table>
+		<textarea id="outputarea_lay" rows="32" cols="128" readonly></textarea>
+		<br><input id="button06_lay" type="button" value="Load"/><input id="button04_lay" type="button" value="Clear"/><input id="button05_lay" type="button" value="Select &amp; Copy"/>&nbsp;&nbsp;<input id="button01_lay" type="button" value="Update Format"/><input id="button02_lay" type="button" value="Export to TSV"/><input id="button03_lay" type="button" value="Export to SQL"/>
+	</body>
+</html>

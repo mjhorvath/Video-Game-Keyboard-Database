@@ -71,14 +71,14 @@ function Init_Options()
 					if (thisItem[2] === 1)
 					{
 						newOption.setAttribute('selected', 'selected')
-						if (thisPrefix === 'sch')
+						if (thisPrefix === 'gam')
 							DefaultScheme = i
 					}
 					newOption.id = thisPrefix + '_' + i
 					newOption.setAttribute('optindex', i)
 					if (DisableLayouts === true)
 					{
-						if (thisPrefix === 'sch')
+						if (thisPrefix === 'gam')
 							newOption.onclick = Event_Layout
 						else if (thisPrefix === 'lay')
 							newOption.setAttribute('disabled', 'disabled')
@@ -130,7 +130,7 @@ function Event_Layout(e)
 function Set_Layout(thisIndex)
 {
 	var thisTable = Dat_Table['lay']
-	var thisLayout = Dat_Table['sch'][thisIndex][3]
+	var thisLayout = Dat_Table['gam'][thisIndex][3]
 	var thisLength = thisLayout.length
 	for (var j = 0, o = thisTable.length; j < o; j++)
 	{
@@ -192,8 +192,8 @@ function Set_Defaults()
 		}
 		urlCount += 1
 	}
-	for (var i = 0, n = SchmPrefixes.length; i < n; i++)
-		Sch_Table[SchmPrefixes[i]] = {}
+	for (var i = 0, n = GamePrefixes.length; i < n; i++)
+		Gam_Table[GamePrefixes[i]] = {}
 }
 
 function Set_Units()
@@ -231,21 +231,21 @@ function Write_Includes()
 function Test_Scheme()
 {
 	var CurrentLayout = ItemCurrent['lay'], DefaultLayout = ItemDefault['lay']
-	if ((ItemCurrent['sch'] === 'Preview') && (window.opener))
+	if ((ItemCurrent['gam'] === 'Preview') && (window.opener))
 	{
-		for (var i = 0, n = SchmPrefixes.length; i < n; i++)
+		for (var i = 0, n = GamePrefixes.length; i < n; i++)
 		{
-			var thisPrefix = SchmPrefixes[i]
-			Sch_Table[thisPrefix][CurrentLayout] = window.opener.Sch_Table[thisPrefix][CurrentLayout]
+			var thisPrefix = GamePrefixes[i]
+			Gam_Table[thisPrefix][CurrentLayout] = window.opener.Gam_Table[thisPrefix][CurrentLayout]
 		}
 	}
 	else
 	{
-		for (var i = 0, n = SchmPrefixes.length; i < n; i++)
+		for (var i = 0, n = GamePrefixes.length; i < n; i++)
 		{
-			var thisPrefix = SchmPrefixes[i]
-			if (Sch_Table[thisPrefix][CurrentLayout] === undefined)
-				Sch_Table[thisPrefix][CurrentLayout] = Sch_Table[thisPrefix][DefaultLayout]
+			var thisPrefix = GamePrefixes[i]
+			if (Gam_Table[thisPrefix][CurrentLayout] === undefined)
+				Gam_Table[thisPrefix][CurrentLayout] = Gam_Table[thisPrefix][DefaultLayout]
 		}
 	}
 }
@@ -258,7 +258,7 @@ function Load_Scheme()
 	{
 		var thisPrefix = NotePrefixes[j]
 		var targetDiv = document.getElementById(thisPrefix + '_list')
-		var thisScheme = Sch_Table[thisPrefix][thisLayout]
+		var thisScheme = Gam_Table[thisPrefix][thisLayout]
 		var thisLength = thisScheme.length
 		if (thisLength > 0)
 		{
@@ -277,7 +277,7 @@ function Load_Scheme()
 	}
 	// legends
 	var targetDiv = document.getElementById('leg_list')
-	var thisScheme = Sch_Table['leg'][thisLayout]
+	var thisScheme = Gam_Table['leg'][thisLayout]
 	for (var i = 0, n = thisScheme.length; i < n; i++)
 	{
 		var thisItem = thisScheme[i]
@@ -298,7 +298,7 @@ function Load_Scheme()
 		thisDiv.appendChild(thisTxt)
 		targetDiv.appendChild(thisDiv)
 	}
-	thisScheme = Sch_Table['aut'][thisLayout]
+	thisScheme = Gam_Table['aut'][thisLayout]
 	if (thisScheme !== '')
 	{
 		document.getElementById('aut_div').style.display = 'block'
@@ -306,7 +306,7 @@ function Load_Scheme()
 		document.getElementById('aut_text').appendChild(thisTxt)
 	}
 	targetDiv = document.getElementById('key_div')
-	thisScheme = Sch_Table['key'][thisLayout]
+	thisScheme = Gam_Table['key'][thisLayout]
 	for (var i = 1; i < NumberOfKeys; i++)
 	{
 		var keyBigDiv = document.createElement('div')
@@ -499,7 +499,7 @@ function Load_Layout()
 		var thisText = document.createTextNode(Lay_Table[thisPrefix] + ':')
 		document.getElementById(thisPrefix + '_title').appendChild(thisText)
 	}
-	document.title = Lay_Table['ttl'] + ' - ' + Sch_Table['gam'][ItemCurrent['lay']] + ' - ' + Lay_Table['nam']
+	document.title = Lay_Table['ttl'] + ' - ' + Gam_Table['gam'][ItemCurrent['lay']] + ' - ' + Lay_Table['nam']
 }
 
 function Load_Effects()
@@ -562,14 +562,14 @@ function Load_Effects()
 		document.getElementById('spacer').style.width    =  480 + 'px'
 		document.getElementById('spacer').style.height   = 1800 + 'px'
 	}
-	var legendLength = Sch_Table['leg'][thisLayout].length
+	var legendLength = Gam_Table['leg'][thisLayout].length
 	for (var i = 0; i < NumberOfKeys; i++)
 		document.getElementById('key_' + i).style.filter += ' ' + BasicImageFilter
 	for (var i = 0; i < legendLength; i ++)
 		document.getElementById('legimg_' + i).style.filter += ' ' + BasicImageFilter
 	if (TempEffects[3] === 1)
 	{
-		var thisSchemeTable = Sch_Table['key'][thisLayout]
+		var thisSchemeTable = Gam_Table['key'][thisLayout]
 		for (var i = 0; i < NumberOfKeys; i++)
 		{
 			if (thisSchemeTable[i])

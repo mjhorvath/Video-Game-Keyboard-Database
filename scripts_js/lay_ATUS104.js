@@ -1,10 +1,9 @@
-// [left,top,width,height,upptxt,lowtxt,altgrtxt]
 Lay_Table['nam'] = 'PC/AT US 104 Key'
 Lay_Table['uni'] = 'px'
-Lay_Table['end'] = ['Upcase','Lowcase']
+Lay_Table['bla'] = [,,,,'Upcase','Lowcase',,]
 Lay_Table['key'] =
 [
-	// pos, pos, wid, wid, norm_upp, norm_low, altgr_upp, altgr_low
+	// left, top, width, height, norm_upp, norm_low, altgr_upp, altgr_low
 	// row 1
 	[0		,105	,72		,72		,'~'		,'`'			,''		,''],
 	[72		,105	,72		,72		,'!'		,'1'			,''		,''],
@@ -132,7 +131,7 @@ Lay_Table['cut'] =
 	[1107	,105	,216	,144],
 	[1350	,105	,288	,360],
 	[1179	,321	,72		,144],
-	[1107	,393	,216	,72	]
+	[1107	,393	,216	,72]
 ]
 Lay_Table['ttl'] = 'Keyboard Chart'
 Lay_Table['mou'] = 'Mouse Controls'

@@ -24,7 +24,6 @@ function Init_Submissions()
 		var targetElement = document.getElementById(thisPrefix + 'sub_div')
 		var thisList1 = Dat_Table[thisPrefix]
 		var thisList2 = Grp_Table[thisPrefix]
-		var firstBool = 1
 		for (var i = 0, n = thisList2.length; i < n; i++)
 		{
 			var thisOptgroup = document.createElement('optgroup')
@@ -32,32 +31,42 @@ function Init_Submissions()
 			for (var k = 0, p = thisList1.length; k < p; k++)
 			{
 				var thisItem = thisList1[k]
-				var thisShort = thisItem[0]
-				var thisLong = thisItem[1]
-				var thisDefault = thisItem[2]
-				var thisGroup = thisItem[3]
-				if (thisGroup === i)
+				if (thisItem)
 				{
-					var thisOption = document.createElement('option')
-					var thisMark = thisDefault ? ' ✦' : ''
-					var thisText = document.createTextNode(thisLong + thisMark)
-					thisOption.setAttribute('optindex', thisItem[0])
-					thisOption.setAttribute('optprefix', thisPrefix)
-					if (firstBool === 1)
+					var thisShort = thisItem[0]
+					var thisLong = thisItem[1]
+					var thisDefault = thisItem[2]
+					var thisGroup = thisItem[3]
+					if (thisGroup === i)
 					{
-						thisOption.setAttribute('selected', 'selected')
-						CurrentItem[thisPrefix] = thisItem[0]
-						firstBool = 0
+						var thisOption = document.createElement('option')
+						var thisMark = thisDefault ? ' ✦' : ''
+						var thisText = document.createTextNode(thisLong + thisMark)
+						thisOption.setAttribute('optindex', k)
+						thisOption.setAttribute('optprefix', thisPrefix)
+						thisOption.setAttribute('optshort', thisShort)
+						thisOption.id = thisPrefix + 'sub_' + k
+						thisOption.addEventListener('click', Set_List_Item)
+						if (thisDefault === 1)
+						{
+							thisOption.selected = true
+							CurrentItem[thisPrefix] = k
+						}
+						else
+						{
+							thisOption.selected = false
+						}
+						thisOption.appendChild(thisText)
+						thisOptgroup.appendChild(thisOption)
 					}
-					thisOption.appendChild(thisText)
-					thisOptgroup.appendChild(thisOption)
-					if (thisPrefix === 'lay')
-						thisOption.onclick = Reset_Keylist
 				}
 			}
 			targetElement.appendChild(thisOptgroup)
 		}
 	}
+
+	Update_Bindings_Table_Step_One()
+
 	// effects checkboxes
 	var thisPrefix = 'eff'
 	var targetElement = document.getElementById(thisPrefix + 'sub_div')
@@ -169,30 +178,81 @@ function Init_Submissions()
 			Add_Field(thisTarget)
 	}
 }
-
-function Reset_Keylist(e)
+function Load_Script(thisOption)
 {
-	var thisPrefix = 'lay'
-	var thisOption = getElementByEvent(e)
-//	var thisSelect = thisOption.parentNode.parentNode
-//	thisOption = thisSelect.options[thisSelect.selectedIndex]
-	CurrentItem[thisPrefix] = thisOption.getAttribute('optindex')
-	Set_LayoutFile(thisPrefix)
+	var thisIndex = thisOption.getAttribute('optindex')
+	var thisPrefix = thisOption.getAttribute('optprefix')
+	var thisShort = thisOption.getAttribute('optshort')
+	var thisScript = document.createElement('script')
+	var thisHead = document.getElementsByTagName('head')[0]
+//	var oldScript = document.getElementById(thisPrefix + '_script')
+//	thisHead.removeChild(oldScript)
+	CurrentItem[thisPrefix] = thisIndex
+	thisScript.setAttribute('type', 'text/javascript')
+	thisScript.setAttribute('src', thisPrefix + '_' + thisShort + '.js')
+//	thisScript.id = thisPrefix + '_script'
+	thisHead.appendChild(thisScript)
+	return thisScript
 }
 
-function Set_LayoutFile(thisPrefix)
+function Set_List_Item(e)
 {
-	var thisScript = document.createElement('script')
-	var thisHead = document.getElementById('head_div')
-	var oldScript = document.getElementById(thisPrefix + '_script')
-	thisHead.removeChild(oldScript)
-	thisScript.setAttribute('type', 'text/javascript')
-	thisScript.setAttribute('src', thisPrefix + '_' + CurrentItem[thisPrefix] + '.js')
-	thisScript.id = thisPrefix + '_script'
-	thisHead.appendChild(thisScript)
-	Sch_Table = {}
-	for (var i = 0, n = SchmPrefixes.length; i < n; i++)
-		Sch_Table[SchmPrefixes[i]] = {}
+	var thisOption = getElementByEvent(e)
+	var thisIndex = thisOption.getAttribute('optindex')
+	var thisPrefix = thisOption.getAttribute('optprefix')
+//	var thisShort = thisOption.getAttribute('optshort')
+	CurrentItem[thisPrefix] = thisIndex
+
+	if (thisPrefix === 'gam')
+	{
+		var lay_first = false
+		var	lay_layout_list = Dat_Table['lay']
+		var gam_layout_list = Dat_Table['gam'][thisIndex][4]
+		for (var i = 0, n = lay_layout_list.length; i < n; i++)
+		{
+			var thisLayout = lay_layout_list[i]
+			if (thisLayout)
+			{
+				var targetLayout = document.getElementById('laysub_' + i)
+				targetLayout.selected = false
+				targetLayout.disabled = true
+				for (var j = 0, o = gam_layout_list.length; j < o; j++)
+				{
+					var p = gam_layout_list[j]
+					if (i === p)
+					{
+						targetLayout.disabled = false
+						if (lay_first == false)
+						{
+							targetLayout.selected = true
+							lay_first = true
+						}
+						break
+					}
+				}
+			}
+		}
+	}
+}
+
+function Update_Bindings_Table_Step_One()
+{
+	var gamOption = document.getElementById('gamsub_' + CurrentItem['gam'])
+	var gamScript = Load_Script(gamOption)
+	gamScript.onload = Update_Bindings_Table_Step_Two
+}
+function Update_Bindings_Table_Step_Two()
+{
+	var layOption = document.getElementById('laysub_' + CurrentItem['lay'])
+	var layScript = Load_Script(layOption)
+	layScript.onload = Update_Bindings_Table_Step_Three
+}
+function Update_Bindings_Table_Step_Three()
+{
+	var gamOption = document.getElementById('gamsub_' + CurrentItem['gam'])
+	gamOption.click()
+	Make_Keys()
+	Fill_Keys()
 }
 
 function Change_Color(e)
@@ -202,11 +262,45 @@ function Change_Color(e)
 	var abbr_color = ClassesTableAbbr[thisIndex]
 	thisSelect.className = abbr_color
 }
-
-function Get_Keys()
+function Fill_Keys()
+{
+	var sLay = Dat_Table['lay'][CurrentItem['lay']][0]
+	var thisGame = Gam_Table[sLay]['key']
+	// regular rows
+	for (var i = 0; i < NumberOfKeys; i++)
+	{
+		var thisRow = thisGame[i]
+		if (thisRow)
+		{
+			var thisVal = thisRow[0]
+			var thisID = 'keysub_lobin_' + i
+			    Validate_Keys_Bin(thisVal, thisID)
+			    thisVal = thisRow[1]
+			    thisID = 'keysub_losel_' + i
+			    Validate_Keys_Sel(thisVal, thisID)
+		}
+	}
+}
+function Validate_Keys_Bin(thisVal, thisID)
+{
+	if ((typeof thisVal === 'string') && (thisVal.length != ''))
+	{
+		document.getElementById(thisID).value = thisVal.replace('\n','\\n').replace('\t','\\t')
+	}
+}
+function Validate_Keys_Sel(thisVal, thisID)
+{
+	// remember the first item in the ClassesTableAbbr table is 'non' which has an index of 0
+	if (Number.isInteger(thisVal) && (thisVal >= 0) && (thisVal <= 5))
+	{
+		var abbr_color = ClassesTableAbbr[thisVal + 1]
+		document.getElementById(thisID).selectedIndex = thisVal + 1
+		document.getElementById(thisID).className = abbr_color
+	}
+}
+function Make_Keys()
 {
 	NumberOfKeys = Lay_Table['key'].length
-	console.log('NumberOfKeys = ' + NumberOfKeys)
 	var targetElement = document.getElementById('keysub_div')
 	while (targetElement.hasChildNodes())
 		targetElement.removeChild(targetElement.lastChild)
@@ -280,8 +374,12 @@ function Get_Keys()
 	// regular rows
 	for (var i = 0; i < NumberOfKeys; i++)
 	{
-		if (Lay_Table['key'][i])
+		var this_row = Lay_Table['key'][i]
+		if (this_row)
 		{
+			var black_label = this_row[5]
+			if (this_row[4])
+				black_label += ' (' + this_row[4] + ')'
 			var newTableRow = document.createElement('tr')
 			var newDescrCel = document.createElement('th')
 			var newNumbrCel = document.createElement('th')
@@ -299,7 +397,7 @@ function Get_Keys()
 			var newExSelCel = document.createElement('td')
 			var newImFilCel = document.createElement('td')
 			var newImUriCel = document.createElement('td')
-			var newDescrInp = document.createTextNode(Lay_Table['key'][i][5] + ' (' + Lay_Table['key'][i][4] + ')')
+			var newDescrInp = document.createTextNode(black_label)
 			var newNumbrInp = document.createTextNode(i+1)
 			var newLoBinInp = document.createElement('input')
 			var newLoSelInp = document.createElement('select')
@@ -569,7 +667,23 @@ function Parse_Fields()
 			var newImUriVal = newImUriInp.value
 			if (newImUriVal === '')
 				newImUriVal = undefined
-			targetScheme[i] = [newLoBinVal,newLoGrpVal,newShBinVal,newShGrpVal,newCoBinVal,newCoGrpVal,newAlBinVal,newAlGrpVal,newGrBinVal,newGrGrpVal,newExBinVal,newExGrpVal,newImFilVal,newImUriVal]
+			targetScheme[i] =
+			[
+				newLoBinVal,
+				newLoGrpVal,
+				newShBinVal,
+				newShGrpVal,
+				newCoBinVal,
+				newCoGrpVal,
+				newAlBinVal,
+				newAlGrpVal,
+				newGrBinVal,
+				newGrGrpVal,
+				newExBinVal,
+				newExGrpVal,
+				newImFilVal,
+				newImUriVal
+			]
 			var boolUndefined = 1
 			for (var j = 0, o = targetScheme[i].length; j < o; j++)
 			{
@@ -583,7 +697,7 @@ function Parse_Fields()
 				targetScheme[i] = undefined
 		}
 	}
-	Sch_Table['key'][CurrentItem['lay']] = targetScheme
+	Gam_Table[CurrentItem['lay']]['key'] = targetScheme
 	targetScheme = []
 	// legends
 	for (var i = 0, n = ClassesTableAbbr.length; i < n; i++)
@@ -594,7 +708,7 @@ function Parse_Fields()
 		if (newDescrVal !== '')
 			targetScheme[i] = [newDescrIdx,newDescrVal]
 	}
-	Sch_Table['leg'][CurrentItem['lay']] = targetScheme
+	Gam_Table[CurrentItem['lay']]['leg'] = targetScheme
 	targetScheme = []
 	// mouse, joystick, etc.
 	for (var thisTarget in NotesCount)
@@ -620,14 +734,14 @@ function Parse_Fields()
 				}
 			}
 		}
-		Sch_Table[thisTarget][CurrentItem['lay']] = targetScheme
+		Gam_Table[CurrentItem['lay']][thisTarget] = targetScheme
 		targetScheme = []
 	}
 	// misc
 	var thisName = document.getElementById('namsub_div').value
 	var thisAuth = document.getElementById('autsub_div').value
-	Sch_Table['gam'][CurrentItem['lay']] = thisName
-	Sch_Table['aut'][CurrentItem['lay']] = thisAuth
+	Gam_Table[CurrentItem['lay']]['gam'] = thisName
+	Gam_Table[CurrentItem['lay']]['aut'] = thisAuth
 	AuthorEmail = document.getElementById('emlsub_div').value
 	AuthorApprv = document.getElementById('apvsub_div').value
 }
@@ -641,10 +755,10 @@ function Spawn_Preview()
 function Submit_Scheme()
 {
 	var submitText = '\nsLay = \'' + CurrentItem['lay'] + '\'\n' +
-	'Sch_Table[\'gam\'][sLay] = ' + '\'' + Sch_Table['gam'][CurrentItem['lay']] + '\'\n' +
-	'Sch_Table[\'aut\'][sLay] = ' + '\'' + Sch_Table['aut'][CurrentItem['lay']] + '\'\n' +
-	'Sch_Table[\'key\'][sLay] =\n' + '[\n'
-	var targetScheme = Sch_Table['key'][CurrentItem['lay']]
+	'Gam_Table[sLay][\'gam\'] = ' + '\'' + Gam_Table[CurrentItem['lay']]['gam'] + '\'\n' +
+	'Gam_Table[sLay][\'aut\'] = ' + '\'' + Gam_Table[CurrentItem['lay']]['aut'] + '\'\n' +
+	'Gam_Table[sLay][\'key\'] =\n' + '[\n'
+	var targetScheme = Gam_Table[CurrentItem['lay']]['key']
 	for (var i = 0, n = targetScheme.length; i < n; i++)
 	{
 		var thisScheme = targetScheme[i]
@@ -666,8 +780,8 @@ function Submit_Scheme()
 	}
 	submitText = submitText.replace(/\,\n$/,'\n')
 	submitText += ']\n'
-	targetScheme = Sch_Table['leg'][CurrentItem['lay']]
-	submitText += 'Sch_Table[\'leg\'][sLay] =\n[\n'
+	targetScheme = Gam_Table[CurrentItem['lay']]['leg']
+	submitText += 'Gam_Table[sLay][\'leg\'] =\n[\n'
 	for (var i = 0, n = targetScheme.length; i < n; i++)
 	{
 		submitText += '['
@@ -681,8 +795,8 @@ function Submit_Scheme()
 	submitText += ']\n'
 	for (var thisTarget in NotesCount)
 	{
-		targetScheme = Sch_Table[thisTarget][CurrentItem['lay']]
-		submitText += 'Sch_Table[\'' + thisTarget + '\'][sLay] =\n[\n'
+		targetScheme = Gam_Table[CurrentItem['lay']][thisTarget]
+		submitText += 'Gam_Table[sLay][\'' + thisTarget + '\'] =\n[\n'
 		for (var i = 0, n = targetScheme.length; i < n; i++)
 			submitText += '\'' + targetScheme[i] + '\',\n'
 		submitText = submitText.replace(/\,\n$/,'\n')
