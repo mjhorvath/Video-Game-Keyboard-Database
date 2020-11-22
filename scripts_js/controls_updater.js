@@ -16,7 +16,7 @@
 
 var binding_source
 var layout_source
-var sLay
+var layout_name
 window.addEventListener('DOMContentLoaded', init)
 
 function init()
@@ -25,8 +25,6 @@ function init()
 	load_layout()
 	document.getElementById('button01_bin').addEventListener('click', update_binding)
 	document.getElementById('button01_lay').addEventListener('click', update_layout)
-//	button02 Export to TSV
-//	button03 Export to SQL
 	document.getElementById('button04_bin').addEventListener('click', clear_binding)
 	document.getElementById('button04_lay').addEventListener('click', clear_layout)
 	document.getElementById('button05_bin').addEventListener('click', copy_binding)
@@ -42,10 +40,11 @@ function load_binding()
 {
 	var layout_file = document.getElementById('input_layout_bin').value
 	var binding_file = document.getElementById('input_binding_bin').value
-	sLay = layout_file.toUpperCase().replace('LAY_','').replace('.JS','')
+	layout_name = layout_file.toUpperCase().replace('LAY_','').replace('.JS','')
 	binding_source = document.createElement('script')
 	binding_source.setAttribute('src', binding_file)
 	binding_source.setAttribute('type', 'text/javascript')
+	binding_source.setAttribute('charset', 'UTF-8')
 	document.head.appendChild(binding_source)
 	binding_source.addEventListener('load', start_binding)
 }
@@ -55,12 +54,13 @@ function load_layout()
 	layout_source = document.createElement('script')
 	layout_source.setAttribute('src', layout_file)
 	layout_source.setAttribute('type', 'text/javascript')
+	layout_source.setAttribute('charset', 'UTF-8')
 	document.head.appendChild(layout_source)
 	layout_source.addEventListener('load', start_layout)
 }
 function check_binding()
 {
-	if (!Gam_Table[sLay] || !Gam_Table[sLay]['key'])
+	if (!Gam_Table[layout_name] || !Gam_Table[layout_name]['key'])
 	{
 		document.getElementById('outputarea_bin').innerHTML = 'Old format detected. Please update format.'
 		return false
@@ -86,7 +86,7 @@ function start_binding()
 {
 	if (check_binding() == false)
 		return
-	print_binding_js(Gam_Table[sLay]['key'])
+	print_binding_js(Gam_Table[layout_name]['key'])
 }
 function start_layout()
 {
@@ -103,7 +103,7 @@ function update_binding()
 		alert('Binding already updated. No need to update again.')
 		return
 	}
-	var old_binding = Gam_Table['key'][sLay]
+	var old_binding = Gam_Table['key'][layout_name]
 	var new_binding = []
 	// skip the first line since it is used for the sample key only
 	for (var i = 1, n = old_binding.length; i < n; i++)
@@ -171,7 +171,7 @@ function print_binding_tsv()
 	if (check_binding() == false)
 		return
 	var out_string = ''
-	var thisTable = Gam_Table[sLay]['key']
+	var thisTable = Gam_Table[layout_name]['key']
 	for (var i = 0, n = thisTable.length; i < n; i++)
 	{
 		// inp: norm_txt, norm_grp, shift_txt, shift_grp, ctrl_txt, ctrl_grp, alt_txt, alt_grp, altgr_txt, altgr_grp, extra_txt, extra_grp, image file, image uri
@@ -225,7 +225,7 @@ function print_binding_sql()
 			out_string += ','
 	}
 	out_string += ') values\n'
-	var thisTable = Gam_Table[sLay]['key']
+	var thisTable = Gam_Table[layout_name]['key']
 	for (var i = 0, n = thisTable.length; i < n; i++)
 	{
 		var thisRow = thisTable[i]
@@ -317,6 +317,7 @@ function ValNumPlusSQL(inVal)
 		inVal += 1
 	return inVal
 }
+// there may still be an issue with this script not working correctly
 function print_binding_js(in_binding)
 {
 	// convert finished table into a string
@@ -333,7 +334,7 @@ function print_binding_js(in_binding)
 	// replace double quotes with single quotes
 	out_string = out_string.replace(/"/g,'\'').replace(/\'\\\'\'/g,'\'\"\'').replace(/\'\'\'/g,'\'\\\'\'')
 	// put table definition in front
-	out_string = 'Gam_Table[sLay][\'key\'] =\n' + out_string
+	out_string = 'Gam_Table[layout_name][\'key\'] =\n' + out_string
 	// add a table description
 	out_string = '// norm_txt, norm_grp, shift_txt, shift_grp, ctrl_txt, ctrl_grp, alt_txt, alt_grp, altgr_txt, altgr_grp, extra_txt, extra_grp, image file, image uri\n' + out_string
 	document.getElementById('outputarea_bin').innerHTML = out_string

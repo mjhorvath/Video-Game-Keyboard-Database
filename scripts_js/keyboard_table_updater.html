@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>VGKC - Table Updater</title>
+		<title>VGKD - Table Updater</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<style>
 *			{font-family:DejaVu Sans Condensed,Sans-Serif;line-height:150%;font-size:small;}
 body		{margin:2em;background-color:#e0e0e0;background-image:url("isometric-grid.png");background-position:fixed;}
@@ -13,13 +14,13 @@ body		{margin:2em;background-color:#e0e0e0;background-image:url("isometric-grid.
 #hednav th	{text-align:left;color:#000000;margin:0;border:none;padding:0;}
 #hednav td	{text-align:left;color:#000000;margin:0;border:none;padding:0;padding-right:0.5em;}
 		</style>
-		<script type="text/javascript" src="controls_data.js"></script>
-		<script type="text/javascript" src="controls_updater.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="controls_data.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="controls_updater.js"></script>
 	</head>
 	<body>
 		<table id="hednav">
 			<tr>
-				<td class="nav"><a href="http://isometricland.net">Isometricland</a> &raquo; <a href="keydiagram.shtml">Video Game Keyboard Charts</a> &raquo; Table Updater</td>
+				<td class="nav"><a href="http://isometricland.net">Isometricland</a> &raquo; <a href="http://isometricland.net/keyboard/keyboard.php">Video Game Keyboard Diagrams</a> &raquo; Table Updater</td>
 				<td class="eml"><a href="http://isometricland.net/email/email.php">Email</a></td>
 				<td class="eml"><a href="http://isometricland.net/blog">Blog</a></td>
 			</tr>
@@ -38,7 +39,7 @@ body		{margin:2em;background-color:#e0e0e0;background-image:url("isometric-grid.
 			</tr>
 		</table>
 		<textarea id="outputarea_bin" rows="32" cols="128" readonly></textarea>
-		<br><input id="button06_bin" type="button" value="Load"/><input id="button04_bin" type="button" value="Clear"/><input id="button05_bin" type="button" value="Select &amp; Copy"/>&nbsp;&nbsp;<input id="button01_bin" type="button" value="Update Format"/><input id="button02_bin" type="button" value="Export to TSV"/><input id="button03_bin" type="button" value="Export to SQL"/>
+		<br><input id="button06_bin" type="button" value="Load"/><input id="button04_bin" type="button" value="Clear"/><input id="button05_bin" type="button" value="Select All &amp; Copy"/>&nbsp;&nbsp;<input id="button01_bin" type="button" value="Update Format"/><input id="button02_bin" type="button" value="Convert to TSV"/><input id="button03_bin" type="button" value="Convert to SQL"/>
 		<hr>
 		<h2>Layouts</h2>
 		<table>
@@ -49,6 +50,6 @@ body		{margin:2em;background-color:#e0e0e0;background-image:url("isometric-grid.
 			</tr>
 		</table>
 		<textarea id="outputarea_lay" rows="32" cols="128" readonly></textarea>
-		<br><input id="button06_lay" type="button" value="Load"/><input id="button04_lay" type="button" value="Clear"/><input id="button05_lay" type="button" value="Select &amp; Copy"/>&nbsp;&nbsp;<input id="button01_lay" type="button" value="Update Format"/><input id="button02_lay" type="button" value="Export to TSV"/><input id="button03_lay" type="button" value="Export to SQL"/>
+		<br><input id="button06_lay" type="button" value="Load"/><input id="button04_lay" type="button" value="Clear"/><input id="button05_lay" type="button" value="Select All &amp; Copy"/>&nbsp;&nbsp;<input id="button01_lay" type="button" value="Update Format"/><input id="button02_lay" type="button" value="Convert to TSV"/><input id="button03_lay" type="button" value="Convert to SQL"/>
 	</body>
 </html>

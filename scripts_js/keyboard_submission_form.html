@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head id="head_div">
-		<title>VGKC - Submission Form</title>
+		<title>VGKD - Submission Form</title>
 		<meta name="description" content=""/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<!--		<script language="javascript" type="text/javascript" src="../java/cubescatter.js"></script>-->
-		<script type="text/javascript" src="controls_data.js"></script>
-		<script type="text/javascript" src="controls_keys.js"></script>
-		<script type="text/javascript" src="controls_submissions.js"></script>
-<!--
-		<script type="text/javascript" src="lay_ATUS104.js"></script>
-		<script type="text/javascript" src="gam_VStrike.js"></script>
--->
+<!--		<script type="text/javascript" charset="UTF-8" src="cubescatter.js"></script>-->
+		<script type="text/javascript" charset="UTF-8" src="controls_data.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="controls_keys.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="controls_submissions.js"></script>
 		<link type="text/css" rel="stylesheet" href="frontend.css"/>
 	</head>
 	<body onload="Init_Submissions();">
@@ -19,7 +15,7 @@
 			<div class="hed">
 				<table id="hednav">
 					<tr>
-						<td class="nav"><a href="http://isometricland.net">Isometricland</a> &raquo; <a href="keydiagram.shtml">Video Game Keyboard Charts</a> &raquo; Submission Form</td>
+						<td class="nav"><a href="http://isometricland.net">Isometricland</a> &raquo; <a href="http://isometricland.net/keyboard/keyboard.php">Video Game Keyboard Diagrams</a> &raquo; Submission Form</td>
 						<td class="eml"><a href="http://isometricland.net/email/email.php">Email</a></td>
 						<td class="eml"><a href="http://isometricland.net/blog">Blog</a></td>
 					</tr>
@@ -27,6 +23,7 @@
 			</div>
 			<div class="bod">
 				<h2 class="cen">Video Game Keyboard Charts Submission Form</h2>
+				<p><i>This page is not fully developed yet. It is a work in progress.</i></p>
 				<p>Here you can submit a new scheme for a game. You must abide by the <a target="_blank" href="http://creativecommons.org/licenses/LGPL/2.1/">LGPL license</a>, as per the project as a whole.
 				<h3>1. Basic Info</h3>
 				<p>Provide basic information about the game you are submitting.</p>
@@ -37,7 +34,7 @@
 						</tr>
 					</table>
 				</p>
-				<h3>2. Game, Key Style, Layout & Effects</h3>
+				<h3>2. Game, Style, Layout & Effects</h3>
 				<p>Select the game, style, layout and effects you are developing for. Then press the 'Update Bindings Table' button.</p>
 				<p>
 					<table>
@@ -55,8 +52,8 @@
 						</tr>
 					</table>
 				</p>
-				<p>Items marked with a star '✦' are the default choices.</p>
-				<p><input type="button" value="Update Bindings Table" onclick="Update_Bindings_Table_Step_One()"/></p>					
+				<p>Items marked with a star '✦' are the default options.</p>
+				<p><input type="button" value="Update Binding Tables" onclick="Update_Bindings_Table_Step_One()"/></p>					
 				<h3>3. Bindings</h3>
 				<p>Describe the actions performed when pressing a key. The 'Extra Action' and 'Icon File' fields should generally be left blank.</p>
 				<p>Tip: Type '\n' (without quotes) to force line breaks. Type Unicode escape sequences (see <a target="_blank" href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Guide/Unicode">here</a>) for special characters like accented characters, umlauts, arrows, etc.</p>
@@ -64,7 +61,7 @@
 				<h3>4. Legend</h3>
 				<p>List the captions that should appear on the example key in the legend.</p>
 				<p><table id="exasub_div"></table></p>
-				<p>Describe the key colors and what they represent. (i.e. 'Combat Actions', 'Camera Controls', etc.) Skip this part if all key colors have been set to 'none'.</p>
+				<p>Describe the key colors and what they represent. (i.e. 'Combat Actions', 'Camera Controls', etc.) Skip this part if all group colors have been set to 'None'.</p>
 				<p><table id="legsub_div"></table></p>
 				<h3>5. Mouse Controls</h3>
 				<p>Describe any mouse controls.</p>

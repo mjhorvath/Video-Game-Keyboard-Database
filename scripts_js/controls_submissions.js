@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2009  Michael Horvath
+// Copyright (C) 2009  Michael Horvath
 
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
@@ -190,11 +190,13 @@ function Load_Script(thisOption)
 	CurrentItem[thisPrefix] = thisIndex
 	thisScript.setAttribute('type', 'text/javascript')
 	thisScript.setAttribute('src', thisPrefix + '_' + thisShort + '.js')
+	thisScript.setAttribute('charset', 'UTF-8')
 //	thisScript.id = thisPrefix + '_script'
 	thisHead.appendChild(thisScript)
 	return thisScript
 }
 
+// hopefully this is finally fixed
 function Set_List_Item(e)
 {
 	var thisOption = getElementByEvent(e)
@@ -206,6 +208,7 @@ function Set_List_Item(e)
 	if (thisPrefix === 'gam')
 	{
 		var lay_first = false
+		var lay_current = parseInt(CurrentItem['lay'], 10)
 		var	lay_layout_list = Dat_Table['lay']
 		var gam_layout_list = Dat_Table['gam'][thisIndex][4]
 		for (var i = 0, n = lay_layout_list.length; i < n; i++)
@@ -222,9 +225,10 @@ function Set_List_Item(e)
 					if (i === p)
 					{
 						targetLayout.disabled = false
-						if (lay_first == false)
+						if ((lay_first === false) || (i === lay_current))
 						{
 							targetLayout.selected = true
+							CurrentItem['lay'] = i
 							lay_first = true
 						}
 						break
@@ -264,24 +268,33 @@ function Change_Color(e)
 }
 function Fill_Keys()
 {
-	var sLay = Dat_Table['lay'][CurrentItem['lay']][0]
-	var thisGame = Gam_Table[sLay]['key']
+	var layString = Dat_Table['lay'][CurrentItem['lay']][0]
+	var thisGame = Gam_Table[layString]['key']
 	// regular rows
-	for (var i = 0; i < NumberOfKeys; i++)
+	for (var i = 0, n = thisGame.length; i < n; i++)
 	{
 		var thisRow = thisGame[i]
 		if (thisRow)
 		{
-			var thisVal = thisRow[0]
-			var thisID = 'keysub_lobin_' + i
-			    Validate_Keys_Bin(thisVal, thisID)
-			    thisVal = thisRow[1]
-			    thisID = 'keysub_losel_' + i
-			    Validate_Keys_Sel(thisVal, thisID)
+			// Normal Key, Group, SHIFT + Key, Group, CTRL + Key, Group, ALT + Key, Group, ALTGR + Key, Group, Extra Action, Group, Icon File, Icon URI
+			Validate_Keys_Inp(thisRow[0], 'keysub_lobin_' + i)			// column 1
+			Validate_Keys_Sel(thisRow[1], 'keysub_losel_' + i)			// column 2
+			Validate_Keys_Inp(thisRow[2], 'keysub_shbin_' + i)			// column 3
+			Validate_Keys_Sel(thisRow[3], 'keysub_shsel_' + i)			// column 4
+			Validate_Keys_Inp(thisRow[4], 'keysub_cobin_' + i)			// column 5
+			Validate_Keys_Sel(thisRow[5], 'keysub_cosel_' + i)			// column 6
+			Validate_Keys_Inp(thisRow[6], 'keysub_albin_' + i)			// column 7
+			Validate_Keys_Sel(thisRow[7], 'keysub_alsel_' + i)			// column 8
+			Validate_Keys_Inp(thisRow[8], 'keysub_grbin_' + i)			// column 9
+			Validate_Keys_Sel(thisRow[9], 'keysub_grsel_' + i)			// column 10
+			Validate_Keys_Inp(thisRow[10], 'keysub_exbin_' + i)			// column 11
+			Validate_Keys_Sel(thisRow[11], 'keysub_exsel_' + i)			// column 12
+			Validate_Keys_Inp(thisRow[12], 'keysub_imfil_' + i)			// column 13
+			Validate_Keys_Inp(thisRow[13], 'keysub_imuri_' + i)			// column 14
 		}
 	}
 }
-function Validate_Keys_Bin(thisVal, thisID)
+function Validate_Keys_Inp(thisVal, thisID)
 {
 	if ((typeof thisVal === 'string') && (thisVal.length != ''))
 	{
@@ -291,6 +304,7 @@ function Validate_Keys_Bin(thisVal, thisID)
 function Validate_Keys_Sel(thisVal, thisID)
 {
 	// remember the first item in the ClassesTableAbbr table is 'non' which has an index of 0
+	// also remember that the SQL database starts with an index of 1 but the JS data starts with 0
 	if (Number.isInteger(thisVal) && (thisVal >= 0) && (thisVal <= 5))
 	{
 		var abbr_color = ClassesTableAbbr[thisVal + 1]
@@ -755,9 +769,9 @@ function Spawn_Preview()
 function Submit_Scheme()
 {
 	var submitText = '\nsLay = \'' + CurrentItem['lay'] + '\'\n' +
-	'Gam_Table[sLay][\'gam\'] = ' + '\'' + Gam_Table[CurrentItem['lay']]['gam'] + '\'\n' +
-	'Gam_Table[sLay][\'aut\'] = ' + '\'' + Gam_Table[CurrentItem['lay']]['aut'] + '\'\n' +
-	'Gam_Table[sLay][\'key\'] =\n' + '[\n'
+	'Gam_Table[layString][\'gam\'] = ' + '\'' + Gam_Table[CurrentItem['lay']]['gam'] + '\'\n' +
+	'Gam_Table[layString][\'aut\'] = ' + '\'' + Gam_Table[CurrentItem['lay']]['aut'] + '\'\n' +
+	'Gam_Table[layString][\'key\'] =\n' + '[\n'
 	var targetScheme = Gam_Table[CurrentItem['lay']]['key']
 	for (var i = 0, n = targetScheme.length; i < n; i++)
 	{
@@ -781,7 +795,7 @@ function Submit_Scheme()
 	submitText = submitText.replace(/\,\n$/,'\n')
 	submitText += ']\n'
 	targetScheme = Gam_Table[CurrentItem['lay']]['leg']
-	submitText += 'Gam_Table[sLay][\'leg\'] =\n[\n'
+	submitText += 'Gam_Table[layString][\'leg\'] =\n[\n'
 	for (var i = 0, n = targetScheme.length; i < n; i++)
 	{
 		submitText += '['
@@ -796,7 +810,7 @@ function Submit_Scheme()
 	for (var thisTarget in NotesCount)
 	{
 		targetScheme = Gam_Table[CurrentItem['lay']][thisTarget]
-		submitText += 'Gam_Table[sLay][\'' + thisTarget + '\'] =\n[\n'
+		submitText += 'Gam_Table[layString][\'' + thisTarget + '\'] =\n[\n'
 		for (var i = 0, n = targetScheme.length; i < n; i++)
 			submitText += '\'' + targetScheme[i] + '\',\n'
 		submitText = submitText.replace(/\,\n$/,'\n')
