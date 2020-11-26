@@ -1,7 +1,6 @@
-// [left,top,width,height,uppkey,lowkey,altgr]
 Lay_Table['nam'] = 'PC/AT DE 105 Key'
 Lay_Table['uni'] = 'px'
-Lay_Table['bla'] = [,,,,'Groß','Klein',,]
+Lay_Table['leg'] = ['Caption','Shift','Ctrl','Alt','AltGr','Extra']
 // left, top, width, height, norm_upp, norm_low, altgr_upp, altgr_low
 Lay_Table['key'] =
 [
@@ -125,11 +124,14 @@ Lay_Table['cut'] =
 	[1179	,321	,72		,144],
 	[1107	,393	,216	,72]
 ]
-Lay_Table['ttl'] = 'Tastatur Diagramm'
-Lay_Table['mou'] = 'Maus Kontrolle'
-Lay_Table['joy'] = 'Joystick Kontrolle'
-Lay_Table['com'] = 'Tastatur/Joystick/Maus Kombinationen'
-Lay_Table['add'] = 'Zus\u00e4tzliche Notizen'
-Lay_Table['leg'] = 'Zeichenerkl\u00e4rung'
-Lay_Table['ret'] = 'Zur\u00fcck zu'
-Lay_Table['aut'] = 'Zus\u00e4tzliche Mitwirkinden'
+Lay_Table['hed'] =
+[
+	'Tastatur Diagramm',
+	'Maus Kontrolle',
+	'Joystick Kontrolle',
+	'Tastatur/Joystick/Maus Kombinationen',
+	'Zus\u00e4tzliche Notizen',
+	'Zeichenerkl\u00e4rung',
+	'Zur\u00fcck zu',
+	'Zus\u00e4tzliche Mitwirkinden'
+]

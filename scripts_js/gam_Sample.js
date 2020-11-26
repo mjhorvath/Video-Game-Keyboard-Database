@@ -126,6 +126,42 @@ Gam_Table[sLay]['key'] =
 	['','','','','','','','','','','','','',''],
 	['','','','','','','','','','','','','','']
 ]
+Gam_Table[sLay]['leg'] =
+[
+	null,	// red
+	null,	// yellow
+	'Geese are totally awesome birds.',	// green
+	null,	// cyan
+	'Yuck! Ducks are way better!',	// blue
+	null,	// magenta
+	null,	// white
+	null,	// gray
+	null,	// black
+	null,	// orange
+	null,	// olive
+	null	// brown
+]
+Gam_Table[sLay]['com'] =
+[
+	['blah','blah'],
+	['blah','blah']
+]
+Gam_Table[sLay]['mou'] =
+[
+	['blah','blah'],
+	['blah','blah']
+]
+Gam_Table[sLay]['joy'] =
+[
+	['blah','blah'],
+	['blah','blah']
+]
+Gam_Table[sLay]['add'] =
+[
+	'blah',
+	'blah'
+]
+
 
 //-------------------------------------German
 
@@ -267,28 +303,38 @@ Gam_Table[sLay]['key'] =
 ]
 Gam_Table[sLay]['leg'] =
 [
-['grn','Geese are totally awesome birds.'],
-['blu','Yuck! Ducks are way better!']
+	null,	// red
+	null,	// yellow
+	'Geese are totally awesome birds.',	// green
+	null,	// cyan
+	'Yuck! Ducks are way better!',	// blue
+	null,	// magenta
+	null,	// white
+	null,	// gray
+	null,	// black
+	null,	// orange
+	null,	// olive
+	null	// brown
 ]
 Gam_Table[sLay]['com'] =
 [
-'blah',
-'blah'
+	['blah','blah'],
+	['blah','blah']
 ]
 Gam_Table[sLay]['mou'] =
 [
-'blah',
-'blah'
+	['blah','blah'],
+	['blah','blah']
 ]
 Gam_Table[sLay]['joy'] =
 [
-'blah',
-'blah'
+	['blah','blah'],
+	['blah','blah']
 ]
 Gam_Table[sLay]['add'] =
 [
-'blah',
-'blah'
+	'blah',
+	'blah'
 ]
 
 
@@ -432,26 +478,36 @@ Gam_Table[sLay]['key'] =
 ]
 Gam_Table[sLay]['leg'] =
 [
-['grn','Geese are totally awesome birds.'],
-['blu','Yuck! Ducks are way better!']
+	null,	// red
+	null,	// yellow
+	'Geese are totally awesome birds.',	// green
+	null,	// cyan
+	'Yuck! Ducks are way better!',	// blue
+	null,	// magenta
+	null,	// white
+	null,	// gray
+	null,	// black
+	null,	// orange
+	null,	// olive
+	null	// brown
 ]
 Gam_Table[sLay]['com'] =
 [
-'blah',
-'blah'
+	['blah','blah'],
+	['blah','blah']
 ]
 Gam_Table[sLay]['mou'] =
 [
-'blah',
-'blah'
+	['blah','blah'],
+	['blah','blah']
 ]
 Gam_Table[sLay]['joy'] =
 [
-'blah',
-'blah'
+	['blah','blah'],
+	['blah','blah']
 ]
 Gam_Table[sLay]['add'] =
 [
-'blah',
-'blah'
+	'blah',
+	'blah'
 ]

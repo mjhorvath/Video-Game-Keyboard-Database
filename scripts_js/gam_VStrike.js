@@ -265,12 +265,18 @@ Gam_Table[sLay]['key'] =
 ]
 Gam_Table[sLay]['leg'] =
 [
-[0,'Kampf'],
-[1,'Zielerfassung'],
-[2,'Bewegung'],
-[3,'Kommunikation'],
-[4,'Kamera'],
-[5,'System Kontrolle']
+	'Kampf',
+	'Zielerfassung',
+	'Bewegung',
+	'Kommunikation',
+	'Kamera',
+	'System Kontrolle',
+	null,
+	null,
+	null,
+	null,
+	null,
+	null
 ]
 Gam_Table[sLay]['com'] = []
 Gam_Table[sLay]['mou'] = []

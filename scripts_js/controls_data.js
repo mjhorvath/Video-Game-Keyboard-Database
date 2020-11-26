@@ -18,8 +18,7 @@
 var CurrentItem = {}, AuthorEmail = '', AuthorApprv = ''
 var ClassesTableAbbr = ['non','red','yel','grn','cyn','blu','mag','wht','gry','blk','org','olv','brn']
 var ClassesTableFull = ['None','Red','Yellow','Green','Cyan','Blue','Magenta','White','Gray','Black','Orange','Olive','Brown']
-var CaptionsTableL = ['Normal Key','SHIFT + Key','CTRL + Key','ALT + Key','ALTGR + Key','Extra Action']
-var CaptionsTableR = ['Caption','Shift','Ctrl','Alt','AltGr','Extra']
+var CaptionsTable = ['Normal Key','SHIFT + Key','CTRL + Key','ALT + Key','ALTGR + Key','Extra Action']
 var ActionsTable = ['Key','ID','Normal Key','Group','SHIFT + Key','Group','CTRL + Key','Group','ALT + Key','Group','ALTGR + Key','Group','Extra Action','Group','Icon File','Icon URI']
 var SelectsTable = ['gam','sty','lay']
 

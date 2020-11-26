@@ -1,6 +1,6 @@
 Lay_Table['nam'] = 'PC/AT US 104 Key'
 Lay_Table['uni'] = 'px'
-Lay_Table['bla'] = [,,,,'Upcase','Lowcase',,]
+Lay_Table['leg'] = ['Caption','Shift','Ctrl','Alt','AltGr','Extra']
 Lay_Table['key'] =
 [
 	// left, top, width, height, norm_upp, norm_low, altgr_upp, altgr_low
@@ -133,11 +133,14 @@ Lay_Table['cut'] =
 	[1179	,321	,72		,144],
 	[1107	,393	,216	,72]
 ]
-Lay_Table['ttl'] = 'Keyboard Chart'
-Lay_Table['mou'] = 'Mouse Controls'
-Lay_Table['joy'] = 'Joystick Controls'
-Lay_Table['com'] = 'Keyboard/Joystick/Mouse Combinations'
-Lay_Table['add'] = 'Additional Notes'
-Lay_Table['leg'] = 'Legend'
-Lay_Table['ret'] = 'Return to'
-Lay_Table['aut'] = 'Additional credits'
+Lay_Table['hed'] =
+[
+	'Keyboard Chart',
+	'Mouse Controls',
+	'Joystick Controls',
+	'Keyboard/Joystick/Mouse Combinations',
+	'Additional Notes',
+	'Legend',
+	'Return to',
+	'Additional credits'
+]
