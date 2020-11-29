@@ -163,12 +163,15 @@ function Update_Bindings_Table_Step_Two()
 }
 function Update_Bindings_Table_Step_Three()
 {
-//	var gamOption = document.getElementById('gamsub_' + CurrentItem['gam'])
-//	gamOption.click()
+	var layString = Dat_Table['lay'][CurrentItem['lay']][0]
 	Make_Keys()
 	Fill_Keys()
 	Make_Legends()
 	Make_Notes()
+	document.getElementById('titsub_div').value = Gam_Table[layString]['tit']
+	document.getElementById('autsub_div').value = Gam_Table[layString]['aut']
+//	var gamOption = document.getElementById('gamsub_' + CurrentItem['gam'])
+//	gamOption.click()
 }
 function Add_Field(thisTarget)
 {
@@ -225,92 +228,70 @@ function Parse_Fields()
 	CurrentItem[thisPrefix] = 0
 	for (var i = 0, n = thisTable.length; i < n; i++)
 	{
-		targetElement = document.getElementById(thisPrefix + 'sub_' + i)
+		var targetElement = document.getElementById(thisPrefix + 'sub_' + i)
 		if (targetElement.checked)
 			CurrentItem[thisPrefix] += thisTable[i][0]
 	}
 	// keys
-	targetElement = document.getElementById('keysub_div')
 	var targetScheme = []
-	for (var i = 0; i < NumberOfKeys; i++)
+	var layString = Dat_Table['lay'][CurrentItem['lay']][0]
+	var thisGame = Gam_Table[layString]['key']
+	for (var i = 0, n = thisGame.length; i < n; i++)
 	{
-		if (i === 0)
-		{
-			var boolUndefined = 1
-			var tempScheme = []
-			for (var j = 0, o = CaptionsTable.length; j < o; j++)
-			{
-				if ((j === 0) || (j === CaptionsTable.length - 1))
-					tempScheme[j] = undefined
-				else
-				{
-					var newCaptnInp = document.getElementById('keyexa_captn_' + j)
-					var newCaptnVal = newCaptnInp.value
-					if (newCaptnVal === '')
-						newCaptnVal = undefined
-					else
-						boolUndefined = 0
-					tempScheme[j] = newCaptnVal
-				}
-			}
-			if (boolUndefined === 1)
-				targetScheme[i] = undefined
-			else
-				targetScheme[i] = tempScheme
-		}
-		else if (!Lay_Table['key'][i])
+		if (!Lay_Table['key'][i])
 			targetScheme[i] = undefined
 		else
 		{
-			var newLoBinInp = document.getElementById('keysub_lobin_' + i)
+			var newLoTxtInp = document.getElementById('keysub_lotxt_' + i)
 			var newLoGrpInp = document.getElementById('keysub_logrp_' + i)
-			var newShBinInp = document.getElementById('keysub_shbin_' + i)
+			var newShTxtInp = document.getElementById('keysub_shtxt_' + i)
 			var newShGrpInp = document.getElementById('keysub_shgrp_' + i)
-			var newCoBinInp = document.getElementById('keysub_cobin_' + i)
+			var newCoTxtInp = document.getElementById('keysub_cotxt_' + i)
 			var newCoGrpInp = document.getElementById('keysub_cogrp_' + i)
-			var newAlBinInp = document.getElementById('keysub_albin_' + i)
+			var newAlTxtInp = document.getElementById('keysub_altxt_' + i)
 			var newAlGrpInp = document.getElementById('keysub_algrp_' + i)
-			var newGrBinInp = document.getElementById('keysub_grbin_' + i)
+			var newGrTxtInp = document.getElementById('keysub_grtxt_' + i)
 			var newGrGrpInp = document.getElementById('keysub_grgrp_' + i)
-			var newExBinInp = document.getElementById('keysub_exbin_' + i)
+			var newExTxtInp = document.getElementById('keysub_extxt_' + i)
 			var newExGrpInp = document.getElementById('keysub_exgrp_' + i)
 			var newImFilInp = document.getElementById('keysub_imfil_' + i)
 			var newImUriInp = document.getElementById('keysub_imuri_' + i)
-			var newLoBinVal = newLoBinInp.value
-			if (newLoBinVal === '')
-				newLoBinVal = undefined
-			var newLoGrpVal = ClassesTableAbbr[newLoGrpInp.selectedIndex]
-			if (newLoGrpVal === 'none')
+
+			var newLoTxtVal = Sanitize_Text(newLoTxtInp.value)
+			if (newLoTxtVal === '')
+				newLoTxtVal = undefined
+			var newLoGrpVal = newLoGrpInp.selectedIndex - 1
+			if (newLoGrpVal === -1)
 				newLoGrpVal = undefined
-			var newShBinVal = newShBinInp.value
-			if (newShBinVal === '')
-				newShBinVal = undefined
-			var newShGrpVal = ClassesTableAbbr[newShGrpInp.selectedIndex]
-			if (newShGrpVal === 'none')
+			var newShTxtVal = Sanitize_Text(newShTxtInp.value)
+			if (newShTxtVal === '')
+				newShTxtVal = undefined
+			var newShGrpVal = newShGrpInp.selectedIndex - 1
+			if (newShGrpVal === -1)
 				newShGrpVal = undefined
-			var newCoBinVal = newCoBinInp.value
-			if (newCoBinVal === '')
-				newCoBinVal = undefined
-			var newCoGrpVal = ClassesTableAbbr[newCoGrpInp.selectedIndex]
-			if (newCoGrpVal === 'none')
+			var newCoTxtVal = Sanitize_Text(newCoTxtInp.value)
+			if (newCoTxtVal === '')
+				newCoTxtVal = undefined
+			var newCoGrpVal = newCoGrpInp.selectedIndex - 1
+			if (newCoGrpVal === -1)
 				newCoGrpVal = undefined
-			var newAlBinVal = newAlBinInp.value
-			if (newAlBinVal === '')
-				newAlBinVal = undefined
-			var newAlGrpVal = ClassesTableAbbr[newAlGrpInp.selectedIndex]
-			if (newAlGrpVal === 'none')
+			var newAlTxtVal = Sanitize_Text(newAlTxtInp.value)
+			if (newAlTxtVal === '')
+				newAlTxtVal = undefined
+			var newAlGrpVal = newAlGrpInp.selectedIndex - 1
+			if (newAlGrpVal === -1)
 				newAlGrpVal = undefined
-			var newGrBinVal = newGrBinInp.value
-			if (newGrBinVal === '')
-				newGrBinVal = undefined
-			var newGrGrpVal = ClassesTableAbbr[newGrGrpInp.selectedIndex]
-			if (newGrGrpVal === 'none')
+			var newGrTxtVal = Sanitize_Text(newGrTxtInp.value)
+			if (newGrTxtVal === '')
+				newGrTxtVal = undefined
+			var newGrGrpVal = newGrGrpInp.selectedIndex - 1
+			if (newGrGrpVal === -1)
 				newGrGrpVal = undefined
-			var newExBinVal = newExBinInp.value
-			if (newExBinVal === '')
-				newExBinVal = undefined
-			var newExGrpVal = ClassesTableAbbr[newExGrpInp.selectedIndex]
-			if (newExGrpVal === 'none')
+			var newExTxtVal = Sanitize_Text(newExTxtInp.value)
+			if (newExTxtVal === '')
+				newExTxtVal = undefined
+			var newExGrpVal = newExGrpInp.selectedIndex - 1
+			if (newExGrpVal === -1)
 				newExGrpVal = undefined
 			var newImFilVal = newImFilInp.value
 			if (newImFilVal === '')
@@ -320,21 +301,22 @@ function Parse_Fields()
 				newImUriVal = undefined
 			targetScheme[i] =
 			[
-				newLoBinVal,
+				newLoTxtVal,
 				newLoGrpVal,
-				newShBinVal,
+				newShTxtVal,
 				newShGrpVal,
-				newCoBinVal,
+				newCoTxtVal,
 				newCoGrpVal,
-				newAlBinVal,
+				newAlTxtVal,
 				newAlGrpVal,
-				newGrBinVal,
+				newGrTxtVal,
 				newGrGrpVal,
-				newExBinVal,
+				newExTxtVal,
 				newExGrpVal,
 				newImFilVal,
 				newImUriVal
 			]
+			// if all the cells in the row are undefined, might as well make the whole row undefined
 			var boolUndefined = 1
 			for (var j = 0, o = targetScheme[i].length; j < o; j++)
 			{
@@ -348,109 +330,140 @@ function Parse_Fields()
 				targetScheme[i] = undefined
 		}
 	}
-	Gam_Table[CurrentItem['lay']]['key'] = targetScheme
+	Gam_Table[layString]['key'] = targetScheme
+	// legends #1
 	targetScheme = []
-	// legends
-	for (var i = 0, n = ClassesTableAbbr.length; i < n; i++)
+	for (var i = 0; i < 6; i++)
+	{
+		var newDescrInp = document.getElementById('keyexa_captn_' + i)
+		var newDescrVal = newDescrInp.value
+		if (newDescrVal === '')
+			targetScheme[i] = null
+		else
+			targetScheme[i] = newDescrVal
+	}
+	Lay_Table['leg'] = targetScheme
+	// legends #2
+	targetScheme = []
+	for (var i = 0; i < 12; i++)
 	{
 		var newDescrInp = document.getElementById('legsub_descr_' + i)
 		var newDescrVal = newDescrInp.value
-		var newDescrIdx = ClassesTableAbbr[i]
 		if (newDescrVal !== '')
-			targetScheme[i] = [newDescrIdx,newDescrVal]
+			targetScheme.push([i, newDescrVal])
 	}
-	Gam_Table[CurrentItem['lay']]['leg'] = targetScheme
-	targetScheme = []
-	// mouse, joystick, etc.
+	Gam_Table[layString]['leg'] = targetScheme
+	// notes
 	for (var thisTarget in NotesCount)
 	{
+		targetScheme = []
 		var targetElement = document.getElementById(thisTarget + 'sub_div')
 		var targetChildren = targetElement.childNodes
 		// skip the first header row
 		for (var i = 1, n = targetChildren.length; i < n; i++)
 		{
-			var thisChild1 = targetChildren[i].childNodes[1].firstChild
-			if (thisChild1)
+			var thisChild1 = targetChildren[i].childNodes[1]
+			var thisChild2 = targetChildren[i].childNodes[2]
+			if (thisChild2)
 			{
-				var thisValue1 = thisChild1.value
-				if (thisValue1 !== '')
-				{
-					var thisText = thisValue1
-					if (thisTarget !== 'add')
-					{
-						var thisChild2 = targetChildren[i].childNodes[2].firstChild
-						thisText += ' = ' + thisChild2.value
-					}
-					targetScheme.push(thisText)
-				}
+				var thisValue1 = thisChild1.firstChild.value
+				var thisValue2 = thisChild2.firstChild.value
+				if ((thisValue1 !== '') && (thisValue2 !== ''))
+					targetScheme.push([thisValue1, thisValue2])
 			}
+			else if (thisChild1)
+			{
+				var thisValue1 = thisChild1.firstChild.value
+				if (thisValue1 !== '')
+					targetScheme.push(thisValue1)
+			}
+
 		}
-		Gam_Table[CurrentItem['lay']][thisTarget] = targetScheme
-		targetScheme = []
+		Gam_Table[layString][thisTarget] = targetScheme
 	}
 	// misc
-	var thisName = document.getElementById('namsub_div').value
-	var thisAuth = document.getElementById('autsub_div').value
-	Gam_Table[CurrentItem['lay']]['gam'] = thisName
-	Gam_Table[CurrentItem['lay']]['aut'] = thisAuth
+	Gam_Table[layString]['tit'] = Sanitize_Text(document.getElementById('titsub_div').value)
+	Gam_Table[layString]['aut'] = Sanitize_Text(document.getElementById('autsub_div').value)
 	AuthorEmail = document.getElementById('emlsub_div').value
 	AuthorApprv = document.getElementById('apvsub_div').value
 }
+function Sanitize_Text(inText)
+{
+	return inText.replaceAll('\\','\\\\').replaceAll('\'','\\\'').replaceAll('\\\\n','\\n').replaceAll('\\\\t','\\t')
+}
 function Spawn_Preview()
 {
-	var thisString = 'keydiagramkeys.htm???Preview;' + CurrentItem['sty'] + ';' + CurrentItem['lay'] + ';' + CurrentItem['eff'] + ';'
+	var thisString = 'keyboard_diagram.html???-1;' + CurrentItem['sty'] + ';' + CurrentItem['lay'] + ';' + CurrentItem['eff'] + ';'
 	window.open(thisString, 'KeyDiagramKeys')
 }
 function Submit_Scheme()
 {
-	var submitText = '\nsLay = \'' + CurrentItem['lay'] + '\'\n' +
-	'Gam_Table[layString][\'gam\'] = ' + '\'' + Gam_Table[CurrentItem['lay']]['gam'] + '\'\n' +
-	'Gam_Table[layString][\'aut\'] = ' + '\'' + Gam_Table[CurrentItem['lay']]['aut'] + '\'\n' +
+	var layString = Dat_Table['lay'][CurrentItem['lay']][0]
+	var submitText = 'layString = \'' + layString + '\'\n' +
+	'Gam_Table[layString] = {}\n' +
+	'Gam_Table[layString][\'tit\'] = ' + '\'' + Gam_Table[layString]['tit'] + '\'\n' +
+	'Gam_Table[layString][\'aut\'] = ' + '\'' + Gam_Table[layString]['aut'] + '\'\n' +
 	'Gam_Table[layString][\'key\'] =\n' + '[\n'
-	var targetScheme = Gam_Table[CurrentItem['lay']]['key']
+	// keys
+	var targetScheme = Gam_Table[layString]['key']
 	for (var i = 0, n = targetScheme.length; i < n; i++)
 	{
 		var thisScheme = targetScheme[i]
 		if (thisScheme)
 		{
-			submitText += '['
+			submitText += '\t['
 			for (var j = 0, o = thisScheme.length; j < o; j++)
 			{
 				var thisText = thisScheme[j]
-				if (thisText)
-					submitText += '\'' + thisText + '\','
+				if ((thisText) || (thisText === 0))
+				{
+					if (Number.isInteger(thisText))
+						submitText += thisText + ','
+					else
+						submitText += '\'' + thisText + '\','
+				}
 				else
-					submitText += ','
+				{
+					submitText += 'null,'
+				}
 			}
 			submitText = submitText.replace(/\,$/,'')
-			submitText += ']'
+			submitText += '],\n'
 		}
-		submitText += ',\n'
+		else
+		{
+			submitText += '\tnull,\n'
+		}
 	}
 	submitText = submitText.replace(/\,\n$/,'\n')
 	submitText += ']\n'
-	targetScheme = Gam_Table[CurrentItem['lay']]['leg']
+	// legends
+	targetScheme = Gam_Table[layString]['leg']
 	submitText += 'Gam_Table[layString][\'leg\'] =\n[\n'
 	for (var i = 0, n = targetScheme.length; i < n; i++)
 	{
-		submitText += '['
 		var thisScheme = targetScheme[i]
-		for (var j = 0, o = thisScheme.length; j < o; j++)
-			submitText += '\'' + thisScheme[j] + '\','
-		submitText = submitText.replace(/\,$/,'')
-		submitText += '],\n'
+		submitText += '\t[' + thisScheme[0] + ',\'' + thisScheme[1] + '\'],\n'
 	}
 	submitText = submitText.replace(/\,\n$/,'\n')
 	submitText += ']\n'
+	// notes
 	for (var thisTarget in NotesCount)
 	{
-		targetScheme = Gam_Table[CurrentItem['lay']][thisTarget]
+		targetScheme = Gam_Table[layString][thisTarget]
 		submitText += 'Gam_Table[layString][\'' + thisTarget + '\'] =\n[\n'
 		for (var i = 0, n = targetScheme.length; i < n; i++)
-			submitText += '\'' + targetScheme[i] + '\',\n'
+		{
+			var thisNum = targetScheme[i].length
+			if (thisNum === 2)
+				submitText += '\t[\'' + targetScheme[i][0] + '\',\'' + targetScheme[i][1] + '\'],\n'
+			else
+				submitText += '\t\'' + targetScheme[i] + '\',\n'
+		}
 		submitText = submitText.replace(/\,\n$/,'\n')
 		submitText += ']\n'
 	}
 	submitText = submitText.replace(/=\n\[\n\]/g,'= []')
-	document.getElementById('endsub_div').value = submitText
+	document.getElementById('endsub_div').innerHTML = submitText
+	alert('Email submissions not implemented yet.')
 }

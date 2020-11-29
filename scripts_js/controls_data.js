@@ -27,12 +27,13 @@ var GamColumns = ['binding_id','record_id','key_number','normal_action','normal_
 var LayColumns = ['position_id','layout_id','key_number','position_left','position_top','position_width','position_height','symbol_norm_cap','symbol_norm_low','symbol_altgr_cap','symbol_altgr_low','lowcap_optional','numpad']
 
 var NotesCount = {mou:0,joy:0,com:0,add:0}
+var ItemWords = ['game','style','layout','effect']
 var ItemPrefixes = ['gam','sty','lay','eff']
-var NamePrefixes = ['aut','gam']
+var NamePrefixes = ['aut','tit']
 var NotePrefixes = ['com','mou','joy','add']
-var GamePrefixes = ['com','mou','joy','add','aut','leg','gam','key']
+var GamePrefixes = ['com','mou','joy','add','aut','leg','key','tit']
 var TextPrefixes = ['com','mou','joy','add','aut','leg','ret']
-var LayoPrefixes = ['nam','uni','bla','key']
+var LayoPrefixes = ['tit','uni','bla','key']
 var NumberOfKeys = 0, ConvertUnits = 1, KeyPadding = 2, CutPadding = 2, DisableLayouts = true
 var Dat_Table = {}, Grp_Table = {}, Gam_Table = {}, Lay_Table = {}, Sty_Table = {}, ItemDefault = {}, ItemCurrent = {}
 
@@ -172,11 +173,12 @@ Dat_Table['lay'] =
 //	['MACUK110OLD',	'UK 110 Key (old)',			0, 1]
 ]
 Grp_Table['eff'] = []
+// could start this table with 1 instead of 2
 Dat_Table['eff'] =
 [
-	[2,		'Invert Colors',		0],
-	[4,		'X-Ray',				0],
-	[8,		'Grayscale',			0],
-	[16,	'Drop-Shadow',			0],
-	[32,	'Rotate 90\u00b0',		0]
+	[1,		'Invert Colors',		0],
+	[2,		'X-Ray',				0],
+	[4,		'Grayscale',			0],
+	[8,		'Drop-Shadow',			0],
+	[16,	'Rotate 90\u00b0',		0]
 ]

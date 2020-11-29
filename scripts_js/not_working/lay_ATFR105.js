@@ -1,4 +1,5 @@
 // [left,top,width,height,upptxt,lowtxt,altgrtxt]
+//['','L\u00e9gende','Maj.','Ctrl','Alt','AltGr','','']
 Lay_Table['nam'] = 'PC/AT FR 105 Key'
 Lay_Table['uni'] = 'px'
 Lay_Table['key'] =

@@ -17,10 +17,12 @@ optgroup			{margin:0;border:none;padding:0.1em;             background-color:tra
 #keysub_div	td input[type=text]		{width:10em;}
 #keysub_div	td select				{width:5.0em;height:1.6em;}
 #keysub_div	td select option		{width:4.8em;height:1.4em;}		/* seems to not have any effect in Chrome */
+#endsub_div	{font-family:monospace;white-space:pre;overflow:scroll;max-width:50em;height:40em;margin:0;}
 #hednav		{border:none;border-spacing:0;border-collapse:separate;}
 #hednav tr	{vertical-align:middle;}
 #hednav th	{text-align:left;color:#000000;margin:0;border:none;padding:0;}
 #hednav td	{text-align:left;color:#000000;margin:0;border:none;padding:0;padding-right:0.5em;}
+#submit_table td	{padding:0;margin:0;}
 .non	{background-color:transparent;color:#000000;}
 .red	{background-color:#e02020;color:#ffffff;font-weight:bold;}
 .yel	{background-color:#e0e020;color:#ffffff;font-weight:bold;}

@@ -1,3 +1,20 @@
+// Copyright (C) 2009  Michael Horvath
+
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
+
 function Change_Group_Color(e)
 {
 	var thisSelect = getElementByEvent(e)
@@ -9,7 +26,7 @@ function Validate_Keys_Inp(thisVal, thisID)
 {
 	if ((typeof thisVal === 'string') && (thisVal.length != ''))
 	{
-		document.getElementById(thisID).value = thisVal.replace('\n','\\n').replace('\t','\\t')
+		document.getElementById(thisID).value = thisVal.replaceAll('\n','\\n').replaceAll('\t','\\t')
 	}
 }
 function Validate_Keys_Sel(thisVal, thisID)
@@ -95,7 +112,7 @@ function Make_Keys()
 	newTableRow.appendChild(newImFilHed)
 	newTableRow.appendChild(newImUriHed)
 	targetElement.appendChild(newTableRow)
-	// regular rows
+	// data rows
 	for (var i = 0, n = Lay_Table['key'].length; i < n; i++)
 	{
 		var this_row = Lay_Table['key'][i]
@@ -137,18 +154,18 @@ function Make_Keys()
 			var newExSelInp = document.createElement('select')
 			var newImFilInp = document.createElement('input')
 			var newImUriInp = document.createElement('input')
-			newLoBinInp.id = 'keysub_lobin_' + i
-			newLoSelInp.id = 'keysub_losel_' + i
-			newShBinInp.id = 'keysub_shbin_' + i
-			newShSelInp.id = 'keysub_shsel_' + i
-			newCoBinInp.id = 'keysub_cobin_' + i
-			newCoSelInp.id = 'keysub_cosel_' + i
-			newAlBinInp.id = 'keysub_albin_' + i
-			newAlSelInp.id = 'keysub_alsel_' + i
-			newGrBinInp.id = 'keysub_grbin_' + i
-			newGrSelInp.id = 'keysub_grsel_' + i
-			newExBinInp.id = 'keysub_exbin_' + i
-			newExSelInp.id = 'keysub_exsel_' + i
+			newLoBinInp.id = 'keysub_lotxt_' + i
+			newLoSelInp.id = 'keysub_logrp_' + i
+			newShBinInp.id = 'keysub_shtxt_' + i
+			newShSelInp.id = 'keysub_shgrp_' + i
+			newCoBinInp.id = 'keysub_cotxt_' + i
+			newCoSelInp.id = 'keysub_cogrp_' + i
+			newAlBinInp.id = 'keysub_altxt_' + i
+			newAlSelInp.id = 'keysub_algrp_' + i
+			newGrBinInp.id = 'keysub_grtxt_' + i
+			newGrSelInp.id = 'keysub_grgrp_' + i
+			newExBinInp.id = 'keysub_extxt_' + i
+			newExSelInp.id = 'keysub_exgrp_' + i
 			newImFilInp.id = 'keysub_imfil_' + i
 			newImUriInp.id = 'keysub_imuri_' + i
 			newLoBinInp.setAttribute('type', 'text')
@@ -242,6 +259,7 @@ function Make_Keys()
 		}
 	}
 }
+// this should be merged into 'Make_Keys'
 function Fill_Keys()
 {
 	var layString = Dat_Table['lay'][CurrentItem['lay']][0]
@@ -253,18 +271,18 @@ function Fill_Keys()
 		if (thisRow)
 		{
 			// Normal Key, Group, SHIFT + Key, Group, CTRL + Key, Group, ALT + Key, Group, ALTGR + Key, Group, Extra Action, Group, Icon File, Icon URI
-			Validate_Keys_Inp(thisRow[0], 'keysub_lobin_' + i)			// column 1
-			Validate_Keys_Sel(thisRow[1], 'keysub_losel_' + i)			// column 2
-			Validate_Keys_Inp(thisRow[2], 'keysub_shbin_' + i)			// column 3
-			Validate_Keys_Sel(thisRow[3], 'keysub_shsel_' + i)			// column 4
-			Validate_Keys_Inp(thisRow[4], 'keysub_cobin_' + i)			// column 5
-			Validate_Keys_Sel(thisRow[5], 'keysub_cosel_' + i)			// column 6
-			Validate_Keys_Inp(thisRow[6], 'keysub_albin_' + i)			// column 7
-			Validate_Keys_Sel(thisRow[7], 'keysub_alsel_' + i)			// column 8
-			Validate_Keys_Inp(thisRow[8], 'keysub_grbin_' + i)			// column 9
-			Validate_Keys_Sel(thisRow[9], 'keysub_grsel_' + i)			// column 10
-			Validate_Keys_Inp(thisRow[10], 'keysub_exbin_' + i)			// column 11
-			Validate_Keys_Sel(thisRow[11], 'keysub_exsel_' + i)			// column 12
+			Validate_Keys_Inp(thisRow[0], 'keysub_lotxt_' + i)			// column 1
+			Validate_Keys_Sel(thisRow[1], 'keysub_logrp_' + i)			// column 2
+			Validate_Keys_Inp(thisRow[2], 'keysub_shtxt_' + i)			// column 3
+			Validate_Keys_Sel(thisRow[3], 'keysub_shgrp_' + i)			// column 4
+			Validate_Keys_Inp(thisRow[4], 'keysub_cotxt_' + i)			// column 5
+			Validate_Keys_Sel(thisRow[5], 'keysub_cogrp_' + i)			// column 6
+			Validate_Keys_Inp(thisRow[6], 'keysub_altxt_' + i)			// column 7
+			Validate_Keys_Sel(thisRow[7], 'keysub_algrp_' + i)			// column 8
+			Validate_Keys_Inp(thisRow[8], 'keysub_grtxt_' + i)			// column 9
+			Validate_Keys_Sel(thisRow[9], 'keysub_grgrp_' + i)			// column 10
+			Validate_Keys_Inp(thisRow[10], 'keysub_extxt_' + i)			// column 11
+			Validate_Keys_Sel(thisRow[11], 'keysub_exgrp_' + i)			// column 12
 			Validate_Keys_Inp(thisRow[12], 'keysub_imfil_' + i)			// column 13
 			Validate_Keys_Inp(thisRow[13], 'keysub_imuri_' + i)			// column 14
 		}
@@ -306,6 +324,7 @@ function Make_Legends()
 	var targetElement = document.getElementById('legsub_div')
 	while (targetElement.hasChildNodes())
 		targetElement.removeChild(targetElement.lastChild)
+	var thisScheme = Gam_Table[sLay]['leg']
 	var newTableRow = document.createElement('tr')
 	var newClassCel = document.createElement('th')
 	var newDescrCel = document.createElement('th')
@@ -326,7 +345,14 @@ function Make_Legends()
 		newDescrInp.id = 'legsub_descr_' + i
 		newDescrInp.setAttribute('type', 'text')
 		newDescrInp.setAttribute('size', '40')
-		newDescrInp.value = Gam_Table[sLay]['leg'][i]
+		for (var j = 0, o = thisScheme.length; j < o; j++)
+		{
+			if (thisScheme[j][0] === i)
+			{
+				newDescrInp.value = thisScheme[j][1]
+				break
+			}
+		}
 		newClassCel.className = newClassCel.className + ' ' + ClassesTableAbbr[i+1]	// skip the first null color
 		newClassCel.appendChild(newClassTxt)
 		newDescrCel.appendChild(newDescrInp)
@@ -348,7 +374,8 @@ function Make_Notes()
 		// header row
 		var newRow = document.createElement('tr')
 		var newCel0 = document.createElement('th')
-		var newTxt0 = null
+		var newTxt0 = document.createTextNode('#')
+		newCel0.appendChild(newTxt0)
 		newRow.appendChild(newCel0)
 		if (thisTarget !== 'add')
 		{
@@ -356,6 +383,7 @@ function Make_Notes()
 			var newTxt1 = document.createTextNode('Command')
 			newCel1.appendChild(newTxt1)
 			newRow.appendChild(newCel1)
+
 			var newCel2 = document.createElement('th')
 			var newTxt2 = document.createTextNode('Description')
 			newCel2.appendChild(newTxt2)

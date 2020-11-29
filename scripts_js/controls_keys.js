@@ -95,7 +95,7 @@ function Init_Options()
 
 function Spawn_Layout()
 {
-	var thisString = 'keyboard_keys.shtml???'
+	var thisString = 'keyboard_diagram.html???'
 	for (var i = 0, n = ItemPrefixes.length - 1; i < n; i++)
 	{
 		var thisPrefix = ItemPrefixes[i]
@@ -165,13 +165,11 @@ function Set_Defaults()
 	var urlString = top.location.href, delimString = '???'
 	var urlIndex = urlString.indexOf(delimString) + delimString.length
 	var urlTable = urlString.substring(urlIndex).split(';')
-	var urlCount = 0
 	for (var i = 0, n = ItemPrefixes.length; i < n; i++)
 	{
 		var thisPrefix = ItemPrefixes[i]
 		var thisTable = Dat_Table[thisPrefix]
-		var thisString = urlTable[urlCount]
-		for (var j = 0, o = thisTable.length; j < o; j ++)
+		for (var j = 0, o = thisTable.length; j < o; j++)
 		{
 			var thisItem = thisTable[j]
 			if (thisItem[2] === 1)
@@ -181,24 +179,24 @@ function Set_Defaults()
 				break
 			}
 		}
-		for (var j = 0, o = thisTable.length; j < o; j++)
-		{
-			var testString = thisTable[j][0]
-			if ((thisString === testString) || ((thisString % 2) === (testString % 2)))
-			{
-				ItemCurrent[thisPrefix] = thisString
-				break
-			}
-		}
-		urlCount += 1
+		var thisIndex = urlTable[i]
+		var thisItem = thisTable[thisIndex]
+		if (thisItem)
+			ItemCurrent[thisPrefix] = thisItem[0]
+		else
+			console.log('Cannot find ' + ItemWords[i] + ' specified in URL. Loading defaults instead.')
 	}
 	for (var i = 0, n = GamePrefixes.length; i < n; i++)
-		Gam_Table[GamePrefixes[i]] = {}
+	{
+		var thisPrefix = GamePrefixes[i]
+		Gam_Table[thisPrefix] = {}
+	}
 }
 
 function Set_Units()
 {
-	var CentimetersToInches = 0.393700787, DotsPerInch = 96
+	var CentimetersToInches = 0.393700787
+	var DotsPerInch = 96
 	switch (Lay_Table['uni'])
 	{
 		case 'cm':
@@ -210,33 +208,74 @@ function Set_Units()
 	}
 }
 
-function Write_Includes()
+function Init()
+{
+	NumberOfKeys = Lay_Table['key'].length
+	Set_Units()
+	Test_Scheme()
+	Load_Scheme()
+	Load_Layout()
+	Load_Style()
+	Load_Effects()
+}
+
+function Write_Style()
 {
 	var thisHead = document.getElementById('head_div')
-	for (var i = 0, n = ItemPrefixes.length - 1; i < n; i++)
-	{
-		var thisPrefix = ItemPrefixes[i]
-		var thisScript = document.createElement('script')
-		thisScript.setAttribute('type', 'text/javascript')
-		thisScript.setAttribute('src', thisPrefix + '_' + ItemCurrent[thisPrefix] + '.js')
-		thisHead.appendChild(thisScript)
-	}
 	var thisLink = document.createElement('link')
 	thisLink.setAttribute('type', 'text/css')
 	thisLink.setAttribute('rel', 'stylesheet')
 	thisLink.setAttribute('href', 'sty_' + ItemCurrent['sty'] + '.css')
+	thisLink.onload = Write_Script_1
 	thisHead.appendChild(thisLink)
+}
+
+function Write_Script_1()
+{
+	var thisHead = document.getElementById('head_div')
+	var thisScript = document.createElement('script')
+	var thisPrefix = 'gam'
+	thisScript.setAttribute('type', 'text/javascript')
+	thisScript.setAttribute('src', thisPrefix + '_' + ItemCurrent[thisPrefix] + '.js')
+	thisScript.setAttribute('charset', 'UTF-8')
+	thisScript.onload = Write_Script_2
+	thisHead.appendChild(thisScript)
+}
+
+function Write_Script_2()
+{
+	var thisHead = document.getElementById('head_div')
+	var thisScript = document.createElement('script')
+	var thisPrefix = 'sty'
+	thisScript.setAttribute('type', 'text/javascript')
+	thisScript.setAttribute('src', thisPrefix + '_' + ItemCurrent[thisPrefix] + '.js')
+	thisScript.setAttribute('charset', 'UTF-8')
+	thisScript.onload = Write_Script_3
+	thisHead.appendChild(thisScript)
+}
+
+function Write_Script_3()
+{
+	var thisHead = document.getElementById('head_div')
+	var thisScript = document.createElement('script')
+	var thisPrefix = 'lay'
+	thisScript.setAttribute('type', 'text/javascript')
+	thisScript.setAttribute('src', thisPrefix + '_' + ItemCurrent[thisPrefix] + '.js')
+	thisScript.setAttribute('charset', 'UTF-8')
+	thisScript.onload = Init
+	thisHead.appendChild(thisScript)
 }
 
 function Test_Scheme()
 {
-	var CurrentLayout = ItemCurrent['lay'], DefaultLayout = ItemDefault['lay']
+	var CurrentLayout = ItemCurrent['lay']
+	var DefaultLayout = ItemDefault['lay']
 	if ((ItemCurrent['gam'] === 'Preview') && (window.opener))
 	{
 		for (var i = 0, n = GamePrefixes.length; i < n; i++)
 		{
 			var thisPrefix = GamePrefixes[i]
-			Gam_Table[thisPrefix][CurrentLayout] = window.opener.Gam_Table[thisPrefix][CurrentLayout]
+			Gam_Table[CurrentLayout][thisPrefix] = window.opener.Gam_Table[CurrentLayout][thisPrefix]
 		}
 	}
 	else
@@ -244,21 +283,21 @@ function Test_Scheme()
 		for (var i = 0, n = GamePrefixes.length; i < n; i++)
 		{
 			var thisPrefix = GamePrefixes[i]
-			if (Gam_Table[thisPrefix][CurrentLayout] === undefined)
-				Gam_Table[thisPrefix][CurrentLayout] = Gam_Table[thisPrefix][DefaultLayout]
+			if (Gam_Table[CurrentLayout][thisPrefix] === undefined)
+				Gam_Table[CurrentLayout][thisPrefix] = Gam_Table[DefaultLayout][thisPrefix]
 		}
 	}
 }
 
 function Load_Scheme()
 {
-	// layouts
 	var thisLayout = ItemCurrent['lay']
+	// notes
 	for (var j = 0, o = NotePrefixes.length; j < o; j++)
 	{
 		var thisPrefix = NotePrefixes[j]
 		var targetDiv = document.getElementById(thisPrefix + '_list')
-		var thisScheme = Gam_Table[thisPrefix][thisLayout]
+		var thisScheme = Gam_Table[thisLayout][thisPrefix]
 		var thisLength = thisScheme.length
 		if (thisLength > 0)
 		{
@@ -277,81 +316,55 @@ function Load_Scheme()
 	}
 	// legends
 	var targetDiv = document.getElementById('leg_list')
-	var thisScheme = Gam_Table['leg'][thisLayout]
+	var thisScheme = Gam_Table[thisLayout]['leg']
 	for (var i = 0, n = thisScheme.length; i < n; i++)
 	{
 		var thisItem = thisScheme[i]
-		var thisDiv = document.createElement('div')
-		var thisImg = document.createElement('img')
-		var thisTxt = document.createElement('span')
-		var thisWrt = document.createTextNode(thisItem[1])
-		thisDiv.className = 'leg'
-		thisImg.className = 'legimg ' + thisItem[0]
-		thisTxt.className = 'legtxt'
-		thisDiv.id = 'leg_' + i
-		thisImg.id = 'legimg_' + i
-		thisTxt.id = 'legtxt_' + i
-		thisImg.src = 'blank.png'
-		thisDiv.style.display = 'block'
-		thisTxt.appendChild(thisWrt)
-		thisDiv.appendChild(thisImg)
-		thisDiv.appendChild(thisTxt)
-		targetDiv.appendChild(thisDiv)
+		if (thisItem)
+		{
+			var thisDiv = document.createElement('div')
+			var thisImg = document.createElement('img')
+			var thisTxt = document.createElement('span')
+			var thisWrt = document.createTextNode(thisItem[1])
+			thisDiv.className = 'leg'
+			thisImg.className = 'legimg ' + Get_Group_Class(thisItem[0])
+			thisTxt.className = 'legtxt'
+			thisDiv.id = 'leg_' + i
+			thisImg.id = 'legimg_' + i
+			thisTxt.id = 'legtxt_' + i
+			thisImg.src = 'blank.png'
+			thisDiv.style.display = 'block'
+			thisTxt.appendChild(thisWrt)
+			thisDiv.appendChild(thisImg)
+			thisDiv.appendChild(thisTxt)
+			targetDiv.appendChild(thisDiv)
+		}
 	}
-	thisScheme = Gam_Table['aut'][thisLayout]
+	// author
+	thisScheme = Gam_Table[thisLayout]['aut']
 	if (thisScheme !== '')
 	{
 		document.getElementById('aut_div').style.display = 'block'
 		var thisTxt = document.createTextNode(thisScheme)
 		document.getElementById('aut_text').appendChild(thisTxt)
 	}
+	// keys
+	thisScheme = Gam_Table[thisLayout]['key']
 	targetDiv = document.getElementById('key_div')
-	thisScheme = Gam_Table['key'][thisLayout]
-	for (var i = 1; i < NumberOfKeys; i++)
-	{
-		var keyBigDiv = document.createElement('div')
-		keyBigDiv.className = 'key'
-		keyBigDiv.id = 'key_' + i
-		targetDiv.appendChild(keyBigDiv)
-	}
 	for (var i = 0; i < NumberOfKeys; i++)
 	{
 		var thisItem = thisScheme[i]
-		if (thisItem === undefined)
+		if (!thisItem)
+			thisItem = [,,,,,,,,,,,,,]
+		for (var j = 0; j < 14; j++)
 		{
-			if (i === 0)
-			{
-				switch (thisLayout)
-				{
-					case 'ATUS104':
-					case 'ATUS104DVO':
-						thisItem = ['','Caption','Shift','Ctrl','Alt','','','']
-					break
-					case 'ATDE105':
-						thisItem = ['','Unterschrift','Shift','Strg','Alt','AltGr','','']
-					break
-					case 'ATFR105':
-						thisItem = ['','L\u00e9gende','Maj.','Ctrl','Alt','AltGr','','']
-					break
-					case 'MACUS109OLD':
-					case 'MACUK110OLD':
-					case 'MACUS109NEW':
-						thisItem = ['','Caption','Shift','Ctrl','Alt','','']
-					break
-				}
-			}
-			else
-				thisItem = ['','','','','','','','']
+			// this should really take the data type (string or integer) of each field into account
+			if ((!thisItem[j]) && (thisItem[j] !== 0))
+				thisItem[j] = ''
 		}
-		else
-		{
-			for (var j = 0; j < 9; j ++)
-			{
-				if (thisItem[j] === undefined)
-					thisItem[j] = ''
-			}
-		}
-		var keyBigDiv = document.getElementById('key_' + i)
+		var keyBigDiv = document.createElement('div')
+		keyBigDiv.className = 'key'
+		keyBigDiv.id = 'key_' + i
 		var topBigDiv = document.createElement('div')
 		var botBigDiv = document.createElement('div')
 		var rgtBigDiv = document.createElement('div')
@@ -365,12 +378,18 @@ function Load_Scheme()
 		var addAltDiv = document.createElement('div')
 		var addAgrDiv = document.createElement('div')
 		var addXtrDiv = document.createElement('div')
-		var botDesTxt = document.createTextNode(thisItem[1])
+		var botDesTxt = document.createTextNode(thisItem[0])
 		var addShfTxt = document.createTextNode(thisItem[2])
-		var addCtrTxt = document.createTextNode(thisItem[3])
-		var addAltTxt = document.createTextNode(thisItem[4])
-		var addAgrTxt = document.createTextNode(thisItem[5])
-		var addXtrTxt = document.createTextNode(thisItem[6])
+		var addCtrTxt = document.createTextNode(thisItem[4])
+		var addAltTxt = document.createTextNode(thisItem[6])
+		var addAgrTxt = document.createTextNode(thisItem[8])
+		var addXtrTxt = document.createTextNode(thisItem[10])
+		var botDesGrp = Get_Group_Class(thisItem[1])
+		var addShfGrp = Get_Group_Class(thisItem[3])	// not used
+		var addCtrGrp = Get_Group_Class(thisItem[5])	// not used
+		var addAltGrp = Get_Group_Class(thisItem[7])	// not used
+		var addAgrGrp = Get_Group_Class(thisItem[9])	// not used
+		var addXtrGrp = Get_Group_Class(thisItem[11])	// not used
 		topBigDiv.className = 'keytop'
 		botBigDiv.className = 'keybot'
 		rgtBigDiv.className = 'keyrgt'
@@ -412,20 +431,30 @@ function Load_Scheme()
 		topBigDiv.appendChild(topChaDiv)
 		botBigDiv.appendChild(botChaDiv)
 		rgtBigDiv.appendChild(rgtChaDiv)
-		if (thisItem[7] !== '')
+		// haven't tested images recently
+		if (thisItem[13] !== '')
 		{
 			var picBigImg = document.createElement('img')
 			picBigImg.className = 'keyimg'
 			picBigImg.id = 'keyimg_' + i
-			picBigImg.src = thisItem[7]
+			picBigImg.src = thisItem[13]
 			keyBigDiv.appendChild(picBigImg)
 		}
 		keyBigDiv.appendChild(topBigDiv)
 		keyBigDiv.appendChild(botBigDiv)
 		keyBigDiv.appendChild(rgtBigDiv)
 		keyBigDiv.appendChild(addBigDiv)
-		keyBigDiv.className = thisItem[0]
+		keyBigDiv.className = botDesGrp
+		targetDiv.appendChild(keyBigDiv)
 	}
+}
+
+function Get_Group_Class(iNum)
+{
+	if (Number.isInteger(iNum))
+		return ClassesTableAbbr[iNum + 1]
+	else
+		return ''
 }
 
 function Load_Style()
@@ -447,6 +476,8 @@ function Load_Style()
 
 function Load_Layout()
 {
+	var thisLayout = ItemCurrent['lay']
+	// keys
 	for (var i = 0; i < NumberOfKeys; i++)
 	{
 		var thisItem = Lay_Table['key'][i]
@@ -459,14 +490,11 @@ function Load_Layout()
 				if (thisItem[j] === undefined)
 					thisItem[j] = ''
 			}
-			if (i !== 0)
-			{
-				targetDiv.style.left   = thisItem[0] * ConvertUnits + KeyPadding + CutPadding + 'px'
-				targetDiv.style.top    = thisItem[1] * ConvertUnits + KeyPadding + CutPadding + 'px'
-				targetDiv.style.width  = Math.max(thisItem[2] * ConvertUnits, 0) - KeyPadding * 2 + 'px'
-				targetDiv.style.height = Math.max(thisItem[3] * ConvertUnits, 0) - KeyPadding * 2 + 'px'
-				targetDiv.style.display = 'block'
-			}
+			targetDiv.style.left   = thisItem[0] * ConvertUnits + KeyPadding + CutPadding + 'px'
+			targetDiv.style.top    = thisItem[1] * ConvertUnits + KeyPadding + CutPadding + 'px'
+			targetDiv.style.width  = Math.max(thisItem[2] * ConvertUnits, 0) - KeyPadding * 2 + 'px'
+			targetDiv.style.height = Math.max(thisItem[3] * ConvertUnits, 0) - KeyPadding * 2 + 'px'
+			targetDiv.style.display = 'block'
 			var topChaDiv = document.getElementById('topcap_' + i)
 			var botChaDiv = document.getElementById('botcap_' + i)
 			var rgtChaDiv = document.getElementById('rgtcap_' + i)
@@ -477,9 +505,10 @@ function Load_Layout()
 			botChaDiv.appendChild(botChaTxt)
 			rgtChaDiv.appendChild(rgtChaTxt)
 		}                            
-		else if (i !== 0)
+		else
 			targetDiv.style.display = 'none'
 	}
+	// cutouts
 	var targetDiv = document.getElementById('cut_div')
 	for (var i = 0, n = Lay_Table['cut'].length; i < n; i++)
 	{
@@ -493,13 +522,82 @@ function Load_Layout()
 		cutBigDiv.style.height = Math.max(thisItem[3] * ConvertUnits, 0) + CutPadding * 2 + 'px'
 		targetDiv.appendChild(cutBigDiv)
 	}
+	// section headings
 	for (var i = 0, n = TextPrefixes.length; i < n; i++)
 	{
 		var thisPrefix = TextPrefixes[i]
-		var thisText = document.createTextNode(Lay_Table[thisPrefix] + ':')
+		var thisText = document.createTextNode(Lay_Table['txt'][thisPrefix] + ':')
 		document.getElementById(thisPrefix + '_title').appendChild(thisText)
 	}
-	document.title = Lay_Table['ttl'] + ' - ' + Gam_Table['gam'][ItemCurrent['lay']] + ' - ' + Lay_Table['nam']
+	// legend key
+	var thisItem = Lay_Table['leg']
+	var keyBigDiv = document.getElementById('leg_key')
+	var topBigDiv = document.createElement('div')
+	var botBigDiv = document.createElement('div')
+	var rgtBigDiv = document.createElement('div')
+	var addBigDiv = document.createElement('div')
+	var topChaDiv = document.createElement('div')
+	var botChaDiv = document.createElement('div')
+	var rgtChaDiv = document.createElement('div')
+	var botDesDiv = document.createElement('div')
+	var addShfDiv = document.createElement('div')
+	var addCtrDiv = document.createElement('div')
+	var addAltDiv = document.createElement('div')
+	var addAgrDiv = document.createElement('div')
+	var addXtrDiv = document.createElement('div')
+	var botDesTxt = document.createTextNode(thisItem[0])
+	var addShfTxt = document.createTextNode(thisItem[1])
+	var addCtrTxt = document.createTextNode(thisItem[2])
+	var addAltTxt = document.createTextNode(thisItem[3])
+	var addAgrTxt = document.createTextNode(thisItem[4])
+	var addXtrTxt = document.createTextNode(thisItem[5])
+	topBigDiv.className = 'keytop'
+	botBigDiv.className = 'keybot'
+	rgtBigDiv.className = 'keyrgt'
+	addBigDiv.className = 'keyadd'
+	topChaDiv.className = 'keycap'
+	botChaDiv.className = 'keycap'
+	rgtChaDiv.className = 'keycap'
+	botDesDiv.className = 'keydes'
+	addShfDiv.className = 'addshf'
+	addCtrDiv.className = 'addctr'
+	addAltDiv.className = 'addalt'
+	addAgrDiv.className = 'addagr'
+	addXtrDiv.className = 'addxtr'
+	topBigDiv.id = 'keytop_leg'
+	botBigDiv.id = 'keybot_leg'
+	rgtBigDiv.id = 'keyrgt_leg'
+	addBigDiv.id = 'keyadd_leg'
+	topChaDiv.id = 'topcap_leg'
+	botChaDiv.id = 'botcap_leg'
+	rgtChaDiv.id = 'rgtcap_leg'
+	botDesDiv.id = 'botdes_leg'
+	addShfDiv.id = 'addshf_leg'
+	addCtrDiv.id = 'addctr_leg'
+	addAltDiv.id = 'addalt_leg'
+	addAgrDiv.id = 'addagr_leg'
+	addXtrDiv.id = 'addxtr_leg'
+	botDesDiv.appendChild(botDesTxt)
+	addShfDiv.appendChild(addShfTxt)
+	addCtrDiv.appendChild(addCtrTxt)
+	addAltDiv.appendChild(addAltTxt)
+	addAgrDiv.appendChild(addAgrTxt)
+	addXtrDiv.appendChild(addXtrTxt)
+	addBigDiv.appendChild(addShfDiv)
+	addBigDiv.appendChild(addCtrDiv)
+	addBigDiv.appendChild(addAltDiv)
+	addBigDiv.appendChild(addAgrDiv)
+	addBigDiv.appendChild(addXtrDiv)
+	botBigDiv.appendChild(botDesDiv)
+	topBigDiv.appendChild(topChaDiv)
+	botBigDiv.appendChild(botChaDiv)
+	rgtBigDiv.appendChild(rgtChaDiv)
+	keyBigDiv.appendChild(topBigDiv)
+	keyBigDiv.appendChild(botBigDiv)
+	keyBigDiv.appendChild(rgtBigDiv)
+	keyBigDiv.appendChild(addBigDiv)
+	// page title
+	document.title = Gam_Table[thisLayout]['tit'] + ' - ' + Lay_Table['tit']
 }
 
 function Load_Effects()

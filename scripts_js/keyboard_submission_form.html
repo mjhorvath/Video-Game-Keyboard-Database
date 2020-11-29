@@ -24,14 +24,16 @@
 			</div>
 			<div class="bod">
 				<h2 class="cen">Video Game Keyboard Charts Submission Form</h2>
-				<p><i>This page is not fully developed yet. It is a work in progress.</i></p>
 				<p>Here you can submit a new scheme for a game. You must abide by the <a target="_blank" href="http://creativecommons.org/licenses/LGPL/2.1/">LGPL license</a>, as per the project as a whole.
 				<h3>1. Basic Info</h3>
-				<p>Provide basic information about the game you are submitting.</p>
+				<p>Provide basic information about the schema you are submitting.</p>
 				<p>
 					<table>
 						<tr>
-							<th>Game Title:</th><td><input type="text" id="namsub_div" size="40"/></td>
+							<th>Schema Title:</th><td><input type="text" id="titsub_div" size="40"/></td>
+						</tr>
+						<tr>
+							<th>Schema Author:</th><td><input type="text" id="autsub_div" size="40"/></td>
 						</tr>
 					</table>
 				</p>
@@ -81,10 +83,11 @@
 				<p><table id="addsub_div"></table></p>
 				<p><input type="button" value="Append New Field" onclick="Add_Field('add')"/><input type="button" value="Remove Last Field" onclick="Rem_Field('add')"/></p>
 				<h3>9. Submit Your Scheme</h3>
+				<p><i>This section is not fully developed yet. It is a work in progress.</i></p>
 				<p>You're done! Preview your scheme, provide any additional comments to be read by the approver, and press 'Submit' when you're ready.</p>
-				<form method="post" action="http://geocities.yahoo.com/forms?login=mikehorvath.geo">
+				<form method="post" action="">
 					<p>
-						<table>
+						<table id="submit_table">
 							<tr>
 								<th style="width:6em;">Your Name</th><td><input type="text" id="autsub_div" size="60" name="Name"/></td>
 							</tr>
@@ -97,12 +100,15 @@
 							<tr>
 								<td colspan="2"><textarea id="apvsub_div" rows="20" cols="80" name="Comments"></textarea></td>
 							</tr>
-							<tr style="display:none;">
-								<td colspan="2"><textarea id="endsub_div" rows="20" cols="80" name="Submission"></textarea></td>
+							<tr>
+								<th colspan="2">Submission Contents (read-only)</th>
+							</tr>
+							<tr>
+								<td colspan="2"><textarea id="endsub_div" rows="20" cols="80" name="Submission" readonly></textarea></td>
 							</tr>
 						</table>
 					</p>
-					<p><input type="button" value="Preview" onclick="Parse_Fields();Spawn_Preview();"/><input type="submit" value="Submit" onclick="Parse_Fields();Submit_Scheme();"/></p>
+					<p><input type="button" value="Preview" onclick="Parse_Fields();Spawn_Preview();"/><input type="button" value="Submit" onclick="Parse_Fields();Submit_Scheme();"/></p>
 				</form>
 			</div>
 		</div>

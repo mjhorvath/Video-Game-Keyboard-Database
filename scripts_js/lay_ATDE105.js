@@ -1,6 +1,7 @@
-Lay_Table['nam'] = 'PC/AT DE 105 Key'
+Lay_Table['tit'] = 'PC/AT DE 105 Key'
 Lay_Table['uni'] = 'px'
-Lay_Table['leg'] = ['Caption','Shift','Ctrl','Alt','AltGr','Extra']
+Lay_Table['leg'] = ['Unterschrift','Shift','Strg','Alt','AltGr','Extra']
+Lay_Table['aut'] = 'Michael Horvath'
 // left, top, width, height, norm_upp, norm_low, altgr_upp, altgr_low
 Lay_Table['key'] =
 [
@@ -124,14 +125,14 @@ Lay_Table['cut'] =
 	[1179	,321	,72		,144],
 	[1107	,393	,216	,72]
 ]
-Lay_Table['hed'] =
-[
-	'Tastatur Diagramm',
-	'Maus Kontrolle',
-	'Joystick Kontrolle',
-	'Tastatur/Joystick/Maus Kombinationen',
-	'Zus\u00e4tzliche Notizen',
-	'Zeichenerkl\u00e4rung',
-	'Zur\u00fcck zu',
-	'Zus\u00e4tzliche Mitwirkinden'
-]
+Lay_Table['txt'] =
+{
+	key:'Tastatur Diagramm',
+	mou:'Maus Kontrolle',
+	joy:'Joystick Kontrolle',
+	com:'Tastatur/Joystick/Maus Kombinationen',
+	add:'Zus\u00e4tzliche Notizen',
+	leg:'Zeichenerkl\u00e4rung',
+	ret:'Zur\u00fcck zu',
+	aut:'Autor'
+}

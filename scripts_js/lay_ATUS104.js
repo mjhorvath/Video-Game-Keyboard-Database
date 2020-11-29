@@ -1,6 +1,7 @@
-Lay_Table['nam'] = 'PC/AT US 104 Key'
+Lay_Table['tit'] = 'PC/AT US 104 Key'
 Lay_Table['uni'] = 'px'
 Lay_Table['leg'] = ['Caption','Shift','Ctrl','Alt','AltGr','Extra']
+Lay_Table['aut'] = 'Michael Horvath'
 Lay_Table['key'] =
 [
 	// left, top, width, height, norm_upp, norm_low, altgr_upp, altgr_low
@@ -133,14 +134,14 @@ Lay_Table['cut'] =
 	[1179	,321	,72		,144],
 	[1107	,393	,216	,72]
 ]
-Lay_Table['hed'] =
-[
-	'Keyboard Chart',
-	'Mouse Controls',
-	'Joystick Controls',
-	'Keyboard/Joystick/Mouse Combinations',
-	'Additional Notes',
-	'Legend',
-	'Return to',
-	'Additional credits'
-]
+Lay_Table['txt'] =
+{
+	key:'Keyboard Chart',
+	mou:'Mouse Controls',
+	joy:'Joystick Controls',
+	com:'Keyboard/Joystick/Mouse Combinations',
+	add:'Additional Notes',
+	leg:'Legend',
+	ret:'Return to',
+	aut:'Authors'
+}
