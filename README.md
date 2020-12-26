@@ -6,6 +6,6 @@ The software code and PHP scripts are licensed under [GNU Lesser General Public 
 
 The data content is licensed under the [Creative Commons Attribution-Share Alike 3.0 Unported License](https://creativecommons.org/licenses/by-sa/3.0/).
 
-View a live version of the project at [isometricland.net](http://isometricland.net/keyboard/keyboard.php).
+View a live version of this project at [isometricland.net](http://isometricland.net/keyboard/keyboard.php).
 
 Please [refer to the wiki](https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki) for further information.
