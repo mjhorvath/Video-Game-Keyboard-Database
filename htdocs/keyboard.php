@@ -224,8 +224,10 @@ var seourl_table =
 		</script>
 	</head>
 	<body onload=\"Select_Init();cube_snake_init();\">
-		<header>
-			<h2>Video Game Keyboard Diagrams</h2>
+		<header>\n";
+//	include($path_lib1 . "page-header.php");	// not working in Android Chrome
+	echo
+"			<h2>Video Game Keyboard Diagrams</h2>
 		</header>
 		<main>\n";
 ?>

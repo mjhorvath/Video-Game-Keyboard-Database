@@ -50,8 +50,10 @@
 	echo
 "	</head>
 	<body>
-		<header>
-			<h2>VGKD - Links</h2>
+		<header>\n";
+//	include($path_lib1 . "page-header.php");	// not working in Android Chrome
+	echo
+"			<h2>Links</h2>
 		</header>
 		<main>\n";
 ?>

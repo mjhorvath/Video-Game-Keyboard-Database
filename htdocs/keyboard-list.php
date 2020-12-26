@@ -79,8 +79,10 @@
 	echo
 "	</head>
 	<body onload=\"sortTableInit();Toggle_Waiting(false);\">
-		<header>
-			<h2>VGKD - Master Table</h2>
+		<header>\n";
+//	include($path_lib1 . "page-header.php");	// not working in Android Chrome
+	echo
+"			<h2>Master Table</h2>
 			<p>You can sort the table by clicking on the arrow icons in the table header.</p>
 		</header>
 		<main>

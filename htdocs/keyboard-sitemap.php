@@ -65,8 +65,10 @@
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 	</head>
 	<body>
-		<header>
-			<h2>VGKD - Sitemap Code</h2>
+		<header>\n";
+//	include($path_lib1 . "page-header.php");	// not working in Android Chrome
+	echo
+"			<h2>Sitemap Code</h2>
 			<p>This form generates code that can be copied and pasted into the project site's &quot;sitemap.xml&quot; file.</p>
 		</header>
 		<main>

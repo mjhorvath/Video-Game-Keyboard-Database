@@ -7,52 +7,6 @@
 	</p>
 	<p>&quot;Video Game Keyboard Diagrams&quot; software was created by <a target=\"_blank\" href=\"http://isometricland.net\">Michael Horvath</a> and is licensed under <a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\">GNU LGPLv3</a> or later. Content is licensed under <a target=\"_blank\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CC BY-SA 3.0</a> or later. You can find this project on <a target=\"_blank\" href=\"https://github.com/mjhorvath/vgkd\">GitHub</a>.</p>
 	<p>Return to <a href=\"" . $path_vgkb . "keyboard.php\">Video Game Keyboard Diagrams</a>. View the <a href=\"" . $path_vgkb . "keyboard-list.php\">master table</a> or <a href=\"" . $path_vgkb . "keyboard-log.php\">change log</a>. Here is a <a href=\"" . $path_vgkb . "keyboard-links.php\">list of links</a>. Having trouble printing? Take a look at <a href=\"" . $path_vgkb . "keyboard.php#print_tips\">these printing tips</a>.</p>
-	<p>\n";
-	// having someone's name repeated here three times bothers me. is there a way to have someone's name listed here only once?
-	// something like the following would be very easy to do if there were only one contributer
-	// "Binding scheme, keyboard layout and visual theme created by: Michael Horvath."
-	// something like this would be a little harder
-	// "Binding scheme created by Michael Horvath and John Smith. Keyboard layout and visual theme created by: Michael Horvath."
-	// it may only be worthwhile to pursue this if the number of contributers remains very small
-	// duplicated code here could be converted into a function
-	echo "Binding scheme created by: ";
-	$count_authors = 0;
-	$total_authors = count($gamesrecord_authors);
-	foreach ($gamesrecord_authors as $i => $gamesrecord_value)
-	{
-		echo $gamesrecord_value;
-		if ($count_authors < $total_authors - 1)
-			echo ", ";
-		else
-			echo ".\n";
-		$count_authors += 1;
-	}
-	echo "Keyboard layout created by: ";
-	$count_authors = 0;
-	$total_authors = count($layout_authors);
-	foreach ($layout_authors as $i => $layout_value)
-	{
-		echo $layout_value;
-		if ($count_authors < $total_authors - 1)
-			echo ", ";
-		else
-			echo ".\n";
-		$count_authors += 1;
-	}
-	echo "Visual theme created by: ";
-	$count_authors = 0;
-	$total_authors = count($stylesrecord_authors);
-	foreach ($stylesrecord_authors as $i => $stylesrecords_value)
-	{
-		echo $stylesrecords_value;
-		if ($count_authors < $total_authors - 1)
-			echo ", ";
-		else
-			echo ".\n";
-		$count_authors += 1;
-	}
-	echo
-"	</p>
 	<p>" . getFileTime() . " GRID:" . $gamesrecord_id . ".</p>
 </div>\n";
 ?>
