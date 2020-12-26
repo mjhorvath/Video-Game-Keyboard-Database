@@ -1157,7 +1157,7 @@ function reqListener()
 function do_export(content)
 {
 	// save output to file
-	download(content, game_seo + '-keyboard-diagram.html', 'text/html; charset=utf-8');
+	download(content, 'keyboard-diagram-' + game_seo + '.html', 'text/html; charset=utf-8');
 	// print output to new window
 //	var myWindow = window.open('', 'myWindow', '');
 //	myWindow.document.write(content);

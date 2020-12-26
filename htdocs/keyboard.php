@@ -425,7 +425,7 @@ var seourl_table =
 </form>
 <hr/>
 <h3>Description:</h3>
-<p>This PHP form generates a keyboard control diagram in a new window. You can select from among hotkeys and bindings for various video games and other software. If you do not have a JavaScript-enabled browser, then you may refer to the <a href="keyboard-list.php">master table</a> table instead, as it should be viewable in a JavaScript-less browser. If you are looking for Apple or non-English bindings, you may <i>also</i> have an easier time searching the master table, as there are so few of them.</p>
+<p>This PHP form generates a keyboard control diagram in a new window. You can select from among hotkeys and bindings for various video games and other software. If you do not have a JavaScript-enabled browser, then you may refer to the <a href="keyboard-list.php">master table</a> table instead. If you are looking for Apple-branded or non-English bindings, you may <i>also</i> benefit from searching the master table, since there are unfortunately so few of them.</p>
 <h3>Instructions:</h3>
 <ol>
 	<li>Select a keyboard (key positions).</li>

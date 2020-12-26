@@ -292,15 +292,15 @@ var binding_table =\n{\n" . $binding_string . "};
 				<hr/>
 				<form id="email_form" method="post" enctype="multipart/form-data" accept-charset="UTF-8" action="">
 					<div class="emltbl inbtop" style="margin:auto;">
-						<div class="emlrow"><div class="emlcll"><label for="email_1">Name: </label></div><div class="emlcll"><input class="email_input"  type="text" name="email_1" id="email_1" onchange="flag_eml_dirty();" placeholder="First and last name"  required="required" autocomplete="off"/></div></div>
-						<div class="emlrow"><div class="emlcll"><label for="email_2">Email:</label></div><div class="emlcll"><input class="email_input" type="email" name="email_2" id="email_2" onchange="flag_eml_dirty();" placeholder="Return email address" required="required" autocomplete="off"/></div></div>
-						<div class="emlrow"><div class="emlcll"><label for="email_3">Messg:</label></div><div class="emlcll"><textarea class="email_textarea"        name="email_3" id="email_3" onchange="flag_eml_dirty();" placeholder="Message to admin"     required="required" autocomplete="off"></textarea></div></div>
+						<div class="emlrow"><div class="emlcll"><label for="email_1">Name: </label></div><div class="emlcll"><input    class="email_input" type="text"  name="email_1" id="email_1" onchange="flag_eml_dirty();" placeholder="First and last name"  required="required" autocomplete="off"/></div></div>
+						<div class="emlrow"><div class="emlcll"><label for="email_2">Email:</label></div><div class="emlcll"><input    class="email_input" type="email" name="email_2" id="email_2" onchange="flag_eml_dirty();" placeholder="Return email address" required="required" autocomplete="off"/></div></div>
+						<div class="emlrow"><div class="emlcll"><label for="email_3">Messg:</label></div><div class="emlcll"><textarea class="email_textarea"           name="email_3" id="email_3" onchange="flag_eml_dirty();" placeholder="Message to admin"     required="required" autocomplete="off"></textarea></div></div>
 					</div>
 					<div class="emltbl inbtop" style="margin:auto;">
 						<div class="emlrow"><div class="emlcll"><input type="checkbox" name="email_11" id="email_11" style="margin:0.2em;"/></div><div class="emlcll"><label for="email_11">This is a brand new schema versus an update to an existing schema</label></div></div>
 					</div>
 					<div id="email_recaptcha" class="g-recaptcha" data-callback="flag_cap_dirty" data-sitekey="<?php echo writeRecaptchaKey(); ?>"></div>
-					<p style="text-align:left;">For human verification purposes, please click the checkbox labeled "I'm not a robot".</p>
+					<p style="text-align:left;">For human verification purposes, please click the checkbox labeled &quot;I'm not a robot&quot;.</p>
 					<input name="email_4"  id="email_4"  type="hidden" value=""/>
 					<input name="email_5"  id="email_5"  type="hidden" value=""/>
 					<input name="email_6"  id="email_6"  type="hidden" value=""/>
@@ -308,7 +308,7 @@ var binding_table =\n{\n" . $binding_string . "};
 					<input name="email_8"  id="email_8"  type="hidden" value=""/>
 					<input name="email_9"  id="email_9"  type="hidden" value=""/>
 					<input name="email_10" id="email_10" type="hidden" value=""/>
-					<div><button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit data to site admin" data-callback="recaptchaCallback">Submit</button><button id="unset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state" data-callback="recaptchaCallback">Reset</button><button id="prev_doc_button" type="button" style="padding:0.3em 1em;" autocomplete="off" onclick="document_export_ajax();" title="Export data to HTML file">Export</button></div>
+					<div><button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit data to site admin" data-callback="recaptchaCallback">Submit</button><button id="reset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state" data-callback="recaptchaCallback">Reset</button><button id="export_doc_button" type="button" style="padding:0.3em 1em;" autocomplete="off" onclick="document_export_ajax();" title="Export data to HTML file">Export</button></div>
 				</form>
 			</div>
 			<div id="pane_hlp" style="display:none;">
