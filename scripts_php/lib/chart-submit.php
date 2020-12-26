@@ -168,12 +168,12 @@
 				$cap_xtr = "'" . cleantextJS($binding_row[11])	. "'";
 				$img_fil = "'" . $binding_row[12]		. "'";
 				$img_uri = "'" . $binding_row[13]		. "'";
-				$bkg_nor = $binding_row[ 0];
-				$bkg_shf = $binding_row[ 2];
-				$bkg_ctl = $binding_row[ 4];
-				$bkg_alt = $binding_row[ 6];
-				$bkg_agr = $binding_row[ 8];
-				$bkg_xtr = $binding_row[10];
+				$bkg_nor = $binding_row[ 0] ? $binding_row[ 0] : 0;
+				$bkg_shf = $binding_row[ 2] ? $binding_row[ 2] : 0;
+				$bkg_ctl = $binding_row[ 4] ? $binding_row[ 4] : 0;
+				$bkg_alt = $binding_row[ 6] ? $binding_row[ 6] : 0;
+				$bkg_agr = $binding_row[ 8] ? $binding_row[ 8] : 0;
+				$bkg_xtr = $binding_row[10] ? $binding_row[10] : 0;
 			}
 			else
 			{
@@ -244,7 +244,15 @@
 		<script src=\"" . $path_lib1  . "java-footer.js\"></script>
 		<script src=\"https://www.google.com/recaptcha/api.js\"></script>
 		<script>
-var record_id = " . $gamesrecord_id . ";
+var gamesrecord_id = "	. $gamesrecord_id . ";
+var style_id = "	. $style_id . ";
+var layout_id = "	. $layout_id . ";
+var format_id = "	. $format_id . ";
+var game_id = "		. $game_id . ";
+var game_seo = '"	. $game_seo . "';
+var ten_bool = "	. $ten_bool . ";
+var svg_bool = "	. $svg_bool . ";
+
 var color_table =\n{\n" . $color_string . "};
 var commandlabel_table =\n{\n" . $commandlabel_string . "};
 var binding_table =\n{\n" . $binding_string . "};
@@ -300,7 +308,7 @@ var binding_table =\n{\n" . $binding_string . "};
 					<input name="email_8"  id="email_8"  type="hidden" value=""/>
 					<input name="email_9"  id="email_9"  type="hidden" value=""/>
 					<input name="email_10" id="email_10" type="hidden" value=""/>
-					<div><button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit changes to data" data-callback="recaptchaCallback">Submit Data</button><button id="unset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state" data-callback="recaptchaCallback">Reset Data</button></div>
+					<div><button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit data to site admin" data-callback="recaptchaCallback">Submit</button><button id="unset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state" data-callback="recaptchaCallback">Reset</button><button id="prev_doc_button" type="button" style="padding:0.3em 1em;" autocomplete="off" onclick="document_export_ajax();" title="Export data to HTML file">Export</button></div>
 				</form>
 			</div>
 			<div id="pane_hlp" style="display:none;">

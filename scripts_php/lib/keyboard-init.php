@@ -19,14 +19,14 @@
 	// <https://www.gnu.org/licenses/>.
 
 	$path_file		= "./keyboard-init.php";	// this file
-	$path_root1		= "../";		// for HTML and JS files
-	$path_lib1		= "./lib/";		// for HTML and JS files
-	$path_java1		= "../java/";		// for HTML and JS files
-	$path_ssi1		= "../ssi/";		// for HTML and JS files
-	$path_root2		= "../../";		// for PHP files
-	$path_lib2		= "./";			// for PHP files
-	$path_java2		= "../../java/";	// for PHP files
-	$path_ssi2		= "../../ssi/";		// for PHP files
+	$path_root1		= "../";		// for files in "keyboard/"
+	$path_lib1		= "./lib/";		// for files in "keyboard/"
+	$path_java1		= "../java/";		// for files in "keyboard/"
+	$path_ssi1		= "../ssi/";		// for files in "keyboard/"
+	$path_root2		= "../../";		// for files in "keyboard/lib/"
+	$path_lib2		= "./";			// for files in "keyboard/lib/"
+	$path_java2		= "../../java/";	// for files in "keyboard/lib/"
+	$path_ssi2		= "../../ssi/";		// for files in "keyboard/lib/"
 
 	include($path_ssi2	. "plugin-analyticstracking.php");
 	include($path_ssi2	. "keyboard-connection.php");
@@ -51,10 +51,10 @@
 	switch ($format_id)
 	{
 		case 0:
-			include($path_lib2 . "chart-embed.php");
+			include($path_lib2 . "chart-main-html.php");
 		break;
 		case 1:
-			include($path_lib2 . "chart-svg.php");
+			include($path_lib2 . "chart-only-svg.php");
 		break;
 		case 2:
 			include($path_lib2 . "chart-wiki.php");

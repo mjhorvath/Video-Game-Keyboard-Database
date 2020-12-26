@@ -57,6 +57,9 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2020/12/26: Renamed several PHP library files.</li>
+	<li>2020/12/26: The &quot;HTML/SVG&quot; format has been flattened into one single file instead of multiple separate files.</li>
+	<li>2020/12/26: Added an &quot;Export&quot; button to the submission page. You can now download your works-in-progress to disk.</li>
 	<li>2020/11/11: Added Turkish-Q and Italian layouts. Added some games.</li>
 	<li>2020/11/11: Updated the template spreadsheets.</li>
 	<li>2020/05/31: Updated bindings for <i>X4: Foundations</i>.</li>
@@ -275,7 +278,7 @@
 <p>If you have submitted layouts, bindings or styles, then your name will also appear at the bottom of each diagram.</p>
 <h4>Layouts</h4>
 <ul>
-	<li>Thanks to <a target="_blank" href="http://kbdlayout.info/">Keyboard Layout Info</a> for help when I couldn't figure stuff out.</li>
+	<li>Thanks to <a target="_blank" href="http://kbdlayout.info/">Keyboard Layout Info</a> for help when I couldn't figure stuff out!</li>
 	<li>Also thanks to Wikipedia.</li>
 </ul>
 <h4>Bindings</h4>

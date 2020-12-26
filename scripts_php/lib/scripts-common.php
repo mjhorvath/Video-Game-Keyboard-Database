@@ -125,7 +125,7 @@
 			$game_seo = null;
 			$game_id = null;
 			$layout_id = null;
-			selThisGameLayoutChart();
+			selThisGameLayoutChart();		// move this to top of file if possible
 			$fix_url = true;
 		}
 		if ($game_id === null)
@@ -351,7 +351,7 @@
 	{
 		return str_replace("\\t","\t",str_replace("\\n","&lt;br/&gt;",$instring));
 	}
-	function splittext($instring)
+	function splitkeytext($instring)
 	{
 		return array_filter(explode("\n", $instring));
 	}

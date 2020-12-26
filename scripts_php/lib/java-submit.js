@@ -19,8 +19,13 @@
 
 const path_lib1 = './lib/';
 
+var style_id = 0;
 var layout_id = 0;
-var record_id = 0;
+var format_id = 0;
+var game_id = 0;
+var game_seo = '';
+var ten_bool = 1;
+var svg_bool = 0;
 var commandouter_table = {};
 var legend_table = {};
 var is_key_dirty = false;
@@ -53,7 +58,6 @@ current_values.col_capxtr = 0;
 
 function init_submissions()
 {
-	layout_id = getParameterByName('lay');
 	disable_input_elements();
 //	enable_doc_controls();
 	add_input_typing_events();
@@ -297,6 +301,7 @@ function key_revert_changes()
 	push_values_from_cache_into_form();
 	document.getElementById('set_key_button').disabled = true;
 	document.getElementById('unset_key_button').disabled = true;
+	document.getElementById('prev_doc_button').disabled = false;
 	flag_key_clean();
 }
 
@@ -530,6 +535,7 @@ function toggle_set_and_revert_buttons(event)
 	{
 		document.getElementById('set_key_button').disabled = false;
 		document.getElementById('unset_key_button').disabled = false;
+		document.getElementById('prev_doc_button').disabled = true;
 		flag_key_dirty();
 	}
 	else
@@ -776,15 +782,15 @@ function switch_left_pane(side_tab)
 {
 	if (side_tab == 0)
 	{
-		document.getElementById('butt_inp').style.backgroundColor = '#eee';
-		document.getElementById('butt_hlp').style.backgroundColor = '#ccc';
+		document.getElementById('butt_inp').style.backgroundColor = '#ffffff';
+		document.getElementById('butt_hlp').style.backgroundColor = '#c0c0c0';
 		document.getElementById('pane_inp').style.display = 'block';
 		document.getElementById('pane_hlp').style.display = 'none';
 	}
 	else if (side_tab == 1)
 	{
-		document.getElementById('butt_inp').style.backgroundColor = '#ccc';
-		document.getElementById('butt_hlp').style.backgroundColor = '#eee';
+		document.getElementById('butt_inp').style.backgroundColor = '#c0c0c0';
+		document.getElementById('butt_hlp').style.backgroundColor = '#ffffff';
 		document.getElementById('pane_inp').style.display = 'none';
 		document.getElementById('pane_hlp').style.display = 'block';
 	}
@@ -943,7 +949,7 @@ function document_save_changes()
 	document.getElementById( 'email_7').value = process_command_data();
 	document.getElementById( 'email_8').value = process_binding_data();
 	document.getElementById( 'email_9').value = layout_id;
-	document.getElementById('email_10').value = record_id;
+	document.getElementById('email_10').value = gamesrecord_id;
 	do_recaptcha();
 }
 
@@ -1056,15 +1062,119 @@ function document_change_style(game_id, layout_id, game_seo)
 		reloadThisPage(game_id, layout_id, game_seo);
 }
 
+// https://stackoverflow.com/questions/13405129/javascript-create-and-save-file
+// Browser support is flaky.
+// Function to download data to a file
+function download(data, filename, type) {
+    var file = new Blob([data], {type: type});
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Others
+        var a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);  
+        }, 0); 
+    }
+}
+
+function document_export_ajax()
+{
+	collect_legend_data();
+	collect_command_data();
+//	collect_binding_data();
+//	console.log(JSON.stringify(binding_table));
+	const url = 'lib/chart-export-html.php';
+	const data =
+	{
+		gamesrecord_id: gamesrecord_id,
+		style_id: style_id,
+		layout_id: layout_id,
+		format_id: format_id,
+		game_id: game_id,
+		game_seo: game_seo,
+		ten_bool: ten_bool,
+		svg_bool: svg_bool,
+		commandouter_table: commandouter_table,
+		legend_table: legend_table,
+		binding_table: binding_table
+	}
+	$.ajax
+	({
+		type: 'POST',
+		url: url,
+		data: JSON.stringify(data),
+		contentType: 'application/json; charset=utf-8',
+		dataType: 'html',
+		success: function(msg)
+		{
+			do_export(msg);
+		},
+		error: function(jqXHR, textStatus, errorThrown)
+		{
+			console.log(textStatus, errorThrown);
+		}
+	});
+}
+
+function document_export_xhr()
+{
+	collect_legend_data();
+	collect_command_data();
+//	collect_binding_data();
+	const url = 'lib/chart-export-html.php';
+	const data =
+	{
+		gamesrecord_id: gamesrecord_id,
+		style_id: style_id,
+		layout_id: layout_id,
+		format_id: format_id,
+		game_id: game_id,
+		game_seo: game_seo,
+		ten_bool: ten_bool,
+		svg_bool: svg_bool,
+		commandouter_table: commandouter_table,
+		legend_table: legend_table,
+		binding_table: binding_table
+	}
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', url, true);
+	xhr.addEventListener('load', reqListener);
+	xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+	xhr.send(JSON.stringify(data));
+}
+
+function reqListener()
+{
+	do_export(this.responseText);
+}
+
+function do_export(content)
+{
+	// save output to file
+	download(content, game_seo + '-keyboard-diagram.html', 'text/html; charset=utf-8');
+	// print output to new window
+//	var myWindow = window.open('', 'myWindow', '');
+//	myWindow.document.write(content);
+//	myWindow.document.close();
+	// print output to browser console
+//	console.log(content);
+}
+
 // there is an analogous function written in PHP in "./lib/scripts-common.php"
 // need to keep the two functions synced
 function seo_url(input)
 {
-	input = input.toLowerCase();					//convert to lowercase
-	input = input.replace(/'|"/gm, '');				//remove single and double quotes
-	input = input.replace(/[^a-zA-Z0-9]+/gm, '-');			//replace everything non-alphanumeric with dashes
-	input = input.replace(/\-+/gm, '-');				//replace multiple dashes with one dash
-	input = input.replace(/^\-+|\-+$/gm, '');			//trim dashes from the beginning and end of the string if any
+	input = input.toLowerCase();					// convert to lowercase
+	input = input.replace(/'|"/gm, '');				// remove single and double quotes
+	input = input.replace(/[^a-zA-Z0-9]+/gm, '-');			// replace everything non-alphanumeric with dashes
+	input = input.replace(/\-+/gm, '-');				// replace multiple dashes with one dash
+	input = input.replace(/^\-+|\-+$/gm, '');			// trim dashes from the beginning and end of the string if any
 	return input;
 }
 
@@ -1175,12 +1285,14 @@ function enable_doc_controls()
 	else
 		document.getElementById('set_doc_button').disabled = true;
 	document.getElementById('unset_doc_button').disabled = false;
+	document.getElementById('prev_doc_button').disabled = false;
 }
 
 function disable_doc_controls()
 {
 	document.getElementById('set_doc_button').disabled = true;
 	document.getElementById('unset_doc_button').disabled = true;
+	document.getElementById('prev_doc_button').disabled = true;
 }
 
 // non!
@@ -1260,11 +1372,11 @@ function process_legend_data()
 	if (Object.keys(legend_table).length > 0)
 	{
 		// should really fetch column names from the database instead
-		var legend_string = 'insert into legends (legend_id,record_id,keygroup_id,legend_description) values\n';
+		var legend_string = 'insert into legends (legend_id,gamesrecord_id,keygroup_id,legend_description) values\n';
 		for (var i in legend_table)
 		{
 			const legend_item = legend_table[i];
-			legend_string += '(NULL,' + record_id + ',' + i + ',' + cleantextTSV(legend_item) + '),\n';
+			legend_string += '(NULL,' + gamesrecord_id + ',' + i + ',' + cleantextTSV(legend_item) + '),\n';
 		}
 		return legend_string.slice(0, -2) + ';\n';
 	}
@@ -1284,7 +1396,7 @@ function process_command_data()
 	if (temp_length > 0)
 	{
 		// should really fetch column names from the database instead
-		var command_string = 'insert into commands (command_id,record_id,commandtype_id,command_text,command_description,keygroup_id) values\n';
+		var command_string = 'insert into commands (command_id,gamesrecord_id,commandtype_id,command_text,command_description,keygroup_id) values\n';
 		for (var j in commandouter_table)
 		{
 			const command_num = parseInt(j,10) + 1;
@@ -1295,7 +1407,7 @@ function process_command_data()
 				var command_value_1 = !command_item[0] ? 'NULL' : parseInt(command_item[0],10);
 				var command_value_2 = !command_item[1] ? 'NULL' : cleantextTSV(command_item[1]);
 				var command_value_3 = !command_item[2] ? 'NULL' : cleantextTSV(command_item[2]);
-				command_string += '(NULL,' + record_id + ',' + command_num + ',' + command_value_2 + ',' + command_value_3 + ',' + command_value_1 +'),\n';
+				command_string += '(NULL,' + gamesrecord_id + ',' + command_num + ',' + command_value_2 + ',' + command_value_3 + ',' + command_value_1 +'),\n';
 			}
 		}
 		return command_string.slice(0, -2) + ';\n';
@@ -1310,7 +1422,7 @@ function process_binding_data()
 	if (Object.keys(binding_table).length > 0)
 	{
 		// should really fetch column names from the database instead
-		var binding_string = 'insert into bindings (binding_id,record_id,key_number,normal_action,normal_group,shift_action,shift_group,ctrl_action,ctrl_group,alt_action,alt_group,altgr_action,altgr_group,extra_action,extra_group,image_file,image_uri) values\n';
+		var binding_string = 'insert into bindings (binding_id,gamesrecord_id,key_number,normal_action,normal_group,shift_action,shift_group,ctrl_action,ctrl_group,alt_action,alt_group,altgr_action,altgr_group,extra_action,extra_group,image_file,image_uri) values\n';
 		for (var i in binding_table)
 		{
 			const binding_num = parseInt(i,10) + 1;
@@ -1327,7 +1439,7 @@ function process_binding_data()
 			if (binding_concat != '')
 			{
 				binding_string +=	'(NULL'					+ ',' +
-							record_id				+ ',' +
+							gamesrecord_id				+ ',' +
 							binding_num				+ ',' +
 							cleantextTSV(binding_item[ 4])		+ ',' +
 							cleannumberTSV(binding_item[12])	+ ',' +
@@ -1388,8 +1500,7 @@ function getParameterByName(name, url)
 {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
-    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
+    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
@@ -1397,8 +1508,8 @@ function getParameterByName(name, url)
 
 function update_select_style(this_select)
 {
-	const target_value = this_select.selectedIndex;
-	this_select.className = 'sel' + color_table[target_value][1];
+	const style_id = this_select.selectedIndex;
+	this_select.className = 'sel' + color_table[style_id][1];
 }
 
 function update_group_column()

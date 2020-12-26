@@ -13,3 +13,11 @@
     Order deny,allow
     Allow from all
 </FilesMatch>
+<FilesMatch "^chart-export-html\.php$">
+    Order deny,allow
+    Allow from all
+</FilesMatch>
+<FilesMatch "^chart-export-svg\.php$">
+    Order deny,allow
+    Allow from all
+</FilesMatch>
