@@ -21,39 +21,44 @@
 	header("Content-Type: text/html; charset=utf8");
 	include($path_lib2 . "queries-chart.php");
 
-	$path_file		= "./chart-embed.php";	// this file
+	$path_file		= "./chart-main-html.php";	// this file
 	$commandouter_table	= [];
 	$commandouter_count	= 0;
 	$commandlabel_table	= [];
 	$commandlabel_count	= 0;
-	$author_table		= [];
-	$style_table		= [];
-	$gamesrecord_id		= 0;
-	$gamesrecord_authors	= [];
-	$stylesrecord_id	= 0;
-	$stylesrecord_authors	= [];
-	$stylegroup_id		= 0;
-	$style_filename		= "";
-	$style_name		= "";
-	$game_name		= "";
-	$platform_name		= "";
-	$platform_id		= 0;
-	$layout_name		= "";
-	$layout_authors		= [];
-	$layout_keysnum		= 0;			// hopefully obsolete
-	$layout_keygap		= 4;
-	$layout_padding		= 18;
-	$layout_fullsize_width		= 1200;
-	$layout_fullsize_height		= 400;
-	$layout_tenkeyless_width	= 1200;
-	$layout_tenkeyless_height	= 400;
-	$layout_legend_padding		= 36;
-	$layout_legend_height		= 72;
-	$layout_legend_top	= 0;
-	$layout_min_horizontal	= 0;
-	$layout_max_horizontal	= 0;
-	$layout_min_vertical	= 0;
-	$layout_max_vertical	= 0;
+	$position_table		= [];		// populated by selPositionsChart()
+	$keystyle_table		= [];		// populated by selKeyStylesChart()
+	$binding_table		= [];		// populated by selBindingsChart()
+	$legend_table		= [];		// populated by selLegendsChart()
+	$author_table		= [];		// populated by selAuthorsChart()
+//	$stylegroup_table	= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
+	$style_table		= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
+	$gamesrecord_id		= 0;		// set by selThisGamesRecordChart()
+	$gamesrecord_authors	= [];		// populated by selContribsGamesChart(), utilized by "footer-chart.php"
+	$stylesrecord_id	= 0;		// set by selThisStylesRecordChart()
+	$stylesrecord_authors	= [];		// populated by selContribsStylesChart(), utilized by "footer-chart.php"
+	$stylegroup_id		= 0;		// set by selThisStyleChart(), also contained inside $stylegroup_table
+	$style_filename		= "";		// set by selThisStyleChart()
+	$style_name		= "";		// set by selThisStyleChart() and checkURLParameters(), utilized by checkForErrors()
+	$game_name		= "";		// set by checkURLParameters(), utilized by checkForErrors()
+	$platform_name		= "";		// set by checkURLParameters(), utilized by checkForErrors()
+	$platform_id		= 0;		// set by checkURLParameters(), utilized by checkForErrors()
+	$layout_name		= "";		// set by checkURLParameters(), utilized by checkForErrors()
+	$layout_authors		= [];		// populated by selContribsLayoutsChart(), utilized by "footer-chart.php"
+	$layout_keysnum		= 0;		// reset by selThisLayoutChart(), hopefully obsolete
+	$layout_keygap		= 4;		// reset by selThisLayoutChart()
+	$layout_padding		= 18;		// reset by selThisLayoutChart()
+	$layout_fullsize_width		= 1200;		// reset by selThisLayoutChart()
+	$layout_fullsize_height		= 400;		// reset by selThisLayoutChart()
+	$layout_tenkeyless_width	= 1200;		// reset by selThisLayoutChart()
+	$layout_tenkeyless_height	= 400;		// reset by selThisLayoutChart()
+	$layout_legend_padding		= 36;		// reset by selThisLayoutChart()
+	$layout_legend_height		= 72;		// reset by selThisLayoutChart()
+	$layout_legend_top	= 0;		// reset by selThisLayoutChart()
+	$layout_min_horizontal	= 0;		// reset by selThisLayoutChart()
+	$layout_max_horizontal	= 0;		// reset by selThisLayoutChart()
+	$layout_min_vertical	= 0;		// reset by selThisLayoutChart()
+	$layout_max_vertical	= 0;		// reset by selThisLayoutChart()
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -77,12 +82,16 @@
 	selThisStylesRecordChart();
 	selThisLayoutChart();
 	selThisPlatformChart();
+	selPositionsChart();
+	selBindingsChart();
 	selLegendsChart();
 	selCommandsChart();
 	selContribsGamesChart();
 	selContribsStylesChart();
 	selContribsLayoutsChart();
 	selLegendColorsChart();
+	selKeyStylesChart();
+	selKeyStyleClassesChart();
 	selCommandLabelsChart();
 
 	// close connection
@@ -116,20 +125,31 @@
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">
 		<title>" . $page_title_a . $temp_separator . $page_title_b . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\">
-		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\">
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root2 . "style_normalize.css\">
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-footer.css\"/>
+		<link rel=\"icon\" type=\"image/png\" href=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAALiEAAC4hAQdb/P8AAAAgSURBVDhPY/xvG8VACmCC0kSDUQ3EgFENxABaa2BgAAANNAG2n4KuogAAAABJRU5ErkJggg==\">
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
 		<meta name=\"description\" content=\""	. $language_description		. $temp_game_name . ".\"/>
 		<meta name=\"keywords\" content=\""	. $language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
-		<script src=\"" . $path_lib1 . "java-footer.js\"></script>\n";
+		<script>\n";
+	include($path_lib2 . "java-footer.js");
+	echo
+"		</script>\n";
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";
-	include($path_lib2 . "embed-" . $style_filename . ".css");
-	// delete this when the problem goes away
+	include($path_root2 . "style_normalize.css");
+	echo
+"		</style>\n";
+	echo
+"		<style type=\"text/css\">\n";
+	include($path_lib2 . "style-footer.css");
+	echo
+"		</style>\n";
+	echo
+"		<style type=\"text/css\">\n";
 	if ($style_filename == "")
-		error_log("Error: Something is wrong with style. " . $can_url, 0);
+		error_log("Error: Something is wrong with style. " . $can_url, 0);	// delete this when the problem goes away
+	else
+		include($path_lib2 . "embed-" . $style_filename . ".css");
 	echo
 "		</style>\n";
 ?>
@@ -140,10 +160,8 @@
 		</header>
 		<main>
 			<div class="svgdiv" style="position:relative;width:<?php echo $layout_max_horizontal; ?>px;height:<?php echo $layout_max_vertical; ?>px;">
-				<iframe src="<?php echo $svg_url; ?>" width="<?php echo $layout_max_horizontal; ?>" height="<?php echo $layout_max_vertical; ?>" sandbox style="border:none;margin:0;padding:0;">
-					<!--<img src="triangle.png" alt="Triangle with three unequal sides" />-->
-				</iframe>
 <?php
+	include($path_lib2 . "chart-main-svg.php");
 /*
 	// advertisement
 	echo

@@ -345,17 +345,17 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 				// normal_group, normal_action, shift_group, shift_action, ctrl_group, ctrl_action, alt_group, alt_action, altgr_group, altgr_action, extra_group, extra_action, image_file, image_uri
 				$binding_row	= $binding_table[$i];
 				$bkg_nor = getkeycolor($binding_row[ 0]);
-				$cap_nor = splittext(cleantextSVG($binding_row[ 1]));
+				$cap_nor = splitkeytext(cleantextSVG($binding_row[ 1]));
 				$bkg_shf = getkeycolor($binding_row[ 2]);
-				$cap_shf = splittext(cleantextSVG($binding_row[ 3]));
+				$cap_shf = splitkeytext(cleantextSVG($binding_row[ 3]));
 				$bkg_ctl = getkeycolor($binding_row[ 4]);
-				$cap_ctl = splittext(cleantextSVG($binding_row[ 5]));
+				$cap_ctl = splitkeytext(cleantextSVG($binding_row[ 5]));
 				$bkg_alt = getkeycolor($binding_row[ 6]);
-				$cap_alt = splittext(cleantextSVG($binding_row[ 7]));
+				$cap_alt = splitkeytext(cleantextSVG($binding_row[ 7]));
 				$bkg_agr = getkeycolor($binding_row[ 8]);
-				$cap_agr = splittext(cleantextSVG($binding_row[ 9]));
+				$cap_agr = splitkeytext(cleantextSVG($binding_row[ 9]));
 				$bkg_xtr = getkeycolor($binding_row[10]);
-				$cap_xtr = splittext(cleantextSVG($binding_row[11]));
+				$cap_xtr = splitkeytext(cleantextSVG($binding_row[11]));
 				$img_fil = $binding_row[12];
 				$img_uri = $binding_row[13];
 			}
