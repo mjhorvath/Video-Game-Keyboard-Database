@@ -49,7 +49,7 @@ svg	{font-family:"DejaVu Sans Condensed",Helvetica,Sans-Serif;font-size:14px;}
 .txtblk	{fill:#ffffff;}
 .txtorg	{fill:#000000;}
 .txtolv	{fill:#000000;}
-.txtbrn	{fill:#000000;}
+.txtbrn	{fill:#ffffff;}
 .txtnon	{fill:#000000;}
 /*
 Not much support for these in browsers. Will need to recalculate everything if I use them.

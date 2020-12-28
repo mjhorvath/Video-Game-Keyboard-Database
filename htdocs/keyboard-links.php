@@ -60,10 +60,7 @@
 <p>On this page I will keep a list of online discussions that are useful to this project.</p>
 <h3>Discussion</h3>
 <ul>
-	<li>If you’re a fan of the same 150 games I am... (<a target="_blank" href="https://forum.quartertothree.com/t/if-youre-a-fan-of-the-same-150-games-i-am/127577">link</a>)</li>
-	<li>Consequences of adding more URL query parameters? (<a target="_blank" href="https://webmasters.stackexchange.com/questions/126064/consequences-of-adding-more-url-query-parameters">link</a>)</li>
-	<li>MySQL/PHP data sort order (<a target="_blank" href="https://stackoverflow.com/questions/59078964/mysql-php-data-sort-order">link</a>)</li>
-	<li>How to map many old URLs to a new host with a redirect under Apache cPanel? (<a target="_blank" href="https://webmasters.stackexchange.com/questions/126332/how-to-map-many-old-urls-to-a-new-host-with-a-redirect-under-apache-cpanel">link</a>)</li>
+	<li>&quot;If you’re a fan of the same [0,&infin;) games I am...&quot; (<a target="_blank" href="https://forum.quartertothree.com/t/if-youre-a-fan-of-the-same-150-games-i-am/127577">link</a>)</li>
 </ul>
 <h3>Further Reading</h3>
 <ul>

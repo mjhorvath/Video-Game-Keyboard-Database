@@ -52,7 +52,7 @@ div.capgry,div.leggry,select.selgry,option.optgry	{background:#808080;color:#fff
 div.capblk,div.legblk,select.selblk,option.optblk	{background:#404040;color:#ffffff;}
 div.caporg,div.legorg,select.selorg,option.optorg	{background:#ECA777;color:#000000;}	/* ( 74, 40, 60) */
 div.capolv,div.legolv,select.selolv,option.optolv	{background:#A8BF75;color:#000000;}	/* ( 74, 40,120) */
-div.capbrn,div.legbrn,select.selbrn,option.optbrn	{background:#685510;color:#000000;}	/* ( 37, 40, 90) */
+div.capbrn,div.legbrn,select.selbrn,option.optbrn	{background:#685510;color:#ffffff;}	/* ( 37, 40, 90) */
 div.capnon,div.legnon,select.selnon,option.optnon	{background:#B6B6B6;color:#000000;}	/* ( 74,  0,  0) */
 div.capred,div.legred	{border:1px solid #ffffff;}
 div.capyel,div.legyel	{border:1px solid #ffffff;}
