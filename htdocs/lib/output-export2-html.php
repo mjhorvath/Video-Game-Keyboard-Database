@@ -19,25 +19,48 @@
 	// <https://www.gnu.org/licenses/>.
 
 	header("Content-Type: text/html; charset=utf8");
+
+	$path_vgkb		= "http://isometricland.net/keyboard/";
+	$path_file		= "./output-export2-html.php";	// this file
+	$path_root1		= "../";		// for files in "keyboard/"
+	$path_lib1		= "./lib/";		// for files in "keyboard/"
+	$path_java1		= "../java/";		// for files in "keyboard/"
+	$path_ssi1		= "../ssi/";		// for files in "keyboard/"
+	$path_root2		= "../../";		// for files in "keyboard/lib/"
+	$path_lib2		= "./";			// for files in "keyboard/lib/"
+	$path_java2		= "../../java/";	// for files in "keyboard/lib/"
+	$path_ssi2		= "../../ssi/";		// for files in "keyboard/lib/"
+
+	include($path_ssi2 . "keyboard-connection.php");
+	include($path_lib2 . "scripts-common.php");
+	include($path_lib2 . "queries-common.php");
 	include($path_lib2 . "queries-chart.php");
 
-	$path_file		= "./chart-main-html.php";	// this file
-	$commandouter_table	= [];
-	$commandouter_count	= 0;
-	$commandlabel_table	= [];
-	$commandlabel_count	= 0;
+	$json_input = file_get_contents('php://input');
+	$json_data = json_decode($json_input, true);
+
+//	$gamesrecord_id		= $json_data["gamesrecord_id"];		// set by java-export.js
+	$style_id		= $json_data["style_id"];		// set by java-export.js
+	$layout_id		= $json_data["layout_id"];		// set by java-export.js
+	$format_id		= $json_data["format_id"];		// set by java-export.js
+	$game_id		= $json_data["game_id"];		// set by java-export.js
+	$game_seo		= $json_data["game_seo"];		// set by java-export.js
+	$ten_bool		= $json_data["ten_bool"];		// set by java-export.js
+	$svg_bool		= $json_data["svg_bool"];		// set by java-export.js
+	$commandouter_table	= [];		// set by selCommandsChart()
+	$commandlabel_table	= [];		// set by selCommandLabelsChart()
 	$position_table		= [];		// populated by selPositionsChart()
 	$keystyle_table		= [];		// populated by selKeyStylesChart()
 	$binding_table		= [];		// populated by selBindingsChart()
 	$legend_table		= [];		// populated by selLegendsChart()
 	$author_table		= [];		// populated by selAuthorsChart()
-//	$stylegroup_table	= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
-	$style_table		= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
+	$stylegroup_table	= [];		// set by selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
+	$style_table		= [];		// set by selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
 	$gamesrecord_id		= 0;		// set by selThisGamesRecordChart()
 	$gamesrecord_authors	= [];		// populated by selContribsGamesChart(), utilized by "footer-chart.php"
 	$stylesrecord_id	= 0;		// set by selThisStylesRecordChart()
 	$stylesrecord_authors	= [];		// populated by selContribsStylesChart(), utilized by "footer-chart.php"
-	$stylegroup_id		= 0;		// set by selThisStyleChart(), also contained inside $stylegroup_table
+	$stylegroup_id		= 0;		// set by selThisStyleChart(), also contained inside $stylegroup_table, utilized by "footer-chart.php"
 	$style_filename		= "";		// set by selThisStyleChart()
 	$style_name		= "";		// set by selThisStyleChart() and checkURLParameters(), utilized by checkForErrors()
 	$game_name		= "";		// set by checkURLParameters(), utilized by checkForErrors()
@@ -71,9 +94,11 @@
 	// MySQL queries
 	selURLQueriesAll();		// gather and validate URL parameters
 	selDefaultsAll();		// get default values for entities if missing
-	checkURLParameters();		// gather and validate URL parameters, not a query
+//	getURLParameters();		// gather and validate URL parameters, not a query, AJAX is being used above instead
+//	checkURLParameters();		// gather and validate URL parameters, not a query, AJAX is being used above instead
 	selThisLanguageStringsChart();
 	selAuthorsChart();
+	selThisGamesIDChart();
 	selStyleGroupsChart();
 	selStylesChart();
 	selThisStyleChart();
@@ -128,12 +153,7 @@
 		<link rel=\"icon\" type=\"image/png\" href=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAALiEAAC4hAQdb/P8AAAAgSURBVDhPY/xvG8VACmCC0kSDUQ3EgFENxABaa2BgAAANNAG2n4KuogAAAABJRU5ErkJggg==\">
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
 		<meta name=\"description\" content=\""	. $language_description		. $temp_game_name . ".\"/>
-		<meta name=\"keywords\" content=\""	. $language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
-		<script>\n";
-	include($path_lib2 . "java-footer.js");
-	echo
-"		</script>\n";
-	echo writeAnalyticsTracking();
+		<meta name=\"keywords\" content=\""	. $language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>\n";
 	echo
 "		<style type=\"text/css\">\n";
 	include($path_root2 . "style_normalize.css");
@@ -161,7 +181,7 @@
 		<main>
 			<div class="svgdiv" style="position:relative;width:<?php echo $layout_max_horizontal; ?>px;height:<?php echo $layout_max_vertical; ?>px;">
 <?php
-	include($path_lib2 . "chart-main-svg.php");
+	include($path_lib2 . "output-main-svg.php");
 /*
 	// advertisement
 	echo
@@ -221,7 +241,7 @@
 			</div>
 		</main>
 		<footer>
-<?php include($path_lib2 . "footer-chart.php"); ?>
+<?php include($path_lib2 . "footer-mini.php"); ?>
 		</footer>
 	</body>
 </html>

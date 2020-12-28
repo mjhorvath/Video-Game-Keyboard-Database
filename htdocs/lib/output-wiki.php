@@ -20,8 +20,9 @@
 
 	header("Content-Type: text/html; charset=utf8");
 	include($path_lib2 . "queries-chart.php");
+	include($path_ssi2 . "plugin-analyticstracking.php");
 
-	$path_file		= "./chart-wiki.php";	// this file
+	$path_file		= "./output-wiki.php";	// this file
 	$binding_table		= [];
 	$legend_table		= [];
 	$command_table		= [];		// not implemented yet
@@ -56,7 +57,8 @@
 
 	// MySQL queries
 	selURLQueriesAll();		// gather and validate URL parameters
-	selDefaultsAll();			// get default values for entities if missing
+	selDefaultsAll();		// get default values for entities if missing
+	getURLParameters();		// gather and validate URL parameters, not a query
 	checkURLParameters();		// gather and validate URL parameters, not a query
 	selThisLanguageStringsChart();
 	selAuthorsChart();

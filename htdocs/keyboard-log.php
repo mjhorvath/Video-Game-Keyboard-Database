@@ -59,6 +59,7 @@
 ?>
 <h3>News &amp; Updates</h3>
 <ul>
+	<li>2020/12/28: Un-flattened the &quot;HTML/SVG&quot; format again to save bandwidth and added an &quot;Export&quot; button to the bottom of the page instead.</li>
 	<li>2020/12/26: Renamed several PHP library files.</li>
 	<li>2020/12/26: The &quot;HTML/SVG&quot; format has been flattened into one single file instead of multiple separate files.</li>
 	<li>2020/12/26: Added an &quot;Export&quot; button to the submission page. You can now download your works-in-progress to disk.</li>

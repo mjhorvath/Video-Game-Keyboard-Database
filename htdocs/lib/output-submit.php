@@ -21,8 +21,9 @@
 	header("Content-Type: text/html; charset=utf8");
 	include($path_lib2 . "queries-chart.php");
 	include($path_ssi2 . "recaptchakey.php");
+	include($path_ssi2 . "plugin-analyticstracking.php");
 
-	$path_file		= "./chart-submit.php";		// this file
+	$path_file		= "./output-submit.php";		// this file
 	$commandouter_table	= [];
 	$commandouter_count	= 0;
 	$commandlabel_table	= [];
@@ -77,6 +78,7 @@
 	// MySQL queries
 	selURLQueriesAll();		// gather and validate URL parameters
 	selDefaultsAll();		// get default values for entities if missing
+	getURLParameters();		// gather and validate URL parameters, not a query
 	checkURLParameters();		// gather and validate URL parameters, not a query
 	selThisLanguageStringsChart();
 	selAuthorsChart();
@@ -226,7 +228,7 @@
 		<title>" . cleantextHTML($page_title_a . $temp_separator . $page_title_b) . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root2 . "style_normalize.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-footer.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-submit.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
@@ -238,9 +240,10 @@
 	include($path_lib2 . "submit-" . $style_filename . ".css");
 	echo
 "		</style>
-		<script src=\"" . $path_root2 . "java/jquery-3.3.1.min.js\"></script>
+		<script src=\"" . $path_root1 . "java/jquery-3.3.1.min.js\"></script>
 		<script src=\"" . $path_lib1  . "java-common.js\"></script>
 		<script src=\"" . $path_lib1  . "java-submit.js\"></script>
+		<script src=\"" . $path_lib1  . "java-export.js\"></script>
 		<script src=\"" . $path_lib1  . "java-footer.js\"></script>
 		<script src=\"https://www.google.com/recaptcha/api.js\"></script>
 		<script>
@@ -308,7 +311,7 @@ var binding_table =\n{\n" . $binding_string . "};
 					<input name="email_8"  id="email_8"  type="hidden" value=""/>
 					<input name="email_9"  id="email_9"  type="hidden" value=""/>
 					<input name="email_10" id="email_10" type="hidden" value=""/>
-					<div><button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit data to site admin" data-callback="recaptchaCallback">Submit</button><button id="reset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state" data-callback="recaptchaCallback">Reset</button><button id="export_doc_button" type="button" style="padding:0.3em 1em;" autocomplete="off" onclick="document_export_ajax();" title="Export data to HTML file">Export</button></div>
+					<div><button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit data to site admin" data-callback="recaptchaCallback">Submit</button><button id="reset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state" data-callback="recaptchaCallback">Reset</button><button id="export_doc_button" type="button" style="padding:0.3em 1em;" autocomplete="off" onclick="document_export_submit_ajax();" title="Export data to HTML file">Export</button></div>
 				</form>
 			</div>
 			<div id="pane_hlp" style="display:none;">

@@ -21,7 +21,7 @@
 	header("Content-type: image/svg+xml");
 	include($path_lib2 . "queries-chart.php");
 
-	$path_file		= "./chart-svg.php";		// this file
+	$path_file		= "./output-svg.php";		// this file
 	$stylegroup_id		= 0;		// set by selThisStyleChart(), also contained inside $stylegroup_table
 //	$stylegroup_table	= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
 //	$style_table		= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
@@ -75,7 +75,8 @@
 	// MySQL queries
 	selURLQueriesAll();		// gather and validate URL parameters
 	selDefaultsAll();			// get default values for entities if missing
-	checkURLParameters();		// gather and validate URL parameters
+	getURLParameters();		// gather and validate URL parameters, not a query
+	checkURLParameters();		// gather and validate URL parameters, not a query
 	selThisLanguageStringsChart();
 	selAuthorsChart();
 //	selStyleGroupsChart();		// utilized by footer

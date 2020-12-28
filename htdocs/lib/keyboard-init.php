@@ -28,7 +28,6 @@
 	$path_java2		= "../../java/";	// for files in "keyboard/lib/"
 	$path_ssi2		= "../../ssi/";		// for files in "keyboard/lib/"
 
-	include($path_ssi2	. "plugin-analyticstracking.php");
 	include($path_ssi2	. "keyboard-connection.php");
 	include($path_lib2	. "scripts-common.php");
 	include($path_lib2	. "queries-common.php");
@@ -51,16 +50,16 @@
 	switch ($format_id)
 	{
 		case 0:
-			include($path_lib2 . "chart-main-html.php");
+			include($path_lib2 . "output-main-html.php");
 		break;
 		case 1:
-			include($path_lib2 . "chart-only-svg.php");
+			include($path_lib2 . "output-only-svg.php");
 		break;
 		case 2:
-			include($path_lib2 . "chart-wiki.php");
+			include($path_lib2 . "output-wiki.php");
 		break;
 		case 3:
-			include($path_lib2 . "chart-submit.php");
+			include($path_lib2 . "output-submit.php");
 		break;
 		case 4:
 			echo "PDF format not implemented yet.\n";

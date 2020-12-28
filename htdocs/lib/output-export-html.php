@@ -21,7 +21,7 @@
 	header("Content-Type: text/html; charset=utf8");
 
 	$path_vgkb		= "http://isometricland.net/keyboard/";
-	$path_file		= "./chart-export-html.php";	// this file
+	$path_file		= "./output-export-html.php";	// this file
 	$path_root1		= "../";		// for files in "keyboard/"
 	$path_lib1		= "./lib/";		// for files in "keyboard/"
 	$path_java1		= "../java/";		// for files in "keyboard/"
@@ -39,31 +39,31 @@
 	$json_input = file_get_contents('php://input');
 	$json_data = json_decode($json_input, true);
 
-//	$gamesrecord_id		= $json_data["gamesrecord_id"];		// set in java-submit.js
-	$style_id		= $json_data["style_id"];		// set in java-submit.js
-	$layout_id		= $json_data["layout_id"];		// set in java-submit.js
-//	$format_id		= $json_data["format_id"];		// set in java-submit.js
-	$format_id		= 0;		// set in java-submit.js
-	$game_id		= $json_data["game_id"];		// set in java-submit.js
-	$game_seo		= $json_data["game_seo"];		// set in java-submit.js
-	$ten_bool		= $json_data["ten_bool"];		// set in java-submit.js
-	$svg_bool		= $json_data["svg_bool"];		// set in java-submit.js
-	$binding_table		= $json_data["binding_table"];		// set in java-submit.js
-	$legend_table		= $json_data["legend_table"];		// set in java-submit.js
-	$commandouter_table	= $json_data["commandouter_table"];	// set in java-submit.js
+//	$gamesrecord_id		= $json_data["gamesrecord_id"];		// set by java-export.js
+	$style_id		= $json_data["style_id"];		// set by java-export.js
+	$layout_id		= $json_data["layout_id"];		// set by java-export.js
+	$format_id		= $json_data["format_id"];		// set by java-export.js
+	$game_id		= $json_data["game_id"];		// set by java-export.js
+	$game_seo		= $json_data["game_seo"];		// set by java-export.js
+	$ten_bool		= $json_data["ten_bool"];		// set by java-export.js
+	$svg_bool		= $json_data["svg_bool"];		// set by java-export.js
+	$commandouter_table	= $json_data["commandouter_table"];	// set by java-export.js
+	$legend_table		= $json_data["legend_table"];		// set by java-export.js
+	$binding_table		= $json_data["binding_table"];		// set by java-export.js
+//	$commandouter_table	= [];		// set by selCommandsChart()
 	$commandlabel_table	= [];		// set by selCommandLabelsChart()
 	$position_table		= [];		// populated by selPositionsChart()
 	$keystyle_table		= [];		// populated by selKeyStylesChart()
 //	$binding_table		= [];		// populated by selBindingsChart()
 //	$legend_table		= [];		// populated by selLegendsChart()
 	$author_table		= [];		// populated by selAuthorsChart()
-//	$stylegroup_table	= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
-//	$style_table		= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
+//	$stylegroup_table	= [];		// set by selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
+//	$style_table		= [];		// set by selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
 	$gamesrecord_id		= 0;		// set by selThisGamesRecordChart()
 	$gamesrecord_authors	= [];		// populated by selContribsGamesChart(), utilized by "footer-chart.php"
 	$stylesrecord_id	= 0;		// set by selThisStylesRecordChart()
 	$stylesrecord_authors	= [];		// populated by selContribsStylesChart(), utilized by "footer-chart.php"
-	$stylegroup_id		= 0;		// set by selThisStyleChart(), utilized by "footer-chart.php"
+	$stylegroup_id		= 0;		// set by selThisStyleChart(), also contained inside $stylegroup_table, utilized by "footer-chart.php"
 	$style_filename		= "";		// set by selThisStyleChart()
 	$style_name		= "";		// set by selThisStyleChart() and checkURLParameters(), utilized by checkForErrors()
 	$game_name		= "";		// set by selThisGamesIDChart(), utilized by checkForErrors()
@@ -98,6 +98,7 @@
 	// MySQL queries (mostly)
 	selURLQueriesAll();		// gather and validate URL parameters
 	selDefaultsAll();		// get default values for entities if missing
+//	getURLParameters();		// gather and validate URL parameters, not a query, AJAX is being used above instead
 //	checkURLParameters();		// gather and validate URL parameters, not a query, AJAX is being used above instead
 	selThisLanguageStringsChart();
 	selAuthorsChart();
@@ -224,7 +225,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 		</header>
 		<main>
 			<div class="svgdiv" style="position:relative;width:<?php echo $layout_max_horizontal; ?>px;height:<?php echo $layout_max_vertical; ?>px;">
-<?php	include($path_lib2 . "chart-export-svg.php");	?>
+<?php	include($path_lib2 . "output-export-svg.php");	?>
 			</div>
 			<div class="comflx">
 <?php
