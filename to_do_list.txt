@@ -1,2 +1,0 @@
-* Make it possible to generate a layout without submitting it to the server.
-* Create a script to convert PNG to Base 64 on the fly in PHP.
