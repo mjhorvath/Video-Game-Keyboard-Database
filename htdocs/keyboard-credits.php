@@ -65,20 +65,26 @@
 	<li>Also thanks to Wikipedia.</li>
 </ul>
 <h4>Bindings</h4>
-<ul>
+<ul style="column-count:2;">
+	<li>Abel Cloots</li>
 	<li>Agnes Beste</li>
-	<li>Taz</li>
-	<li>Josiah Stearns</li>
+	<li>Andreas</li>
 	<li>Cris</li>
 	<li>Daniel</li>
+	<li>Eduardo Vazquez</li>
 	<li>etejam</li>
-	<li>Luke Fanning</li>
 	<li>Hunter Mansanas</li>
+	<li>Jeffery So</li>
+	<li>Josiah Stearns</li>
 	<li>Lucas</li>
-	<li>Abel Cloots</li>
-	<li>Steve Martin</li>
-	<li>Tom</li>
+	<li>Luke Fanning</li>
 	<li>Mustafa</li>
+	<li>Paul Hoff</li>
+	<li>Sarn Vision</li>
+	<li>Steve Martin</li>
+	<li>Taz</li>
+	<li>Tim Scott</li>
+	<li>Tom</li>
 </ul>
 <h4>Visual themes</h4>
 <ul>
