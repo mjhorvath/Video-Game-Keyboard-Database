@@ -22,7 +22,7 @@
 
 	$page_title		= "Video Game Keyboard Diagrams";
 	$path_vgkb		= "http://isometricland.net/keyboard/";
-	$path_file		= "./keyboard.php";	// this file
+	$path_file		= "keyboard.php";	// this file
 	$path_root1		= "../";		// for HTML and JS files
 	$path_lib1		= "./lib/";		// for HTML and JS files
 	$path_java1		= "../java/";		// for HTML and JS files
@@ -188,7 +188,7 @@
 	<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
 		<title>" . $page_title . "</title>
-		<link rel=\"canonical\" href=\"http://isometricland.net/keyboard/keyboard.php\"/>
+		<link rel=\"canonical\" href=\"" . $path_vgkb . $path_file . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-common.css\"/>

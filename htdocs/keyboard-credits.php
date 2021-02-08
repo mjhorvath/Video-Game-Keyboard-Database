@@ -22,7 +22,7 @@
 
 	$page_title		= "Credits";
 	$path_vgkb		= "http://isometricland.net/keyboard/";
-	$path_file		= "./keyboard-credits.php";	// this file
+	$path_file		= "keyboard-credits.php";	// this file
 	$path_root1		= "../";		// for HTML and JS files
 	$path_lib1		= "./lib/";		// for HTML and JS files
 	$path_java1		= "../java/";		// for HTML and JS files
@@ -41,7 +41,7 @@
 	<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
 		<title>VGKD - " . $page_title . "</title>
-		<link rel=\"canonical\" href=\"http://isometricland.net/keyboard/keyboard-log.php\"/>
+		<link rel=\"canonical\" href=\"" . $path_vgkb . $path_file . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-common.css\"/>
@@ -59,7 +59,7 @@
 		</header>
 		<main>\n";
 ?>
-<p>If you have submitted layouts, bindings or styles, then your name will also appear at the bottom of each diagram.</p>
+<p>If you have submitted a layout, binding or style, then your name will appear at the bottom of each chart as well as on this page.</p>
 <h4>Layouts</h4>
 <ul>
 	<li>Thanks to <a target="_blank" href="http://kbdlayout.info/">Keyboard Layout Info</a> for help when I couldn't figure stuff out!</li>
