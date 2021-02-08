@@ -20,6 +20,7 @@
 
 	header("Content-Type: text/html; charset=utf8");
 
+	$page_title		= "Links";
 	$path_file		= "./keyboard-links.php";	// this file
 	$path_root1		= "../";		// for HTML and JS files
 	$path_lib1		= "./lib/";		// for HTML and JS files
@@ -38,7 +39,7 @@
 <html lang=\"en\">
 	<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
-		<title>VGKD - Links</title>
+		<title>VGKD - " . $page_title . "</title>
 		<link rel=\"canonical\" href=\"http://isometricland.net/keyboard/keyboard-links.php\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
@@ -51,9 +52,9 @@
 "	</head>
 	<body>
 		<header>\n";
-//	include($path_lib1 . "page-header.php");	// not working in Android Chrome
+	include($path_lib1 . "page-header.php");	// not working in Android Chrome
 	echo
-"			<h2>Links</h2>
+"			<h2>" . $page_title . "</h2>
 		</header>
 		<main>\n";
 ?>
