@@ -21,6 +21,7 @@
 	header("Content-Type: text/html; charset=utf8");
 
 	$page_title		= "Sitemap Code";
+	$path_vgkb		= "http://isometricland.net/keyboard/";
 	$path_file		= "./keyboard-sitemap.php";	// this file
 	$path_root1		= "../";		// for HTML and JS files
 	$path_lib1		= "./lib/";		// for HTML and JS files

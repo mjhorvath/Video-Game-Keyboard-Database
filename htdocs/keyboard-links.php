@@ -21,6 +21,7 @@
 	header("Content-Type: text/html; charset=utf8");
 
 	$page_title		= "Links";
+	$path_vgkb		= "http://isometricland.net/keyboard/";
 	$path_file		= "./keyboard-links.php";	// this file
 	$path_root1		= "../";		// for HTML and JS files
 	$path_lib1		= "./lib/";		// for HTML and JS files
@@ -59,6 +60,10 @@
 		<main>\n";
 ?>
 <p>On this page I will keep a list of online discussions that are useful to this project.</p>
+<h3>Project pages</h3>
+<ul>
+	<li>GitHub repository (<a target="_blank" href="https://github.com/mjhorvath/vgkd">link</a>)</li>
+</ul>
 <h3>Discussion</h3>
 <ul>
 	<li>&quot;If you’re a fan of the same [0,&infin;) games I am...&quot; (<a target="_blank" href="https://forum.quartertothree.com/t/if-youre-a-fan-of-the-same-150-games-i-am/127577">link</a>)</li>

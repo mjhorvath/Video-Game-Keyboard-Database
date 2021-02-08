@@ -22,6 +22,7 @@
 	include($path_lib2 . "queries-chart.php");
 	include($path_ssi2 . "plugin-analyticstracking.php");
 
+	$path_vgkb		= "http://isometricland.net/keyboard/";
 	$path_file		= "./output-main-html.php";	// this file
 	$commandouter_table	= [];		// set by selCommandsChart()
 	$commandlabel_table	= [];		// set by selCommandLabelsChart()
