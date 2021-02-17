@@ -23,10 +23,11 @@ function reloadThisPage(gameID, layoutID, gameSeo)
 	var styleID = getValueFromDropDownList("VisualStyleSwitch", "style");
 	var formatID = getValueFromRadioButton("tech");
 	var tenkeyBool = getValueFromRadioButton("tkey");
+	var orientBool = getValueFromRadioButton("vert");
 	if (formatID == 1)
-		window.location.href = "keyboard-diagram-" + gameSeo + ".svg?sty=" + styleID + "&lay=" + layoutID + "&fmt=" + formatID + "&ten=" + tenkeyBool;
+		window.location.href = "keyboard-diagram-" + gameSeo + ".svg?sty=" + styleID + "&lay=" + layoutID + "&fmt=" + formatID + "&ten=" + tenkeyBool + "&vrt=" + orientBool;
 	else
-		window.location.href = "keyboard-diagram-" + gameSeo + ".php?sty=" + styleID + "&lay=" + layoutID + "&fmt=" + formatID + "&ten=" + tenkeyBool;
+		window.location.href = "keyboard-diagram-" + gameSeo + ".php?sty=" + styleID + "&lay=" + layoutID + "&fmt=" + formatID + "&ten=" + tenkeyBool + "&vrt=" + orientBool;
 }
 
 function getValueFromDropDownList(formname, listname)

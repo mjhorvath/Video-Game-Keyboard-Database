@@ -18,6 +18,11 @@ body
 footer	{font-size:smaller;}
 select	{color:#000000;background:#ffffff;border:1px solid #000000;}
 option	{color:#000000;background:#ffffff;}
+select		{padding:0.2em;margin:0.2em;}
+option		{padding:0.2em;}
+optgroup	{padding:0.2em;font-weight:bold;}
+input		{margin:0.2em;}
+label		{margin:0.2em;vertical-align:middle;}
 .boxdiv	{position:relative;margin:1em;}
 .cut	{position:absolute;border:1px dashed #000000;}
 .keyout	{font-family:Arial Narrow,Geneva,sans-serif;position:absolute;overflow:hidden;border:1px solid #808080;font-size:smaller;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;box-shadow: 0px 1px 1px #404040;background:#e0e0e0;}
@@ -60,4 +65,10 @@ div.legolv	{background:#808000;color:#000000;}
 div.capbrn	{background:#804000;color:#000000;}
 div.legnon	{background:none;   color:#000000;}
 div.legred,div.legyel,div.leggrn,div.legcyn,div.legblu,div.legmag,div.legwht,div.leggry,div.legblk,div.legorg,div.legolv,div.legbrn,div.legnon
-	{background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image: linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-size: 72px 72px;}
+		{background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-image: linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);background-size: 72px 72px;}
+@media print
+{
+	footer		{display:none;}
+	header		{display:none;}
+/*	main		{page-break-after:always;}	*/
+}

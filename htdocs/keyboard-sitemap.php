@@ -21,7 +21,7 @@
 	header("Content-Type: text/html; charset=utf8");
 
 	$page_title		= "Sitemap Code";
-	$path_vgkb		= "http://isometricland.net/keyboard/";
+	$path_vgkd		= "http://isometricland.net/keyboard/";
 	$path_file		= "keyboard-sitemap.php";	// this file
 	$path_root1		= "../";		// for HTML and JS files
 	$path_lib1		= "./lib/";		// for HTML and JS files
@@ -64,13 +64,15 @@
 <html>
 	<head>
 		<script src=\"" . $path_lib1 . "java-common.js\"></script>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-normalize.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-header.css\"/>
 		<title>VGKD - " . $page_title . "</title>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 	</head>
 	<body>
 		<header>\n";
-	include($path_lib1 . "page-header.php");	// not working in Android Chrome
+	include($path_lib1 . "header-bar.php");	// not working in Android Chrome
 	echo
 "			<h2>" . $page_title . "</h2>
 			<p>This form generates code that can be copied and pasted into the project site's &quot;sitemap.xml&quot; file.</p>
@@ -112,7 +114,7 @@
 			{
 				// maybe not a good idea to list one page for every game/layout combination, so let's only list layout #1 for the time being
 				if ($this_layout_value == 1)
-					echo cleantextHTML(str_replace("&","&amp;amp;","<url><loc>http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout_value . "&fmt=0&ten=1</loc><changefreq>yearly</changefreq></url>")) . "\n";
+					echo cleantextHTML(str_replace("&","&amp;amp;","<url><loc>http://isometricland.net/keyboard/keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout_value . "&fmt=0&ten=1&vrt=0</loc><changefreq>yearly</changefreq></url>")) . "\n";
 			}
 		}
 	}

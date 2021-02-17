@@ -21,7 +21,7 @@
 	header("Content-type: image/svg+xml");
 	include($path_lib2 . "queries-chart.php");
 
-	$path_vgkb		= "http://isometricland.net/keyboard/";
+	$path_vgkd		= "http://isometricland.net/keyboard/";
 	$path_file		= "./output-svg.php";		// this file
 	$stylegroup_id		= 0;		// set by selThisStyleChart(), also contained inside $stylegroup_table
 //	$stylegroup_table	= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"

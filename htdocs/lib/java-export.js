@@ -25,7 +25,7 @@ function document_export_submit_ajax()
 	collect_command_data();
 //	collect_binding_data();
 //	console.log(JSON.stringify(binding_table));
-	const url = 'lib/output-export-html.php';
+	const url = 'lib/output-export-submit-html.php';
 	const data =
 	{
 		gamesrecord_id: gamesrecord_id,
@@ -35,6 +35,7 @@ function document_export_submit_ajax()
 		game_id: game_id,
 		game_seo: game_seo,
 		ten_bool: ten_bool,
+		vert_bool: vert_bool,
 		svg_bool: svg_bool,
 		commandouter_table: commandouter_table,
 		legend_table: legend_table,
@@ -60,7 +61,7 @@ function document_export_submit_ajax()
 
 function document_export_main_ajax()
 {
-	const url = 'lib/output-export2-html.php';
+	const url = 'lib/output-export-main-html.php';
 	const data =
 	{
 		gamesrecord_id: gamesrecord_id,
@@ -70,6 +71,7 @@ function document_export_main_ajax()
 		game_id: game_id,
 		game_seo: game_seo,
 		ten_bool: ten_bool,
+		vert_bool: vert_bool,
 		svg_bool: svg_bool
 	}
 	$.ajax
@@ -95,7 +97,7 @@ function document_export_submit_xhr()
 	collect_legend_data();
 	collect_command_data();
 //	collect_binding_data();
-	const url = 'lib/output-export-html.php';
+	const url = 'lib/output-export-submit-html.php';
 	const data =
 	{
 		gamesrecord_id: gamesrecord_id,
@@ -105,6 +107,7 @@ function document_export_submit_xhr()
 		game_id: game_id,
 		game_seo: game_seo,
 		ten_bool: ten_bool,
+		vert_bool: vert_bool,
 		svg_bool: svg_bool,
 		commandouter_table: commandouter_table,
 		legend_table: legend_table,

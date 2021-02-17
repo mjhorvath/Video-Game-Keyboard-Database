@@ -21,7 +21,7 @@
 	header("Content-Type: text/html; charset=utf8");
 
 	$page_title		= "Links";
-	$path_vgkb		= "http://isometricland.net/keyboard/";
+	$path_vgkd		= "http://isometricland.net/keyboard/";
 	$path_file		= "keyboard-links.php";	// this file
 	$path_root1		= "../";		// for HTML and JS files
 	$path_lib1		= "./lib/";		// for HTML and JS files
@@ -41,10 +41,11 @@
 	<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
 		<title>VGKD - " . $page_title . "</title>
-		<link rel=\"canonical\" href=\"" . $path_vgkb . $path_file . "\"/>
+		<link rel=\"canonical\" href=\"" . $path_vgkd . $path_file . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-normalize.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-header.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"\"/>
 		<meta name=\"keywords\" content=\"\"/>\n";
@@ -53,7 +54,7 @@
 "	</head>
 	<body>
 		<header>\n";
-	include($path_lib1 . "page-header.php");	// not working in Android Chrome
+	include($path_lib1 . "header-bar.php");	// not working in Android Chrome
 	echo
 "			<h2>" . $page_title . "</h2>
 		</header>
@@ -70,16 +71,16 @@
 </ul>
 <h4>Further reading</h4>
 <ul>
-	<li>ShortcutMapper (<a target="_blank" href="http://waldobronchart.github.io/ShortcutMapper/">link</a>)</li>
-	<li>Keyboard Layout Editor (<a target="_blank" href="http://www.keyboard-layout-editor.com/">link</a>)</li>
-	<li>KeyXL Keyboard Shortcuts (<a target="_blank" href="http://www.keyxl.com/">link</a>)</li>
+	<li>&quot;ShortcutMapper&quot; (<a target="_blank" href="http://waldobronchart.github.io/ShortcutMapper/">link</a>)</li>
+	<li>&quot;Keyboard Layout Editor&quot; (<a target="_blank" href="http://www.keyboard-layout-editor.com/">link</a>)</li>
+	<li>&quot;KeyXL Keyboard Shortcuts&quot; (<a target="_blank" href="http://www.keyxl.com/">link</a>)</li>
 	<li>AllHotkeys.com (<a target="_blank" href="http://allhotkeys.com/">link</a>)</li>
-	<li>replacementdocs (<a target="_blank" href="http://www.replacementdocs.com/">link</a>)</li>
-	<li>Character sets (<a target="_blank" href="http://www.alanwood.net/demos/wgl4.html">link</a>)</li>
-	<li>REALDev - The Keyboard (<a target="_blank" href="http://classicteck.com/rbarticles/mackeyboard.php">link</a>)</li>
-	<li>Key Support, Keyboard Scan Codes, and Windows (<a href="http://www.microsoft.com/whdc/archive/scancode.mspx">link</a>)</li>
-	<li>Virtual-Key Codes (<a target="_blank" href="http://msdn.microsoft.com/en-us/library/ms645540.aspx">link</a>)</li>
-	<li>Generate a Heatmap of your Keystrokes (<a target="_blank" href="http://www.blendedtechnologies.com/visualization-tricks-generate-a-heatmap-of-your-keystrokes/">link</a>)</li>
+	<li>replacementdocs.com (<a target="_blank" href="http://www.replacementdocs.com/">link</a>)</li>
+	<li>&quot;Character sets&quot; (<a target="_blank" href="http://www.alanwood.net/demos/wgl4.html">link</a>)</li>
+	<li>&quot;REALDev - The Keyboard&quot; (<a target="_blank" href="http://classicteck.com/rbarticles/mackeyboard.php">link</a>)</li>
+	<li>&quot;Key Support, Keyboard Scan Codes, and Windows&quot; (<a href="http://www.microsoft.com/whdc/archive/scancode.mspx">link</a>)</li>
+	<li>&quot;Virtual-Key Codes&quot; (<a target="_blank" href="http://msdn.microsoft.com/en-us/library/ms645540.aspx">link</a>)</li>
+	<li>&quot;Generate a Heatmap of your Keystrokes&quot; (<a target="_blank" href="http://www.blendedtechnologies.com/visualization-tricks-generate-a-heatmap-of-your-keystrokes/">link</a>)</li>
 </ul>
 <?php
 	echo

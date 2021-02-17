@@ -21,7 +21,7 @@
 	header("Content-Type: text/html; charset=utf8");
 
 	$page_title		= "Master Table";
-	$path_vgkb		= "http://isometricland.net/keyboard/";
+	$path_vgkd		= "http://isometricland.net/keyboard/";
 	$path_file		= "keyboard-list.php";	// this file
 	$path_root1		= "../";		// for HTML and JS files
 	$path_lib1		= "./lib/";		// for HTML and JS files
@@ -67,13 +67,14 @@
 	<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
 		<title>VGKD - " . $page_title . "</title>
-		<link rel=\"canonical\" href=\"" . $path_vgkb . $path_file . "\"/>
+		<link rel=\"canonical\" href=\"" . $path_vgkd . $path_file . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-common.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-list.css\"/>
-		<script src=\"" . $path_lib1  . "java-list.js\"></script>
-		<script src=\"" . $path_java1 . "sort_table.js\"></script>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-normalize.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-header.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-list.css\"/>
+		<script src=\"" . $path_lib1 . "java-list.js\"></script>
+		<script src=\"" . $path_lib1 . "sort_table.js\"></script>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"\"/>
 		<meta name=\"keywords\" content=\"\"/>\n";
@@ -82,20 +83,20 @@
 "	</head>
 	<body onload=\"sortTableInit();Toggle_Waiting(false);\">
 		<header>\n";
-	include($path_lib1 . "page-header.php");	// not working in Android Chrome
+	include($path_lib1 . "header-bar.php");	// not working in Android Chrome
 	echo
 "			<h2>" . $page_title . "</h2>
-			<p>You can sort the table by clicking on the arrow icons in the table header.</p>
+			<p>You can sort the table by clicking on the arrow icons on the right sides of the table header cells.</p>
 		</header>
 		<main>
 <img id=\"waiting\" src=\"./lib/animated-loading-icon.webp\" alt=\"loading\" style=\"position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;\"/>
 <table id=\"tableToSort\" class=\"kbd_tab\">
 	<thead>
 		<tr>
-			<th onclick=\"Wait_and_Sort(0);\">Game&nbsp;Title<span id=\"arrw_u0\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d0\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n0\" class=\"arrw_n\">&#9674;</span></th>
-			<th onclick=\"Wait_and_Sort(1);\">Genre<span id=\"arrw_u1\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d1\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n1\" class=\"arrw_n\">&#9674;</span></th>
-			<th onclick=\"Wait_and_Sort(2);\" style=\"min-width:2.5em;\">ID<span id=\"arrw_u2\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d2\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n2\" class=\"arrw_n\">&#9674;</span></th>
-			<th onclick=\"Wait_and_Sort(3);\">Records<span id=\"arrw_u3\" class=\"arrw_u\">&#9650;</span><span id=\"arrw_d3\" class=\"arrw_d\">&#9660;</span><span id=\"arrw_n3\" class=\"arrw_n\">&#9674;</span></th>
+			<th onclick=\"Wait_and_Sort(0);\">Game&nbsp;Title<span id=\"arrw_u0\" class=\"arrw_u\">&#129081;</span><span id=\"arrw_d0\" class=\"arrw_d\">&#129083;</span><span id=\"arrw_n0\" class=\"arrw_n\">&#11021;</span></th>
+			<th onclick=\"Wait_and_Sort(1);\">Genre<span id=\"arrw_u1\" class=\"arrw_u\">&#129081;</span><span id=\"arrw_d1\" class=\"arrw_d\">&#129083;</span><span id=\"arrw_n1\" class=\"arrw_n\">&#11021;</span></th>
+			<th onclick=\"Wait_and_Sort(2);\" style=\"min-width:2.5em;\">ID<span id=\"arrw_u2\" class=\"arrw_u\">&#129081;</span><span id=\"arrw_d2\" class=\"arrw_d\">&#129083;</span><span id=\"arrw_n2\" class=\"arrw_n\">&#11021;</span></th>
+			<th onclick=\"Wait_and_Sort(3);\">Records<span id=\"arrw_u3\" class=\"arrw_u\">&#129081;</span><span id=\"arrw_d3\" class=\"arrw_d\">&#129083;</span><span id=\"arrw_n3\" class=\"arrw_n\">&#11021;</span></th>
 		</tr>
 	</thead>
 	<tbody>\n";
@@ -143,7 +144,7 @@
 				{
 					$this_layout_id   = $this_layout[0];
 					$this_layout_name = $this_layout[1];
-					echo "<dd><a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout_id . "&fmt=0&ten=1\">" . cleantextHTML($this_layout_name) . "</a></dd>";
+					echo "<dd><a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout_id . "&fmt=0&ten=1&vrt=0\">" . cleantextHTML($this_layout_name) . "</a></dd>";
 				}
 			}
 		}

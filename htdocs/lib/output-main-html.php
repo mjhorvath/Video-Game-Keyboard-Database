@@ -22,8 +22,8 @@
 	include($path_lib2 . "queries-chart.php");
 	include($path_ssi2 . "plugin-analyticstracking.php");
 
-	$path_vgkb		= "http://isometricland.net/keyboard/";
-	$path_file		= "./output-main-html.php";	// this file
+	$path_vgkd		= "http://isometricland.net/keyboard/";
+	$path_file		= "output-main-html.php";	// this file
 	$commandouter_table	= [];		// set by selCommandsChart()
 	$commandlabel_table	= [];		// set by selCommandLabelsChart()
 	$position_table		= [];		// populated by selPositionsChart()
@@ -47,9 +47,10 @@
 	$layout_authors		= [];		// populated by selContribsLayoutsChart(), utilized by "footer-chart.php"
 	$layout_keysnum		= 0;		// reset by selThisLayoutChart(), hopefully obsolete
 	$layout_keygap		= 4;		// reset by selThisLayoutChart()
-	$layout_padding		= 18;		// reset by selThisLayoutChart()
+	$layout_fullsize_padding	= 18;		// reset by selThisLayoutChart()
 	$layout_fullsize_width		= 1200;		// reset by selThisLayoutChart()
 	$layout_fullsize_height		= 400;		// reset by selThisLayoutChart()
+	$layout_tenkeyless_padding	= 18;		// reset by selThisLayoutChart()
 	$layout_tenkeyless_width	= 1200;		// reset by selThisLayoutChart()
 	$layout_tenkeyless_height	= 400;		// reset by selThisLayoutChart()
 	$layout_legend_padding		= 36;		// reset by selThisLayoutChart()
@@ -104,37 +105,39 @@
 	// layout outer bounds
 	if ($ten_bool == 0)
 	{
-		$layout_min_horizontal	= -$layout_padding;
-		$layout_max_horizontal	=  $layout_padding * 2 + $layout_tenkeyless_width;
-		$layout_min_vertical	= -$layout_padding;
-		$layout_max_vertical	=  $layout_padding * 2 + $layout_tenkeyless_height + $layout_legend_padding + $layout_legend_height;
-		$layout_legend_top	=  $layout_tenkeyless_height + $layout_legend_padding;
+		$layout_min_horizontal	= -$layout_tenkeyless_padding;
+		$layout_max_horizontal	=  $layout_tenkeyless_padding * 2 + $layout_tenkeyless_width;
+		$layout_min_vertical	= -$layout_tenkeyless_padding;
+		$layout_max_vertical	=  $layout_tenkeyless_padding * 2 + $layout_tenkeyless_height + $layout_legend_padding * 2 + $layout_legend_height;
+		$layout_legend_top	=  $layout_tenkeyless_padding * 2 + $layout_tenkeyless_height + $layout_legend_padding;
 	}
 	else if ($ten_bool == 1)
 	{
-		$layout_min_horizontal	= -$layout_padding;
-		$layout_max_horizontal	=  $layout_padding * 2 + $layout_fullsize_width;
-		$layout_min_vertical	= -$layout_padding;
-		$layout_max_vertical	=  $layout_padding * 2 + $layout_fullsize_height + $layout_legend_padding + $layout_legend_height;
-		$layout_legend_top	=  $layout_fullsize_height + $layout_legend_padding;
+		$layout_min_horizontal	= -$layout_fullsize_padding;
+		$layout_max_horizontal	=  $layout_fullsize_padding * 2 + $layout_fullsize_width;
+		$layout_min_vertical	= -$layout_fullsize_padding;
+		$layout_max_vertical	=  $layout_fullsize_padding * 2 + $layout_fullsize_height + $layout_legend_padding * 2 + $layout_legend_height;
+		$layout_legend_top	=  $layout_fullsize_padding * 2 + $layout_fullsize_height + $layout_legend_padding;
 	}
 
 	echo
-"<!DOCTYPE HTML>
-<html lang=\"" . $language_code . "\">
+'<!DOCTYPE HTML>
+<html lang="' . $language_code . '">
 	<head>
-		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">
-		<title>" . $page_title_a . $temp_separator . $page_title_b . "</title>
-		<link rel=\"canonical\" href=\"" . $can_url . "\">
-		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\">
-		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-		<meta name=\"description\" content=\""	. $language_description		. $temp_game_name . ".\"/>
-		<meta name=\"keywords\" content=\""	. $language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>
-		<script src=\"" . $path_root1 . "java/jquery-3.3.1.min.js\"></script>
-		<script src=\"" . $path_lib1 . "java-footer.js\"></script>
-		<script src=\"" . $path_lib1 . "java-export.js\"></script>
-		<link rel=\"stylesheet\" href=\"" . $path_root1 . "style_normalize.css\">
-		<link rel=\"stylesheet\" href=\"" . $path_lib1 . "style-footer.css\">\n";
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>' . $page_title_a . $temp_separator . $page_title_b . '</title>
+		<link rel="canonical" href="' . $can_url . '"/>
+		<link rel="icon" type="image/png" href="' . $path_lib1 . 'favicon.png"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="description" content="'	. $language_description		. $temp_game_name . '"/>
+		<meta name="keywords" content="'	. $language_keywords . ','	. $temp_game_name . ','		. $temp_style_name . ','	. $temp_layout_name . ','	. $temp_format_name	. '"/>
+		<script src="' . $path_lib1 . 'jquery-3.3.1.min.js"></script>
+		<script src="' . $path_lib1 . 'java-footer.js"></script>
+		<script src="' . $path_lib1 . 'java-export.js"></script>
+		<link rel="stylesheet" href="' . $path_root1 . 'style_normalize.css"/>
+		<link rel="stylesheet" href="' . $path_lib1 . 'style-footer.css"/>
+';
+
 	if ($style_filename == "")
 	{
 		error_log("Error: Something is wrong with style. " . $can_url, 0);	// delete this when the problem goes away
@@ -142,42 +145,54 @@
 	else
 	{
 		echo
-"		<link rel=\"stylesheet\" href=\"" . $path_lib1 . "embed-" . $style_filename . ".css\">\n";
+"		<link rel=\"stylesheet\" href=\"" . $path_lib1 . "embed-" . $style_filename . ".css\"/>\n";
 	}
+
 	echo
-"		<script>
-var gamesrecord_id = "	. $gamesrecord_id . ";
-var style_id = "	. $style_id . ";
-var layout_id = "	. $layout_id . ";
-var format_id = "	. $format_id . ";
-var game_id = "		. $game_id . ";
-var game_seo = '"	. $game_seo . "';
-var ten_bool = "	. $ten_bool . ";
-var svg_bool = "	. $svg_bool . ";
-		</script>\n";
+'		<script>
+var gamesrecord_id = '	. $gamesrecord_id . ';
+var style_id = '	. $style_id . ';
+var layout_id = '	. $layout_id . ';
+var format_id = '	. $format_id . ';
+var game_id = '		. $game_id . ';
+var game_seo = "'	. $game_seo . '";
+var ten_bool = '	. $ten_bool . ';
+var vert_bool = '	. $vert_bool . ';
+var svg_bool = '	. $svg_bool . ';
+		</script>
+';
+
 	echo writeAnalyticsTracking();
-?>
-	</head>
+
+	echo
+'	</head>
 	<body>
 		<header>
-			<div class="boxdiv"><h2><?php echo $page_title_a; ?><small><?php echo $temp_separator . $page_title_b; ?></small></h2></div>
+			<div class="boxdiv"><h2>' . $page_title_a . '<small>' . $temp_separator . $page_title_b . '</small></h2></div>
 		</header>
 		<main>
-			<div class="svgdiv" style="position:relative;width:<?php echo $layout_max_horizontal; ?>px;height:<?php echo $layout_max_vertical; ?>px;">
-<?php
+';
+
+	if ($vert_bool == false)
+	{
+		echo
+'			<div class="svgdiv" style="position:relative;width:' . $layout_max_horizontal . 'px;height:' . $layout_max_vertical . 'px;">
+';
+	}
+	else
+	{
+		echo
+'			<div class="svgdiv" style="position:relative;width:' . $layout_max_vertical . 'px;height:' . $layout_max_horizontal . 'px;">
+';
+	}
+
 	include($path_lib2 . "output-main-svg.php");
-/*
-	// advertisement
+
 	echo
-"				<div style=\"position:absolute;left:600px;top:521.5px;width:728px;height:90px;padding:0;margin:0;z-index:10;\">\n";
-	include($path_ssi2 . "adsense_horz_large.php");
-	echo
-"				</div>\n";
-*/
-?>
-			</div>
-			<div class="comflx">
-<?php
+'			</div>
+			<div class="comflx" style="">
+';
+
 	// cleaning!
 	// commands
 	foreach ($commandouter_table as $i => $commandouter_value)
@@ -188,9 +203,10 @@ var svg_bool = "	. $svg_bool . ";
 		$commandlabel_input = $commandlabel_value[3];
 		$commandlabel_group = $commandlabel_value[4];
 		echo
-"				<div class=\"comdiv\">
-					<h3>" . cleantextHTML($commandlabel_label) . "</h3>
-					<table>\n";
+'				<div class="comdiv">
+					<h3>' . cleantextHTML($commandlabel_label) . '</h3>
+					<table>
+';
 		foreach ($commandouter_value as $j => $commandinner_value)
 		{
 			$commandinner_input = $commandinner_value[1];
@@ -218,14 +234,21 @@ var svg_bool = "	. $svg_bool . ";
 			}
 		}
 		echo
-"					</table>
-				</div>\n";
+'					</table>
+				</div>
+';
 	}
-?>
-			</div>
+
+	echo
+'			</div>
 		</main>
 		<footer>
-<?php include($path_lib2 . "footer-chart.php"); ?>
-		</footer>
+';
+
+	include($path_lib2 . "footer-chart.php");
+
+	echo
+'		</footer>
 	</body>
 </html>
+';

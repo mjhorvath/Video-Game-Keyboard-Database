@@ -22,8 +22,8 @@
 	include($path_lib2 . "queries-chart.php");
 	include($path_ssi2 . "plugin-analyticstracking.php");
 
-	$path_vgkb		= "http://isometricland.net/keyboard/";
-	$path_file		= "./output-wiki.php";	// this file
+	$path_vgkd		= "http://isometricland.net/keyboard/";
+	$path_file		= "output-wiki.php";	// this file
 	$binding_table		= [];
 	$legend_table		= [];
 	$command_table		= [];		// not implemented yet

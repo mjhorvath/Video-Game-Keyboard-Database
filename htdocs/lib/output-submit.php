@@ -23,8 +23,8 @@
 	include($path_ssi2 . "recaptchakey.php");
 	include($path_ssi2 . "plugin-analyticstracking.php");
 
-	$path_vgkb		= "http://isometricland.net/keyboard/";
-	$path_file		= "./output-submit.php";		// this file
+	$path_vgkd		= "http://isometricland.net/keyboard/";
+	$path_file		= "output-submit.php";		// this file
 	$commandouter_table	= [];
 	$commandouter_count	= 0;
 	$commandlabel_table	= [];
@@ -229,9 +229,9 @@
 		<title>" . cleantextHTML($page_title_a . $temp_separator . $page_title_b) . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-footer.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-submit.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-normalize.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-footer.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-submit.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\""	. cleantextHTML($language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name)	. ")\"/>
 		<meta name=\"keywords\" content=\""	. cleantextHTML($language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name)	. "\"/>\n";
@@ -241,11 +241,11 @@
 	include($path_lib2 . "submit-" . $style_filename . ".css");
 	echo
 "		</style>
-		<script src=\"" . $path_root1 . "java/jquery-3.3.1.min.js\"></script>
-		<script src=\"" . $path_lib1  . "java-common.js\"></script>
-		<script src=\"" . $path_lib1  . "java-submit.js\"></script>
-		<script src=\"" . $path_lib1  . "java-export.js\"></script>
-		<script src=\"" . $path_lib1  . "java-footer.js\"></script>
+		<script src=\"" . $path_lib1 . "jquery-3.3.1.min.js\"></script>
+		<script src=\"" . $path_lib1 . "java-common.js\"></script>
+		<script src=\"" . $path_lib1 . "java-submit.js\"></script>
+		<script src=\"" . $path_lib1 . "java-export.js\"></script>
+		<script src=\"" . $path_lib1 . "java-footer.js\"></script>
 		<script src=\"https://www.google.com/recaptcha/api.js\"></script>
 		<script>
 var gamesrecord_id = "	. $gamesrecord_id . ";
@@ -255,6 +255,7 @@ var format_id = "	. $format_id . ";
 var game_id = "		. $game_id . ";
 var game_seo = '"	. $game_seo . "';
 var ten_bool = "	. $ten_bool . ";
+var vert_bool = "	. $vert_bool . ";
 var svg_bool = "	. $svg_bool . ";
 
 var color_table =\n{\n" . $color_string . "};

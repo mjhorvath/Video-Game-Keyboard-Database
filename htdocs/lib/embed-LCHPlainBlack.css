@@ -1,6 +1,11 @@
 *		{}
 body		{background:#404040;color:#ffffff;font-family:"DejaVu Sans Condensed",Sans-Serif;font-size:11pt;}
 footer		{font-size:smaller;}
+select		{padding:0.2em;margin:0.2em;border:1px;}
+option		{padding:0.2em;}
+optgroup	{padding:0.2em;font-weight:bold;}
+input		{margin:0.2em;}
+label		{margin:0.2em;vertical-align:middle;}
 div.boxdiv	{margin:6px;padding:18px;position:relative;}
 div.svgdiv	{margin:6px;padding:   0;position:relative;}
 div.comdiv	{margin:3px;padding:18px;position:relative;width:25em;}
@@ -23,3 +28,9 @@ div.legorg	{background:#ECA777;color:#000000;border:1px solid #404040;}	/* ( 74,
 div.legolv	{background:#A8BF75;color:#000000;border:1px solid #404040;}	/* ( 74, 40,120) */
 div.legbrn	{background:#685510;color:#000000;border:1px solid #404040;}	/* ( 37, 40, 90) */
 div.legnon	{background:#B6B6B6;color:#000000;border:1px solid #404040;}	/* ( 74,  0,  0) */
+@media print
+{
+	footer		{display:none;}
+	header		{display:none;}
+/*	main		{page-break-after:always;}	*/
+}

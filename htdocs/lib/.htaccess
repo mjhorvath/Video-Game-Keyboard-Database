@@ -13,15 +13,15 @@
     Order deny,allow
     Allow from all
 </FilesMatch>
-<FilesMatch "^output-export-html\.php$">
+<FilesMatch "^output-export-main-html\.php$">
     Order deny,allow
     Allow from all
 </FilesMatch>
-<FilesMatch "^output-export-svg\.php$">
+<FilesMatch "^output-export-submit-svg\.php$">
     Order deny,allow
     Allow from all
 </FilesMatch>
-<FilesMatch "^output-export2-html\.php$">
+<FilesMatch "^output-export-submit-html\.php$">
     Order deny,allow
     Allow from all
 </FilesMatch>

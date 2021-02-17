@@ -21,7 +21,7 @@
 	header("Content-Type: text/html; charset=utf8");
 
 	$page_title		= "Video Game Keyboard Diagrams";
-	$path_vgkb		= "http://isometricland.net/keyboard/";
+	$path_vgkd		= "http://isometricland.net/keyboard/";
 	$path_file		= "keyboard.php";	// this file
 	$path_root1		= "../";		// for HTML and JS files
 	$path_lib1		= "./lib/";		// for HTML and JS files
@@ -188,13 +188,14 @@
 	<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
 		<title>" . $page_title . "</title>
-		<link rel=\"canonical\" href=\"" . $path_vgkb . $path_file . "\"/>
+		<link rel=\"canonical\" href=\"" . $path_vgkd . $path_file . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-common.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-accordion.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-radio.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-frontend.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-normalize.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-header.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-accordion.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-radio.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-frontend.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"Visual keyboard hotkey & binding diagrams for video games and other software.\"/>
 		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference\"/>
@@ -227,7 +228,7 @@ var seourl_table =
 	</head>
 	<body onload=\"Select_Init();cube_snake_init();\">
 		<header>\n";
-	include($path_lib1 . "page-header.php");	// not working in Android Chrome
+	include($path_lib1 . "header-bar.php");	// not working in Android Chrome
 	echo
 "			<h2>" . $page_title . "</h2>
 		</header>

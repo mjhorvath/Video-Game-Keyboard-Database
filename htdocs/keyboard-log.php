@@ -21,7 +21,7 @@
 	header("Content-Type: text/html; charset=utf8");
 
 	$page_title		= "Change Log";
-	$path_vgkb		= "http://isometricland.net/keyboard/";
+	$path_vgkd		= "http://isometricland.net/keyboard/";
 	$path_file		= "keyboard-log.php";	// this file
 	$path_root1		= "../";		// for HTML and JS files
 	$path_lib1		= "./lib/";		// for HTML and JS files
@@ -41,10 +41,11 @@
 	<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
 		<title>VGKD - " . $page_title . "</title>
-		<link rel=\"canonical\" href=\"" . $path_vgkb . $path_file . "\"/>
+		<link rel=\"canonical\" href=\"" . $path_vgkd . $path_file . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root1 . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-normalize.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-header.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"\"/>
 		<meta name=\"keywords\" content=\"\"/>\n";
@@ -53,13 +54,13 @@
 "	</head>
 	<body>
 		<header>\n";
-	include($path_lib1 . "page-header.php");	// not working in Android Chrome
+	include($path_lib1 . "header-bar.php");	// not working in Android Chrome
 	echo
 "			<h2>" . $page_title . "</h2>
 		</header>
 		<main>\n";
 ?>
-<p>The log only goes back to 2009, though the project existed as far back as 2004 under a different domain and name.</p>
+<p>The log only goes back to 2009 even though the project existed as far back as 2004 under a different domain and name.</p>
 <ul>
 	<li>2021/02/07: Moved the credits to their own page.</li>
 	<li>2021/02/07: Added a navigation header to the tops of the &quot;front&quot; pages.</li>
@@ -279,7 +280,7 @@
 	<li>2009/05/21: Fixed the measurements for most of the other layouts which were off by some fractions of an inch.</li>
 	<li>2009/05/16: Added over a dozen new bindings as well as French and German PC keyboard layouts. The new layouts are not compatible with most games, however, until someone contacts me with a list of corresponding French and German bindings.</li>
 	<li>2009/05/11: After several years of neglect, I've done a major overhaul of the project's scripts. Please forgive (and report) any errors! Also, feel free to submit new bindings, layouts or styles.</li>
-	<li>This project was initially started c. 2004 when my site was still hosted at GeoCities.com. Back then it was mostly pure JavaScript and HTML, as free GeoCities accounts were not permitted to use PHP or MySQL. The site has come a long way since then. ;)</li>
+	<li>This project was initially started c. 2004 when my site was still hosted at GeoCities.com. Back then it was mostly pure JavaScript and HTML, as free GeoCities accounts were not permitted to use PHP or MySQL. The project has come a long way since then. ;)</li>
 </ul>
 <?php
 	echo
