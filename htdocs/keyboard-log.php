@@ -62,6 +62,9 @@
 ?>
 <p>The log only goes back to 2009 even though the project existed as far back as 2004 under a different domain and name.</p>
 <ul>
+	<li>2021/02/17: Tweaks to style sheets.</li>
+	<li>2021/02/17: Changed how the footer code works.</li>
+	<li>2021/02/17: Added support for changing page orientation.</li>
 	<li>2021/02/07: Moved the credits to their own page.</li>
 	<li>2021/02/07: Added a navigation header to the tops of the &quot;front&quot; pages.</li>
 	<li>2020/12/28: Un-flattened the &quot;HTML/SVG&quot; format again to save bandwidth and added an &quot;Export&quot; button to the bottom of the page instead.</li>
