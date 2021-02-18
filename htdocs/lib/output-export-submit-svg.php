@@ -437,7 +437,8 @@
 		}
 	}
 	echo
-"		<text class=\"\" x=\"" . (0) . "\" y=\"" . ($layout_fullsize_height+16) . "\" style=\"fill:#c0c0c0;\">&#169; CC BY-SA VGKD</text>
+'		<text class="" x="' . (0) . '" y="' . ($layout_fullsize_height+16) . '" style="fill:#c0c0c0;">&#169; CC BY-SA VGKD</text>
 	</g>
-</svg>\n";
+</svg>
+';
 ?>

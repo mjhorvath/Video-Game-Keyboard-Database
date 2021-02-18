@@ -46,6 +46,7 @@
 	$game_id		= $json_data["game_id"];		// set by java-export.js
 	$game_seo		= $json_data["game_seo"];		// set by java-export.js
 	$ten_bool		= $json_data["ten_bool"];		// set by java-export.js
+	$vert_bool		= $json_data["vert_bool"];		// set by java-export.js
 	$svg_bool		= $json_data["svg_bool"];		// set by java-export.js
 	$commandouter_table	= [];		// set by selCommandsChart()
 	$commandlabel_table	= [];		// set by selCommandLabelsChart()
@@ -144,16 +145,58 @@
 	}
 
 	echo
-"<!DOCTYPE HTML>
-<html lang=\"" . $language_code . "\">
+'<!DOCTYPE HTML>
+<!--
+This file was generated using Video Game Keyboard Diagrams by Michael Horvath.
+http://isometricland.net/keyboard/keyboard.php
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+United States License. To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/us/ or send a letter to Creative
+Commons, PO Box 1866, Mountain View, CA 94042, USA.
+';
+	echo "Binding scheme created by: ";
+	$count_authors = count($gamesrecord_authors);
+	for ($i = 0; $i < $count_authors; $i++)
+	{
+		echo $gamesrecord_authors[$i];
+		if ($i < $count_authors - 1)
+			echo ", ";
+		else
+			echo ".\n";
+	}
+	echo "Keyboard layout created by: ";
+	$count_authors = count($layout_authors);
+	for ($i = 0; $i < $count_authors; $i++)
+	{
+		echo $layout_authors[$i];
+		if ($i < $count_authors - 1)
+			echo ", ";
+		else
+			echo ".\n";
+	}
+	echo "Theme created by: ";
+	$count_authors = count($stylesrecord_authors);
+	for ($i = 0; $i < $count_authors; $i++)
+	{
+		echo $stylesrecord_authors[$i];
+		if ($i < $count_authors - 1)
+			echo ", ";
+		else
+			echo ".\n";
+	}
+	echo
+'-->
+<html lang="' . $language_code . '">
 	<head>
-		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">
-		<title>" . $page_title_a . $temp_separator . $page_title_b . "</title>
-		<link rel=\"canonical\" href=\"" . $can_url . "\">
-		<link rel=\"icon\" type=\"image/png\" href=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAALiEAAC4hAQdb/P8AAAAgSURBVDhPY/xvG8VACmCC0kSDUQ3EgFENxABaa2BgAAANNAG2n4KuogAAAABJRU5ErkJggg==\">
-		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-		<meta name=\"description\" content=\""	. $language_description		. $temp_game_name . ".\"/>
-		<meta name=\"keywords\" content=\""	. $language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name	. "\"/>\n";
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>' . $page_title_a . $temp_separator . $page_title_b . '</title>
+		<link rel="canonical" href="' . $can_url . '"/>
+		<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAALiEAAC4hAQdb/P8AAAAgSURBVDhPY/xvG8VACmCC0kSDUQ3EgFENxABaa2BgAAANNAG2n4KuogAAAABJRU5ErkJggg=="/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="description" content="' . $language_description . $temp_game_name . '."/>
+		<meta name="keywords" content="' . $language_keywords . ',' . $temp_game_name . ',' . $temp_style_name . ',' . $temp_layout_name . ',' . $temp_format_name . '"/>
+';
+
 	echo
 "		<style type=\"text/css\">\n";
 	include($path_lib2 . "style-normalize.css");
@@ -171,29 +214,35 @@
 	else
 		include($path_lib2 . "embed-" . $style_filename . ".css");
 	echo
-"		</style>\n";
-?>
+'		</style>
 	</head>
 	<body>
 		<header>
-			<div class="boxdiv"><h2><?php echo $page_title_a; ?><small><?php echo $temp_separator . $page_title_b; ?></small></h2></div>
+			<div class="boxdiv"><h2>' . $page_title_a . '<small>' . $temp_separator . $page_title_b . '</small></h2></div>
 		</header>
 		<main>
-			<div class="svgdiv" style="position:relative;width:<?php echo $layout_max_horizontal; ?>px;height:<?php echo $layout_max_vertical; ?>px;">
-<?php
-	include($path_lib2 . "output-main-svg.php");
-/*
-	// advertisement
+';
+
+	if ($vert_bool == false)
+	{
+		echo
+'			<div class="svgdiv" style="position:relative;width:' . $layout_max_horizontal . 'px;height:' . $layout_max_vertical . 'px;">
+';
+	}
+	else
+	{
+		echo
+'			<div class="svgdiv" style="position:relative;width:' . $layout_max_vertical . 'px;height:' . $layout_max_horizontal . 'px;">
+';
+	}
+
+	include($path_lib2 . "output-export-main-svg.php");
+
 	echo
-"				<div style=\"position:absolute;left:600px;top:521.5px;width:728px;height:90px;padding:0;margin:0;z-index:10;\">\n";
-	include($path_ssi2 . "adsense_horz_large.php");
-	echo
-"				</div>\n";
-*/
-?>
-			</div>
+'			</div>
 			<div class="comflx">
-<?php
+';
+
 	// cleaning!
 	// commands
 	foreach ($commandouter_table as $i => $commandouter_value)

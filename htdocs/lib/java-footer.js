@@ -17,36 +17,56 @@
 // License along with this program.  If not, see 
 // <https://www.gnu.org/licenses/>.
 
-function reloadThisPage(gameID, layoutID, gameSeo)
+function reload_this_page()
 {
-	// gameID is no longer needed
-	var styleID = getValueFromDropDownList("VisualStyleSwitch", "style");
-	var formatID = getValueFromRadioButton("tech");
-	var tenkeyBool = getValueFromRadioButton("tkey");
-	var orientBool = getValueFromRadioButton("vert");
-	if (formatID == 1)
-		window.location.href = "keyboard-diagram-" + gameSeo + ".svg?sty=" + styleID + "&lay=" + layoutID + "&fmt=" + formatID + "&ten=" + tenkeyBool + "&vrt=" + orientBool;
+	if (format_id == 1)
+		var out_href = "keyboard-diagram-" + game_seo + ".svg?sty=" + style_id + "&lay=" + layout_id + "&fmt=" + format_id + "&ten=" + ten_bool + "&vrt=" + vert_bool;
 	else
-		window.location.href = "keyboard-diagram-" + gameSeo + ".php?sty=" + styleID + "&lay=" + layoutID + "&fmt=" + formatID + "&ten=" + tenkeyBool + "&vrt=" + orientBool;
+		var out_href = "keyboard-diagram-" + game_seo + ".php?sty=" + style_id + "&lay=" + layout_id + "&fmt=" + format_id + "&ten=" + ten_bool + "&vrt=" + vert_bool;
+	window.location.href = out_href;
 }
 
-function getValueFromDropDownList(formname, listname)
+function init_footer()
 {
-	var targetForm = document.forms[formname];
-	var targetDropDown = targetForm.elements[listname];
-	return targetDropDown.value;
-}
-
-function getValueFromRadioButton(buttonsname)
-{
-	var buttons = document.getElementsByName(buttonsname);
-	for (var i = 0, n = buttons.length; i < n; i++)
-	{
-		var this_button = buttons[i];
-		if (this_button.checked)
+	var stylsel = document.VisualStyleSwitch.styl;
+	stylsel.addEventListener
+	('change',
+		function()
 		{
-			return this_button.value;
+			style_id = parseInt(this.value);
 		}
+	);
+	var formrad = document.VisualStyleSwitch.form;
+	for (var i = 0, n = formrad.length; i < n; i++)
+	{
+		formrad[i].addEventListener
+		('change',
+			function()
+			{
+				format_id = parseInt(this.value);
+			}
+		);
 	}
-	return null;
+	var tkeyrad = document.VisualStyleSwitch.tkey;
+	for (var i = 0, n = tkeyrad.length; i < n; i++)
+	{
+		tkeyrad[i].addEventListener
+		('change',
+			function()
+			{
+				ten_bool = parseInt(this.value);
+			}
+		);
+	}
+	var vertrad = document.VisualStyleSwitch.vert;
+	for (var i = 0, n = vertrad.length; i < n; i++)
+	{
+		vertrad[i].addEventListener
+		('change',
+			function()
+			{
+				vert_bool = parseInt(this.value);
+			}
+		);
+	}
 }

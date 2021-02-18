@@ -264,7 +264,7 @@ var binding_table =\n{\n" . $binding_string . "};
 		</script>
 	</head>\n";
 ?>
-	<body onload="init_submissions();">
+	<body onload="init_submissions();init_footer();">
 		<img id="waiting" src="<?php echo $path_lib1; ?>animated-loading-icon.webp" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
 		<div id="butt_min" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(0);"><img src="<?php echo $path_lib1; ?>icon-min.png"/></div>
 		<div id="butt_max" class="side_butt" title="Toggle Side Panel" onclick="toggle_left_pane(1);"><img src="<?php echo $path_lib1; ?>icon-max.png"/></div>

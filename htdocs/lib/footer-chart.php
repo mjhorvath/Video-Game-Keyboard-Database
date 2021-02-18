@@ -35,22 +35,26 @@
 		break;
 	}
 	echo
-"<div class=\"boxdiv\">
+'<div class="boxdiv">
 	<p>
-		<a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\"><img alt=\"GNU LGPLv3 icon\" style=\"border-width:0;\" src=\"" . $path_lib1 . "license-lgpl-88x31.png\"/></a>
-		<a target=\"_blank\" rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/3.0/\"><img alt=\"CC BY-SA 3.0 icon\" style=\"border-width:0;\" src=\"" . $path_lib1 . "license-cc-by-sa-88x31.png\"/></a>
+		<a target="_blank" rel="license" href="https://www.gnu.org/licenses/lgpl-3.0.en.html"><img alt="GNU LGPLv3 icon" style="border-width:0;" src="' . $path_lib1 . 'license-lgpl-88x31.png"/></a>
+		<a target="_blank" rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="CC BY-SA 3.0 icon" style="border-width:0;" src="' . $path_lib1 . 'license-cc-by-sa-88x31.png"/></a>
 	</p>
-	<p>&quot;Video Game Keyboard Diagrams&quot; software was created by <a target=\"_blank\" href=\"http://isometricland.net\">Michael Horvath</a> and is licensed under <a target=\"_blank\" rel=\"license\" href=\"https://www.gnu.org/licenses/lgpl-3.0.en.html\">GNU LGPLv3</a> or later. Content is licensed under <a target=\"_blank\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CC BY-SA 3.0</a> or later. You can find this project on <a target=\"_blank\" href=\"https://github.com/mjhorvath/vgkd\">GitHub</a>.</p>
-	<p>Return to <a href=\"" . $path_vgkd . "keyboard.php\">Video Game Keyboard Diagrams</a>. View the <a href=\"" . $path_vgkd . "keyboard-list.php\">master table</a>, <a href=\"" . $path_vgkd . "keyboard-credits.php\">credits</a> or <a href=\"" . $path_vgkd . "keyboard-log.php\">change log</a>. Here is a <a href=\"" . $path_vgkd . "keyboard-links.php\">list of links</a>. Having trouble printing? Take a look at <a href=\"" . $path_vgkd . "keyboard.php#print_tips\">these printing tips</a>.</p>\n";
+	<p>&quot;Video Game Keyboard Diagrams&quot; software was created by <a target="_blank" href="http://isometricland.net">Michael Horvath</a> and is licensed under <a target="_blank" rel="license" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">GNU LGPLv3</a> or later. Content is licensed under <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> or later. You can find this project on <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub</a>.</p>
+	<p>Return to <a href="' . $path_vgkd . 'keyboard.php">Video Game Keyboard Diagrams</a>. View the <a href="' . $path_vgkd . 'keyboard-list.php">master table</a>, <a href="' . $path_vgkd . 'keyboard-credits.php">credits</a> or <a href="' . $path_vgkd . 'keyboard-log.php">change log</a>. Here is a <a href="' . $path_vgkd . 'keyboard-links.php">list of links</a>. Having trouble printing? Take a look at <a href="' . $path_vgkd . 'keyboard.php#print_tips">these printing tips</a>.</p>
+';
+
 	// display toggles
 	// need to replace table with non-table markup
 	echo
-"	<form name=\"VisualStyleSwitch\">
-		<table id=\"footswitch\">
-			<tr style=\"display:" . $display_styles . ";\">
+'	<form name="VisualStyleSwitch" autocomplete="off">
+		<table id="footswitch">
+			<tr style="display:' . $display_styles . ';">
 				<th>Theme:</th>
 				<td>
-					<select class=\"stylechange\" id=\"stylesel\" name=\"style\">\n";
+					<select class="stylechange" id="stylsel" name="styl">
+';
+
 	// do a tiny bit of validity checking so that I get my preferred default style if a style ID is missing or out of bounds
 	$selected_style_id = $style_name ? $style_id : $default_style_id;
 	foreach ($style_table as $i => $style_value)
@@ -86,42 +90,43 @@
 				</td>
 			</tr>\n";
 	echo
-"			<tr style=\"display:" . $display_format . ";\">
+'			<tr style="display:' . $display_format . ';">
 				<th>Format:</th>
 				<td>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"formrad0\" value=\"0\"" . ($format_id == 0 ? " checked" : "") . "><label for=\"formrad0\">HTML/SVG &#10022;</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"formrad1\" value=\"1\"" . ($format_id == 1 ? " checked" : "") . "><label for=\"formrad1\">SVG only</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"formrad2\" value=\"2\"" . ($format_id == 2 ? " checked" : "") . "><label for=\"formrad2\">MediaWiki</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"formrad3\" value=\"3\"" . ($format_id == 3 ? " checked" : "") . "><label for=\"formrad3\">Editor</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tech\" id=\"formrad4\" value=\"4\" disabled>&nbsp;<label for=\"rad4\"><s>PDF</s></label>
+					<input class="stylechange" type="radio" name="form" id="formrad0" value="0"' . ($format_id == 0 ? ' checked' : '') . '/><label for="formrad0">HTML/SVG &#10022;</label>
+					<input class="stylechange" type="radio" name="form" id="formrad1" value="1"' . ($format_id == 1 ? ' checked' : '') . '/><label for="formrad1">SVG only</label>
+					<input class="stylechange" type="radio" name="form" id="formrad2" value="2"' . ($format_id == 2 ? ' checked' : '') . '/><label for="formrad2">MediaWiki</label>
+					<input class="stylechange" type="radio" name="form" id="formrad3" value="3"' . ($format_id == 3 ? ' checked' : '') . '/><label for="formrad3">Editor</label>
+					<input class="stylechange" type="radio" name="form" id="formrad4" value="4"' . ($format_id == 4 ? ' checked' : '') . ' disabled/><label for="formrad4"><s>PDF</s></label>
 				</td>
 			</tr>
-			<tr style=\"display:" . $display_tenkey . ";\">
+			<tr style="display:' . $display_tenkey . ';">
 				<th>Numpad:</th>
 				<td>
-					<input class=\"stylechange\" type=\"radio\" name=\"tkey\" id=\"tkeyrad1\" value=\"1\"" . ($ten_bool == 1 ? " checked" : "") . "><label for=\"tkeyrad1\">Show &#10022;</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"tkey\" id=\"tkeyrad0\" value=\"0\"" . ($ten_bool == 0 ? " checked" : "") . "><label for=\"tkeyrad0\">Hide</label>
+					<input class="stylechange" type="radio" name="tkey" id="tkeyrad1" value="1"' . ($ten_bool == 1 ? ' checked' : '') . '/><label for="tkeyrad1">Show &#10022;</label>
+					<input class="stylechange" type="radio" name="tkey" id="tkeyrad0" value="0"' . ($ten_bool == 0 ? ' checked' : '') . '/><label for="tkeyrad0">Hide</label>
 				</td>
 			</tr>
-			<tr style=\"display:" . $display_orient . ";\">
+			<tr style="display:' . $display_orient . ';">
 				<th>Orientation:</th>
 				<td>
-					<input class=\"stylechange\" type=\"radio\" name=\"vert\" id=\"vertrad1\" value=\"0\"" . ($vert_bool == 0 ? " checked" : "") . "><label for=\"vertrad1\">Horizontal &#10022;</label>
-					<input class=\"stylechange\" type=\"radio\" name=\"vert\" id=\"vertrad0\" value=\"1\"" . ($vert_bool == 1 ? " checked" : "") . "><label for=\"vertrad0\">Vertical</label>
+					<input class="stylechange" type="radio" name="vert" id="vertrad0" value="0"' . ($vert_bool == 0 ? ' checked' : '') . '/><label for="vertrad0">Horizontal &#10022;</label>
+					<input class="stylechange" type="radio" name="vert" id="vertrad1" value="1"' . ($vert_bool == 1 ? ' checked' : '') . '/><label for="vertrad1">Vertical</label>
 				</td>
 			</tr>
 			<tr>
 				<th></th>
 				<td>
-					<input style=\"display:" . $display_update . ";\" class=\"stylechange\" type=\"button\" value=\"Update\" onclick=\"reloadThisPage('" . $game_id . "', '" . $layout_id . "', '" . $game_seo . "');\" />
-					<input style=\"display:" . $display_export . ";\" class=\"stylechange\" type=\"button\" value=\"Export\" onclick=\"document_export_main_ajax();\" />
+					<input class="stylechange" type="button" style="display:' . $display_update . ';" value="Update" onclick="reload_this_page();"/>
+					<input class="stylechange" type="button" style="display:' . $display_export . ';" value="Export" onclick="document_export_main_ajax();"/>
 				</td>
 			</tr>
-
 		</table>
 	</form>
 	<p>Items marked with a star (&#10022;) are the &quot;default&quot; or most common options.</p>
-	<p>\n";
+	<p>
+';
+
 	// having someone's name repeated here three times bothers me. is there a way to have someone's name listed here only once?
 	// something like the following would be very easy to do if there were only one contributer
 	// "Binding scheme, keyboard layout and visual theme created by: Michael Horvath."
@@ -166,7 +171,8 @@
 		$count_authors += 1;
 	}
 	echo
-"	</p>
-	<p>" . getFileTime() . " GRID:" . $gamesrecord_id . ".</p>
-</div>\n";
+'	</p>
+	<p>' . getFileTime() . ' GRID:' . $gamesrecord_id . '.</p>
+</div>
+';
 ?>

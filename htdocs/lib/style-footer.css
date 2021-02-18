@@ -1,5 +1,9 @@
 table#footswitch th	{font-weight:bold;text-align:right;}
-input[type="radio"]	{margin-left:0.5em;vertical-align:middle;}
-input[type="button"]	{margin-left:0.5em;}
-input[type="checkbox"]	{margin-right:0.5em;}
-select.stylechange	{margin-left:0.5em;}
+table#footswitch tr	{vertical-align:middle;}
+table#footswitch input[type="radio"]	{margin-left:0.2em;vertical-align:middle;}
+table#footswitch input[type="button"]	{margin-left:0.2em;}
+table#footswitch input[type="checkbox"]	{margin-left:0.2em;}
+table#footswitch select			{margin-left:0.2em;}
+table#footswitch option			{padding:0.2em;}
+table#footswitch optgroup		{padding:0.2em;font-weight:bold;}
+table#footswitch label			{margin-left:0.2em;vertical-align:middle;}

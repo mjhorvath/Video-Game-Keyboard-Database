@@ -94,10 +94,10 @@
 		<title>" . cleantextHTML($page_title_a . $temp_separator . $page_title_b) . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_root2 . "style_normalize.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-common.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-wiki.css\"/>
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1  . "style-footer.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-normalize.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-common.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-wiki.css\"/>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-footer.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
 		<meta name=\"description\" content=\"" . cleantextHTML($language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name)	. ")\"/>
 		<meta name=\"keywords\" content=\""    . cleantextHTML($language_keywords	. ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name)	. "\"/>
@@ -105,15 +105,28 @@
 		<script src=\"" . $path_lib1 . "java-footer.js\"></script>\n";
 	echo writeAnalyticsTracking();
 	echo
+'		<script>
+var gamesrecord_id = '	. $gamesrecord_id . ';
+var style_id = '	. $style_id . ';
+var layout_id = '	. $layout_id . ';
+var format_id = '	. $format_id . ';
+var game_id = '		. $game_id . ';
+var game_seo = "'	. $game_seo . '";
+var ten_bool = '	. $ten_bool . ';
+var vert_bool = '	. $vert_bool . ';
+var svg_bool = '	. $svg_bool . ';
+		</script>
+';
+	echo
 "	</head>\n";
 ?>
-	<body style="margin:auto;width:80%;">
+	<body onload="init_footer();">
 		<header>
 			<h2><?php echo cleantextHTML($page_title_a . $temp_separator . $page_title_b); ?></h2>
 		</header>
 		<main>
 			<p>I have created templates for MediaWiki that do basically the same thing as the other charts on this site. You can find the templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Fandom</a>. There is a test case <a target="_blank" href="https://templates.fandom.com/wiki/User:Mikali_Homeworld/Kbdchart_example">located here</a>. Below is the code you would use to fill the template with data and display a keyboard diagram on a MediaWiki wiki. On the destination wiki page, you may also want to wrap the chart in a scrollable DIV element, since the generated chart is wider than a typical MediaWiki page.</p>
-			<textarea id="site_out" readonly="readonly" wrap="off" style="width:100%;height:30em;font-family:monospace;">
+<textarea id="site_out" readonly="readonly" wrap="off" style="width:100%;height:30em;font-family:monospace;">
 {{kbdchart
 <?php
 	// keys
@@ -160,7 +173,7 @@
 	}
 ?>
 }}
-			</textarea>
+</textarea>
 			<button onclick="select_and_copy_textarea();">Select All &amp; Copy</button>
 <!--
 			<button onclick="clear_textarea();">Clear</button>

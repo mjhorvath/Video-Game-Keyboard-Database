@@ -20,11 +20,11 @@ ul#header_list_2 li
 ul#header_list_2 li
 		{float:right;}
 ul#header_list_1 a:link,ul#header_list_2 a:link
-		{text-decoration:none;}
+		{color:#f0f0f0;text-decoration:none;}
 ul#header_list_1 a:visited,ul#header_list_2 a:visited
-		{text-decoration:none;}
+		{color:#f0f0f0;text-decoration:none;}
 ul#header_list_1 a:hover,ul#header_list_2 a:hover
-		{text-decoration:underline;}
+		{color:#f0f0f0;text-decoration:underline;}
 ul#header_list_1 a:active,ul#header_list_2 a:active
-		{text-decoration:underline;}
+		{color:#f0f0f0;text-decoration:underline;}
 svg.corner	{position:absolute;margin:0;padding:0;width:1.75em;height:100%;top:0;left:0;z-index:0;}

@@ -122,6 +122,46 @@
 
 	echo
 '<!DOCTYPE HTML>
+<!--
+This file was generated using Video Game Keyboard Diagrams by Michael Horvath.
+http://isometricland.net/keyboard/keyboard.php
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+United States License. To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/us/ or send a letter to Creative
+Commons, PO Box 1866, Mountain View, CA 94042, USA.
+';
+	echo "Binding scheme created by: ";
+	$count_authors = count($gamesrecord_authors);
+	for ($i = 0; $i < $count_authors; $i++)
+	{
+		echo $gamesrecord_authors[$i];
+		if ($i < $count_authors - 1)
+			echo ", ";
+		else
+			echo ".\n";
+	}
+	echo "Keyboard layout created by: ";
+	$count_authors = count($layout_authors);
+	for ($i = 0; $i < $count_authors; $i++)
+	{
+		echo $layout_authors[$i];
+		if ($i < $count_authors - 1)
+			echo ", ";
+		else
+			echo ".\n";
+	}
+	echo "Theme created by: ";
+	$count_authors = count($stylesrecord_authors);
+	for ($i = 0; $i < $count_authors; $i++)
+	{
+		echo $stylesrecord_authors[$i];
+		if ($i < $count_authors - 1)
+			echo ", ";
+		else
+			echo ".\n";
+	}
+	echo
+'-->
 <html lang="' . $language_code . '">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -166,7 +206,7 @@ var svg_bool = '	. $svg_bool . ';
 
 	echo
 '	</head>
-	<body>
+	<body onload="init_footer();">
 		<header>
 			<div class="boxdiv"><h2>' . $page_title_a . '<small>' . $temp_separator . $page_title_b . '</small></h2></div>
 		</header>

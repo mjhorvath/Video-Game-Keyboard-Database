@@ -1,6 +1,1 @@
-select		{color:#000;background:#fff;border:1px solid #000;}
-option		{color:#000;background:#fff;}
-table#footswitch th	{font-weight:bold;text-align:right;}
-input[type="radio"]	{margin-left:0.5em;vertical-align:middle;}
-input[type="button"]	{margin-left:0.5em;}
-select.stylechange	{margin-left:0.5em;}
+textarea		{padding:0.5em;}

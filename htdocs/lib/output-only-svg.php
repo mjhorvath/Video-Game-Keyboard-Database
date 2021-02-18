@@ -22,7 +22,7 @@
 	include($path_lib2 . "queries-chart.php");
 
 	$path_vgkd		= "http://isometricland.net/keyboard/";
-	$path_file		= "./output-svg.php";		// this file
+	$path_file		= "output-only-svg.php";		// this file
 	$stylegroup_id		= 0;		// set by selThisStyleChart(), also contained inside $stylegroup_table
 //	$stylegroup_table	= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
 //	$style_table		= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
@@ -63,7 +63,8 @@
 	$format_name		= "";		// set by checkURLParameters(), utilized by checkForErrors()
 //	$format_id		= 0;		// should not be set again here since it has already been set in "keyboard-init.php"
 //	$svg_bool		= 0;		// should not be set again here since it has already been set in "keyboard-init.php"
-	$ten_bool		= 0;		// set by checkURLParameters()
+	$ten_bool		= 1;		// set by checkURLParameters()
+	$vert_bool		= 0;		// set by checkURLParameters()
 
 	// open MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -122,13 +123,14 @@
 		$layout_legend_top	=  $layout_fullsize_height + $layout_legend_padding;
 	}
 	echo
-"<!--
+'<!--
 This file was generated using Video Game Keyboard Diagrams by Michael Horvath.
 http://isometricland.net/keyboard/keyboard.php
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
 United States License. To view a copy of this license, visit
 http://creativecommons.org/licenses/by-sa/3.0/us/ or send a letter to Creative
-Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
+Commons, PO Box 1866, Mountain View, CA 94042, USA.
+';
 	echo "Binding scheme created by: ";
 	$count_authors = count($gamesrecord_authors);
 	for ($i = 0; $i < $count_authors; $i++)
@@ -160,18 +162,33 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 			echo ".\n";
 	}
 	echo
-"-->\n";
-?>
+'-->
 <svg
 	version="1.1"
 	baseProfile="full"
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:ev="http://www.w3.org/2001/xml-events"
-	viewBox="<?php echo $layout_min_horizontal . " " . $layout_min_vertical . " " . $layout_max_horizontal . " " . $layout_max_vertical; ?>"
-	width="<?php echo $layout_max_horizontal; ?>" height="<?php echo $layout_max_vertical; ?>">
-	<title><?php echo cleantextSVG($page_title_a . $temp_separator . $page_title_b); ?></title>
-	<desc><?php echo cleantextSVG("Keyboard diagram for " . $temp_game_name); ?>.</desc><!-- partially hardcoded -->
+';
+
+	if ($vert_bool == false)
+	{
+		echo
+'	viewBox="' . $layout_min_horizontal . ' ' . $layout_min_vertical . ' ' . $layout_max_horizontal . ' ' . $layout_max_vertical . '"
+	width="' . $layout_max_horizontal . '" height="' . $layout_max_vertical . '">
+';
+	}
+	else
+	{
+		echo
+'	viewBox="' . $layout_min_vertical . ' ' . $layout_min_horizontal . ' ' . $layout_max_vertical . ' ' . $layout_max_horizontal . '"
+	width="' . $layout_max_vertical . '" height="' . $layout_max_horizontal . '">
+';
+	}
+
+	echo
+'	<title>' . cleantextSVG($page_title_a . $temp_separator . $page_title_b) . '</title>
+	<desc>' . cleantextSVG("Keyboard diagram for " . $temp_game_name . ".") . '</desc><!-- partially hardcoded -->
 	<metadata id="license"
 		xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 		xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -191,15 +208,16 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 				<cc:requires rdf:resource="http://creativecommons.org/ns#ShareAlike" />
 			</cc:License>
 			<rdf:Description about=""
-				dc:title="<?php echo cleantextSVG($page_title_a . $temp_separator . $page_title_b); ?>"
-				dc:description="<?php echo cleantextSVG($language_description . $temp_game_name . ". (" . $temp_style_name . ")"); ?>"
+				dc:title="' . cleantextSVG($page_title_a . $temp_separator . $page_title_b) . '"
+				dc:description="' . cleantextSVG($language_description . $temp_game_name . ". (" . $temp_style_name . ")") . '"
 				dc:publisher="Video Game Keyboard Diagrams"
-				dc:date="<?php echo date("Y-m-d H:i:s"); ?>"
+				dc:date="' . date("Y-m-d H:i:s") . '"
 				dc:format="image/svg+xml"
-				dc:language="<?php echo $language_code; ?>">
+				dc:language="' . $language_code . '">
 				<dc:creator>
 					<rdf:Bag>
-<?php
+';
+
 	// need to handle duplicate names better somehow
 	// or prefix each line with "Binding scheme created by..." or whatever
 	for ($i = 0; $i < count($gamesrecord_authors); $i++)
@@ -217,16 +235,21 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 		echo
 "						<rdf:li>" . cleantextSVG($stylesrecord_authors[$i]) . "</rdf:li>\n";
 	}
-?>
-					</rdf:Bag>
+
+	echo
+'					</rdf:Bag>
 				</dc:creator>
 			</rdf:Description>
 		</rdf:RDF>
 	</metadata>
 	<style type="text/css">
 /* <![CDATA[ */
-<?php include($path_lib2 . "svg-" . $style_filename . ".css"); ?>
-/* ]]> */
+';
+
+	include($path_lib2 . "svg-" . $style_filename . ".css");
+
+	echo
+'/* ]]> */
 	</style>
 	<defs>
 		<filter id="filt_1_alt" x="-1" y="-1" width="72" height="72">
@@ -245,7 +268,8 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 				<feMergeNode in="SourceGraphic"/> 
 			</feMerge>
 		</filter>
-<?php
+';
+
 	if (($style_id == 5) || ($style_id == 6))	// Dark Gradient & Light Gradient
 	{
 		echo
@@ -308,16 +332,27 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 		<pattern id="gry16" patternUnits="userSpaceOnUse" width="8" height="8"><image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAsSAAALEgHS3X78AAAAFklEQVQYlWP8//9/AwMewIRPcvgoAACaYwONca/KLAAAAABJRU5ErkJggg==" x="0" y="0" width="8" height="8" /></pattern>
 ';
 	}
-?>
-	</defs>
-<?php
+
 	echo
-"	<rect id=\"bkgrec\" x=\"-18\" y=\"-18\" width=\"1692\" height=\"612\" fill=\"none\" stroke=\"none\"/>\n";
+"	</defs>\n";
+	if ($vert_bool == true)
+	{
+		echo
+"	<g transform=\"translate(" . ($layout_min_vertical*2+$layout_max_vertical) . ",0) rotate(90)\">\n";
+	}
+	else
+	{
+		echo
+"	<g>\n";
+	}
+	echo
+"		<rect id=\"bkgrec\" x=\"" . $layout_min_horizontal . "\" y=\"" . $layout_min_vertical . "\" width=\"" . $layout_max_horizontal . "\" height=\"" . $layout_max_vertical . "\" fill=\"none\" stroke=\"none\"/>\n";
+
 	// print error messages
 	for ($i = 0; $i < count($errors_table); $i++)
 	{
 		echo
-"	<text y=\"" . ($i * 20) . "\">" . cleantextSVG($errors_table[$i]) . "</text>\n";
+"		<text y=\"" . ($i * 20) . "\">" . cleantextSVG($errors_table[$i]) . "</text>\n";
 	}
 	// keys
 	if (($gamesrecord_id > 0) && ($stylesrecord_id > 0))
@@ -389,34 +424,34 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 			if (($style_id == 5) || ($style_id == 6))	// Dark Gradient & Light Gradient
 			{
 				echo
-"	<mask id=\"mask_" . $i . "\">\n" .
-"		<rect x=\"0\" y=\"0\" width=\"" . ($pos_wid+1) . "\" height=\"" . ($pos_hgh+1) . "\" fill=\"url(#grad_1)\"/>\n" .
-"	</mask>\n";
+"		<mask id=\"mask_" . $i . "\">\n" .
+"			<rect x=\"0\" y=\"0\" width=\"" . ($pos_wid+1) . "\" height=\"" . ($pos_hgh+1) . "\" fill=\"url(#grad_1)\"/>\n" .
+"		</mask>\n";
 			}
 
 			echo
-"	<g transform=\"translate(" . ($pos_lft-0.5) . " " . ($pos_top-0.5) . ")\">\n";
+"		<g transform=\"translate(" . ($pos_lft-0.5) . " " . ($pos_top-0.5) . ")\">\n";
 
 			// rects & image
 			if (($style_id == 5) || ($style_id == 6))	// Dark Gradient & Light Gradient
 			{
 				echo
-"		<rect class=\"keyrec rec" . $bkg_nor . "\" x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"" . ($pos_wid) . "\" height=\"" . ($pos_hgh) . "\" mask=\"url(#mask_" . $i . ")\"/>\n";
+"			<rect class=\"keyrec rec" . $bkg_nor . "\" x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"" . ($pos_wid) . "\" height=\"" . ($pos_hgh) . "\" mask=\"url(#mask_" . $i . ")\"/>\n";
 			}
 			else
 			{
 				echo
-"		<rect class=\"keyrec rec" . $bkg_nor . " rec" . $key_sty . "\" x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"" . ($pos_wid) . "\" height=\"" . ($pos_hgh) . "\"/>\n";
+"			<rect class=\"keyrec rec" . $bkg_nor . " rec" . $key_sty . "\" x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"" . ($pos_wid) . "\" height=\"" . ($pos_hgh) . "\"/>\n";
 			}
 			if ($img_fil)
 			{
 				echo
-"		<image x=\"" . $img_pos_x . "\" y=\"" . $img_pos_y . "\" width=\"" . $img_wid . "\" height=\"" . $img_hgh . "\" xlink:href=\"" . $img_uri . "\"/>\n";
+"			<image x=\"" . $img_pos_x . "\" y=\"" . $img_pos_y . "\" width=\"" . $img_wid . "\" height=\"" . $img_hgh . "\" xlink:href=\"" . $img_uri . "\"/>\n";
 			}
 			if (($style_id == 16) || ($style_id == 18))	// CIELCh Shiny
 			{
 				echo
-"		<rect x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"" . ($pos_wid) . "\" height=\"" . ($pos_hgh) . "\" fill=\"url(#grad_2)\"/>\n";
+"			<rect x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"" . ($pos_wid) . "\" height=\"" . ($pos_hgh) . "\" fill=\"url(#grad_2)\"/>\n";
 			}
 
 			// bindings backgrounds
@@ -426,27 +461,27 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 				for ($j = 0; $j < count($cap_shf); $j++)
 				{
 					echo
-"		<rect class=\"bakshf\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
+"			<rect class=\"bakshf\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
 				}
 				for ($j = 0; $j < count($cap_ctl); $j++)
 				{
 					echo
-"		<rect class=\"bakctl\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
+"			<rect class=\"bakctl\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
 				}
 				for ($j = 0; $j < count($cap_alt); $j++)
 				{
 					echo
-"		<rect class=\"bakalt\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
+"			<rect class=\"bakalt\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
 				}
 				for ($j = 0; $j < count($cap_agr); $j++)
 				{
 					echo
-"		<rect class=\"bakagr\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
+"			<rect class=\"bakagr\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
 				}
 				for ($j = 0; $j < count($cap_xtr); $j++)
 				{
 					echo
-"		<rect class=\"bakxtr\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
+"			<rect class=\"bakxtr\" x=\"1.0\" y=\"" . ($jcount++ * 12 + 3) . "\" width=\"" . ($pos_wid-1) . "\" height=\"13\" rx=\"1\" ry=\"1\"></rect>\n";
 				}
 			}
 
@@ -454,81 +489,81 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 			if (($low_nor != "") && ($key_opt == false))
 			{
 				echo
-"		<text class=\"lownor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"" . ($pos_hgh-3.5) . "\">" . $low_nor . "</text>\n";
+"			<text class=\"lownor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"" . ($pos_hgh-3.5) . "\">" . $low_nor . "</text>\n";
 			}
 			if ($upp_nor != "")
 			{
 				echo
-"		<text class=\"uppnor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"13.5\">" . $upp_nor . "</text>\n";
+"			<text class=\"uppnor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"13.5\">" . $upp_nor . "</text>\n";
 			}
 			// altgr labels text
 			if ($low_agr != "")
 			{
 				echo
-"		<text class=\"lowagr txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($pos_hgh-3.5) . "\">" . $low_agr . "</text>\n";
+"			<text class=\"lowagr txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($pos_hgh-3.5) . "\">" . $low_agr . "</text>\n";
 			}
 			if ($upp_agr != "")
 			{
 				echo
-"		<text class=\"uppagr txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($pos_wid-2.5) . "\" y=\"13.5\">" . $upp_agr . "</text>\n";
+"			<text class=\"uppagr txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($pos_wid-2.5) . "\" y=\"13.5\">" . $upp_agr . "</text>\n";
 			}
 			// captions text
 			for ($j = 0; $j < count($cap_nor); $j++)
 			{
 				echo
-"		<text class=\"capnor txt" . $bkg_nor . " txt" . $key_sty . " ideo\" x=\"2.5\" y=\"" . ($top_nor+0.5) . "\" dy=\"" . (($j+1) * -14) . "\">" . $cap_nor[count($cap_nor)-($j+1)] . "</text>\n";
+"			<text class=\"capnor txt" . $bkg_nor . " txt" . $key_sty . " ideo\" x=\"2.5\" y=\"" . ($top_nor+0.5) . "\" dy=\"" . (($j+1) * -14) . "\">" . $cap_nor[count($cap_nor)-($j+1)] . "</text>\n";
 			}
 			$jcount		= 0;
 			for ($j = 0; $j < count($cap_shf); $j++)
 			{
 				echo
-"		<text class=\"capshf hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_shf[$j] . "</text>\n";
+"			<text class=\"capshf hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_shf[$j] . "</text>\n";
 
 			}
 			for ($j = 0; $j < count($cap_ctl); $j++)
 			{
 				echo
-"		<text class=\"capctl hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_ctl[$j] . "</text>\n";
+"			<text class=\"capctl hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_ctl[$j] . "</text>\n";
 			}
 			for ($j = 0; $j < count($cap_alt); $j++)
 			{
 				echo
-"		<text class=\"capalt hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_alt[$j] . "</text>\n";
+"			<text class=\"capalt hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_alt[$j] . "</text>\n";
 			}
 			for ($j = 0; $j < count($cap_agr); $j++)
 			{
 				echo
-"		<text class=\"capagr hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_agr[$j] . "</text>\n";
+"			<text class=\"capagr hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_agr[$j] . "</text>\n";
 			}
 			for ($j = 0; $j < count($cap_xtr); $j++)
 			{
 				echo
-"		<text class=\"capxtr hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_xtr[$j] . "</text>\n";
+"			<text class=\"capxtr hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_xtr[$j] . "</text>\n";
 			}
 
 			echo
-"	</g>\n";
+"		</g>\n";
 		}
 		// legend key
 		echo
-"	<g class=\"legkey\" transform=\"translate(1.5 " . ($layout_legend_top + 1.5) . ")\">
-		<rect class=\"keyrec recnon\" x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"68\" height=\"68\"/>
-		<rect class=\"bakshf\" x=\"1.0\" y=\"3\" width=\"67\" height=\"12\" rx=\"1\" ry=\"1\"></rect>
-		<text class=\"capshf hang\" x=\"65.5\" y=\"13\">Shift</text>
-		<rect class=\"bakctl\" x=\"1.0\" y=\"15\" width=\"67\" height=\"12\" rx=\"1\" ry=\"1\"></rect>
-		<text class=\"capctl hang\" x=\"65.5\" y=\"25\">Ctrl</text>
-		<rect class=\"bakalt\" x=\"1.0\" y=\"27\" width=\"67\" height=\"12\" rx=\"1\" ry=\"1\"></rect>
-		<text class=\"capalt hang\" x=\"65.5\" y=\"37\">Alt</text>
-		<text class=\"capnor txtnon ideo\" x=\"2.5\" y=\"50.5\">Caption</text>
-		<text class=\"lownor txtnon\" x=\"2.5\" y=\"64.5\">Lowcase</text>
-		<text class=\"uppnor txtnon\" x=\"2.5\" y=\"13.5\">Upcase</text>
-	</g>\n";
+"		<g class=\"legkey\" transform=\"translate(1.5 " . ($layout_legend_top + 1.5) . ")\">
+			<rect class=\"keyrec recnon\" x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"68\" height=\"68\"/>
+			<rect class=\"bakshf\" x=\"1.0\" y=\"3\" width=\"67\" height=\"12\" rx=\"1\" ry=\"1\"></rect>
+			<text class=\"capshf hang\" x=\"65.5\" y=\"13\">Shift</text>
+			<rect class=\"bakctl\" x=\"1.0\" y=\"15\" width=\"67\" height=\"12\" rx=\"1\" ry=\"1\"></rect>
+			<text class=\"capctl hang\" x=\"65.5\" y=\"25\">Ctrl</text>
+			<rect class=\"bakalt\" x=\"1.0\" y=\"27\" width=\"67\" height=\"12\" rx=\"1\" ry=\"1\"></rect>
+			<text class=\"capalt hang\" x=\"65.5\" y=\"37\">Alt</text>
+			<text class=\"capnor txtnon ideo\" x=\"2.5\" y=\"50.5\">Caption</text>
+			<text class=\"lownor txtnon\" x=\"2.5\" y=\"64.5\">Lowcase</text>
+			<text class=\"uppnor txtnon\" x=\"2.5\" y=\"13.5\">Upcase</text>
+		</g>\n";
 		// non!
 		// legend descriptions
 		if ($stylegroup_id == 1)
 		{
 			echo
-"	<g transform=\"translate(109.5 " . ($layout_legend_top + 1.5) . ")\">\n";
+"		<g transform=\"translate(109.5 " . ($layout_legend_top + 1.5) . ")\">\n";
 			$row_count = 0;
 			foreach ($legend_table as $i => $legend_row)
 			{
@@ -537,14 +572,17 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
 				$row_div = floor($row_count/3);
 				$row_mod = $row_count % 3;
 				echo
-"		<rect class=\"keyrec rec" . $leg_grp . "\" x=\"" . ($row_div*200+0.5) . "\" y=\"" . ($row_mod*20+0.5) . "\" width=\"16\" height=\"16\"/>
-		<text class=\"legtxt\" x=\"" . ($row_div*200+20.5) . "\" y=\"" . ($row_mod*20+14.5) . "\">" . cleantextSVG($leg_dsc) . "</text>\n";
+"			<rect class=\"keyrec rec" . $leg_grp . "\" x=\"" . ($row_div*200+0.5) . "\" y=\"" . ($row_mod*20+0.5) . "\" width=\"16\" height=\"16\"/>
+			<text class=\"legtxt\" x=\"" . ($row_div*200+20.5) . "\" y=\"" . ($row_mod*20+14.5) . "\">" . cleantextSVG($leg_dsc) . "</text>\n";
 				$row_count += 1;
 			}
 			echo
-"	</g>\n";
+"		</g>\n";
 		}
 	}
 	echo
-"</svg>\n";
+'		<text class="" x="' . (0) . '" y="' . ($layout_fullsize_height+16) . '" style="fill:#c0c0c0;">&#169; CC BY-SA VGKD</text>
+	</g>
+</svg>
+';
 ?>

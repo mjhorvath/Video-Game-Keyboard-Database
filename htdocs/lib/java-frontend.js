@@ -19,7 +19,7 @@
 
 var lastClicked = {};
 var accordions = ['gam','sty','lay'];		// possibly useful in the future if more accordion lists are created
-var radios = ['fmt','ten'];			// ditto
+var radios = ['fmt','ten','vrt'];		// ditto
 
 function Toggle_Waiting(thisBool)
 {
@@ -34,12 +34,14 @@ function Reset_Page()
 	document.getElementById('gam_check').style.display = 'none';
 	document.getElementById('fmt_check').style.display = 'none';
 	document.getElementById('ten_check').style.display = 'none';
+	document.getElementById('vrt_check').style.display = 'none';
 	document.getElementById('but_check').style.display = 'none';
 	document.getElementById('lay_xmark').style.display = 'none';
 	document.getElementById('sty_xmark').style.display = 'none';
 	document.getElementById('gam_xmark').style.display = 'none';
 	document.getElementById('fmt_xmark').style.display = 'none';
 	document.getElementById('ten_xmark').style.display = 'none';
+	document.getElementById('vrt_xmark').style.display = 'none';
 	document.getElementById('but_xmark').style.display = 'none';
 	document.getElementById('but_ready').style.display = 'none';
 	document.getElementById('but_error').style.display = 'none';
@@ -65,8 +67,9 @@ function Reset_Page()
 	document.forms['keyboard_select'].sty.value = '';
 	document.forms['keyboard_select'].gam.value = '';
 
-	resetRadioButtons("fmt_radio");
-	resetRadioButtons("ten_radio");
+	resetRadioButtons('fmt_radio');
+	resetRadioButtons('ten_radio');
+	resetRadioButtons('vrt_radio');
 	disableResetButton();
 }
 
@@ -104,7 +107,7 @@ function Set_Game(thisindex, thiselement)
 				document.getElementById('gam_xmark').style.display = 'inline-block';
 				document.getElementById('but_xmark').style.display = 'inline-block';
 				document.getElementById('but_ready').style.display = 'none';
-				document.getElementById('but_error').style.display = 'block';
+				document.getElementById('but_error').style.display = 'inline-block';
 				lastClicked['gam'] = null;
 			}
 		}
@@ -149,7 +152,7 @@ function Set_Style(thisindex, thiselement)
 				document.getElementById('sty_xmark').style.display = 'inline-block';
 				document.getElementById('but_xmark').style.display = 'inline-block';
 				document.getElementById('but_ready').style.display = 'none';
-				document.getElementById('but_error').style.display = 'block';
+				document.getElementById('but_error').style.display = 'inline-block';
 				lastClicked['sty'] = null;
 			}
 		}
@@ -174,22 +177,26 @@ function Set_Select_Value(thisElement)
 	{
 //		document.getElementById('fmt_check').style.display = 'none';
 //		document.getElementById('ten_check').style.display = 'none';
+//		document.getElementById('vrt_check').style.display = 'none';
 		document.getElementById('but_check').style.display = 'none';
 //		document.getElementById('fmt_xmark').style.display = 'inline-block';
 //		document.getElementById('ten_xmark').style.display = 'inline-block';
+//		document.getElementById('vrt_xmark').style.display = 'inline-block';
 		document.getElementById('but_xmark').style.display = 'inline-block';
 		document.getElementById('but_ready').style.display = 'none';
-		document.getElementById('but_error').style.display = 'block';
+		document.getElementById('but_error').style.display = 'inline-block';
 	}
 	else
 	{
 		document.getElementById('fmt_check').style.display = 'inline-block';
 		document.getElementById('ten_check').style.display = 'inline-block';
+		document.getElementById('vrt_check').style.display = 'inline-block';
 		document.getElementById('but_check').style.display = 'inline-block';
 		document.getElementById('fmt_xmark').style.display = 'none';
 		document.getElementById('ten_xmark').style.display = 'none';
+		document.getElementById('vrt_xmark').style.display = 'none';
 		document.getElementById('but_xmark').style.display = 'none';
-		document.getElementById('but_ready').style.display = 'block';
+		document.getElementById('but_ready').style.display = 'inline-block';
 		document.getElementById('but_error').style.display = 'none';
 	}
 	document.getElementById(thisInput + '_check').style.display = 'inline-block';
@@ -217,19 +224,20 @@ function Check_Values_and_Spawn()
 	var sty_value = SelectForm.sty.value == '' ? null : parseInt(SelectForm.sty.value);
 	var fmt_value = getValueFromRadioButton('fmt_radio');
 	var ten_value = getValueFromRadioButton('ten_radio');
+	var vrt_value = getValueFromRadioButton('vrt_radio');
 	var WarnBoxReady = document.getElementById('but_ready');
 	var WarnBoxError = document.getElementById('but_error');
 	if (lay_value && gam_value && sty_value)
 	{
-		WarnBoxReady.style.display = 'block';
+		WarnBoxReady.style.display = 'inline-block';
 		WarnBoxError.style.display = 'none';
 		var seo_value = seourl_table[gam_value-1];
-		window.open('keyboard-diagram-' + seo_value + '.php?sty=' + sty_value + '&lay=' + lay_value + '&fmt=' + fmt_value + '&ten=' + ten_value);
+		window.open('keyboard-diagram-' + seo_value + '.php?sty=' + sty_value + '&lay=' + lay_value + '&fmt=' + fmt_value + '&ten=' + ten_value + '&vrt=' + vrt_value);
 	}
 	else	
 	{
 		WarnBoxReady.style.display = 'none';
-		WarnBoxError.style.display = 'block';
+		WarnBoxError.style.display = 'inline-block';
 	}
 }
 

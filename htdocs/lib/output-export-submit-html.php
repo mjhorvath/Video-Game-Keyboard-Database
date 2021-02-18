@@ -149,14 +149,15 @@
 	}
 
 	echo
-"<!DOCTYPE HTML>
+'<!DOCTYPE HTML>
 <!--
 This file was generated using Video Game Keyboard Diagrams by Michael Horvath.
 http://isometricland.net/keyboard/keyboard.php
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
 United States License. To view a copy of this license, visit
 http://creativecommons.org/licenses/by-sa/3.0/us/ or send a letter to Creative
-Commons, PO Box 1866, Mountain View, CA 94042, USA.\n";
+Commons, PO Box 1866, Mountain View, CA 94042, USA.
+';
 	echo "Binding scheme created by: ";
 	$count_authors = count($gamesrecord_authors);
 	for ($i = 0; $i < $count_authors; $i++)
