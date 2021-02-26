@@ -106,7 +106,7 @@ function click_document_body(event)
 				(is_key_dirty == true) &&
 				(
 					elm.matches('#set_doc_button')   ||
-					elm.matches('#unset_doc_button') ||
+					elm.matches('#reset_doc_button') ||
 					elm.matches('.email_input')      ||
 					elm.matches('.email_textarea')   ||
 					elm.matches('#email_recaptcha')  ||
@@ -301,7 +301,7 @@ function key_revert_changes()
 	push_values_from_cache_into_form();
 	document.getElementById('set_key_button').disabled = true;
 	document.getElementById('unset_key_button').disabled = true;
-	document.getElementById('prev_doc_button').disabled = false;
+	document.getElementById('export_doc_button').disabled = false;
 	flag_key_clean();
 }
 
@@ -535,7 +535,7 @@ function toggle_set_and_revert_buttons(event)
 	{
 		document.getElementById('set_key_button').disabled = false;
 		document.getElementById('unset_key_button').disabled = false;
-		document.getElementById('prev_doc_button').disabled = true;
+		document.getElementById('export_doc_button').disabled = true;
 		flag_key_dirty();
 	}
 	else
@@ -1180,15 +1180,15 @@ function enable_doc_controls()
 		document.getElementById('set_doc_button').disabled = false;
 	else
 		document.getElementById('set_doc_button').disabled = true;
-	document.getElementById('unset_doc_button').disabled = false;
-	document.getElementById('prev_doc_button').disabled = false;
+	document.getElementById('reset_doc_button').disabled = false;
+	document.getElementById('export_doc_button').disabled = false;
 }
 
 function disable_doc_controls()
 {
 	document.getElementById('set_doc_button').disabled = true;
-	document.getElementById('unset_doc_button').disabled = true;
-	document.getElementById('prev_doc_button').disabled = true;
+	document.getElementById('reset_doc_button').disabled = true;
+	document.getElementById('export_doc_button').disabled = true;
 }
 
 // non!
