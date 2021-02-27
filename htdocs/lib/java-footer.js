@@ -19,10 +19,10 @@
 
 function reload_this_page()
 {
-	if (format_id == 1)
-		var out_href = "keyboard-diagram-" + game_seo + ".svg?sty=" + style_id + "&lay=" + layout_id + "&fmt=" + format_id + "&ten=" + ten_bool + "&vrt=" + vert_bool;
+	if (binding_data.format_id == 1)
+		var out_href = "keyboard-diagram-" + binding_data.game_seo + ".svg?sty=" + binding_data.style_id + "&lay=" + binding_data.layout_id + "&fmt=" + binding_data.format_id + "&ten=" + binding_data.ten_bool + "&vrt=" + binding_data.vert_bool;
 	else
-		var out_href = "keyboard-diagram-" + game_seo + ".php?sty=" + style_id + "&lay=" + layout_id + "&fmt=" + format_id + "&ten=" + ten_bool + "&vrt=" + vert_bool;
+		var out_href = "keyboard-diagram-" + binding_data.game_seo + ".php?sty=" + binding_data.style_id + "&lay=" + binding_data.layout_id + "&fmt=" + binding_data.format_id + "&ten=" + binding_data.ten_bool + "&vrt=" + binding_data.vert_bool;
 	window.location.href = out_href;
 }
 
@@ -33,7 +33,7 @@ function init_footer()
 	('change',
 		function()
 		{
-			style_id = parseInt(this.value);
+			binding_data.style_id = parseInt(this.value);
 		}
 	);
 	var formrad = document.VisualStyleSwitch.form;
@@ -43,7 +43,7 @@ function init_footer()
 		('change',
 			function()
 			{
-				format_id = parseInt(this.value);
+				binding_data.format_id = parseInt(this.value);
 			}
 		);
 	}
@@ -54,7 +54,7 @@ function init_footer()
 		('change',
 			function()
 			{
-				ten_bool = parseInt(this.value);
+				binding_data.ten_bool = parseInt(this.value);
 			}
 		);
 	}
@@ -65,7 +65,7 @@ function init_footer()
 		('change',
 			function()
 			{
-				vert_bool = parseInt(this.value);
+				binding_data.vert_bool = parseInt(this.value);
 			}
 		);
 	}

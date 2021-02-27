@@ -26,26 +26,11 @@ function document_export_submit_ajax()
 //	collect_binding_data();
 //	console.log(JSON.stringify(binding_table));
 	const url = 'lib/output-export-submit-html.php';
-	const data =
-	{
-		gamesrecord_id: gamesrecord_id,
-		style_id: style_id,
-		layout_id: layout_id,
-		format_id: format_id,
-		game_id: game_id,
-		game_seo: game_seo,
-		ten_bool: ten_bool,
-		vert_bool: vert_bool,
-		svg_bool: svg_bool,
-		commandouter_table: commandouter_table,
-		legend_table: legend_table,
-		binding_table: binding_table
-	}
 	$.ajax
 	({
 		type: 'POST',
 		url: url,
-		data: JSON.stringify(data),
+		data: JSON.stringify(binding_data),
 		contentType: 'application/json; charset=utf-8',
 		dataType: 'html',
 		success: function(msg)
@@ -62,23 +47,11 @@ function document_export_submit_ajax()
 function document_export_main_ajax()
 {
 	const url = 'lib/output-export-main-html.php';
-	const data =
-	{
-		gamesrecord_id: gamesrecord_id,
-		style_id: style_id,
-		layout_id: layout_id,
-		format_id: format_id,
-		game_id: game_id,
-		game_seo: game_seo,
-		ten_bool: ten_bool,
-		vert_bool: vert_bool,
-		svg_bool: svg_bool
-	}
 	$.ajax
 	({
 		type: 'POST',
 		url: url,
-		data: JSON.stringify(data),
+		data: JSON.stringify(binding_data),
 		contentType: 'application/json; charset=utf-8',
 		dataType: 'html',
 		success: function(msg)
@@ -98,26 +71,11 @@ function document_export_submit_xhr()
 	collect_command_data();
 //	collect_binding_data();
 	const url = 'lib/output-export-submit-html.php';
-	const data =
-	{
-		gamesrecord_id: gamesrecord_id,
-		style_id: style_id,
-		layout_id: layout_id,
-		format_id: format_id,
-		game_id: game_id,
-		game_seo: game_seo,
-		ten_bool: ten_bool,
-		vert_bool: vert_bool,
-		svg_bool: svg_bool,
-		commandouter_table: commandouter_table,
-		legend_table: legend_table,
-		binding_table: binding_table
-	}
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', url, true);
 	xhr.addEventListener('load', reqListener);
 	xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-	xhr.send(JSON.stringify(data));
+	xhr.send(JSON.stringify(binding_data));
 }
 
 function reqListener()
@@ -128,7 +86,7 @@ function reqListener()
 function do_export(content)
 {
 	// save output to file
-	download(content, 'keyboard-diagram-' + game_seo + '.html', 'text/html; charset=utf-8');
+	download(content, 'keyboard-diagram-' + binding_data.game_seo + '.html', 'text/html; charset=utf-8');
 	// print output to new window
 //	var myWindow = window.open('', 'myWindow', '');
 //	myWindow.document.write(content);

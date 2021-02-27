@@ -118,7 +118,7 @@
 				<th></th>
 				<td>
 					<input class="stylechange" type="button" style="display:' . $display_update . ';" value="Update" onclick="reload_this_page();"/>
-					<input class="stylechange" type="button" style="display:' . $display_export . ';" value="Export" onclick="document_export_main_ajax();"/>
+					<input class="stylechange" type="button" style="display:' . $display_export . ';" value="Export HTML" onclick="document_export_main_ajax();"/>
 				</td>
 			</tr>
 		</table>

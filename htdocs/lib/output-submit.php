@@ -66,6 +66,8 @@
 	$option_string		= "";
 	$color_string		= "";
 	$commandlabel_string	= "";
+	$commandouter_string	= "";
+	$legend_string		= "";
 	$binding_string		= "";
 
 	// open MySQL connection
@@ -127,29 +129,58 @@
 
 	// non!
 	$option_string .= "<option class=\"optnon\">non</option>";
-	$color_string .= "\t0:[0,'non',0],\n";
+	$color_string .= "\t\t0:[0,'non',0],\n";
 	foreach ($binding_color_table as $i => $binding_color_value)
 	{
 		$color_id	= $binding_color_value[0];
 		$color_class	= $binding_color_value[1];
 		$color_sort	= $binding_color_value[2];	// not used right now
 		$option_string .= "<option class=\"opt" . $color_class . "\">" . $color_class . "</option>";
-		$color_string .= "\t" . ($i+1) . ":[" . $color_id . ",'" . $color_class . "'," . $color_sort. "],\n";
+		$color_string .= "\t\t" . ($i+1) . ":[" . $color_id . ",'" . $color_class . "'," . $color_sort. "],\n";
 	}
 	$color_string = rtrim($color_string, ",\n");
-	$color_string .= "\n";
 
 	foreach ($commandlabel_table as $i => $commandlabel_value)
 	{
-		// commandtype_id, commandlabel_string, commandtype_abbrv, commandtype_input, commandtype_keygroup
+		// commandtype_id, commandlabel_text, commandtype_abbrv, commandtype_input, commandtype_keygroup
 		$commandtype_id		= $commandlabel_value[0];
+		$commandlabel_text	= $commandlabel_value[1];
 		$commandtype_abbrv	= $commandlabel_value[2];
 		$commandtype_input	= $commandlabel_value[3];
 		$commandtype_keygroup	= $commandlabel_value[4];
-		$commandlabel_string .= "\t" . $i . ":[" . $commandtype_id . ",'" . $commandtype_abbrv . "'," . $commandtype_input . "," . $commandtype_keygroup . "],\n";
+		$commandlabel_string .= "\t\t" . $i . ":[" . $commandtype_id . ",'" . $commandlabel_text . "','" . $commandtype_abbrv . "'," . $commandtype_input . "," . $commandtype_keygroup . "],\n";
 	}
 	$commandlabel_string = rtrim($commandlabel_string, ",\n");
-	$commandlabel_string .= "\n";
+
+	foreach ($commandlabel_table as $i => $commandlabel_value)
+	{
+		$commandouter_string .= "\t\t" . $i . ":\n\t\t{\n";
+		if (array_key_exists($i, $commandouter_table))
+			$commandinner_table = $commandouter_table[$i];
+		else
+			$commandinner_table = [];
+		foreach ($commandinner_table as $j => $commandinner_value)
+		{
+			// commandtype_id, command_text, command_description, keygroup_id
+			$commandinner_text	= $commandinner_value[1];
+			$commandinner_desc	= $commandinner_value[2];
+			$commandinner_keygroup	= $commandinner_value[3];
+			$commandouter_string .= "\t\t\t" . $j . ":['" . $commandinner_text . "','" . $commandinner_desc . "'," . $commandinner_keygroup . "],\n";
+		}
+		if (array_key_exists($i, $commandouter_table))
+			$commandouter_string = rtrim($commandouter_string, ",\n") . "\n";
+		$commandouter_string .= "\t\t},\n";
+	}
+	$commandouter_string = rtrim($commandouter_string, ",\n");
+
+	foreach ($legend_table as $i => $legend_value)
+	{
+		// keygroup_id, legend_description
+		$legend_id	= $legend_value[0];
+		$legend_desc	= $legend_value[1];
+		$legend_string .= "\t\t" . $i . ":[" . $legend_id . ",'" . $legend_desc . "'],\n";
+	}
+	$legend_string = rtrim($legend_string, ",\n");
 
 	// cleaning!
 	if (($gamesrecord_id > 0) && ($stylesrecord_id > 0))
@@ -196,7 +227,7 @@
 				$bkg_xtr = 0;
 			}
 			$binding_string .=
-			"\t" . $i . ":[" .
+			"\t\t" . $i . ":[" .
 			$low_nor . "," .
 			$upp_nor . "," .
 			$low_agr . "," .
@@ -217,7 +248,6 @@
 			$bkg_xtr . "],\n";
 		}
 		$binding_string = rtrim($binding_string, ",\n");
-		$binding_string .= "\n";
 	}
 
 	// cleaning!
@@ -248,19 +278,38 @@
 		<script src=\"" . $path_lib1 . "java-footer.js\"></script>
 		<script src=\"https://www.google.com/recaptcha/api.js\"></script>
 		<script>
-var gamesrecord_id = "	. $gamesrecord_id . ";
-var style_id = "	. $style_id . ";
-var layout_id = "	. $layout_id . ";
-var format_id = "	. $format_id . ";
-var game_id = "		. $game_id . ";
-var game_seo = '"	. $game_seo . "';
-var ten_bool = "	. $ten_bool . ";
-var vert_bool = "	. $vert_bool . ";
-var svg_bool = "	. $svg_bool . ";
-
-var color_table =\n{\n" . $color_string . "};
-var commandlabel_table =\n{\n" . $commandlabel_string . "};
-var binding_table =\n{\n" . $binding_string . "};
+var binding_data =
+{
+	gamesrecord_id: " . $gamesrecord_id . ",
+	style_id: "       . $style_id . ",
+	layout_id: "      . $layout_id . ",
+	format_id: "      . $format_id . ",
+	game_id: "        . $game_id . ",
+	game_seo: '"      . $game_seo . "',
+	ten_bool: "       . $ten_bool . ",
+	vert_bool: "      . $vert_bool . ",
+	svg_bool: "       . $svg_bool . ",
+	color_table:
+	{
+" . $color_string . "
+	},
+	commandlabel_table:
+	{
+" . $commandlabel_string . "
+	},
+	commandouter_table:
+	{
+" . $commandouter_string . "
+	},
+	legend_table:
+	{
+" . $legend_string . "
+	},
+	binding_table:
+	{
+" . $binding_string . "
+	}
+}
 		</script>
 	</head>\n";
 ?>
@@ -313,7 +362,7 @@ var binding_table =\n{\n" . $binding_string . "};
 					<input name="email_8"  id="email_8"  type="hidden" value=""/>
 					<input name="email_9"  id="email_9"  type="hidden" value=""/>
 					<input name="email_10" id="email_10" type="hidden" value=""/>
-					<div><button id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit data to site admin" data-callback="recaptchaCallback">Submit</button><button id="reset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state" data-callback="recaptchaCallback">Reset</button><button id="export_doc_button" type="button" style="padding:0.3em 1em;" autocomplete="off" onclick="document_export_submit_ajax();" title="Export data to HTML file">Export</button></div>
+					<div><button class="botbut" id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit data to site admin" data-callback="recaptchaCallback">Submit</button><button class="botbut" id="reset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state" data-callback="recaptchaCallback">Clear All</button><button class="botbut" id="export_doc_button" type="button" style="padding:0.3em 1em;" autocomplete="off" onclick="document_export_submit_ajax();" title="Export data to HTML file">Export HTML</button></div>
 				</form>
 			</div>
 			<div id="pane_hlp" style="display:none;">
@@ -333,12 +382,13 @@ var binding_table =\n{\n" . $binding_string . "};
 					<div class="legrow"><div class="legcll legbox legblu">blu</div><div class="legcll legtxt">Camera/Point of view</div></div>
 					<div class="legrow"><div class="legcll legbox legmag">mag</div><div class="legcll legtxt">Game Interface/Controls/Menus</div></div>
 				</div>
+				<p>You can access SQL and JSON code for each binding scheme by pressing the curly brackets icon in the top-right portion of the screen.</p>
 			</div>
 		</div>
 		<div id="pane_rgt">
 			<div id="tbar_rgt">
 				<div id="butt_kbd" class="tabs_butt" title="Toggle Keyboard Panel" onclick="switch_right_pane(0);"><img src="<?php echo $path_lib1; ?>icon-kbd.png"/></div>
-				<div id="butt_sql" class="tabs_butt" title="Toggle SQL Panel"      onclick="switch_right_pane(1);"><img src="<?php echo $path_lib1; ?>icon-sql.png"/></div>
+				<div id="butt_sql" class="tabs_butt" title="Toggle Code Panel"     onclick="switch_right_pane(1);"><img src="<?php echo $path_lib1; ?>icon-cod.png"/></div>
 			</div>
 			<div id="pane_kbd" style="display:block;">
 				<header>
@@ -526,10 +576,11 @@ var binding_table =\n{\n" . $binding_string . "};
 	$count_rows = 0;
 	foreach ($binding_color_table as $i => $binding_color_value)
 	{
-		$leg_value = "";
 		$leg_color = getkeycolor($i+1);
 		if (array_key_exists($i, $legend_table))
 			$leg_value = $legend_table[$i][1];
+		else
+			$leg_value = "";
 		if ($count_rows % 3 == 0)
 		{
 			echo
@@ -661,19 +712,26 @@ var binding_table =\n{\n" . $binding_string . "};
 				</footer>
 			</div>
 			<div id="pane_tsv" style="display:none;">
-				<h2>SQL Code</h2>
-				<p style="max-width:60em;">You should be able to copy and paste the following SQL code into a text file and execute the resulting script.</p>
+				<h2>JSON Code</h2>
+				<p style="max-width:60em;">You should be able to copy and paste the following JSON code into a text file and store it on your computer.</p>
 				<p style="max-width:60em;">The string <code>\\n</code> (with a lower-case &quot;n&quot; and two backslashes) indicates a newline character.</p>
-				<p style="max-width:60em;">If you run out of space, the text areas below can be resized by dragging on the bottom-right corners.</p>
+				<p style="max-width:60em;">If you run out of space, the text areas below can be resized by dragging on the bottom-right corners in some Web browsers.</p>
+				<textarea id="code_all_json" style="width:60em;height:40em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>
+				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_all_json();">Fetch Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="apply_all_json();">Set Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_all_json();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('code_all_json');">Select &amp; Copy</button><input type="checkbox" id="code_pretty" checked style="vertical-align:middle;margin-left:1em;"><label for="code_pretty" style="vertical-align:middle;margin-left:0.5em;">Pretty print?</label></p>
+				<hr/>
+				<h2>SQL Code</h2>
+				<p style="max-width:60em;">You should be able to copy and paste the following SQL code into a text file and execute the resulting script in your SQL editor.</p>
+				<p style="max-width:60em;">The string <code>\\n</code> (with a lower-case &quot;n&quot; and two backslashes) indicates a newline character.</p>
+				<p style="max-width:60em;">If you run out of space, the text areas below can be resized by dragging on the bottom-right corners in some Web browsers.</p>
 				<h4>Legend</h4>
-				<textarea id="legend_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>
-				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_legend();">Fetch Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_legend();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('legend_tsv');">Select &amp; Copy</button></p>
+				<textarea id="code_legend_sql" style="width:60em;height:20em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>
+				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_legend_sql();">Fetch Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_legend_sql();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('code_legend_sql');">Select &amp; Copy</button></p>
 				<h4>Commands</h4>
-				<textarea id="command_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>
-				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_commands();">Fetch Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_commands();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('command_tsv');">Select &amp; Copy</button></p>
+				<textarea id="code_command_sql" style="width:60em;height:20em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>
+				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_commands_sql();">Fetch Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_commands_sql();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('code_command_sql');">Select &amp; Copy</button></p>
 				<h4>Bindings</h4>
-				<textarea id="binding_tsv" style="width:60em;height:20em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>
-				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_bindings();">Fetch Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_bindings();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('binding_tsv');">Select &amp; Copy</button></p>
+				<textarea id="code_binding_sql" style="width:60em;height:20em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>
+				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_bindings_sql();">Fetch Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_bindings_sql();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('code_binding_sql');">Select &amp; Copy</button></p>
 			</div>
 		</div>
 	</body>

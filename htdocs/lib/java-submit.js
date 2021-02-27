@@ -19,22 +19,13 @@
 
 const path_lib1 = './lib/';
 
-var style_id = 0;
-var layout_id = 0;
-var format_id = 0;
-var game_id = 0;
-var game_seo = '';
-var ten_bool = 1;
-var svg_bool = 0;
-var commandouter_table = {};
-var legend_table = {};
 var is_key_dirty = false;
 var is_doc_dirty = false;
 var is_eml_dirty = false;
 var is_cap_dirty = false;
 var last_id = null;
 var last_class = null;
-var current_id = null;
+var current_key_id = null;
 var current_values = {};
 current_values.val_keynum = '';
 current_values.val_lownor = '';
@@ -210,8 +201,8 @@ function click_on_chart_key(elm)
 		return;
 	}
 
-	last_id = current_id;
-	current_id = elm.id.slice(7);
+	last_id = current_key_id;
+	current_key_id = elm.id.slice(7);
 
 	enable_input_elements();
 	push_values_from_array_into_cache();
@@ -221,8 +212,8 @@ function click_on_chart_key(elm)
 	{
 		document.getElementById('keyout_' + last_id).className = last_class;
 	}
-	last_class = document.getElementById('keyout_' + current_id).className;
-	document.getElementById('keyout_' + current_id).className += ' keysel';
+	last_class = document.getElementById('keyout_' + current_key_id).className;
+	document.getElementById('keyout_' + current_key_id).className += ' keysel';
 }
 
 function click_off_chart_key(elm)
@@ -233,14 +224,14 @@ function click_off_chart_key(elm)
 		return;
 	}
 
-	if (current_id !== null)
+	if (current_key_id !== null)
 	{
-		document.getElementById('keyout_' + current_id).className = last_class;
+		document.getElementById('keyout_' + current_key_id).className = last_class;
 	}
 
 	last_id = null;
 	last_class = null;
-	current_id = null;
+	current_key_id = null;
 	current_values = {};
 	current_values.val_keynum = '';
 	current_values.val_lownor = '';
@@ -284,14 +275,14 @@ function key_save_changes()
 	document.getElementById('unset_key_button').disabled = true;
 	flag_key_clean();
 	flag_doc_dirty();
-	if (current_id != null)
+	if (current_key_id != null)
 	{
 		const regex = RegExp('keysel');
-		const sel_match = regex.test(document.getElementById('keyout_' + current_id).className);
+		const sel_match = regex.test(document.getElementById('keyout_' + current_key_id).className);
 		if (sel_match)
-			document.getElementById('keyout_' + current_id).className = last_class + ' keysel';
+			document.getElementById('keyout_' + current_key_id).className = last_class + ' keysel';
 		else
-			document.getElementById('keyout_' + current_id).className = last_class;
+			document.getElementById('keyout_' + current_key_id).className = last_class;
 	}
 }
 
@@ -324,7 +315,7 @@ function is_embedded_image_okay()
 function set_form_color(this_select, target_value)
 {
 	this_select.selectedIndex = target_value;
-	this_select.className = 'sel' + color_table[target_value][1];
+	this_select.className = 'sel' + binding_data.color_table[target_value][1];
 }
 
 function get_form_color(this_select)
@@ -334,33 +325,33 @@ function get_form_color(this_select)
 
 function push_values_from_array_into_cache()
 {
-	if (current_id == null)
+	if (current_key_id == null)
 		return null;
 
-	current_values.val_keynum = current_id;
-	current_values.val_lownor = binding_table[current_id][ 0];
-	current_values.val_uppnor = binding_table[current_id][ 1];
-	current_values.val_lowagr = binding_table[current_id][ 2];
-	current_values.val_uppagr = binding_table[current_id][ 3];
-	current_values.val_capnor = binding_table[current_id][ 4];
-	current_values.val_capshf = binding_table[current_id][ 5];
-	current_values.val_capctl = binding_table[current_id][ 6];
-	current_values.val_capalt = binding_table[current_id][ 7];
-	current_values.val_capagr = binding_table[current_id][ 8];
-	current_values.val_capxtr = binding_table[current_id][ 9];
-	current_values.val_imgfil = binding_table[current_id][10];
-	current_values.val_imguri = binding_table[current_id][11];
-	current_values.col_capnor = !binding_table[current_id][12] ? 0 : binding_table[current_id][12];
-	current_values.col_capshf = !binding_table[current_id][13] ? 0 : binding_table[current_id][13];
-	current_values.col_capctl = !binding_table[current_id][14] ? 0 : binding_table[current_id][14];
-	current_values.col_capalt = !binding_table[current_id][15] ? 0 : binding_table[current_id][15];
-	current_values.col_capagr = !binding_table[current_id][16] ? 0 : binding_table[current_id][16];
-	current_values.col_capxtr = !binding_table[current_id][17] ? 0 : binding_table[current_id][17];
+	current_values.val_keynum = current_key_id;
+	current_values.val_lownor = binding_data.binding_table[current_key_id][ 0];
+	current_values.val_uppnor = binding_data.binding_table[current_key_id][ 1];
+	current_values.val_lowagr = binding_data.binding_table[current_key_id][ 2];
+	current_values.val_uppagr = binding_data.binding_table[current_key_id][ 3];
+	current_values.val_capnor = binding_data.binding_table[current_key_id][ 4];
+	current_values.val_capshf = binding_data.binding_table[current_key_id][ 5];
+	current_values.val_capctl = binding_data.binding_table[current_key_id][ 6];
+	current_values.val_capalt = binding_data.binding_table[current_key_id][ 7];
+	current_values.val_capagr = binding_data.binding_table[current_key_id][ 8];
+	current_values.val_capxtr = binding_data.binding_table[current_key_id][ 9];
+	current_values.val_imgfil = binding_data.binding_table[current_key_id][10];
+	current_values.val_imguri = binding_data.binding_table[current_key_id][11];
+	current_values.col_capnor = !binding_data.binding_table[current_key_id][12] ? 0 : binding_data.binding_table[current_key_id][12];
+	current_values.col_capshf = !binding_data.binding_table[current_key_id][13] ? 0 : binding_data.binding_table[current_key_id][13];
+	current_values.col_capctl = !binding_data.binding_table[current_key_id][14] ? 0 : binding_data.binding_table[current_key_id][14];
+	current_values.col_capalt = !binding_data.binding_table[current_key_id][15] ? 0 : binding_data.binding_table[current_key_id][15];
+	current_values.col_capagr = !binding_data.binding_table[current_key_id][16] ? 0 : binding_data.binding_table[current_key_id][16];
+	current_values.col_capxtr = !binding_data.binding_table[current_key_id][17] ? 0 : binding_data.binding_table[current_key_id][17];
 }
 
 function push_values_from_form_into_cache()
 {
-	if (current_id == null)
+	if (current_key_id == null)
 		return null;
 
 	current_values.val_keynum = subOne(document.getElementById('inp_keynum').value);
@@ -387,48 +378,48 @@ function push_values_from_form_into_cache()
 // cleaning!
 function push_values_from_cache_into_array()
 {
-	if (current_id == null)
+	if (current_key_id == null)
 		return null;
 
-	binding_table[current_id][ 0] = current_values.val_lownor;
-	binding_table[current_id][ 1] = current_values.val_uppnor;
-	binding_table[current_id][ 2] = current_values.val_lowagr;
-	binding_table[current_id][ 3] = current_values.val_uppagr;
-	binding_table[current_id][ 4] = current_values.val_capnor;
-	binding_table[current_id][ 5] = current_values.val_capshf;
-	binding_table[current_id][ 6] = current_values.val_capctl;
-	binding_table[current_id][ 7] = current_values.val_capalt;
-	binding_table[current_id][ 8] = current_values.val_capagr;
-	binding_table[current_id][ 9] = current_values.val_capxtr;
-	binding_table[current_id][10] = current_values.val_imgfil;
-	binding_table[current_id][11] = current_values.val_imguri;
-	binding_table[current_id][12] = current_values.col_capnor;
-	binding_table[current_id][13] = current_values.col_capshf;
-	binding_table[current_id][14] = current_values.col_capctl;
-	binding_table[current_id][15] = current_values.col_capalt;
-	binding_table[current_id][16] = current_values.col_capagr;
-	binding_table[current_id][17] = current_values.col_capxtr;
+	binding_data.binding_table[current_key_id][ 0] = current_values.val_lownor;
+	binding_data.binding_table[current_key_id][ 1] = current_values.val_uppnor;
+	binding_data.binding_table[current_key_id][ 2] = current_values.val_lowagr;
+	binding_data.binding_table[current_key_id][ 3] = current_values.val_uppagr;
+	binding_data.binding_table[current_key_id][ 4] = current_values.val_capnor;
+	binding_data.binding_table[current_key_id][ 5] = current_values.val_capshf;
+	binding_data.binding_table[current_key_id][ 6] = current_values.val_capctl;
+	binding_data.binding_table[current_key_id][ 7] = current_values.val_capalt;
+	binding_data.binding_table[current_key_id][ 8] = current_values.val_capagr;
+	binding_data.binding_table[current_key_id][ 9] = current_values.val_capxtr;
+	binding_data.binding_table[current_key_id][10] = current_values.val_imgfil;
+	binding_data.binding_table[current_key_id][11] = current_values.val_imguri;
+	binding_data.binding_table[current_key_id][12] = current_values.col_capnor;
+	binding_data.binding_table[current_key_id][13] = current_values.col_capshf;
+	binding_data.binding_table[current_key_id][14] = current_values.col_capctl;
+	binding_data.binding_table[current_key_id][15] = current_values.col_capalt;
+	binding_data.binding_table[current_key_id][16] = current_values.col_capagr;
+	binding_data.binding_table[current_key_id][17] = current_values.col_capxtr;
 
-	document.getElementById('lownor_' + current_id).innerHTML = cleantextHTML(current_values.val_lownor);
-	document.getElementById('uppnor_' + current_id).innerHTML = cleantextHTML(current_values.val_uppnor);
-	document.getElementById('lowagr_' + current_id).innerHTML = cleantextHTML(current_values.val_lowagr);
-	document.getElementById('uppagr_' + current_id).innerHTML = cleantextHTML(current_values.val_uppagr);
-	document.getElementById('capnor_' + current_id).innerHTML = cleantextHTML(current_values.val_capnor);
-	document.getElementById('capshf_' + current_id).innerHTML = cleantextHTML(current_values.val_capshf);
-	document.getElementById('capctl_' + current_id).innerHTML = cleantextHTML(current_values.val_capctl);
-	document.getElementById('capalt_' + current_id).innerHTML = cleantextHTML(current_values.val_capalt);
-	document.getElementById('capagr_' + current_id).innerHTML = cleantextHTML(current_values.val_capagr);
-	document.getElementById('capxtr_' + current_id).innerHTML = cleantextHTML(current_values.val_capxtr);
+	document.getElementById('lownor_' + current_key_id).innerHTML = cleantextHTML(current_values.val_lownor);
+	document.getElementById('uppnor_' + current_key_id).innerHTML = cleantextHTML(current_values.val_uppnor);
+	document.getElementById('lowagr_' + current_key_id).innerHTML = cleantextHTML(current_values.val_lowagr);
+	document.getElementById('uppagr_' + current_key_id).innerHTML = cleantextHTML(current_values.val_uppagr);
+	document.getElementById('capnor_' + current_key_id).innerHTML = cleantextHTML(current_values.val_capnor);
+	document.getElementById('capshf_' + current_key_id).innerHTML = cleantextHTML(current_values.val_capshf);
+	document.getElementById('capctl_' + current_key_id).innerHTML = cleantextHTML(current_values.val_capctl);
+	document.getElementById('capalt_' + current_key_id).innerHTML = cleantextHTML(current_values.val_capalt);
+	document.getElementById('capagr_' + current_key_id).innerHTML = cleantextHTML(current_values.val_capagr);
+	document.getElementById('capxtr_' + current_key_id).innerHTML = cleantextHTML(current_values.val_capxtr);
 
 	// Need to make certain that both a filename *and* a data URI are present!!
-	const this_image = document.getElementById('capimg_' + current_id);
+	const this_image = document.getElementById('capimg_' + current_key_id);
 	this_image.src = current_values.val_imguri;
 	if (current_values.val_imguri != '')
 		this_image.style.display = 'block';
 	else
 		this_image.style.display = 'none';
 
-	last_class = 'keyout cap' + color_table[current_values.col_capnor][1];
+	last_class = 'keyout cap' + binding_data.color_table[current_values.col_capnor][1];
 }
 
 function push_values_from_cache_into_form()
@@ -456,7 +447,7 @@ function push_values_from_cache_into_form()
 
 function have_input_key_values_changed()
 {
-	if (current_id == null)
+	if (current_key_id == null)
 		return null;
 
 	if
@@ -508,9 +499,9 @@ function are_captions_in_groups()
 // I have not tested yet whether this produces false positives. No real harm done if it does, though.
 function check_all_caption_groups()
 {
-	for (var i in binding_table)
+	for (var i in binding_data.binding_table)
 	{
-		const this_binding = binding_table[i];
+		const this_binding = binding_data.binding_table[i];
 		if
 		(
 			((this_binding[ 4] != '') && (this_binding[12] == 0)) ||
@@ -547,7 +538,7 @@ function toggle_set_and_revert_buttons(event)
 
 	const elm = event.target;
 	if (elm.tagName.toUpperCase() == 'SELECT')
-		elm.className = 'sel' + color_table[elm.selectedIndex][1];
+		elm.className = 'sel' + binding_data.color_table[elm.selectedIndex][1];
 }
 
 function add_window_exit_event()
@@ -606,10 +597,10 @@ function create_group_table_row()
 	new_sel_1.setAttribute('size',1);
 	new_sel_1.setAttribute('autocomplete','off');
 	new_sel_1.onchange = update_group_column;
-	for (var i in color_table)
+	for (var i in binding_data.color_table)
 	{
 		const new_opt_1 = document.createElement('option');
-		const color_class	= color_table[i][1];
+		const color_class	= binding_data.color_table[i][1];
 		new_opt_1.className = 'opt' + color_class;
 		const new_txt_1 = document.createTextNode(color_class);
 		new_opt_1.appendChild(new_txt_1);
@@ -800,15 +791,15 @@ function switch_right_pane(side_tab)
 {
 	if (side_tab == 0)
 	{
-		document.getElementById('butt_kbd').style.backgroundColor = '#eee';
-		document.getElementById('butt_sql').style.backgroundColor = '#ccc';
+		document.getElementById('butt_kbd').style.backgroundColor = '#ffffff';
+		document.getElementById('butt_sql').style.backgroundColor = '#c0c0c0';
 		document.getElementById('pane_kbd').style.display = 'block';
 		document.getElementById('pane_tsv').style.display = 'none';
 	}
 	else if (side_tab == 1)
 	{
-		document.getElementById('butt_kbd').style.backgroundColor = '#ccc';
-		document.getElementById('butt_sql').style.backgroundColor = '#eee';
+		document.getElementById('butt_kbd').style.backgroundColor = '#c0c0c0';
+		document.getElementById('butt_sql').style.backgroundColor = '#ffffff';
 		document.getElementById('pane_kbd').style.display = 'none';
 		document.getElementById('pane_tsv').style.display = 'block';
 	}
@@ -945,11 +936,11 @@ function document_save_changes()
 	collect_command_data();
 	document.getElementById( 'email_4').value = document.getElementById('game_tit').value;
 	document.getElementById( 'email_5').value = document.getElementById('game_url').value;
-	document.getElementById( 'email_6').value = process_legend_data();
-	document.getElementById( 'email_7').value = process_command_data();
-	document.getElementById( 'email_8').value = process_binding_data();
-	document.getElementById( 'email_9').value = layout_id;
-	document.getElementById('email_10').value = gamesrecord_id;
+	document.getElementById( 'email_6').value = process_legend_sql();
+	document.getElementById( 'email_7').value = process_command_sql();
+	document.getElementById( 'email_8').value = process_binding_sql();
+	document.getElementById( 'email_9').value = binding_data.layout_id;
+	document.getElementById('email_10').value = binding_data.gamesrecord_id;
 	do_recaptcha();
 }
 
@@ -1194,18 +1185,18 @@ function disable_doc_controls()
 // non!
 function collect_legend_data()
 {
-	legend_table = {};
+	binding_data.legend_table = {};
 	// skip 'non' since there is no box for 'non'
-	for (var i in color_table)
+	for (var i in binding_data.color_table)
 	{
-		const this_color = color_table[i][1];
+		const this_color = binding_data.color_table[i][1];
 		if (this_color != 'non')
 		{
 			const this_input = document.getElementById('form_cap' + this_color);
 			const this_value = this_input.value;
 			if (this_value != '')
 			{
-				legend_table[i] = this_value;
+				binding_data.legend_table[i] = this_value;
 			}
 		}
 	}
@@ -1214,13 +1205,13 @@ function collect_legend_data()
 // to do: keygroup_id
 function collect_command_data()
 {
-	commandouter_table = {};
-	for (var j in commandlabel_table)
+	binding_data.commandouter_table = {};
+	for (var j in binding_data.commandlabel_table)
 	{
-		commandouter_table[j] = [];
-		const this_abbrv = commandlabel_table[j][1];
-		const this_input = commandlabel_table[j][2];
-		const this_group = commandlabel_table[j][3];
+		binding_data.commandouter_table[j] = [];
+		const this_abbrv = binding_data.commandlabel_table[j][2];
+		const this_input = binding_data.commandlabel_table[j][3];
+		const this_group = binding_data.commandlabel_table[j][4];
 		const this_parent = document.getElementById('table_' + this_abbrv);
 		const this_children = this_parent.children;
 		// ignore the last child since it only contains the button
@@ -1234,7 +1225,7 @@ function collect_command_data()
 				const this_value_3 = this_child.children[3].children[0].value;
 				if ((this_value_2 != '') && (this_value_3 != ''))
 				{
-					commandouter_table[j].push([this_value_1, this_value_2, this_value_3]);
+					binding_data.commandouter_table[j].push([this_value_1, this_value_2, this_value_3]);
 				}
 			}
 			else if (this_input == 1)
@@ -1244,7 +1235,7 @@ function collect_command_data()
 				const this_value_3 = this_child.children[2].children[0].value;
 				if ((this_value_2 != '') && (this_value_3 != ''))
 				{
-					commandouter_table[j].push([this_value_1, this_value_2, this_value_3]);
+					binding_data.commandouter_table[j].push([this_value_1, this_value_2, this_value_3]);
 				}
 			}
 			else
@@ -1254,27 +1245,41 @@ function collect_command_data()
 				const this_value_3 = this_child.children[0].children[0].value;
 				if (this_value_3 != '')
 				{
-					commandouter_table[j].push([this_value_1, this_value_2, this_value_3]);
+					binding_data.commandouter_table[j].push([this_value_1, this_value_2, this_value_3]);
 				}
 			}
 		}
 	}
 }
 
+function apply_all_json()
+{
+	alert('Not implemented yet.');
+}
+
+function process_all_json()
+{
+	var pretty_check = document.getElementById('code_pretty');
+	if (pretty_check.checked == true)
+		return JSON.stringify(binding_data, null, '\t');
+	else
+		return JSON.stringify(binding_data);
+}
+
 // cleaning!
 // non!
-function process_legend_data()
+function process_legend_sql()
 {
-	if (Object.keys(legend_table).length > 0)
+	if (Object.keys(binding_data.legend_table).length > 0)
 	{
 		// should really fetch column names from the database instead
-		var legend_string = 'insert into legends (legend_id,gamesrecord_id,keygroup_id,legend_description) values\n';
-		for (var i in legend_table)
+		var legend_string = '';
+		for (var i in binding_data.legend_table)
 		{
-			const legend_item = legend_table[i];
-			legend_string += '(NULL,' + gamesrecord_id + ',' + i + ',' + cleantextTSV(legend_item) + '),\n';
+			const legend_item = binding_data.legend_table[i];
+			legend_string += 'CALL add_legend(' + binding_data.gamesrecord_id + ',' + i + ',' + cleantextTSV(legend_item) + ');\n';
 		}
-		return legend_string.slice(0, -2) + ';\n';
+		return legend_string;
 	}
 	else
 		return '';
@@ -1282,47 +1287,47 @@ function process_legend_data()
 
 // cleaning!
 // to do: keygroup_id
-function process_command_data()
+function process_command_sql()
 {
 	var temp_length = 0;
-	for (var j in commandouter_table)
+	for (var j in binding_data.commandouter_table)
 	{
-		temp_length += Object.keys(commandouter_table[j]).length;
+		temp_length += Object.keys(binding_data.commandouter_table[j]).length;
 	}
 	if (temp_length > 0)
 	{
 		// should really fetch column names from the database instead
-		var command_string = 'insert into commands (command_id,gamesrecord_id,commandtype_id,command_text,command_description,keygroup_id) values\n';
-		for (var j in commandouter_table)
+		var command_string = '';
+		for (var j in binding_data.commandouter_table)
 		{
 			const command_num = parseInt(j,10) + 1;
-			const commandinner_table = commandouter_table[j];
+			const commandinner_table = binding_data.commandouter_table[j];
 			for (var i in commandinner_table)
 			{
-				var command_item = commandinner_table[i];
-				var command_value_1 = !command_item[0] ? 'NULL' : parseInt(command_item[0],10);
-				var command_value_2 = !command_item[1] ? 'NULL' : cleantextTSV(command_item[1]);
-				var command_value_3 = !command_item[2] ? 'NULL' : cleantextTSV(command_item[2]);
-				command_string += '(NULL,' + gamesrecord_id + ',' + command_num + ',' + command_value_2 + ',' + command_value_3 + ',' + command_value_1 +'),\n';
+				const command_item = commandinner_table[i];
+				const command_value_1 = !command_item[0] ? 'NULL' : parseInt(command_item[0],10);
+				const command_value_2 = !command_item[1] ? 'NULL' : cleantextTSV(command_item[1]);
+				const command_value_3 = !command_item[2] ? 'NULL' : cleantextTSV(command_item[2]);
+				command_string += 'CALL add_command(' + binding_data.gamesrecord_id + ',' + command_num + ',' + command_value_2 + ',' + command_value_3 + ',' + command_value_1 +');\n';
 			}
 		}
-		return command_string.slice(0, -2) + ';\n';
+		return command_string;
 	}
 	else
 		return '';
 }
 
 // cleaning!
-function process_binding_data()
+function process_binding_sql()
 {
-	if (Object.keys(binding_table).length > 0)
+	if (Object.keys(binding_data.binding_table).length > 0)
 	{
 		// should really fetch column names from the database instead
-		var binding_string = 'insert into bindings (binding_id,gamesrecord_id,key_number,normal_action,normal_group,shift_action,shift_group,ctrl_action,ctrl_group,alt_action,alt_group,altgr_action,altgr_group,extra_action,extra_group,image_file,image_uri) values\n';
-		for (var i in binding_table)
+		var binding_string = '';
+		for (var i in binding_data.binding_table)
 		{
 			const binding_num = parseInt(i,10) + 1;
-			const binding_item = binding_table[i];
+			const binding_item = binding_data.binding_table[i];
 			const binding_concat =	binding_item[ 4] +
 						binding_item[ 5] +
 						binding_item[ 6] +
@@ -1334,8 +1339,8 @@ function process_binding_data()
 			// need to eliminate empty bindings
 			if (binding_concat != '')
 			{
-				binding_string +=	'(NULL'					+ ',' +
-							gamesrecord_id				+ ',' +
+				binding_string +=	'CALL add_binding('			+
+							binding_data.gamesrecord_id		+ ',' +
 							binding_num				+ ',' +
 							cleantextTSV(binding_item[ 4])		+ ',' +
 							cleannumberTSV(binding_item[12])	+ ',' +
@@ -1350,40 +1355,50 @@ function process_binding_data()
 							cleantextTSV(binding_item[ 9])		+ ',' +
 							cleannumberTSV(binding_item[17])	+ ',' +
 							cleantextTSV(binding_item[10])		+ ',' +
-							cleantextTSV(binding_item[11])		+ '),\n';
+							cleantextTSV(binding_item[11])		+ ');\n';
 			}
 		}
-		return binding_string.slice(0, -2) + ';\n';
+		return binding_string;
 	}
 	else
 		return '';
 }
 
-function fill_legend(in_id)
+function fill_all_json()
 {
 	collect_legend_data();
-	document.getElementById('legend_tsv').value = process_legend_data();
+	collect_command_data();
+	document.getElementById('code_all_json').value = process_all_json();
 }
-function fill_commands()
+function fill_legend_sql()
+{
+	collect_legend_data();
+	document.getElementById('code_legend_sql').value = process_legend_sql();
+}
+function fill_commands_sql()
 {
 	collect_command_data();
-	document.getElementById('command_tsv').value = process_command_data();
+	document.getElementById('code_command_sql').value = process_command_sql();
 }
-function fill_bindings()
+function fill_bindings_sql()
 {
-	document.getElementById('binding_tsv').value = process_binding_data();
+	document.getElementById('code_binding_sql').value = process_binding_sql();
 }
-function clear_legend()
+function clear_all_json()
 {
-	document.getElementById('legend_tsv').value = '';
+	document.getElementById('code_all_json').value = '';
 }
-function clear_commands()
+function clear_legend_sql()
 {
-	document.getElementById('command_tsv').value = '';
+	document.getElementById('code_legend_sql').value = '';
 }
-function clear_bindings()
+function clear_commands_sql()
 {
-	document.getElementById('binding_tsv').value = '';
+	document.getElementById('code_command_sql').value = '';
+}
+function clear_bindings_sql()
+{
+	document.getElementById('code_binding_sql').value = '';
 }
 function text_select_and_copy(in_id)
 {
@@ -1405,7 +1420,7 @@ function getParameterByName(name, url)
 function update_select_style(this_select)
 {
 	const style_id = this_select.selectedIndex;
-	this_select.className = 'sel' + color_table[style_id][1];
+	this_select.className = 'sel' + binding_data.color_table[style_id][1];
 }
 
 function update_group_column()
