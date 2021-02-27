@@ -106,15 +106,18 @@
 	echo writeAnalyticsTracking();
 	echo
 '		<script>
-var gamesrecord_id = '	. $gamesrecord_id . ';
-var style_id = '	. $style_id . ';
-var layout_id = '	. $layout_id . ';
-var format_id = '	. $format_id . ';
-var game_id = '		. $game_id . ';
-var game_seo = "'	. $game_seo . '";
-var ten_bool = '	. $ten_bool . ';
-var vert_bool = '	. $vert_bool . ';
-var svg_bool = '	. $svg_bool . ';
+var binding_data =
+{
+	gamesrecord_id: ' . $gamesrecord_id . ',
+	style_id: '       . $style_id . ',
+	layout_id: '      . $layout_id . ',
+	format_id: '      . $format_id . ',
+	game_id: '        . $game_id . ',
+	game_seo: \''      . $game_seo . '\',
+	ten_bool: '       . $ten_bool . ',
+	vert_bool: '      . $vert_bool . ',
+	svg_bool: '       . $svg_bool . '
+}
 		</script>
 ';
 	echo
