@@ -212,8 +212,10 @@ function click_on_chart_key(elm)
 	{
 		document.getElementById('keyout_' + last_id).className = last_class;
 	}
-	last_class = document.getElementById('keyout_' + current_key_id).className;
-	document.getElementById('keyout_' + current_key_id).className += ' keysel';
+
+	const current_key_object = document.getElementById('keyout_' + current_key_id);
+	last_class = set_keysel(current_key_object.className, 0);
+	current_key_object.className = set_keysel(current_key_object.className, 1);
 }
 
 function click_off_chart_key(elm)
@@ -277,12 +279,17 @@ function key_save_changes()
 	flag_doc_dirty();
 	if (current_key_id != null)
 	{
+		const current_key_object = document.getElementById('keyout_' + current_key_id);
 		const regex = RegExp('keysel');
-		const sel_match = regex.test(document.getElementById('keyout_' + current_key_id).className);
+		const sel_match = regex.test(current_key_object.className);
 		if (sel_match)
-			document.getElementById('keyout_' + current_key_id).className = last_class + ' keysel';
+		{
+			current_key_object.className = last_class + ' keysel';
+		}
 		else
-			document.getElementById('keyout_' + current_key_id).className = last_class;
+		{
+			current_key_object.className = last_class;
+		}
 	}
 }
 
@@ -329,24 +336,25 @@ function push_values_from_array_into_cache()
 		return null;
 
 	current_values.val_keynum = current_key_id;
-	current_values.val_lownor = binding_data.binding_table[current_key_id][ 0];
-	current_values.val_uppnor = binding_data.binding_table[current_key_id][ 1];
-	current_values.val_lowagr = binding_data.binding_table[current_key_id][ 2];
-	current_values.val_uppagr = binding_data.binding_table[current_key_id][ 3];
-	current_values.val_capnor = binding_data.binding_table[current_key_id][ 4];
-	current_values.val_capshf = binding_data.binding_table[current_key_id][ 5];
-	current_values.val_capctl = binding_data.binding_table[current_key_id][ 6];
-	current_values.val_capalt = binding_data.binding_table[current_key_id][ 7];
-	current_values.val_capagr = binding_data.binding_table[current_key_id][ 8];
-	current_values.val_capxtr = binding_data.binding_table[current_key_id][ 9];
-	current_values.val_imgfil = binding_data.binding_table[current_key_id][10];
-	current_values.val_imguri = binding_data.binding_table[current_key_id][11];
-	current_values.col_capnor = !binding_data.binding_table[current_key_id][12] ? 0 : binding_data.binding_table[current_key_id][12];
-	current_values.col_capshf = !binding_data.binding_table[current_key_id][13] ? 0 : binding_data.binding_table[current_key_id][13];
-	current_values.col_capctl = !binding_data.binding_table[current_key_id][14] ? 0 : binding_data.binding_table[current_key_id][14];
-	current_values.col_capalt = !binding_data.binding_table[current_key_id][15] ? 0 : binding_data.binding_table[current_key_id][15];
-	current_values.col_capagr = !binding_data.binding_table[current_key_id][16] ? 0 : binding_data.binding_table[current_key_id][16];
-	current_values.col_capxtr = !binding_data.binding_table[current_key_id][17] ? 0 : binding_data.binding_table[current_key_id][17];
+	const this_key = binding_data.binding_table[current_key_id];
+	current_values.val_lownor =  this_key[ 0];
+	current_values.val_uppnor =  this_key[ 1];
+	current_values.val_lowagr =  this_key[ 2];
+	current_values.val_uppagr =  this_key[ 3];
+	current_values.val_capnor =  this_key[ 4];
+	current_values.val_capshf =  this_key[ 5];
+	current_values.val_capctl =  this_key[ 6];
+	current_values.val_capalt =  this_key[ 7];
+	current_values.val_capagr =  this_key[ 8];
+	current_values.val_capxtr =  this_key[ 9];
+	current_values.val_imgfil =  this_key[10];
+	current_values.val_imguri =  this_key[11];
+	current_values.col_capnor = !this_key[12] ? 0 : this_key[12];
+	current_values.col_capshf = !this_key[13] ? 0 : this_key[13];
+	current_values.col_capctl = !this_key[14] ? 0 : this_key[14];
+	current_values.col_capalt = !this_key[15] ? 0 : this_key[15];
+	current_values.col_capagr = !this_key[16] ? 0 : this_key[16];
+	current_values.col_capxtr = !this_key[17] ? 0 : this_key[17];
 }
 
 function push_values_from_form_into_cache()
@@ -419,7 +427,7 @@ function push_values_from_cache_into_array()
 	else
 		this_image.style.display = 'none';
 
-	last_class = 'keyout cap' + binding_data.color_table[current_values.col_capnor][1];
+	last_class = last_class.replace(/cap\w\w\w/, 'cap' + binding_data.color_table[current_values.col_capnor][1]);
 }
 
 function push_values_from_cache_into_form()
@@ -1254,16 +1262,209 @@ function collect_command_data()
 
 function apply_all_json()
 {
-	alert('Not implemented yet.');
+	const code_text = document.getElementById('code_all_json').value;
+	binding_data = JSON.parse(code_text);
+	// keys
+	for (var i in binding_data.binding_table)
+	{
+		const key_outer = document.getElementById('keyout_' + i);
+		if (key_outer)
+		{
+			const this_key = binding_data.binding_table[i];
+			const val_lownor =  this_key[ 0];
+			const val_uppnor =  this_key[ 1];
+			const val_lowagr =  this_key[ 2];
+			const val_uppagr =  this_key[ 3];
+			const val_capnor =  this_key[ 4];
+			const val_capshf =  this_key[ 5];
+			const val_capctl =  this_key[ 6];
+			const val_capalt =  this_key[ 7];
+			const val_capagr =  this_key[ 8];
+			const val_capxtr =  this_key[ 9];
+			const val_imgfil =  this_key[10];
+			const val_imguri =  this_key[11];
+			const col_capnor = !Number(this_key[12]) ? 0 : Number(this_key[12]);
+			const col_capshf = !Number(this_key[13]) ? 0 : Number(this_key[13]);
+			const col_capctl = !Number(this_key[14]) ? 0 : Number(this_key[14]);
+			const col_capalt = !Number(this_key[15]) ? 0 : Number(this_key[15]);
+			const col_capagr = !Number(this_key[16]) ? 0 : Number(this_key[16]);
+			const col_capxtr = !Number(this_key[17]) ? 0 : Number(this_key[17]);
+
+			document.getElementById('lownor_' + i).innerHTML = cleantextHTML(val_lownor);
+			document.getElementById('uppnor_' + i).innerHTML = cleantextHTML(val_uppnor);
+			document.getElementById('lowagr_' + i).innerHTML = cleantextHTML(val_lowagr);
+			document.getElementById('uppagr_' + i).innerHTML = cleantextHTML(val_uppagr);
+			document.getElementById('capnor_' + i).innerHTML = cleantextHTML(val_capnor);
+			document.getElementById('capshf_' + i).innerHTML = cleantextHTML(val_capshf);
+			document.getElementById('capctl_' + i).innerHTML = cleantextHTML(val_capctl);
+			document.getElementById('capalt_' + i).innerHTML = cleantextHTML(val_capalt);
+			document.getElementById('capagr_' + i).innerHTML = cleantextHTML(val_capagr);
+			document.getElementById('capxtr_' + i).innerHTML = cleantextHTML(val_capxtr);
+
+			// Need to make certain that both a filename *and* a data URI are present!!
+			const this_image = document.getElementById('capimg_' + i);
+			this_image.src = val_imguri;
+			if (val_imguri != '')
+				this_image.style.display = 'block';
+			else
+				this_image.style.display = 'none';
+
+			const key_class = 'keyout cap' + binding_data.color_table[col_capnor][1];
+			key_outer.className = key_class;
+		}
+	}
+	// commands (basically duplicates what appears in "output-submit.php")
+	for (var i in binding_data.commandlabel_table)
+	{
+		const commandlabel_value = binding_data.commandlabel_table[i];
+		const commandlabel_label = commandlabel_value[1];
+		const commandlabel_abbrv = commandlabel_value[2];
+		const commandlabel_input = commandlabel_value[3];			// does the command at least have two parts?
+		const commandlabel_group = commandlabel_value[4];			// does the command have a keygroup?
+		const commanddiv_object = document.getElementById('table_' + commandlabel_abbrv);
+		var commanddiv_string = '';
+		while (commanddiv_object.firstChild)
+		{
+			commanddiv_object.removeChild(commanddiv_object.firstChild);
+		}
+		const commandinner_table = binding_data.commandouter_table[i];
+		for (var j in commandinner_table)
+		{
+			const commandinner_value = commandinner_table[j];
+			const commandinner_input = commandinner_value[1];
+			const commandinner_combo = commandinner_value[2];
+			const commandinner_group = commandinner_value[3];
+			// does the command have a keygroup?
+			if (commandlabel_group == 1)
+			{
+				// non!
+				var commandoption_string = '';
+				var select_class = 'non';
+				for (var k in binding_data.color_table)
+				{
+					const binding_color_value = binding_data.color_table[k];
+					const color_id		= binding_color_value[0];
+					const color_class	= binding_color_value[1];
+					const color_sort	= binding_color_value[2];	// not used right now
+					if (color_id == commandinner_group)
+					{
+						select_class = color_class;
+					}
+				}
+				if (select_class == 'non')
+				{
+					commandoption_string += '<option class="optnon" selected="selected">non</option>';
+				}
+				else
+				{
+					commandoption_string += '<option class="optnon">non</option>';
+				}
+				// non!
+				for (var k in binding_data.color_table)
+				{
+					const binding_color_value = binding_data.color_table[k];
+					const color_id		= binding_color_value[0];	// not used right now
+					const color_class	= binding_color_value[1];
+					const color_sort	= binding_color_value[2];	// not used right now
+					if (select_class == color_class)
+					{
+						commandoption_string += '<option class="opt' + color_class + '" selected="selected">' + color_class + '</option>';
+					}
+					else
+					{
+						commandoption_string += '<option class="opt' + color_class + '">' + color_class + '</option>';
+					}
+				}
+				commanddiv_string +=
+'							<div class="notrow">\n'+
+'								<div class="notcll grpone"><select class="sel' + select_class + '" size="1" autocomplete="off" onchange="flag_doc_dirty();update_select_style(this);">' + commandoption_string + '</select></div>\n'+
+'								<div class="notcll grptwo"><input type="text" maxlength="100" autocomplete="off" onchange="flag_doc_dirty();" value="' + commandinner_input + '"/></div>\n'+
+'								<div class="notcll grpthr">=</div>\n'+
+'								<div class="notcll grpfor"><input type="text" maxlength="100" autocomplete="off" onchange="flag_doc_dirty();" value="' + commandinner_combo + '"/></div>\n'+
+'								<div class="notcll grpfiv"><button class="grpsub" type="button">-</button></div>\n'+
+'							</div>\n';
+			}
+			// does the command at least have two parts?
+			else if (commandlabel_input == 1)
+			{
+				commanddiv_string +=
+'							<div class="notrow">\n'+
+'								<div class="notcll inpone"><input type="text" maxlength="100" autocomplete="off" onchange="flag_doc_dirty();" value="' + commandinner_input + '"/></div>\n'+
+'								<div class="notcll inptwo">=</div>\n'+
+'								<div class="notcll inpthr"><input type="text" maxlength="100" autocomplete="off" onchange="flag_doc_dirty();" value="' + commandinner_combo + '"/></div>\n'+
+'								<div class="notcll inpfor"><button class="inpsub" type="button">-</button></div>\n'+
+'							</div>\n';
+			}
+			// "additional notes" are a special case requiring a textarea instead of input
+			else
+			{
+				commanddiv_string +=
+'							<div class="notrow">\n'+
+'								<div class="notcll txtone"><textarea maxlength="1024" autocomplete="off" onchange="flag_doc_dirty();">' + commandinner_combo + '</textarea></div>\n'+
+'								<div class="notcll txttwo"><button class="txtsub" type="button">-</button></div>\n'+
+'							</div>\n';
+			}
+		}
+		// does the command have a keygroup?
+		if (commandlabel_group == 1)
+		{
+			commanddiv_string +=
+'							<div class="notrow">\n'+
+'								<div class="notcll grpone"></div>\n'+
+'								<div class="notcll grptwo"></div>\n'+
+'								<div class="notcll grpthr"></div>\n'+
+'								<div class="notcll grpfor"></div>\n'+
+'								<div class="notcll grpfiv"><button class="grpadd" type="button">+</button></div>\n'+
+'							</div>\n';
+		}
+		// does the command at least have two parts?
+		else if (commandlabel_input == 1)
+		{
+			commanddiv_string +=
+'							<div class="notrow">\n'+
+'								<div class="notcll inpone"></div>\n'+
+'								<div class="notcll inptwo"></div>\n'+
+'								<div class="notcll inpthr"></div>\n'+
+'								<div class="notcll inpfor"><button class="inpadd" type="button">+</button></div>\n'+
+'							</div>\n';
+		}
+		// "additional notes" are a special case requiring a textarea instead of input
+		else
+		{
+			commanddiv_string +=
+'							<div class="notrow">\n'+
+'								<div class="notcll txtone"></div>\n'+
+'								<div class="notcll txttwo"><button class="txtadd" type="button">+</button></div>\n'+
+'							</div>\n';
+		}
+		commanddiv_object.innerHTML = commanddiv_string;
+	}
+	// non!
+	// legend
+	for (var i in binding_data.color_table)
+	{
+		if (Number(i) > 0)
+		{
+			const color_value = binding_data.color_table[i];
+			const legend_value = binding_data.legend_table[i];
+			const leg_color = color_value[1];
+			const leg_input = document.getElementById('form_cap' + leg_color);
+			leg_input.value = legend_value ? legend_value : '';
+		}
+	}
 }
 
 function process_all_json()
 {
-	var pretty_check = document.getElementById('code_pretty');
+	const pretty_check = document.getElementById('code_pretty');
 	if (pretty_check.checked == true)
+	{
 		return JSON.stringify(binding_data, null, '\t');
+	}
 	else
+	{
 		return JSON.stringify(binding_data);
+	}
 }
 
 // cleaning!
@@ -1409,11 +1610,11 @@ function text_select_and_copy(in_id)
 //https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
 function getParameterByName(name, url)
 {
-    if (!url) url = window.location.href;
+    if (!url) {url = window.location.href}
     name = name.replace(/[\[\]]/g, "\\$&");
     const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
+    if (!results) {return null}
+    if (!results[2]) {return ''}
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
@@ -1427,4 +1628,14 @@ function update_group_column()
 {
 	flag_doc_dirty();
 	update_select_style(this);
+}
+
+function set_keysel(in_class, set_bool)
+{
+	var out_string = in_class.replace('keysel', '');
+	if (set_bool == 1)
+	{
+		out_string += ' keysel';
+	}
+	return out_string.replace(/\s+/gi, ' ');
 }

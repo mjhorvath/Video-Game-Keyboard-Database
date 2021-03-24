@@ -420,7 +420,7 @@ var binding_data =
 			// cleaning!
 			// these get cleaned later by the print_key_html function
 			// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowcap_optional, numpad
-			$key_sty	= array_key_exists($i, $keystyle_table) ? getkeyclass($keystyle_table[$i][0]) : "";		// non!
+			$key_sty	= array_key_exists($i, $keystyle_table) ? " " . getkeyclass($keystyle_table[$i][0]) : "";		// non!
 			$pos_lft	= $position_row[ 0] + $layout_keygap/2;
 			$pos_top	= $position_row[ 1] + $layout_keygap/2;
 			$pos_wid	= $position_row[ 2] - $layout_keygap;		// 4px
@@ -476,7 +476,7 @@ var binding_data =
 			}
 			// key outer container
 			echo
-"							<div id=\"keyout_" . $i . "\" class=\"keyout cap" . $bkg_nor . " " . $key_sty . "\" style=\"left:" . $pos_lft . "px;top:" . $pos_top . "px;width:" . $pos_wid . "px;height:" . $pos_hgh . "px;\">\n";
+"							<div id=\"keyout_" . $i . "\" class=\"keyout cap" . $bkg_nor . $key_sty . "\" style=\"left:" . $pos_lft . "px;top:" . $pos_top . "px;width:" . $pos_wid . "px;height:" . $pos_hgh . "px;\">\n";
 			// icon images
 			if (($img_uri != "") || ($write_maximal_keys == true))
 			{
@@ -492,62 +492,32 @@ var binding_data =
 "								<img id=\"capimg_" . $i . "\" class=\"capimg\" style=\"left:" . $img_pos_x . "px;top:" . $img_pos_y . "px;width:" . $img_wid . "px;height:" . $img_hgh . "px;display:" . $img_display . ";\" src=\"" . $img_uri . "\"/>\n";
 			}
 			// key captions
-			if (($cap_shf != "") || ($write_maximal_keys == true))
+			print_key_html("capshf_" . $i, "capshf", $bkg_shf, $cap_shf);
+			print_key_html("capctl_" . $i, "capctl", $bkg_ctl, $cap_ctl);
+			print_key_html("capalt_" . $i, "capalt", $bkg_alt, $cap_alt);
+			print_key_html("capagr_" . $i, "capagr", $bkg_agr, $cap_agr);
+			print_key_html("capxtr_" . $i, "capxtr", $bkg_xtr, $cap_xtr);
+			if ($key_opt == false)
 			{
-				print_key_html("capshf_" . $i, "capshf", $bkg_shf, $cap_shf);
+				print_key_html("capnor_" . $i, "capopf", $bkg_nor, $cap_nor);
 			}
-			if (($cap_ctl != "") || ($write_maximal_keys == true))
+			else
 			{
-				print_key_html("capctl_" . $i, "capctl", $bkg_ctl, $cap_ctl);
-			}
-			if (($cap_alt != "") || ($write_maximal_keys == true))
-			{
-				print_key_html("capalt_" . $i, "capalt", $bkg_alt, $cap_alt);
-			}
-			if (($cap_agr != "") || ($write_maximal_keys == true))
-			{
-				print_key_html("capagr_" . $i, "capagr", $bkg_agr, $cap_agr);
-			}
-			if (($cap_xtr != "") || ($write_maximal_keys == true))
-			{
-				print_key_html("capxtr_" . $i, "capxtr", $bkg_xtr, $cap_xtr);
-			}
-			if (($cap_nor != "") || ($write_maximal_keys == true))
-			{
-				if ($key_opt == false)
-				{
-					print_key_html("capnor_" . $i, "capopf", $bkg_nor, $cap_nor);
-				}
-				else
-				{
-					print_key_html("capnor_" . $i, "capopt", $bkg_nor, $cap_nor);
-				}
+				print_key_html("capnor_" . $i, "capopt", $bkg_nor, $cap_nor);
 			}
 			// normal key labels
-			if (($upp_nor != "") || ($write_maximal_keys == true))
+			print_key_html("uppnor_" . $i, "uppnor", null, $upp_nor);
+			if ($key_opt == false)
 			{
-				print_key_html("uppnor_" . $i, "uppnor", null, $upp_nor);
+				print_key_html("lownor_" . $i, "lownor", null, $low_nor);
 			}
-			if (($low_nor != "") || ($write_maximal_keys == true))
+			else
 			{
-				if ($key_opt == false)
-				{
-					print_key_html("lownor_" . $i, "lownor", null, $low_nor);
-				}
-				else
-				{
-					print_key_html("lownor_" . $i, "keynon", null, $low_nor);
-				}
+				print_key_html("lownor_" . $i, "keynon", null, $low_nor);
 			}
 			// altgr key labels
-			if (($upp_agr != "") || ($write_maximal_keys == true))
-			{
-				print_key_html("uppagr_" . $i, "uppagr", null, $upp_agr);
-			}
-			if (($low_agr != "") || ($write_maximal_keys == true))
-			{
-				print_key_html("lowagr_" . $i, "lowagr", null, $low_agr);
-			}
+			print_key_html("uppagr_" . $i, "uppagr", null, $upp_agr);
+			print_key_html("lowagr_" . $i, "lowagr", null, $low_agr);
 			echo
 "							</div>\n";
 		}
@@ -573,7 +543,6 @@ var binding_data =
 	// legend
 	// check if this would be less complicated with flexbox
 	// the math here is only correct if the number of colors is a multiple of 3
-	$count_rows = 0;
 	foreach ($binding_color_table as $i => $binding_color_value)
 	{
 		$leg_color = getkeycolor($i+1);
@@ -581,19 +550,18 @@ var binding_data =
 			$leg_value = $legend_table[$i][1];
 		else
 			$leg_value = "";
-		if ($count_rows % 3 == 0)
+		if ($i % 3 == 0)
 		{
 			echo
 "						<div class=\"inbtop legtbl\">\n";
 		}
 		echo
 "							<div class=\"legrow\"><div class=\"legcll legbox leg" . $leg_color . "\">" . $leg_color . "</div><div class=\"legcll legtxt\"><input id=\"form_cap" . $leg_color . "\" type=\"text\" size=\"15\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $leg_value . "\"/></div></div>\n";
-		if ($count_rows % 3 == 2)
+		if ($i % 3 == 2)
 		{
 			echo
 "						</div>\n";
 		}
-		$count_rows += 1;
 	}
 ?>
 					</div>
@@ -625,8 +593,7 @@ var binding_data =
 			if ($commandlabel_group == 1)
 			{
 				// non!
-				$select_class = "selnon";
-				$commandoption_string = "<option class=\"optnon\">non</option>";
+				$select_class = "non";
 				foreach ($binding_color_table as $i => $binding_color_value)
 				{
 					$color_id	= $binding_color_value[0];
@@ -634,8 +601,26 @@ var binding_data =
 					$color_sort	= $binding_color_value[2];	// not used right now
 					if ($color_id == $commandinner_group)
 					{
+						$select_class = $color_class;
+					}
+				}
+				if ($select_class == "non")
+				{
+					$commandoption_string = "<option class=\"optnon\" selected=\"selected\">non</option>";
+				}
+				else
+				{
+					$commandoption_string = "<option class=\"optnon\">non</option>";
+				}
+				// non!
+				foreach ($binding_color_table as $i => $binding_color_value)
+				{
+					$color_id	= $binding_color_value[0];	// not used right now
+					$color_class	= $binding_color_value[1];
+					$color_sort	= $binding_color_value[2];	// not used right now
+					if ($select_class == $color_class)
+					{
 						$commandoption_string .= "<option class=\"opt" . $color_class . "\" selected=\"selected\">" . $color_class . "</option>";
-						$select_class = "sel" . $color_class;
 					}
 					else
 					{
@@ -644,7 +629,7 @@ var binding_data =
 				}
 				echo
 "							<div class=\"notrow\">
-								<div class=\"notcll grpone\"><select class=\"" . $select_class . "\" size=\"1\" autocomplete=\"off\" onchange=\"flag_doc_dirty();update_select_style(this);\">" . $commandoption_string . "</select></div>
+								<div class=\"notcll grpone\"><select class=\"sel" . $select_class . "\" size=\"1\" autocomplete=\"off\" onchange=\"flag_doc_dirty();update_select_style(this);\">" . $commandoption_string . "</select></div>
 								<div class=\"notcll grptwo\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_input . "\"/></div>
 								<div class=\"notcll grpthr\">=</div>
 								<div class=\"notcll grpfor\"><input type=\"text\" maxlength=\"100\" autocomplete=\"off\" onchange=\"flag_doc_dirty();\" value=\"" . $commandinner_combo . "\"/></div>
@@ -672,6 +657,7 @@ var binding_data =
 							</div>\n";
 			}
 		}
+		// does the command have a keygroup?
 		if ($commandlabel_group == 1)
 		{
 			echo
@@ -683,6 +669,7 @@ var binding_data =
 								<div class=\"notcll grpfiv\"><button class=\"grpadd\" type=\"button\">+</button></div>
 							</div>\n";
 		}
+		// does the command at least have two parts?
 		elseif ($commandlabel_input == 1)
 		{
 			echo
@@ -693,6 +680,7 @@ var binding_data =
 								<div class=\"notcll inpfor\"><button class=\"inpadd\" type=\"button\">+</button></div>
 							</div>\n";
 		}
+		// "additional notes" are a special case requiring a textarea instead of input
 		else
 		{
 			echo
@@ -717,7 +705,7 @@ var binding_data =
 				<p style="max-width:60em;">The string <code>\\n</code> (with a lower-case &quot;n&quot; and two backslashes) indicates a newline character.</p>
 				<p style="max-width:60em;">If you run out of space, the text areas below can be resized by dragging on the bottom-right corners in some Web browsers.</p>
 				<textarea id="code_all_json" style="width:60em;height:40em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>
-				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_all_json();">Fetch Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="apply_all_json();">Set Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_all_json();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('code_all_json');">Select &amp; Copy</button><input type="checkbox" id="code_pretty" checked style="vertical-align:middle;margin-left:1em;"><label for="code_pretty" style="vertical-align:middle;margin-left:0.5em;">Pretty print?</label></p>
+				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_all_json();">Get Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="apply_all_json();">Set Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_all_json();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('code_all_json');">Select &amp; Copy</button><input type="checkbox" id="code_pretty" checked style="vertical-align:middle;margin-left:1em;"><label for="code_pretty" style="vertical-align:middle;margin-left:0.5em;">Pretty print?</label></p>
 				<hr/>
 				<h2>SQL Code</h2>
 				<p style="max-width:60em;">You should be able to copy and paste the following SQL code into a text file and execute the resulting script in your SQL editor.</p>
@@ -725,13 +713,13 @@ var binding_data =
 				<p style="max-width:60em;">If you run out of space, the text areas below can be resized by dragging on the bottom-right corners in some Web browsers.</p>
 				<h4>Legend</h4>
 				<textarea id="code_legend_sql" style="width:60em;height:20em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>
-				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_legend_sql();">Fetch Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_legend_sql();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('code_legend_sql');">Select &amp; Copy</button></p>
+				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_legend_sql();">Get Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_legend_sql();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('code_legend_sql');">Select &amp; Copy</button></p>
 				<h4>Commands</h4>
 				<textarea id="code_command_sql" style="width:60em;height:20em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>
-				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_commands_sql();">Fetch Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_commands_sql();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('code_command_sql');">Select &amp; Copy</button></p>
+				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_commands_sql();">Get Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_commands_sql();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('code_command_sql');">Select &amp; Copy</button></p>
 				<h4>Bindings</h4>
 				<textarea id="code_binding_sql" style="width:60em;height:20em;font-family:monospace;" wrap="off" autocomplete="off"></textarea>
-				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_bindings_sql();">Fetch Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_bindings_sql();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('code_binding_sql');">Select &amp; Copy</button></p>
+				<p><button style="font-size:smaller;padding:0.3em 1em;" onclick="fill_bindings_sql();">Get Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="clear_bindings_sql();">Clear Data</button><button style="font-size:smaller;padding:0.3em 1em;" onclick="text_select_and_copy('code_binding_sql');">Select &amp; Copy</button></p>
 			</div>
 		</div>
 	</body>
