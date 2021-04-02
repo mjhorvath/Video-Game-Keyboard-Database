@@ -1,0 +1,825 @@
+<!--
+This file was generated using Video Game Keyboard Diagrams by Michael Horvath.
+http://isometricland.net/keyboard/keyboard.php
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+United States License. To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/us/ or send a letter to Creative
+Commons, PO Box 1866, Mountain View, CA 94042, USA.
+Binding scheme created by: Michael Horvath.
+Keyboard layout created by: Michael Horvath.
+Theme created by: Michael Horvath.
+-->
+<svg
+	version="1.1"
+	baseProfile="full"
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:ev="http://www.w3.org/2001/xml-events"
+	viewBox="-18 -18 1692 612"
+	width="1692" height="612">
+	<title>Vega Strike - Video Game Keyboard Diagrams - PC/AT - US 104 Key (ANSI) - CIELCh Plain (Light) - SVG only - GRID:44</title>
+	<desc>Keyboard diagram for Vega Strike.</desc><!-- partially hardcoded -->
+	<metadata id="license"
+		xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+		xmlns:dc="http://purl.org/dc/elements/1.1/"
+		xmlns:cc="http://creativecommons.org/ns#">
+		<rdf:RDF>
+			<cc:Work rdf:about="">
+				<dc:format>image/svg+xml</dc:format>
+				<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+				<cc:license rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+			</cc:Work>
+			<cc:License rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
+				<cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction" />
+				<cc:permits rdf:resource="http://creativecommons.org/ns#Distribution" />
+				<cc:requires rdf:resource="http://creativecommons.org/ns#Notice" />
+				<cc:requires rdf:resource="http://creativecommons.org/ns#Attribution" />
+				<cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+				<cc:requires rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+			</cc:License>
+			<rdf:Description about=""
+				dc:title="Vega Strike - Video Game Keyboard Diagrams - PC/AT - US 104 Key (ANSI) - CIELCh Plain (Light) - SVG only - GRID:44"
+				dc:description="Keyboard hotkey &amp; binding chart for Vega Strike. (CIELCh Plain (Light))"
+				dc:publisher="Video Game Keyboard Diagrams"
+				dc:date="2021-04-02 11:48:38"
+				dc:format="image/svg+xml"
+				dc:language="en">
+				<dc:creator>
+					<rdf:Bag>
+						<rdf:li>Michael Horvath</rdf:li>
+						<rdf:li>Michael Horvath</rdf:li>
+						<rdf:li>Michael Horvath</rdf:li>
+					</rdf:Bag>
+				</dc:creator>
+			</rdf:Description>
+		</rdf:RDF>
+	</metadata>
+	<style type="text/css">
+/* <![CDATA[ */
+*	{}
+svg	{font-family:"DejaVu Sans Condensed",Helvetica,Sans-Serif;font-size:14px;}
+#bkgrec	{stroke:none;fill:#ffffff;}
+.legtxt	{font-size:14px;fill:#000000;}
+.uppnor,.lownor,.uppagr,.lowagr
+	{font-size:12px;font-weight:bold;}
+.uppagr,.lowagr
+	{text-anchor:end;}
+.keyrec	{}
+.capnor	{font-size:12px;font-weight:normal;}
+.capshf,.capctl,.capalt,.capagr,.capxtr
+	{font-size:10px;text-anchor:end;font-weight:normal;}
+/* http://www.easyrgb.com/index.php?X=CALC */
+/* CIE-L*Ch(ab) D65/2° */
+.capshf	{fill:#077BC7;}	/* ( 50, 47,270)	blue	*/
+.capctl	{fill:#028946;}	/* ( 50, 55,150)	green	*/
+.capalt	{fill:#ED0631;}	/* ( 50, 88, 30)	red	*/
+.capagr	{fill:#D403CB;}	/* ( 50, 97,330)	magenta	*/
+.capxtr	{fill:#0B848F;}	/* ( 50, 29,210)	cyan	*/
+.bakshf	{fill:none;}
+.bakctl	{fill:none;}
+.bakalt	{fill:none;}
+.bakagr	{fill:none;}
+.bakxtr	{fill:none;}
+.capimg	{}
+/* http://www.easyrgb.com/index.php?X=CALC */
+/* CIE-L*Ch(ab) D65/2° */
+.recred	{fill:#FC9C93;}	/* ( 74, 40, 30) */
+.recyel	{fill:#CEB46C;}	/* ( 74, 40, 90) */
+.recgrn	{fill:#7CC690;}	/* ( 74, 40,150) */
+.reccyn	{fill:#0CC9D9;}	/* ( 74, 40,210) */
+.recblu	{fill:#80B9FF;}	/* ( 74, 40,270) */
+.recmag	{fill:#E4A0DB;}	/* ( 74, 40,330) */
+.recwht	{fill:#ffffff;stroke:#c0c0c0;}
+.recgry	{fill:#808080;}
+.recblk	{fill:#404040;}
+.recorg	{fill:#ECA777;}	/* ( 74, 40, 60) */
+.recolv	{fill:#A8BF75;}	/* ( 74, 40,120) */
+.recbrn	{fill:#685510;}	/* ( 37, 40, 90) */
+.recnon	{fill:#B6B6B6;} /* ( 74,  0,  0) */
+.txtred	{fill:#000000;}
+.txtyel	{fill:#000000;}
+.txtgrn	{fill:#000000;}
+.txtcyn	{fill:#000000;}
+.txtblu	{fill:#000000;}
+.txtmag	{fill:#000000;}
+.txtwht	{fill:#000000;}
+.txtgry	{fill:#000000;}
+.txtblk	{fill:#ffffff;}
+.txtorg	{fill:#000000;}
+.txtolv	{fill:#000000;}
+.txtbrn	{fill:#ffffff;}
+.txtnon	{fill:#000000;}
+/*
+Not much support for these in browsers. Will need to recalculate everything if I use them.
+.ideo	{alignment-baseline:ideographic;}
+.hang	{alignment-baseline:hanging;}
+*/
+/* ]]> */
+	</style>
+	<defs>
+		<filter id="filt_1_alt" x="-1" y="-1" width="72" height="72">
+			<feOffset result="offOut" in="SourceAlpha" dx="1" dy="1" />
+			<feGaussianBlur result="blurOut" in="offOut" stdDeviation="1" />
+			<feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+		</filter>
+		<filter id="filt_1" width="130%" height="130%">
+			<feGaussianBlur in="SourceAlpha" stdDeviation="1"/> 
+			<feOffset dx="1" dy="1" result="offsetblur"/>
+			<feComponentTransfer>
+				<feFuncA type="linear" slope="0.5"/>
+			</feComponentTransfer>
+			<feMerge> 
+				<feMergeNode/>
+				<feMergeNode in="SourceGraphic"/> 
+			</feMerge>
+		</filter>
+	</defs>
+	<g>
+		<rect id="bkgrec" x="-18" y="-18" width="1692" height="612" fill="none" stroke="none"/>
+		<g transform="translate(1.5 109.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">`</text>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">~</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Slide</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Shelton</text>
+		</g>
+		<g transform="translate(73.5 109.5)">
+			<rect class="keyrec recblu rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtblu txt" x="2.5" y="64.5">1</text>
+			<text class="uppnor txtblu txt" x="2.5" y="13.5">!</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-14">Cockpit</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-28">Toggle</text>
+			<text class="capshf hang" x="65.5" y="13">Self</text>
+			<text class="capshf hang" x="65.5" y="25">Destruct</text>
+		</g>
+		<g transform="translate(145.5 109.5)">
+			<rect class="keyrec recblu rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtblu txt" x="2.5" y="64.5">2</text>
+			<text class="uppnor txtblu txt" x="2.5" y="13.5">@</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-14">Left</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-28">Look</text>
+		</g>
+		<g transform="translate(217.5 109.5)">
+			<rect class="keyrec recblu rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtblu txt" x="2.5" y="64.5">3</text>
+			<text class="uppnor txtblu txt" x="2.5" y="13.5">#</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-14">Right</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-28">Look</text>
+		</g>
+		<g transform="translate(289.5 109.5)">
+			<rect class="keyrec recblu rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtblu txt" x="2.5" y="64.5">4</text>
+			<text class="uppnor txtblu txt" x="2.5" y="13.5">$</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-14">Back</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-28">Look</text>
+		</g>
+		<g transform="translate(361.5 109.5)">
+			<rect class="keyrec recblu rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtblu txt" x="2.5" y="64.5">5</text>
+			<text class="uppnor txtblu txt" x="2.5" y="13.5">%</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-14">View</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-28">Chase</text>
+		</g>
+		<g transform="translate(433.5 109.5)">
+			<rect class="keyrec recblu rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtblu txt" x="2.5" y="64.5">6</text>
+			<text class="uppnor txtblu txt" x="2.5" y="13.5">^</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-14">View</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-28">Panning</text>
+		</g>
+		<g transform="translate(505.5 109.5)">
+			<rect class="keyrec recblu rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtblu txt" x="2.5" y="64.5">7</text>
+			<text class="uppnor txtblu txt" x="2.5" y="13.5">&amp;</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-14">View</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-28">Target</text>
+		</g>
+		<g transform="translate(577.5 109.5)">
+			<rect class="keyrec recblu rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtblu txt" x="2.5" y="64.5">8</text>
+			<text class="uppnor txtblu txt" x="2.5" y="13.5">*</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-14">View</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-28">Panning</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="64.5" dy="-42">Target</text>
+			<text class="capshf hang" x="65.5" y="13">Roll</text>
+			<text class="capshf hang" x="65.5" y="25">Right</text>
+		</g>
+		<g transform="translate(649.5 109.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtmag txt" x="2.5" y="64.5">9</text>
+			<text class="uppnor txtmag txt" x="2.5" y="13.5">(</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-14">TC -</text>
+		</g>
+		<g transform="translate(721.5 109.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtmag txt" x="2.5" y="64.5">0</text>
+			<text class="uppnor txtmag txt" x="2.5" y="13.5">)</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-14">TC +</text>
+			<text class="capalt hang" x="65.5" y="13">Clear</text>
+			<text class="capalt hang" x="65.5" y="25">Dock</text>
+		</g>
+		<g transform="translate(793.5 109.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">-</text>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">_</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Velocity</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Decrease</text>
+		</g>
+		<g transform="translate(865.5 109.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">=</text>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">+</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Velocity</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Increase</text>
+		</g>
+		<g transform="translate(937.5 109.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="140" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">Backspace</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Relative Stop</text>
+		</g>
+		<g transform="translate(1.5 181.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="104" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">Tab</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Afterburner</text>
+		</g>
+		<g transform="translate(109.5 181.5)">
+			<rect class="keyrec recblu rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtblu txt" x="2.5" y="13.5">Q</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="78.5" dy="-14">Down</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="78.5" dy="-28">Pan</text>
+		</g>
+		<g transform="translate(181.5 181.5)">
+			<rect class="keyrec recred rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtred txt" x="2.5" y="13.5">W</text>
+			<text class="capnor txtred txt ideo" x="2.5" y="78.5" dy="-14">Weapon</text>
+			<text class="capnor txtred txt ideo" x="2.5" y="78.5" dy="-28">Secondary</text>
+			<text class="capnor txtred txt ideo" x="2.5" y="78.5" dy="-42">Next</text>
+			<text class="capshf hang" x="65.5" y="13">Prev</text>
+		</g>
+		<g transform="translate(253.5 181.5)">
+			<rect class="keyrec recred rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtred txt" x="2.5" y="13.5">E</text>
+			<text class="capnor txtred txt ideo" x="2.5" y="78.5" dy="-14">ECM</text>
+			<text class="capalt hang" x="65.5" y="13">Eject</text>
+		</g>
+		<g transform="translate(325.5 181.5)">
+			<rect class="keyrec recyel rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtyel txt" x="2.5" y="13.5">R</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-14">Hostile</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-28">Near</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-42">Next</text>
+			<text class="capshf hang" x="65.5" y="13">Toughest</text>
+		</g>
+		<g transform="translate(397.5 181.5)">
+			<rect class="keyrec recyel rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtyel txt" x="2.5" y="13.5">T</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-14">Target</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-28">Next All</text>
+			<text class="capshf hang" x="65.5" y="13">Prev</text>
+		</g>
+		<g transform="translate(469.5 181.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">Y</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="78.5" dy="-14">Mode</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="78.5" dy="-28">Combat</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="78.5" dy="-42">Switch</text>
+		</g>
+		<g transform="translate(541.5 181.5)">
+			<rect class="keyrec recyel rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtyel txt" x="2.5" y="13.5">U</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-14">Target</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-28">Manmade</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-42">Next</text>
+			<text class="capshf hang" x="65.5" y="13">Prev</text>
+		</g>
+		<g transform="translate(613.5 181.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtmag txt" x="2.5" y="13.5">I</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="78.5" dy="-14">shot</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="78.5" dy="-28">Screen-</text>
+		</g>
+		<g transform="translate(685.5 181.5)">
+			<rect class="keyrec recred rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtred txt" x="2.5" y="13.5">O</text>
+			<text class="capnor txtred txt ideo" x="2.5" y="78.5" dy="-14">On</text>
+			<text class="capnor txtred txt ideo" x="2.5" y="78.5" dy="-28">Turret AI</text>
+			<text class="capshf hang" x="65.5" y="13">Auto</text>
+			<text class="capalt hang" x="65.5" y="25">Off</text>
+		</g>
+		<g transform="translate(757.5 181.5)">
+			<rect class="keyrec recyel rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtyel txt" x="2.5" y="13.5">P</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-14">Boresight</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-28">Target in</text>
+			<text class="capshf hang" x="65.5" y="13">Turret</text>
+			<text class="capshf hang" x="65.5" y="25">Target</text>
+		</g>
+		<g transform="translate(829.5 181.5)">
+			<rect class="keyrec recyel rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtyel txt" x="2.5" y="64.5">[</text>
+			<text class="uppnor txtyel txt" x="2.5" y="13.5">{</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="64.5" dy="-14">Ship</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="64.5" dy="-28">Change</text>
+		</g>
+		<g transform="translate(901.5 181.5)">
+			<rect class="keyrec recyel rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtyel txt" x="2.5" y="64.5">]</text>
+			<text class="uppnor txtyel txt" x="2.5" y="13.5">}</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="64.5" dy="-14">Message</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="64.5" dy="-28">Text</text>
+		</g>
+		<g transform="translate(973.5 181.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="104" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">\</text>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">|</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Max Velocity</text>
+			<text class="capshf hang" x="101.5" y="13">Pause</text>
+			<text class="capshf hang" x="101.5" y="25">Game</text>
+		</g>
+		<g transform="translate(1.5 253.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="122" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">Caps Lock</text>
+		</g>
+		<g transform="translate(127.5 253.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">A</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="78.5" dy="-14">Autopilot</text>
+			<text class="capshf hang" x="65.5" y="13">SPEC</text>
+		</g>
+		<g transform="translate(199.5 253.5)">
+			<rect class="keyrec recblu rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtblu txt" x="2.5" y="13.5">S</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="78.5" dy="-14">Left</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="78.5" dy="-28">Pan</text>
+			<text class="capshf hang" x="65.5" y="13">Skip</text>
+			<text class="capshf hang" x="65.5" y="25">Song</text>
+		</g>
+		<g transform="translate(271.5 253.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">D</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="78.5" dy="-14">Maneuver</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="78.5" dy="-28">Docking</text>
+			<text class="capshf hang" x="65.5" y="13">Attack</text>
+			<text class="capshf hang" x="65.5" y="25">Target</text>
+		</g>
+		<g transform="translate(343.5 253.5)">
+			<rect class="keyrec recblu rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtblu txt" x="2.5" y="13.5">F</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="78.5" dy="-14">Right</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="78.5" dy="-28">Pan</text>
+			<text class="capshf hang" x="65.5" y="13">Form</text>
+			<text class="capshf hang" x="65.5" y="25">Up</text>
+		</g>
+		<g transform="translate(415.5 253.5)">
+			<rect class="keyrec recred rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtred txt" x="2.5" y="13.5">G</text>
+			<text class="capnor txtred txt ideo" x="2.5" y="78.5" dy="-14">Weapon</text>
+			<text class="capnor txtred txt ideo" x="2.5" y="78.5" dy="-28">Primary</text>
+			<text class="capnor txtred txt ideo" x="2.5" y="78.5" dy="-42">Next</text>
+			<text class="capshf hang" x="65.5" y="13">Prev</text>
+		</g>
+		<g transform="translate(487.5 253.5)">
+			<rect class="keyrec recyel rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtyel txt" x="2.5" y="13.5">H</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-14">Target</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-28">Hostile</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-42">Next</text>
+			<text class="capshf hang" x="65.5" y="13">Prev</text>
+			<text class="capalt hang" x="65.5" y="25">Help</text>
+			<text class="capalt hang" x="65.5" y="37">Me</text>
+		</g>
+		<g transform="translate(559.5 253.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">J</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="78.5" dy="-14">Drive</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="78.5" dy="-28">Jump</text>
+		</g>
+		<g transform="translate(631.5 253.5)">
+			<rect class="keyrec recyel rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtyel txt" x="2.5" y="13.5">K</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-14">Friend</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-28">Near</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-42">Next</text>
+			<text class="capshf hang" x="65.5" y="13">Base</text>
+			<text class="capctl hang" x="65.5" y="25">Plant</text>
+			<text class="capalt hang" x="65.5" y="37">Jump</text>
+		</g>
+		<g transform="translate(703.5 253.5)">
+			<rect class="keyrec recyel rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtyel txt" x="2.5" y="13.5">L</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-14">Target</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-28">Lock on</text>
+		</g>
+		<g transform="translate(775.5 253.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtmag txt" x="2.5" y="64.5">;</text>
+			<text class="uppnor txtmag txt" x="2.5" y="13.5">:</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-14">Respawn</text>
+		</g>
+		<g transform="translate(847.5 253.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">&apos;</text>
+			<text class="uppnor txtnon txt" x="2.5" y="13.5">&quot;</text>
+		</g>
+		<g transform="translate(919.5 253.5)">
+			<rect class="keyrec recred rec" x="0.5" y="0.5" rx="4" ry="4" width="158" height="68"/>
+			<text class="lownor txtred txt" x="2.5" y="64.5">Enter</text>
+			<text class="capnor txtred txt ideo" x="2.5" y="64.5" dy="-14">Fire Secondary</text>
+		</g>
+		<g transform="translate(1.5 325.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="158" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">LShift</text>
+		</g>
+		<g transform="translate(163.5 325.5)">
+			<rect class="keyrec recblu rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtblu txt" x="2.5" y="13.5">Z</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="78.5" dy="-14">Up</text>
+			<text class="capnor txtblu txt ideo" x="2.5" y="78.5" dy="-28">Pan</text>
+			<text class="capshf hang" x="65.5" y="13">Jettison</text>
+			<text class="capshf hang" x="65.5" y="25">Cargo</text>
+		</g>
+		<g transform="translate(235.5 325.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtnon txt" x="2.5" y="13.5">X</text>
+		</g>
+		<g transform="translate(307.5 325.5)">
+			<rect class="keyrec recred rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtred txt" x="2.5" y="13.5">C</text>
+			<text class="capnor txtred txt ideo" x="2.5" y="78.5" dy="-14">Cloak</text>
+		</g>
+		<g transform="translate(379.5 325.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtmag txt" x="2.5" y="13.5">V</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="78.5" dy="-14">Right VDU</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="78.5" dy="-28">Cycle</text>
+			<text class="capctl hang" x="65.5" y="13">Shader</text>
+			<text class="capctl hang" x="65.5" y="25">New</text>
+		</g>
+		<g transform="translate(451.5 325.5)">
+			<rect class="keyrec recyel rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtyel txt" x="2.5" y="13.5">B</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-14">Subunit</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-28">Next</text>
+			<text class="capshf hang" x="65.5" y="13">Break</text>
+			<text class="capshf hang" x="65.5" y="25">Form</text>
+		</g>
+		<g transform="translate(523.5 325.5)">
+			<rect class="keyrec recyel rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtyel txt" x="2.5" y="13.5">N</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-14">Target</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-28">Neutral</text>
+			<text class="capnor txtyel txt ideo" x="2.5" y="78.5" dy="-42">Next</text>
+			<text class="capshf hang" x="65.5" y="13">Prev</text>
+			<text class="capalt hang" x="65.5" y="25">Mission</text>
+			<text class="capalt hang" x="65.5" y="37">N/P</text>
+		</g>
+		<g transform="translate(595.5 325.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtmag txt" x="2.5" y="13.5">M</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="78.5" dy="-14">Left VDU</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="78.5" dy="-28">Cycle</text>
+			<text class="capshf hang" x="65.5" y="13">Toggle</text>
+			<text class="capshf hang" x="65.5" y="25">Map</text>
+		</g>
+		<g transform="translate(667.5 325.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">,</text>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">&lt;</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Up</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Thrust</text>
+			<text class="capshf hang" x="65.5" y="13">Left</text>
+		</g>
+		<g transform="translate(739.5 325.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">.</text>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">&gt;</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Down</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Thrust</text>
+			<text class="capshf hang" x="65.5" y="13">Right</text>
+		</g>
+		<g transform="translate(811.5 325.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">/</text>
+			<text class="uppnor txtnon txt" x="2.5" y="13.5">?</text>
+		</g>
+		<g transform="translate(883.5 325.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="194" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">RShift</text>
+		</g>
+		<g transform="translate(1.5 397.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="86" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">LCtrl</text>
+		</g>
+		<g transform="translate(181.5 397.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="86" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">LAlt</text>
+		</g>
+		<g transform="translate(271.5 397.5)">
+			<rect class="keyrec recred rec" x="0.5" y="0.5" rx="4" ry="4" width="446" height="68"/>
+			<text class="lownor txtred txt" x="2.5" y="64.5">Space</text>
+			<text class="capnor txtred txt ideo" x="2.5" y="64.5" dy="-14">Fire Primary</text>
+		</g>
+		<g transform="translate(721.5 397.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="86" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">RAlt</text>
+		</g>
+		<g transform="translate(991.5 397.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="86" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">RCtrl</text>
+		</g>
+		<g transform="translate(1117.5 109.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">Insert</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Left</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Roll</text>
+		</g>
+		<g transform="translate(1117.5 181.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">Delete</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Right</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Roll</text>
+		</g>
+		<g transform="translate(1117.5 397.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">Left</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Left</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Nose</text>
+		</g>
+		<g transform="translate(1189.5 109.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">Home</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Velocity</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Match</text>
+		</g>
+		<g transform="translate(1189.5 181.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">End</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Velocity</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Zero</text>
+		</g>
+		<g transform="translate(1189.5 325.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">Up</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Down</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Nose</text>
+		</g>
+		<g transform="translate(1189.5 397.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">Down</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Up</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Nose</text>
+		</g>
+		<g transform="translate(1261.5 109.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtmag txt" x="2.5" y="64.5">Page Up</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-14">Text Up</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-28">Scroll</text>
+		</g>
+		<g transform="translate(1261.5 181.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtmag txt" x="2.5" y="64.5">Page Dn</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-14">Text Down</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-28">Scroll</text>
+		</g>
+		<g transform="translate(1261.5 397.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">Right</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Right</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Nose</text>
+		</g>
+		<g transform="translate(1369.5 109.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">NumLk</text>
+		</g>
+		<g transform="translate(1369.5 181.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">Home</text>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">7</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Velocity</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Match</text>
+		</g>
+		<g transform="translate(1369.5 253.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">Left</text>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">4</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Left</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Nose</text>
+		</g>
+		<g transform="translate(1369.5 325.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">End</text>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">1</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Velocity</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Zero</text>
+		</g>
+		<g transform="translate(1441.5 109.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">/</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Left</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Roll</text>
+		</g>
+		<g transform="translate(1441.5 181.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">Up</text>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">8</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Down</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Nose</text>
+		</g>
+		<g transform="translate(1441.5 253.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="uppnor txtnon txt" x="2.5" y="13.5">5</text>
+		</g>
+		<g transform="translate(1441.5 325.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">Down</text>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">2</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Up</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Nose</text>
+		</g>
+		<g transform="translate(1369.5 397.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="140" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">Ins</text>
+			<text class="uppnor txtnon txt" x="2.5" y="13.5">0</text>
+		</g>
+		<g transform="translate(1513.5 109.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">*</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Right</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Roll</text>
+		</g>
+		<g transform="translate(1513.5 181.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtmag txt" x="2.5" y="64.5">PgUp</text>
+			<text class="uppnor txtmag txt" x="2.5" y="13.5">9</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-14">Text Up</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-28">Scroll</text>
+		</g>
+		<g transform="translate(1513.5 253.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">Right</text>
+			<text class="uppnor txtgrn txt" x="2.5" y="13.5">6</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Right</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Nose</text>
+		</g>
+		<g transform="translate(1513.5 325.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtmag txt" x="2.5" y="64.5">PgDn</text>
+			<text class="uppnor txtmag txt" x="2.5" y="13.5">3</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-14">Text Down</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-28">Scroll</text>
+		</g>
+		<g transform="translate(1513.5 397.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">Del</text>
+			<text class="uppnor txtnon txt" x="2.5" y="13.5">.</text>
+		</g>
+		<g transform="translate(1585.5 109.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtgrn txt" x="2.5" y="64.5">-</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-14">Velocity</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="64.5" dy="-28">Decrease</text>
+		</g>
+		<g transform="translate(1585.5 181.5)">
+			<rect class="keyrec recgrn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="140"/>
+			<text class="lownor txtgrn txt" x="2.5" y="136.5">+</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="136.5" dy="-14">Velocity</text>
+			<text class="capnor txtgrn txt ideo" x="2.5" y="136.5" dy="-28">Increase</text>
+		</g>
+		<g transform="translate(1585.5 325.5)">
+			<rect class="keyrec recred rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="140"/>
+			<text class="lownor txtred txt" x="2.5" y="136.5">Enter</text>
+			<text class="capnor txtred txt ideo" x="2.5" y="136.5" dy="-14">Secondary</text>
+			<text class="capnor txtred txt ideo" x="2.5" y="136.5" dy="-28">Fire</text>
+		</g>
+		<g transform="translate(1.5 1.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtmag txt" x="2.5" y="64.5">Esc</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-14">Quit</text>
+		</g>
+		<g transform="translate(145.5 1.5)">
+			<rect class="keyrec reccyn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtcyn txt" x="2.5" y="64.5">F1</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-14">Key 1</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-28">Comm</text>
+		</g>
+		<g transform="translate(217.5 1.5)">
+			<rect class="keyrec reccyn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtcyn txt" x="2.5" y="64.5">F2</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-14">Key 2</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-28">Comm</text>
+		</g>
+		<g transform="translate(289.5 1.5)">
+			<rect class="keyrec reccyn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtcyn txt" x="2.5" y="64.5">F3</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-14">Key 3</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-28">Comm</text>
+		</g>
+		<g transform="translate(361.5 1.5)">
+			<rect class="keyrec reccyn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtcyn txt" x="2.5" y="64.5">F4</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-14">Key 4</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-28">Comm</text>
+		</g>
+		<g transform="translate(469.5 1.5)">
+			<rect class="keyrec reccyn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtcyn txt" x="2.5" y="64.5">F5</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-14">Key 5</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-28">Comm</text>
+		</g>
+		<g transform="translate(541.5 1.5)">
+			<rect class="keyrec reccyn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtcyn txt" x="2.5" y="64.5">F6</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-14">Key 6</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-28">Comm</text>
+		</g>
+		<g transform="translate(613.5 1.5)">
+			<rect class="keyrec reccyn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtcyn txt" x="2.5" y="64.5">F7</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-14">Key 7</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-28">Comm</text>
+		</g>
+		<g transform="translate(685.5 1.5)">
+			<rect class="keyrec reccyn rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtcyn txt" x="2.5" y="64.5">F8</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-14">Key 8</text>
+			<text class="capnor txtcyn txt ideo" x="2.5" y="64.5" dy="-28">Comm</text>
+		</g>
+		<g transform="translate(793.5 1.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtmag txt" x="2.5" y="64.5">F9</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-14">Volume -</text>
+		</g>
+		<g transform="translate(865.5 1.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtmag txt" x="2.5" y="64.5">F10</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-14">Volume +</text>
+		</g>
+		<g transform="translate(937.5 1.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtmag txt" x="2.5" y="64.5">F11</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-14">Volume -</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-28">Music</text>
+		</g>
+		<g transform="translate(1009.5 1.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtmag txt" x="2.5" y="64.5">F12</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-14">Volume +</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-28">Music</text>
+		</g>
+		<g transform="translate(1117.5 1.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">PrtScr</text>
+			<text class="uppnor txtnon txt" x="2.5" y="13.5">SysRq</text>
+		</g>
+		<g transform="translate(1189.5 1.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">ScrLk</text>
+		</g>
+		<g transform="translate(1261.5 1.5)">
+			<rect class="keyrec recmag rec" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<text class="lownor txtmag txt" x="2.5" y="64.5">Pause</text>
+			<text class="uppnor txtmag txt" x="2.5" y="13.5">Break</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-14">Game</text>
+			<text class="capnor txtmag txt ideo" x="2.5" y="64.5" dy="-28">Pause</text>
+		</g>
+		<g transform="translate(91.5 397.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="86" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">LSuper</text>
+		</g>
+		<g transform="translate(811.5 397.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="86" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">RSuper</text>
+		</g>
+		<g transform="translate(901.5 397.5)">
+			<rect class="keyrec recnon rec" x="0.5" y="0.5" rx="4" ry="4" width="86" height="68"/>
+			<text class="lownor txtnon txt" x="2.5" y="64.5">Menu</text>
+		</g>
+		<g class="legkey" transform="translate(1.5 505.5)">
+			<rect class="keyrec recnon" x="0.5" y="0.5" rx="4" ry="4" width="68" height="68"/>
+			<rect class="bakshf" x="1.0" y="3" width="67" height="12" rx="1" ry="1"></rect>
+			<text class="capshf hang" x="65.5" y="13">Shift</text>
+			<rect class="bakctl" x="1.0" y="15" width="67" height="12" rx="1" ry="1"></rect>
+			<text class="capctl hang" x="65.5" y="25">Ctrl</text>
+			<rect class="bakalt" x="1.0" y="27" width="67" height="12" rx="1" ry="1"></rect>
+			<text class="capalt hang" x="65.5" y="37">Alt</text>
+			<text class="capnor txtnon ideo" x="2.5" y="50.5">Caption</text>
+			<text class="lownor txtnon" x="2.5" y="64.5">Lowcase</text>
+			<text class="uppnor txtnon" x="2.5" y="13.5">Upcase</text>
+		</g>
+		<g transform="translate(109.5 505.5)">
+			<rect class="keyrec recred" x="0.5" y="0.5" width="16" height="16"/>
+			<text class="legtxt" x="20.5" y="14.5">Combat</text>
+			<rect class="keyrec recyel" x="0.5" y="20.5" width="16" height="16"/>
+			<text class="legtxt" x="20.5" y="34.5">Targeting</text>
+			<rect class="keyrec recgrn" x="0.5" y="40.5" width="16" height="16"/>
+			<text class="legtxt" x="20.5" y="54.5">Navigation</text>
+			<rect class="keyrec reccyn" x="200.5" y="0.5" width="16" height="16"/>
+			<text class="legtxt" x="220.5" y="14.5">Communication</text>
+			<rect class="keyrec recblu" x="200.5" y="20.5" width="16" height="16"/>
+			<text class="legtxt" x="220.5" y="34.5">Camera</text>
+			<rect class="keyrec recmag" x="200.5" y="40.5" width="16" height="16"/>
+			<text class="legtxt" x="220.5" y="54.5">Game Controls</text>
+		</g>
+		<text class="" x="0" y="484" style="fill:#c0c0c0;">&#169; CC BY-SA VGKD</text>
+	</g>
+</svg>

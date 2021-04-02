@@ -236,6 +236,7 @@ var seourl_table =
 ?>
 <div id="snake_pane"></div>
 <img id="waiting" src="<?php echo $path_lib1; ?>animated-loading-icon.webp" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
+<nav>
 <form name="keyboard_select">
 	<input type="hidden" name="lay" value=""/>
 	<input type="hidden" name="gam" value=""/>
@@ -440,10 +441,11 @@ var seourl_table =
 			<input id="but_reset" type="button" value="Reset" disabled="disabled" onclick="Reset_Page();"/>
 			<br/><br/>
 			<div class="acc_warn" id="but_ready">All set! Now click the &quot;Create New Diagram&quot; button, above. This will spawn a new browser window containing the keyboard diagram.</div>
-			<div class="acc_warn" id="but_error">Try again to select a keyboard, theme and game, then click the &quot;Create New Diagram&quot; button once more!</div>
+			<div class="acc_warn" id="but_error">Try again to select a keyboard, theme and game, then click the &quot;Create New Diagram&quot; button!</div>
 		</div>
 	</div>
 </form>
+</nav>
 <hr/>
 <h3>Description:</h3>
 <p>This PHP form generates a keyboard control diagram in a new window. You can select from among hotkeys and bindings for various video games and other software. If you do not have a JavaScript-enabled browser, then you may refer to the <a href="keyboard-list.php">master table</a> table instead. If you are looking for Apple-branded or non-English bindings, you may <i>also</i> benefit from searching the master table, since there are unfortunately so few of them.</p>
@@ -460,6 +462,11 @@ var seourl_table =
 </ol>
 <p>Items marked with a star (&#10022;) are the &quot;default&quot; or most common options.</p>
 <p>The vast majority of the bindings are for the <i>US 104 Key (ANSI)</i> keyboard at this time. If you would like to see more bindings for the other keyboards, you are welcome to contribute! (More on that, below.)</p>
+<h3>Example</h3>
+<figure>
+<img src="lib/keyboard-diagram-vega-strike.svg" style="max-width:80%;"/>
+<figcaption>US 104 key bindings for the space combat simulator <i>Vega Strike</i>.</figcaption>
+</figure>
 <h3>Licenses &amp; Submissions:</h3>
 <p>The source code for this project is licensed under the <a rel="license" target="_blank" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">GNU LGPLv3</a>. The content is licensed under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading. The <a href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki/To-Do-List">&quot;to do&quot; list</a> outlines some of the tasks I've planned for the future.</p>
 <p>To submit a new set of bindings or a layout, you can fill out <a target="_blank" href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/scripts_sql/vgkd_bindings_template_insert_into.xlsm">this</a> and <a target="_blank" href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/scripts_sql/vgkd_layouts_template_insert_into.xlsx">this</a> spreadsheet and <a target="_blank" href="http://isometricland.net/email/email.php">email</a> me the contents by copying and pasting the data into the email form. Note that any content you submit falls under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart you contributed to.</p>
