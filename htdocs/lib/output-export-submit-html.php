@@ -20,7 +20,7 @@
 
 	header("Content-Type: text/html; charset=utf8");
 
-	$path_vgkd		= "http://isometricland.net/keyboard/";
+	$path_vgkd		= "https://isometricland.net/keyboard/";
 	$path_file		= "output-export-html.php";	// this file
 	$path_root1		= "../";		// for files in "keyboard/"
 	$path_lib1		= "./lib/";		// for files in "keyboard/"
@@ -152,7 +152,7 @@
 '<!DOCTYPE HTML>
 <!--
 This file was generated using Video Game Keyboard Diagrams by Michael Horvath.
-http://isometricland.net/keyboard/keyboard.php
+https://isometricland.net/keyboard/keyboard.php
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
 United States License. To view a copy of this license, visit
 http://creativecommons.org/licenses/by-sa/3.0/us/ or send a letter to Creative

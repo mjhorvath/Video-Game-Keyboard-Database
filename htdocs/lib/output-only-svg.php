@@ -21,7 +21,7 @@
 	header("Content-type: image/svg+xml");
 	include($path_lib2 . "queries-chart.php");
 
-	$path_vgkd		= "http://isometricland.net/keyboard/";
+	$path_vgkd		= "https://isometricland.net/keyboard/";
 	$path_file		= "output-only-svg.php";		// this file
 	$stylegroup_id		= 0;		// set by selThisStyleChart(), also contained inside $stylegroup_table
 //	$stylegroup_table	= [];		// set in selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
@@ -125,7 +125,7 @@
 	echo
 '<!--
 This file was generated using Video Game Keyboard Diagrams by Michael Horvath.
-http://isometricland.net/keyboard/keyboard.php
+https://isometricland.net/keyboard/keyboard.php
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
 United States License. To view a copy of this license, visit
 http://creativecommons.org/licenses/by-sa/3.0/us/ or send a letter to Creative

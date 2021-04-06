@@ -22,7 +22,7 @@
 	include($path_lib2 . "queries-chart.php");
 	include($path_ssi2 . "plugin-analyticstracking.php");
 
-	$path_vgkd		= "http://isometricland.net/keyboard/";
+	$path_vgkd		= "https://isometricland.net/keyboard/";
 	$path_file		= "output-main-html.php";	// this file
 	$commandouter_table	= [];		// set by selCommandsChart()
 	$commandlabel_table	= [];		// set by selCommandLabelsChart()
@@ -124,7 +124,7 @@
 '<!DOCTYPE HTML>
 <!--
 This file was generated using Video Game Keyboard Diagrams by Michael Horvath.
-http://isometricland.net/keyboard/keyboard.php
+https://isometricland.net/keyboard/keyboard.php
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
 United States License. To view a copy of this license, visit
 http://creativecommons.org/licenses/by-sa/3.0/us/ or send a letter to Creative

@@ -21,7 +21,7 @@
 	header("Content-Type: text/html; charset=utf8");
 
 	$page_title		= "Master Table";
-	$path_vgkd		= "http://isometricland.net/keyboard/";
+	$path_vgkd		= "https://isometricland.net/keyboard/";
 	$path_file		= "keyboard-list.php";	// this file
 	$path_root1		= "../";		// for HTML and JS files
 	$path_lib1		= "./lib/";		// for HTML and JS files

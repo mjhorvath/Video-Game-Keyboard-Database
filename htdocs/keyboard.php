@@ -21,7 +21,7 @@
 	header("Content-Type: text/html; charset=utf8");
 
 	$page_title		= "Video Game Keyboard Diagrams";
-	$path_vgkd		= "http://isometricland.net/keyboard/";
+	$path_vgkd		= "https://isometricland.net/keyboard/";
 	$path_file		= "keyboard.php";	// this file
 	$path_root1		= "../";		// for HTML and JS files
 	$path_lib1		= "./lib/";		// for HTML and JS files
@@ -230,13 +230,12 @@ var seourl_table =
 		<header>\n";
 	include($path_lib1 . "header-bar.php");	// not working in Android Chrome
 	echo
-"			<h2>" . $page_title . "</h2>
-		</header>
-		<main>\n";
+"		</header>
+		<main>
+			<h2>" . $page_title . "</h2>\n";
 ?>
 <div id="snake_pane"></div>
 <img id="waiting" src="<?php echo $path_lib1; ?>animated-loading-icon.webp" alt="loading" style="position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;"/>
-<nav>
 <form name="keyboard_select">
 	<input type="hidden" name="lay" value=""/>
 	<input type="hidden" name="gam" value=""/>
@@ -445,7 +444,6 @@ var seourl_table =
 		</div>
 	</div>
 </form>
-</nav>
 <hr/>
 <h3>Description:</h3>
 <p>This PHP form generates a keyboard control diagram in a new window. You can select from among hotkeys and bindings for various video games and other software. If you do not have a JavaScript-enabled browser, then you may refer to the <a href="keyboard-list.php">master table</a> table instead. If you are looking for Apple-branded or non-English bindings, you may <i>also</i> benefit from searching the master table, since there are unfortunately so few of them.</p>
@@ -462,14 +460,14 @@ var seourl_table =
 </ol>
 <p>Items marked with a star (&#10022;) are the &quot;default&quot; or most common options.</p>
 <p>The vast majority of the bindings are for the <i>US 104 Key (ANSI)</i> keyboard at this time. If you would like to see more bindings for the other keyboards, you are welcome to contribute! (More on that, below.)</p>
-<h3>Example</h3>
+<h3>Example:</h3>
 <figure>
-<img src="lib/keyboard-diagram-vega-strike.svg" style="max-width:80%;"/>
+<a href="lib/keyboard-diagram-vega-strike.svg"><img src="lib/keyboard-diagram-vega-strike.svg" style="width:32em;max-width:100%;"/></a>
 <figcaption>US 104 key bindings for the space combat simulator <i>Vega Strike</i>.</figcaption>
 </figure>
 <h3>Licenses &amp; Submissions:</h3>
 <p>The source code for this project is licensed under the <a rel="license" target="_blank" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">GNU LGPLv3</a>. The content is licensed under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading. The <a href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki/To-Do-List">&quot;to do&quot; list</a> outlines some of the tasks I've planned for the future.</p>
-<p>To submit a new set of bindings or a layout, you can fill out <a target="_blank" href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/scripts_sql/vgkd_bindings_template_insert_into.xlsm">this</a> and <a target="_blank" href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/scripts_sql/vgkd_layouts_template_insert_into.xlsx">this</a> spreadsheet and <a target="_blank" href="http://isometricland.net/email/email.php">email</a> me the contents by copying and pasting the data into the email form. Note that any content you submit falls under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart you contributed to.</p>
+<p>To submit a new set of bindings or a layout, you can fill out <a target="_blank" href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/scripts_sql/vgkd_bindings_template_insert_into.xlsm">this</a> and <a target="_blank" href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/scripts_sql/vgkd_layouts_template_insert_into.xlsx">this</a> spreadsheet and <a target="_blank" href="https://isometricland.net/email/email.php">email</a> me the contents by copying and pasting the data into the email form. Note that any content you submit falls under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart you contributed to.</p>
 <p>I have also developed a form-based submission page. You can use it by selecting the &quot;Editor&quot; option in Step 4, above. To update a game's binding simply select it from the &quot;Games&quot; menu above. To start a brand new submission, select the &quot;Blank Starter&quot; item in the &quot;Reference&quot; category of the &quot;Games&quot; menu. (<a href="keyboard-diagram-blank-starter.php?sty=15&lay=1&fmt=3&ten=1&vrt=0">Here is a direct link for the most common keyboard</a>.) There are &quot;Blank Starters&quot; for every keyboard. That being said, I personally still prefer using the spreadsheet for creating new bindings.</p>
 <h3>MediaWiki, SVG &amp; PDF:</h3>
 <p>I have created templates for MediaWiki wikis that do basically the same thing as the charts available on this site. You can find templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Fandom</a>. There is a test case <a target="_blank" href="https://templates.fandom.com/wiki/User:Mikali_Homeworld/Kbdchart_example">located here</a>. By selecting the &quot;MediaWiki&quot; format type in the menu above, you can generate the code you will need in order to populate this template with data. Note that on the destination wiki page, you may also want to wrap the charts in scrollable DIV elements, since the charts are typically wider than a browser window.</p>
@@ -478,13 +476,13 @@ var seourl_table =
 <a name="print_tips"></a>
 <h3>Printing Tips:</h3>
 <ol>
-	<li>When printing, the chart may not fit within a single letter- or legal-sized page, even when selecting &quot;Landscape&quot; mode instead of &quot;Portrait&quot; mode in your printer dialog settings. Luckily, your browser or printer may have a &quot;shrink to fit&quot; feature that you can take advantage of to automatically adjust the size of the printed page output. Unfortunately, Google Chrome is missing a &quot;shrink to fit&quot; feature by default, so I recommend investigating one of the workarounds discussed on Super User, <a target="_blank" href="https://superuser.com/questions/979741/how-can-i-make-chrome-shrink-to-fit-on-printing">here</a>.</li>
-	<li>You may save a little more space by also hiding the numeric keypad. Be aware that many games have commands bound to these keys!</li>
-	<li>I recommend not enabling the printing of background colors and images in your printer settings, as this will consume a lot of ink. This setting is found in &quot;Page Setup&quot; (Mozilla Firefox and Internet Explorer) or within the print dialog itself (Google Chrome). The setting appears to not exist in Microsoft Edge.</li>
-	<li>If the colors or keyboard theme are not to your liking, select a different &quot;Theme&quot; from among the options at the top of this page, then try generating the chart again.</li>
-	<li>Printing at 96 DPI (dots-per-inch) and 100% scaling should result in a printed page that closely approximates the size and dimensions of many real physical keyboards. Of course, not every keyboard is exactly the same, so YMMV.</li>
-	<li>In MS Windows, some Web browers (Google Chrome for instance) use your desktop DPI scaling settings to adjust the size of on-screen HTML elements, resulting in a document that appears larger or smaller than normal. I am not exactly sure what effect this has on the printed page output, however. It may vary from browser to browser. I am not sure what happens in other operating systems either.</li>
-	<li>Note, that the darker themes in general will waste a lot of ink. You might want to select a lighter theme when printing.</li>
+	<li>When printing, the diagram may not fit within a single letter- or legal-sized page, even when selecting &quot;Landscape&quot; mode instead of &quot;Portrait&quot; mode in your printer dialog settings. Your browser or printer may have a &quot;shrink to fit&quot; option that allows you to automatically adjust the size of the output to fit the size of the paper, so you could try this. Unfortunately, Google Chrome is missing such a feature at this time, so I recommend investigating one of <a target="_blank" href="https://superuser.com/questions/979741/how-can-i-make-chrome-shrink-to-fit-on-printing">these workarounds</a> if you are using that browser.</li>
+	<li>You may also free up some space by hiding the numeric keypad. Be aware that many games and software bind commands to these keys! Though not all do.</li>
+	<li>I recommend <i>not</i> enabling the printing of background colors and images in your printer settings, as this will consume a lot of ink. This setting is found in &quot;Page Setup&quot; (Mozilla Firefox and Internet Explorer) or within the print dialog itself (Google Chrome). The setting appears to not exist in Microsoft Edge.</li>
+	<li>If the colors or keyboard theme are not to your liking, select a different &quot;Theme&quot;, then try generating the chart again.</li>
+	<li>Printing at 96 DPI (dots-per-inch) and 100% scaling should result in printed output that closely approximates the dimensions of a real physical keyboard. Of course, not every keyboard meets one of the various keyboard standards exactly, so YMMV. In particular, the distance between the function keys and the number keys at the top of the keyboard seems to vary considerably between different keyboard models. Laptop computers seem to not follow any standards at all.</li>
+	<li>In MS Windows, some Web browsers (Google Chrome for instance) use your desktop DPI scaling settings to adjust the size of on-screen HTML elements, resulting in a document that appears larger or smaller than the Web developer intended. I am not exactly sure if this affects printer output. It may vary from browser to browser, or between browser versions and operating systems. I need to investigate this further.</li>
+	<li>Note, that the darker themes in general will waste a lot of ink. You might want to select a lighter-colored theme when printing.</li>
 </ol>
 <?php
 	echo

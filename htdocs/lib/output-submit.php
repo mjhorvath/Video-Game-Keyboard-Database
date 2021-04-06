@@ -23,7 +23,7 @@
 	include($path_ssi2 . "recaptchakey.php");
 	include($path_ssi2 . "plugin-analyticstracking.php");
 
-	$path_vgkd		= "http://isometricland.net/keyboard/";
+	$path_vgkd		= "https://isometricland.net/keyboard/";
 	$path_file		= "output-submit.php";		// this file
 	$commandouter_table	= [];
 	$commandouter_count	= 0;

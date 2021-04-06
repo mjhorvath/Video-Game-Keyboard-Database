@@ -18,7 +18,7 @@
 	// License along with this program.  If not, see 
 	// <https://www.gnu.org/licenses/>.
 
-	$vgkd_url		= "http://isometricland.net/keyboard/";
+	$vgkd_url		= "https://isometricland.net/keyboard/";
 	$php_url		= "";		// set by checkURLParameters()
 	$svg_url		= "";		// set by checkURLParameters()
 	$can_url		= "";		// set by checkURLParameters()
