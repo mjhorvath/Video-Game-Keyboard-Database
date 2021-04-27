@@ -243,7 +243,7 @@ var seourl_table =
 	<div class="acc_cont">
 		<div class="acc_div">
 			<div class="acc_wrap">
-				<h3 class="acc_head">1. Select a Keyboard:</h3>
+				<h3 class="acc_head">1. Select a Keyboard</h3>
 				<div id="lay_check" class="acc_check">&#x2714;</div>
 				<div id="lay_xmark" class="acc_xmark">&#x2718;</div>
 			</div>
@@ -287,7 +287,7 @@ var seourl_table =
 		</div>
 		<div class="acc_div">
 			<div class="acc_wrap">
-				<h3 class="acc_head">2. Select a Theme:</h3>
+				<h3 class="acc_head">2. Select a Theme</h3>
 				<div id="sty_check" class="acc_check">&#x2714;</div>
 				<div id="sty_xmark" class="acc_xmark">&#x2718;</div>
 			</div>
@@ -331,7 +331,7 @@ var seourl_table =
 		</div>
 		<div class="acc_div">
 			<div class="acc_wrap">
-				<h3 class="acc_head">3. Select a Game:</h3>
+				<h3 class="acc_head">3. Select a Game</h3>
 				<div id="gam_check" class="acc_check">&#x2714;</div>
 				<div id="gam_xmark" class="acc_xmark">&#x2718;</div>
 			</div>
@@ -375,7 +375,7 @@ var seourl_table =
 		</div>
 		<div class="acc_div">
 			<div class="acc_wrap">
-				<h3 class="acc_head">4. Select a Format:</h3>
+				<h3 class="acc_head">4. Select a Format</h3>
 				<div id="fmt_check" class="acc_check">&#x2714;</div>
 				<div id="fmt_xmark" class="acc_xmark">&#x2718;</div>
 			</div>
@@ -402,7 +402,7 @@ var seourl_table =
 		</div>
 		<div class="acc_div">
 			<div class="acc_wrap">
-				<h3 class="acc_head">5. The Numeric Keypad:</h3>
+				<h3 class="acc_head">5. The Numeric Keypad</h3>
 				<div id="ten_check" class="acc_check">&#x2714;</div>
 				<div id="ten_xmark" class="acc_xmark">&#x2718;</div>
 			</div>
@@ -417,7 +417,7 @@ var seourl_table =
 		</div>
 		<div class="acc_div">
 			<div class="acc_wrap">
-				<h3 class="acc_head">6. Select an Orientation:</h3>
+				<h3 class="acc_head">6. Select an Orientation</h3>
 				<div id="vrt_check" class="acc_check">&#x2714;</div>
 				<div id="vrt_xmark" class="acc_xmark">&#x2718;</div>
 			</div>
@@ -432,22 +432,22 @@ var seourl_table =
 		</div>
 		<div class="acc_div">
 			<div class="acc_wrap">
-				<h3 class="acc_head">7. Create the Diagram:</h3>
+				<h3 class="acc_head">7. Spawn the Diagram</h3>
 				<div id="but_check" class="acc_check">&#x2714;</div>
 				<div id="but_xmark" class="acc_xmark">&#x2718;</div>
 			</div>
-			<input id="but_spawn" type="button" value="Create New Diagram" onclick="Check_Values_and_Spawn();"/>
+			<input id="but_spawn" type="button" value="Generate Diagram" onclick="Check_Values_and_Spawn();"/>
 			<input id="but_reset" type="button" value="Reset" disabled="disabled" onclick="Reset_Page();"/>
 			<br/><br/>
-			<div class="acc_warn" id="but_ready">All set! Now click the &quot;Create New Diagram&quot; button, above. This will spawn a new browser window containing the keyboard diagram.</div>
-			<div class="acc_warn" id="but_error">Try again to select a keyboard, theme and game, then click the &quot;Create New Diagram&quot; button!</div>
+			<div class="acc_warn" id="but_ready">All set! Now click the &quot;Generate Diagram&quot; button, above. This will spawn a new browser window containing the selected keyboard diagram.</div>
+			<div class="acc_warn" id="but_error">Try again to select a keyboard, theme and game, then click the &quot;Generate Diagram&quot; button!</div>
 		</div>
 	</div>
 </form>
 <hr/>
-<h3>Description:</h3>
+<h3>Project Description</h3>
 <p>This PHP form generates a keyboard control diagram in a new window. You can select from among hotkeys and bindings for various video games and other software. If you do not have a JavaScript-enabled browser, then you may refer to the <a href="keyboard-list.php">master table</a> table instead. If you are looking for Apple-branded or non-English bindings, you may <i>also</i> benefit from searching the master table, since there are unfortunately so few of them.</p>
-<h3>Instructions:</h3>
+<h3>Instructions</h3>
 <ol>
 	<li>Select a keyboard (key positions).</li>
 	<li>Select a theme (visual formatting).</li>
@@ -460,21 +460,25 @@ var seourl_table =
 </ol>
 <p>Items marked with a star (&#10022;) are the &quot;default&quot; or most common options.</p>
 <p>The vast majority of the bindings are for the <i>US 104 Key (ANSI)</i> keyboard at this time. If you would like to see more bindings for the other keyboards, you are welcome to contribute! (More on that, below.)</p>
-<h3>Example:</h3>
+<h3>Example Diagram</h3>
 <figure>
 <a href="lib/keyboard-diagram-vega-strike.svg"><img src="lib/keyboard-diagram-vega-strike.svg" style="width:32em;max-width:100%;"/></a>
 <figcaption>US 104 key bindings for the space combat simulator <i>Vega Strike</i>.</figcaption>
 </figure>
-<h3>Licenses &amp; Submissions:</h3>
+<h3>Want to start your own diagram from scratch?</h3>
+<p>If you have a game or software you would like to create a new diagram for, go ahead and click the button below.</p>
+<input type="button" value="Create New Diagram" onclick="location.href='keyboard-diagram-blank-starter.php?sty=15&lay=1&fmt=3&ten=1&vrt=0';"/>
+<p>Once you're done filling out all of the form fields, you have the option of submitting the schema to the project, or of saving the diagram locally to your hard drive.</p>
+<h3>Licenses &amp; Submissions</h3>
 <p>The source code for this project is licensed under the <a rel="license" target="_blank" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">GNU LGPLv3</a>. The content is licensed under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading. The <a href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki/To-Do-List">&quot;to do&quot; list</a> outlines some of the tasks I've planned for the future.</p>
 <p>To submit a new set of bindings or a layout, you can fill out <a target="_blank" href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/scripts_sql/vgkd_bindings_template_insert_into.xlsm">this</a> and <a target="_blank" href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/scripts_sql/vgkd_layouts_template_insert_into.xlsx">this</a> spreadsheet and <a target="_blank" href="https://isometricland.net/email/email.php">email</a> me the contents by copying and pasting the data into the email form. Note that any content you submit falls under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart you contributed to.</p>
 <p>I have also developed a form-based submission page. You can use it by selecting the &quot;Editor&quot; option in Step 4, above. To update a game's binding simply select it from the &quot;Games&quot; menu above. To start a brand new submission, select the &quot;Blank Starter&quot; item in the &quot;Reference&quot; category of the &quot;Games&quot; menu. (<a href="keyboard-diagram-blank-starter.php?sty=15&lay=1&fmt=3&ten=1&vrt=0">Here is a direct link for the most common keyboard</a>.) There are &quot;Blank Starters&quot; for every keyboard. That being said, I personally still prefer using the spreadsheet for creating new bindings.</p>
-<h3>MediaWiki, SVG &amp; PDF:</h3>
+<h3>MediaWiki, SVG &amp; PDF</h3>
 <p>I have created templates for MediaWiki wikis that do basically the same thing as the charts available on this site. You can find templates as well as instructions on how to use them at <a target="_blank" href="http://strategywiki.org/wiki/Template:Kbdchart">StrategyWiki</a> and <a target="_blank" href="http://templates.wikia.com/wiki/Template:Kbdchart">Fandom</a>. There is a test case <a target="_blank" href="https://templates.fandom.com/wiki/User:Mikali_Homeworld/Kbdchart_example">located here</a>. By selecting the &quot;MediaWiki&quot; format type in the menu above, you can generate the code you will need in order to populate this template with data. Note that on the destination wiki page, you may also want to wrap the charts in scrollable DIV elements, since the charts are typically wider than a browser window.</p>
 <p>I have also created SVG versions of the charts that you can select in the &quot;Format&quot; menu on the front page. I have not migrated over to using SVG for everything yet since it is less compatible with older browsers. Further, I have not yet decided how I want to implement the mouse and joystick controls charts, and this will affect my future choices. (In particular, I have not yet figured out how to create text containers in SVG that expand, wrap and scale automatically as the number of characters inside them increases.)</p>
 <p>PDF versions of the charts will hopefully be implemented at some point in the future. Right now the PDF option is still disabled in the menu. That being said, there are virtual printer drivers such as &quot;Microsoft Print to PDF&quot; or &quot;Adobe Print to PDF&quot; that will allow you to print any document to PDF, even from your Web browser.</p>
 <a name="print_tips"></a>
-<h3>Printing Tips:</h3>
+<h3>Printing Tips</h3>
 <ol>
 	<li>When printing, the diagram may not fit within a single letter- or legal-sized page, even when selecting &quot;Landscape&quot; mode instead of &quot;Portrait&quot; mode in your printer dialog settings. Your browser or printer may have a &quot;shrink to fit&quot; option that allows you to automatically adjust the size of the output to fit the size of the paper, so you could try this. Unfortunately, Google Chrome is missing such a feature at this time, so I recommend investigating one of <a target="_blank" href="https://superuser.com/questions/979741/how-can-i-make-chrome-shrink-to-fit-on-printing">these workarounds</a> if you are using that browser.</li>
 	<li>You may also free up some space by hiding the numeric keypad. Be aware that many games and software bind commands to these keys! Though not all do.</li>
