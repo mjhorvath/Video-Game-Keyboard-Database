@@ -455,7 +455,7 @@ var seourl_table =
 	<li>Select a format (output media type).</li>
 	<li>Toggle the numeric keypad on/off.</li>
 	<li>Select the diagram's orientation. (Horizontal or vertical.)</li>
-	<li>Click on the &quot;Create New Diagram&quot; button. A new window with your selected diagram will appear in your browser.</li>
+	<li>Click on the &quot;Generate Diagram&quot; button. A new window with your selected diagram will appear in your browser.</li>
 	<li>Print the page in the new window if needed.</li>
 </ol>
 <p>Items marked with a star (&#10022;) are the &quot;default&quot; or most common options.</p>
@@ -469,6 +469,7 @@ var seourl_table =
 <p>If you have a game or software you would like to create a new diagram for, go ahead and click the button below.</p>
 <input type="button" value="Create New Diagram" onclick="location.href='keyboard-diagram-blank-starter.php?sty=15&lay=1&fmt=3&ten=1&vrt=0';"/>
 <p>Once you're done filling out all of the form fields, you have the option of submitting the schema to the project, or of saving the diagram locally to your hard drive.</p>
+<p>Also, note that there is an icon in the top-right of the editor that looks like two curly brackets <code>{ }</code>. If you click on this icon you will get to a page where you can import/export JSON code. If you feel it is easier to edit this code externally in a text editor, you may do so instead.</p>
 <h3>Licenses &amp; Submissions</h3>
 <p>The source code for this project is licensed under the <a rel="license" target="_blank" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">GNU LGPLv3</a>. The content is licensed under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading. The <a href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki/To-Do-List">&quot;to do&quot; list</a> outlines some of the tasks I've planned for the future.</p>
 <p>To submit a new set of bindings or a layout, you can fill out <a target="_blank" href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/scripts_sql/vgkd_bindings_template_insert_into.xlsm">this</a> and <a target="_blank" href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/scripts_sql/vgkd_layouts_template_insert_into.xlsx">this</a> spreadsheet and <a target="_blank" href="https://isometricland.net/email/email.php">email</a> me the contents by copying and pasting the data into the email form. Note that any content you submit falls under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart you contributed to.</p>
