@@ -203,7 +203,7 @@
 		<script src=\"" . $path_lib1  . "java-frontend.js\"></script>
 		<script src=\"" . $path_lib1  . "jquery-3.3.1.min.js\"></script>
 		<script src=\"" . $path_lib1  . "jquery-accordionmenu.js\"></script>
-		<script src=\"" . $path_java1 . "java-cubesnake.js\"></script>\n";
+		<script src=\"" . $path_java1 . "cubesnake.js\"></script>\n";
 	echo writeAnalyticsTracking();
 	echo
 "		<script>
@@ -226,7 +226,7 @@ var seourl_table =
 "};
 		</script>
 	</head>
-	<body onload=\"Select_Init();\">
+	<body onload=\"Select_Init();cube_snake_init();\">
 		<nav>\n";
 	include($path_lib1 . "header-navbar.php");	// not working in Android Chrome
 	echo
@@ -461,6 +461,7 @@ var seourl_table =
 <hr/>
 <h3>Project Description</h3>
 <p>This PHP form generates a keyboard control diagram in a new window. You can select from among hotkeys and bindings for various video games and other software. If you do not have a JavaScript-enabled browser, then you may refer to the <a href="keyboard-list.php">master table</a> table instead. If you are looking for Apple-branded or non-English bindings, you may <i>also</i> benefit from searching the master table, since there are unfortunately so few of them.</p>
+<p>The vast majority of the bindings are for the <i>US 104 Key (ANSI)</i> keyboard at this time. If you would like to see more bindings for the other keyboards, you are welcome to contribute! (More on that, below.)</p>
 <h3>Instructions</h3>
 <ol>
 	<li>Select a keyboard.</li>
@@ -471,10 +472,9 @@ var seourl_table =
 	<li>Select the diagram's orientation.</li>
 	<li>Select the key label display style.</li>
 	<li>Click on the &quot;Generate Diagram&quot; button. A new window with your selected diagram will appear in your browser.</li>
-	<li>Print the page in the new window if needed. Refer to the Printing Tips section below.</li>
+	<li>Print or export the page in the new window if needed. Refer to the Printing Tips section below.</li>
 </ol>
 <p>Items marked with a star (&#10022;) are the &quot;default&quot; or most common options.</p>
-<p>The vast majority of the bindings are for the <i>US 104 Key (ANSI)</i> keyboard at this time. If you would like to see more bindings for the other keyboards, you are welcome to contribute! (More on that, below.)</p>
 <h3>Example Diagram</h3>
 <figure>
 <a href="lib/keyboard-diagram-vega-strike.svg"><img src="lib/keyboard-diagram-vega-strike.svg" style="width:32em;max-width:100%;"/></a>

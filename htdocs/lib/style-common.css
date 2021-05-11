@@ -1,6 +1,6 @@
 *		{font-family:DejaVu Sans Condensed,Sans-Serif;line-height:150%;}
 p		{}
-body		{background-image:url("isometric-grid.png");background-position:fixed;background-color:#e0e0e0;color:#000000;font-size:medium;margin:2em auto;width:80%;max-width:50em;}
+body		{background-image:url(https://isometricland.net/images/isometric-grid.png);background-attachment:fixed;background-color:#e0e0e0;background-size:96px 110.851251px;color:#000000;font-size:medium;margin:2em auto;width:80%;max-width:50em;overflow-x:hidden;overflow-y:scroll;}
 footer		{font-size:smaller;margin-top:3em;}
 input,select,button,label,textarea
 		{font-size:95%;}
@@ -22,3 +22,5 @@ a:link		{text-decoration:underline;color:hsla(60,75%,30%,1);}
 a:visited	{text-decoration:underline;color:hsla(60, 0%,30%,1);}
 a:hover		{text-decoration:underline;color:hsla(60,75%,40%,1);}
 a:active	{text-decoration:underline;color:hsla(60,75%,50%,1);}
+div#snake_pane
+		{position:fixed;top:0;left:0;margin:0;padding:0;}
