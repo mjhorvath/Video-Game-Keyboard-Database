@@ -21,7 +21,7 @@
 	header("Content-Type: text/html; charset=utf8");
 
 	$path_vgkd		= "https://isometricland.net/keyboard/";
-	$path_file		= "output-export-html.php";	// this file
+	$path_file		= "output-export2-html.php";	// this file
 	$path_root1		= "../";		// for files in "keyboard/"
 	$path_lib1		= "./lib/";		// for files in "keyboard/"
 	$path_java1		= "../java/";		// for files in "keyboard/"
@@ -48,18 +48,15 @@
 	$ten_bool		= $json_data["ten_bool"];		// set by java-export.js
 	$vert_bool		= $json_data["vert_bool"];		// set by java-export.js
 	$svg_bool		= $json_data["svg_bool"];		// set by java-export.js
-	$commandouter_table	= $json_data["commandouter_table"];	// set by java-export.js
-	$legend_table		= $json_data["legend_table"];		// set by java-export.js
-	$binding_table		= $json_data["binding_table"];		// set by java-export.js
-//	$commandouter_table	= [];		// set by selCommandsChart()
+	$commandouter_table	= [];		// set by selCommandsChart()
 	$commandlabel_table	= [];		// set by selCommandLabelsChart()
 	$position_table		= [];		// populated by selPositionsChart()
 	$keystyle_table		= [];		// populated by selKeyStylesChart()
-//	$binding_table		= [];		// populated by selBindingsChart()
-//	$legend_table		= [];		// populated by selLegendsChart()
+	$binding_table		= [];		// populated by selBindingsChart()
+	$legend_table		= [];		// populated by selLegendsChart()
 	$author_table		= [];		// populated by selAuthorsChart()
-//	$stylegroup_table	= [];		// set by selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
-//	$style_table		= [];		// set by selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
+	$stylegroup_table	= [];		// set by selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
+	$style_table		= [];		// set by selStyleGroupsChart() and selStylesChart(), utilized by "footer-chart.php"
 	$gamesrecord_id		= 0;		// set by selThisGamesRecordChart()
 	$gamesrecord_authors	= [];		// populated by selContribsGamesChart(), utilized by "footer-chart.php"
 	$stylesrecord_id	= 0;		// set by selThisStylesRecordChart()
@@ -67,12 +64,11 @@
 	$stylegroup_id		= 0;		// set by selThisStyleChart(), also contained inside $stylegroup_table, utilized by "footer-chart.php"
 	$style_filename		= "";		// set by selThisStyleChart()
 	$style_name		= "";		// set by selThisStyleChart() and checkURLParameters(), utilized by checkForErrors()
-	$game_name		= "";		// set by selThisGamesIDChart(), utilized by checkForErrors()
-	$format_name		= "";		// set by selThisFormatChart(), utilized by checkForErrors()
-	$platform_name		= "";		// set by selThisPlatformChart()
-	$platform_id		= 0;		// set by selThisLayoutChart()
-	$layout_name		= "";		// set by selThisLayoutChart()
-	$layout_authors		= [];		// set by selContribsLayoutsChart()
+	$game_name		= "";		// set by checkURLParameters(), utilized by checkForErrors()
+	$platform_name		= "";		// set by checkURLParameters(), utilized by checkForErrors()
+	$platform_id		= 0;		// set by checkURLParameters(), utilized by checkForErrors()
+	$layout_name		= "";		// set by checkURLParameters(), utilized by checkForErrors()
+	$layout_authors		= [];		// populated by selContribsLayoutsChart(), utilized by "footer-chart.php"
 	$layout_keysnum		= 0;		// reset by selThisLayoutChart(), hopefully obsolete
 	$layout_keygap		= 4;		// reset by selThisLayoutChart()
 	$layout_padding		= 18;		// reset by selThisLayoutChart()
@@ -96,7 +92,7 @@
 	}
 	mysqli_query($con, "SET NAMES 'utf8'");
 
-	// MySQL queries (mostly)
+	// MySQL queries
 	selURLQueriesAll();		// gather and validate URL parameters
 	selDefaultsAll();		// get default values for entities if missing
 //	getURLParameters();		// gather and validate URL parameters, not a query, AJAX is being used above instead
@@ -108,21 +104,21 @@
 	selStylesChart();
 	selThisStyleChart();
 	selThisFormatChart();
-	selPositionsChart();
 	selThisGamesRecordChart();
 	selThisStylesRecordChart();
 	selThisLayoutChart();
 	selThisPlatformChart();
-//	selBindingsChart();
-//	selLegendsChart();
-//	selCommandsChart();
+	selPositionsChart();
+	selBindingsChart();
+	selLegendsChart();
+	selCommandsChart();
 	selContribsGamesChart();
 	selContribsStylesChart();
 	selContribsLayoutsChart();
 	selLegendColorsChart();
-	selCommandLabelsChart();
 	selKeyStylesChart();
 	selKeyStyleClassesChart();
+	selCommandLabelsChart();
 
 	// close connection
 	mysqli_close($con);
@@ -197,9 +193,10 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		<link rel="canonical" href="' . $can_url . '"/>
 		<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAALiEAAC4hAQdb/P8AAAAgSURBVDhPY/xvG8VACmCC0kSDUQ3EgFENxABaa2BgAAANNAG2n4KuogAAAABJRU5ErkJggg=="/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<meta name="description" content="' . $language_description . ',' . $temp_game_name . '."/>
+		<meta name="description" content="' . $language_description . $temp_game_name . '."/>
 		<meta name="keywords" content="' . $language_keywords . ',' . $temp_game_name . ',' . $temp_style_name . ',' . $temp_layout_name . ',' . $temp_format_name . '"/>
 ';
+
 	echo
 "		<style type=\"text/css\">\n";
 	include($path_lib2 . "style-normalize.css");
@@ -239,7 +236,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 ';
 	}
 
-	include($path_lib2 . "output-export-submit-svg.php");
+	include($path_lib2 . "export-main-svg.php");
 
 	echo
 '			</div>
@@ -255,54 +252,45 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		$commandlabel_abbrv = $commandlabel_value[2];
 		$commandlabel_input = $commandlabel_value[3];
 		$commandlabel_group = $commandlabel_value[4];
-		if (count($commandouter_value) > 0)
-		{
-			echo
+		echo
 "				<div class=\"comdiv\">
 					<h3>" . cleantextHTML($commandlabel_label) . "</h3>
 					<table>\n";
-			foreach ($commandouter_value as $j => $commandinner_value)
+		foreach ($commandouter_value as $j => $commandinner_value)
+		{
+			$commandinner_input = $commandinner_value[1];
+			$commandinner_combo = $commandinner_value[2];
+			$commandinner_group = $commandinner_value[3];
+			$leg_color = getkeycolor($commandinner_group);
+//			$leg_color = $commandinner_group;
+			// does the command have a keygroup?
+			if ($commandlabel_group == 1)
 			{
-				// this part is different than in the non-export version of this document
-				$commandinner_input = $commandinner_value[1];
-				$commandinner_combo = $commandinner_value[2];
-				$commandinner_group = $commandinner_value[0];
-				$leg_color = getkeycolor($commandinner_group);
-	//			$leg_color = $commandinner_group;
-				// does the command have a keygroup?
-				if ($commandlabel_group == 1)
-				{
-					echo
+				echo
 "						<tr><td><div class=\"legbox leg" . $leg_color . "\">&nbsp;</div></td><td>" . cleantextHTML($commandinner_input) . "</td><td>=</td><td>" . cleantextHTML($commandinner_combo) . "</td></tr>\n";
-				}
-				// does the command have a keygroup?
-				elseif ($commandlabel_input == 1)
-				{
-					echo
-"						<tr><td>" . cleantextHTML($commandinner_input) . "</td><td>=</td><td>" . cleantextHTML($commandinner_combo) . "</td></tr>\n";
-				}
-				// "additional notes" are a special case with only the second value containing text
-				else
-				{
-					echo
-"						<tr><td>" . cleantextHTML($commandinner_combo) . "</td></tr>\n";
-				}
 			}
-			echo
+			// does the command have a keygroup?
+			elseif ($commandlabel_input == 1)
+			{
+				echo
+"						<tr><td>" . cleantextHTML($commandinner_input) . "</td><td>=</td><td>" . cleantextHTML($commandinner_combo) . "</td></tr>\n";
+			}
+			// "additional notes" are a special case with only the second value containing text
+			else
+			{
+				echo
+"						<tr><td>" . cleantextHTML($commandinner_combo) . "</td></tr>\n";
+			}
+		}
+		echo
 "					</table>
 				</div>\n";
-		}
 	}
-	echo
-'			</div>
+?>
+			</div>
 		</main>
 		<footer>
-';
-
-	include($path_lib2 . "footer-mini.php");
-
-	echo
-'		</footer>
+<?php include($path_lib2 . "footer-mini.php"); ?>
+		</footer>
 	</body>
 </html>
-';

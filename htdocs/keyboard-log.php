@@ -53,15 +53,16 @@
 	echo
 "	</head>
 	<body>
-		<header>\n";
-	include($path_lib1 . "header-bar.php");	// not working in Android Chrome
+		<nav>\n";
+	include($path_lib1 . "header-navbar.php");	// not working in Android Chrome
 	echo
-"			<h2>" . $page_title . "</h2>
-		</header>
-		<main>\n";
+"		</nav>
+		<main>
+			<h2>" . $page_title . "</h2>\n";
 ?>
 <p>The log only goes back to 2009 even though the project existed as far back as 2004 under a different domain and name.</p>
 <ul>
+	<li>2021/04/28: Added a section to the main page describing how to create a brand new schema.</li>
 	<li>2021/02/17: Tweaks to style sheets.</li>
 	<li>2021/02/17: Changed how the footer code works.</li>
 	<li>2021/02/17: Added support for changing page orientation.</li>

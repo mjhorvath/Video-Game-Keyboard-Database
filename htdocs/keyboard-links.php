@@ -53,12 +53,12 @@
 	echo
 "	</head>
 	<body>
-		<header>\n";
-	include($path_lib1 . "header-bar.php");	// not working in Android Chrome
+		<nav>\n";
+	include($path_lib1 . "header-navbar.php");	// not working in Android Chrome
 	echo
-"			<h2>" . $page_title . "</h2>
-		</header>
-		<main>\n";
+"		</nav>
+		<main>
+			<h2>" . $page_title . "</h2>\n";
 ?>
 <p>On this page I will keep a list of links that are useful to this project.</p>
 <h4>Project pages</h4>

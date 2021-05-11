@@ -1,0 +1,2 @@
+Insert Into isometr1_keyboard.bindings (`record_id`, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri`)
+  Select NEWID, `key_number`, `normal_action`, `normal_group`, `shift_action`, `shift_group`, `ctrl_action`, `ctrl_group`, `alt_action`, `alt_group`, `altgr_action`, `altgr_group`, `extra_action`, `extra_group`, `image_file`, `image_uri` From isometr1_keyboard.bindings Where record_id=OLDID;

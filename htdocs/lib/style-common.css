@@ -16,6 +16,8 @@ input[type="text"]
 		{border:1px solid #a0a0a0;}
 input[type="text"][disabled]
 		{border:1px solid #c0c0c0;}
+input[type="image"]
+		{border:none;}
 a:link		{text-decoration:underline;color:hsla(60,75%,30%,1);}
 a:visited	{text-decoration:underline;color:hsla(60, 0%,30%,1);}
 a:hover		{text-decoration:underline;color:hsla(60,75%,40%,1);}

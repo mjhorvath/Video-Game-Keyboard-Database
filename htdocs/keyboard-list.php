@@ -82,13 +82,13 @@
 	echo
 "	</head>
 	<body onload=\"sortTableInit();Toggle_Waiting(false);\">
-		<header>\n";
-	include($path_lib1 . "header-bar.php");	// not working in Android Chrome
+		<nav>\n";
+	include($path_lib1 . "header-navbar.php");	// not working in Android Chrome
 	echo
-"			<h2>" . $page_title . "</h2>
-			<p>You can sort the table by clicking on the arrow icons on the right sides of the table header cells.</p>
-		</header>
+"		</nav>
 		<main>
+			<h2>" . $page_title . "</h2>
+			<p>You can sort the table by clicking on the arrow icons on the right sides of the table header cells.</p>
 <img id=\"waiting\" src=\"./lib/animated-loading-icon.webp\" alt=\"loading\" style=\"position:fixed;display:block;z-index:10;width:100px;height:100px;left:50%;top:50%;margin-top:-50px;margin-left:-50px;\"/>
 <table id=\"tableToSort\" class=\"kbd_tab\">
 	<thead>

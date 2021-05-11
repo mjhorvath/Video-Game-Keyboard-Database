@@ -53,12 +53,12 @@
 	echo
 "	</head>
 	<body>
-		<header>\n";
-	include($path_lib1 . "header-bar.php");	// not working in Android Chrome
+		<nav>\n";
+	include($path_lib1 . "header-navbar.php");	// not working in Android Chrome
 	echo
-"			<h2>" . $page_title . "</h2>
-		</header>
-		<main>\n";
+"		</nav>
+		<main>
+			<h2>" . $page_title . "</h2>\n";
 ?>
 <p>If you have submitted a layout, binding or style, then your name will appear at the bottom of each chart as well as on this page.</p>
 <h4>Layouts</h4>

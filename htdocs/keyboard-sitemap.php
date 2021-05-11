@@ -71,13 +71,13 @@
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 	</head>
 	<body>
-		<header>\n";
-	include($path_lib1 . "header-bar.php");	// not working in Android Chrome
+		<nav>\n";
+	include($path_lib1 . "header-navbar.php");	// not working in Android Chrome
 	echo
-"			<h2>" . $page_title . "</h2>
-			<p>This form generates code that can be copied and pasted into the project site's &quot;sitemap.xml&quot; file.</p>
-		</header>
+"		</nav>
 		<main>
+			<h2>" . $page_title . "</h2>
+			<p>This form generates code that can be copied and pasted into the project site's &quot;sitemap.xml&quot; file.</p>
 			<textarea id=\"site_out\" readonly=\"readonly\" wrap=\"off\" style=\"width:100%;height:40em;font-family:monospace;\">\n";
 
 	foreach ($game_table as $i => $game_value)

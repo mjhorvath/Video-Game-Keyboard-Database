@@ -227,10 +227,10 @@ var seourl_table =
 		</script>
 	</head>
 	<body onload=\"Select_Init();cube_snake_init();\">
-		<header>\n";
-	include($path_lib1 . "header-bar.php");	// not working in Android Chrome
+		<nav>\n";
+	include($path_lib1 . "header-navbar.php");	// not working in Android Chrome
 	echo
-"		</header>
+"		</nav>
 		<main>
 			<h2>" . $page_title . "</h2>\n";
 ?>
@@ -465,7 +465,7 @@ var seourl_table =
 <a href="lib/keyboard-diagram-vega-strike.svg"><img src="lib/keyboard-diagram-vega-strike.svg" style="width:32em;max-width:100%;"/></a>
 <figcaption>US 104 key bindings for the space combat simulator <i>Vega Strike</i>.</figcaption>
 </figure>
-<h3>Want to start your own diagram from scratch?</h3>
+<h3>Want to start creating your own diagram from scratch?</h3>
 <p>If you have a game or software you would like to create a new diagram for, go ahead and click the button below.</p>
 <input type="button" value="Create New Diagram" onclick="location.href='keyboard-diagram-blank-starter.php?sty=15&lay=1&fmt=3&ten=1&vrt=0';"/>
 <p>Once you're done filling out all of the form fields, you have the option of submitting the schema to the project, or of saving the diagram locally to your hard drive.</p>

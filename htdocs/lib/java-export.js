@@ -25,7 +25,7 @@ function document_export_submit_ajax()
 	collect_command_data();
 //	collect_binding_data();
 //	console.log(JSON.stringify(binding_table));
-	const url = 'lib/output-export-submit-html.php';
+	const url = 'lib/export-submit-html.php';
 	$.ajax
 	({
 		type: 'POST',
@@ -46,7 +46,7 @@ function document_export_submit_ajax()
 
 function document_export_main_ajax()
 {
-	const url = 'lib/output-export-main-html.php';
+	const url = 'lib/export-main-html.php';
 	$.ajax
 	({
 		type: 'POST',
@@ -70,7 +70,7 @@ function document_export_submit_xhr()
 	collect_legend_data();
 	collect_command_data();
 //	collect_binding_data();
-	const url = 'lib/output-export-submit-html.php';
+	const url = 'lib/export-submit-html.php';
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', url, true);
 	xhr.addEventListener('load', reqListener);
