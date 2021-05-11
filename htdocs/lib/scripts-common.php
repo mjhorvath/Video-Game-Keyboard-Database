@@ -376,7 +376,7 @@
 	}
 	function splitkeytext($instring)
 	{
-		return array_filter(explode("\n", $instring));
+		return explode("\n", $instring);
 	}
 	// non!
 	// order!

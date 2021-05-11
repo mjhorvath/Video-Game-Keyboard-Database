@@ -372,13 +372,13 @@
 "			<text class=\"uppagr txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($pos_wid-$txt_mar_lrg) . "\" y=\"" . ($txt_hgh_lrg) . "\" dy=\"" . ($j * $txt_hgh_lrg) . "\">" . $upp_agr[$j] . "</text>\n";
 			}
 			// captions text
+			$jcount		= 0;
 			for ($j = 0; $j < count($cap_nor); $j++)
 			{
 				// bottom, left
 				echo
 "			<text class=\"capnor txt" . $bkg_nor . " txt" . $key_sty . " ideo\" x=\"" . ($txt_mar_lrg) . "\" y=\"" . ($top_nor) . "\" dy=\"" . ($j * -$txt_hgh_lrg) . "\">" . $cap_nor[count($cap_nor)-$j-1] . "</text>\n";
 			}
-			$jcount		= 0;
 			for ($j = 0; $j < count($cap_shf); $j++)
 			{
 				// top, right
