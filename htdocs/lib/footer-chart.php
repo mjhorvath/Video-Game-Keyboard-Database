@@ -118,10 +118,10 @@
 				</td>
 			</tr>
 			<tr style="display:' . $display_keycap . ';">
-				<th>Key caps:</th>
+				<th>Key labels:</th>
 				<td>
 					<input class="stylechange" type="radio" name="kcap" id="kcaprad0" value="0"' . ($kcap_flag == 0 ? ' checked' : '') . '/><label for="kcaprad0">Strong &#10022;</label>
-					<input class="stylechange" type="radio" name="kcap" id="kcaprad1" value="1"' . ($kcap_flag == 1 ? ' checked' : '') . '/><label for="kcaprad1">Dim</label>
+					<input class="stylechange" type="radio" name="kcap" id="kcaprad1" value="1"' . ($kcap_flag == 1 ? ' checked' : '') . '/><label for="kcaprad1">Dimmed</label>
 					<input class="stylechange" type="radio" name="kcap" id="kcaprad2" value="2"' . ($kcap_flag == 2 ? ' checked' : '') . '/><label for="kcaprad2">Blurred</label>
 					<input class="stylechange" type="radio" name="kcap" id="kcaprad3" value="3"' . ($kcap_flag == 3 ? ' checked' : '') . '/><label for="kcaprad3">Hidden</label>
 				</td>

@@ -242,11 +242,9 @@ var seourl_table =
 	<input type="hidden" name="sty" value=""/>
 	<div class="acc_cont">
 		<div class="acc_div">
-			<div class="acc_wrap">
-				<h3 class="acc_head">1. Select a Keyboard</h3>
-				<div id="lay_check" class="acc_check">&#x2714;</div>
-				<div id="lay_xmark" class="acc_xmark">&#x2718;</div>
-			</div>
+			<div id="lay_check" class="acc_check">&#x2714;</div>
+			<div id="lay_xmark" class="acc_xmark">&#x2718;</div>
+			<h3>1. Keyboard</h3>
 			<ul id="lay_menu" class="acc_mnu">
 <?php
 	foreach ($platform_table as $i => $platform_value)
@@ -286,11 +284,9 @@ var seourl_table =
 			</ul>
 		</div>
 		<div class="acc_div">
-			<div class="acc_wrap">
-				<h3 class="acc_head">2. Select a Theme</h3>
-				<div id="sty_check" class="acc_check">&#x2714;</div>
-				<div id="sty_xmark" class="acc_xmark">&#x2718;</div>
-			</div>
+			<div id="sty_check" class="acc_check">&#x2714;</div>
+			<div id="sty_xmark" class="acc_xmark">&#x2718;</div>
+			<h3>2. Theme</h3>
 			<ul id="sty_menu" class="acc_mnu">
 <?php
 	foreach ($stylegroup_table as $i => $stylegroup_value)
@@ -330,11 +326,9 @@ var seourl_table =
 			</ul>
 		</div>
 		<div class="acc_div">
-			<div class="acc_wrap">
-				<h3 class="acc_head">3. Select a Game</h3>
-				<div id="gam_check" class="acc_check">&#x2714;</div>
-				<div id="gam_xmark" class="acc_xmark">&#x2718;</div>
-			</div>
+			<div id="gam_check" class="acc_check">&#x2714;</div>
+			<div id="gam_xmark" class="acc_xmark">&#x2718;</div>
+			<h3>3. Game/Software</h3>
 			<ul id="gam_menu" class="acc_mnu">
 <?php
 	foreach ($genre_table as $i => $genre_value)
@@ -374,11 +368,9 @@ var seourl_table =
 			</ul>
 		</div>
 		<div class="acc_div">
-			<div class="acc_wrap">
-				<h3 class="acc_head">4. Select a Format</h3>
-				<div id="fmt_check" class="acc_check">&#x2714;</div>
-				<div id="fmt_xmark" class="acc_xmark">&#x2718;</div>
-			</div>
+			<div id="fmt_check" class="acc_check">&#x2714;</div>
+			<div id="fmt_xmark" class="acc_xmark">&#x2718;</div>
+			<h3>4. Media Format</h3>
 			<label class="container">HTML/SVG&nbsp;&#10022;
 				<input id="fmtrad0" type="radio" name="fmt_radio" value="0" onchange="enableResetButton();" checked/>
 				<span class="checkmark"></span>
@@ -401,11 +393,9 @@ var seourl_table =
 			</label>
 		</div>
 		<div class="acc_div">
-			<div class="acc_wrap">
-				<h3 class="acc_head">5. The Numeric Keypad</h3>
-				<div id="ten_check" class="acc_check">&#x2714;</div>
-				<div id="ten_xmark" class="acc_xmark">&#x2718;</div>
-			</div>
+			<div id="ten_check" class="acc_check">&#x2714;</div>
+			<div id="ten_xmark" class="acc_xmark">&#x2718;</div>
+			<h3>5. Numeric Keypad</h3>
 			<label class="container">Show&nbsp;&#10022;
 				<input id="tenrad1" type="radio" name="ten_radio" value="1" onchange="enableResetButton();" checked/>
 				<span class="checkmark"></span>
@@ -416,11 +406,9 @@ var seourl_table =
 			</label>
 		</div>
 		<div class="acc_div">
-			<div class="acc_wrap">
-				<h3 class="acc_head">6. Select an Orientation</h3>
-				<div id="vrt_check" class="acc_check">&#x2714;</div>
-				<div id="vrt_xmark" class="acc_xmark">&#x2718;</div>
-			</div>
+			<div id="vrt_check" class="acc_check">&#x2714;</div>
+			<div id="vrt_xmark" class="acc_xmark">&#x2718;</div>
+			<h3>6. Orientation</h3>
 			<label class="container">Horizontal&nbsp;&#10022;
 				<input id="vrtrad1" type="radio" name="vrt_radio" value="0" onchange="enableResetButton();" checked/>
 				<span class="checkmark"></span>
@@ -431,16 +419,42 @@ var seourl_table =
 			</label>
 		</div>
 		<div class="acc_div">
-			<div class="acc_wrap">
-				<h3 class="acc_head">7. Spawn the Diagram</h3>
-				<div id="but_check" class="acc_check">&#x2714;</div>
-				<div id="but_xmark" class="acc_xmark">&#x2718;</div>
-			</div>
+			<div id="cap_check" class="acc_check">&#x2714;</div>
+			<div id="cap_xmark" class="acc_xmark">&#x2718;</div>
+			<h3>7. Key Labels</h3>
+			<label class="container">Strong&nbsp;&#10022;
+				<input id="caprad0" type="radio" name="cap_radio" value="0" onchange="enableResetButton();" checked/>
+				<span class="checkmark"></span>
+			</label>
+			<label class="container">Dimmed
+				<input id="caprad1" type="radio" name="cap_radio" value="1" onchange="enableResetButton();"/>
+				<span class="checkmark"></span>
+			</label>
+			<label class="container">Blurred
+				<input id="caprad2" type="radio" name="cap_radio" value="2" onchange="enableResetButton();"/>
+				<span class="checkmark"></span>
+			</label>
+			<label class="container">Hidden
+				<input id="caprad3" type="radio" name="cap_radio" value="3" onchange="enableResetButton();"/>
+				<span class="checkmark"></span>
+			</label>
+		</div>
+		<div class="acc_div">
+			<div id="but_check" class="acc_check">&#x2714;</div>
+			<div id="but_xmark" class="acc_xmark">&#x2718;</div>
+			<h3>8. Spawn the Diagram</h3>
 			<input id="but_spawn" type="button" value="Generate Diagram" onclick="Check_Values_and_Spawn();"/>
 			<input id="but_reset" type="button" value="Reset" disabled="disabled" onclick="Reset_Page();"/>
 			<br/><br/>
 			<div class="acc_warn" id="but_ready">All set! Now click the &quot;Generate Diagram&quot; button, above. This will spawn a new browser window containing the selected keyboard diagram.</div>
 			<div class="acc_warn" id="but_error">Try again to select a keyboard, theme and game, then click the &quot;Generate Diagram&quot; button!</div>
+		</div>
+		<div class="acc_div">
+			<div id="prt_check" class="acc_check">&#x2714;</div>
+			<div id="prt_xmark" class="acc_xmark">&#x2718;</div>
+			<h3>9. Print or Export the Diagram</h3>
+			<p>You can export the diagram to an HTML file by clicking the button at the bottom of the diagram.</p>
+			<p>You can also print the diagram. Refer to the Printing Tips section below.</p>
 		</div>
 	</div>
 </form>
@@ -449,14 +463,15 @@ var seourl_table =
 <p>This PHP form generates a keyboard control diagram in a new window. You can select from among hotkeys and bindings for various video games and other software. If you do not have a JavaScript-enabled browser, then you may refer to the <a href="keyboard-list.php">master table</a> table instead. If you are looking for Apple-branded or non-English bindings, you may <i>also</i> benefit from searching the master table, since there are unfortunately so few of them.</p>
 <h3>Instructions</h3>
 <ol>
-	<li>Select a keyboard (key positions).</li>
-	<li>Select a theme (visual formatting).</li>
-	<li>Select a game (key bindings).</li>
-	<li>Select a format (output media type).</li>
+	<li>Select a keyboard.</li>
+	<li>Select a theme.</li>
+	<li>Select a game/software.</li>
+	<li>Select a media format.</li>
 	<li>Toggle the numeric keypad on/off.</li>
-	<li>Select the diagram's orientation. (Horizontal or vertical.)</li>
+	<li>Select the diagram's orientation.</li>
+	<li>Select the key label display style.</li>
 	<li>Click on the &quot;Generate Diagram&quot; button. A new window with your selected diagram will appear in your browser.</li>
-	<li>Print the page in the new window if needed.</li>
+	<li>Print the page in the new window if needed. Refer to the Printing Tips section below.</li>
 </ol>
 <p>Items marked with a star (&#10022;) are the &quot;default&quot; or most common options.</p>
 <p>The vast majority of the bindings are for the <i>US 104 Key (ANSI)</i> keyboard at this time. If you would like to see more bindings for the other keyboards, you are welcome to contribute! (More on that, below.)</p>
@@ -465,7 +480,7 @@ var seourl_table =
 <a href="lib/keyboard-diagram-vega-strike.svg"><img src="lib/keyboard-diagram-vega-strike.svg" style="width:32em;max-width:100%;"/></a>
 <figcaption>US 104 key bindings for the space combat simulator <i>Vega Strike</i>.</figcaption>
 </figure>
-<h3>Want to start creating your own diagram from scratch?</h3>
+<h3>Want to Start Creating Your Own Diagrams from Scratch?</h3>
 <p>If you have a game or software you would like to create a new diagram for, go ahead and click the button below.</p>
 <input type="button" value="Create New Diagram" onclick="location.href='keyboard-diagram-blank-starter.php?sty=15&lay=1&fmt=3&ten=1&vrt=0';"/>
 <p>Once you're done filling out all of the form fields, you have the option of submitting the schema to the project, or of saving the diagram locally to your hard drive.</p>

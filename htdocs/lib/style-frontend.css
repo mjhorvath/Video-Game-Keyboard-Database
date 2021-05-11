@@ -1,9 +1,7 @@
-div.acc_cont	{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:flex-start;align-content:flex-start;}
-div.acc_div	{flex:0 0 auto;width:15em;margin:0.5em;display:inline-block;text-align:left;vertical-align:top;overflow:hidden;}
-div.acc_wrap	{position:relative;height:2em;margin-bottom:0.5em;}
-h3.acc_head	{position:absolute;bottom:0;left:0;padding:0;margin:0;background:transparent;}
+div.acc_cont	{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:flex-start;align-items:flex-start;align-content:flex-start;}
+div.acc_div	{position:relative;flex:0 0 auto;width:15em;margin:0.5em;display:inline-block;text-align:left;vertical-align:top;overflow:hidden;}
 div.acc_check,div.acc_xmark
-		{position:absolute;height:1.25em;bottom:0;right:0;padding:0;margin:0;display:none;font-size:xx-large;}
+		{position:absolute;height:1.25em;top:0;right:0;padding:0.25em;margin:0;display:none;font-size:xx-large;}
 div.acc_check	{color:#00a000;}
 div.acc_xmark	{color:#c00000;}
 div.acc_warn	{width:12em;height:10em;white-space:normal;text-align:left;padding:0.75em;margin:0;color:#ffffff;border-radius:7px;}

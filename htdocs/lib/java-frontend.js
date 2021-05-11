@@ -35,15 +35,19 @@ function Reset_Page()
 	document.getElementById('fmt_check').style.display = 'none';
 	document.getElementById('ten_check').style.display = 'none';
 	document.getElementById('vrt_check').style.display = 'none';
+	document.getElementById('cap_check').style.display = 'none';
 	document.getElementById('but_check').style.display = 'none';
+	document.getElementById('prt_check').style.display = 'none';
+	document.getElementById('but_ready').style.display = 'none';
 	document.getElementById('lay_xmark').style.display = 'none';
 	document.getElementById('sty_xmark').style.display = 'none';
 	document.getElementById('gam_xmark').style.display = 'none';
 	document.getElementById('fmt_xmark').style.display = 'none';
 	document.getElementById('ten_xmark').style.display = 'none';
 	document.getElementById('vrt_xmark').style.display = 'none';
+	document.getElementById('cap_xmark').style.display = 'none';
 	document.getElementById('but_xmark').style.display = 'none';
-	document.getElementById('but_ready').style.display = 'none';
+	document.getElementById('prt_xmark').style.display = 'none';
 	document.getElementById('but_error').style.display = 'none';
 
 	for (var i in game_table)
@@ -70,6 +74,7 @@ function Reset_Page()
 	resetRadioButtons('fmt_radio');
 	resetRadioButtons('ten_radio');
 	resetRadioButtons('vrt_radio');
+	resetRadioButtons('cap_radio');
 	disableResetButton();
 }
 
@@ -104,9 +109,11 @@ function Set_Game(thisindex, thiselement)
 			{
 				document.getElementById('gam_check').style.display = 'none';
 				document.getElementById('but_check').style.display = 'none';
+				document.getElementById('prt_check').style.display = 'none';
+				document.getElementById('but_ready').style.display = 'none';
 				document.getElementById('gam_xmark').style.display = 'inline-block';
 				document.getElementById('but_xmark').style.display = 'inline-block';
-				document.getElementById('but_ready').style.display = 'none';
+				document.getElementById('prt_xmark').style.display = 'inline-block';
 				document.getElementById('but_error').style.display = 'inline-block';
 				lastClicked['gam'] = null;
 			}
@@ -149,9 +156,11 @@ function Set_Style(thisindex, thiselement)
 			{
 				document.getElementById('sty_check').style.display = 'none';
 				document.getElementById('but_check').style.display = 'none';
+				document.getElementById('prt_check').style.display = 'none';
+				document.getElementById('but_ready').style.display = 'none';
 				document.getElementById('sty_xmark').style.display = 'inline-block';
 				document.getElementById('but_xmark').style.display = 'inline-block';
-				document.getElementById('but_ready').style.display = 'none';
+				document.getElementById('prt_xmark').style.display = 'inline-block';
 				document.getElementById('but_error').style.display = 'inline-block';
 				lastClicked['sty'] = null;
 			}
@@ -178,12 +187,16 @@ function Set_Select_Value(thisElement)
 //		document.getElementById('fmt_check').style.display = 'none';
 //		document.getElementById('ten_check').style.display = 'none';
 //		document.getElementById('vrt_check').style.display = 'none';
+//		document.getElementById('cap_check').style.display = 'none';
 		document.getElementById('but_check').style.display = 'none';
+		document.getElementById('prt_check').style.display = 'none';
+		document.getElementById('but_ready').style.display = 'none';
 //		document.getElementById('fmt_xmark').style.display = 'inline-block';
 //		document.getElementById('ten_xmark').style.display = 'inline-block';
 //		document.getElementById('vrt_xmark').style.display = 'inline-block';
+//		document.getElementById('cap_xmark').style.display = 'inline-block';
 		document.getElementById('but_xmark').style.display = 'inline-block';
-		document.getElementById('but_ready').style.display = 'none';
+		document.getElementById('prt_xmark').style.display = 'inline-block';
 		document.getElementById('but_error').style.display = 'inline-block';
 	}
 	else
@@ -191,12 +204,16 @@ function Set_Select_Value(thisElement)
 		document.getElementById('fmt_check').style.display = 'inline-block';
 		document.getElementById('ten_check').style.display = 'inline-block';
 		document.getElementById('vrt_check').style.display = 'inline-block';
+		document.getElementById('cap_check').style.display = 'inline-block';
 		document.getElementById('but_check').style.display = 'inline-block';
+		document.getElementById('prt_check').style.display = 'inline-block';
+		document.getElementById('but_ready').style.display = 'inline-block';
 		document.getElementById('fmt_xmark').style.display = 'none';
 		document.getElementById('ten_xmark').style.display = 'none';
 		document.getElementById('vrt_xmark').style.display = 'none';
+		document.getElementById('cap_xmark').style.display = 'none';
 		document.getElementById('but_xmark').style.display = 'none';
-		document.getElementById('but_ready').style.display = 'inline-block';
+		document.getElementById('prt_xmark').style.display = 'none';
 		document.getElementById('but_error').style.display = 'none';
 	}
 	document.getElementById(thisInput + '_check').style.display = 'inline-block';
@@ -225,6 +242,7 @@ function Check_Values_and_Spawn()
 	var fmt_value = getValueFromRadioButton('fmt_radio');
 	var ten_value = getValueFromRadioButton('ten_radio');
 	var vrt_value = getValueFromRadioButton('vrt_radio');
+	var cap_value = getValueFromRadioButton('cap_radio');
 	var WarnBoxReady = document.getElementById('but_ready');
 	var WarnBoxError = document.getElementById('but_error');
 	if (lay_value && gam_value && sty_value)
@@ -232,7 +250,7 @@ function Check_Values_and_Spawn()
 		WarnBoxReady.style.display = 'inline-block';
 		WarnBoxError.style.display = 'none';
 		var seo_value = seourl_table[gam_value-1];
-		window.open('keyboard-diagram-' + seo_value + '.php?sty=' + sty_value + '&lay=' + lay_value + '&fmt=' + fmt_value + '&ten=' + ten_value + '&vrt=' + vrt_value);
+		window.open('keyboard-diagram-' + seo_value + '.php?sty=' + sty_value + '&lay=' + lay_value + '&fmt=' + fmt_value + '&ten=' + ten_value + '&vrt=' + vrt_value + '&cap=' + cap_value);
 	}
 	else	
 	{
