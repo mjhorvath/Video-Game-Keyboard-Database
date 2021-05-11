@@ -2,7 +2,7 @@
 svg	{font-family:Verdana,sans-serif;font-size:14px;}
 #bkgrec	{stroke:none;fill:#ffffff;}
 .legtxt	{font-size:14px;fill:#000000;}
-.legkey	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
+.legkey	{fill:#ffffff;filter:url(#f2);-webkit-filter:url(#f2);}
 .uppnor,.lownor,.uppagr,.lowagr
 	{font-size:12px;font-weight:bold;fill:#000000;}
 .uppagr,.lowagr
@@ -22,12 +22,12 @@ svg	{font-family:Verdana,sans-serif;font-size:14px;}
 .bakagr	{fill:none;}
 .bakxtr	{fill:none;}
 .capimg	{}
-.reccssA	{fill:#c04040;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssB	{fill:#c0c040;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssC	{fill:#40c040;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssD	{fill:#40c0c0;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssE	{fill:#4040c0;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssF	{fill:#c040c0;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
+.reccssA	{fill:#c04040;filter:url(#f2);-webkit-filter:url(#f2);}
+.reccssB	{fill:#c0c040;filter:url(#f2);-webkit-filter:url(#f2);}
+.reccssC	{fill:#40c040;filter:url(#f2);-webkit-filter:url(#f2);}
+.reccssD	{fill:#40c0c0;filter:url(#f2);-webkit-filter:url(#f2);}
+.reccssE	{fill:#4040c0;filter:url(#f2);-webkit-filter:url(#f2);}
+.reccssF	{fill:#c040c0;filter:url(#f2);-webkit-filter:url(#f2);}
 .txtcssA	{fill:#000000;}
 .txtcssB	{fill:#000000;}
 .txtcssC	{fill:#000000;}
@@ -60,3 +60,7 @@ svg	{font-family:Verdana,sans-serif;font-size:14px;}
 .txtolv	{}
 .txtbrn	{}
 .txtnon	{}
+.lblvis {fill-opacity:1.00;}
+.lbldim {fill-opacity:0.25;}
+.lblblr {fill-opacity:0.50;filter:url("#f1");}
+.lblhid {fill-opacity:0.00;}

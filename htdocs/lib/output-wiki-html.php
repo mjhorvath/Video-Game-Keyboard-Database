@@ -23,7 +23,7 @@
 	include($path_ssi2 . "plugin-analyticstracking.php");
 
 	$path_vgkd		= "https://isometricland.net/keyboard/";
-	$path_file		= "output-wiki.php";	// this file
+	$path_file		= "output-wiki-html.php";	// this file
 	$binding_table		= [];
 	$legend_table		= [];
 	$command_table		= [];		// not implemented yet
@@ -46,7 +46,7 @@
 	$style_id		= 0;		// utilized by checkForErrors() and checkURLParameters()
 	$format_name		= "";		// utilized by checkForErrors() and checkURLParameters()
 //	$format_id		= 0;		// should not be set here since it has already been set in "keyboard-init.php"
-//	$svg_bool		= 0;		// should not be set here since it has already been set in "keyboard-init.php"
+//	$svgb_flag		= 0;		// should not be set here since it has already been set in "keyboard-init.php"
 
 	// MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -114,9 +114,9 @@ var binding_data =
 	format_id: '      . $format_id . ',
 	game_id: '        . $game_id . ',
 	game_seo: \''      . $game_seo . '\',
-	ten_bool: '       . $ten_bool . ',
-	vert_bool: '      . $vert_bool . ',
-	svg_bool: '       . $svg_bool . '
+	tenk_flag: '       . $tenk_flag . ',
+	vert_flag: '      . $vert_flag . ',
+	svgb_flag: '       . $svgb_flag . '
 }
 		</script>
 ';

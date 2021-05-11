@@ -63,3 +63,7 @@ div.legflx	{margin:0;padding:0;display:flex;flex-direction:row;flex-wrap:wrap;}
 .keybrn .uppnor, .keybrn .lownor, .keybrn .uppagr, .keybrn .capopt, .keybrn .capopf	{background:#000000;color:#ffffff;}
 .keynon .uppnor, .keynon .lownor, .keynon .uppagr, .keynon .capopt, .keynon .capopf	{background:none;color:#000000;}
 */
+.lblvis {opacity:1.0;}
+.lbldim {opacity:0.5;}
+.lblblr {opacity:0.5;filter:blur(4px);}
+.lblhid {opacity:0.0;}

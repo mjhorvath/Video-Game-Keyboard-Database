@@ -46,3 +46,7 @@ div.legflx	{margin:0;padding:0;display:flex;flex-direction:row;flex-wrap:wrap;}
 .capolv,.legolv,.selolv,.optolv	{background-image:-webkit-linear-gradient(#000000,#A8BF75);background-image:-moz-linear-gradient(#000000,#A8BF75);background-image:linear-gradient(#000000,#A8BF75);}	/* CIE-L*ch ( 74, 40,120) */
 .capbrn,.legbrn,.selbrn,.optbrn	{background-image:-webkit-linear-gradient(#000000,#685510);background-image:-moz-linear-gradient(#000000,#685510);background-image:linear-gradient(#000000,#685510);}	/* CIE-L*ch ( 37, 40, 90) */
 .capnon,.legnon,.selnon,.optnon	{background-image:-webkit-linear-gradient(#000000,#404040);background-image:-moz-linear-gradient(#000000,#404040);background-image:linear-gradient(#000000,#404040);}
+.lblvis {opacity:1.0;}
+.lbldim {opacity:0.5;}
+.lblblr {opacity:0.5;filter:blur(4px);}
+.lblhid {opacity:0.0;}

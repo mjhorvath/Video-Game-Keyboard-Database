@@ -24,7 +24,7 @@
 	include($path_ssi2 . "plugin-analyticstracking.php");
 
 	$path_vgkd		= "https://isometricland.net/keyboard/";
-	$path_file		= "output-submit.php";		// this file
+	$path_file		= "output-submit-html.php";		// this file
 	$commandouter_table	= [];
 	$commandouter_count	= 0;
 	$commandlabel_table	= [];
@@ -112,14 +112,14 @@
 	pageTitle();
 
 	// layout outer bounds
-	if ($ten_bool == 0)
+	if ($tenk_flag == 0)
 	{
 		$layout_min_horizontal	= -$layout_padding;
 		$layout_max_horizontal	=  $layout_padding * 2 + $layout_tenkeyless_width;
 		$layout_min_vertical	= -$layout_padding;
 		$layout_max_vertical	=  $layout_padding * 2 + $layout_tenkeyless_height;
 	}
-	else if ($ten_bool == 1)
+	else if ($tenk_flag == 1)
 	{
 		$layout_min_horizontal	= -$layout_padding;
 		$layout_max_horizontal	=  $layout_padding * 2 + $layout_fullsize_width;
@@ -286,9 +286,10 @@ var binding_data =
 	format_id: "      . $format_id . ",
 	game_id: "        . $game_id . ",
 	game_seo: '"      . $game_seo . "',
-	ten_bool: "       . $ten_bool . ",
-	vert_bool: "      . $vert_bool . ",
-	svg_bool: "       . $svg_bool . ",
+	tenk_flag: "      . $tenk_flag . ",
+	vert_flag: "      . $vert_flag . ",
+	kcap_flag: "      . $kcap_flag . ",
+	svgb_flag: "      . $svgb_flag . ",
 	color_table:
 	{
 " . $color_string . "
@@ -362,7 +363,7 @@ var binding_data =
 					<input name="email_8"  id="email_8"  type="hidden" value=""/>
 					<input name="email_9"  id="email_9"  type="hidden" value=""/>
 					<input name="email_10" id="email_10" type="hidden" value=""/>
-					<div><button class="botbut" id="set_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit data to site admin" data-callback="recaptchaCallback">Submit</button><button class="botbut" id="reset_doc_button" type="button" style="padding:0.3em 1em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state" data-callback="recaptchaCallback">Clear All</button><button class="botbut" id="export_doc_button" type="button" style="padding:0.3em 1em;" autocomplete="off" onclick="document_export_submit_ajax();" title="Export data to HTML file">Export HTML</button></div>
+					<div><button class="botbut" id="set_doc_button" type="button" style="padding:0.3em 1em;margin:0.3em;" disabled="disabled" autocomplete="off" onclick="document_save_changes();" title="Submit data to site admin" data-callback="recaptchaCallback">Submit</button><button class="botbut" id="reset_doc_button" type="button" style="padding:0.3em 1em;margin:0.3em;" disabled="disabled" autocomplete="off" onclick="document_revert_changes();" title="Reset data to original state" data-callback="recaptchaCallback">Clear</button><button class="botbut" id="export_doc_button" type="button" style="padding:0.3em 1em;margin:0.3em;" autocomplete="off" onclick="document_export_submit_ajax();" title="Export data to HTML file">Export HTML</button></div>
 				</form>
 			</div>
 			<div id="pane_hlp" style="display:none;">
@@ -412,13 +413,22 @@ var binding_data =
 		echo
 "							<h3>" . cleantextHTML($errors_table[$i]) . "</h3>\n";
 	}
-	// keys
 	if (($gamesrecord_id > 0) && ($stylesrecord_id > 0))
 	{
+		// keys
+		if ($kcap_flag == 0) {
+			$lbl_sty = " lblvis";
+		} elseif ($kcap_flag == 1) {
+			$lbl_sty = " lbldim";
+		} elseif ($kcap_flag == 2) {
+			$lbl_sty = " lblblr";
+		} elseif ($kcap_flag == 3) {
+			$lbl_sty = " lblhid";
+		}
 		foreach ($position_table as $i => $position_row)
 		{
 			// cleaning!
-			// these get cleaned later by the print_key_html function
+			// these get cleaned later by the printKeyHTML function
 			// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowcap_optional, numpad
 			$key_sty	= array_key_exists($i, $keystyle_table) ? " " . getkeyclass($keystyle_table[$i][0]) : "";		// non!
 			$pos_lft	= $position_row[ 0] + $layout_keygap/2;
@@ -439,7 +449,7 @@ var binding_data =
 			if (array_key_exists($i, $binding_table))
 			{
 				// cleaning!
-				// these get cleaned later by the print_key_html function
+				// these get cleaned later by the printKeyHTML function
 				// normal_group, normal_action, shift_group, shift_action, ctrl_group, ctrl_action, alt_group, alt_action, altgr_group, altgr_action, extra_group, extra_action, image_file, image_uri, key_number
 				$binding_row	= $binding_table[$i];
 				$bkg_nor = getkeycolor($binding_row[ 0]);
@@ -492,32 +502,17 @@ var binding_data =
 "								<img id=\"capimg_" . $i . "\" class=\"capimg\" style=\"left:" . $img_pos_x . "px;top:" . $img_pos_y . "px;width:" . $img_wid . "px;height:" . $img_hgh . "px;display:" . $img_display . ";\" src=\"" . $img_uri . "\"/>\n";
 			}
 			// key captions
-			print_key_html("capshf_" . $i, "capshf", $bkg_shf, $cap_shf);
-			print_key_html("capctl_" . $i, "capctl", $bkg_ctl, $cap_ctl);
-			print_key_html("capalt_" . $i, "capalt", $bkg_alt, $cap_alt);
-			print_key_html("capagr_" . $i, "capagr", $bkg_agr, $cap_agr);
-			print_key_html("capxtr_" . $i, "capxtr", $bkg_xtr, $cap_xtr);
-			if ($key_opt == false)
-			{
-				print_key_html("capnor_" . $i, "capopf", $bkg_nor, $cap_nor);
-			}
-			else
-			{
-				print_key_html("capnor_" . $i, "capopt", $bkg_nor, $cap_nor);
-			}
-			// normal key labels
-			print_key_html("uppnor_" . $i, "uppnor", null, $upp_nor);
-			if ($key_opt == false)
-			{
-				print_key_html("lownor_" . $i, "lownor", null, $low_nor);
-			}
-			else
-			{
-				print_key_html("lownor_" . $i, "keynon", null, $low_nor);
-			}
-			// altgr key labels
-			print_key_html("uppagr_" . $i, "uppagr", null, $upp_agr);
-			print_key_html("lowagr_" . $i, "lowagr", null, $low_agr);
+			printKeyHTML("capshf_" . $i, "capshf", $bkg_shf, $cap_shf);
+			printKeyHTML("capctl_" . $i, "capctl", $bkg_ctl, $cap_ctl);
+			printKeyHTML("capalt_" . $i, "capalt", $bkg_alt, $cap_alt);
+			printKeyHTML("capagr_" . $i, "capagr", $bkg_agr, $cap_agr);
+			printKeyHTML("capxtr_" . $i, "capxtr", $bkg_xtr, $cap_xtr);
+			printKeyHTML("capnor_" . $i, $key_opt?"capopt":"capopf", $bkg_nor, $cap_nor);
+			// key labels
+			printKeyHTML("uppnor_" . $i, "uppnor".$lbl_sty, null, $upp_nor);
+			printKeyHTML("lownor_" . $i, $key_opt?"keynon".$lbl_sty:"lownor".$lbl_sty, null, $low_nor);
+			printKeyHTML("uppagr_" . $i, "uppagr".$lbl_sty, null, $upp_agr);
+			printKeyHTML("lowagr_" . $i, "lowagr".$lbl_sty, null, $low_agr);
 			echo
 "							</div>\n";
 		}

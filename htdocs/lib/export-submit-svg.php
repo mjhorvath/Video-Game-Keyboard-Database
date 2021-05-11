@@ -27,7 +27,7 @@
 	xmlns:ev="http://www.w3.org/2001/xml-events"
 ';
 
-	if ($vert_bool == false)
+	if ($vert_flag == false)
 	{
 		echo
 '	viewBox="' . $layout_min_horizontal . ' ' . $layout_min_vertical . ' ' . $layout_max_horizontal . ' ' . $layout_max_vertical . '"
@@ -108,12 +108,8 @@
 '/* ]]> */
 	</style>
 	<defs>
-		<filter id="filt_1_alt" x="-1" y="-1" width="72" height="72">
-			<feOffset result="offOut" in="SourceAlpha" dx="1" dy="1" />
-			<feGaussianBlur result="blurOut" in="offOut" stdDeviation="1" />
-			<feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
-		</filter>
-		<filter id="filt_1" width="130%" height="130%">
+		<filter id="f1" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur in="SourceGraphic" stdDeviation="4" /></filter>
+		<filter id="f2" width="130%" height="130%">
 			<feGaussianBlur in="SourceAlpha" stdDeviation="1"/> 
 			<feOffset dx="1" dy="1" result="offsetblur"/>
 			<feComponentTransfer>
@@ -190,7 +186,7 @@
 	}
 	echo
 "	</defs>\n";
-	if ($vert_bool == true)
+	if ($vert_flag == true)
 	{
 		echo
 "	<g transform=\"translate(" . ($layout_min_vertical*2+$layout_max_vertical) . ",0) rotate(90)\">\n";
@@ -208,9 +204,22 @@
 		echo
 "		<text y=\"" . ($i * 20) . "\">" . cleantextSVG($errors_table[$i]) . "</text>\n";
 	}
-	// keys
 	if (($gamesrecord_id > 0) && ($stylesrecord_id > 0))
 	{
+		// keys
+		$txt_hgh_sml = 11;		// text height
+		$txt_hgh_lrg = 13;		// text height
+		$txt_mar_sml = 2;		// text margin
+		$txt_mar_lrg = 3;		// text margin
+		if ($kcap_flag == 0) {
+			$lbl_sty = " lblvis";
+		} elseif ($kcap_flag == 1) {
+			$lbl_sty = " lbldim";
+		} elseif ($kcap_flag == 2) {
+			$lbl_sty = " lblblr";
+		} elseif ($kcap_flag == 3) {
+			$lbl_sty = " lblhid";
+		}
 		foreach ($position_table as $i => $position_row)
 		{
 			// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowkey_optional, numpad
@@ -219,10 +228,10 @@
 			$pos_top	= $position_row[ 1] + $layout_keygap/2;
 			$pos_wid	= $position_row[ 2] - $layout_keygap;		//4
 			$pos_hgh	= $position_row[ 3] - $layout_keygap;
-			$low_nor	= cleantextSVG($position_row[ 4]);
-			$upp_nor	= cleantextSVG($position_row[ 5]);
-			$low_agr	= cleantextSVG($position_row[ 6]);
-			$upp_agr	= cleantextSVG($position_row[ 7]);
+			$low_nor	= splitkeytext(cleantextSVG($position_row[ 4]));
+			$upp_nor	= splitkeytext(cleantextSVG($position_row[ 5]));
+			$low_agr	= splitkeytext(cleantextSVG($position_row[ 6]));
+			$upp_agr	= splitkeytext(cleantextSVG($position_row[ 7]));
 			$key_num	= $position_row[ 8];
 			$key_opt	= $position_row[ 9];
 			$key_ten	= $position_row[ 10];
@@ -233,23 +242,22 @@
 
 			if (array_key_exists($i, $binding_table))
 			{
-				// this part is different than in the non-export version of this document
 				// normal_group, normal_action, shift_group, shift_action, ctrl_group, ctrl_action, alt_group, alt_action, altgr_group, altgr_action, extra_group, extra_action, image_file, image_uri
 				$binding_row	= $binding_table[$i];
-				$bkg_nor = getkeycolor($binding_row[12]);
-				$cap_nor = splitkeytext(cleantextSVG($binding_row[4]));
-				$bkg_shf = getkeycolor($binding_row[13]);
-				$cap_shf = splitkeytext(cleantextSVG($binding_row[5]));
-				$bkg_ctl = getkeycolor($binding_row[14]);
-				$cap_ctl = splitkeytext(cleantextSVG($binding_row[6]));
-				$bkg_alt = getkeycolor($binding_row[15]);
-				$cap_alt = splitkeytext(cleantextSVG($binding_row[7]));
-				$bkg_agr = getkeycolor($binding_row[16]);
-				$cap_agr = splitkeytext(cleantextSVG($binding_row[8]));
-				$bkg_xtr = getkeycolor($binding_row[17]);
-				$cap_xtr = splitkeytext(cleantextSVG($binding_row[9]));
-				$img_fil = $binding_row[10];
-				$img_uri = $binding_row[11];
+				$bkg_nor = getkeycolor($binding_row[ 0]);
+				$cap_nor = splitkeytext(cleantextSVG($binding_row[ 1]));
+				$bkg_shf = getkeycolor($binding_row[ 2]);
+				$cap_shf = splitkeytext(cleantextSVG($binding_row[ 3]));
+				$bkg_ctl = getkeycolor($binding_row[ 4]);
+				$cap_ctl = splitkeytext(cleantextSVG($binding_row[ 5]));
+				$bkg_alt = getkeycolor($binding_row[ 6]);
+				$cap_alt = splitkeytext(cleantextSVG($binding_row[ 7]));
+				$bkg_agr = getkeycolor($binding_row[ 8]);
+				$cap_agr = splitkeytext(cleantextSVG($binding_row[ 9]));
+				$bkg_xtr = getkeycolor($binding_row[10]);
+				$cap_xtr = splitkeytext(cleantextSVG($binding_row[11]));
+				$img_fil = $binding_row[12];
+				$img_uri = $binding_row[13];
 			}
 			else
 			{
@@ -269,10 +277,9 @@
 				$img_uri = null;
 			}
 
-			$top_nor = $pos_hgh - 4;
-			if ($key_opt == true)
-			{
-				$top_nor += 14;
+			$top_nor = $pos_hgh - $txt_mar_lrg;
+			if (($key_opt == false) && ($kcap_flag != 3)) {
+				$top_nor -= $txt_hgh_lrg * count($low_nor);
 			}
 
 			// mask
@@ -309,7 +316,7 @@
 "			<rect x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"" . ($pos_wid) . "\" height=\"" . ($pos_hgh) . "\" fill=\"url(#grad_2)\"/>\n";
 			}
 
-			// bindings backgrounds
+			// backgrounds
 			if ($style_id == 9)
 			{
 				$jcount		= 0;
@@ -340,66 +347,83 @@
 				}
 			}
 
-			// normal labels text
-			if (($low_nor != "") && ($key_opt == false))
+			// labels
+			if ($kcap_flag != 3)
 			{
-				echo
-"			<text class=\"lownor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"" . ($pos_hgh-3.5) . "\">" . $low_nor . "</text>\n";
+				if ($key_opt == false)
+				{
+					for ($j = 0; $j < count($low_nor); $j++)
+					{
+						// bottom, left
+						echo
+"			<text class=\"lownor txt" . $bkg_nor . " txt" . $key_sty . $lbl_sty . "\" x=\"" . ($txt_mar_lrg) . "\" y=\"" . ($pos_hgh-$txt_mar_lrg) . "\" dy=\"" . ($j * -$txt_hgh_lrg) . "\">" . $low_nor[count($low_nor)-$j-1] . "</text>\n";
+					}
+				}
+				for ($j = 0; $j < count($upp_nor); $j++)
+				{
+					// top, left
+					echo
+"			<text class=\"uppnor txt" . $bkg_nor . " txt" . $key_sty . $lbl_sty . "\" x=\"" . ($txt_mar_lrg) . "\" y=\"" . ($txt_hgh_lrg) . "\" dy=\"" . ($j * $txt_hgh_lrg) . "\">" . $upp_nor[$j] . "</text>\n";
+				}
+				for ($j = 0; $j < count($low_agr); $j++)
+				{
+					// bottom, right
+					echo
+"			<text class=\"lowagr txt" . $bkg_nor . " txt" . $key_sty . $lbl_sty . "\" x=\"" . ($pos_wid-$txt_mar_lrg) . "\" y=\"" . ($pos_hgh-$txt_mar_lrg) . "\" dy=\"" . ($j * -$txt_hgh_lrg) . "\">" . $low_agr[count($low_agr)-$j-1] . "</text>\n";
+				}
+				for ($j = 0; $j < count($upp_agr); $j++)
+				{
+					// top, right
+					echo
+"			<text class=\"uppagr txt" . $bkg_nor . " txt" . $key_sty . $lbl_sty . "\" x=\"" . ($pos_wid-$txt_mar_lrg) . "\" y=\"" . ($txt_hgh_lrg) . "\" dy=\"" . ($j * $txt_hgh_lrg) . "\">" . $upp_agr[$j] . "</text>\n";
+				}
 			}
-			if ($upp_nor != "")
-			{
-				echo
-"			<text class=\"uppnor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"2.5\" y=\"13.5\">" . $upp_nor . "</text>\n";
-			}
-			// altgr labels text
-			if ($low_agr != "")
-			{
-				echo
-"			<text class=\"lowagr txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($pos_hgh-3.5) . "\">" . $low_agr . "</text>\n";
-			}
-			if ($upp_agr != "")
-			{
-				echo
-"			<text class=\"uppagr txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($pos_wid-2.5) . "\" y=\"13.5\">" . $upp_agr . "</text>\n";
-			}
+
 			// captions text
+			$jcount		= 0;
 			for ($j = 0; $j < count($cap_nor); $j++)
 			{
+				// bottom, left
 				echo
-"			<text class=\"capnor txt" . $bkg_nor . " txt" . $key_sty . " ideo\" x=\"2.5\" y=\"" . ($top_nor+0.5) . "\" dy=\"" . (($j+1) * -14) . "\">" . $cap_nor[count($cap_nor)-($j+1)] . "</text>\n";
+"			<text class=\"capnor txt" . $bkg_nor . " txt" . $key_sty . " ideo\" x=\"" . ($txt_mar_lrg) . "\" y=\"" . ($top_nor) . "\" dy=\"" . ($j * -$txt_hgh_lrg) . "\">" . $cap_nor[count($cap_nor)-$j-1] . "</text>\n";
 			}
-			$jcount		= 0;
 			for ($j = 0; $j < count($cap_shf); $j++)
 			{
+				// top, right
 				echo
-"			<text class=\"capshf hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_shf[$j] . "</text>\n";
+"			<text class=\"capshf hang\" x=\"" . ($pos_wid-$txt_mar_sml) . "\" y=\"" . ($txt_hgh_sml) . "\" dy=\"" . ($jcount++ * $txt_hgh_sml) . "\">" . $cap_shf[$j] . "</text>\n";
 
 			}
 			for ($j = 0; $j < count($cap_ctl); $j++)
 			{
+				// top, right
 				echo
-"			<text class=\"capctl hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_ctl[$j] . "</text>\n";
+"			<text class=\"capctl hang\" x=\"" . ($pos_wid-$txt_mar_sml) . "\" y=\"" . ($txt_hgh_sml) . "\" dy=\"" . ($jcount++ * $txt_hgh_sml) . "\">" . $cap_ctl[$j] . "</text>\n";
 			}
 			for ($j = 0; $j < count($cap_alt); $j++)
 			{
+				// top, right
 				echo
-"			<text class=\"capalt hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_alt[$j] . "</text>\n";
+"			<text class=\"capalt hang\" x=\"" . ($pos_wid-$txt_mar_sml) . "\" y=\"" . ($txt_hgh_sml) . "\" dy=\"" . ($jcount++ * $txt_hgh_sml) . "\">" . $cap_alt[$j] . "</text>\n";
 			}
 			for ($j = 0; $j < count($cap_agr); $j++)
 			{
+				// top, right
 				echo
-"			<text class=\"capagr hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_agr[$j] . "</text>\n";
+"			<text class=\"capagr hang\" x=\"" . ($pos_wid-$txt_mar_sml) . "\" y=\"" . ($txt_hgh_sml) . "\" dy=\"" . ($jcount++ * $txt_hgh_sml) . "\">" . $cap_agr[$j] . "</text>\n";
 			}
 			for ($j = 0; $j < count($cap_xtr); $j++)
 			{
+				// top, right
 				echo
-"			<text class=\"capxtr hang\" x=\"" . ($pos_wid-2.5) . "\" y=\"" . ($jcount++ * 12 + 13) . "\">" . $cap_xtr[$j] . "</text>\n";
+"			<text class=\"capxtr hang\" x=\"" . ($pos_wid-$txt_mar_sml) . "\" y=\"" . ($txt_hgh_sml) . "\" dy=\"" . ($jcount++ * $txt_hgh_sml) . "\">" . $cap_xtr[$j] . "</text>\n";
 			}
 
 			echo
 "		</g>\n";
 		}
-		// legend key
+
+		// legend keys
 		echo
 "		<g class=\"legkey\" transform=\"translate(1.5 " . ($layout_legend_top + 1.5) . ")\">
 			<rect class=\"keyrec recnon\" x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"68\" height=\"68\"/>
@@ -413,6 +437,7 @@
 			<text class=\"lownor txtnon\" x=\"2.5\" y=\"64.5\">Lowcase</text>
 			<text class=\"uppnor txtnon\" x=\"2.5\" y=\"13.5\">Upcase</text>
 		</g>\n";
+
 		// non!
 		// legend descriptions
 		if ($stylegroup_id == 1)

@@ -65,8 +65,8 @@
 			$default_layout_id,	$default_layout_name,
 			$default_style_id,	$default_style_name,
 			$default_format_id,	$default_format_name,
-			$default_ten_bool,
-			$default_vert_bool,
+			$default_tenk_flag,
+			$default_vert_flag,
 			$default_platform_id,	$default_platform_name,
 			$default_stylegroup_id,	$default_stylegroup_name,
 			$default_genre_id,	$default_genre_name,
@@ -83,7 +83,7 @@
 		$default_style_name		= $game_row[3];
 		$default_format_id		= $urlqueries_table[3][2];		// starts at 0 instead of 1
 		$default_format_name		= $game_row[4];
-		$default_ten_bool		= $urlqueries_table[4][2];		// note that in the database this is stored as an integer and not boolean
+		$default_tenk_flag		= $urlqueries_table[4][2];		// note that in the database this is stored as an integer and not boolean
 		$default_platform_id		= $urlqueries_table[5][2];
 		$default_platform_name		= $game_row[5];
 		$default_stylegroup_id		= $urlqueries_table[6][2];
@@ -92,6 +92,6 @@
 		$default_genre_name		= $game_row[7];
 		$default_language_id		= $urlqueries_table[8][2];
 		$default_language_code		= $game_row[8];
-		$default_vert_bool		= $urlqueries_table[9][2];		// note that in the database this is stored as an integer and not boolean
+		$default_vert_flag		= $urlqueries_table[9][2];		// note that in the database this is stored as an integer and not boolean
 	}
 ?>

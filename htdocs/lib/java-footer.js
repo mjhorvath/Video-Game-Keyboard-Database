@@ -20,9 +20,9 @@
 function reload_this_page()
 {
 	if (binding_data.format_id == 1)
-		var out_href = "keyboard-diagram-" + binding_data.game_seo + ".svg?sty=" + binding_data.style_id + "&lay=" + binding_data.layout_id + "&fmt=" + binding_data.format_id + "&ten=" + binding_data.ten_bool + "&vrt=" + binding_data.vert_bool;
+		var out_href = "keyboard-diagram-" + binding_data.game_seo + ".svg?sty=" + binding_data.style_id + "&lay=" + binding_data.layout_id + "&fmt=" + binding_data.format_id + "&ten=" + binding_data.tenk_flag + "&vrt=" + binding_data.vert_flag + "&cap=" + binding_data.kcap_flag;
 	else
-		var out_href = "keyboard-diagram-" + binding_data.game_seo + ".php?sty=" + binding_data.style_id + "&lay=" + binding_data.layout_id + "&fmt=" + binding_data.format_id + "&ten=" + binding_data.ten_bool + "&vrt=" + binding_data.vert_bool;
+		var out_href = "keyboard-diagram-" + binding_data.game_seo + ".php?sty=" + binding_data.style_id + "&lay=" + binding_data.layout_id + "&fmt=" + binding_data.format_id + "&ten=" + binding_data.tenk_flag + "&vrt=" + binding_data.vert_flag + "&cap=" + binding_data.kcap_flag;
 	window.location.href = out_href;
 }
 
@@ -54,7 +54,7 @@ function init_footer()
 		('change',
 			function()
 			{
-				binding_data.ten_bool = parseInt(this.value);
+				binding_data.tenk_flag = parseInt(this.value);
 			}
 		);
 	}
@@ -65,7 +65,18 @@ function init_footer()
 		('change',
 			function()
 			{
-				binding_data.vert_bool = parseInt(this.value);
+				binding_data.vert_flag = parseInt(this.value);
+			}
+		);
+	}
+	var kcaprad = document.VisualStyleSwitch.kcap;
+	for (var i = 0, n = kcaprad.length; i < n; i++)
+	{
+		kcaprad[i].addEventListener
+		('change',
+			function()
+			{
+				binding_data.kcap_flag = parseInt(this.value);
 			}
 		);
 	}

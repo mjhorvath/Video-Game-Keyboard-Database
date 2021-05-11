@@ -47,3 +47,7 @@ svg	{font-family:Verdana,Sans-Serif;font-size:14px;}
 .txtolv	{fill:#000000;}
 .txtbrn	{fill:#000000;}
 .txtnon	{fill:#000000;}
+.lblvis {fill-opacity:1.00;}
+.lbldim {fill-opacity:0.25;}
+.lblblr {fill-opacity:0.50;filter:url("#f1");}
+.lblhid {fill-opacity:0.00;}

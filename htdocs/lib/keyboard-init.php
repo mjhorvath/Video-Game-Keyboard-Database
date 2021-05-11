@@ -34,11 +34,11 @@
 
 	// gather URL queries
 	$format_id	= array_key_exists("fmt", $_GET) ? intval(ltrim($_GET["fmt"], "0"))	: null;
-	$svg_bool	= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0"))	: null;
+	$svgb_flag	= array_key_exists("svg", $_GET) ? intval(ltrim($_GET["svg"], "0"))	: null;		// legacy code
 	$url_ext	= extension($_SERVER["REQUEST_URI"]);
 
 	// check URL queries validity
-	if (($url_ext == "svg") || ($svg_bool == 1))
+	if (($url_ext == "svg") || ($svgb_flag == 1))
 	{
 		$format_id = 1;
 	}
@@ -56,10 +56,10 @@
 			include($path_lib2 . "output-only-svg.php");
 		break;
 		case 2:
-			include($path_lib2 . "output-wiki.php");
+			include($path_lib2 . "output-wiki-html.php");
 		break;
 		case 3:
-			include($path_lib2 . "output-submit.php");
+			include($path_lib2 . "output-submit-html.php");
 		break;
 		case 4:
 			echo "PDF format not implemented yet.\n";

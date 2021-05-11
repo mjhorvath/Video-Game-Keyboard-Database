@@ -55,3 +55,7 @@ div.legflx	{margin:0;padding:0;display:flex;flex-direction:row;flex-wrap:wrap;}
 .capolv,.legolv,.selolv,.optolv	{}
 .capbrn,.legbrn,.selbrn,.optbrn	{}
 .capnon,.legnon,.selnon,.optnon	{}
+.lblvis {opacity:1.0;}
+.lbldim {opacity:0.5;}
+.lblblr {opacity:0.5;filter:blur(4px);}
+.lblhid {opacity:0.0;}

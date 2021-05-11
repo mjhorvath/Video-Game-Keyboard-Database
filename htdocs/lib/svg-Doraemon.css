@@ -2,7 +2,7 @@
 svg	{font-family:Verdana,sans-serif;font-size:14px;}
 #bkgrec	{stroke:none;fill:#ffffff;}
 .legtxt	{font-size:14px;fill:#000;}
-.legkey	{fill:#fff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
+.legkey	{fill:#fff;filter:url(#f2);-webkit-filter:url(#f2);}
 .uppnor,.lownor,.uppagr,.lowagr
 	{font-size:12px;font-weight:bold;fill:#000;}
 .uppagr,.lowagr
@@ -22,15 +22,15 @@ svg	{font-family:Verdana,sans-serif;font-size:14px;}
 .bakalt	{fill:none;}
 .bakagr	{fill:none;}
 .bakxtr	{fill:none;}
-.reccssA	{fill:#f0c0c0;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssB	{fill:#f0f0c0;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssC	{fill:#c0f0c0;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssD	{fill:#c0f0f0;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssE	{fill:#c0c0f0;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssF	{fill:#f0c0f0;filter:url(#filt_1);-webkit-filter:url(#filt_1);}
-.reccssG	{fill:#f0f0f0;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* white	*/
-.reccssH	{fill:#000000;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* black	*/
-.reccssI	{fill:#c0c0c0;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* gray		*/
+.reccssA	{fill:#f0c0c0;filter:url(#f2);-webkit-filter:url(#f2);}
+.reccssB	{fill:#f0f0c0;filter:url(#f2);-webkit-filter:url(#f2);}
+.reccssC	{fill:#c0f0c0;filter:url(#f2);-webkit-filter:url(#f2);}
+.reccssD	{fill:#c0f0f0;filter:url(#f2);-webkit-filter:url(#f2);}
+.reccssE	{fill:#c0c0f0;filter:url(#f2);-webkit-filter:url(#f2);}
+.reccssF	{fill:#f0c0f0;filter:url(#f2);-webkit-filter:url(#f2);}
+.reccssG	{fill:#f0f0f0;filter:url(#f2);-webkit-filter:url(#f2);}	/* white	*/
+.reccssH	{fill:#000000;filter:url(#f2);-webkit-filter:url(#f2);}	/* black	*/
+.reccssI	{fill:#c0c0c0;filter:url(#f2);-webkit-filter:url(#f2);}	/* gray		*/
 .txtcssA	{fill:#000000;}
 .txtcssB	{fill:#000000;}
 .txtcssC	{fill:#000000;}
@@ -66,3 +66,7 @@ svg	{font-family:Verdana,sans-serif;font-size:14px;}
 .txtolv	{}
 .txtbrn	{}
 .txtnon	{}
+.lblvis {fill-opacity:1.00;}
+.lbldim {fill-opacity:0.25;}
+.lblblr {fill-opacity:0.50;filter:url("#f1");}
+.lblhid {fill-opacity:0.00;}

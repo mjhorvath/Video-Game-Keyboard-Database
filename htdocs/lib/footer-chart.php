@@ -9,6 +9,7 @@
 			$display_format = "table-row";
 			$display_orient = "table-row";
 			$display_update = "table-row";
+			$display_keycap = "table-row";
 			$display_export = "table-row";
 		break;
 		// SVG ONLY
@@ -22,6 +23,7 @@
 			$display_format = "table-row";
 			$display_orient = "none";
 			$display_update = "table-row";
+			$display_keycap = "table-row";
 			$display_export = "none";
 		break;
 		// EDITOR
@@ -30,6 +32,7 @@
 			$display_tenkey = "table-row";
 			$display_format = "table-row";
 			$display_orient = "table-row";
+			$display_keycap = "table-row";
 			$display_update = "table-row";
 			$display_export = "none";
 		break;
@@ -103,15 +106,24 @@
 			<tr style="display:' . $display_tenkey . ';">
 				<th>Numpad:</th>
 				<td>
-					<input class="stylechange" type="radio" name="tkey" id="tkeyrad1" value="1"' . ($ten_bool == 1 ? ' checked' : '') . '/><label for="tkeyrad1">Show &#10022;</label>
-					<input class="stylechange" type="radio" name="tkey" id="tkeyrad0" value="0"' . ($ten_bool == 0 ? ' checked' : '') . '/><label for="tkeyrad0">Hide</label>
+					<input class="stylechange" type="radio" name="tkey" id="tkeyrad1" value="1"' . ($tenk_flag == 1 ? ' checked' : '') . '/><label for="tkeyrad1">Show &#10022;</label>
+					<input class="stylechange" type="radio" name="tkey" id="tkeyrad0" value="0"' . ($tenk_flag == 0 ? ' checked' : '') . '/><label for="tkeyrad0">Hide</label>
 				</td>
 			</tr>
 			<tr style="display:' . $display_orient . ';">
 				<th>Orientation:</th>
 				<td>
-					<input class="stylechange" type="radio" name="vert" id="vertrad0" value="0"' . ($vert_bool == 0 ? ' checked' : '') . '/><label for="vertrad0">Horizontal &#10022;</label>
-					<input class="stylechange" type="radio" name="vert" id="vertrad1" value="1"' . ($vert_bool == 1 ? ' checked' : '') . '/><label for="vertrad1">Vertical</label>
+					<input class="stylechange" type="radio" name="vert" id="vertrad0" value="0"' . ($vert_flag == 0 ? ' checked' : '') . '/><label for="vertrad0">Horizontal &#10022;</label>
+					<input class="stylechange" type="radio" name="vert" id="vertrad1" value="1"' . ($vert_flag == 1 ? ' checked' : '') . '/><label for="vertrad1">Vertical</label>
+				</td>
+			</tr>
+			<tr style="display:' . $display_keycap . ';">
+				<th>Key caps:</th>
+				<td>
+					<input class="stylechange" type="radio" name="kcap" id="kcaprad0" value="0"' . ($kcap_flag == 0 ? ' checked' : '') . '/><label for="kcaprad0">Strong &#10022;</label>
+					<input class="stylechange" type="radio" name="kcap" id="kcaprad1" value="1"' . ($kcap_flag == 1 ? ' checked' : '') . '/><label for="kcaprad1">Dim</label>
+					<input class="stylechange" type="radio" name="kcap" id="kcaprad2" value="2"' . ($kcap_flag == 2 ? ' checked' : '') . '/><label for="kcaprad2">Blurred</label>
+					<input class="stylechange" type="radio" name="kcap" id="kcaprad3" value="3"' . ($kcap_flag == 3 ? ' checked' : '') . '/><label for="kcaprad3">Hidden</label>
 				</td>
 			</tr>
 			<tr>

@@ -46,3 +46,7 @@ div.caporg,div.legorg,select.selorg,option.optorg	{background-image:-webkit-line
 div.capolv,div.legolv,select.selolv,option.optolv	{background-image:-webkit-linear-gradient(#ffffff,#A8BF75);background-image:-moz-linear-gradient(#ffffff,#A8BF75);background-image:linear-gradient(#ffffff,#A8BF75);}	/* CIE-L*ch ( 74, 40,120) */
 div.capbrn,div.legbrn,select.selbrn,option.optbrn	{background-image:-webkit-linear-gradient(#ffffff,#685510);background-image:-moz-linear-gradient(#ffffff,#685510);background-image:linear-gradient(#ffffff,#685510);}	/* CIE-L*ch ( 37, 40, 90) */
 div.capnon,div.legnon,select.selnon,option.optnon	{background-image:-webkit-linear-gradient(#ffffff,#404040);background-image:-moz-linear-gradient(#ffffff,#404040);background-image:linear-gradient(#ffffff,#404040);}
+.lblvis {opacity:1.0;}
+.lbldim {opacity:0.5;}
+.lblblr {opacity:0.5;filter:blur(4px);}
+.lblhid {opacity:0.0;}

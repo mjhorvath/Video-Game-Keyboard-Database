@@ -62,9 +62,9 @@
 	$style_id		= 0;		// set by checkURLParameters(), utilized by checkForErrors()
 	$format_name		= "";		// set by checkURLParameters(), utilized by checkForErrors()
 //	$format_id		= 0;		// should not be set again here since it has already been set in "keyboard-init.php"
-//	$svg_bool		= 0;		// should not be set again here since it has already been set in "keyboard-init.php"
-	$ten_bool		= 1;		// set by checkURLParameters()
-	$vert_bool		= 0;		// set by checkURLParameters()
+//	$svgb_flag		= 0;		// should not be set again here since it has already been set in "keyboard-init.php"
+	$tenk_flag		= 1;		// set by checkURLParameters()
+	$vert_flag		= 0;		// set by checkURLParameters()
 
 	// open MySQL connection
 	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
@@ -106,7 +106,7 @@
 	pageTitle();
 
 	// layout outer bounds
-	if ($ten_bool == 0)
+	if ($tenk_flag == 0)
 	{
 		$layout_min_horizontal	= -$layout_padding;
 		$layout_max_horizontal	=  $layout_padding * 2 + $layout_tenkeyless_width;
@@ -114,7 +114,7 @@
 		$layout_max_vertical	=  $layout_padding * 2 + $layout_tenkeyless_height + $layout_legend_padding + $layout_legend_height;
 		$layout_legend_top	=  $layout_tenkeyless_height + $layout_legend_padding;
 	}
-	else if ($ten_bool == 1)
+	else if ($tenk_flag == 1)
 	{
 		$layout_min_horizontal	= -$layout_padding;
 		$layout_max_horizontal	=  $layout_padding * 2 + $layout_fullsize_width;
@@ -171,7 +171,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	xmlns:ev="http://www.w3.org/2001/xml-events"
 ';
 
-	if ($vert_bool == false)
+	if ($vert_flag == false)
 	{
 		echo
 '	viewBox="' . $layout_min_horizontal . ' ' . $layout_min_vertical . ' ' . $layout_max_horizontal . ' ' . $layout_max_vertical . '"
@@ -252,12 +252,8 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 '/* ]]> */
 	</style>
 	<defs>
-		<filter id="filt_1_alt" x="-1" y="-1" width="72" height="72">
-			<feOffset result="offOut" in="SourceAlpha" dx="1" dy="1" />
-			<feGaussianBlur result="blurOut" in="offOut" stdDeviation="1" />
-			<feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
-		</filter>
-		<filter id="filt_1" width="130%" height="130%">
+		<filter id="f1" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur in="SourceGraphic" stdDeviation="4" /></filter>
+		<filter id="f2" width="130%" height="130%">
 			<feGaussianBlur in="SourceAlpha" stdDeviation="1"/> 
 			<feOffset dx="1" dy="1" result="offsetblur"/>
 			<feComponentTransfer>
@@ -335,7 +331,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
 	echo
 "	</defs>\n";
-	if ($vert_bool == true)
+	if ($vert_flag == true)
 	{
 		echo
 "	<g transform=\"translate(" . ($layout_min_vertical*2+$layout_max_vertical) . ",0) rotate(90)\">\n";
@@ -361,6 +357,15 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		$txt_hgh_lrg = 13;		// text height
 		$txt_mar_sml = 2;		// text margin
 		$txt_mar_lrg = 3;		// text margin
+		if ($kcap_flag == 0) {
+			$lbl_sty = " lblvis";
+		} elseif ($kcap_flag == 1) {
+			$lbl_sty = " lbldim";
+		} elseif ($kcap_flag == 2) {
+			$lbl_sty = " lblblr";
+		} elseif ($kcap_flag == 3) {
+			$lbl_sty = " lblhid";
+		}
 		foreach ($position_table as $i => $position_row)
 		{
 			// position_left, position_top, position_width, position_height, symbol_norm_low, symbol_norm_cap, symbol_altgr_low, symbol_altgr_cap, key_number, lowkey_optional, numpad
@@ -419,8 +424,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 			}
 
 			$top_nor = $pos_hgh - $txt_mar_lrg;
-			if ($key_opt == false)
-			{
+			if (($key_opt == false) && ($kcap_flag != 3)) {
 				$top_nor -= $txt_hgh_lrg * count($low_nor);
 			}
 
@@ -458,7 +462,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 "			<rect x=\"0.5\" y=\"0.5\" rx=\"4\" ry=\"4\" width=\"" . ($pos_wid) . "\" height=\"" . ($pos_hgh) . "\" fill=\"url(#grad_2)\"/>\n";
 			}
 
-			// bindings backgrounds
+			// backgrounds
 			if ($style_id == 9)
 			{
 				$jcount		= 0;
@@ -489,34 +493,38 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 				}
 			}
 
-			// labels text
-			if ($key_opt == false)
+			// labels
+			if ($kcap_flag != 3)
 			{
-				for ($j = 0; $j < count($low_nor); $j++)
+				if ($key_opt == false)
 				{
-					// bottom, left
+					for ($j = 0; $j < count($low_nor); $j++)
+					{
+						// bottom, left
+						echo
+"			<text class=\"lownor txt" . $bkg_nor . " txt" . $key_sty . $lbl_sty . "\" x=\"" . ($txt_mar_lrg) . "\" y=\"" . ($pos_hgh-$txt_mar_lrg) . "\" dy=\"" . ($j * -$txt_hgh_lrg) . "\">" . $low_nor[count($low_nor)-$j-1] . "</text>\n";
+					}
+				}
+				for ($j = 0; $j < count($upp_nor); $j++)
+				{
+					// top, left
 					echo
-"			<text class=\"lownor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($txt_mar_lrg) . "\" y=\"" . ($pos_hgh-$txt_mar_lrg) . "\" dy=\"" . ($j * -$txt_hgh_lrg) . "\">" . $low_nor[count($low_nor)-$j-1] . "</text>\n";
+"			<text class=\"uppnor txt" . $bkg_nor . " txt" . $key_sty . $lbl_sty . "\" x=\"" . ($txt_mar_lrg) . "\" y=\"" . ($txt_hgh_lrg) . "\" dy=\"" . ($j * $txt_hgh_lrg) . "\">" . $upp_nor[$j] . "</text>\n";
+				}
+				for ($j = 0; $j < count($low_agr); $j++)
+				{
+					// bottom, right
+					echo
+"			<text class=\"lowagr txt" . $bkg_nor . " txt" . $key_sty . $lbl_sty . "\" x=\"" . ($pos_wid-$txt_mar_lrg) . "\" y=\"" . ($pos_hgh-$txt_mar_lrg) . "\" dy=\"" . ($j * -$txt_hgh_lrg) . "\">" . $low_agr[count($low_agr)-$j-1] . "</text>\n";
+				}
+				for ($j = 0; $j < count($upp_agr); $j++)
+				{
+					// top, right
+					echo
+"			<text class=\"uppagr txt" . $bkg_nor . " txt" . $key_sty . $lbl_sty . "\" x=\"" . ($pos_wid-$txt_mar_lrg) . "\" y=\"" . ($txt_hgh_lrg) . "\" dy=\"" . ($j * $txt_hgh_lrg) . "\">" . $upp_agr[$j] . "</text>\n";
 				}
 			}
-			for ($j = 0; $j < count($upp_nor); $j++)
-			{
-				// top, left
-				echo
-"			<text class=\"uppnor txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($txt_mar_lrg) . "\" y=\"" . ($txt_hgh_lrg) . "\" dy=\"" . ($j * $txt_hgh_lrg) . "\">" . $upp_nor[$j] . "</text>\n";
-			}
-			for ($j = 0; $j < count($low_agr); $j++)
-			{
-				// bottom, right
-				echo
-"			<text class=\"lowagr txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($pos_wid-$txt_mar_lrg) . "\" y=\"" . ($pos_hgh-$txt_mar_lrg) . "\" dy=\"" . ($j * -$txt_hgh_lrg) . "\">" . $low_agr[count($low_agr)-$j-1] . "</text>\n";
-			}
-			for ($j = 0; $j < count($upp_agr); $j++)
-			{
-				// top, right
-				echo
-"			<text class=\"uppagr txt" . $bkg_nor . " txt" . $key_sty . "\" x=\"" . ($pos_wid-$txt_mar_lrg) . "\" y=\"" . ($txt_hgh_lrg) . "\" dy=\"" . ($j * $txt_hgh_lrg) . "\">" . $upp_agr[$j] . "</text>\n";
-			}
+
 			// captions text
 			$jcount		= 0;
 			for ($j = 0; $j < count($cap_nor); $j++)
@@ -560,6 +568,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 			echo
 "		</g>\n";
 		}
+
 		// legend keys
 		echo
 "		<g class=\"legkey\" transform=\"translate(1.5 " . ($layout_legend_top + 1.5) . ")\">
@@ -574,6 +583,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 			<text class=\"lownor txtnon\" x=\"2.5\" y=\"64.5\">Lowcase</text>
 			<text class=\"uppnor txtnon\" x=\"2.5\" y=\"13.5\">Upcase</text>
 		</g>\n";
+
 		// non!
 		// legend descriptions
 		if ($stylegroup_id == 1)

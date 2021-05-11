@@ -42,7 +42,7 @@ svg	{font-family:Verdana,Sans-Serif;font-size:14px;}
 .recbrn	{fill:url(#pat10);}
 .recnon	{fill:#ffffff;}
 .recred,.recyel,.recgrn,.reccyn,.recblu,.recmag,.recwht,.recgry,.recblk,.recorg,.recolv,.recbrn,.recnon
-	{stroke:#ccc;stroke-width:1px;}		/* filter:url(#filt_1);-webkit-filter:url(#filt_1); */
+	{stroke:#ccc;stroke-width:1px;}		/* filter:url(#f2);-webkit-filter:url(#f2); */
 .txtred	{fill:#000000;}
 .txtyel	{fill:#000000;}
 .txtgrn	{fill:#000000;}
@@ -56,3 +56,7 @@ svg	{font-family:Verdana,Sans-Serif;font-size:14px;}
 .txtolv	{fill:#000000;}
 .txtbrn	{fill:#000000;}
 .txtnon	{fill:#000000;}
+.lblvis {fill-opacity:1.00;}
+.lbldim {fill-opacity:0.25;}
+.lblblr {fill-opacity:0.50;filter:url("#f1");}
+.lblhid {fill-opacity:0.00;}

@@ -38,16 +38,20 @@ svg	{font-family:DejaVu Sans Condensed,Sans-Serif;font-size:14px;}
 .recolv	{fill:#A8BF75;}	/* ( 74, 40,120)	olive	*/
 .recbrn	{fill:#685510;}	/* ( 37, 40, 90)	brown	*/
 .recnon	{fill:#B6B6B6;}	/* ( 74,  0,  0)	blank	*/
-.txtred	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* ( 74, 40, 30)	red	*/
-.txtyel	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* ( 74, 40, 90)	yellow	*/
-.txtgrn	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* ( 74, 40,150)	green	*/
-.txtcyn	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* ( 74, 40,210)	cyan	*/
-.txtblu	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* ( 74, 40,270)	blue	*/
-.txtmag	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* ( 74, 40,330)	magenta	*/
-.txtwht	{fill:#000000;filter:url(#filt_1);-webkit-filter:url(#filt_1);} /* 			white	*/
-.txtgry	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* 			gray	*/
-.txtblk	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);} /* 			black	*/
-.txtorg	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* ( 74, 40, 60)	orange	*/
-.txtolv	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* ( 74, 40,120)	olive	*/
-.txtbrn	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* ( 37, 40, 90)	brown	*/
-.txtnon	{fill:#ffffff;filter:url(#filt_1);-webkit-filter:url(#filt_1);}	/* ( 74,  0,  0)	blank	*/
+.txtred	{fill:#ffffff;filter:url(#f2);-webkit-filter:url(#f2);}	/* ( 74, 40, 30)	red	*/
+.txtyel	{fill:#ffffff;filter:url(#f2);-webkit-filter:url(#f2);}	/* ( 74, 40, 90)	yellow	*/
+.txtgrn	{fill:#ffffff;filter:url(#f2);-webkit-filter:url(#f2);}	/* ( 74, 40,150)	green	*/
+.txtcyn	{fill:#ffffff;filter:url(#f2);-webkit-filter:url(#f2);}	/* ( 74, 40,210)	cyan	*/
+.txtblu	{fill:#ffffff;filter:url(#f2);-webkit-filter:url(#f2);}	/* ( 74, 40,270)	blue	*/
+.txtmag	{fill:#ffffff;filter:url(#f2);-webkit-filter:url(#f2);}	/* ( 74, 40,330)	magenta	*/
+.txtwht	{fill:#000000;filter:url(#f2);-webkit-filter:url(#f2);} /* 			white	*/
+.txtgry	{fill:#ffffff;filter:url(#f2);-webkit-filter:url(#f2);}	/* 			gray	*/
+.txtblk	{fill:#ffffff;filter:url(#f2);-webkit-filter:url(#f2);} /* 			black	*/
+.txtorg	{fill:#ffffff;filter:url(#f2);-webkit-filter:url(#f2);}	/* ( 74, 40, 60)	orange	*/
+.txtolv	{fill:#ffffff;filter:url(#f2);-webkit-filter:url(#f2);}	/* ( 74, 40,120)	olive	*/
+.txtbrn	{fill:#ffffff;filter:url(#f2);-webkit-filter:url(#f2);}	/* ( 37, 40, 90)	brown	*/
+.txtnon	{fill:#ffffff;filter:url(#f2);-webkit-filter:url(#f2);}	/* ( 74,  0,  0)	blank	*/
+.lblvis {fill-opacity:1.00;}
+.lbldim {fill-opacity:0.25;}
+.lblblr {fill-opacity:0.50;filter:url("#f1");}
+.lblhid {fill-opacity:0.00;}

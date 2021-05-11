@@ -103,7 +103,7 @@
 	pageTitle();
 
 	// layout outer bounds
-	if ($ten_bool == 0)
+	if ($tenk_flag == 0)
 	{
 		$layout_min_horizontal	= -$layout_tenkeyless_padding;
 		$layout_max_horizontal	=  $layout_tenkeyless_padding * 2 + $layout_tenkeyless_width;
@@ -111,7 +111,7 @@
 		$layout_max_vertical	=  $layout_tenkeyless_padding * 2 + $layout_tenkeyless_height + $layout_legend_padding * 2 + $layout_legend_height;
 		$layout_legend_top	=  $layout_tenkeyless_padding * 2 + $layout_tenkeyless_height + $layout_legend_padding;
 	}
-	else if ($ten_bool == 1)
+	else if ($tenk_flag == 1)
 	{
 		$layout_min_horizontal	= -$layout_fullsize_padding;
 		$layout_max_horizontal	=  $layout_fullsize_padding * 2 + $layout_fullsize_width;
@@ -174,7 +174,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		<script src="' . $path_lib1 . 'jquery-3.3.1.min.js"></script>
 		<script src="' . $path_lib1 . 'java-footer.js"></script>
 		<script src="' . $path_lib1 . 'java-export.js"></script>
-		<link rel="stylesheet" href="' . $path_root1 . 'style_normalize.css"/>
+		<link rel="stylesheet" href="' . $path_lib1 . 'style-normalize.css"/>
 		<link rel="stylesheet" href="' . $path_lib1 . 'style-footer.css"/>
 ';
 
@@ -198,9 +198,10 @@ var binding_data =
 	format_id: '      . $format_id . ',
 	game_id: '        . $game_id . ',
 	game_seo: \''     . $game_seo . '\',
-	ten_bool: '       . $ten_bool . ',
-	vert_bool: '      . $vert_bool . ',
-	svg_bool: '       . $svg_bool . '
+	tenk_flag: '       . $tenk_flag . ',
+	vert_flag: '      . $vert_flag . ',
+	kcap_flag: '      . $kcap_flag . ',
+	svgb_flag: '       . $svgb_flag . '
 }
 		</script>
 ';
@@ -216,7 +217,7 @@ var binding_data =
 		<main>
 ';
 
-	if ($vert_bool == false)
+	if ($vert_flag == false)
 	{
 		echo
 '			<div class="svgdiv" style="position:relative;width:' . $layout_max_horizontal . 'px;height:' . $layout_max_vertical . 'px;">

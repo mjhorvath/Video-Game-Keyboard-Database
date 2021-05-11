@@ -45,9 +45,10 @@
 	$format_id		= $json_data["format_id"];		// set by java-export.js
 	$game_id		= $json_data["game_id"];		// set by java-export.js
 	$game_seo		= $json_data["game_seo"];		// set by java-export.js
-	$ten_bool		= $json_data["ten_bool"];		// set by java-export.js
-	$vert_bool		= $json_data["vert_bool"];		// set by java-export.js
-	$svg_bool		= $json_data["svg_bool"];		// set by java-export.js
+	$tenk_flag		= $json_data["tenk_flag"];		// set by java-export.js
+	$vert_flag		= $json_data["vert_flag"];		// set by java-export.js
+	$kcap_flag		= $json_data["kcap_flag"];		// set by java-export.js
+	$svgb_flag		= $json_data["svgb_flag"];		// set by java-export.js
 	$commandouter_table	= $json_data["commandouter_table"];	// set by java-export.js
 	$legend_table		= $json_data["legend_table"];		// set by java-export.js
 	$binding_table		= $json_data["binding_table"];		// set by java-export.js
@@ -131,7 +132,7 @@
 	pageTitle();
 
 	// layout outer bounds
-	if ($ten_bool == 0)
+	if ($tenk_flag == 0)
 	{
 		$layout_min_horizontal	= -$layout_padding;
 		$layout_max_horizontal	=  $layout_padding * 2 + $layout_tenkeyless_width;
@@ -139,7 +140,7 @@
 		$layout_max_vertical	=  $layout_padding * 2 + $layout_tenkeyless_height + $layout_legend_padding + $layout_legend_height;
 		$layout_legend_top	=  $layout_tenkeyless_height + $layout_legend_padding;
 	}
-	else if ($ten_bool == 1)
+	else if ($tenk_flag == 1)
 	{
 		$layout_min_horizontal	= -$layout_padding;
 		$layout_max_horizontal	=  $layout_padding * 2 + $layout_fullsize_width;
@@ -226,7 +227,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		<main>
 ';
 
-	if ($vert_bool == false)
+	if ($vert_flag == false)
 	{
 		echo
 '			<div class="svgdiv" style="position:relative;width:' . $layout_max_horizontal . 'px;height:' . $layout_max_vertical . 'px;">

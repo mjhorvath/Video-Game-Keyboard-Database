@@ -1313,7 +1313,7 @@ function apply_all_json()
 			key_outer.className = key_class;
 		}
 	}
-	// commands (basically duplicates what appears in "output-submit.php")
+	// commands (basically duplicates what appears in "output-submit-html.php")
 	for (var i in binding_data.commandlabel_table)
 	{
 		const commandlabel_value = binding_data.commandlabel_table[i];

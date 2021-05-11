@@ -67,3 +67,7 @@ div.caporg,div.legorg	{border:1px solid #404040;}
 div.capolv,div.legolv	{border:1px solid #404040;}
 div.capbrn,div.legbrn	{border:1px solid #404040;}
 div.capnon,div.legnon	{border:1px solid #404040;}
+.lblvis {opacity:1.0;}
+.lbldim {opacity:0.5;}
+.lblblr {opacity:0.5;filter:blur(4px);}
+.lblhid {opacity:0.0;}

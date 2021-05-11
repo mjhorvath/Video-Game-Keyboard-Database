@@ -47,8 +47,7 @@ svg	{font-family:DejaVu Sans Condensed,Sans-Serif;font-size:14px;}
 .txtolv	{fill:#000000;}
 .txtbrn	{fill:#000000;}
 .txtnon	{fill:#000000;}
-/*
-Not much support for these in browsers. Will need to recalculate everything if I use them.
-.ideo	{alignment-baseline:ideographic;}
-.hang	{alignment-baseline:hanging;}
-*/
+.lblvis {fill-opacity:1.00;}
+.lbldim {fill-opacity:0.25;}
+.lblblr {fill-opacity:0.50;filter:url("#f1");}
+.lblhid {fill-opacity:0.00;}
