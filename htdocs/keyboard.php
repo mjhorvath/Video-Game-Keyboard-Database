@@ -201,9 +201,9 @@
 		<meta name=\"keywords\" content=\"visual,keyboard,keys,diagrams,charts,overlay,shortcuts,bindings,mapping,maps,controls,hotkeys,database,print,printable,video game,software,guide,reference\"/>
 		<script src=\"" . $path_lib1  . "java-common.js\"></script>
 		<script src=\"" . $path_lib1  . "java-frontend.js\"></script>
-		<script src=\"" . $path_java1 . "jquery-1.4.2.min.js\"></script>
-		<script src=\"" . $path_java1 . "jquery-accordionmenu.js\"></script>
-		<script src=\"" . $path_lib1  . "java-cubesnake.js\"></script>\n";
+		<script src=\"" . $path_lib1  . "jquery-3.3.1.min.js\"></script>
+		<script src=\"" . $path_lib1  . "jquery-accordionmenu.js\"></script>
+		<script src=\"" . $path_java1 . "java-cubesnake.js\"></script>\n";
 	echo writeAnalyticsTracking();
 	echo
 "		<script>
@@ -226,7 +226,7 @@ var seourl_table =
 "};
 		</script>
 	</head>
-	<body onload=\"Select_Init();cube_snake_init();\">
+	<body onload=\"Select_Init();\">
 		<nav>\n";
 	include($path_lib1 . "header-navbar.php");	// not working in Android Chrome
 	echo
