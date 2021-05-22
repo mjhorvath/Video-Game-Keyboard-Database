@@ -1,8 +1,8 @@
 <?php
-	// Video Game Keyboard Diagrams
+	// Video Game Keyboard Database
 	// Copyright (C) 2018  Michael Horvath
         // 
-	// This file is part of Video Game Keyboard Diagrams.
+	// This file is part of Video Game Keyboard Database.
         // 
 	// This program is free software: you can redistribute it and/or modify
 	// it under the terms of the GNU Lesser General Public License as 
@@ -219,7 +219,7 @@
 	<li>2018/06/04: Renamed the &quot;svg&quot; URL query to &quot;fmt&quot; since there are now more than two formats.</li>
 	<li>2018/06/04: Fixed a bug in URL query detection.</li>
 	<li>2018/05/30: Created a <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for this project.</li>
-	<li>2018/05/29: Renamed the project from &quot;Video Game Hotkey Maps&quot; back to &quot;Video Game Keyboard Diagrams&quot;.</li>
+	<li>2018/05/29: Renamed the project from &quot;Video Game Hotkey Maps&quot; back to &quot;Video Game Keyboard Database&quot;.</li>
 	<li>2018/05/29: Updated the printing tips with new info on potential problems and workarounds.</li>
 	<li>2018/05/25: Made tweaks to style sheets and meta tags in order to (somewhat) better support mobile browsers.</li>
 	<li>2018/05/25: Fixed a bug that was causing some browsers to not be able to switch between the HTML and SVG versions of the diagrams.</li>
@@ -233,7 +233,7 @@
 	<li>2017/05/29: You can now switch back and forth between SVG and HTML versions of the charts by simply changing the <tt>&amp;svg=</tt> URL parameter to equal 1 or 0.</li>
 	<li>2017/01/04: Altered several styles' appearances.</li>
 	<li>2017/01/04: Created SVG versions of the charts (<s><a href="./keyboard-chart.php?gam=1&sty=15&lay=1&svg=1">here's a sample</a></s>). They are less compatible with older browsers, but are better compatible with different wiki software. Once again, remember to change the numbers after the &quot;gam=&quot; and &quot;lay=&quot; portions of the URL to the correct game and layout ID.</li>
-	<li>2017/01/04: Renamed the website from &quot;Video Game Keyboard Control Charts&quot; to &quot;Video Game Keyboard Diagrams&quot;.</li>
+	<li>2017/01/04: Renamed the website from &quot;Video Game Keyboard Control Charts&quot; to &quot;Video Game Keyboard Database&quot;.</li>
 	<li>2017/01/04: Switched the order of the &quot;Games&quot;, &quot;Styles&quot; and &quot;Layouts&quot; menus on the front page to &quot;Games&quot;, &quot;Layouts&quot; and &quot;Styles&quot;.</li>
 	<li>2017/01/04: Checks are now done to make sure each style is only applied to the proper layout. Non-matching styles are now grayed-out in the front page menu, and error messages are now printed to the chart screen.</li>
 	<li>2016/12/23: Added bindings for <i>Windows 7</i>, <i>Neverwinter Nights</i>, <i>Neverwinter Nights 2</i>, <i>Psychonauts</i>, <i>The Age of Decadence</i>, <i>Shadowrun: Dragonfall</i> and <i>Pillars of Eternity</i>.</li>

@@ -1,8 +1,8 @@
 <?php
-	// Video Game Keyboard Diagrams
+	// Video Game Keyboard Database
 	// Copyright (C) 2018  Michael Horvath
         // 
-	// This file is part of Video Game Keyboard Diagrams.
+	// This file is part of Video Game Keyboard Database.
         // 
 	// This program is free software: you can redistribute it and/or modify
 	// it under the terms of the GNU Lesser General Public License as 
@@ -124,7 +124,7 @@
 	}
 	echo
 '<!--
-This file was generated using Video Game Keyboard Diagrams by Michael Horvath.
+This file was generated using Video Game Keyboard Database by Michael Horvath.
 https://isometricland.net/keyboard/keyboard.php
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
 United States License. To view a copy of this license, visit
@@ -210,7 +210,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 			<rdf:Description about=""
 				dc:title="' . cleantextSVG($page_title_a . $temp_separator . $page_title_b) . '"
 				dc:description="' . cleantextSVG($language_description . $temp_game_name . ". (" . $temp_style_name . ")") . '"
-				dc:publisher="Video Game Keyboard Diagrams"
+				dc:publisher="Video Game Keyboard Database"
 				dc:date="' . date("Y-m-d H:i:s") . '"
 				dc:format="image/svg+xml"
 				dc:language="' . $language_code . '">

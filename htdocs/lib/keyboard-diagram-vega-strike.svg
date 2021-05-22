@@ -1,5 +1,5 @@
 <!--
-This file was generated using Video Game Keyboard Diagrams by Michael Horvath.
+This file was generated using Video Game Keyboard Database by Michael Horvath.
 https://isometricland.net/keyboard/keyboard.php
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
 United States License. To view a copy of this license, visit
@@ -17,7 +17,7 @@ Theme created by: Michael Horvath.
 	xmlns:ev="http://www.w3.org/2001/xml-events"
 	viewBox="-18 -18 1692 612"
 	width="1692" height="612">
-	<title>Vega Strike - Video Game Keyboard Diagrams - PC/AT - US 104 Key (ANSI) - CIELCh Plain (Light) - SVG only - GRID:44</title>
+	<title>Vega Strike - Video Game Keyboard Database - PC/AT - US 104 Key (ANSI) - CIELCh Plain (Light) - SVG only - GRID:44</title>
 	<desc>Keyboard diagram for Vega Strike.</desc><!-- partially hardcoded -->
 	<metadata id="license"
 		xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -38,9 +38,9 @@ Theme created by: Michael Horvath.
 				<cc:requires rdf:resource="http://creativecommons.org/ns#ShareAlike" />
 			</cc:License>
 			<rdf:Description about=""
-				dc:title="Vega Strike - Video Game Keyboard Diagrams - PC/AT - US 104 Key (ANSI) - CIELCh Plain (Light) - SVG only - GRID:44"
+				dc:title="Vega Strike - Video Game Keyboard Database - PC/AT - US 104 Key (ANSI) - CIELCh Plain (Light) - SVG only - GRID:44"
 				dc:description="Keyboard hotkey &amp; binding chart for Vega Strike. (CIELCh Plain (Light))"
-				dc:publisher="Video Game Keyboard Diagrams"
+				dc:publisher="Video Game Keyboard Database"
 				dc:date="2021-04-02 11:48:38"
 				dc:format="image/svg+xml"
 				dc:language="en">

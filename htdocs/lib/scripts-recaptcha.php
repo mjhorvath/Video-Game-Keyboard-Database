@@ -1,8 +1,8 @@
 <?php
-	// Video Game Keyboard Diagrams
+	// Video Game Keyboard Database
 	// Copyright (C) 2018  Michael Horvath
 	// 
-	// This file is part of Video Game Keyboard Diagrams.
+	// This file is part of Video Game Keyboard Database.
 	// 
 	// This program is free software: you can redistribute it and/or modify
 	// it under the terms of the GNU Lesser General Public License as 
@@ -92,7 +92,7 @@
 		// Send to submitter
 		$mail = $email;
 		$subj = "VGKD Bindings Submission: " . $titletxt;
-		$body = "Thank you for submitting a binding scheme to Video Game Keyboard Diagrams. Below is a copy of the data you submitted.\r\n\r\n" .
+		$body = "Thank you for submitting a binding scheme to Video Game Keyboard Database. Below is a copy of the data you submitted.\r\n\r\n" .
 			"NAME:\t\t"	. $name		. "\r\n" .
 			"EMAIL:\t\t"	. $email	. "\r\n" .
 			"MESSAGE:\t"	. $message	. "\r\n" .

@@ -1,8 +1,8 @@
 <?php
-	// Video Game Keyboard Diagrams
+	// Video Game Keyboard Database
 	// Copyright (C) 2018  Michael Horvath
         // 
-	// This file is part of Video Game Keyboard Diagrams.
+	// This file is part of Video Game Keyboard Database.
         // 
 	// This program is free software: you can redistribute it and/or modify
 	// it under the terms of the GNU Lesser General Public License as 
@@ -20,7 +20,7 @@
 
 	header("Content-Type: text/html; charset=utf8");
 
-	$page_title		= "Video Game Keyboard Diagrams";
+	$page_title		= "Video Game Keyboard Database";
 	$path_vgkd		= "https://isometricland.net/keyboard/";
 	$path_file		= "keyboard.php";	// this file
 	$path_root1		= "../";		// for HTML and JS files
