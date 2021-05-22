@@ -3,7 +3,7 @@
 		<div id="header_cell_1"><svg class="corner" viewBox="0 0 2 2" preserveAspectRatio="none"><polygon points="2,0 2,2 0,2" fill="#303030" /></svg></div>
 		<div id="header_cell_2">
 			<ul id="header_list_1">
-				<li><a href="keyboard.php">Video&nbsp;Game Keyboard&nbsp;Diagrams</a></li>
+				<li><a href="keyboard.php">Video&nbsp;Game Keyboard&nbsp;Database</a></li>
 			</ul>
 			<ul id="header_list_2">
 				<li><a href="keyboard-links.php">Links</a></li>
