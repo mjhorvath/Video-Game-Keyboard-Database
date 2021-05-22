@@ -242,6 +242,24 @@
 
 			if (array_key_exists($i, $binding_table))
 			{
+				// this part is different than in the non-export version of this document
+				// normal_group, normal_action, shift_group, shift_action, ctrl_group, ctrl_action, alt_group, alt_action, altgr_group, altgr_action, extra_group, extra_action, image_file, image_uri
+				$binding_row	= $binding_table[$i];
+				$bkg_nor = getkeycolor($binding_row[12]);
+				$cap_nor = splitkeytext(cleantextSVG($binding_row[4]));
+				$bkg_shf = getkeycolor($binding_row[13]);
+				$cap_shf = splitkeytext(cleantextSVG($binding_row[5]));
+				$bkg_ctl = getkeycolor($binding_row[14]);
+				$cap_ctl = splitkeytext(cleantextSVG($binding_row[6]));
+				$bkg_alt = getkeycolor($binding_row[15]);
+				$cap_alt = splitkeytext(cleantextSVG($binding_row[7]));
+				$bkg_agr = getkeycolor($binding_row[16]);
+				$cap_agr = splitkeytext(cleantextSVG($binding_row[8]));
+				$bkg_xtr = getkeycolor($binding_row[17]);
+				$cap_xtr = splitkeytext(cleantextSVG($binding_row[9]));
+				$img_fil = $binding_row[10];
+				$img_uri = $binding_row[11];
+/*
 				// normal_group, normal_action, shift_group, shift_action, ctrl_group, ctrl_action, alt_group, alt_action, altgr_group, altgr_action, extra_group, extra_action, image_file, image_uri
 				$binding_row	= $binding_table[$i];
 				$bkg_nor = getkeycolor($binding_row[ 0]);
@@ -258,6 +276,7 @@
 				$cap_xtr = splitkeytext(cleantextSVG($binding_row[11]));
 				$img_fil = $binding_row[12];
 				$img_uri = $binding_row[13];
+*/
 			}
 			else
 			{
