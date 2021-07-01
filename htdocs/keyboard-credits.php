@@ -33,7 +33,26 @@
 	$path_ssi2		= "../../ssi/";		// for PHP files
 
 	include($path_ssi1	. "plugin-analyticstracking.php");
+	include($path_ssi1	. "keyboard-connection.php");
 	include($path_lib1	. "scripts-common.php");
+	include($path_lib1	. "queries-common.php");
+	include($path_lib1	. "queries-credits.php");
+
+	$contribsgames_table = [];
+
+	// open MySQL connection
+	$con = mysqli_connect($con_website, $con_username, $con_password, $con_database);
+ 	if (mysqli_connect_errno())
+	{
+		trigger_error("Database connection failed: "  . mysqli_connect_error(), E_USER_ERROR);
+	}
+	mysqli_query($con, "SET NAMES 'utf8'");
+
+	// MySQL queries
+	selContribsGamesList();
+
+	// close MySQL connection
+	mysqli_close($con);
 
 	echo
 "<!DOCTYPE HTML>
@@ -68,25 +87,13 @@
 </ul>
 <h4>Bindings</h4>
 <ul style="column-count:2;">
-	<li>Abel Cloots</li>
-	<li>Agnes Beste</li>
-	<li>Andreas</li>
-	<li>Cris</li>
-	<li>Daniel</li>
-	<li>Eduardo Vazquez</li>
-	<li>etejam</li>
-	<li>Hunter Mansanas</li>
-	<li>Jeffery So</li>
-	<li>Josiah Stearns</li>
-	<li>Lucas</li>
-	<li>Luke Fanning</li>
-	<li>Mustafa</li>
-	<li>Paul Hoff</li>
-	<li>Sarn Vision</li>
-	<li>Steve Martin</li>
-	<li>Taz</li>
-	<li>Tim Scott</li>
-	<li>Tom</li>
+<?php
+	foreach ($contribsgames_table as $i => $contribsgames_value)
+	{
+		echo
+"	<li>" . $contribsgames_value . "</li>\n";
+	}
+?>
 </ul>
 <h4>Visual themes</h4>
 <ul>

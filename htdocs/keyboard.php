@@ -422,12 +422,12 @@ var seourl_table =
 			<div id="cap_check" class="acc_check">&#x2714;</div>
 			<div id="cap_xmark" class="acc_xmark">&#x2718;</div>
 			<h3>7. Key Labels</h3>
-			<label class="container">Strong&nbsp;&#10022;
-				<input id="caprad0" type="radio" name="cap_radio" value="0" onchange="enableResetButton();" checked/>
+			<label class="container">Normal
+				<input id="caprad0" type="radio" name="cap_radio" value="0" onchange="enableResetButton();"/>
 				<span class="checkmark"></span>
 			</label>
-			<label class="container">Dimmed
-				<input id="caprad1" type="radio" name="cap_radio" value="1" onchange="enableResetButton();"/>
+			<label class="container">Dimmed&nbsp;&#10022;
+				<input id="caprad1" type="radio" name="cap_radio" value="1" onchange="enableResetButton();" checked/>
 				<span class="checkmark"></span>
 			</label>
 			<label class="container">Blurred

@@ -169,7 +169,7 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 		<link rel="canonical" href="' . $can_url . '"/>
 		<link rel="icon" type="image/png" href="' . $path_lib1 . 'favicon.png"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<meta name="description" content="'	. $language_description		. $temp_game_name . '"/>
+		<meta name="description" content="'	. $language_description		. $temp_game_name . '."/>
 		<meta name="keywords" content="'	. $language_keywords . ','	. $temp_game_name . ','		. $temp_style_name . ','	. $temp_layout_name . ','	. $temp_format_name	. '"/>
 		<script src="' . $path_lib1 . 'jquery-3.3.1.min.js"></script>
 		<script src="' . $path_lib1 . 'java-footer.js"></script>
@@ -212,7 +212,10 @@ var binding_data =
 '	</head>
 	<body onload="init_footer();">
 		<header>
-			<div class="boxdiv"><h2>' . $page_title_a . '<small>' . $temp_separator . $page_title_b . '</small></h2></div>
+			<div class="boxdiv">
+				<h2>' . $page_title_a . '<small>' . $temp_separator . $page_title_b . '</small></h2>
+				<p>Visual keyboard hotkey &amp; binding diagrams for video games and other software.</p>
+			</div>
 		</header>
 		<main>
 ';
