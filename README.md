@@ -10,11 +10,11 @@ View a live version of this project at [http://isometricland.net/keyboard/keyboa
 
 Please refer to the [wiki](https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki) for further information.
 
-* [Home]
-* [Contributing]
-* [Credits]
-* [Instructions]
-* [Links]
-* [Other Formats]
-* [Printing Tips]
-* [To Do List]
+* [Home](https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki/Home)
+* [Contributing](https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki/Contributing)
+* [Credits](https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki/Credits)
+* [Instructions](https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki/Instructions)
+* [Links](https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki/Links)
+* [Other Formats](https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki/Other-Formats)
+* [Printing Tips](https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki/Printing-Tips)
+* [To Do List](https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki/To-Do-List)
