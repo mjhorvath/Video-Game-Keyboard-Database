@@ -1,6 +1,6 @@
 # Video Game Keyboard Diagrams
 
-This project consists of a MySQL database and set of PHP forms that generate keyboard control diagrams for various video games and other software. There are currently about 250 sets of bindings in total for about a dozen different keyboards.
+This project consists of a MySQL database and set of PHP forms for generating keyboard control diagrams of various video games and other software. There are currently about 250 sets of bindings in total for about a dozen different keyboards.
 
 ## Licensing
 * The software programming code is licensed under the [GNU Lesser General Public License version 3](https://www.gnu.org/licenses/lgpl-3.0.en.html).
