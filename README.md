@@ -8,4 +8,4 @@ The database content is licensed under the [Creative Commons Attribution-Share A
 
 View a live version of this project at [http://isometricland.net/keyboard/keyboard.php](http://isometricland.net/keyboard/keyboard.php).
 
-Please [refer to the wiki](https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki) for further information.
+Please refer to [the wiki](https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki) for further information.
