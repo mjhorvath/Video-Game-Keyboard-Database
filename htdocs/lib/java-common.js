@@ -30,7 +30,7 @@ function cleantextTSV(in_string)
 	return in_string == '' ? 'NULL' : '\'' + in_string + '\'';
 }
 
-function cleannumberTSV(in_number)
+function cleannumbTSV(in_number)
 {
 	return !in_number ? 'NULL' : in_number;
 }

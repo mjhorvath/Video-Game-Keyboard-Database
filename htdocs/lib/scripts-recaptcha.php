@@ -58,7 +58,8 @@
 	$dot		= ".";
 	$gap		= "";
 	$admin		= "mikh" . $gap . "2161" . $at . "gmail" . $dot . "com";
-	$newsub		= $newsub == "on" ? "true" : "false";
+//	$newsub		= $newsub == "on" ? "true" : "false";
+//	$record		= $newsub == "true" ? "n/a" : $record;
 
 	// handling the captcha and checking if it's ok
 	$secret = writeRecaptchaSecret();
@@ -76,8 +77,8 @@
 			"GAME TITLE:\t"	. $titletxt	. "\r\n" .
 			"GAME URL:\t"	. $titleurl	. "\r\n" .
 			"LAYOUT:\t\t"	. $layout	. "\r\n" .
+			"ISNEWSUB:\t"	. $newsub	. "\r\n" .
 			"RECORD:\t\t"	. $record	. "\r\n" .
-			"NEWSUB:\t\t"	. $newsub	. "\r\n" .
 			"TIMERAW:\t"	. $timeraw	. "\r\n" .
 			"TIMEFORM:\t"	. $timeform	. "\r\n\r\n" .
 			"LEGENDS:\r\n"	. $legend	. "\r\n\r\n" .
@@ -99,8 +100,8 @@
 			"GAME TITLE:\t"	. $titletxt	. "\r\n" .
 			"GAME URL:\t"	. $titleurl	. "\r\n" .
 			"LAYOUT:\t\t"	. $layout	. "\r\n" .
+			"ISNEWSUB:\t"	. $newsub	. "\r\n" .
 			"RECORD:\t\t"	. $record	. "\r\n" .
-			"NEWSUB:\t\t"	. $newsub	. "\r\n" .
 			"TIMERAW:\t"	. $timeraw	. "\r\n" .
 			"TIMEFORM:\t"	. $timeform	. "\r\n\r\n" .
 			"LEGENDS:\r\n"	. $legend	. "\r\n\r\n" .

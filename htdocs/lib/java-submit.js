@@ -1004,7 +1004,7 @@ function do_recaptcha()
 				binding:	binding.val(),
 				layout:		layout.val(),
 				record:		record.val(),
-				newsub:		newsub.val(),
+				newsub:		newsub.is(':checked'),
 				captcha:	captcha
 			}
 		}).done(function(status)
@@ -1478,7 +1478,9 @@ function process_legend_sql()
 		for (var i in binding_data.legend_table)
 		{
 			const legend_item = binding_data.legend_table[i];
-			legend_string += 'CALL add_legend(' + binding_data.gamesrecord_id + ',' + i + ',' + cleantextTSV(legend_item) + ');\n';
+			legend_string +=	'temp'				+ '\t' +
+						i				+ '\t' +
+						cleantextTSV(legend_item)	+ '\n';
 		}
 		return legend_string;
 	}
@@ -1509,7 +1511,11 @@ function process_command_sql()
 				const command_value_1 = !command_item[0] ? 'NULL' : parseInt(command_item[0],10);
 				const command_value_2 = !command_item[1] ? 'NULL' : cleantextTSV(command_item[1]);
 				const command_value_3 = !command_item[2] ? 'NULL' : cleantextTSV(command_item[2]);
-				command_string += 'CALL add_command(' + binding_data.gamesrecord_id + ',' + command_num + ',' + command_value_2 + ',' + command_value_3 + ',' + command_value_1 +');\n';
+				command_string +=	'temp'				+ '\t' +
+							command_num			+ '\t' +
+							command_value_2			+ '\t' +
+							command_value_3			+ '\t' +
+							command_value_1			+ '\n';
 			}
 		}
 		return command_string;
@@ -1540,23 +1546,22 @@ function process_binding_sql()
 			// need to eliminate empty bindings
 			if (binding_concat != '')
 			{
-				binding_string +=	'CALL add_binding('			+
-							binding_data.gamesrecord_id		+ ',' +
-							binding_num				+ ',' +
-							cleantextTSV(binding_item[ 4])		+ ',' +
-							cleannumberTSV(binding_item[12])	+ ',' +
-							cleantextTSV(binding_item[ 5])		+ ',' +
-							cleannumberTSV(binding_item[13])	+ ',' +
-							cleantextTSV(binding_item[ 6])		+ ',' +
-							cleannumberTSV(binding_item[14])	+ ',' +
-							cleantextTSV(binding_item[ 7])		+ ',' +
-							cleannumberTSV(binding_item[15])	+ ',' +
-							cleantextTSV(binding_item[ 8])		+ ',' +
-							cleannumberTSV(binding_item[16])	+ ',' +
-							cleantextTSV(binding_item[ 9])		+ ',' +
-							cleannumberTSV(binding_item[17])	+ ',' +
-							cleantextTSV(binding_item[10])		+ ',' +
-							cleantextTSV(binding_item[11])		+ ');\n';
+				binding_string +=	'temp'				+ '\t' +
+							binding_num			+ '\t' +
+							cleantextTSV(binding_item[ 4])	+ '\t' +
+							cleannumbTSV(binding_item[12])	+ '\t' +
+							cleantextTSV(binding_item[ 5])	+ '\t' +
+							cleannumbTSV(binding_item[13])	+ '\t' +
+							cleantextTSV(binding_item[ 6])	+ '\t' +
+							cleannumbTSV(binding_item[14])	+ '\t' +
+							cleantextTSV(binding_item[ 7])	+ '\t' +
+							cleannumbTSV(binding_item[15])	+ '\t' +
+							cleantextTSV(binding_item[ 8])	+ '\t' +
+							cleannumbTSV(binding_item[16])	+ '\t' +
+							cleantextTSV(binding_item[ 9])	+ '\t' +
+							cleannumbTSV(binding_item[17])	+ '\t' +
+							cleantextTSV(binding_item[10])	+ '\t' +
+							cleantextTSV(binding_item[11])	+ '\n';
 			}
 		}
 		return binding_string;
