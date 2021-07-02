@@ -10,11 +10,11 @@ View a live version of this project at [http://isometricland.net/keyboard/keyboa
 
 Please refer to the [wiki](https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki) for further information.
 
-* [[Home]]
-* [[Contributing]]
-* [[Credits]]
-* [[Instructions]]
-* [[Links]]
-* [[Other Formats]]
-* [[Printing Tips]]
-* [[To Do List]]
+* [Home]
+* [Contributing]
+* [Credits]
+* [Instructions]
+* [Links]
+* [Other Formats]
+* [Printing Tips]
+* [To Do List]
