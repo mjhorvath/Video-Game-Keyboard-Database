@@ -144,7 +144,7 @@
 				{
 					$this_layout_id   = $this_layout[0];
 					$this_layout_name = $this_layout[1];
-					echo "<dd><a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout_id . "&fmt=0&ten=1&vrt=0\">" . cleantextHTML($this_layout_name) . "</a></dd>";
+					echo "<dd><a target=\"_blank\" href=\"./keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout_id . "&fmt=0&ten=1&vrt=0&cap=1\">" . cleantextHTML($this_layout_name) . "</a></dd>";
 				}
 			}
 		}

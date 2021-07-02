@@ -43,8 +43,8 @@
 	}
 
 	echo
-'	<title>' . $page_title_a . $temp_separator . $page_title_b . '</title>
-	<desc>' . cleantextSVG("Keyboard diagram for " . $temp_game_name . ".") . '</desc><!-- partially hardcoded -->
+'	<title>' . cleantextSVG($page_title_a) . cleantextSVG($page_title_b) . '</title>
+	<desc>' . cleantextSVG($language_title) . ': ' . cleantextSVG($language_description) . '</desc>
 	<metadata id="license"
 		xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 		xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -64,8 +64,8 @@
 				<cc:requires rdf:resource="http://creativecommons.org/ns#ShareAlike" />
 			</cc:License>
 			<rdf:Description about=""
-				dc:title="' . cleantextSVG($page_title_a . $temp_separator . $page_title_b) . '"
-				dc:description="' . cleantextSVG($language_description . $temp_game_name . '. (' . $temp_style_name . ')') . '"
+				dc:title="' . cleantextSVG($page_title_a) . cleantextSVG($page_title_b) . '"
+				dc:description="' . cleantextSVG($language_title) . ': ' . cleantextSVG($language_description) . '"
 				dc:publisher="Video Game Keyboard Database"
 				dc:date="' . date("Y-m-d H:i:s") . '"
 				dc:format="image/svg+xml"

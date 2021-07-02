@@ -165,12 +165,12 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 <html lang="' . $language_code . '">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<title>' . $page_title_a . $temp_separator . $page_title_b . '</title>
+		<title>VGKD: ' . $page_title_a . $page_title_b . '</title>
 		<link rel="canonical" href="' . $can_url . '"/>
 		<link rel="icon" type="image/png" href="' . $path_lib1 . 'favicon.png"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<meta name="description" content="'	. $language_description		. $temp_game_name . '."/>
-		<meta name="keywords" content="'	. $language_keywords . ','	. $temp_game_name . ','		. $temp_style_name . ','	. $temp_layout_name . ','	. $temp_format_name	. '"/>
+		<meta name="description" content="' . $language_title . ': ' . $language_description . '"/>
+		<meta name="keywords" content="' . $language_keywords . '"/>
 		<script src="' . $path_lib1 . 'jquery-3.3.1.min.js"></script>
 		<script src="' . $path_lib1 . 'java-footer.js"></script>
 		<script src="' . $path_lib1 . 'java-export.js"></script>
@@ -192,16 +192,16 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 '		<script>
 var binding_data =
 {
-	gamesrecord_id: ' . $gamesrecord_id . ',
-	style_id: '       . $style_id . ',
-	layout_id: '      . $layout_id . ',
-	format_id: '      . $format_id . ',
-	game_id: '        . $game_id . ',
-	game_seo: \''     . $game_seo . '\',
-	tenk_flag: '       . $tenk_flag . ',
-	vert_flag: '      . $vert_flag . ',
-	kcap_flag: '      . $kcap_flag . ',
-	svgb_flag: '       . $svgb_flag . '
+	gamesrecord_id: '	. $gamesrecord_id	. ',
+	style_id: '		. $style_id		. ',
+	layout_id: '		. $layout_id		. ',
+	format_id: '		. $format_id		. ',
+	game_id: '		. $game_id		. ',
+	game_seo: \''		. $game_seo		. '\',
+	tenk_flag: '		. $tenk_flag		. ',
+	vert_flag: '		. $vert_flag		. ',
+	kcap_flag: '		. $kcap_flag		. ',
+	svgb_flag: '		. $svgb_flag		. '
 }
 		</script>
 ';
@@ -213,8 +213,8 @@ var binding_data =
 	<body onload="init_footer();">
 		<header>
 			<div class="boxdiv">
-				<h2>' . $page_title_a . '<small>' . $temp_separator . $page_title_b . '</small></h2>
-				<p>Visual keyboard hotkey &amp; binding diagrams for video games and other software.</p>
+				<h2>' . $page_title_a . '<small>' . $page_title_b . '</small></h2>
+				<p>' . $language_title . ': ' . $language_description . '</p>
 			</div>
 		</header>
 		<main>

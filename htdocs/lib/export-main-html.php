@@ -190,12 +190,12 @@ Commons, PO Box 1866, Mountain View, CA 94042, USA.
 <html lang="' . $language_code . '">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<title>' . $page_title_a . $temp_separator . $page_title_b . '</title>
+		<title>' . $page_title_a . $page_title_b . '</title>
 		<link rel="canonical" href="' . $can_url . '"/>
 		<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAALiEAAC4hAQdb/P8AAAAgSURBVDhPY/xvG8VACmCC0kSDUQ3EgFENxABaa2BgAAANNAG2n4KuogAAAABJRU5ErkJggg=="/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<meta name="description" content="' . $language_description . $temp_game_name . '."/>
-		<meta name="keywords" content="' . $language_keywords . ',' . $temp_game_name . ',' . $temp_style_name . ',' . $temp_layout_name . ',' . $temp_format_name . '"/>
+		<meta name="description" content="' . $language_title . ': ' . $language_description . '."/>
+		<meta name="keywords" content="' . $language_keywords . '"/>
 ';
 
 	echo

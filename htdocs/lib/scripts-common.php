@@ -29,7 +29,7 @@
 	$default_svgb_flag	= 0;		// set by selDefaultsAll(), utilized by checkURLParameters()
 	$default_tenk_flag	= 1;		// set by selDefaultsAll(), utilized by checkURLParameters()
 	$default_vert_flag	= 0;		// set by selDefaultsAll(), utilized by checkURLParameters()
-	$default_kcap_flag	= 0;		// set by selDefaultsAll(), utilized by checkURLParameters()
+	$default_kcap_flag	= 1;		// set by selDefaultsAll(), utilized by checkURLParameters()
 	$default_platform_id	= 0;		// set by selDefaultsAll(), utilized by checkURLParameters()
 	$default_stylegroup_id	= 0;		// set by selDefaultsAll(), utilized by checkURLParameters()
 	$default_genre_id	= 0;		// set by selDefaultsAll(), utilized by checkURLParameters()
@@ -58,7 +58,7 @@
 	$temp_style_name	= "";		// set by checkForErrors(), utilized by pageTitle()
 	$temp_platform_name	= "";		// set by checkForErrors(), utilized by pageTitle()
 	$temp_format_name	= "";		// set by checkForErrors(), utilized by pageTitle()
-	$temp_separator		= "";		// set by checkForErrors(), utilized by pageTitle()
+	$temp_separator		= " - ";	// utilized by pageTitle()
 	$page_title_a		= "";		// set by pageTitle()
 	$page_title_b		= "";		// set by pageTitle()
 	$layout_language	= 1;		// temporary until more text strings get localized
@@ -267,11 +267,10 @@
 	}
 	function pageTitle()
 	{
-		global	$page_title_a, $page_title_b, $language_title, $gamesrecord_id,
+		global	$page_title_a, $page_title_b, $gamesrecord_id,
 			$temp_separator, $temp_game_name, $temp_platform_name, $temp_layout_name, $temp_style_name, $temp_format_name;
-		$temp_separator	= " - ";
 		$page_title_a	= $temp_game_name;
-		$page_title_b	= $language_title . $temp_separator . $temp_platform_name . $temp_separator . $temp_layout_name . $temp_separator . $temp_style_name . $temp_separator . $temp_format_name . $temp_separator . "GRID:" . $gamesrecord_id;
+		$page_title_b	= $temp_separator . $temp_platform_name . $temp_separator . $temp_layout_name . $temp_separator . $temp_style_name . $temp_separator . "GRID:" . $gamesrecord_id . $temp_separator . $temp_format_name;
 	}
 	// there is an analogous function written in JavaScript in "java-submit.js"
 	// need to keep the two functions synced

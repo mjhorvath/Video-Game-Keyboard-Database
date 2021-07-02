@@ -114,7 +114,7 @@
 			{
 				// maybe not a good idea to list one page for every game/layout combination, so let's only list layout #1 for the time being
 				if ($this_layout_value == 1)
-					echo cleantextHTML(str_replace("&","&amp;amp;","<url><loc>https://isometricland.net/keyboard/keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout_value . "&fmt=0&ten=1&vrt=0&cap=0</loc><changefreq>yearly</changefreq></url>")) . "\n";
+					echo cleantextHTML(str_replace("&","&amp;amp;","<url><loc>https://isometricland.net/keyboard/keyboard-diagram-" . $game_seo_gam . ".php?sty=15&lay=" . $this_layout_value . "&fmt=0&ten=1&vrt=0&cap=1</loc><changefreq>yearly</changefreq></url>")) . "\n";
 			}
 		}
 	}

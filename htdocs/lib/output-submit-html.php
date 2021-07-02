@@ -256,15 +256,15 @@
 <html lang=\"" . $language_code . "\">
 	<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>
-		<title>" . cleantextHTML($page_title_a . $temp_separator . $page_title_b) . "</title>
+		<title>VGKD: " . cleantextHTML($page_title_a) . cleantextHTML($page_title_b) . "</title>
 		<link rel=\"canonical\" href=\"" . $can_url . "\"/>
 		<link rel=\"icon\" type=\"image/png\" href=\"" . $path_lib1 . "favicon.png\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-normalize.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-footer.css\"/>
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $path_lib1 . "style-submit.css\"/>
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
-		<meta name=\"description\" content=\""	. cleantextHTML($language_description		. $temp_game_name . ". ("	. $temp_style_name . ", "	. $temp_layout_name . ", "	. $temp_format_name)	. ")\"/>
-		<meta name=\"keywords\" content=\""	. cleantextHTML($language_keywords . ","	. $temp_game_name . ","		. $temp_style_name . ","	. $temp_layout_name . ","	. $temp_format_name)	. "\"/>\n";
+		<meta name=\"description\" content=\""	. cleantextHTML($language_title) . ': ' . cleantextHTML($language_description)	. ")\"/>
+		<meta name=\"keywords\" content=\""	. cleantextHTML($language_keywords) . "\"/>\n";
 	echo writeAnalyticsTracking();
 	echo
 "		<style type=\"text/css\">\n";

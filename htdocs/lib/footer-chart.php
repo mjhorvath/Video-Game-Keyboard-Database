@@ -18,13 +18,13 @@
 		break;
 		// MEDIA WIKI
 		case 2:
-			$display_styles = "none";
-			$display_tenkey = "none";
+			$display_styles = "table-row";
+			$display_tenkey = "table-row";
 			$display_format = "table-row";
-			$display_orient = "none";
+			$display_orient = "table-row";
 			$display_update = "table-row";
 			$display_keycap = "table-row";
-			$display_export = "none";
+			$display_export = "table-row";
 		break;
 		// EDITOR
 		case 3:
