@@ -9,3 +9,14 @@ div#but_ready	{background-color:#20a020;border:3px double #208020;display:none;}
 div#but_error	{background-color:#a02020;border:3px double #802020;display:none;}
 hr		{height:0.2em;background:#505050;width:100%;text-align:center;margin:1em auto;border:none;clear:both;}
 figure img	{border:solid thin #505050;}
+div.legtbl	{display:table;border-spacing:0.2em;}
+div.legrow	{display:table-row;}
+div.legcll	{display:table-cell;}
+div.legbox	{border:1px solid #000000;width:1em;text-align:center;}
+div.legtxt	{}
+div.legred	{background-color:#ff0000;}
+div.legyel	{background-color:#ffff00;}
+div.leggrn	{background-color:#00ff00;}
+div.legcyn	{background-color:#00ffff;}
+div.legblu	{background-color:#0000ff;}
+div.legmag	{background-color:#ff00ff;}

@@ -485,6 +485,16 @@ var seourl_table =
 <input type="button" value="Create New Diagram" onclick="location.href='keyboard-diagram-blank-starter.php?sty=15&lay=1&fmt=3&ten=1&vrt=0';"/>
 <p>Once you're done filling out all of the form fields, you have the option of submitting the schema to the project, or of saving the diagram locally to your hard drive.</p>
 <p>Also, note that there is an icon in the top-right of the editor that looks like two curly brackets <code>{ }</code>. If you click on this icon you will get to a page where you can import/export JSON code. If you feel it is easier to edit this code externally in a text editor, you may do so instead.</p>
+<p>I have come up with a set of conventions with regard to the coloring of key groups that has worked out pretty well for me so far:</p>
+<div class="legtbl">
+<div class="legrow"><div class="legcll legbox legred">red</div><div class="legcll legtxt">Combat/Actions</div></div>
+<div class="legrow"><div class="legcll legbox legyel">yel</div><div class="legcll legtxt">Targeting/Unit selection/Inventory</div></div>
+<div class="legrow"><div class="legcll legbox leggrn">grn</div><div class="legcll legtxt">Movement/Navigation/Direction</div></div>
+<div class="legrow"><div class="legcll legbox legcyn">cyn</div><div class="legcll legtxt">Communication/Chat/Orders</div></div>
+<div class="legrow"><div class="legcll legbox legblu">blu</div><div class="legcll legtxt">Camera/Point of view/Perspective</div></div>
+<div class="legrow"><div class="legcll legbox legmag">mag</div><div class="legcll legtxt">Misc. Game Interface/Menus</div></div>
+</div>
+<p>Please adhere to these conventions as much as possible when submitting new bindings. Thanks!</p>
 <h3>Licenses &amp; Submissions</h3>
 <p>The source code for this project is licensed under the <a rel="license" target="_blank" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">GNU LGPLv3</a>. The content is licensed under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Visit the <a target="_blank" href="https://github.com/mjhorvath/vgkd">GitHub repository</a> for the project's source code. The <a href="keyboard-log.php">change log</a> contains the project's update history and credits, as well as links to further reading. The <a href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/wiki/To-Do-List">&quot;to do&quot; list</a> outlines some of the tasks I've planned for the future.</p>
 <p>To submit a new set of bindings or a layout, you can fill out <a target="_blank" href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/scripts_sql/vgkd_bindings_template_insert_into.xlsm">this</a> and <a target="_blank" href="https://github.com/mjhorvath/Video-Game-Keyboard-Diagrams/blob/master/scripts_sql/vgkd_layouts_template_insert_into.xlsx">this</a> spreadsheet and <a target="_blank" href="https://isometricland.net/email/email.php">email</a> me the contents by copying and pasting the data into the email form. Note that any content you submit falls under the <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license, as per the project as a whole. Your name will then appear at the bottom of each chart you contributed to.</p>
